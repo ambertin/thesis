@@ -303,3 +303,29 @@ The package has very low barriers to entry, making it accessible to users with v
 In the moment, it often feels easiest to take a shortcut---to use an absolute path or change a working directory. However, when considering the long term path of a project, spending the extra time to improve reproducibility is worthwhile. **fertile**'s user-friendly features can help data analysts avoid these harmful shortcuts with minimal effort.
 
 
+
+# Curricula ideas
+
+Neuro: @neuroimaging-reproducibility
+Ben's Suggestions: @baumer2014r
+Data Science Curriculum Guidelines: @de2017curriculum
+UW Course: @u-wash-reproducibility
+
+
+
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+. \
+
+
+
+
