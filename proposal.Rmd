@@ -78,8 +78,16 @@ I will then consider the Smith College curriculum and discuss ways to further in
 
 # Relevant Preparation
 
+I have spent the last year studying reproducibility as part of research I have been conducting with Prof. Ben Baumer in the Statistical and Data Sciences department. That research has focused on creating a publicly available piece of software that can be downloaded by people all around the world. In the process of sharing that work, I have already begun the process of researching the need for reproducibility and available resources, so I already have a relatively well developed background of knowledge on reproducibility coming into this honors project.
 
+As a statistics tutor, I also have a good sense of which types of tools and which aspects of the curriculum work best for students of all different levels, and can use this knowledge to help inform the recommendations in this project.
 
+I also have built connections with students studying data science all across the country who will be helpful resources in allowing me to find out about what the data science curriculum looks like at a variety of institutions. Those individuals, along with some of the reproducibility experts that I have become familiar with through my research, can help me work to gather insights on effective ways to develop the idea data science curriculum. 
 
-•	an account of your relevant preparation and skills (previous coursework related to the project topic, quantitative skills, foreign language ability, etc.)
+Finally, I have completed a significant number of data analysis and research projects in my time at Smith. I am very familiar with strategies for finding/summarizing sources and collecting/analyzing data, as well as with sharing my findings. I have had experience with writing lengthy (35+ page) papers before, and have developed excellent time management skills through that process that will allow me to successfully complete this project.
+
+---------------------------------------------------------------------------------------------------
+Thank you for taking the time to consider my honors thesis proposal. I have had a wonderful time partipating in my reproducibility research over the last year, and look forward to this opportunity to expand on it further in a meaningful way.
+
+Audrey Bertin '21
 
