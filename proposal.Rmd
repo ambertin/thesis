@@ -1,0 +1,85 @@
+---
+title: "Honors Thesis Proposal"
+
+# to produce blinded version set to 1
+blinded: 0
+
+authors: 
+- name: Audrey Bertin
+  affiliation: Statistical and Data Sciences
+  
+keywords:
+- reproducibility
+- statistical software
+- workflow
+- collaboration
+- teaching
+- curriculum recommendations
+
+abstract: | 
+  For my honors thesis in the department of Statistical and Data Sciences, I would like to focus on  the topic of reproducibility in data science. Reproducibility is critical to the advancement of knowledge,yet there are not very many effective tools to address it and it does not appear to be widely taught at US academic institutions. In this honors project, I will discuss several main areas - 1) The need for widespread knowledge about reproducibility. 2) The current state of reproducibility education in the field of data science at different colleges and universities. 3) Tools that I have helped code that can make the integration of reproducibility into education much easier, as well as wider applications. 4) Further recommendations on how best to incorporate reproducibility into data science curricula, including expansions on the work I have coded as well as approaches currently being pioneered at some universities.
+
+bibliography: [bibliography.bib, pkgs.bib]
+output: rticles::asa_article
+
+---
+
+# The Broad Issue: Reproducibility in Data Science
+
+As research is becoming increasingly data-driven, and because knowledge can be shared worldwide so rapidly, reproducibility is critical to the advancement of scientific knowledge.
+
+Data-based research cannot be fully *reproducible* unless the requisite code and data files produce identical results when run by another analyst. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. 
+
+The creators of reproducible research can more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
+
+However, while the necessity of reproducibility is clear, there are significant behavioral and technical challenges that impede its widespread implementation, and no clear consensus on standards of what constitutes reproducibility in published research. Not only are the *components* of reproducible research up for discussion (e.g., need the software be open source?), but the corresponding *recommendations* for ensuring reproducibility also vary. 
+
+Much of the discussion around reproducibility is also generalized---it is written to be applicable to users working with a variety of statistical software programs. Since all statistical software programs operate differently, generalized recommendations on reproducibility are often shallow and unspecific. While they provide useful guidelines, they can often be difficult to implement, particularly to new analysts who are unsure how to apply such recommendations within the software programs they are using. Thus, reproducibility recommendations tailored to specific software programs are more likely to be adopted.
+
+One of the most effective ways to work on improving reproducibility in the data science community is to focus on a specific piece of software used by data analysts. In the program in Statistical and Data Sciences at Smith College, we use the program R. Since R is freely available online and very popular in the data science community, it is a good candidate for research focus. As a result, it is the primarily language used to teach data science at many academic institions around the US. 
+
+Unfortunately, there are not very many academic papers or software packages discussing reproducibility in R, and much of the work that does exist is not ideal for students just beginning to learn data science. Much of this work is narrowly tailored, with each package effectively addressising a small component of reproducibility---file structure, modularization of code, version control, etc. Many existing software packages available to R users succeed at their area of focus, but at a cost. They are often difficult to learn and operate, providing a barrier to entry for less-experienced data analysts. 
+
+In addition, the amount of reproducibility education as a whole appears to be lacking. Many colleges appear to focus on statistical understanding rather than issues of communication, collaboration, and reproducibility, all of which are critical to the advancement of our scientific knowledge. Smith is an outlier; our curriculum gives a wider foundation on sharing knowledge than most and this allows our students to be prepared to go into the workforce and make a positive impact. 
+
+Students at colleges around the country could all benefit from an increased focus on reproducibility for collaboration and knowledge sharing. I would like to focus on this issue, sharing tools I have created to assist with this process and recommendations on how to shape data science curricula in a way that benefits the entire community.
+
+# My Focus
+
+In the general field of data science reproducibility, there are four main topics I would like to focus
+on:
+
+1) The need for widespread knowledge about reproducibility.
+
+In this topic area, I would like to delve into evidence that widespread reproducibility is lacking across the sciences. Several reports from different academic fields dive into this idea and share the state of reproducibility in their areas of study.  
+
+I will also cover the benefits of reproducible research, many of which I mentioned in brief in the previous section. I will also delve into the importance of teaching and working to integrate reproducibility early on in the education of students studying data science.
+
+2) The current state of reproducibility education in the field of data science at different colleges and universities.
+
+I will discuss which colleges and universities provide undergraduate programs in statistics and/or data science and discuss what their curriculum focus appears to be, noting whether issues of reproducibility appear to be considered. 
+
+I will also discuss the program at Smith College, which was one of the first of its kind and has a much more well-rounded approach to data science education than many other colleges. 
+
+3) Tools that I have helped code that can make the integration of reproducibility into education much easier, as well as wider applications. 
+ 
+Over the past year, I have been working on helping to develop software that data scientists can use to quickly and easily improve the reproducibility of their work. It's designed to be really simple to use so that introductory data science students can immediately start off their educational path with a knowledge and awareness of how to make their projects reproducible. I will describe why this software was created and how it works, as well as some preliminary reviews of how functional the software is to users who have never seen it before, as well as how it performs in a classroom setting. I will also talk about the software's wider applications to reproducibility in general (not just for introductory students) and its unique place in the world of the tools available to data scientists.
+ 
+ 4) Further recommendations on how best to incorporate reproducibility into data science curricula, including expansions on the work I have coded as well as approaches currently being pioneered at some universities.
+ 
+In this section, I will work on defining the ideal way to integrate reproducibility into the data science curriculum. I will refer to the guidelines on teaching data science from the 2017 Annual Review of Statistics and Its Applications, as well as to a variety of other sources discussing easy methods for implementing different aspects of reproducibility. 
+
+I will also look into some of the new reproducibility curriculum additions that are beginning to appear at colleges across the country, including one course offered at the University of Washington that has reproducibility as its sole focus, as well as recommendations on how to teach reproducibility as shared by several leaders in the field.
+
+I will discuss how the tools I have helped to create can be integrated into college courses to help introductory students, as well as future plans for how those tools will be improved to become more comprehensive.
+
+I will then consider the Smith College curriculum and discuss ways to further integrate reproducibility into the existing structure. I will then share general recommendations for software usage and teaching tools that can apply to other academic institutions.
+
+
+# Relevant Preparation
+
+
+
+
+•	an account of your relevant preparation and skills (previous coursework related to the project topic, quantitative skills, foreign language ability, etc.)
+
