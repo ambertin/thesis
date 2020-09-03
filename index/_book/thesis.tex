@@ -69,46 +69,6 @@
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
 % Syntax highlighting #22
-  \usepackage{color}
-  \usepackage{fancyvrb}
-  \newcommand{\VerbBar}{|}
-  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-  % Add ',fontsize=\small' for more characters per line
-  \usepackage{framed}
-  \definecolor{shadecolor}{RGB}{248,248,248}
-  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\ImportTok}[1]{#1}
-  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-  \newcommand{\BuiltInTok}[1]{#1}
-  \newcommand{\ExtensionTok}[1]{#1}
-  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-  \newcommand{\RegionMarkerTok}[1]{#1}
-  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-  \newcommand{\NormalTok}[1]{#1}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
 \title{My Final College Paper}
@@ -213,58 +173,10 @@ Second paragraph of abstract starts here.
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
-\chapter*{Introduction}\label{introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter{If you have more two advisors, un-silence line
+7}\label{if-you-have-more-two-advisors-un-silence-line-7}
 
-Welcome to the \emph{R Markdown} thesis template. This template is based
-on (and in many places copied directly from) the Reed College LaTeX
-template, but hopefully it will provide a nicer interface for those that
-have never used TeX or LaTeX before. Using \emph{R Markdown} will also
-allow you to easily keep track of your analyses in \textbf{R} chunks of
-code, with the resulting plots and output included as well. The hope is
-this \emph{R Markdown} template gets you in the habit of doing
-reproducible research, which benefits you long-term as a researcher, but
-also will greatly help anyone that is trying to reproduce or build onto
-your results down the road.
-
-Hopefully, you won't have much of a learning period to go through and
-you will reap the benefits of a nicely formatted thesis. The use of
-LaTeX in combination with \emph{Markdown} is more consistent than the
-output of a word processor, much less prone to corruption or crashing,
-and the resulting file is smaller than a Word file. While you may have
-never had problems using Word in the past, your thesis is likely going
-to be about twice as large and complex as anything you've written
-before, taxing Word's capabilities. After working with \emph{Markdown}
-and \textbf{R} together for a few weeks, we are confident this will be
-your reporting style of choice going forward.
-
-\textbf{Why use it?}
-
-\emph{R Markdown} creates a simple and straightforward way to interface
-with the beauty of LaTeX. Packages have been written in \textbf{R} to
-work directly with LaTeX to produce nicely formatting tables and
-paragraphs. In addition to creating a user friendly interface to LaTeX,
-\emph{R Markdown} also allows you to read in your data, to analyze it
-and to visualize it using \textbf{R} functions, and also to provide the
-documentation and commentary on the results of your project. Further, it
-allows for \textbf{R} results to be passed inline to the commentary of
-your results. You'll see more on this later.
-
-\textbf{Who should use it?}
-
-Anyone who needs to use data analysis, math, tables, a lot of figures,
-complex cross-references, or who just cares about the final appearance
-of their document should use \emph{R Markdown}. Of particular use should
-be anyone in the sciences, but the user-friendly nature of
-\emph{Markdown} and its ability to keep track of and easily include
-figures, automatically generate a table of contents, index, references,
-table of figures, etc. should make it of great benefit to nearly anyone
-writing a thesis project.
-
-\textbf{For additional help with bookdown}
-
-Please visit \href{https://bookdown.org/yihui/bookdown/}{the free online
-bookdown reference guide}.
+Placeholder
 
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
@@ -280,6 +192,206 @@ Academia}\label{current-discussion-on-reproducibility-in-academia}
 Reproducibility}\label{my-solution}
 
 \section{Review Of Previous Work}\label{review-of-previous-work}
+
+\subsection{Literature}\label{literature}
+
+Publications on reproducibility can be found in all areas of scientific
+research. However, as Goodman, Fanelli, \& Ioannidis (2016) argue, the
+language and conceptual framework of research reproducibility varies
+significantly across the sciences, and there are no clear standards on
+reproducibility agreed upon by the scientific community as a whole. We
+consider recommendations from a variety of fields and determine the key
+aspects of reproducibility faced by scientists in different disciplines.
+
+Kitzes, Turek, \& Deniz (2017) present a collection of case studies on
+reproducibility practices from across the data-intensive sciences,
+illustrating a variety of recommendations and techniques for achieving
+reproducibility. Although their work does not come to a consensus on the
+exact standards of reproducibility that should be followed, several
+common trends and principles emerge from their case studies: 1) use
+clear separation, labeling, and documentation, 2) automate processes
+when possible, and 3) design the data analysis workflow as a sequence of
+small steps glued together, with outputs from one step serving as inputs
+into the next. This is a common suggestion within the computing
+community, originating as part of the Unix philosophy (Gancarz (2003)).
+
+Cooper et al. (2017) focus on data analysis in \texttt{R} and identify a
+similar list of important reproducibility components, reinforcing the
+need for clearly labeled, well-documented, and well-separated files. In
+addition, they recommend publishing a list of dependencies and using
+version control. Broman (2019) reiterates the need for clear naming and
+file separation while sharing several additional suggestions: keep the
+project contained in one directory, use relative paths, and include a
+\texttt{README}.
+
+The reproducibility recommendations from R OpenSci, a non-profit
+initiative founded in 2011 to make scientific data retrieval
+reproducible, share similar principles to those discussed previously.
+They focus on a need for a well-developed file system, with no
+extraneous files and clear labeling. They also reiterate the need to
+note dependencies and use automation when possible, while making clear a
+suggestion not present in the previously-discussed literature: the need
+to use seeds, which allow for the saving and restoring of the random
+number generator state, when running code involving randomness (Martinez
+et al. (2018)).
+
+When considered in combination, these sources provide a well-rounded
+picture of the components important to research reproducibility. Using
+this literature as a guideline, we identify several key features of
+reproducible work. These recommendations are a matter of opinion---due
+to the lack of agreement on which components of reproducibility are most
+important, we select those that are mentioned most often, as well as
+some that are mentioned less but that we view as important.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A well-designed file structure:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  Separate folders for different file types.
+\item
+  No extraneous files.
+\item
+  Minimal clutter.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Good documentation:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  Files are clearly named, preferably in a way where the order in which
+  they should be run is clear.
+\item
+  A README is present.
+\item
+  Dependencies are noted.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Reproducible file paths:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  No absolute paths, or paths leading to locations outside of a
+  project's directory, are used in code---only portable (relative)
+  paths.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Randomness is accounted for:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  If randomness is used in code, a seed must also be set.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Readable, styled code:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  Code should be written in a coherent style. Code that conforms to a
+  style guide or is written in a consistent dialect is easier to read
+  (Hermans \& Aldewereld (2017)). We believe that the \texttt{tidyverse}
+  provides the most accessible dialect of \texttt{R}.
+\end{itemize}
+Much of the available literature focuses on file structure,
+organization, and naming, and \texttt{fertile}'s features are consistent
+with this. Marwick, Boettiger, \& Mullen (2018)\} provide the framework
+for file structure that \texttt{fertile} is based on: a structure
+similar to that of an \texttt{R} package (R-Core-Team (2020), Wickham
+(2015)), with an \texttt{R} folder, as well as \texttt{data},
+\texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}.
+
+\subsection{R Packages and Other
+Software}\label{r-packages-and-other-software}
+
+Much of this work is highly generalized, written to be applicable to
+users working with a variety of statistical software programs. Because
+all statistical software programs operate differently, these
+recommendations are inherently vague and difficult to implement,
+particularly to new analysts who are relatively unfamiliar with their
+software. Focused attempts to address reproducibility in specific
+certain software programs are more likely to be successful. We focus on
+\texttt{R}, due to its open-source nature, accessibility, and popularity
+as a tool for statistical analysis.
+
+A small body of \texttt{R} packages focuses on research reproducibility.
+\texttt{rrtools} (Marwick (2019)) addresses some of the issues discussed
+in Marwick et al. (2018) by creating a basic \texttt{R} package
+structure for a data analysis project and implementing a basic
+\texttt{testthat::check} functionality. The \texttt{orderly} (FitzJohn
+et al. (2020)) package also focuses on file structure, requiring the
+user to declare a desired project structure (typically a step-by-step
+structure, where outputs from one step are inputs into the next) at the
+beginning and then creating the files necessary to achieve that
+structure. \texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens
+(2019)) functionality is based around version control and making code
+easily available online. It works to generate a website containing
+time-stamped, versioned, and documented results. \texttt{checkers}
+(Ross, DeCicco, \& Randhawa (2018)) allows you to create custom checks
+that examine different aspects of reproducibility. \texttt{packrat}
+(Ushey, McPherson, Cheng, Atkins, \& Allaire (2018)) is focused on
+dependencies, creating a packaged folder containing a project as well as
+all of its dependencies so that projects dependent on lesser-used
+packages can be easily shared across computers. \texttt{drake} (OpenSci
+(2020)) analyzes workflows, skips steps where results are up to date,
+and provides evidence that results match the underlying code and data.
+Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package
+focuses on the concept of caching: saving information so that projects
+can be run faster each time they are re-completed from the start.
+
+Many of these packages are narrow, with each effectively addressing a
+small component of reproducibility: file structure, modularization of
+code, version control, etc. These packages often succeed in their area
+of focus, but at the cost of accessibility to a wider audience. Their
+functions are often quite complex to use, and many steps must be
+completed to achieve the required reproducibility goal. This cumbersome
+nature means that most reproducibility packages currently available are
+not easily accessible to users near the beginning of their \texttt{R}
+journey, nor particularly useful to those looking for quick and easy
+reproducibility checks. A more effective way of realizing widespread
+reproducibility is to make the process for doing so simple enough that
+it takes little to no conscious effort to implement. You want users to
+``fall into a hole'' (we paraphrase Hadley Wickham) of good practice.
+
+\texttt{Continuous\ integration} tools provide more general approaches
+to automated checking, which can enhance reproducibility with minimal
+code. For example, \texttt{wercker}---a command line tool that leverages
+Docker---enables users to test whether their projects will successfully
+compile when run on a variety of operating systems without access to the
+user's local hard drive (Oracle Corporation (2019)).
+\texttt{GitHub\ Actions} is integrated into GitHub and can be configured
+to do similar checks on projects hosted in repositories.
+\texttt{Travis\ CI} and \texttt{Circle\ CI} are popular continuous
+integration tools that can also be used to check \texttt{R} code.
+
+However, while these tools can be useful, they are generalized so as to
+be useful to the widest audience. As a result, their checks are not
+designed to be \texttt{R}-specific, which makes them sub-optimal for
+users looking to address reproducibility issues involving features
+specific to the \texttt{R} programming language, such as package
+installation and seed setting.
 
 \section{Identifying Gaps In Existing
 Solutions}\label{identifying-gaps-in-existing-solutions}
@@ -328,68 +440,109 @@ hidden throughout the document (using the \texttt{include\ =\ FALSE}
 chunk tag) to help with readibility and/or setup.
 
 \textbf{In the main Rmd file}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# This chunk ensures that the thesisdown package is}
-\CommentTok{# installed and loaded. This thesisdown package includes}
-\CommentTok{# the template files for the thesis.}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(remotes)) \{}
-  \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-    \KeywordTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\DataTypeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \KeywordTok{stop}\NormalTok{(}
-      \KeywordTok{paste}\NormalTok{(}\StringTok{'You need to run install.packages("remotes")",}
-\StringTok{            "first in the Console.'}\NormalTok{)}
-\NormalTok{    )}
-\NormalTok{  \}}
-\NormalTok{\}}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(thesisdown)) \{}
-  \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-\NormalTok{    remotes}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \KeywordTok{stop}\NormalTok{(}
-      \KeywordTok{paste}\NormalTok{(}
-        \StringTok{"You need to run"}\NormalTok{,}
-        \StringTok{'remotes::install_github("ismayc/thesisdown")'}\NormalTok{,}
-        \StringTok{"first in the Console."}
-\NormalTok{      )}
-\NormalTok{    )}
-\NormalTok{  \}}
-\NormalTok{\}}
-\KeywordTok{library}\NormalTok{(thesisdown)}
-\CommentTok{# Set how wide the R output will go}
-\KeywordTok{options}\NormalTok{(}\DataTypeTok{width =} \DecValTok{70}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+
 \textbf{In Chapter \ref{ref-labels}:}
 
 \chapter{The Second Appendix, for
 Fun}\label{the-second-appendix-for-fun}
 
-\backmatter
-
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}
 
-\markboth{References}{References}
-
-\noindent
-
-\setlength{\parindent}{-0.20in} \setlength{\leftskip}{0.20in}
-\setlength{\parskip}{8pt}
+Placeholder
 
 \hypertarget{refs}{}
-\hypertarget{ref-angel2000}{}
-Angel, E. (2000). \emph{Interactive computer graphics : A top-down
-approach with opengl}. Boston, MA: Addison Wesley Longman.
+\hypertarget{ref-R-workflowr}{}
+Blischak, J., Carbonetto, P., \& Stephens, M. (2019). Workflowr: A
+framework for reproducible and collaborative data science. Retrieved
+from \url{https://CRAN.R-project.org/package=workflowr}
 
-\hypertarget{ref-angel2001}{}
-Angel, E. (2001a). \emph{Batch-file computer graphics : A bottom-up
-approach with quicktime}. Boston, MA: Wesley Addison Longman.
+\hypertarget{ref-broman}{}
+Broman, K. (2019). Initial steps toward reproducible research: Organize
+your data and code. \emph{Sitewide ATOM}. Retrieved from
+\url{https://kbroman.org/steps2rr/pages/organize.html}
 
-\hypertarget{ref-angel2002a}{}
-Angel, E. (2001b). \emph{Test second book by angel}. Boston, MA: Wesley
-Addison Longman.
+\hypertarget{ref-cooper2017guide}{}
+Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T.,
+Krystalli, A., \& Michonneau, F. (2017). A guide to reproducible code in
+ecology and evolution. \emph{British Ecological Society}. Retrieved from
+\url{https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf}
+
+\hypertarget{ref-R-orderly}{}
+FitzJohn, R., Ashton, R., Hill, A., Eden, M., Hinsley, W., Russell, E.,
+\& Thompson, J. (2020). Orderly: Lightweight reproducible reporting.
+Retrieved from \url{https://CRAN.R-project.org/package=orderly}
+
+\hypertarget{ref-unix}{}
+Gancarz, M. (2003). \emph{Linux and the unix philosophy} (2nd ed.).
+Woburn, MA: Digital Press.
+
+\hypertarget{ref-Goodman341ps12}{}
+Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What does
+research reproducibility mean? \emph{Science Translational Medicine},
+\emph{8}(341), 1--6. \url{http://doi.org/10.1126/scitranslmed.aaf5027}
+
+\hypertarget{ref-hermans2017programming}{}
+Hermans, F., \& Aldewereld, M. (2017). Programming is writing is
+programming. In \emph{Companion to the first international conference on
+the art, science and engineering of programming} (pp. 1--8).
+
+\hypertarget{ref-kitzes2017practice}{}
+Kitzes, J., Turek, D., \& Deniz, F. (2017). \emph{The practice of
+reproducible research: Case studies and lessons from the data-intensive
+sciences}. Berkeley, CA: University of California Press. Retrieved from
+\url{https://www.practicereproducibleresearch.org}
+
+\hypertarget{ref-r-opensci}{}
+Martinez, C., Hollister, J., Marwick, B., Szöcs, E., Zeitlin, S.,
+Kinoshita, B. P., \ldots{} Meinke, B. (2018). Reproducibility in
+Science: A Guide to enhancing reproducibility in scientific results and
+writing. Retrieved from
+\url{http://ropensci.github.io/reproducibility-guide/}
+
+\hypertarget{ref-R-rrtools}{}
+Marwick, B. (2019). Rrtools: Creates a reproducible research compendium.
+Retrieved from \url{https://github.com/benmarwick/rrtools}
+
+\hypertarget{ref-marwick2018packaging}{}
+Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data
+analytical work reproducibly using R (and friends). \emph{The American
+Statistician}, \emph{72}(1), 80--88.
+\url{http://doi.org/doi.org/10.1080/00031305.2017.1375986}
+
+\hypertarget{ref-R-reproducible}{}
+McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of
+tools that enhance reproducibility beyond package management. Retrieved
+from \url{https://CRAN.R-project.org/package=reproducible}
+
+\hypertarget{ref-R-drake}{}
+OpenSci, R. (2020). Drake: A pipeline toolkit for reproducible
+computation at scale. Retrieved from
+\url{https://cran.r-project.org/package=drake}
+
+\hypertarget{ref-wercker}{}
+Oracle Corporation. (2019). Wercker. Retrieved from
+\url{https://github.com/wercker/wercker}
+
+\hypertarget{ref-coreteam-extensions}{}
+R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for
+Statistical Computing}. Retrieved from
+\url{http://cran.stat.unipd.it/doc/manuals/r-release/R-exts.pdf}
+
+\hypertarget{ref-R-checkers}{}
+Ross, N., DeCicco, L., \& Randhawa, N. (2018). Checkers: Automated
+checking of best practices for research compendia. Retrieved from
+\url{https://github.com/ropenscilabs/checkers/blob/master/DESCRIPTIONr}
+
+\hypertarget{ref-R-packrat}{}
+Ushey, K., McPherson, J., Cheng, J., Atkins, A., \& Allaire, J. (2018).
+Packrat: A dependency management system for projects and their r package
+dependencies. Retrieved from
+\url{https://CRAN.R-project.org/package=packrat}
+
+\hypertarget{ref-hadley-packages}{}
+Wickham, H. (2015). \emph{R packages} (1st ed.). Sebastopol, CA:
+O'Reilly Media, Inc.
 
 
 % Index?

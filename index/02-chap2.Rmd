@@ -2,6 +2,60 @@
 
 ## Review Of Previous Work
 
+### Literature
+
+Publications on reproducibility can be found in all areas of scientific research. However, as @Goodman341ps12 argue, the language and conceptual framework of research reproducibility varies significantly across the sciences, and there are no clear standards on reproducibility agreed upon by the scientific community as a whole. We consider recommendations from a variety of fields and determine the key aspects of reproducibility faced by scientists in different disciplines. 
+
+@kitzes2017practice present a collection of case studies on reproducibility practices from across the data-intensive sciences, illustrating a variety of recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their case studies: 1) use clear separation, labeling, and documentation, 2) automate processes when possible, and 3) design the data analysis workflow as a sequence of small steps glued together, with outputs from one step serving as inputs into the next. This is a common suggestion within the computing community, originating as part of the Unix philosophy (@unix).
+
+@cooper2017guide focus on data analysis in `R` and identify a similar list of important reproducibility components, reinforcing the need for clearly labeled, well-documented, and well-separated files. In addition, they recommend publishing a list of dependencies and using version control. 
+@broman reiterates the need for clear naming and file separation while sharing several additional suggestions: keep the project contained in one directory, use relative paths, and include a `README`.
+
+The reproducibility recommendations from R OpenSci, a non-profit initiative founded in 2011 to make scientific data retrieval reproducible, share similar principles to those discussed previously. They focus on a need for a well-developed file system, with no extraneous files and clear labeling. They also reiterate the need to note dependencies and use automation when possible, while making clear a suggestion not present in the previously-discussed literature: the need to use seeds, which allow for the saving and restoring of the random number generator state, when running code involving randomness (@r-opensci).
+
+When considered in combination, these sources provide a well-rounded picture of the components important to research reproducibility. Using this literature as a guideline, we identify several key features of reproducible work. These recommendations are a matter of opinion---due to the lack of agreement on which components of reproducibility are most important, we select those that are mentioned most often, as well as some that are mentioned less but that we view as important. 
+
+
+1. A well-designed file structure:
+
+  - Separate folders for different file types.
+  - No extraneous files.
+  - Minimal clutter.
+
+2. Good documentation:
+
+  - Files are clearly named, preferably in a way where the order in which they should be run is clear.
+  - A README is present.
+  - Dependencies are noted.
+
+3. Reproducible file paths:
+
+  - No absolute paths, or paths leading to locations outside of a project's directory, are used in code---only portable (relative) paths.
+
+4. Randomness is accounted for:
+
+  - If randomness is used in code, a seed must also be set.
+
+5. Readable, styled code:
+
+  - Code should be written in a coherent style. Code that conforms to a style guide or is written in a consistent dialect is easier to read (@hermans2017programming). We believe that the `tidyverse` provides the most accessible dialect of `R`.
+
+
+Much of the available literature focuses on file structure, organization, and naming, and `fertile`'s features are consistent with this. @marwick2018packaging} provide the framework for file structure that `fertile` is based on: a structure similar to that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`.
+
+### R Packages and Other Software
+
+Much of this work is highly generalized, written to be applicable to users working with a variety of statistical software programs. Because all statistical software programs operate differently, these recommendations are inherently vague and difficult to implement, particularly to new analysts who are relatively unfamiliar with their software. Focused attempts to address reproducibility in specific certain software programs are more likely to be successful. We focus on `R`, due to its open-source nature, accessibility, and popularity as a tool for statistical analysis.
+
+A small body of `R` packages focuses on research reproducibility. `rrtools` (@R-rrtools) addresses some of the issues discussed in @marwick2018packaging by creating a basic `R` package structure for a data analysis project and implementing a basic `testthat::check` functionality. The `orderly` (@R-orderly) package also focuses on file structure, requiring the user to declare a desired project structure (typically a step-by-step structure, where outputs from one step are inputs into the next) at the beginning and then creating the files necessary to achieve that structure. `workflowr`'s (@R-workflowr) functionality is based around version control and making code easily available online. It works to generate a website containing time-stamped, versioned, and documented results. `checkers` (@R-checkers) allows you to create custom checks that examine different aspects of reproducibility. `packrat` (@R-packrat) is focused on dependencies, creating a packaged folder containing a project as well as all of its dependencies so that projects dependent on lesser-used packages can be easily shared across computers. `drake` (@R-drake) analyzes workflows, skips steps where results are up to date, and provides evidence that results match the underlying code and data. Lastly, the `reproducible` (@R-reproducible) package focuses on the concept of caching: saving information so that projects can be run faster each time they are re-completed from the start.
+
+Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
+A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
+
+`Continuous integration` tools provide more general approaches to automated checking, which can enhance reproducibility with minimal code. For example, `wercker`---a command line tool that leverages Docker---enables users to test whether their projects will successfully compile when run on a variety of operating systems without access to the user's local hard drive (@wercker). `GitHub Actions` is integrated into GitHub and can be configured to do similar checks on projects hosted in repositories. `Travis CI` and `Circle CI` are popular continuous integration tools that can also be used to check `R` code. 
+
+However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R` programming language, such as package installation and seed setting.
+
 ## Identifying Gaps In Existing Solutions
 
 ## My Contribution: `fertile`, An R Package Creating Optimal Conditions For Reproducibility
