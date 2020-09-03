@@ -1,0 +1,15 @@
+path,path_abs,func,timestamp
+Seed @ Start,NA,624,2020-09-03T16:58:54Z
+package:dplyr,NA,base::library,2020-09-03T16:58:54Z
+package:readr,NA,base::library,2020-09-03T16:58:54Z
+package:tidyr,NA,base::library,2020-09-03T16:58:55Z
+package:ggplot2,NA,base::library,2020-09-03T16:58:55Z
+package:purrr,NA,base::library,2020-09-03T16:58:55Z
+Blot_data_updated.csv,/Users/audreybertin/Documents/thesis/index/project_miceps/Blot_data_updated.csv,readr::read_csv,2020-09-03T16:58:55Z
+proteins_v_time.png,/Users/audreybertin/Documents/thesis/index/project_miceps/proteins_v_time.png,ggplot2::ggsave,2020-09-03T16:58:57Z
+CS_data_redone.csv,/Users/audreybertin/Documents/thesis/index/project_miceps/CS_data_redone.csv,readr::read_csv,2020-09-03T16:59:00Z
+citrate_v_time.png,/Users/audreybertin/Documents/thesis/index/project_miceps/citrate_v_time.png,ggplot2::ggsave,2020-09-03T16:59:00Z
+package:skimr,NA,base::library,2020-09-03T16:59:01Z
+package:stargazer,NA,base::library,2020-09-03T16:59:03Z
+Seed @ End,NA,202,2020-09-03T16:59:04Z
+LAST RENDERED,NA,proj_render,2020-09-03T16:59:04Z

@@ -10,7 +10,11 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ## What is reproducibility?
 
+Data-based research is considered fully reproducible when the requisite code and data files produce identical results when run by another analyst. As research is becoming increasingly data-driven, and because knowledge can be shared worldwide so rapidly, reproducibility is critical to the advancement of scientific knowledge. Academics around the world have recognized this, and publications and discussions addressing reproducibility appear to have increased in the last several years (@eisner-reproducibility; @sep-scientific-reproducibility; @bioessays-gosselin; @engineering-reproducibility; @plos-biology). 
+
 ## Why is reproducibility important?
+
+Reproducible research has a wide variety of benefits. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. The creators of reproducible research can also more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
 
 ## Current Discussion on Reproducibility in Academia
 

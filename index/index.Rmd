@@ -45,8 +45,8 @@ preface: |
 bibliography: bib/thesis.bib
 # Download your specific csl file and refer to it in the line below.
 csl: csl/apa.csl
-lot: true
-lof: true
+lot: false
+lof: false
 ---
 
 <!--
