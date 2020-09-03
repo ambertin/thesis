@@ -1,13 +1,13 @@
 ---
 title: 'My Final College Paper'
-author: 'Your R. Name'
-date: 'May 20xx'
-institution: 'Reed College'
-division: 'Mathematics and Natural Sciences'
-advisor: 'Advisor F. Name'
+author: 'Audrey M. Bertin'
+date: 'May 2021'
+institution: 'Smith College'
+division: 'Statistical and Data Sciences'
+advisor: 'Benjamin S. Baumer'
 # If you have more two advisors, un-silence line 7
 #altadvisor: 'Your Other Advisor'
-department: 'Mathematics'
+department: 'Statistical and Data Sciences'
 degree: 'Bachelor of Arts'
 knit: bookdown::render_book
 site: bookdown::bookdown_site
