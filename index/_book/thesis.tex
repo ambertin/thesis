@@ -240,30 +240,79 @@ Potential sources:
 
 \section{What is reproducibility?}\label{what-is-reproducibility}
 
-Data-based research is considered fully reproducible when the requisite
-code and data files produce identical results when run by another
-analyst. As research is becoming increasingly data-driven, and because
-knowledge can be shared worldwide so rapidly, reproducibility is
-critical to the advancement of scientific knowledge. Academics around
-the world have recognized this, and publications and discussions
-addressing reproducibility appear to have increased in the last several
-years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin (2020); McArthur
-(2019); Wallach, Boyack, \& Ioannidis (2018)).
+In the field of data science, research is considered fully
+\emph{reproducible} when the requisite code and data files produce
+identical results when run by another analyst.
+
+Reproducible research has a wide variety of benefits in the scientific
+community. When researchers provide the code and data used for their
+work in a well-organized and reproducible format, readers are more
+easily able to determine the veracity of any findings by following the
+steps from raw data to conclusions. The creators of reproducible
+research can also more easily receive more specific feedback (including
+bug fixes) on their work. Moreover, others interested in the research
+topic can use the code to apply the methods and ideas used in one
+project to their own work with minimal effort.
+
+Although often confused, the concept of \emph{reproducibility} is
+distinct from the similar idea of \emph{replicability}: the ability of a
+researcher to duplicate the results of a study when following the
+original procedure but collecting new data. Replicability has
+larger-scale implications than reproducibilty; the findings of research
+studies can not be accepted unless a variety of other researchers come
+to the same conclusions through independent work.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figure/versus.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\includegraphics[width=1\linewidth]{figure/versus}
+
+Reproducibility and replicability are both necessary to the advancement
+of scientific research, but they vary significantly in terms of their
+difficulty to achieve. Reproducibility, in theory, is somewhat simple to
+attain in data analyses--because code is inherently non-random
+(excepting applications involving random number generation) and data
+remain consistent, variability is highly restricted. The achievement of
+replicability, on the other hand, is a much more complex challenge,
+involving significantly more variablility and requiring high quality
+data, effective study design, and incredibly robust hypotheses.
+
+\section{The Reproducibility Crisis}\label{the-reproducibility-crisis}
+
+Despite the relative simplicity of the reproducibility problem, the
+scientific community has been unable to solve it. 52\% of respondents in
+a 2016 Nature survey believed that science was going through a
+``crisis'' of reproducibility.
+\url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
+Other studies paint an even bleaker picture: a 2015 study found that
+over 50\% of studies psychology failed reproducibility tests and
+research from 2012 found that figure closer to 90\% in the field of
+cancer biology.
+(\url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248},
+\url{https://www.nature.com/articles/483531a})
+
+Without reproducibility, the scientific community cannot properly verify
+study results. This makes it difficult to identify which information
+should be believed and which should not and increases the likelihood
+that studies sharing misleading information will be dispersed.
+
+\section{A Brief History of
+Reproducibility}\label{a-brief-history-of-reproducibility}
+
+In recent years, reproducibility has moved to the forefront of
+scientific discussion. The rise of data-driven technologies, alongside
+our newly founded ability to instantly share knowledge worldwide, has
+made reproducibility increasingly critical to the advancement of
+scientific understanding. Academics have recognized this, and
+publications on the topic appear to have increased siginficantly in the
+last several years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin
+(2020); McArthur (2019); Wallach, Boyack, \& Ioannidis (2018)).
+
+However, peproducibility has not always been at the forefront of
+scientific discussion.
 
 • Brief history of reproducibility • Reproducibility vs replicability
-
-\section{Why is reproducibility
-important?}\label{why-is-reproducibility-important}
-
-Reproducible research has a wide variety of benefits. When researchers
-provide the code and data used for their work in a well-organized and
-reproducible format, readers are more easily able to determine the
-veracity of any findings by following the steps from raw data to
-conclusions. The creators of reproducible research can also more easily
-receive more specific feedback (including bug fixes) on their work.
-Moreover, others interested in the research topic can use the code to
-apply the methods and ideas used in one project to their own work with
-minimal effort.
 
 \section{The Components of Reproducible
 Research}\label{the-components-of-reproducible-research}
@@ -403,6 +452,20 @@ Academia}\label{current-focus-on-reproducibility-in-academia}
 
 \chapter{Addressing the Challenges of
 Reproducibility}\label{my-solution}
+
+{[}
+
+The relative simplicity of the reproducibility challenge makes it an
+ideal candidate for solution-building. Although significant progress on
+addressing reproducibility on a widespread scale is a long-term
+challenge, impactful forward progress--if on a smaller scale--can be
+achieved in the short-term.
+
+My research has focused on doing just this, providing tools to assist
+with achieving reproducibility in one segment of the scientific
+community: RStudio users.
+
+{]} --- DO WE NEED THIS?
 
 \section{Review Of Previous Work}\label{review-of-previous-work}
 
@@ -587,7 +650,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ----------------------
+-- The available checks in `fertile` are as f
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -613,13 +676,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... --------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... -------------------
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks -----------
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -628,7 +691,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------ fertile 0.0.0.9027 --
+-- Summary of fertile checks ----------------
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -648,10 +711,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps --- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_mi
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code -----
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -668,13 +731,13 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory --------------------- fertile 0.0.0.9027 --
+--   Files present in directory -------------
 \end{verbatim}
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 187.79K
-3     proteins_v_time.png   png 378.51K
+2      citrate_v_time.png   png 184.07K
+3     proteins_v_time.png   png 377.88K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -693,7 +756,7 @@ used in code.
 9                                                         text/x-markdown
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files -----------
 \end{verbatim}
 \begin{verbatim}
                  path_rel    dir_rel
@@ -714,7 +777,7 @@ used in code.
 7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ----------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ---------------
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -735,15 +798,12 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 6 x 4
+# A tibble: 3 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-03 16:59:05
-2 package:th~ <NA>                        base::r~ 2020-09-03 16:59:05
-3 package:th~ <NA>                        base::l~ 2020-09-03 16:59:05
-4 package:pu~ <NA>                        base::l~ 2020-09-04 14:57:00
-5 package:fo~ <NA>                        base::l~ 2020-09-04 14:57:00
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-04 14:57:00
+1 package:pu~ <NA>                        base::l~ 2020-09-04 18:04:05
+2 package:fo~ <NA>                        base::l~ 2020-09-04 18:04:05
+3 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-04 18:04:05
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -853,7 +913,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -861,9 +921,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -942,7 +1002,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fa30fa51ea0>
+<bytecode: 0x7ff482ebd638>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

@@ -1,5 +1,13 @@
 # Addressing the Challenges of Reproducibility {#my-solution}
 
+[
+
+The relative simplicity of the reproducibility challenge makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term.
+
+My research has focused on doing just this, providing tools to assist with achieving reproducibility in one segment of the scientific community: RStudio users.
+
+] --- DO WE NEED THIS?
+
 ## Review Of Previous Work
 
 

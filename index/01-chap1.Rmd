@@ -10,14 +10,40 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ## What is reproducibility?
 
-Data-based research is considered fully reproducible when the requisite code and data files produce identical results when run by another analyst. As research is becoming increasingly data-driven, and because knowledge can be shared worldwide so rapidly, reproducibility is critical to the advancement of scientific knowledge. Academics around the world have recognized this, and publications and discussions addressing reproducibility appear to have increased in the last several years (@eisner-reproducibility; @sep-scientific-reproducibility; @bioessays-gosselin; @engineering-reproducibility; @plos-biology). 
+In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst. 
+
+Reproducible research has a wide variety of benefits in the scientific community. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. The creators of reproducible research can also more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
+
+Although often confused, the concept of *reproducibility* is distinct from the similar idea of *replicability*: the ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data. Replicability has larger-scale implications than reproducibilty; the findings of research studies can not be accepted unless a variety of other researchers come to the same conclusions through independent work.
+
+```{r out.width = '100%'}
+knitr::include_graphics("figure/versus.png")
+```
+
+Reproducibility and replicability are both necessary to the advancement of scientific research, but they vary significantly in terms of their difficulty to achieve. Reproducibility, in theory, is somewhat simple to attain in data analyses--because code is inherently non-random (excepting applications involving random number generation) and data remain consistent, variability is highly restricted. The achievement of replicability, on the other hand, is a much more complex challenge, involving significantly more variablility and requiring high quality data, effective study design, and incredibly robust hypotheses.
+
+
+## The Reproducibility Crisis
+
+Despite the relative simplicity of the reproducibility problem, the scientific community has been unable to solve it. 52% of respondents in a 2016 Nature survey believed that science was going through a "crisis" of reproducibility. https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970 Other studies paint an even bleaker picture: a 2015 study found that over 50% of studies psychology failed reproducibility tests and research from 2012 found that figure closer to 90% in the field of cancer biology. (https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248, https://www.nature.com/articles/483531a)
+
+Without reproducibility, the scientific community cannot properly verify study results. This makes it difficult to identify which information should be believed and which should not and increases the likelihood that studies sharing misleading information will be dispersed.  
+
+
+
+
+## A Brief History of Reproducibility
+
+In recent years, reproducibility has moved to the forefront of scientific discussion. The rise of data-driven technologies, alongside our newly founded ability to instantly share knowledge worldwide, has made reproducibility increasingly critical to the advancement of scientific understanding.  Academics have recognized this, and publications on the topic appear to have increased siginficantly in the last several years (@eisner-reproducibility; @sep-scientific-reproducibility; @bioessays-gosselin; @engineering-reproducibility; @plos-biology).
+
+However, peproducibility has not always been at the forefront of scientific discussion. 
+
+
 
 • Brief history of reproducibility
 • Reproducibility vs replicability
 
-## Why is reproducibility important?
 
-Reproducible research has a wide variety of benefits. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. The creators of reproducible research can also more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
 
 ## The Components of Reproducible Research
 
