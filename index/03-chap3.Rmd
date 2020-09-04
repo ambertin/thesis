@@ -2,6 +2,14 @@
 
 ## Potential Applications of `fertile`
 
+### In Journal Review
+
+### By Beginning Data Scientists
+
+### By Advanced Data Scientists
+
+### For Teaching Reproducibily
+
 ## Integration Of `fertile` And Other Reproducibility Tools in Data Science Education
 
 

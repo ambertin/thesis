@@ -12,10 +12,56 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 Data-based research is considered fully reproducible when the requisite code and data files produce identical results when run by another analyst. As research is becoming increasingly data-driven, and because knowledge can be shared worldwide so rapidly, reproducibility is critical to the advancement of scientific knowledge. Academics around the world have recognized this, and publications and discussions addressing reproducibility appear to have increased in the last several years (@eisner-reproducibility; @sep-scientific-reproducibility; @bioessays-gosselin; @engineering-reproducibility; @plos-biology). 
 
+• Brief history of reproducibility
+• Reproducibility vs replicability
+
 ## Why is reproducibility important?
 
 Reproducible research has a wide variety of benefits. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. The creators of reproducible research can also more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
 
-## Current Discussion on Reproducibility in Academia
+## The Components of Reproducible Research
+
+### Literature
+
+Publications on reproducibility can be found in all areas of scientific research. However, as @Goodman341ps12 argue, the language and conceptual framework of research reproducibility varies significantly across the sciences, and there are no clear standards on reproducibility agreed upon by the scientific community as a whole. We consider recommendations from a variety of fields and determine the key aspects of reproducibility faced by scientists in different disciplines. 
+
+@kitzes2017practice present a collection of case studies on reproducibility practices from across the data-intensive sciences, illustrating a variety of recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their case studies: 1) use clear separation, labeling, and documentation, 2) automate processes when possible, and 3) design the data analysis workflow as a sequence of small steps glued together, with outputs from one step serving as inputs into the next. This is a common suggestion within the computing community, originating as part of the Unix philosophy (@unix).
+
+@cooper2017guide focus on data analysis in `R` and identify a similar list of important reproducibility components, reinforcing the need for clearly labeled, well-documented, and well-separated files. In addition, they recommend publishing a list of dependencies and using version control. 
+@broman reiterates the need for clear naming and file separation while sharing several additional suggestions: keep the project contained in one directory, use relative paths, and include a `README`.
+
+The reproducibility recommendations from R OpenSci, a non-profit initiative founded in 2011 to make scientific data retrieval reproducible, share similar principles to those discussed previously. They focus on a need for a well-developed file system, with no extraneous files and clear labeling. They also reiterate the need to note dependencies and use automation when possible, while making clear a suggestion not present in the previously-discussed literature: the need to use seeds, which allow for the saving and restoring of the random number generator state, when running code involving randomness (@r-opensci).
+
+When considered in combination, these sources provide a well-rounded picture of the components important to research reproducibility. Using this literature as a guideline, we identify several key features of reproducible work. These recommendations are a matter of opinion---due to the lack of agreement on which components of reproducibility are most important, we select those that are mentioned most often, as well as some that are mentioned less but that we view as important. 
+
+
+1. A well-designed file structure:
+
+  - Separate folders for different file types.
+  - No extraneous files.
+  - Minimal clutter.
+
+2. Good documentation:
+
+  - Files are clearly named, preferably in a way where the order in which they should be run is clear.
+  - A README is present.
+  - Dependencies are noted.
+
+3. Reproducible file paths:
+
+  - No absolute paths, or paths leading to locations outside of a project's directory, are used in code---only portable (relative) paths.
+
+4. Randomness is accounted for:
+
+  - If randomness is used in code, a seed must also be set.
+
+5. Readable, styled code:
+
+  - Code should be written in a coherent style. Code that conforms to a style guide or is written in a consistent dialect is easier to read (@hermans2017programming). We believe that the `tidyverse` provides the most accessible dialect of `R`.
+
+
+Much of the available literature focuses on file structure, organization, and naming, and `fertile`'s features are consistent with this. @marwick2018packaging} provide the framework for file structure that `fertile` is based on: a structure similar to that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`.
+
+## Current Focus on Reproducibility in Academia
 
 

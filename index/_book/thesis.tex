@@ -214,55 +214,27 @@ Second paragraph of abstract starts here.
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Welcome to the \emph{R Markdown} thesis template. This template is based
-on (and in many places copied directly from) the Reed College LaTeX
-template, but hopefully it will provide a nicer interface for those that
-have never used TeX or LaTeX before. Using \emph{R Markdown} will also
-allow you to easily keep track of your analyses in \textbf{R} chunks of
-code, with the resulting plots and output included as well. The hope is
-this \emph{R Markdown} template gets you in the habit of doing
-reproducible research, which benefits you long-term as a researcher, but
-also will greatly help anyone that is trying to reproduce or build onto
-your results down the road.
+Potential sources:
 
-Hopefully, you won't have much of a learning period to go through and
-you will reap the benefits of a nicely formatted thesis. The use of
-LaTeX in combination with \emph{Markdown} is more consistent than the
-output of a word processor, much less prone to corruption or crashing,
-and the resulting file is smaller than a Word file. While you may have
-never had problems using Word in the past, your thesis is likely going
-to be about twice as large and complex as anything you've written
-before, taxing Word's capabilities. After working with \emph{Markdown}
-and \textbf{R} together for a few weeks, we are confident this will be
-your reporting style of choice going forward.
+\url{https://arxiv.org/abs/1401.3269}
 
-\textbf{Why use it?}
+\url{https://academic.oup.com/isp/article-abstract/17/4/392/2528285}
 
-\emph{R Markdown} creates a simple and straightforward way to interface
-with the beauty of LaTeX. Packages have been written in \textbf{R} to
-work directly with LaTeX to produce nicely formatting tables and
-paragraphs. In addition to creating a user friendly interface to LaTeX,
-\emph{R Markdown} also allows you to read in your data, to analyze it
-and to visualize it using \textbf{R} functions, and also to provide the
-documentation and commentary on the results of your project. Further, it
-allows for \textbf{R} results to be passed inline to the commentary of
-your results. You'll see more on this later.
+\url{https://dl.acm.org/doi/abs/10.1145/3186266?casa_token=3yv8mooiZXYAAAAA:AUWshgsmm-4ulr7qYK2vm3a6EdJneFLgn3nxplGeaZpT7hgFcIRkRA7edGHdjg_pPvs5p-GoHHFo}
 
-\textbf{Who should use it?}
+\url{https://dl.acm.org/doi/abs/10.1145/3027385.3029445?casa_token=rgNbcFWIA1AAAAAA:cZRPAy1KYewKfheFe74GBDwKzF9Q8X0xMau0AtBVkYSTYrd7apJEnwDY_T8oqh1cZQED1gHjjtq4}
 
-Anyone who needs to use data analysis, math, tables, a lot of figures,
-complex cross-references, or who just cares about the final appearance
-of their document should use \emph{R Markdown}. Of particular use should
-be anyone in the sciences, but the user-friendly nature of
-\emph{Markdown} and its ability to keep track of and easily include
-figures, automatically generate a table of contents, index, references,
-table of figures, etc. should make it of great benefit to nearly anyone
-writing a thesis project.
+\url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/}
 
-\textbf{For additional help with bookdown}
+\url{https://guides.lib.uw.edu/research/reproducibility/teaching}
 
-Please visit \href{https://bookdown.org/yihui/bookdown/}{the free online
-bookdown reference guide}.
+\url{https://escholarship.org/uc/item/90b2f5xh}
+
+\url{https://www.mitpressjournals.org/doi/full/10.1162/dint_a_00053}
+
+\url{https://www.pnas.org/content/115/11/2584}
+
+\url{https://www.pnas.org/content/115/11/2561}
 
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
@@ -278,6 +250,8 @@ addressing reproducibility appear to have increased in the last several
 years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin (2020); McArthur
 (2019); Wallach, Boyack, \& Ioannidis (2018)).
 
+• Brief history of reproducibility • Reproducibility vs replicability
+
 \section{Why is reproducibility
 important?}\label{why-is-reproducibility-important}
 
@@ -291,13 +265,8 @@ Moreover, others interested in the research topic can use the code to
 apply the methods and ideas used in one project to their own work with
 minimal effort.
 
-\section{Current Discussion on Reproducibility in
-Academia}\label{current-discussion-on-reproducibility-in-academia}
-
-\chapter{Addressing the Challenges of
-Reproducibility}\label{my-solution}
-
-\section{Review Of Previous Work}\label{review-of-previous-work}
+\section{The Components of Reproducible
+Research}\label{the-components-of-reproducible-research}
 
 \subsection{Literature}\label{literature}
 
@@ -428,6 +397,14 @@ for file structure that \texttt{fertile} is based on: a structure
 similar to that of an \texttt{R} package (R-Core-Team (2020), Wickham
 (2015)), with an \texttt{R} folder, as well as \texttt{data},
 \texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}.
+
+\section{Current Focus on Reproducibility in
+Academia}\label{current-focus-on-reproducibility-in-academia}
+
+\chapter{Addressing the Challenges of
+Reproducibility}\label{my-solution}
+
+\section{Review Of Previous Work}\label{review-of-previous-work}
 
 \subsection{R Packages and Other
 Software}\label{r-packages-and-other-software}
@@ -610,7 +587,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ---- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ----------------------
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -636,13 +613,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ----------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... --------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ----------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -651,7 +628,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ---------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks ------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -671,10 +648,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ----------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -691,13 +668,13 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------- fertile 0.0.0.9027 --
+--   Files present in directory --------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png  188.2K
-3     proteins_v_time.png   png 379.81K
+2      citrate_v_time.png   png 187.79K
+3     proteins_v_time.png   png 378.51K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -716,7 +693,7 @@ used in code.
 9                                                         text/x-markdown
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ----------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                  path_rel    dir_rel
@@ -737,7 +714,7 @@ used in code.
 7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged --------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ----------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -761,12 +738,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-03 16:57:13
-2 package:th~ <NA>                        base::r~ 2020-09-03 16:57:13
-3 package:th~ <NA>                        base::l~ 2020-09-03 16:57:13
-4 package:pu~ <NA>                        base::l~ 2020-09-03 16:59:05
-5 package:fo~ <NA>                        base::l~ 2020-09-03 16:59:05
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-03 16:59:05
+1 package:re~ <NA>                        base::r~ 2020-09-03 16:59:05
+2 package:th~ <NA>                        base::r~ 2020-09-03 16:59:05
+3 package:th~ <NA>                        base::l~ 2020-09-03 16:59:05
+4 package:pu~ <NA>                        base::l~ 2020-09-04 14:57:00
+5 package:fo~ <NA>                        base::l~ 2020-09-04 14:57:00
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-04 14:57:00
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -876,7 +853,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpJSmtAC/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -884,9 +861,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpJSmtAC/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpJSmtAC/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpJSmtAC/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp02CNqs/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -965,7 +942,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb7fbe38578>
+<bytecode: 0x7fa30fa51ea0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
@@ -1071,6 +1048,17 @@ Science Community}\label{applications}
 
 \section{\texorpdfstring{Potential Applications of
 \texttt{fertile}}{Potential Applications of fertile}}\label{potential-applications-of-fertile}
+
+\subsection{In Journal Review}\label{in-journal-review}
+
+\subsection{By Beginning Data
+Scientists}\label{by-beginning-data-scientists}
+
+\subsection{By Advanced Data
+Scientists}\label{by-advanced-data-scientists}
+
+\subsection{For Teaching
+Reproducibily}\label{for-teaching-reproducibily}
 
 \section{\texorpdfstring{Integration Of \texttt{fertile} And Other
 Reproducibility Tools in Data Science
