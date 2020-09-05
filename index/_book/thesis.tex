@@ -242,7 +242,30 @@ Potential sources:
 
 In the field of data science, research is considered fully
 \emph{reproducible} when the requisite code and data files produce
-identical results when run by another analyst.
+identical results when run by another analyst, or more generally, when a
+researcher can ``duplicate the results of a prior study using the same
+materials as were used by the original investigator''.
+
+\textbf{Add Source:} K. Bollen, J. T. Cacioppo, R. Kaplan, J. Krosnick,
+J. L. Olds, Social, Behavioral, and Economic Sciences Perspectives on
+Robust and Reliable Science (National Science Foundation, Arlington, VA,
+2015).
+
+This term was first coined in 1992 by computer scientist Jon Claerbout,
+who associated it with a ``software platform and set of procedures that
+permit the reader of a paper to see the entire processing trail from the
+raw data and code to figures and tables''.
+
+\textbf{Add source:} J. Claerbout, M. Karrenbach, Electronic documents
+give reproducible research a new meaning, in Proceedings of the 62nd
+Annual International Meeting of the Society of Exploration Geophysics,
+New Orleans, USA, 25 to 29 October 1992.
+
+Since its inception, the concept of reproducibility has been applied
+across many different data-intensive fields, including epidemiology,
+computational biology, economics, clinical trials, and, now, the more
+general domain of statistical and data sciences (Goodman, Fanelli, \&
+Ioannidis (2016)).
 
 Reproducible research has a wide variety of benefits in the scientific
 community. When researchers provide the code and data used for their
@@ -280,10 +303,14 @@ data, effective study design, and incredibly robust hypotheses.
 
 \section{The Reproducibility Crisis}\label{the-reproducibility-crisis}
 
-Despite the relative simplicity of the reproducibility problem, the
-scientific community has been unable to solve it. 52\% of respondents in
-a 2016 Nature survey believed that science was going through a
-``crisis'' of reproducibility.
+Despite the relative simplicity of achieving reproducibility, a
+significant proportion of the work produced in the scientific community
+fails to meet reproducibility standards. 52\% of respondents in a 2016
+Nature survey believed that science was going through a ``crisis'' of
+reproducibility. Additionally, the vast majority of researchers across
+all fields studied reported having been unable to reproduce another
+researcher's results, while approximately half reported having been
+unable to reproduce their own.
 \url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
 Other studies paint an even bleaker picture: a 2015 study found that
 over 50\% of studies psychology failed reproducibility tests and
@@ -292,61 +319,73 @@ cancer biology.
 (\url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248},
 \url{https://www.nature.com/articles/483531a})
 
-Without reproducibility, the scientific community cannot properly verify
-study results. This makes it difficult to identify which information
-should be believed and which should not and increases the likelihood
-that studies sharing misleading information will be dispersed.
+In the past several years, this ``crisis'' of reproducibility has risen
+toward the forefront of scientific discussion. Without reproducibility,
+the scientific community cannot properly verify study results.This makes
+it difficult to identify which information should be believed and which
+should not and increases the likelihood that studies sharing misleading
+information will be dispersed. The rise of data-driven technologies,
+alongside our newly founded ability to instantly share knowledge
+worldwide, has made reproducibility increasingly critical to the
+advancement of scientific understanding, necessitating the development
+of solutions for addressing the issue.
 
-\section{A Brief History of
-Reproducibility}\label{a-brief-history-of-reproducibility}
-
-In recent years, reproducibility has moved to the forefront of
-scientific discussion. The rise of data-driven technologies, alongside
-our newly founded ability to instantly share knowledge worldwide, has
-made reproducibility increasingly critical to the advancement of
-scientific understanding. Academics have recognized this, and
-publications on the topic appear to have increased siginficantly in the
-last several years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin
-(2020); McArthur (2019); Wallach, Boyack, \& Ioannidis (2018)).
-
-However, peproducibility has not always been at the forefront of
-scientific discussion.
-
-• Brief history of reproducibility • Reproducibility vs replicability
+Academics have recognized this, and publications on the topic appear to
+have increased siginficantly in the last several years (Eisner (2018);
+Fidler \& Wilcox (2018); Gosselin (2020); McArthur (2019); Wallach,
+Boyack, \& Ioannidis (2018)).
 
 \section{The Components of Reproducible
 Research}\label{the-components-of-reproducible-research}
 
-\subsection{Literature}\label{literature}
+In order to address the lack of reproducibility in scientific research,
+it is important to first consider the question: Which components are
+necessary to declare research reproducibile?
 
-Publications on reproducibility can be found in all areas of scientific
-research. However, as Goodman, Fanelli, \& Ioannidis (2016) argue, the
-language and conceptual framework of research reproducibility varies
-significantly across the sciences, and there are no clear standards on
-reproducibility agreed upon by the scientific community as a whole. We
-consider recommendations from a variety of fields and determine the key
-aspects of reproducibility faced by scientists in different disciplines.
+Publications attempting to answer this can be found in all areas of
+scientific research. However, as Goodman et al. (2016) argue, the
+language and conceptual framework used to describe research
+reproducibility varies significantly across the sciences, and there are
+no clear standards on reproducibility agreed upon by the scientific
+community as a whole.
+
+At a minimum, according to Goodman et al. (2016), documenting
+reproducibility requires the sharing of data (raw or processed),
+relevant metadata, code, and related software. However, according to
+other authors, the full achievement of reproducibility may require
+additional components.
 
 Kitzes, Turek, \& Deniz (2017) present a collection of case studies on
 reproducibility practices from across the data-intensive sciences,
 illustrating a variety of recommendations and techniques for achieving
 reproducibility. Although their work does not come to a consensus on the
 exact standards of reproducibility that should be followed, several
-common trends and principles emerge from their case studies: 1) use
-clear separation, labeling, and documentation, 2) automate processes
-when possible, and 3) design the data analysis workflow as a sequence of
-small steps glued together, with outputs from one step serving as inputs
-into the next. This is a common suggestion within the computing
-community, originating as part of the Unix philosophy (Gancarz (2003)).
+common trends and principles emerge from their case studies that extend
+beyond the minimum recommendations of Goodman et al. (2016):
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  use clear separation, labeling, and documentation in provided code,
+\item
+  automate processes when possible, and
+\item
+  design the data analysis workflow as a sequence of small steps glued
+  together, with outputs from one step serving as inputs into the next.
+  This is a common suggestion within the computing community,
+  originating as part of the Unix philosophy (Gancarz (2003)).
+\end{enumerate}
+Cooper et al. (2017) focus on data analysis completed in \texttt{R} and
+identify a similar list of important reproducibility components,
+reinforcing the need for clearly labeled, well-documented, and
+well-separated files. In addition, they recommend publishing a list of
+software dependencies and using version control to track project changes
+over time.
 
-Cooper et al. (2017) focus on data analysis in \texttt{R} and identify a
-similar list of important reproducibility components, reinforcing the
-need for clearly labeled, well-documented, and well-separated files. In
-addition, they recommend publishing a list of dependencies and using
-version control. Broman (2019) reiterates the need for clear naming and
-file separation while sharing several additional suggestions: keep the
-project contained in one directory, use relative paths, and include a
-\texttt{README}.
+Broman (2019) reiterates the need for clear naming and file separation
+while sharing several additional suggestions: keep the project contained
+in one directory, use relative paths when accessing the file system, and
+include a \texttt{README} file describing the project.
 
 The reproducibility recommendations from R OpenSci, a non-profit
 initiative founded in 2011 to make scientific data retrieval
@@ -359,18 +398,32 @@ to use seeds, which allow for the saving and restoring of the random
 number generator state, when running code involving randomness (Martinez
 et al. (2018)).
 
-When considered in combination, these sources provide a well-rounded
-picture of the components important to research reproducibility. Using
-this literature as a guideline, we identify several key features of
-reproducible work. These recommendations are a matter of opinion---due
-to the lack of agreement on which components of reproducibility are most
-important, we select those that are mentioned most often, as well as
-some that are mentioned less but that we view as important.
+Although these recommendations differ from one another, when considered
+in combination they provide a well-rounded picture of the components
+important to research reproducibility across the scientific community:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  A well-designed file structure:
+  The basic project components are made accessible:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  Data (raw and/or processed)
+\item
+  Metadata
+\item
+  Code
+\item
+  Related Software
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The file structure of project is well-organized:
 \end{enumerate}
 \begin{itemize}
 \tightlist
@@ -383,10 +436,10 @@ some that are mentioned less but that we view as important.
 \end{itemize}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
+\setcounter{enumi}{2}
 \tightlist
 \item
-  Good documentation:
+  The project is documented well:
 \end{enumerate}
 \begin{itemize}
 \tightlist
@@ -396,25 +449,28 @@ some that are mentioned less but that we view as important.
 \item
   A README is present.
 \item
-  Dependencies are noted.
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Reproducible file paths:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  No absolute paths, or paths leading to locations outside of a
-  project's directory, are used in code---only portable (relative)
-  paths.
+  Software dependencies are noted.
 \end{itemize}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
+\tightlist
+\item
+  File paths used in code are not system- or user-dependent:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  No absolute paths.
+\item
+  No paths leading to locations outside of a project's directory.
+\item
+  Only relative paths, pointing to locations within a project's
+  directory, are permitted.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
 \tightlist
 \item
   Randomness is accounted for:
@@ -426,7 +482,7 @@ some that are mentioned less but that we view as important.
 \end{itemize}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
+\setcounter{enumi}{5}
 \tightlist
 \item
   Readable, styled code:
@@ -434,21 +490,43 @@ some that are mentioned less but that we view as important.
 \begin{itemize}
 \tightlist
 \item
-  Code should be written in a coherent style. Code that conforms to a
-  style guide or is written in a consistent dialect is easier to read
-  (Hermans \& Aldewereld (2017)). We believe that the \texttt{tidyverse}
-  provides the most accessible dialect of \texttt{R}.
+  Though not mentioned in the sources described previously, it is also
+  important that code be written in a coherent style. This is because
+  code that conforms to a style guide or is written in a consistent
+  dialect is easier to read, simplifying the process of following a
+  researcher's work from beginning to end (Hermans \& Aldewereld
+  (2017)).
 \end{itemize}
-Much of the available literature focuses on file structure,
-organization, and naming, and \texttt{fertile}'s features are consistent
-with this. Marwick, Boettiger, \& Mullen (2018)\} provide the framework
-for file structure that \texttt{fertile} is based on: a structure
-similar to that of an \texttt{R} package (R-Core-Team (2020), Wickham
-(2015)), with an \texttt{R} folder, as well as \texttt{data},
-\texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}.
-
 \section{Current Focus on Reproducibility in
 Academia}\label{current-focus-on-reproducibility-in-academia}
+
+\url{https://www.nature.com/news/journals-unite-for-reproducibility-1.16259}
+
+\url{https://www.insidehighered.com/quicktakes/2019/09/18/new-journal-focused-reproducibility}
+
+\url{https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility}
+
+\url{https://www.pnas.org/content/115/11/2584}
+
+\url{https://www.researchgate.net/publication/288818031_Reproducible_research_in_statistics_A_review_and_guidelines_for_the_Biometrical_Journal}
+
+Guidelines from top Statistics Journals:
+\url{https://www.jstatsoft.org/pages/view/authors}
+
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=uasa20}
+(code + data)
+
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}
+(code + data)
+
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
+(strongly encourages code + data)
+
+Annals of statistics --- nothing??
+\url{https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/}
+
+\url{https://journal.r-project.org/share/author-guide.pdf} -- code +
+data
 
 \chapter{Addressing the Challenges of
 Reproducibility}\label{my-solution}
@@ -484,8 +562,8 @@ as a tool for statistical analysis.
 
 A small body of \texttt{R} packages focuses on research reproducibility.
 \texttt{rrtools} (Marwick (2019)) addresses some of the issues discussed
-in Marwick et al. (2018) by creating a basic \texttt{R} package
-structure for a data analysis project and implementing a basic
+in Marwick, Boettiger, \& Mullen (2018) by creating a basic \texttt{R}
+package structure for a data analysis project and implementing a basic
 \texttt{testthat::check} functionality. The \texttt{orderly} (FitzJohn
 et al. (2020)) package also focuses on file structure, requiring the
 user to declare a desired project structure (typically a step-by-step
@@ -565,6 +643,14 @@ as well as after the fact. \texttt{fertile} achieves this by operating
 in two modes: proactively (to prevent reproducibility mistakes from
 happening in the first place), and retroactively (analyzing code that
 has already been written for potential problems).
+
+Much of the available literature focuses on file structure,
+organization, and naming, and \texttt{fertile}'s features are consistent
+with this. Marwick et al. (2018) provide the framework for file
+structure that \texttt{fertile} is based on: a structure similar to that
+of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an
+\texttt{R} folder, as well as \texttt{data}, \texttt{data-raw},
+\texttt{inst}, and \texttt{vignettes}.
 
 \subsection{Proactive Use}\label{proactive-use}
 
@@ -650,7 +736,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as f
+-- The available checks in `fertile` are as follows: ------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -676,13 +762,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------- fertile 0.0.0.9027 --
+-- Compiling... ------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... -------------------
+-- Rendering R scripts... --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks -----------
+-- Running reproducibility checks ------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -691,7 +777,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------
+-- Summary of fertile checks ------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -711,10 +797,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_mi
+-- Analysis of reproducibility for project_miceps --------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code -----
+--   Packages referenced in source code ------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -731,13 +817,13 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory -------------
+--   Files present in directory --------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 184.07K
-3     proteins_v_time.png   png 377.88K
+2      citrate_v_time.png   png  188.1K
+3     proteins_v_time.png   png 377.38K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -756,7 +842,7 @@ used in code.
 9                                                         text/x-markdown
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files -----------
+--   Suggestions for moving files ------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                  path_rel    dir_rel
@@ -777,7 +863,7 @@ used in code.
 7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ---------------
+--   Problematic paths logged ----------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -798,12 +884,15 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 3 x 4
+# A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:pu~ <NA>                        base::l~ 2020-09-04 18:04:05
-2 package:fo~ <NA>                        base::l~ 2020-09-04 18:04:05
-3 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-04 18:04:05
+1 package:re~ <NA>                        base::r~ 2020-09-04 18:04:05
+2 package:th~ <NA>                        base::r~ 2020-09-04 18:04:05
+3 package:th~ <NA>                        base::l~ 2020-09-04 18:04:05
+4 package:pu~ <NA>                        base::l~ 2020-09-05 13:51:20
+5 package:fo~ <NA>                        base::l~ 2020-09-05 13:51:20
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-05 13:51:20
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -913,7 +1002,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -921,9 +1010,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpycQcgK/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1002,7 +1091,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7ff482ebd638>
+<bytecode: 0x7fb926489640>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
