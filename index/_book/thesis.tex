@@ -497,14 +497,119 @@ important to research reproducibility across the scientific community:
   researcher's work from beginning to end (Hermans \& Aldewereld
   (2017)).
 \end{itemize}
-\section{Current Focus on Reproducibility in
-Academia}\label{current-focus-on-reproducibility-in-academia}
+\section{Current Attempts to Address Reproducibility in
+Academia}\label{current-attempts-to-address-reproducibility-in-academia}
 
+\subsection{Journal Requirements}\label{journal-requirements}
+
+In an attempt to increase reproducibility in the sciences, leaders from
+academic journals around the world have taken steps to create new
+standards and requirements for submitted articles. However, these
+standards are highly inconsistent, varying significantly both across and
+within disciplines.
+
+The journal whose requirements appear to align most closely with those
+components defined previously is the \emph{American Journal of Political
+Science} (AJPS). In 2012, the AJPS became the first political science
+journal to require authors to make their data openly accessible online,
+and the publication has instituted stricter requirements since. AJPS now
+requires that authors submit the following alongside their papers:
+\begin{itemize}
+\tightlist
+\item
+  The dataset analyzed in the paper and information about its source. If
+  the dataset has been processed, instructions for manipulating the raw
+  data to achieve the final data must also be shared.
+\item
+  Detailed, clear code necessary for reproducing all of the tables and
+  figures in the paper.
+\item
+  Documentation, including a README and codebook.
+\item
+  Information about the software used to conduct the analysis, including
+  the specific versions and packages used.
+\end{itemize}
+\textbf{ADD SOURCE:}
+\url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
+
+These standards are quite thorough, meeting a variety of the conditions
+described previously.
+
+Most journals, however, do not come close to meeting such high standards
+in their reproducibility statements. We will consider examples from
+several fields:
+
+A group of editors reproesenting over 30 major journals from the
+biomedical sciences met in 2014 to address reproducibility in their
+field, coming to a consensus on a set of principles they wanted to
+uphold. Below are those relating specifically to the use of data and
+statistical methods:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  The journal should have a mechanism to check the statistical accuracy
+  of submissions.
+\item
+  Journals should have no (or generous) limit on methods section length.
+\item
+  Journals should use a checklist to ensure the reporting of key
+  information, including:
+\end{enumerate}
+\begin{itemize}
+\tightlist
+\item
+  The article meets nomenclature/reporting standards of the biomedical
+  field
+\item
+  Investigators report how often each experiment was performed and
+  whether results were substantiated by repetition under a range of
+  conditions.
+\item
+  Statistics must be fully reported in the paper (including test used,
+  value of N, definition of center, dispersion and precision measures).
+\item
+  Authors must state whether samples were randomized and how.
+\item
+  Authors must state whether the experiment was blinded.
+\item
+  Authors must clearly state the criteria used for exclusion of any data
+  or subjects and must include all results, even those that do not
+  support the main findings.
+\end{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{3}
+\item
+  All datasets must be made available on request and should be on public
+  repositories when possible. If not possible, data values should be
+  presented in the paper or supplementary information.
+\item
+  Software sharing should be encouraged. At the minimum, authors should
+  provide a statement describing if software is available and how to
+  obtain it.
+\end{enumerate}
+\textbf{ADD SOURCE:}
 \url{https://www.nature.com/news/journals-unite-for-reproducibility-1.16259}
 
-\url{https://www.insidehighered.com/quicktakes/2019/09/18/new-journal-focused-reproducibility}
+Even though these principles seem well-developed on the surface, they
+fail to meet even the basic requirements defined by Goodman et al.
+(2016) previously. There is no requirement that code be shared, nor
+metadata, and software requirements are somewhat loose.
 
-\url{https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility}
+\emph{Experimental Results}, a journal created by Cambridge University
+Press for the specific purpose of addressing some of the reproducibility
+and open access issues in academia, also fails to meet these
+requirements. Allowing articles from a variety of disciplines, their
+transparency and openness policy states only that ``whenever possible
+authors should make evidence and resources that underpin published
+findings, such as data, code, and other materials, available to readers
+without undue barriers to access.'' It is only recommended, not
+required, that code and data be fully available. The reproducibility
+components that extend beyond what is required at a minimum are not
+considered.
+
+\textbf{ADD SOURCE:}
+\url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
 
 \url{https://www.pnas.org/content/115/11/2584}
 
@@ -527,6 +632,8 @@ Annals of statistics --- nothing??
 
 \url{https://journal.r-project.org/share/author-guide.pdf} -- code +
 data
+
+\subsection{Reproducibility Education}\label{reproducibility-education}
 
 \chapter{Addressing the Challenges of
 Reproducibility}\label{my-solution}
@@ -822,8 +929,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png  188.1K
-3     proteins_v_time.png   png 377.38K
+2      citrate_v_time.png   png 187.99K
+3     proteins_v_time.png   png 377.82K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -887,12 +994,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-04 18:04:05
-2 package:th~ <NA>                        base::r~ 2020-09-04 18:04:05
-3 package:th~ <NA>                        base::l~ 2020-09-04 18:04:05
-4 package:pu~ <NA>                        base::l~ 2020-09-05 13:51:20
-5 package:fo~ <NA>                        base::l~ 2020-09-05 13:51:20
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-05 13:51:20
+1 package:re~ <NA>                        base::r~ 2020-09-05 13:51:20
+2 package:th~ <NA>                        base::r~ 2020-09-05 13:51:20
+3 package:th~ <NA>                        base::l~ 2020-09-05 13:51:20
+4 package:pu~ <NA>                        base::l~ 2020-09-05 15:08:02
+5 package:fo~ <NA>                        base::l~ 2020-09-05 15:08:02
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-05 15:08:02
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1002,7 +1109,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1010,9 +1117,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpjjvs2O/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1091,7 +1198,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb926489640>
+<bytecode: 0x7fd925c292b0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

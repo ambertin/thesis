@@ -95,13 +95,52 @@ Although these recommendations differ from one another, when considered in combi
 
   - Though not mentioned in the sources described previously, it is also important that code be written in a coherent style. This is because code that conforms to a style guide or is written in a consistent dialect is easier to read, simplifying the process of following a researcher's work from beginning to end (@hermans2017programming). 
 
-## Current Focus on Reproducibility in Academia
+## Current Attempts to Address Reproducibility in Academia
 
-https://www.nature.com/news/journals-unite-for-reproducibility-1.16259
+### Journal Requirements
 
-https://www.insidehighered.com/quicktakes/2019/09/18/new-journal-focused-reproducibility
+In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
 
-https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility
+The journal whose requirements appear to align most closely with those components defined previously is the *American Journal of Political Science* (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers:
+
+* The dataset analyzed in the paper and information about its source. If the dataset has been processed, instructions for manipulating the raw data to achieve the final data must also be shared.
+* Detailed, clear code necessary for reproducing all of the tables and figures in the paper.
+* Documentation, including a README and codebook.
+* Information about the software used to conduct the analysis, including the specific versions and packages used.
+
+**ADD SOURCE:** https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf
+
+These standards are quite thorough, meeting a variety of the conditions described previously. 
+
+Most journals, however, do not come close to meeting such high standards in their reproducibility statements. We will consider examples from several fields:
+
+A group of editors reproesenting over 30 major journals from the biomedical sciences met in 2014 to address reproducibility in their field, coming to a consensus on a set of principles they wanted to uphold. Below are those relating specifically to the use of data and statistical methods:
+
+1) The journal should have a mechanism to check the statistical accuracy of submissions.
+
+2) Journals should have no (or generous) limit on methods section length.
+
+3) Journals should use a checklist to ensure the reporting of key information, including: 
+
+  - The article meets nomenclature/reporting standards of the biomedical field
+  - Investigators report how often each experiment was performed and whether results were substantiated by repetition under a range of conditions.
+  - Statistics must be fully reported in the paper (including test used, value of N, definition of center, dispersion and precision measures).
+  - Authors must state whether samples were randomized and how.
+  - Authors must state whether the experiment was blinded.
+  - Authors must clearly state the criteria used for exclusion of any data or subjects and must include all results, even those that do not support the main findings.
+  
+4) All datasets must be made available on request and should be on public repositories when possible. If not possible, data values should be presented in the paper or supplementary information.
+
+5) Software sharing should be encouraged. At the minimum, authors should provide a statement describing if software is available and how to obtain it.
+
+**ADD SOURCE:** https://www.nature.com/news/journals-unite-for-reproducibility-1.16259
+
+Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by @Goodman341ps12 previously. There is no requirement that code be shared, nor metadata, and software requirements are somewhat loose.
+
+*Experimental Results*, a journal created by Cambridge University Press for the specific purpose of addressing some of the reproducibility and open access issues in academia, also fails to meet these requirements. Allowing articles from a variety of disciplines, their transparency and openness policy states only that "whenever possible authors should make evidence and resources that underpin published findings, such as data, code, and other materials, available to readers without undue barriers to access." It is only recommended, not required, that code and data be fully available. The reproducibility components that extend beyond what is required at a minimum are not considered.
+
+**ADD SOURCE:** https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy
+
 
 https://www.pnas.org/content/115/11/2584
 
@@ -119,6 +158,14 @@ https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCod
 Annals of statistics --- nothing?? https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/
 
 https://journal.r-project.org/share/author-guide.pdf -- code + data
+
+
+
+
+
+
+
+### Reproducibility Education
 
 
 
