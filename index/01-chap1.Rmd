@@ -162,6 +162,21 @@ Perhaps the weakest reproducibility policies come from *The American Statisticia
 
 https://www.pnas.org/content/115/11/2584
 
+https://www.cos.io/about/news/new-measure-rates-quality-research-journals-policies-promote-transparency-and-reproducibility
+
+https://www.cos.io/our-services/top-guidelines
+
+http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf
+
+https://link.springer.com/chapter/10.1007/164_2019_290#Sec9
+
+https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
+
+Policies can be time consuming to implement in terms of actually reviewing articles for publication. If there's a huge influx, it would be unreasonable to re-run every analysis submitted!
+
+
+
+
 
 
 

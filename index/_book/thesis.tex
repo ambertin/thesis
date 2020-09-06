@@ -692,6 +692,20 @@ Policies}\label{assessing-the-success-of-academic-reproducibility-policies}
 
 \url{https://www.pnas.org/content/115/11/2584}
 
+\url{https://www.cos.io/about/news/new-measure-rates-quality-research-journals-policies-promote-transparency-and-reproducibility}
+
+\url{https://www.cos.io/our-services/top-guidelines}
+
+\url{http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf}
+
+\url{https://link.springer.com/chapter/10.1007/164_2019_290\#Sec9}
+
+\url{https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448}
+
+Policies can be time consuming to implement in terms of actually
+reviewing articles for publication. If there's a huge influx, it would
+be unreasonable to re-run every analysis submitted!
+
 \subsection{Reproducibility Education}\label{reproducibility-education}
 
 \chapter{Addressing the Challenges of
@@ -988,8 +1002,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 186.85K
-3     proteins_v_time.png   png 375.92K
+2      citrate_v_time.png   png 188.19K
+3     proteins_v_time.png   png 380.41K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1053,12 +1067,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-06 16:16:01
-2 package:th~ <NA>                        base::r~ 2020-09-06 16:16:01
-3 package:th~ <NA>                        base::l~ 2020-09-06 16:16:01
-4 package:pu~ <NA>                        base::l~ 2020-09-06 17:24:15
-5 package:fo~ <NA>                        base::l~ 2020-09-06 17:24:15
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 17:24:15
+1 package:re~ <NA>                        base::r~ 2020-09-06 17:24:15
+2 package:th~ <NA>                        base::r~ 2020-09-06 17:24:15
+3 package:th~ <NA>                        base::l~ 2020-09-06 17:24:15
+4 package:pu~ <NA>                        base::l~ 2020-09-06 17:30:43
+5 package:fo~ <NA>                        base::l~ 2020-09-06 17:30:43
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 17:30:43
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1168,7 +1182,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1176,9 +1190,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1257,7 +1271,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fd2713627b0>
+<bytecode: 0x7f7f5fa269a8>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
