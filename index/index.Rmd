@@ -1,5 +1,5 @@
 ---
-title: 'My Final College Paper'
+title: 'Addressing The Scientific Reproducibility Crisis Through Educational Software Integration'
 author: 'Audrey M. Bertin'
 date: 'May 2021'
 institution: 'Smith College'

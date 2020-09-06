@@ -111,7 +111,8 @@
   \newcommand{\NormalTok}[1]{#1}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
-\title{My Final College Paper}
+\title{Addressing The Scientific Reproducibility Crisis Through Educational
+Software Integration}
 \author{Audrey M. Bertin}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2021}
@@ -497,10 +498,8 @@ important to research reproducibility across the scientific community:
   researcher's work from beginning to end (Hermans \& Aldewereld
   (2017)).
 \end{itemize}
-\section{Current Attempts to Address Reproducibility in
-Academia}\label{current-attempts-to-address-reproducibility-in-academia}
-
-\subsection{Journal Requirements}\label{journal-requirements}
+\section{Current Attempts to Address Reproducibility in Scientific
+Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}
 
 In an attempt to increase reproducibility in the sciences, leaders from
 academic journals around the world have taken steps to create new
@@ -509,11 +508,12 @@ standards are highly inconsistent, varying significantly both across and
 within disciplines.
 
 The journal whose requirements appear to align most closely with those
-components defined previously is the \emph{American Journal of Political
-Science} (AJPS). In 2012, the AJPS became the first political science
-journal to require authors to make their data openly accessible online,
-and the publication has instituted stricter requirements since. AJPS now
-requires that authors submit the following alongside their papers:
+components defined previously in Section 3 is the \emph{American Journal
+of Political Science} (AJPS). In 2012, the AJPS became the first
+political science journal to require authors to make their data openly
+accessible online, and the publication has instituted stricter
+requirements since. AJPS now requires that authors submit the following
+alongside their papers:
 \begin{itemize}
 \tightlist
 \item
@@ -532,23 +532,24 @@ requires that authors submit the following alongside their papers:
 \textbf{ADD SOURCE:}
 \url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
 
-These standards are quite thorough, meeting a variety of the conditions
-described previously.
+These standards are quite thorough and contain mandates for the
+inclusion of the vast majority of components necessary for complete
+reproducibility.
 
 Most journals, however, do not come close to meeting such high standards
 in their reproducibility statements. We will consider examples from
 several fields:
 
-A group of editors reproesenting over 30 major journals from the
-biomedical sciences met in 2014 to address reproducibility in their
-field, coming to a consensus on a set of principles they wanted to
-uphold. Below are those relating specifically to the use of data and
+In the biomedical sciences, a group of editors reproesenting over 30
+major journals met in 2014 to address reproducibility in their field,
+coming to a consensus on a set of principles they wanted to uphold.
+Listed below are those relating specifically to the use of data and
 statistical methods:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
-  The journal should have a mechanism to check the statistical accuracy
-  of submissions.
+  Journals in the biomedical sciences should have a mechanism to check
+  the statistical accuracy of submissions.
 \item
   Journals should have no (or generous) limit on methods section length.
 \item
@@ -559,7 +560,7 @@ statistical methods:
 \tightlist
 \item
   The article meets nomenclature/reporting standards of the biomedical
-  field
+  field.
 \item
   Investigators report how often each experiment was performed and
   whether results were substantiated by repetition under a range of
@@ -580,9 +581,10 @@ statistical methods:
 \def\labelenumi{\arabic{enumi})}
 \setcounter{enumi}{3}
 \item
-  All datasets must be made available on request and should be on public
-  repositories when possible. If not possible, data values should be
-  presented in the paper or supplementary information.
+  All datasets used in analysis must be made available on request and
+  should be hosted on public repositories when possible. If not
+  possible, data values should be presented in the paper or
+  supplementary information.
 \item
   Software sharing should be encouraged. At the minimum, authors should
   provide a statement describing if software is available and how to
@@ -593,27 +595,49 @@ statistical methods:
 
 Even though these principles seem well-developed on the surface, they
 fail to meet even the basic requirements defined by Goodman et al.
-(2016) previously. There is no requirement that code be shared, nor
-metadata, and software requirements are somewhat loose.
+(2016) previously. Several of the principles are purely recommendations;
+there is no \emph{requirement} that code be shared, nor metadata, and
+software requirements are quite loose, requiring no information about
+dependencies or software version.
 
-\emph{Experimental Results}, a journal created by Cambridge University
-Press for the specific purpose of addressing some of the reproducibility
-and open access issues in academia, also fails to meet these
-requirements. Allowing articles from a variety of disciplines, their
-transparency and openness policy states only that ``whenever possible
-authors should make evidence and resources that underpin published
-findings, such as data, code, and other materials, available to readers
-without undue barriers to access.'' It is only recommended, not
-required, that code and data be fully available. The reproducibility
-components that extend beyond what is required at a minimum are not
-considered.
+We see a similar issue even in journals designed specifically for the
+purpose of improving scientific reproducibility. \emph{Experimental
+Results}, a publication created by Cambridge University Press to address
+some of the reproducibility and open access issues in academia, also
+falls short of meeting high standards. The journal, which showcases
+articles from a variety of scientific decisions disciplines, states in
+their transparency and openness policy that ``whenever possible authors
+should make evidence and resources that underpin published findings,
+such as data, code, and other materials, available to readers without
+undue barriers to access.'' The inclusion of code and data are only
+recommended and no definition of what ``other materials'' may mean is
+provided. No components of reproducibility extending beyond those
+required at a minimum are even considered.
 
 \textbf{ADD SOURCE:}
 \url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
 
-\url{https://www.pnas.org/content/115/11/2584}
+The \emph{American Economic Review}, the first of the top economics
+journals to require the inclusion of data alongside publications, has
+stronger guidelines than several of those mentioned previously, though
+not as strong as the \emph{American Journal of Political Science}. Their
+Data and Code Availability Policy states the following: ``It is the
+policy of the American Economic Association to publish papers only if
+the data and code used in the analysis are clearly and precisely
+documented, and access to the data and code is clearly and precisely
+documented and is non-exclusive to the authors.'' SOURCE:
+\url{https://www.aeaweb.org/journals/policies/data-code}
 
-\url{https://www.researchgate.net/publication/288818031_Reproducible_research_in_statistics_A_review_and_guidelines_for_the_Biometrical_Journal}
+These requirements are quite strict, prohibiting exceptions for papers
+using data or code not available to the public in the way that many
+other journals claiming to promote reproducibility do.
+
+In the field of statistical and data sciences, the majority of highly
+ranked journals contain statements on reproducibility. On further
+inspection, however, many are inadequate in achieving their desired
+purpose.
+
+The \emph{Journal of Statistical Software}
 
 Guidelines from top Statistics Journals:
 \url{https://www.jstatsoft.org/pages/view/authors}
@@ -632,6 +656,8 @@ Annals of statistics --- nothing??
 
 \url{https://journal.r-project.org/share/author-guide.pdf} -- code +
 data
+
+\url{https://www.pnas.org/content/115/11/2584}
 
 \subsection{Reproducibility Education}\label{reproducibility-education}
 
@@ -929,8 +955,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 187.99K
-3     proteins_v_time.png   png 377.82K
+2      citrate_v_time.png   png 186.29K
+3     proteins_v_time.png   png 378.35K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -994,12 +1020,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-05 13:51:20
-2 package:th~ <NA>                        base::r~ 2020-09-05 13:51:20
-3 package:th~ <NA>                        base::l~ 2020-09-05 13:51:20
-4 package:pu~ <NA>                        base::l~ 2020-09-05 15:08:02
-5 package:fo~ <NA>                        base::l~ 2020-09-05 15:08:02
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-05 15:08:02
+1 package:re~ <NA>                        base::r~ 2020-09-05 15:08:02
+2 package:th~ <NA>                        base::r~ 2020-09-05 15:08:02
+3 package:th~ <NA>                        base::l~ 2020-09-05 15:08:02
+4 package:pu~ <NA>                        base::l~ 2020-09-06 16:16:00
+5 package:fo~ <NA>                        base::l~ 2020-09-06 16:16:00
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 16:16:01
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1109,7 +1135,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1117,9 +1143,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp1FN7qu/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1198,7 +1224,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fd925c292b0>
+<bytecode: 0x7fce5e0c4428>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
