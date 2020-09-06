@@ -97,6 +97,8 @@ Although these recommendations differ from one another, when considered in combi
 
 ## Current Attempts to Address Reproducibility in Scientific Publishing
 
+### Journal Statements On Reproducibility Across The Sciences
+
 In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
 
 The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the *American Journal of Political Science* (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers:
@@ -143,23 +145,19 @@ The *American Economic Review*, the first of the top economics journals to requi
 
 These requirements are quite strict, prohibiting exceptions for papers using data or code not available to the public in the way that many other journals claiming to promote reproducibility do.
 
-In the field of statistical and data sciences, the majority of highly ranked journals contain statements on reproducibility. On further inspection, however, many are  inadequate in achieving their desired purpose. 
+### Journal Policies In The Statistical And Data Sciences
 
-The *Journal of Statistical Software* 
+In the field of statistical and data sciences, the majority of highly ranked journals contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
 
+The *Journal of the American Statistical Association* stands out as having relatively robust requirements. The publication's guideliens require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a process form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area. **Source here:** https://jasa-acs.github.io/repro-guide/pages/author-guidelines
 
-Guidelines from top Statistics Journals:
-https://www.jstatsoft.org/pages/view/authors 
+The *Journal of Statistical Software* also has strong guidelines, though less thorough. Authors must provide *commented* source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform, and random number generation must be controlled; and replication materials (typically in the form of a script) must be provided. **Source here:** https://www.jstatsoft.org/pages/view/authors#review-process.
 
-https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=uasa20 (code + data)
+The expectations of the *Journal of Computational and Graphical Statistics* are notably weaker, requiring only that authors "submit code and datasets as online supplements to the manuscript," with exceptions for security or confidentiality, but providing no further detail. **Source:** https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=ucgs20. The *R Journal* has the same requirements, but with no exceptions on the data provision policy, stating that authors should "not use such datasets as examples." **Source** https://journal.r-project.org/share/author-guide.pdf
 
-https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=ucgs20 (code + data)
+Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all. **Sources:** https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=utas20, https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/.
 
-https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=utas20 (strongly encourages code + data)
-
-Annals of statistics --- nothing?? https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/
-
-https://journal.r-project.org/share/author-guide.pdf -- code + data
+### Assessing the Success of Academic Reproducibility Policies
 
 
 https://www.pnas.org/content/115/11/2584

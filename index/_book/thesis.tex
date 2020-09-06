@@ -501,6 +501,9 @@ important to research reproducibility across the scientific community:
 \section{Current Attempts to Address Reproducibility in Scientific
 Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}
 
+\subsection{Journal Statements On Reproducibility Across The
+Sciences}\label{journal-statements-on-reproducibility-across-the-sciences}
+
 In an attempt to increase reproducibility in the sciences, leaders from
 academic journals around the world have taken steps to create new
 standards and requirements for submitted articles. However, these
@@ -632,30 +635,60 @@ These requirements are quite strict, prohibiting exceptions for papers
 using data or code not available to the public in the way that many
 other journals claiming to promote reproducibility do.
 
+\subsection{Journal Policies In The Statistical And Data
+Sciences}\label{journal-policies-in-the-statistical-and-data-sciences}
+
 In the field of statistical and data sciences, the majority of highly
-ranked journals contain statements on reproducibility. On further
-inspection, however, many are inadequate in achieving their desired
-purpose.
+ranked journals contain statements on reproducibility. Some of these are
+quite robust, surpassing the requirements of many of the other journals
+discussed previously, while others are lacking.
 
-The \emph{Journal of Statistical Software}
+The \emph{Journal of the American Statistical Association} stands out as
+having relatively robust requirements. The publication's guideliens
+require that data be made publicly available at the time of publication
+except for reasons of security or confidentiality. It is strongly
+recommended that code be deposited in open repositories. If data is used
+in a process form, the provided code should include the necessary
+cleaning/preparation steps. Data must be in an easily understood form
+and a data dictionary should be included. Code should also be in a form
+that can be used and understood by others, including consistent and
+readable syntax and comments. Workflows involving more than one script
+should also contain a master script, Makefile, or other mechanism that
+makes it clear what each component does, in what order to run them, and
+what the inputs and outputs to each area. \textbf{Source here:}
+\url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
 
-Guidelines from top Statistics Journals:
-\url{https://www.jstatsoft.org/pages/view/authors}
+The \emph{Journal of Statistical Software} also has strong guidelines,
+though less thorough. Authors must provide \emph{commented} source code
+for their software; all figures, tables, and output must be exactly
+reproducible on at least one platform, and random number generation must
+be controlled; and replication materials (typically in the form of a
+script) must be provided. \textbf{Source here:}
+\url{https://www.jstatsoft.org/pages/view/authors\#review-process}.
 
-\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=uasa20}
-(code + data)
+The expectations of the \emph{Journal of Computational and Graphical
+Statistics} are notably weaker, requiring only that authors ``submit
+code and datasets as online supplements to the manuscript,'' with
+exceptions for security or confidentiality, but providing no further
+detail. \textbf{Source:}
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}.
+The \emph{R Journal} has the same requirements, but with no exceptions
+on the data provision policy, stating that authors should ``not use such
+datasets as examples.'' \textbf{Source}
+\url{https://journal.r-project.org/share/author-guide.pdf}
 
-\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}
-(code + data)
+Perhaps the weakest reproducibility policies come from \emph{The
+American Statistician} and the \emph{Annals of Statistics}. The former
+appears to have no requirements, stating only that it ``strongly
+encourages authors to submit datasets, code, other programs, and/or
+appendices that are directly relevant to their submitted articles,''
+while the latter appears to have no statement on reproducibility at all.
+\textbf{Sources:}
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20},
+\url{https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/}.
 
-\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
-(strongly encourages code + data)
-
-Annals of statistics --- nothing??
-\url{https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/}
-
-\url{https://journal.r-project.org/share/author-guide.pdf} -- code +
-data
+\subsection{Assessing the Success of Academic Reproducibility
+Policies}\label{assessing-the-success-of-academic-reproducibility-policies}
 
 \url{https://www.pnas.org/content/115/11/2584}
 
@@ -955,8 +988,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 186.29K
-3     proteins_v_time.png   png 378.35K
+2      citrate_v_time.png   png 186.85K
+3     proteins_v_time.png   png 375.92K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1020,12 +1053,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-05 15:08:02
-2 package:th~ <NA>                        base::r~ 2020-09-05 15:08:02
-3 package:th~ <NA>                        base::l~ 2020-09-05 15:08:02
-4 package:pu~ <NA>                        base::l~ 2020-09-06 16:16:00
-5 package:fo~ <NA>                        base::l~ 2020-09-06 16:16:00
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 16:16:01
+1 package:re~ <NA>                        base::r~ 2020-09-06 16:16:01
+2 package:th~ <NA>                        base::r~ 2020-09-06 16:16:01
+3 package:th~ <NA>                        base::l~ 2020-09-06 16:16:01
+4 package:pu~ <NA>                        base::l~ 2020-09-06 17:24:15
+5 package:fo~ <NA>                        base::l~ 2020-09-06 17:24:15
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 17:24:15
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1135,7 +1168,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1143,9 +1176,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxqOK0q/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpwXCPVS/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1224,7 +1257,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fce5e0c4428>
+<bytecode: 0x7fd2713627b0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
