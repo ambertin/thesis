@@ -609,13 +609,16 @@ Results}, a publication created by Cambridge University Press to address
 some of the reproducibility and open access issues in academia, also
 falls short of meeting high standards. The journal, which showcases
 articles from a variety of scientific decisions disciplines, states in
-their transparency and openness policy that ``whenever possible authors
-should make evidence and resources that underpin published findings,
-such as data, code, and other materials, available to readers without
-undue barriers to access.'' The inclusion of code and data are only
-recommended and no definition of what ``other materials'' may mean is
-provided. No components of reproducibility extending beyond those
-required at a minimum are even considered.
+their transparency and openness policy:
+\begin{quote}
+Whenever possible authors should make evidence and resources that
+underpin published findings, such as data, code, and other materials,
+available to readers without undue barriers to access.
+\end{quote}
+The inclusion of code and data are only recommended and no definition of
+what ``other materials'' may mean is provided. No components of
+reproducibility extending beyond those required at a minimum are even
+considered.
 
 \textbf{ADD SOURCE:}
 \url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
@@ -624,12 +627,14 @@ The \emph{American Economic Review}, the first of the top economics
 journals to require the inclusion of data alongside publications, has
 stronger guidelines than several of those mentioned previously, though
 not as strong as the \emph{American Journal of Political Science}. Their
-Data and Code Availability Policy states the following: ``It is the
-policy of the American Economic Association to publish papers only if
-the data and code used in the analysis are clearly and precisely
+Data and Code Availability Policy states the following:
+\begin{quote}
+It is the policy of the American Economic Association to publish papers
+only if the data and code used in the analysis are clearly and precisely
 documented, and access to the data and code is clearly and precisely
-documented and is non-exclusive to the authors.'' SOURCE:
-\url{https://www.aeaweb.org/journals/policies/data-code}
+documented and is non-exclusive to the authors.
+\end{quote}
+SOURCE: \url{https://www.aeaweb.org/journals/policies/data-code}
 
 These requirements are quite strict, prohibiting exceptions for papers
 using data or code not available to the public in the way that many
@@ -689,6 +694,70 @@ while the latter appears to have no statement on reproducibility at all.
 
 \subsection{Assessing the Success of Academic Reproducibility
 Policies}\label{assessing-the-success-of-academic-reproducibility-policies}
+
+As illustrated by the prior examples, academic publications across many
+different disciplines have been making an effort to incorporate
+reproducibility standards into their submission guidelines. The simple
+implementation of a policy, however, does not ensure that its goals will
+be achieved. Reproducibility can only be addressed when both authors
+\emph{and} journal reviewers actively implement publishing standards in
+practice. Without participation and dedication from all involved,
+reproducibility guidelines serve more as a theoretical goal than a
+practical achievement.
+
+So in practice, do academic reproducibility standards actually result in
+reproducible publications?
+
+Let us consider the case of the journal \emph{Science}. \emph{Science}
+instituted a reproducibility policy in 2011 and has maintained it ever
+since. In its original form, their policy stated the following:
+\begin{quote}
+All data necessary to understand, assess, and extend the conclusions of
+the manuscript must be available to any reader of Science. All computer
+codes involved in the creation or analysis of data must also be
+available to any reader of Science. After publication, all reasonable
+requests for data and materials must be fulfilled. Any restrictions on
+the availability of data, codes, or materials\ldots{}must be disclosed
+to the editors upon submission\ldots{}
+\end{quote}
+This policy is similar to many of the others considered previously,
+requiring the publishing of code and data with exceptions permitted when
+necessary.
+
+Researchers Victoria Stodden, Jennifer Seiler, and Zhaokun Ma
+(\url{https://www.pnas.org/content/115/11/2584}) tested the efficacy of
+this policy in practice, emailing corresponding authors of 204 articles
+published in the year after \emph{Science} first implmented its policy
+to request the data and code associated with their articles. The
+researchers only received (at least some of) the requested material from
+36\% of authors. This low rates were due to several factors:
+\begin{itemize}
+\tightlist
+\item
+  26\% of authors did not respond to email contact.
+\item
+  11\% of authors were unwilling to provide the data or code without
+  further information regarding the researchers' intentions.
+\item
+  11\% asked the researchers to contact someone else and that person did
+  not respond.
+\item
+  7\% refused to share data and/or code.
+\item
+  3\% directed the researchers back to their paper's supplmental
+  information section.
+\item
+  3\% of authors made a promise to follow up and then did not follow
+  through.
+\item
+  3\% of emails bounced.
+\item
+  2\% gave reasons why they could not share for ethical reasons, size
+  limitations, or some other reason.
+\end{itemize}
+Of the 56 papers they deemed likely reproducible, the authors randomly
+selected 22 and were able to replicate the results for all but 1, which
+failed due to its reliance on software that was no longer available.
 
 \url{https://www.pnas.org/content/115/11/2584}
 
@@ -1002,8 +1071,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 188.19K
-3     proteins_v_time.png   png 380.41K
+2      citrate_v_time.png   png 188.38K
+3     proteins_v_time.png   png 377.76K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1067,12 +1136,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-06 17:24:15
-2 package:th~ <NA>                        base::r~ 2020-09-06 17:24:15
-3 package:th~ <NA>                        base::l~ 2020-09-06 17:24:15
-4 package:pu~ <NA>                        base::l~ 2020-09-06 17:30:43
-5 package:fo~ <NA>                        base::l~ 2020-09-06 17:30:43
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-06 17:30:43
+1 package:re~ <NA>                        base::r~ 2020-09-06 17:30:44
+2 package:th~ <NA>                        base::r~ 2020-09-06 17:30:44
+3 package:th~ <NA>                        base::l~ 2020-09-06 17:30:44
+4 package:pu~ <NA>                        base::l~ 2020-09-07 13:47:42
+5 package:fo~ <NA>                        base::l~ 2020-09-07 13:47:42
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-07 13:47:42
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1182,7 +1251,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1190,9 +1259,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnnGZ8b/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1271,7 +1340,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f7f5fa269a8>
+<bytecode: 0x7f92d06179b0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

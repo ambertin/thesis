@@ -137,11 +137,19 @@ In the biomedical sciences, a group of editors reproesenting over 30 major journ
 
 Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by @Goodman341ps12 previously. Several of the principles are purely recommendations; there is no *requirement* that code be shared, nor metadata, and software requirements are quite loose, requiring no information about dependencies or software version.
 
-We see a similar issue even in journals designed specifically for the purpose of improving scientific reproducibility. *Experimental Results*, a publication created by Cambridge University Press to address some of the reproducibility and open access issues in academia, also falls short of meeting high standards. The journal, which showcases articles from a variety of scientific decisions disciplines, states in their transparency and openness policy that "whenever possible authors should make evidence and resources that underpin published findings, such as data, code, and other materials, available to readers without undue barriers to access." The inclusion of code and data are only recommended and no definition of what "other materials" may mean is provided. No components of reproducibility extending beyond those required at a minimum are even considered.
+We see a similar issue even in journals designed specifically for the purpose of improving scientific reproducibility. *Experimental Results*, a publication created by Cambridge University Press to address some of the reproducibility and open access issues in academia, also falls short of meeting high standards. The journal, which showcases articles from a variety of scientific decisions disciplines, states in their transparency and openness policy: 
+
+> Whenever possible authors should make evidence and resources that underpin published findings, such as data, code, and other materials, available to readers without undue barriers to access. 
+
+The inclusion of code and data are only recommended and no definition of what "other materials" may mean is provided. No components of reproducibility extending beyond those required at a minimum are even considered.
 
 **ADD SOURCE:** https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy
 
-The *American Economic Review*, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the *American Journal of Political Science*. Their Data and Code Availability Policy states the following: "It is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented, and access to the data and code is clearly and precisely documented and is non-exclusive to the authors." SOURCE: https://www.aeaweb.org/journals/policies/data-code 
+The *American Economic Review*, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the *American Journal of Political Science*. Their Data and Code Availability Policy states the following:
+
+> It is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented, and access to the data and code is clearly and precisely documented and is non-exclusive to the authors.
+
+SOURCE: https://www.aeaweb.org/journals/policies/data-code 
 
 These requirements are quite strict, prohibiting exceptions for papers using data or code not available to the public in the way that many other journals claiming to promote reproducibility do.
 
@@ -158,6 +166,31 @@ The expectations of the *Journal of Computational and Graphical Statistics* are 
 Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all. **Sources:** https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=utas20, https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/.
 
 ### Assessing the Success of Academic Reproducibility Policies
+
+As illustrated by the prior examples, academic publications across many different disciplines have been making an effort to incorporate reproducibility standards into their submission guidelines. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors *and* journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
+
+So in practice, do academic reproducibility standards actually result in reproducible publications?
+
+Let us consider the case of the journal *Science*. *Science* instituted a reproducibility policy in 2011 and has maintained it ever since. In its original form, their policy stated the following:
+
+> All data necessary to understand, assess, and extend the conclusions of the manuscript must be available to any reader of Science. All computer codes involved in the creation or analysis of data must also be available to any reader of Science. After publication, all reasonable requests for data and materials must be fulfilled. Any restrictions on the availability of data, codes, or materials...must be disclosed to the editors upon submission...
+
+This policy is similar to many of the others considered previously, requiring the publishing of code and data with exceptions permitted when necessary.
+
+Researchers Victoria Stodden, Jennifer Seiler, and Zhaokun Ma (https://www.pnas.org/content/115/11/2584) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after *Science* first implmented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36% of authors. This low rates were due to several factors:
+
+* 26% of authors did not respond to email contact.
+* 11% of authors were unwilling to provide the data or code without further information regarding the researchers' intentions.
+* 11% asked the researchers to contact someone else and that person did not respond.
+* 7% refused to share data and/or code.
+* 3% directed the researchers back to their paper's supplmental information section.
+* 3% of authors made a promise to follow up and then did not follow through.
+* 3% of emails bounced.
+* 2% gave reasons why they could not share for ethical reasons, size limitations, or some other reason.
+
+Of the 56 papers they deemed likely reproducible, the authors randomly selected 22 and were able to replicate the results for all but 1, which failed due to its reliance on software that was no longer available.
+
+
 
 
 https://www.pnas.org/content/115/11/2584
