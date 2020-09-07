@@ -190,6 +190,18 @@ Researchers Victoria Stodden, Jennifer Seiler, and Zhaokun Ma (https://www.pnas.
 
 Of the 56 papers they deemed likely reproducible, the authors randomly selected 22 and were able to replicate the results for all but 1, which failed due to its reliance on software that was no longer available.
 
+A similar study was done on the journal *Cognition*, where researchers compared the reproducibility of published work both before and after the journal instituted an open data policy, which required that authors make relevant research data publicly available prior to publication of an article.
+
+The researchers found a considerable increase in the proportion of data available statements (in constrast to 'data not available' statements, which could be present due to privacy or security concerns) since the implementation of the policy. Pre-open data policy, only 25% of articles had data available, while that number was a much higher 78% after the policy was put in place. 
+
+While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62% of the articles with data available statements had truly reusable datasets--in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49% of articles with data availability statements as reusable in practice, it is still far from ideal. 
+
+Combining these two data points indicates that *less than half* of articles published after the open data policy was instituted actually contained truly usable data.
+
+**Source** https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
+
+
+
 
 
 

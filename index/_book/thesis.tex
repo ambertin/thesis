@@ -759,6 +759,37 @@ Of the 56 papers they deemed likely reproducible, the authors randomly
 selected 22 and were able to replicate the results for all but 1, which
 failed due to its reliance on software that was no longer available.
 
+A similar study was done on the journal \emph{Cognition}, where
+researchers compared the reproducibility of published work both before
+and after the journal instituted an open data policy, which required
+that authors make relevant research data publicly available prior to
+publication of an article.
+
+The researchers found a considerable increase in the proportion of data
+available statements (in constrast to `data not available' statements,
+which could be present due to privacy or security concerns) since the
+implementation of the policy. Pre-open data policy, only 25\% of
+articles had data available, while that number was a much higher 78\%
+after the policy was put in place.
+
+While the institution of an open data policy appears to have been
+associated with a significant increase in the percentage of studies with
+data available, further research indicates that the policy was perhaps
+not as effective as intended. Many of the datasets were usable in
+theory, but not in practice. Only 62\% of the articles with data
+available statements had truly reusable datasets--in this case, meaning
+that the data were accessible, complete, and understandable. Though this
+is an increase from the pre-policy period, which saw 49\% of articles
+with data availability statements as reusable in practice, it is still
+far from ideal.
+
+Combining these two data points indicates that \emph{less than half} of
+articles published after the open data policy was instituted actually
+contained truly usable data.
+
+\textbf{Source}
+\url{https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448}
+
 \url{https://www.pnas.org/content/115/11/2584}
 
 \url{https://www.cos.io/about/news/new-measure-rates-quality-research-journals-policies-promote-transparency-and-reproducibility}
@@ -1071,8 +1102,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 188.38K
-3     proteins_v_time.png   png 377.76K
+2      citrate_v_time.png   png 185.64K
+3     proteins_v_time.png   png 381.14K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1136,12 +1167,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-06 17:30:44
-2 package:th~ <NA>                        base::r~ 2020-09-06 17:30:44
-3 package:th~ <NA>                        base::l~ 2020-09-06 17:30:44
-4 package:pu~ <NA>                        base::l~ 2020-09-07 13:47:42
-5 package:fo~ <NA>                        base::l~ 2020-09-07 13:47:42
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-07 13:47:42
+1 package:re~ <NA>                        base::r~ 2020-09-07 13:47:43
+2 package:th~ <NA>                        base::r~ 2020-09-07 13:47:43
+3 package:th~ <NA>                        base::l~ 2020-09-07 13:47:43
+4 package:pu~ <NA>                        base::l~ 2020-09-07 16:54:50
+5 package:fo~ <NA>                        base::l~ 2020-09-07 16:54:50
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-07 16:54:50
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1251,7 +1282,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1259,9 +1290,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRIZRSt/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1340,7 +1371,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f92d06179b0>
+<bytecode: 0x7f977a994b48>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
