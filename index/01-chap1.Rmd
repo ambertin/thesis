@@ -165,6 +165,25 @@ The expectations of the *Journal of Computational and Graphical Statistics* are 
 
 Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all. **Sources:** https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=utas20, https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/.
 
+### The Big Picture
+
+While previously we have focused on several case studies, it is important to also consider the wider view of the state of reproducibility policy across scientific journals. Are the examples considered previously relatively standard, or are their policies either stronger or weaker than the average policy in academia?
+
+Academics at the Center for Open Science (COS) attempted to create a metric, called the TOP Factor, to help answer this. The TOP Factor reports the steps that a journal is taking to implement open science practices. Publications receive a score from 0 to 3 based on how well they achieve different aspects of open science: 
+
+* Data citation
+* Data transparency
+* Analytical code transparency
+* Materials transparency
+* Reporting guidelines
+* Study preregistration
+* Replication
+* Publication Bias 
+
+A journal's final score is the sum of the individual scores in each of the categories. The full rubric for how the scores are calculated can be found at the following site: https://osf.io/t2yu5/.
+
+When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point. **Source**: https://www.natureindex.com/news-blog/top-factor-rates-journals-on-transparency-openness
+
 ### Assessing the Success of Academic Reproducibility Policies
 
 As illustrated by the prior examples, academic publications across many different disciplines have been making an effort to incorporate reproducibility standards into their submission guidelines. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors *and* journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
@@ -199,6 +218,12 @@ While the institution of an open data policy appears to have been associated wit
 Combining these two data points indicates that *less than half* of articles published after the open data policy was instituted actually contained truly usable data.
 
 **Source** https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
+
+In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
+
+
+
+
 
 
 

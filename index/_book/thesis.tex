@@ -692,6 +692,49 @@ while the latter appears to have no statement on reproducibility at all.
 \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20},
 \url{https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/}.
 
+\subsection{The Big Picture}\label{the-big-picture}
+
+While previously we have focused on several case studies, it is
+important to also consider the wider view of the state of
+reproducibility policy across scientific journals. Are the examples
+considered previously relatively standard, or are their policies either
+stronger or weaker than the average policy in academia?
+
+Academics at the Center for Open Science (COS) attempted to create a
+metric, called the TOP Factor, to help answer this. The TOP Factor
+reports the steps that a journal is taking to implement open science
+practices. Publications receive a score from 0 to 3 based on how well
+they achieve different aspects of open science:
+\begin{itemize}
+\tightlist
+\item
+  Data citation
+\item
+  Data transparency
+\item
+  Analytical code transparency
+\item
+  Materials transparency
+\item
+  Reporting guidelines
+\item
+  Study preregistration
+\item
+  Replication
+\item
+  Publication Bias
+\end{itemize}
+A journal's final score is the sum of the individual scores in each of
+the categories. The full rubric for how the scores are calculated can be
+found at the following site: \url{https://osf.io/t2yu5/}.
+
+When looking at the overall distribution of TOP Factor scores, we see a
+relatively grim picture: Around 50\% of journals score as low as 0-5
+overall, while only just over 5\% score more than 15, just half of the
+maximum possible score. Over 40 journals failed to score a single point.
+\textbf{Source}:
+\url{https://www.natureindex.com/news-blog/top-factor-rates-journals-on-transparency-openness}
+
 \subsection{Assessing the Success of Academic Reproducibility
 Policies}\label{assessing-the-success-of-academic-reproducibility-policies}
 
@@ -789,6 +832,10 @@ contained truly usable data.
 
 \textbf{Source}
 \url{https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448}
+
+In this small sample of cases, we see that purely having a
+reproducibility statement does not necessarily mean that all, or even a
+majority, of published work will truly be reproducible.
 
 \url{https://www.pnas.org/content/115/11/2584}
 
@@ -1016,7 +1063,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------------ fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as foll
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1042,13 +1089,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ---------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... --------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1057,7 +1104,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------------ fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1077,10 +1124,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps --------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_micep
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code --------
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1097,13 +1144,13 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory --------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ----------------
 \end{verbatim}
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 185.64K
-3     proteins_v_time.png   png 381.14K
+2      citrate_v_time.png   png 187.14K
+3     proteins_v_time.png   png 378.86K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1122,7 +1169,7 @@ used in code.
 9                                                         text/x-markdown
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files --------------
 \end{verbatim}
 \begin{verbatim}
                  path_rel    dir_rel
@@ -1143,7 +1190,7 @@ used in code.
 7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ----------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------------------
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1167,12 +1214,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-07 13:47:43
-2 package:th~ <NA>                        base::r~ 2020-09-07 13:47:43
-3 package:th~ <NA>                        base::l~ 2020-09-07 13:47:43
-4 package:pu~ <NA>                        base::l~ 2020-09-07 16:54:50
-5 package:fo~ <NA>                        base::l~ 2020-09-07 16:54:50
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-07 16:54:50
+1 package:re~ <NA>                        base::r~ 2020-09-07 16:54:51
+2 package:th~ <NA>                        base::r~ 2020-09-07 16:54:51
+3 package:th~ <NA>                        base::l~ 2020-09-07 16:54:51
+4 package:pu~ <NA>                        base::l~ 2020-09-08 19:32:27
+5 package:fo~ <NA>                        base::l~ 2020-09-08 19:32:27
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-08 19:32:27
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1282,7 +1329,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpV8ZnQG/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1290,9 +1337,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDltNZ4/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpV8ZnQG/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpV8ZnQG/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpV8ZnQG/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1371,7 +1418,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f977a994b48>
+<bytecode: 0x7fd812ead800>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
