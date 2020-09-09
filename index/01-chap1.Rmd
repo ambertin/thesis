@@ -231,6 +231,32 @@ In this small sample of cases, we see that purely having a reproducibility state
 ## Limitations on Achieving Reproducibility
 
 
+Challenges for researchers
+
+* Organizing data in a presentable and useful way
+* Being unsure about licensing/data copyright
+* Not knowing which data repository to use
+* A lack of time
+* Not being able to cover the costs of data sharing
+
+https://figshare.com/articles/Whitepaper_Practical_challenges_for_researchers_in_data_sharing/5975011
+
+Challenges for journals
+
+* Time-intensive: With AJPS example, adds a median time of 53 days to the publication workflow, involving one or more rounds of feedback and resubmissions of the replication materials.
+
+* Labor intensive: On average, takes 8 person-hours per manuscript to replicate the analyses and curate the materials for public release. The financial cost of this is not trivial.
+
+https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility
+
+Most journals have been reluctant to give additional tasks to peer reviewers who may already be overburdened with the continually increasing volume of submissions.
+
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166387
+
+As a result, policies often encourage reviewers to consider authors' compliance with data sharing policies, but formal peer review of data only occurs in a small number of journals.
+
+https://link.springer.com/chapter/10.1007/164_2019_290#Sec9
+
 
 
 
