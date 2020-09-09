@@ -97,7 +97,7 @@ Although these recommendations differ from one another, when considered in combi
 
 ## Current Attempts to Address Reproducibility in Scientific Publishing
 
-### Journal Statements On Reproducibility Across The Sciences
+### Case Studies in Journal Reproducibility Policy Across The Sciences
 
 In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
 
@@ -153,7 +153,7 @@ SOURCE: https://www.aeaweb.org/journals/policies/data-code
 
 These requirements are quite strict, prohibiting exceptions for papers using data or code not available to the public in the way that many other journals claiming to promote reproducibility do.
 
-### Journal Policies In The Statistical And Data Sciences
+### Case Studies In The Statistical And Data Sciences
 
 In the field of statistical and data sciences, the majority of highly ranked journals contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
 
@@ -165,7 +165,12 @@ The expectations of the *Journal of Computational and Graphical Statistics* are 
 
 Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all. **Sources:** https://www.tandfonline.com/action/authorSubmission?show=instructions&journalCode=utas20, https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/.
 
-### The Big Picture
+```{r out.width = '100%'}
+knitr::include_graphics("figure/stats-journals.png")
+```
+
+
+### The Big Picture: Reproducibility Across Academia
 
 While previously we have focused on several case studies, it is important to also consider the wider view of the state of reproducibility policy across scientific journals. Are the examples considered previously relatively standard, or are their policies either stronger or weaker than the average policy in academia?
 
@@ -184,11 +189,13 @@ A journal's final score is the sum of the individual scores in each of the categ
 
 When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point. **Source**: https://www.natureindex.com/news-blog/top-factor-rates-journals-on-transparency-openness
 
+Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than reqquirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
+
 ### Assessing the Success of Academic Reproducibility Policies
 
-As illustrated by the prior examples, academic publications across many different disciplines have been making an effort to incorporate reproducibility standards into their submission guidelines. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors *and* journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
+We have seen that, although not necessarily the standard, many journals across the sciences have enacted reproducibility policies. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors *and* journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
 
-So in practice, do academic reproducibility standards actually result in reproducible publications?
+It is important to ask, then, whether academic reproducibility standards *actually* result in a greater number of reproducible publications.
 
 Let us consider the case of the journal *Science*. *Science* instituted a reproducibility policy in 2011 and has maintained it ever since. In its original form, their policy stated the following:
 
@@ -220,6 +227,8 @@ Combining these two data points indicates that *less than half* of articles publ
 **Source** https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
+
+## Limitations on Achieving Reproducibility
 
 
 
