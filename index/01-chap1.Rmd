@@ -151,31 +151,33 @@ The *Journal of Statistical Software* also has strong guidelines, though less th
 
 The expectations of the *Journal of Computational and Graphical Statistics* are notably weaker, requiring only that authors "submit code and datasets as online supplements to the manuscript," with exceptions for security or confidentiality, but providing no further detail (@jcgs-guide). The *R Journal* has the same requirements, but with no exceptions on the data provision policy, stating that authors should "not use such datasets as examples" (@r-journal).
 
-Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all (@ams-guide)  https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/.
+Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all (@ams-guide)s.
 
-```{r out.width = '100%'}
+```{r out.width = '100%', echo = FALSE}
 knitr::include_graphics("figure/stats-journals.png")
 ```
-
 
 ### The Big Picture: Reproducibility Across Academia
 
 While previously we have focused on several case studies, it is important to also consider the wider view of the state of reproducibility policy across scientific journals. Are the examples considered previously relatively standard, or are their policies either stronger or weaker than the average policy in academia?
 
-Academics at the Center for Open Science (COS) attempted to create a metric, called the TOP Factor, to help answer this. The TOP Factor reports the steps that a journal is taking to implement open science practices. Publications receive a score from 0 to 3 based on how well they achieve different aspects of open science: 
+Academics at the Center for Open Science (COS) attempted to create a metric, called the TOP Factor, to help answer this. The TOP Factor reports the steps that a journal is taking to implement open science practices. Publications receive a score from 0 to 3 based on how well they achieve different aspects of open science. A journal's final score is the sum of the individual scores in each of the categories, broken down as seen in the rubric below:
 
-* Data citation
-* Data transparency
-* Analytical code transparency
-* Materials transparency
-* Reporting guidelines
-* Study preregistration
-* Replication
-* Publication Bias 
+```{r top-factor, echo = FALSE, out.width = '100%'}
+knitr::include_graphics("figure/top-1.png")
 
-A journal's final score is the sum of the individual scores in each of the categories. The full rubric for how the scores are calculated can be found at the following site: https://osf.io/t2yu5/.
+```
 
-When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point. **Source**: https://www.natureindex.com/news-blog/top-factor-rates-journals-on-transparency-openness
+```{r top-factor2, echo = FALSE, out.width = '100%'}
+knitr::include_graphics("figure/top-2.png")
+```
+
+
+
+
+
+
+When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (@top-guidelines).
 
 Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than reqquirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
 
@@ -191,7 +193,7 @@ Let us consider the case of the journal *Science*. *Science* instituted a reprod
 
 This policy is similar to many of the others considered previously, requiring the publishing of code and data with exceptions permitted when necessary.
 
-Researchers Victoria Stodden, Jennifer Seiler, and Zhaokun Ma (https://www.pnas.org/content/115/11/2584) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after *Science* first implmented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36% of authors. This low rates were due to several factors:
+@policy-effectiveness tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after *Science* first implmented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36% of authors. This low rates were due to several factors:
 
 * 26% of authors did not respond to email contact.
 * 11% of authors were unwilling to provide the data or code without further information regarding the researchers' intentions.
@@ -204,15 +206,13 @@ Researchers Victoria Stodden, Jennifer Seiler, and Zhaokun Ma (https://www.pnas.
 
 Of the 56 papers they deemed likely reproducible, the authors randomly selected 22 and were able to replicate the results for all but 1, which failed due to its reliance on software that was no longer available.
 
-A similar study was done on the journal *Cognition*, where researchers compared the reproducibility of published work both before and after the journal instituted an open data policy, which required that authors make relevant research data publicly available prior to publication of an article.
+@hardwicke2018data conducted a study on the journal *Cognition*, where researchers compared the reproducibility of published work both before and after the journal instituted an open data policy, which required that authors make relevant research data publicly available prior to publication of an article.
 
 The researchers found a considerable increase in the proportion of data available statements (in constrast to 'data not available' statements, which could be present due to privacy or security concerns) since the implementation of the policy. Pre-open data policy, only 25% of articles had data available, while that number was a much higher 78% after the policy was put in place. 
 
 While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62% of the articles with data available statements had truly reusable datasets--in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49% of articles with data availability statements as reusable in practice, it is still far from ideal. 
 
 Combining these two data points indicates that *less than half* of articles published after the open data policy was instituted actually contained truly usable data.
-
-**Source** https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
 
@@ -222,7 +222,7 @@ There are several reasons for this apparent divide between journal reproducibili
 
 ### Challenges for Authors
 
-A *Springer Nature* survey asked over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public.
+@Stodden2584 conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public 
 
 The main challenges listed by respondents were as follows:
 
@@ -234,8 +234,6 @@ The main challenges listed by respondents were as follows:
 
 The relative frequency of these issues varied across several characteristics, including author seniority, subject area, and geographical location, though authors in all categories faced some issues.
 
-**STUDY LINK** https://figshare.com/articles/Whitepaper_Practical_challenges_for_researchers_in_data_sharing/5975011
-
 Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that *recommend* the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
 
 ### Challenges for Journals
@@ -246,6 +244,8 @@ In order to make sure that all submitted articles comply with reproducibility gu
 
 This is an incredibly intensive process, as we will see in the example of the *American Journal for Political Science* (AJPS), whose reproducibility policy was discussed prevously in Chapter 1.4.1.
 
+@higher-ed describe the AJPS process in detail:
+
 Acceptance of an article for publication in the AJPS is contingent on successful reproducibility of any empirical analyses reported in the article. 
 
 After an article is submitted, staff from a third party vendor hired by AJPS go through the provided materials to ensure that they can be preserved, understood, and used by others. They then run all of the analyses in the article using the code, instructions, and data provided by the authors and compare their results to the submitted articles. Authors are then given an opportunity to resolve any issues that come up. This process is repeated until reproducibility is ensured.
@@ -254,11 +254,9 @@ Although providing a significant benefit to the scientific community, this thoro
 
 The verification process slows down the journal review process significantly, adding a median 53 days to the publication workflow, as many submitted articles require one or more rounds of resubmission (the average number of resubmissions is 1.7). It is also quite labor intensive, taking an average of 8 person-hours per manuscript to reproduce the analyses and prepare the materials for public release and adding significant monetary cost to AJPS.
 
-https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility
+Journals are often reluctant to take on such an intensive task due to the drastically increased burden it places on reviewers and on the publication's financial resources. This is particularly true given that the number of submitted articles per year has been increasing over time (@leopold2015increased). Every additional submission increases the burden of achieving reproducibility, and with a large enough volume, the challenge can quickly become seemingly impossible to manage reasonably. 
 
-Journals are often reluctant to take on such an intensive task due to the drastically increased burden it places on reviewers and on the publication's financial resources. This is particularly true given that the number of submitted articles per year has been increasing over time. ( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4317455/ ) Every additional submission increases the burden of achieving reproducibility, and with a large enough volume, the challenge can quickly become seemingly impossible to manage reasonably. 
-
-As a result, journals often encourage reviewers to consider authors' compliance with data sharing policies, but do not formally require that they ensure it as a criterion for acceptance. https://link.springer.com/chapter/10.1007/164_2019_290
+As a result, journals often encourage reviewers to consider authors' compliance with data sharing policies, but do not formally require that they ensure it as a criterion for acceptance (@hrynaszkiewicz2020publishers).
 
 
 http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf
