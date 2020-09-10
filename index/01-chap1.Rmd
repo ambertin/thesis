@@ -24,7 +24,7 @@ Reproducible research has a wide variety of benefits in the scientific community
 
 Although often confused, the concept of *reproducibility* is distinct from the similar idea of *replicability*: the ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data. Replicability has larger-scale implications than reproducibilty; the findings of research studies can not be accepted unless a variety of other researchers come to the same conclusions through independent work.
 
-```{r out.width = '100%'}
+```{r out.width = '100%', echo = FALSE}
 knitr::include_graphics("figure/versus.png")
 ```
 
@@ -97,24 +97,22 @@ Although these recommendations differ from one another, when considered in combi
 
 ## Current Attempts to Address Reproducibility in Scientific Publishing
 
+** NEED SOME STUFF HERE SUMMARIZING THIS WHOLE IDEA*
+
 ### Case Studies in Journal Reproducibility Policy Across The Sciences
 
 In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
 
-The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the *American Journal of Political Science* (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers:
+The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the *American Journal of Political Science* (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers (@ajps-guidelines).
 
 * The dataset analyzed in the paper and information about its source. If the dataset has been processed, instructions for manipulating the raw data to achieve the final data must also be shared.
 * Detailed, clear code necessary for reproducing all of the tables and figures in the paper.
 * Documentation, including a README and codebook.
 * Information about the software used to conduct the analysis, including the specific versions and packages used.
 
-**ADD SOURCE:** https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf
+These standards are quite thorough and contain mandates for the inclusion of the vast majority of components necessary for complete reproducibility. Most journals, however, do not come close to meeting such high standards in their reproducibility statements. We will consider examples from several fields:
 
-These standards are quite thorough and contain mandates for the inclusion of the vast majority of components necessary for complete reproducibility.
-
-Most journals, however, do not come close to meeting such high standards in their reproducibility statements. We will consider examples from several fields:
-
-In the biomedical sciences, a group of editors reproesenting over 30 major journals  met in 2014 to address reproducibility in their field, coming to a consensus on a set of principles they wanted to uphold. Listed below are those relating specifically to the use of data and statistical methods:
+In the biomedical sciences, a group of editors reproesenting over 30 major journals met in 2014 to address reproducibility in their field, coming to a consensus on a set of principles they wanted to uphold (@bio-principles). Listed below are those relating specifically to the use of data and statistical methods:
 
 1) Journals in the biomedical sciences should have a mechanism to check the statistical accuracy of submissions.
 
@@ -133,23 +131,17 @@ In the biomedical sciences, a group of editors reproesenting over 30 major journ
 
 5) Software sharing should be encouraged. At the minimum, authors should provide a statement describing if software is available and how to obtain it.
 
-**ADD SOURCE:** https://www.nature.com/news/journals-unite-for-reproducibility-1.16259
-
-Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by @Goodman341ps12 previously. Several of the principles are purely recommendations; there is no *requirement* that code be shared, nor metadata, and software requirements are quite loose, requiring no information about dependencies or software version.
+Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by @Goodman341ps12 previously. Several of the principles are purely recommendations; there is no requirement that code be shared, nor metadata. Additionally, software requirements are quite loose, requiring no information about dependencies or software version.
 
 We see a similar issue even in journals designed specifically for the purpose of improving scientific reproducibility. *Experimental Results*, a publication created by Cambridge University Press to address some of the reproducibility and open access issues in academia, also falls short of meeting high standards. The journal, which showcases articles from a variety of scientific decisions disciplines, states in their transparency and openness policy: 
 
 > Whenever possible authors should make evidence and resources that underpin published findings, such as data, code, and other materials, available to readers without undue barriers to access. 
 
-The inclusion of code and data are only recommended and no definition of what "other materials" may mean is provided. No components of reproducibility extending beyond those required at a minimum are even considered.
+The inclusion of code and data are only recommended and no definition of what "other materials" may mean is provided. No components of reproducibility extending beyond those required at a minimum are even considered (@exp-results).
 
-**ADD SOURCE:** https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy
-
-The *American Economic Review*, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the *American Journal of Political Science*. Their Data and Code Availability Policy states the following:
+The *American Economic Review*, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the *American Journal of Political Science*. Their Data and Code Availability Policy states the following (@aee-policy):
 
 > It is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented, and access to the data and code is clearly and precisely documented and is non-exclusive to the authors.
-
-SOURCE: https://www.aeaweb.org/journals/policies/data-code 
 
 These requirements are quite strict, prohibiting exceptions for papers using data or code not available to the public in the way that many other journals claiming to promote reproducibility do.
 

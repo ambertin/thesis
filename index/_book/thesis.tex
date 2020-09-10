@@ -285,11 +285,7 @@ original procedure but collecting new data. Replicability has
 larger-scale implications than reproducibilty; the findings of research
 studies can not be accepted unless a variety of other researchers come
 to the same conclusions through independent work.
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figure/versus.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+
 \includegraphics[width=1\linewidth]{figure/versus}
 
 Reproducibility and replicability are both necessary to the advancement
@@ -501,6 +497,8 @@ important to research reproducibility across the scientific community:
 \section{Current Attempts to Address Reproducibility in Scientific
 Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}
 
+** NEED SOME STUFF HERE SUMMARIZING THIS WHOLE IDEA*
+
 \subsection{Case Studies in Journal Reproducibility Policy Across The
 Sciences}\label{case-studies-in-journal-reproducibility-policy-across-the-sciences}
 
@@ -516,7 +514,7 @@ of Political Science} (AJPS). In 2012, the AJPS became the first
 political science journal to require authors to make their data openly
 accessible online, and the publication has instituted stricter
 requirements since. AJPS now requires that authors submit the following
-alongside their papers:
+alongside their papers (American Journal of Political Science (2016)).
 \begin{itemize}
 \tightlist
 \item
@@ -532,22 +530,17 @@ alongside their papers:
   Information about the software used to conduct the analysis, including
   the specific versions and packages used.
 \end{itemize}
-\textbf{ADD SOURCE:}
-\url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
-
 These standards are quite thorough and contain mandates for the
 inclusion of the vast majority of components necessary for complete
-reproducibility.
-
-Most journals, however, do not come close to meeting such high standards
-in their reproducibility statements. We will consider examples from
-several fields:
+reproducibility. Most journals, however, do not come close to meeting
+such high standards in their reproducibility statements. We will
+consider examples from several fields:
 
 In the biomedical sciences, a group of editors reproesenting over 30
 major journals met in 2014 to address reproducibility in their field,
-coming to a consensus on a set of principles they wanted to uphold.
-Listed below are those relating specifically to the use of data and
-statistical methods:
+coming to a consensus on a set of principles they wanted to uphold
+(National Institutes of Health (2014)). Listed below are those relating
+specifically to the use of data and statistical methods:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
@@ -593,13 +586,10 @@ statistical methods:
   provide a statement describing if software is available and how to
   obtain it.
 \end{enumerate}
-\textbf{ADD SOURCE:}
-\url{https://www.nature.com/news/journals-unite-for-reproducibility-1.16259}
-
 Even though these principles seem well-developed on the surface, they
 fail to meet even the basic requirements defined by Goodman et al.
 (2016) previously. Several of the principles are purely recommendations;
-there is no \emph{requirement} that code be shared, nor metadata, and
+there is no requirement that code be shared, nor metadata. Additionally,
 software requirements are quite loose, requiring no information about
 dependencies or software version.
 
@@ -618,24 +608,20 @@ available to readers without undue barriers to access.
 The inclusion of code and data are only recommended and no definition of
 what ``other materials'' may mean is provided. No components of
 reproducibility extending beyond those required at a minimum are even
-considered.
-
-\textbf{ADD SOURCE:}
-\url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
+considered (Cambridge University Press (2020)).
 
 The \emph{American Economic Review}, the first of the top economics
 journals to require the inclusion of data alongside publications, has
 stronger guidelines than several of those mentioned previously, though
 not as strong as the \emph{American Journal of Political Science}. Their
-Data and Code Availability Policy states the following:
+Data and Code Availability Policy states the following (American
+Economic Association (2020)):
 \begin{quote}
 It is the policy of the American Economic Association to publish papers
 only if the data and code used in the analysis are clearly and precisely
 documented, and access to the data and code is clearly and precisely
 documented and is non-exclusive to the authors.
 \end{quote}
-SOURCE: \url{https://www.aeaweb.org/journals/policies/data-code}
-
 These requirements are quite strict, prohibiting exceptions for papers
 using data or code not available to the public in the way that many
 other journals claiming to promote reproducibility do.
@@ -1247,8 +1233,8 @@ used in code.
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 187.83K
-3     proteins_v_time.png   png 376.94K
+2      citrate_v_time.png   png  186.2K
+3     proteins_v_time.png   png 378.98K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1312,12 +1298,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-10 17:49:08
-2 package:th~ <NA>                        base::r~ 2020-09-10 17:49:08
-3 package:th~ <NA>                        base::l~ 2020-09-10 17:49:08
-4 package:pu~ <NA>                        base::l~ 2020-09-10 17:50:09
-5 package:fo~ <NA>                        base::l~ 2020-09-10 17:50:09
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-10 17:50:09
+1 package:re~ <NA>                        base::r~ 2020-09-10 18:02:24
+2 package:th~ <NA>                        base::r~ 2020-09-10 18:02:24
+3 package:th~ <NA>                        base::l~ 2020-09-10 18:02:24
+4 package:pu~ <NA>                        base::l~ 2020-09-10 18:04:51
+5 package:fo~ <NA>                        base::l~ 2020-09-10 18:04:51
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-10 18:04:51
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1427,7 +1413,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpHyiqPk/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1435,9 +1421,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpHyiqPk/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpHyiqPk/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpHyiqPk/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1516,7 +1502,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7feeaf5a6db8>
+<bytecode: 0x7ff56b3d0840>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
@@ -1733,6 +1719,16 @@ Fun}\label{the-second-appendix-for-fun}
 \setlength{\parskip}{8pt}
 
 \hypertarget{refs}{}
+\hypertarget{ref-aee-policy}{}
+American Economic Association. (2020). Data and code availability
+policy. Retrieved from
+\url{https://www.aeaweb.org/journals/data/data-code-policy}
+
+\hypertarget{ref-ajps-guidelines}{}
+American Journal of Political Science. (2016, May). Guidelines for
+preparing replication files. Retrieved from
+\url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
+
 \hypertarget{ref-R-workflowr}{}
 Blischak, J., Carbonetto, P., \& Stephens, M. (2019). Workflowr: A
 framework for reproducible and collaborative data science. Retrieved
@@ -1742,6 +1738,11 @@ from \url{https://CRAN.R-project.org/package=workflowr}
 Broman, K. (2019). Initial steps toward reproducible research: Organize
 your data and code. \emph{Sitewide ATOM}. Retrieved from
 \url{https://kbroman.org/steps2rr/pages/organize.html}
+
+\hypertarget{ref-exp-results}{}
+Cambridge University Press. (2020). Experimental results - transparency
+and openness policy. Retrieved from
+\url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
 
 \hypertarget{ref-cooper2017guide}{}
 Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T.,
@@ -1825,6 +1826,11 @@ engineering. \emph{Biointerphases}, \emph{14}(2), 1--2.
 McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of
 tools that enhance reproducibility beyond package management. Retrieved
 from \url{https://CRAN.R-project.org/package=reproducible}
+
+\hypertarget{ref-bio-principles}{}
+National Institutes of Health. (2014, June). Principles and guidelines
+for reporting preclinical research. Retrieved from
+\url{https://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research}
 
 \hypertarget{ref-R-drake}{}
 OpenSci, R. (2020). Drake: A pipeline toolkit for reproducible
