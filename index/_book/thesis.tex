@@ -212,30 +212,10 @@ Second paragraph of abstract starts here.
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
-\chapter*{Introduction}\label{introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter{This will automatically install the \{remotes\} package and
+\{thesisdown\}}\label{this-will-automatically-install-the-remotes-package-and-thesisdown}
 
-Potential sources:
-
-\url{https://arxiv.org/abs/1401.3269}
-
-\url{https://academic.oup.com/isp/article-abstract/17/4/392/2528285}
-
-\url{https://dl.acm.org/doi/abs/10.1145/3186266?casa_token=3yv8mooiZXYAAAAA:AUWshgsmm-4ulr7qYK2vm3a6EdJneFLgn3nxplGeaZpT7hgFcIRkRA7edGHdjg_pPvs5p-GoHHFo}
-
-\url{https://dl.acm.org/doi/abs/10.1145/3027385.3029445?casa_token=rgNbcFWIA1AAAAAA:cZRPAy1KYewKfheFe74GBDwKzF9Q8X0xMau0AtBVkYSTYrd7apJEnwDY_T8oqh1cZQED1gHjjtq4}
-
-\url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/}
-
-\url{https://guides.lib.uw.edu/research/reproducibility/teaching}
-
-\url{https://escholarship.org/uc/item/90b2f5xh}
-
-\url{https://www.mitpressjournals.org/doi/full/10.1162/dint_a_00053}
-
-\url{https://www.pnas.org/content/115/11/2584}
-
-\url{https://www.pnas.org/content/115/11/2561}
+Placeholder
 
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
@@ -245,22 +225,14 @@ In the field of data science, research is considered fully
 \emph{reproducible} when the requisite code and data files produce
 identical results when run by another analyst, or more generally, when a
 researcher can ``duplicate the results of a prior study using the same
-materials as were used by the original investigator''.
-
-\textbf{Add Source:} K. Bollen, J. T. Cacioppo, R. Kaplan, J. Krosnick,
-J. L. Olds, Social, Behavioral, and Economic Sciences Perspectives on
-Robust and Reliable Science (National Science Foundation, Arlington, VA,
-2015).
+materials as were used by the original investigator'' (Bollen et al.
+(2015)).
 
 This term was first coined in 1992 by computer scientist Jon Claerbout,
 who associated it with a ``software platform and set of procedures that
 permit the reader of a paper to see the entire processing trail from the
-raw data and code to figures and tables''.
-
-\textbf{Add source:} J. Claerbout, M. Karrenbach, Electronic documents
-give reproducible research a new meaning, in Proceedings of the 62nd
-Annual International Meeting of the Society of Exploration Geophysics,
-New Orleans, USA, 25 to 29 October 1992.
+raw data and code to figures and tables'' (Claerbout \& Karrenbach
+(1992)).
 
 Since its inception, the concept of reproducibility has been applied
 across many different data-intensive fields, including epidemiology,
@@ -307,14 +279,11 @@ Nature survey believed that science was going through a ``crisis'' of
 reproducibility. Additionally, the vast majority of researchers across
 all fields studied reported having been unable to reproduce another
 researcher's results, while approximately half reported having been
-unable to reproduce their own.
-\url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
-Other studies paint an even bleaker picture: a 2015 study found that
-over 50\% of studies psychology failed reproducibility tests and
-research from 2012 found that figure closer to 90\% in the field of
-cancer biology.
-(\url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248},
-\url{https://www.nature.com/articles/483531a})
+unable to reproduce their own (Baker (2016)). Other studies paint an
+even bleaker picture: a 2015 study found that over 50\% of studies
+psychology failed reproducibility tests and research from 2012 found
+that figure closer to 90\% in the field of cancer biology (Baker (2015),
+Begley \& Ellis (2012)).
 
 In the past several years, this ``crisis'' of reproducibility has risen
 toward the forefront of scientific discussion. Without reproducibility,
@@ -646,36 +615,32 @@ that can be used and understood by others, including consistent and
 readable syntax and comments. Workflows involving more than one script
 should also contain a master script, Makefile, or other mechanism that
 makes it clear what each component does, in what order to run them, and
-what the inputs and outputs to each area. \textbf{Source here:}
-\url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
+what the inputs and outputs to each area (American Statistical
+Association (2020)).
 
 The \emph{Journal of Statistical Software} also has strong guidelines,
 though less thorough. Authors must provide \emph{commented} source code
 for their software; all figures, tables, and output must be exactly
 reproducible on at least one platform, and random number generation must
 be controlled; and replication materials (typically in the form of a
-script) must be provided. \textbf{Source here:}
-\url{https://www.jstatsoft.org/pages/view/authors\#review-process}.
+script) must be provided (Journal of Statistical Software (2020)).
 
 The expectations of the \emph{Journal of Computational and Graphical
 Statistics} are notably weaker, requiring only that authors ``submit
 code and datasets as online supplements to the manuscript,'' with
 exceptions for security or confidentiality, but providing no further
-detail. \textbf{Source:}
-\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}.
-The \emph{R Journal} has the same requirements, but with no exceptions
-on the data provision policy, stating that authors should ``not use such
-datasets as examples.'' \textbf{Source}
-\url{https://journal.r-project.org/share/author-guide.pdf}
+detail (Journal of Computational and Graphical Statistics (2020)). The
+\emph{R Journal} has the same requirements, but with no exceptions on
+the data provision policy, stating that authors should ``not use such
+datasets as examples'' (R Journal Editors (2020)).
 
 Perhaps the weakest reproducibility policies come from \emph{The
 American Statistician} and the \emph{Annals of Statistics}. The former
 appears to have no requirements, stating only that it ``strongly
 encourages authors to submit datasets, code, other programs, and/or
 appendices that are directly relevant to their submitted articles,''
-while the latter appears to have no statement on reproducibility at all.
-\textbf{Sources:}
-\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20},
+while the latter appears to have no statement on reproducibility at all
+(The American Statistician (2020))
 \url{https://imstat.org/journals-and-publications/annals-of-statistics/annals-of-statistics-manuscript-submission/}.
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -942,91 +907,12 @@ they ensure it as a criterion for acceptance.
 \chapter{Addressing the Challenges of
 Reproducibility}\label{my-solution}
 
-{[}
-
-The relative simplicity of the reproducibility challenge makes it an
-ideal candidate for solution-building. Although significant progress on
-addressing reproducibility on a widespread scale is a long-term
-challenge, impactful forward progress--if on a smaller scale--can be
-achieved in the short-term.
-
-My research has focused on doing just this, providing tools to assist
-with achieving reproducibility in one segment of the scientific
-community: RStudio users.
-
-{]} --- DO WE NEED THIS?
+Placeholder
 
 \section{Review Of Previous Work}\label{review-of-previous-work}
 
 \subsection{R Packages and Other
 Software}\label{r-packages-and-other-software}
-
-Much of this work is highly generalized, written to be applicable to
-users working with a variety of statistical software programs. Because
-all statistical software programs operate differently, these
-recommendations are inherently vague and difficult to implement,
-particularly to new analysts who are relatively unfamiliar with their
-software. Focused attempts to address reproducibility in specific
-certain software programs are more likely to be successful. We focus on
-\texttt{R}, due to its open-source nature, accessibility, and popularity
-as a tool for statistical analysis.
-
-A small body of \texttt{R} packages focuses on research reproducibility.
-\texttt{rrtools} (Marwick (2019)) addresses some of the issues discussed
-in Marwick, Boettiger, \& Mullen (2018) by creating a basic \texttt{R}
-package structure for a data analysis project and implementing a basic
-\texttt{testthat::check} functionality. The \texttt{orderly} (FitzJohn
-et al. (2020)) package also focuses on file structure, requiring the
-user to declare a desired project structure (typically a step-by-step
-structure, where outputs from one step are inputs into the next) at the
-beginning and then creating the files necessary to achieve that
-structure. \texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens
-(2019)) functionality is based around version control and making code
-easily available online. It works to generate a website containing
-time-stamped, versioned, and documented results. \texttt{checkers}
-(Ross, DeCicco, \& Randhawa (2018)) allows you to create custom checks
-that examine different aspects of reproducibility. \texttt{packrat}
-(Ushey, McPherson, Cheng, Atkins, \& Allaire (2018)) is focused on
-dependencies, creating a packaged folder containing a project as well as
-all of its dependencies so that projects dependent on lesser-used
-packages can be easily shared across computers. \texttt{drake} (OpenSci
-(2020)) analyzes workflows, skips steps where results are up to date,
-and provides evidence that results match the underlying code and data.
-Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package
-focuses on the concept of caching: saving information so that projects
-can be run faster each time they are re-completed from the start.
-
-Many of these packages are narrow, with each effectively addressing a
-small component of reproducibility: file structure, modularization of
-code, version control, etc. These packages often succeed in their area
-of focus, but at the cost of accessibility to a wider audience. Their
-functions are often quite complex to use, and many steps must be
-completed to achieve the required reproducibility goal. This cumbersome
-nature means that most reproducibility packages currently available are
-not easily accessible to users near the beginning of their \texttt{R}
-journey, nor particularly useful to those looking for quick and easy
-reproducibility checks. A more effective way of realizing widespread
-reproducibility is to make the process for doing so simple enough that
-it takes little to no conscious effort to implement. You want users to
-``fall into a hole'' (we paraphrase Hadley Wickham) of good practice.
-
-\texttt{Continuous\ integration} tools provide more general approaches
-to automated checking, which can enhance reproducibility with minimal
-code. For example, \texttt{wercker}---a command line tool that leverages
-Docker---enables users to test whether their projects will successfully
-compile when run on a variety of operating systems without access to the
-user's local hard drive (Oracle Corporation (2019)).
-\texttt{GitHub\ Actions} is integrated into GitHub and can be configured
-to do similar checks on projects hosted in repositories.
-\texttt{Travis\ CI} and \texttt{Circle\ CI} are popular continuous
-integration tools that can also be used to check \texttt{R} code.
-
-However, while these tools can be useful, they are generalized so as to
-be useful to the widest audience. As a result, their checks are not
-designed to be \texttt{R}-specific, which makes them sub-optimal for
-users looking to address reproducibility issues involving features
-specific to the \texttt{R} programming language, such as package
-installation and seed setting.
 
 \section{Identifying Gaps In Existing
 Solutions}\label{identifying-gaps-in-existing-solutions}
@@ -1037,571 +923,29 @@ Reproducibility}{My Contribution: fertile, An R Package Creating Optimal Conditi
 
 \subsection{Package Overview}\label{package-overview}
 
-\texttt{fertile} attempts to address these gaps in existing software by
-providing a simple, easy-to-learn reproducibility package that, rather
-than focusing intensely on a specific area, provides some information
-about a wide variety of aspects influencing reproducibility.
-\texttt{fertile} is flexible, offering benefits to users at any stage in
-the data analysis workflow, and provides \texttt{R}-specific features,
-which address certain aspects of reproducibility that can be missed by
-external project development software.
-
-\texttt{fertile} is designed to be used on data analyses organized as
-\texttt{R} Projects (i.e.~directories containing an \texttt{.Rproj}
-file). Once an \texttt{R} Project is created, \texttt{fertile} provides
-benefits throughout the data analysis process, both during development
-as well as after the fact. \texttt{fertile} achieves this by operating
-in two modes: proactively (to prevent reproducibility mistakes from
-happening in the first place), and retroactively (analyzing code that
-has already been written for potential problems).
-
-Much of the available literature focuses on file structure,
-organization, and naming, and \texttt{fertile}'s features are consistent
-with this. Marwick et al. (2018) provide the framework for file
-structure that \texttt{fertile} is based on: a structure similar to that
-of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an
-\texttt{R} folder, as well as \texttt{data}, \texttt{data-raw},
-\texttt{inst}, and \texttt{vignettes}.
-
 \subsection{Proactive Use}\label{proactive-use}
-
-Proactively, the package identifies potential mistakes as they are made
-by the user and outputs an informative message as well as a recommended
-solution. For example, \texttt{fertile} catches when a user passes a
-potentially problematic file path---such as an absolute path, or a path
-that points to a location outside of the project directory---to a
-variety of common input/output functions operating on many different
-file types.
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(fertile)}
-\KeywordTok{file.exists}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected absolute paths
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected paths that lead outside the project directory
-\end{verbatim}
-\texttt{fertile} is even more aggressive with functions (like
-\texttt{setwd()}) that are almost certain to break reproducibility,
-causing them to throw errors that prevent their execution and providing
-recommendations for better alternatives.
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"~/Desktop"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: setwd() is likely to break reproducibility. Use here::here() instead.
-\end{verbatim}
-These proactive warning features are activated immediately after
-attaching the \texttt{fertile} package and require no additional effort
-by the user.
 
 \subsection{Retroactive Use}\label{retroactive-use}
 
-Retroactively, \texttt{fertile} analyzes potential obstacles to
-reproducibility in an RStudio Project (i.e., a directory that contains
-an \texttt{.Rproj} file). The package considers several different
-aspects of the project which may influence reproducibility, including
-the directory structure, file paths, and whether randomness is used
-thoughtfully.
-
-The end products of these analyses are reproducibility reports
-summarizing a project's adherence to reproducibility standards and
-recommending remedies for where the project falls short. For example,
-\texttt{fertile} might identify the use of randomness in code and
-recommend setting a seed if one is not present.
-
-Users can access the majority of \texttt{fertile}'s retroactive features
-through two primary functions, \texttt{proj\_check()} and
-\texttt{proj\_analyze()}.
-
-The \texttt{proj\_check()} function runs fifteen different
-reproducibility tests, noting which ones passed, which ones failed, the
-reason for failure, a recommended solution, and a guide to where to look
-for help. These tests include: looking for a clear build chain, checking
-to make sure the root level of the project is clear of clutter,
-confirming that there are no files present that are not being directly
-used by or created by the code, and looking for uses of randomness that
-do not have a call to \texttt{set.seed()} present. A full list is
-provided below:
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{list_checks}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
--- The available checks in `fertile` are as follows: ---------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
- [1] "has_tidy_media"          "has_tidy_images"        
- [3] "has_tidy_code"           "has_tidy_raw_data"      
- [5] "has_tidy_data"           "has_tidy_scripts"       
- [7] "has_readme"              "has_no_lint"            
- [9] "has_proj_root"           "has_no_nested_proj_root"
-[11] "has_only_used_files"     "has_clear_build_chain"  
-[13] "has_no_absolute_paths"   "has_only_portable_paths"
-[15] "has_no_randomness"      
-\end{verbatim}
-Subsets of the fifteen tests can be invoked using the
-\texttt{tidyselect} helper functions (Henry \& Wickham (2020)) in
-combination with the more limited \texttt{proj\_check\_some()} function.
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{proj_dir <-}\StringTok{ "project_miceps"}
-\end{Highlighting}
-\end{Shaded}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{proj_check_some}\NormalTok{(proj_dir, }\KeywordTok{contains}\NormalTok{(}\StringTok{"paths"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
--- Compiling... ----------------------------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
--- Rendering R scripts... ------------------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
--- Running reproducibility checks ----------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-v Checking for no absolute paths
-\end{verbatim}
-\begin{verbatim}
-v Checking for only portable paths
-\end{verbatim}
-\begin{verbatim}
--- Summary of fertile checks ---------------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-v Reproducibility checks passed: 2
-\end{verbatim}
-Each test can also be run individually by calling the function matching
-its check name.
-
-The \texttt{proj\_analyze()} function creates a report documenting the
-structure of a data analysis project. This report contains information
-about all packages referenced in code, the files present in the
-directory and their types, suggestions for moving files to create a more
-organized structure, and a list of reproducibility-breaking file paths
-used in code.
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{proj_analyze}\NormalTok{(proj_dir)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
--- Analysis of reproducibility for project_miceps ------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
---   Packages referenced in source code ----------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 9 x 3
-  package       N used_in                    
-  <chr>     <int> <chr>                      
-1 broom         1 project_miceps/analysis.Rmd
-2 dplyr         1 project_miceps/analysis.Rmd
-3 ggplot2       1 project_miceps/analysis.Rmd
-4 purrr         1 project_miceps/analysis.Rmd
-5 readr         1 project_miceps/analysis.Rmd
-6 rmarkdown     1 project_miceps/analysis.Rmd
-7 skimr         1 project_miceps/analysis.Rmd
-8 stargazer     1 project_miceps/analysis.Rmd
-9 tidyr         1 project_miceps/analysis.Rmd
-\end{verbatim}
-\begin{verbatim}
---   Files present in directory ------------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-                     file   ext    size
-1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png  186.2K
-3     proteins_v_time.png   png 378.98K
-4   Blot_data_updated.csv   csv  14.43K
-5      CS_data_redone.csv   csv   7.39K
-6                mice.csv   csv  14.33K
-7               README.md    md      39
-8            miceps.Rproj Rproj     204
-9            analysis.Rmd   Rmd   4.94K
-                                                                     mime
-1 application/vnd.openxmlformats-officedocument.wordprocessingml.document
-2                                                               image/png
-3                                                               image/png
-4                                                                text/csv
-5                                                                text/csv
-6                                                                text/csv
-7                                                           text/markdown
-8                                                            text/rstudio
-9                                                         text/x-markdown
-\end{verbatim}
-\begin{verbatim}
---   Suggestions for moving files ----------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-                 path_rel    dir_rel
-1   Blot_data_updated.csv   data-raw
-2      CS_data_redone.csv   data-raw
-3 Estrogen_Receptors.docx inst/other
-4            analysis.Rmd  vignettes
-5      citrate_v_time.png inst/image
-6                mice.csv   data-raw
-7     proteins_v_time.png inst/image
-                                                                                               cmd
-1     file_move('project_miceps/Blot_data_updated.csv', fs::dir_create('project_miceps/data-raw'))
-2        file_move('project_miceps/CS_data_redone.csv', fs::dir_create('project_miceps/data-raw'))
-3 file_move('project_miceps/Estrogen_Receptors.docx', fs::dir_create('project_miceps/inst/other'))
-4             file_move('project_miceps/analysis.Rmd', fs::dir_create('project_miceps/vignettes'))
-5      file_move('project_miceps/citrate_v_time.png', fs::dir_create('project_miceps/inst/image'))
-6                  file_move('project_miceps/mice.csv', fs::dir_create('project_miceps/data-raw'))
-7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
-\end{verbatim}
-\begin{verbatim}
---   Problematic paths logged --------------------------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-NULL
-\end{verbatim}
 \subsection{Logging}\label{logging}
-
-\texttt{fertile} also contains logging functionality, which records
-commands run in the console that have the potential to affect
-reproducibility, enabling users to look at their past history at any
-time. The package focuses mostly on package loading and file opening,
-noting which function was used, the path or package it referenced, and
-the timestamp at which that event happened. Users can access the log
-recording their commands at any time via the \texttt{log\_report()}
-function:
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{log_report}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-# A tibble: 6 x 4
-  path        path_abs                    func     timestamp          
-  <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-10 18:02:24
-2 package:th~ <NA>                        base::r~ 2020-09-10 18:02:24
-3 package:th~ <NA>                        base::l~ 2020-09-10 18:02:24
-4 package:pu~ <NA>                        base::l~ 2020-09-10 18:04:51
-5 package:fo~ <NA>                        base::l~ 2020-09-10 18:04:51
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-10 18:04:51
-\end{verbatim}
-The log, if not managed, can grow very long over time. For users who do
-not desire such functionality, \texttt{log\_clear()} provides a way to
-erase the log and start over.
 
 \subsection{Utility Functions}\label{utility-functions}
 
-\texttt{fertile} also provides several useful utility functions that may
-assist with the process of data analysis.
-
 \subsection{File Path Management}\label{file-path-management}
 
-The \texttt{check\_path()} function analyzes a vector of paths (or a
-single path) to determine whether there are any absolute paths or paths
-that lead outside the project directory.
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Path inside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-# A tibble: 0 x 3
-# ... with 3 variables: path <chr>, problem <chr>, solution <chr>
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Absolute path (current working directory)}
-\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected absolute paths
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Path outside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"../fertile.Rmd"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected paths that lead outside the project directory
-\end{verbatim}
 \subsection{File Types}\label{file-types}
 
-There are several functions that can be used to check the type of a
-file:
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{is_data_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"mice.csv"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{is_image_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"proteins_v_time.png"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{is_text_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"README.md"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{is_r_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"analysis.Rmd"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
 \subsection{Temporary Directories}\label{temporary-directories}
 
-The \texttt{sandbox()} function allows the user to make a copy of their
-project in a temporary directory. This can be useful for ensuring that
-projects run properly when access to the local file system is removed.
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{proj_dir}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] "project_miceps"
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(proj_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-project_miceps/Blot_data_updated.csv
-project_miceps/CS_data_redone.csv
-project_miceps/Estrogen_Receptors.docx
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{temp_dir <-}\StringTok{ }\KeywordTok{sandbox}\NormalTok{(proj_dir)}
-\NormalTok{temp_dir}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(temp_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp52aBwm/project_miceps/Estrogen_Receptors.docx
-\end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
 
-One of the challenges with ensuring that work is reproducible is the
-issue of dependencies. Many data analysis projects reference a variety
-of \texttt{R} packages in their code. When such projects are shared with
-other users who may not have the required packages downloaded, it can
-cause errors that prevent the project from running properly.
-
-The \texttt{proj\_pkg\_script()}\} function assists with this issue by
-making it simple and fast to download dependencies. When run on an
-\texttt{R} project directory, the function creates a \texttt{.R} script
-file that contains the code needed to install all of the packages
-referenced in the project, differentiating between packages located on
-CRAN and those located on GitHub.
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{install_script <-}\StringTok{ }\KeywordTok{proj_pkg_script}\NormalTok{(proj_dir)}
-\KeywordTok{cat}\NormalTok{(}\KeywordTok{readChar}\NormalTok{(install_script, }\FloatTok{1e5}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-# Run this script to install the required packages for this R project.
-# Packages hosted on CRAN...
-install.packages(c( 'broom', 'dplyr', 'ggplot2', 'purrr', 'readr', 'rmarkdown', 'skimr', 'stargazer', 'tidyr' ))
-# Packages hosted on GitHub...
-\end{verbatim}
 \section{\texorpdfstring{How \texttt{fertile}
 Works}{How fertile Works}}\label{how-fertile-works}
-
-Much of the functionality in \texttt{fertile} is achieved by writing
-\texttt{shims} \textbf{link to wikipedia page here}. \texttt{fertile}'s
-shimmed functions intercept the user's commands and perform various
-logging and checking tasks before executing the desired function. Our
-process is:
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Identify an \texttt{R} function that is likely to be involved in
-  operations that may break reproducibility. Popular functions
-  associated with only one package (e.g., \texttt{read\_csv()} from
-  \texttt{readr}) are ideal candidates.
-\item
-  Create a function in \texttt{fertile} with the same name that takes
-  the same arguments (and always the dots \texttt{...}).
-\item
-  Write this new function so that it:
-\end{enumerate}
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\tightlist
-\item
-  captures any arguments,
-\item
-  logs the name of the function called,
-\item
-  performs any checks on these arguments, and
-\item
-  calls the original function with the original arguments. Except where
-  warranted, the execution looks the same to the user as if they were
-  calling the original function.
-\end{enumerate}
-Most shims are quite simple and look something like what is shown below
-for \texttt{read\_csv()}.
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{fertile}\OperatorTok{::}\NormalTok{read_csv}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-function(file, ...) {
-  if (interactive_log_on()) {
-    log_push(file, "readr::read_csv")
-    check_path_safe(file)
-    readr::read_csv(file, ...)
-  }
-}
-<bytecode: 0x7ff56b3d0840>
-<environment: namespace:fertile>
-\end{verbatim}
-\texttt{fertile} shims many common functions, including those that read
-in a variety of data types, write data, and load packages. This works
-both proactively and retroactively, as the shimmed functions written in
-\texttt{fertile} are activated both when the user is coding
-interactively and when a file containing code is rendered.
-
-In order to ensure that the \texttt{fertile} versions of functions
-(``shims'') always supersede (``mask'') their original namesakes when
-called, \texttt{fertile} uses its own shims of the \texttt{library} and
-\texttt{require} functions to manipulate the \texttt{R} \texttt{search}
-path so that it is always located in the first position. In the
-\texttt{fertile} version of \texttt{library()}, we detach
-\texttt{fertile} from the search path, load the requested package, and
-then re-attach \texttt{fertile}. This ensures that when a user executes
-a command, \texttt{R} will check \texttt{fertile} for a matching
-function before considering other packages. While it is possible that
-this shifty behavior could lead to unintended consequences, our goal is
-to catch a good deal of problems before they become problematic. Users
-can easily disable \texttt{fertile} by detaching it, or not loading it
-in the first place.
 
 \section{\texorpdfstring{\texttt{fertile} in Practice: Experimental
 Results From Smith College Student
 Use}{fertile in Practice: Experimental Results From Smith College Student Use}}\label{fertile-in-practice-experimental-results-from-smith-college-student-use}
-
-\texttt{fertile} is designed to: 1) be simple enough that users with
-minimal \texttt{R} experience can use the package without issue, 2)
-increase the reproducibility of work produced by its users, and 3)
-educate its users on why their work is or is not reproducible and
-provide guidance on how to address any problems.
-
-To test \texttt{fertile}'s effectiveness, we began an initial randomized
-control trial of the package on an introductory undergraduate data
-science course at Smith College in Spring 2020 \textbf{ADD FOOTNOTE}
-(This study was approved by Smith College IRB, Protocol \#19-032).
-
-The experiment was structured as follows:
-
-1.Students are given a form at the start of the semester asking whether
-they consent to participate in a study on data science education. In
-order to successfully consent, they must provide their system username,
-collected through the command \texttt{Sys.getenv("LOGNAME")}. To
-maintain privacy the results are then transformed into a hexadecimal
-string via the \texttt{md5()} hashing function.
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\item
-  These hexadecimal strings are then randomly assigned into equally
-  sized groups, one experimental group that receives the features of
-  \texttt{fertile} and one group that receives a control.
-\item
-  The students are then asked to download a package called
-  \texttt{sds192} (the course number and prefix), which was created for
-  the purpose of this trial. It leverages an \texttt{.onAttach()}
-  function to scan the \texttt{R} environment and collect the username
-  of the user who is loading the package and run it through the same
-  hashing algorithm as used previously. It then identifies whether that
-  user belongs to the experimental or the control group. Depending on
-  the group they are in, they receive a different version of the
-  package.
-\item
-  The experimental group receives the basic \texttt{sds192} package,
-  which consists of some data sets and \texttt{R} Markdown templates
-  necessary for completing homework assignments and projects in the
-  class, but also has \texttt{fertile} installed and loaded silently in
-  the background. The package's proactive features are enabled, and
-  therefore users will receive warning messages when they use absolute
-  or non-portable paths or attempt to change their working directory.
-  The control group receives only the basic \texttt{sds192} package,
-  including its data sets and \texttt{R} Markdown templates. All
-  students from both groups then use their version of the package
-  throughout the semester on a variety of projects.
-\item
-  Both groups are given a short quiz on different components of
-  reproducibility that are intended to be taught by \texttt{fertile} at
-  both the beginning and end of the semester. Their scores are then
-  compared to see whether one group learned more than the other group or
-  whether their scores were essentially equivalent. Additionally, for
-  every homework assignment submitted, the professor takes note of
-  whether or not the project compiles successfully.
-\end{enumerate}
-Based on the results, we hope to determine whether \texttt{fertile} was
-successful at achieving its intended goals. A lack of notable difference
-between the \emph{experimental} and \emph{control} groups in terms of
-the number of code-related questions asked throughout the semester would
-indicate that \texttt{fertile} achieved its goal of simplicity. A higher
-average for the \emph{experimental} group in terms of the number of
-homework assignments that compiled successfully would indicate that
-\texttt{fertile} was successful in increasing reproducibility. A greater
-increase over the semester in the reproducibility quiz scores for
-students in the \emph{experimental} group compared with the
-\emph{control} group would indicate that \texttt{fertile} achieved its
-goal of educating users on reproducibility. Success according to these
-metrics would provide evidence showing \texttt{fertile}'s benefit as
-tool to help educators introduce reproducibility concepts in the
-classroom.
 
 \chapter{Incorporating Reproducibility Tools Into The Greater Data
 Science Community}\label{applications}
@@ -1668,55 +1012,20 @@ hidden throughout the document (using the \texttt{include\ =\ FALSE}
 chunk tag) to help with readibility and/or setup.
 
 \textbf{In the main Rmd file}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# This chunk ensures that the thesisdown package is}
-\CommentTok{# installed and loaded. This thesisdown package includes}
-\CommentTok{# the template files for the thesis.}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(remotes)) \{}
-  \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-    \KeywordTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\DataTypeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \KeywordTok{stop}\NormalTok{(}
-      \KeywordTok{paste}\NormalTok{(}\StringTok{'You need to run install.packages("remotes")",}
-\StringTok{            "first in the Console.'}\NormalTok{)}
-\NormalTok{    )}
-\NormalTok{  \}}
-\NormalTok{\}}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(thesisdown)) \{}
-  \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-\NormalTok{    remotes}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
-\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
-    \KeywordTok{stop}\NormalTok{(}
-      \KeywordTok{paste}\NormalTok{(}
-        \StringTok{"You need to run"}\NormalTok{,}
-        \StringTok{'remotes::install_github("ismayc/thesisdown")'}\NormalTok{,}
-        \StringTok{"first in the Console."}
-\NormalTok{      )}
-\NormalTok{    )}
-\NormalTok{  \}}
-\NormalTok{\}}
-\KeywordTok{library}\NormalTok{(thesisdown)}
-\CommentTok{# Set how wide the R output will go}
-\KeywordTok{options}\NormalTok{(}\DataTypeTok{width =} \DecValTok{70}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+
 \textbf{In Chapter \ref{ref-labels}:}
 
 \chapter{The Second Appendix, for
 Fun}\label{the-second-appendix-for-fun}
 
-\backmatter
-
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}
 
-\markboth{References}{References}
+Placeholder
 
-\noindent
+\section{R Markdown}\label{r-markdown}
 
-\setlength{\parindent}{-0.20in} \setlength{\leftskip}{0.20in}
-\setlength{\parskip}{8pt}
+\section{Including Plots}\label{including-plots}
 
 \hypertarget{refs}{}
 \hypertarget{ref-aee-policy}{}
@@ -1729,10 +1038,29 @@ American Journal of Political Science. (2016, May). Guidelines for
 preparing replication files. Retrieved from
 \url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
 
-\hypertarget{ref-R-workflowr}{}
-Blischak, J., Carbonetto, P., \& Stephens, M. (2019). Workflowr: A
-framework for reproducible and collaborative data science. Retrieved
-from \url{https://CRAN.R-project.org/package=workflowr}
+\hypertarget{ref-asa-guide}{}
+American Statistical Association. (2020). JASA acs reproducibility
+guide. Retrieved from
+\url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
+
+\hypertarget{ref-nature-psych}{}
+Baker, M. (2015). Over half of psychological studies fail
+reproducibility test. \emph{Nature}. Retrieved from
+\url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248}
+
+\hypertarget{ref-nature-crisis}{}
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility.
+\emph{Nature}. Retrieved from
+\url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
+
+\hypertarget{ref-begley2012raise}{}
+Begley, C. G., \& Ellis, L. M. (2012). Raise standards for preclinical
+cancer research. \emph{Nature}, \emph{483}(7391), 531--533.
+
+\hypertarget{ref-arlington}{}
+Bollen, K., Cacioppo, J. T., Kaplan, R. M., Krosnick, J. A., Olds, J.
+L., \& Dean, H. (2015). Report of the subcommittee on replicability in
+science advisory committee to the nsf sbe directorate.
 
 \hypertarget{ref-broman}{}
 Broman, K. (2019). Initial steps toward reproducible research: Organize
@@ -1743,6 +1071,12 @@ your data and code. \emph{Sitewide ATOM}. Retrieved from
 Cambridge University Press. (2020). Experimental results - transparency
 and openness policy. Retrieved from
 \url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
+
+\hypertarget{ref-claerbout}{}
+Claerbout, J. F., \& Karrenbach, M. (1992). Electronic documents give
+reproducible research a new meaning. In \emph{SEG technical program
+expanded abstracts 1992} (pp. 601--604). Society of Exploration
+Geophysicists.
 
 \hypertarget{ref-cooper2017guide}{}
 Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T.,
@@ -1763,11 +1097,6 @@ In E. N. Zalta (Ed.), \emph{The stanford encyclopedia of philosophy}
 \url{https://plato.stanford.edu/archives/win2018/entries/scientific-reproducibility/};
 Metaphysics Research Lab, Stanford University.
 
-\hypertarget{ref-R-orderly}{}
-FitzJohn, R., Ashton, R., Hill, A., Eden, M., Hinsley, W., Russell, E.,
-\& Thompson, J. (2020). Orderly: Lightweight reproducible reporting.
-Retrieved from \url{https://CRAN.R-project.org/package=orderly}
-
 \hypertarget{ref-unix}{}
 Gancarz, M. (2003). \emph{Linux and the unix philosophy} (2nd ed.).
 Woburn, MA: Digital Press.
@@ -1783,15 +1112,20 @@ reproducibility crisis: The access to transparent statistics (acts) call
 to action. \emph{BioEssays}, \emph{42}(1), 1900189.
 \url{http://doi.org/10.1002/bies.201900189}
 
-\hypertarget{ref-R-tidyselect}{}
-Henry, L., \& Wickham, H. (2020). Tidyselect: Select from a set of
-strings. Retrieved from
-\url{https://CRAN.R-project.org/package=tidyselect}
-
 \hypertarget{ref-hermans2017programming}{}
 Hermans, F., \& Aldewereld, M. (2017). Programming is writing is
 programming. In \emph{Companion to the first international conference on
 the art, science and engineering of programming} (pp. 1--8).
+
+\hypertarget{ref-jcgs-guide}{}
+Journal of Computational and Graphical Statistics. (2020). Instructions
+for authors. Retrieved from
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}
+
+\hypertarget{ref-jss-guide}{}
+Journal of Statistical Software. (2020). Instructions for authors.
+Retrieved from
+\url{https://www.jstatsoft.org/pages/view/authors\#review-process.}
 
 \hypertarget{ref-kitzes2017practice}{}
 Kitzes, J., Turek, D., \& Deniz, F. (2017). \emph{The practice of
@@ -1806,66 +1140,31 @@ Science: A Guide to enhancing reproducibility in scientific results and
 writing. Retrieved from
 \url{http://ropensci.github.io/reproducibility-guide/}
 
-\hypertarget{ref-R-rrtools}{}
-Marwick, B. (2019). Rrtools: Creates a reproducible research compendium.
-Retrieved from \url{https://github.com/benmarwick/rrtools}
-
-\hypertarget{ref-marwick2018packaging}{}
-Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data
-analytical work reproducibly using R (and friends). \emph{The American
-Statistician}, \emph{72}(1), 80--88.
-\url{http://doi.org/doi.org/10.1080/00031305.2017.1375986}
-
 \hypertarget{ref-engineering-reproducibility}{}
 McArthur, S. L. (2019). Repeatability, reproducibility, and
 replicability: Tackling the 3R challenge in biointerface science and
 engineering. \emph{Biointerphases}, \emph{14}(2), 1--2.
 \url{http://doi.org/10.1116/1.5093621}
 
-\hypertarget{ref-R-reproducible}{}
-McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of
-tools that enhance reproducibility beyond package management. Retrieved
-from \url{https://CRAN.R-project.org/package=reproducible}
-
 \hypertarget{ref-bio-principles}{}
 National Institutes of Health. (2014, June). Principles and guidelines
 for reporting preclinical research. Retrieved from
 \url{https://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research}
 
-\hypertarget{ref-R-drake}{}
-OpenSci, R. (2020). Drake: A pipeline toolkit for reproducible
-computation at scale. Retrieved from
-\url{https://cran.r-project.org/package=drake}
+\hypertarget{ref-r-journal}{}
+R Journal Editors. (2020). Instructions for authors. Retrieved from
+\url{https://journal.r-project.org/share/author-guide.pdf}
 
-\hypertarget{ref-wercker}{}
-Oracle Corporation. (2019). Wercker. Retrieved from
-\url{https://github.com/wercker/wercker}
-
-\hypertarget{ref-coreteam-extensions}{}
-R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for
-Statistical Computing}. Retrieved from
-\url{http://cran.stat.unipd.it/doc/manuals/r-release/R-exts.pdf}
-
-\hypertarget{ref-R-checkers}{}
-Ross, N., DeCicco, L., \& Randhawa, N. (2018). Checkers: Automated
-checking of best practices for research compendia. Retrieved from
-\url{https://github.com/ropenscilabs/checkers/blob/master/DESCRIPTIONr}
-
-\hypertarget{ref-R-packrat}{}
-Ushey, K., McPherson, J., Cheng, J., Atkins, A., \& Allaire, J. (2018).
-Packrat: A dependency management system for projects and their r package
-dependencies. Retrieved from
-\url{https://CRAN.R-project.org/package=packrat}
+\hypertarget{ref-ams-guide}{}
+The American Statistician. (2020). Instructions for authors. Retrieved
+from
+\url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
 
 \hypertarget{ref-plos-biology}{}
 Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018).
 Reproducible research practices, transparency, and open access data in
 the biomedical literature, 2015-2017. \emph{PLOS Biology},
 \emph{16}(11), 1--20. \url{http://doi.org/10.1371/journal.pbio.2006930}
-
-\hypertarget{ref-hadley-packages}{}
-Wickham, H. (2015). \emph{R packages} (1st ed.). Sebastopol, CA:
-O'Reilly Media, Inc.
 
 
 % Index?
