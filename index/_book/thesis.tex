@@ -854,6 +854,99 @@ majority, of published work will truly be reproducible.
 \section{Limitations on Achieving
 Reproducibility}\label{limitations-on-achieving-reproducibility}
 
+There are several reasons for this apparent divide between journal
+reproducibility standards and the true proportion of submitted articles
+that are truly reproducible. Some of these are challenges faced by the
+article authors, while others are faced by the journal editors.
+
+\subsection{Challenges for Authors}\label{challenges-for-authors}
+
+A \emph{Springer Nature} survey asked over 7,700 researchers about one
+of the key characteristics of reproducibility -- open data -- and
+gathered information about the reasons why authors found difficulties in
+making their data available to the public.
+
+The main challenges listed by respondents were as follows:
+\begin{itemize}
+\tightlist
+\item
+  46\% identified ``Organizing data in a presentable and useful way'' to
+  be difficult.
+\item
+  37\% had been ``Unsure about copyright and licensing.''
+\item
+  33\% had problems with ``Not knowing which repository to use.''
+\item
+  26\% cited a ``Lack of time to deposit data.''
+\item
+  19\% found the ``Costs of sharing data'' to be high.
+\end{itemize}
+The relative frequency of these issues varied across several
+characteristics, including author seniority, subject area, and
+geographical location, though authors in all categories faced some
+issues.
+
+\textbf{STUDY LINK}
+\url{https://figshare.com/articles/Whitepaper_Practical_challenges_for_researchers_in_data_sharing/5975011}
+
+Given the relatively high frequency of concern over achieving
+reproducibility, it follows that researchers will not make the necessary
+effort to do so if journal guidelines provide a way out. Policies that
+\emph{recommend} the inclusion of data or that allow exceptions to open
+data for certain reasons are likely to be associated with a lower
+proportion of reproducible articles than those that make open data
+mandatory.
+
+\section{Challenges for Journals}\label{challenges-for-journals}
+
+In addition to the challenges faced on the part of the authors, journal
+reviewers face their own difficulties in ensuring reproducibility.
+
+In order to make sure that all submitted articles comply with
+reproducibility guidelines, reviewers must go through them one by one
+and reproduce all of the results by hand using the provided materials.
+
+This is an incredibly intensive process, as we will see in the example
+of the \emph{American Journal for Political Science} (AJPS), whose
+reproducibility policy was discussed prevously in Chapter 1.4.1.
+
+Acceptance of an article for publication in the AJPS is contingent on
+successful reproducibility of any empirical analyses reported in the
+article.
+
+After an article is submitted, staff from a third party vendor hired by
+AJPS go through the provided materials to ensure that they can be
+preserved, understood, and used by others. They then run all of the
+analyses in the article using the code, instructions, and data provided
+by the authors and compare their results to the submitted articles.
+Authors are then given an opportunity to resolve any issues that come
+up. This process is repeated until reproducibility is ensured.
+
+Although providing a significant benefit to the scientific community,
+this thorough process is associated with high costs.
+
+The verification process slows down the journal review process
+significantly, adding a median 53 days to the publication workflow, as
+many submitted articles require one or more rounds of resubmission (the
+average number of resubmissions is 1.7). It is also quite labor
+intensive, taking an average of 8 person-hours per manuscript to
+reproduce the analyses and prepare the materials for public release and
+adding significant monetary cost to AJPS.
+
+\url{https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility}
+
+Most journals have been reluctant to give additional tasks to peer
+reviewers who may already be overburdened with the continually
+increasing volume of submissions.
+
+\url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166387}
+
+As a result, policies often encourage reviewers to consider authors'
+compliance with data sharing policies, but formal peer review of data
+only occurs in a small number of journals.
+
+\url{https://link.springer.com/chapter/10.1007/164_2019_290\#Sec9}
+
 \url{https://www.pnas.org/content/115/11/2584}
 
 \url{https://www.cos.io/about/news/new-measure-rates-quality-research-journals-policies-promote-transparency-and-reproducibility}
@@ -1080,7 +1173,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ----------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ---------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1106,13 +1199,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------------------ fertile 0.0.0.9027 --
+-- Compiling... ----------------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... -------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------ fertile 0.0.0.9027 --
+-- Running reproducibility checks ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1121,7 +1214,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks ---------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1141,10 +1234,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps -------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------------------ fertile 0.0.0.9027 --
+--   Packages referenced in source code ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1161,13 +1254,13 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory -------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                      file   ext    size
 1 Estrogen_Receptors.docx  docx  10.97K
-2      citrate_v_time.png   png 186.65K
-3     proteins_v_time.png   png 379.56K
+2      citrate_v_time.png   png 185.13K
+3     proteins_v_time.png   png 378.24K
 4   Blot_data_updated.csv   csv  14.43K
 5      CS_data_redone.csv   csv   7.39K
 6                mice.csv   csv  14.33K
@@ -1186,7 +1279,7 @@ used in code.
 9                                                         text/x-markdown
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------------------ fertile 0.0.0.9027 --
+--   Suggestions for moving files ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
                  path_rel    dir_rel
@@ -1207,7 +1300,7 @@ used in code.
 7     file_move('project_miceps/proteins_v_time.png', fs::dir_create('project_miceps/inst/image'))
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ---------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged --------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1231,12 +1324,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-08 19:39:51
-2 package:th~ <NA>                        base::r~ 2020-09-08 19:39:51
-3 package:th~ <NA>                        base::l~ 2020-09-08 19:39:52
-4 package:pu~ <NA>                        base::l~ 2020-09-09 12:54:43
-5 package:fo~ <NA>                        base::l~ 2020-09-09 12:54:43
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-09 12:54:44
+1 package:re~ <NA>                        base::r~ 2020-09-10 13:54:29
+2 package:th~ <NA>                        base::r~ 2020-09-10 13:54:29
+3 package:th~ <NA>                        base::l~ 2020-09-10 13:54:29
+4 package:pu~ <NA>                        base::l~ 2020-09-10 13:55:24
+5 package:fo~ <NA>                        base::l~ 2020-09-10 13:55:24
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-10 13:55:24
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1346,7 +1439,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYF6WqZ/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPyxvOG/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1354,9 +1447,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYF6WqZ/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYF6WqZ/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYF6WqZ/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPyxvOG/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPyxvOG/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPyxvOG/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1435,7 +1528,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fa3d8911398>
+<bytecode: 0x7fa32ff035c0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

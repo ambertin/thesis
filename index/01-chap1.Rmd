@@ -230,22 +230,45 @@ In this small sample of cases, we see that purely having a reproducibility state
 
 ## Limitations on Achieving Reproducibility
 
+There are several reasons for this apparent divide between journal reproducibility standards and the true proportion of submitted articles that are truly reproducible. Some of these are challenges faced by the article authors, while others are faced by the journal editors.
 
-Challenges for researchers
+### Challenges for Authors
 
-* Organizing data in a presentable and useful way
-* Being unsure about licensing/data copyright
-* Not knowing which data repository to use
-* A lack of time
-* Not being able to cover the costs of data sharing
+A *Springer Nature* survey asked over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public.
 
-https://figshare.com/articles/Whitepaper_Practical_challenges_for_researchers_in_data_sharing/5975011
+The main challenges listed by respondents were as follows:
 
-Challenges for journals
+* 46% identified "Organizing data in a presentable and useful way" to be difficult.
+* 37% had been "Unsure about copyright and licensing."
+* 33% had problems with "Not knowing which repository to use."
+* 26% cited a "Lack of time to deposit data."
+* 19% found the "Costs of sharing data" to be high.
 
-* Time-intensive: With AJPS example, adds a median time of 53 days to the publication workflow, involving one or more rounds of feedback and resubmissions of the replication materials.
+The relative frequency of these issues varied across several characteristics, including author seniority, subject area, and geographical location, though authors in all categories faced some issues.
 
-* Labor intensive: On average, takes 8 person-hours per manuscript to replicate the analyses and curate the materials for public release. The financial cost of this is not trivial.
+**STUDY LINK** https://figshare.com/articles/Whitepaper_Practical_challenges_for_researchers_in_data_sharing/5975011
+
+Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that *recommend* the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
+
+## Challenges for Journals
+
+In addition to the challenges faced on the part of the authors, journal reviewers face their own difficulties in ensuring reproducibility.
+
+In order to make sure that all submitted articles comply with reproducibility guidelines, reviewers must go through them one by one and reproduce all of the results by hand using the provided materials.
+
+This is an incredibly intensive process, as we will see in the example of the *American Journal for Political Science* (AJPS), whose reproducibility policy was discussed prevously in Chapter 1.4.1.
+
+Acceptance of an article for publication in the AJPS is contingent on successful reproducibility of any empirical analyses reported in the article. 
+
+After an article is submitted, staff from a third party vendor hired by AJPS go through the provided materials to ensure that they can be preserved, understood, and used by others. They then run all of the analyses in the article using the code, instructions, and data provided by the authors and compare their results to the submitted articles. Authors are then given an opportunity to resolve any issues that come up. This process is repeated until reproducibility is ensured.
+
+Although providing a significant benefit to the scientific community, this thorough process is associated with high costs. 
+
+The verification process slows down the journal review process significantly, adding a median 53 days to the publication workflow, as many submitted articles require one or more rounds of resubmission (the average number of resubmissions is 1.7). It is also quite labor intensive, taking an average of 8 person-hours per manuscript to reproduce the analyses and prepare the materials for public release and adding significant monetary cost to AJPS.
+
+
+
+
 
 https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility
 
