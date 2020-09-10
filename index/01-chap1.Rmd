@@ -250,7 +250,7 @@ The relative frequency of these issues varied across several characteristics, in
 
 Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that *recommend* the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
 
-## Challenges for Journals
+### Challenges for Journals
 
 In addition to the challenges faced on the part of the authors, journal reviewers face their own difficulties in ensuring reproducibility.
 
@@ -266,49 +266,16 @@ Although providing a significant benefit to the scientific community, this thoro
 
 The verification process slows down the journal review process significantly, adding a median 53 days to the publication workflow, as many submitted articles require one or more rounds of resubmission (the average number of resubmissions is 1.7). It is also quite labor intensive, taking an average of 8 person-hours per manuscript to reproduce the analyses and prepare the materials for public release and adding significant monetary cost to AJPS.
 
-
-
-
-
 https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility
 
-Most journals have been reluctant to give additional tasks to peer reviewers who may already be overburdened with the continually increasing volume of submissions.
+Journals are often reluctant to take on such an intensive task due to the drastically increased burden it places on reviewers and on the publication's financial resources. This is particularly true given that the number of submitted articles per year has been increasing over time. ( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4317455/ ) Every additional submission increases the burden of achieving reproducibility, and with a large enough volume, the challenge can quickly become seemingly impossible to manage reasonably. 
 
-https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166387
+As a result, journals often encourage reviewers to consider authors' compliance with data sharing policies, but do not formally require that they ensure it as a criterion for acceptance. https://link.springer.com/chapter/10.1007/164_2019_290
 
-As a result, policies often encourage reviewers to consider authors' compliance with data sharing policies, but formal peer review of data only occurs in a small number of journals.
-
-https://link.springer.com/chapter/10.1007/164_2019_290#Sec9
-
-
-
-
-
-
-
-
-
-https://www.pnas.org/content/115/11/2584
-
-https://www.cos.io/about/news/new-measure-rates-quality-research-journals-policies-promote-transparency-and-reproducibility
-
-https://www.cos.io/our-services/top-guidelines
 
 http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf
 
-https://link.springer.com/chapter/10.1007/164_2019_290#Sec9
 
-https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448
-
-Policies can be time consuming to implement in terms of actually reviewing articles for publication. If there's a huge influx, it would be unreasonable to re-run every analysis submitted!
-
-
-
-
-
-
-
-### Reproducibility Education
-
+## Reproducibility Education
 
 
