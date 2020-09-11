@@ -8,22 +8,6 @@ My research has focused on doing just this, providing tools to assist with achie
 
 ] --- DO WE NEED THIS?
 
-## Review Of Previous Work
-
-
-
-### R Packages and Other Software
-
-Much of this work is highly generalized, written to be applicable to users working with a variety of statistical software programs. Because all statistical software programs operate differently, these recommendations are inherently vague and difficult to implement, particularly to new analysts who are relatively unfamiliar with their software. Focused attempts to address reproducibility in specific certain software programs are more likely to be successful. We focus on `R`, due to its open-source nature, accessibility, and popularity as a tool for statistical analysis.
-
-A small body of `R` packages focuses on research reproducibility. `rrtools` (@R-rrtools) addresses some of the issues discussed in @marwick2018packaging by creating a basic `R` package structure for a data analysis project and implementing a basic `testthat::check` functionality. The `orderly` (@R-orderly) package also focuses on file structure, requiring the user to declare a desired project structure (typically a step-by-step structure, where outputs from one step are inputs into the next) at the beginning and then creating the files necessary to achieve that structure. `workflowr`'s (@R-workflowr) functionality is based around version control and making code easily available online. It works to generate a website containing time-stamped, versioned, and documented results. `checkers` (@R-checkers) allows you to create custom checks that examine different aspects of reproducibility. `packrat` (@R-packrat) is focused on dependencies, creating a packaged folder containing a project as well as all of its dependencies so that projects dependent on lesser-used packages can be easily shared across computers. `drake` (@R-drake) analyzes workflows, skips steps where results are up to date, and provides evidence that results match the underlying code and data. Lastly, the `reproducible` (@R-reproducible) package focuses on the concept of caching: saving information so that projects can be run faster each time they are re-completed from the start.
-
-Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
-A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
-
-`Continuous integration` tools provide more general approaches to automated checking, which can enhance reproducibility with minimal code. For example, `wercker`---a command line tool that leverages Docker---enables users to test whether their projects will successfully compile when run on a variety of operating systems without access to the user's local hard drive (@wercker). `GitHub Actions` is integrated into GitHub and can be configured to do similar checks on projects hosted in repositories. `Travis CI` and `Circle CI` are popular continuous integration tools that can also be used to check `R` code. 
-
-However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R`  programming language, such as package installation and seed setting.
 
 ## Identifying Gaps In Existing Solutions
 

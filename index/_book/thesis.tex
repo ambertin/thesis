@@ -241,7 +241,7 @@ Potential sources:
 
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
-\section{What is reproducibility?}\label{what-is-reproducibility}
+\section{What Is Reproducibility?}\label{what-is-reproducibility}
 
 In the field of data science, research is considered fully
 \emph{reproducible} when the requisite code and data files produce
@@ -488,16 +488,20 @@ important to research reproducibility across the scientific community:
 \section{Current Attempts to Address Reproducibility in Scientific
 Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}
 
-** NEED SOME STUFF HERE SUMMARIZING THIS WHOLE IDEA*
-
-\subsection{Case Studies in Journal Reproducibility Policy Across The
-Sciences}\label{case-studies-in-journal-reproducibility-policy-across-the-sciences}
-
 In an attempt to increase reproducibility in the sciences, leaders from
 academic journals around the world have taken steps to create new
-standards and requirements for submitted articles. However, these
+standards and requirements for submitted articles. These standards
+attempt to address the components of reproducibility listed previously,
+requesting that authors provide certain materials necessary for
+reproducibing their work when they submit an article. However, these
 standards are highly inconsistent, varying significantly both across and
 within disciplines.
+
+To illustrate this point, we will consider case studies from journals in
+a variety of fields.
+
+\subsection{Case Studies Across The
+Sciences}\label{case-studies-across-the-sciences}
 
 The journal whose requirements appear to align most closely with those
 components defined previously in Section 3 is the \emph{American Journal
@@ -620,10 +624,11 @@ other journals claiming to promote reproducibility do.
 \subsection{Case Studies In The Statistical And Data
 Sciences}\label{case-studies-in-the-statistical-and-data-sciences}
 
-In the field of statistical and data sciences, the majority of highly
-ranked journals contain statements on reproducibility. Some of these are
-quite robust, surpassing the requirements of many of the other journals
-discussed previously, while others are lacking.
+When considering reproducibility policy, the field of Statistical and
+Data Sciences performs relatively well. The majority of highly ranked
+journals in the field contain statements on reproducibility. Some of
+these are quite robust, surpassing the requirements of many of the other
+journals discussed previously, while others are lacking.
 
 The \emph{Journal of the American Statistical Association} stands out as
 having relatively robust requirements. The publication's guideliens
@@ -666,8 +671,7 @@ while the latter appears to have no statement on reproducibility at all
 
 \includegraphics[width=1\linewidth]{figure/stats-journals}
 
-\subsection{The Big Picture: Reproducibility Across
-Academia}\label{the-big-picture-reproducibility-across-academia}
+\subsection{The Bigger Picture}\label{the-bigger-picture}
 
 While previously we have focused on several case studies, it is
 important to also consider the wider view of the state of
@@ -798,8 +802,8 @@ In this small sample of cases, we see that purely having a
 reproducibility statement does not necessarily mean that all, or even a
 majority, of published work will truly be reproducible.
 
-\section{Limitations on Achieving
-Reproducibility}\label{limitations-on-achieving-reproducibility}
+\section{Limitations on Achieving Reproducibility in Scientific
+Publishing}\label{limitations-on-achieving-reproducibility-in-scientific-publishing}
 
 There are several reasons for this apparent divide between journal
 reproducibility standards and the true proportion of submitted articles
@@ -894,29 +898,12 @@ they ensure it as a criterion for acceptance (Hrynaszkiewicz (2020)).
 
 \url{http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf}
 
-\section{Reproducibility Education}\label{reproducibility-education}
+\section{Attempts to Address These
+Limitations}\label{attempts-to-address-these-limitations}
 
-\chapter{Addressing the Challenges of
-Reproducibility}\label{my-solution}
+\subsection{Through Education}\label{through-education}
 
-{[}
-
-The relative simplicity of the reproducibility challenge makes it an
-ideal candidate for solution-building. Although significant progress on
-addressing reproducibility on a widespread scale is a long-term
-challenge, impactful forward progress--if on a smaller scale--can be
-achieved in the short-term.
-
-My research has focused on doing just this, providing tools to assist
-with achieving reproducibility in one segment of the scientific
-community: RStudio users.
-
-{]} --- DO WE NEED THIS?
-
-\section{Review Of Previous Work}\label{review-of-previous-work}
-
-\subsection{R Packages and Other
-Software}\label{r-packages-and-other-software}
+\subsection{Through Software}\label{through-software}
 
 Much of this work is highly generalized, written to be applicable to
 users working with a variety of statistical software programs. Because
@@ -984,6 +971,23 @@ designed to be \texttt{R}-specific, which makes them sub-optimal for
 users looking to address reproducibility issues involving features
 specific to the \texttt{R} programming language, such as package
 installation and seed setting.
+
+\chapter{Addressing the Challenges of
+Reproducibility}\label{my-solution}
+
+{[}
+
+The relative simplicity of the reproducibility challenge makes it an
+ideal candidate for solution-building. Although significant progress on
+addressing reproducibility on a widespread scale is a long-term
+challenge, impactful forward progress--if on a smaller scale--can be
+achieved in the short-term.
+
+My research has focused on doing just this, providing tools to assist
+with achieving reproducibility in one segment of the scientific
+community: RStudio users.
+
+{]} --- DO WE NEED THIS?
 
 \section{Identifying Gaps In Existing
 Solutions}\label{identifying-gaps-in-existing-solutions}
@@ -1104,7 +1108,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: --------------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: -------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1130,13 +1134,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ---------------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... --------------------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ------------------------------------------------ fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ---------------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1145,7 +1149,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks --------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1165,10 +1169,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------------------------ fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ----------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ---------------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code --------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1185,15 +1189,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------------------------ fertile 0.0.0.9027 --
+--   Files present in directory ----------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 4
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     189.58K image/png                         
-3 proteins_v_time.~ png     379.04K image/png                         
+2 citrate_v_time.p~ png     187.35K image/png                         
+3 proteins_v_time.~ png     380.75K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1202,7 +1206,7 @@ used in code.
 9 analysis.Rmd      Rmd       4.94K text/x-markdown                   
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ---------------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files --------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 7 x 3
@@ -1217,7 +1221,7 @@ used in code.
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged -------------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1241,12 +1245,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-10 23:41:14
-2 package:th~ <NA>                        base::r~ 2020-09-10 23:41:14
-3 package:th~ <NA>                        base::l~ 2020-09-10 23:41:14
-4 package:pu~ <NA>                        base::l~ 2020-09-10 23:42:46
-5 package:fo~ <NA>                        base::l~ 2020-09-10 23:42:46
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-10 23:42:46
+1 package:re~ <NA>                        base::r~ 2020-09-11 15:25:07
+2 package:th~ <NA>                        base::r~ 2020-09-11 15:25:07
+3 package:th~ <NA>                        base::l~ 2020-09-11 15:25:07
+4 package:pu~ <NA>                        base::l~ 2020-09-11 15:25:42
+5 package:fo~ <NA>                        base::l~ 2020-09-11 15:25:42
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-11 15:25:42
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1356,7 +1360,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW2cWEv/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1364,9 +1368,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW2cWEv/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW2cWEv/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW2cWEv/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1445,7 +1449,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb854c46c38>
+<bytecode: 0x7fa81e2eadb8>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

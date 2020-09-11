@@ -8,7 +8,7 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 # An Introduction to Reproducibility {#reproducibility}
 
-## What is reproducibility?
+## What Is Reproducibility?
 
 In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst, or more generally, when a researcher can "duplicate the results of a prior study using the same materials as were used by the original investigator" (@arlington).
 
@@ -93,11 +93,12 @@ Although these recommendations differ from one another, when considered in combi
 
 ## Current Attempts to Address Reproducibility in Scientific Publishing
 
-** NEED SOME STUFF HERE SUMMARIZING THIS WHOLE IDEA*
+In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. These standards attempt to address the components of reproducibility listed previously, requesting that authors provide certain materials necessary for reproducibing their work when they submit an article. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
 
-### Case Studies in Journal Reproducibility Policy Across The Sciences
+To illustrate this point, we will consider case studies from journals in a variety of fields. 
 
-In an attempt to increase reproducibility in the sciences, leaders from academic journals around the world have taken steps to create new standards and requirements for submitted articles. However, these standards are highly inconsistent, varying significantly both across and within disciplines.
+
+### Case Studies Across The Sciences
 
 The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the *American Journal of Political Science* (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers (@ajps-guidelines).
 
@@ -143,7 +144,7 @@ These requirements are quite strict, prohibiting exceptions for papers using dat
 
 ### Case Studies In The Statistical And Data Sciences
 
-In the field of statistical and data sciences, the majority of highly ranked journals contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
+When considering reproducibility policy, the field of Statistical and Data Sciences performs relatively well. The majority of highly ranked journals in the field contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
 
 The *Journal of the American Statistical Association* stands out as having relatively robust requirements. The publication's guideliens require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a process form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (@asa-guide).
 
@@ -157,7 +158,7 @@ Perhaps the weakest reproducibility policies come from *The American Statisticia
 knitr::include_graphics("figure/stats-journals.png")
 ```
 
-### The Big Picture: Reproducibility Across Academia
+### The Bigger Picture
 
 While previously we have focused on several case studies, it is important to also consider the wider view of the state of reproducibility policy across scientific journals. Are the examples considered previously relatively standard, or are their policies either stronger or weaker than the average policy in academia?
 
@@ -171,10 +172,6 @@ knitr::include_graphics("figure/top-1.png")
 ```{r top-factor2, echo = FALSE, out.width = '100%'}
 knitr::include_graphics("figure/top-2.png")
 ```
-
-
-
-
 
 
 When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (@top-guidelines).
@@ -216,7 +213,7 @@ Combining these two data points indicates that *less than half* of articles publ
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
 
-## Limitations on Achieving Reproducibility
+## Limitations on Achieving Reproducibility in Scientific Publishing
 
 There are several reasons for this apparent divide between journal reproducibility standards and the true proportion of submitted articles that are truly reproducible. Some of these are challenges faced by the article authors, while others are faced by the journal editors.
 
@@ -262,6 +259,21 @@ As a result, journals often encourage reviewers to consider authors' compliance 
 http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf
 
 
-## Reproducibility Education
+## Attempts to Address These Limitations
+
+### Through Education
+
+### Through Software
+
+Much of this work is highly generalized, written to be applicable to users working with a variety of statistical software programs. Because all statistical software programs operate differently, these recommendations are inherently vague and difficult to implement, particularly to new analysts who are relatively unfamiliar with their software. Focused attempts to address reproducibility in specific certain software programs are more likely to be successful. We focus on `R`, due to its open-source nature, accessibility, and popularity as a tool for statistical analysis.
+
+A small body of `R` packages focuses on research reproducibility. `rrtools` (@R-rrtools) addresses some of the issues discussed in @marwick2018packaging by creating a basic `R` package structure for a data analysis project and implementing a basic `testthat::check` functionality. The `orderly` (@R-orderly) package also focuses on file structure, requiring the user to declare a desired project structure (typically a step-by-step structure, where outputs from one step are inputs into the next) at the beginning and then creating the files necessary to achieve that structure. `workflowr`'s (@R-workflowr) functionality is based around version control and making code easily available online. It works to generate a website containing time-stamped, versioned, and documented results. `checkers` (@R-checkers) allows you to create custom checks that examine different aspects of reproducibility. `packrat` (@R-packrat) is focused on dependencies, creating a packaged folder containing a project as well as all of its dependencies so that projects dependent on lesser-used packages can be easily shared across computers. `drake` (@R-drake) analyzes workflows, skips steps where results are up to date, and provides evidence that results match the underlying code and data. Lastly, the `reproducible` (@R-reproducible) package focuses on the concept of caching: saving information so that projects can be run faster each time they are re-completed from the start.
+
+Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
+A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
+
+`Continuous integration` tools provide more general approaches to automated checking, which can enhance reproducibility with minimal code. For example, `wercker`---a command line tool that leverages Docker---enables users to test whether their projects will successfully compile when run on a variety of operating systems without access to the user's local hard drive (@wercker). `GitHub Actions` is integrated into GitHub and can be configured to do similar checks on projects hosted in repositories. `Travis CI` and `Circle CI` are popular continuous integration tools that can also be used to check `R` code. 
+
+However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R`  programming language, such as package installation and seed setting.
 
 
