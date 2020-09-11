@@ -901,6 +901,27 @@ they ensure it as a criterion for acceptance (Hrynaszkiewicz (2020)).
 \section{Attempts to Address These
 Limitations}\label{attempts-to-address-these-limitations}
 
+The previous discussion makes clear that, although reproducibility is
+critically important to scientific progress and academic journals are
+taking steps to encourage it, the scientific community is far from
+achieving the desired level of widespread reproducibility. In large
+part, this appears due to the challenge and complexity of actually
+achieving reproducibility. Those attempting to improve the
+reproducibility of work can face issues with concerns over legality of
+sharing data, large commitments of time or money, challenges finding a
+good repository, and organizing all of the many components of their work
+in an understandable way, among other things.
+
+Additionally, science faces the additional challenge that many
+publishers do not emphasize reproducibility at all, providing many
+opportunities for all authors except those personally dedicated to
+producing reproducible work to leave reproducibility by the wayside.
+
+These issues, however, are not impossible to overcome. Proponents of
+reproducibility have taken action to help address them, both through
+education on reproducibility and through software that helps simplify
+the process of achieving it.
+
 \subsection{Through Education}\label{through-education}
 
 \subsection{Through Software}\label{through-software}
@@ -1196,8 +1217,8 @@ used in code.
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     187.35K image/png                         
-3 proteins_v_time.~ png     380.75K image/png                         
+2 citrate_v_time.p~ png     185.88K image/png                         
+3 proteins_v_time.~ png     377.94K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1245,12 +1266,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-11 15:25:07
-2 package:th~ <NA>                        base::r~ 2020-09-11 15:25:07
-3 package:th~ <NA>                        base::l~ 2020-09-11 15:25:07
-4 package:pu~ <NA>                        base::l~ 2020-09-11 15:25:42
-5 package:fo~ <NA>                        base::l~ 2020-09-11 15:25:42
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-11 15:25:42
+1 package:re~ <NA>                        base::r~ 2020-09-11 15:25:42
+2 package:th~ <NA>                        base::r~ 2020-09-11 15:25:42
+3 package:th~ <NA>                        base::l~ 2020-09-11 15:25:42
+4 package:pu~ <NA>                        base::l~ 2020-09-11 16:42:13
+5 package:fo~ <NA>                        base::l~ 2020-09-11 16:42:13
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-11 16:42:13
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1360,7 +1381,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1368,9 +1389,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpteDic7/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1449,7 +1470,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fa81e2eadb8>
+<bytecode: 0x7fefaf585870>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read

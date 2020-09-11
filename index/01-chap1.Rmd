@@ -258,8 +258,13 @@ As a result, journals often encourage reviewers to consider authors' compliance 
 
 http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf
 
-
 ## Attempts to Address These Limitations
+
+The previous discussion makes clear that, although reproducibility is critically important to scientific progress and academic journals are taking steps to encourage it, the scientific community is far from achieving the desired level of widespread reproducibility. In large part, this appears due to the challenge and complexity of actually achieving reproducibility. Those attempting to improve the reproducibility of work can face issues with concerns over legality of sharing data, large commitments of time or money, challenges finding a good repository, and organizing all of the many components of their work in an understandable way, among other things. 
+
+Additionally, science faces the additional challenge that many publishers do not emphasize reproducibility at all, providing many opportunities for all authors except those personally dedicated to producing reproducible work to leave reproducibility by the wayside.
+
+These issues, however, are not impossible to overcome. Proponents of reproducibility have taken action to help address them, both through education on reproducibility and through software that helps simplify the process of achieving it. 
 
 ### Through Education
 
