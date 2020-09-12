@@ -311,14 +311,7 @@
     \@advisor, Honors Project Advisor
     \vfil
     \@date
-    \bigskip
-    {\fontsize{12}{14}\selectfont \lineskip .75em
-    \begin{tabular}[t]{c}%
-      \@author
-    \end{tabular}\par}
-    \vskip 1.5em
-    {\fontsize{12}{14}\selectfont \@date \par}
-  \end{center}\par
+  \end{center}
   \end{titlepage}
 
 %% Approved for the division page

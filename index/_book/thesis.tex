@@ -1217,8 +1217,8 @@ used in code.
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     184.41K image/png                         
-3 proteins_v_time.~ png     378.04K image/png                         
+2 citrate_v_time.p~ png     186.89K image/png                         
+3 proteins_v_time.~ png     379.76K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1266,12 +1266,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-12 17:22:19
-2 package:th~ <NA>                        base::r~ 2020-09-12 17:22:19
-3 package:th~ <NA>                        base::l~ 2020-09-12 17:22:19
-4 package:pu~ <NA>                        base::l~ 2020-09-12 17:22:56
-5 package:fo~ <NA>                        base::l~ 2020-09-12 17:22:56
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 17:22:56
+1 package:re~ <NA>                        base::r~ 2020-09-12 17:27:08
+2 package:th~ <NA>                        base::r~ 2020-09-12 17:27:08
+3 package:th~ <NA>                        base::l~ 2020-09-12 17:27:08
+4 package:pu~ <NA>                        base::l~ 2020-09-12 17:27:44
+5 package:fo~ <NA>                        base::l~ 2020-09-12 17:27:44
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 17:27:44
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1381,7 +1381,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpylhVML/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1389,9 +1389,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpylhVML/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpylhVML/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpylhVML/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1470,7 +1470,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fa2c2e03d40>
+<bytecode: 0x7fd3cdfc2ac8>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
