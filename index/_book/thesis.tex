@@ -44,7 +44,7 @@
 % End of CII addition
 \usepackage{rotating}
 
-\setlength{\headheight}{28pt}%
+\setlength{\headheight}{18pt}%
 
 % Next line commented out by CII
 %%% \usepackage{natbib}
@@ -1129,7 +1129,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: -------------------------------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1155,13 +1155,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... --------------------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ---------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ----------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks --------------------------------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ---------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1170,7 +1170,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks -------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks --------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1190,10 +1190,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ----------------------------------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code --------------------------------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ---------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1210,15 +1210,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ----------------------------------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 4
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     185.88K image/png                         
-3 proteins_v_time.~ png     377.94K image/png                         
+2 citrate_v_time.p~ png     184.41K image/png                         
+3 proteins_v_time.~ png     378.04K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1227,7 +1227,7 @@ used in code.
 9 analysis.Rmd      Rmd       4.94K text/x-markdown                   
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files --------------------------------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ---------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 7 x 3
@@ -1242,7 +1242,7 @@ used in code.
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ------------------------------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged -------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1266,12 +1266,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-11 15:25:42
-2 package:th~ <NA>                        base::r~ 2020-09-11 15:25:42
-3 package:th~ <NA>                        base::l~ 2020-09-11 15:25:42
-4 package:pu~ <NA>                        base::l~ 2020-09-11 16:42:13
-5 package:fo~ <NA>                        base::l~ 2020-09-11 16:42:13
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-11 16:42:13
+1 package:re~ <NA>                        base::r~ 2020-09-12 17:22:19
+2 package:th~ <NA>                        base::r~ 2020-09-12 17:22:19
+3 package:th~ <NA>                        base::l~ 2020-09-12 17:22:19
+4 package:pu~ <NA>                        base::l~ 2020-09-12 17:22:56
+5 package:fo~ <NA>                        base::l~ 2020-09-12 17:22:56
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 17:22:56
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1381,7 +1381,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1389,9 +1389,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqXqwY1/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpE5F2QA/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1470,7 +1470,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fefaf585870>
+<bytecode: 0x7fa2c2e03d40>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
