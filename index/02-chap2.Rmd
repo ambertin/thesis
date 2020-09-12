@@ -11,6 +11,18 @@ My research has focused on doing just this, providing tools to assist with achie
 
 ## Identifying Gaps In Existing Solutions
 
+**on r packages**
+Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
+
+
+
+A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
+
+
+** on continuous integration **
+However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R`  programming language, such as package installation and seed setting.
+
+
 ## My Contribution: `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
 ### Package Overview

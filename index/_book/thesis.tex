@@ -279,8 +279,7 @@ original procedure but collecting new data. Replicability has
 larger-scale implications than reproducibilty; the findings of research
 studies can not be accepted unless a variety of other researchers come
 to the same conclusions through independent work.
-
-\includegraphics[width=1\linewidth]{figure/versus}
+\begin{center}\includegraphics[width=1\linewidth]{figure/versus} \end{center}
 
 Reproducibility and replicability are both necessary to the advancement
 of scientific research, but they vary significantly in terms of their
@@ -326,9 +325,11 @@ Boyack, \& Ioannidis (2018)).
 \section{The Components of Reproducible
 Research}\label{the-components-of-reproducible-research}
 
-In order to address the lack of reproducibility in scientific research,
-it is important to first consider the question: Which components are
-necessary to declare research reproducibile?
+In order to see why there is an issue with reproducibility and gain a
+sense of how to solve it, it is important to first understand the
+components of reproducibility. Essentially, to answer, ``What parts does
+researcher need to include, or what steps do they need to take, to be
+able to declare their work reproducible?''
 
 Publications attempting to answer this can be found in all areas of
 scientific research. However, as Goodman et al. (2016) argue, the
@@ -337,7 +338,7 @@ reproducibility varies significantly across the sciences, and there are
 no clear standards on reproducibility agreed upon by the scientific
 community as a whole.
 
-At a minimum, according to Goodman et al. (2016), documenting
+At a minimum, according to Goodman et al. (2016), achieving
 reproducibility requires the sharing of data (raw or processed),
 relevant metadata, code, and related software. However, according to
 other authors, the full achievement of reproducibility may require
@@ -393,7 +394,7 @@ important to research reproducibility across the scientific community:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  The basic project components are made accessible:
+  The basic project components are made accessible to the public:
 \end{enumerate}
 \begin{itemize}
 \tightlist
@@ -473,7 +474,7 @@ important to research reproducibility across the scientific community:
 \setcounter{enumi}{5}
 \tightlist
 \item
-  Readable, styled code:
+  Code is readable and consistently styled:
 \end{enumerate}
 \begin{itemize}
 \tightlist
@@ -488,17 +489,18 @@ important to research reproducibility across the scientific community:
 \section{Current Attempts to Address Reproducibility in Scientific
 Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}
 
-In an attempt to increase reproducibility in the sciences, leaders from
-academic journals around the world have taken steps to create new
-standards and requirements for submitted articles. These standards
-attempt to address the components of reproducibility listed previously,
-requesting that authors provide certain materials necessary for
-reproducibing their work when they submit an article. However, these
-standards are highly inconsistent, varying significantly both across and
-within disciplines.
+In an attempt to increase reproducibility, leaders from academic
+journals around the world have taken steps to create new standards and
+requirements for submitted articles. These standards attempt to address
+the components of reproducibility listed previously, requesting that
+authors provide certain materials necessary for reproducibing their work
+when they submit an article. However, these standards are highly
+inconsistent, varying significantly both across and within disciplines,
+and many only cover one or two of the six primary components, if any at
+all.
 
-To illustrate this point, we will consider case studies from journals in
-a variety of fields.
+To illustrate this point, we will consider several case studies from
+journals publishing research on a variety of scientific fields.
 
 \subsection{Case Studies Across The
 Sciences}\label{case-studies-across-the-sciences}
@@ -528,14 +530,14 @@ alongside their papers (American Journal of Political Science (2016)).
 These standards are quite thorough and contain mandates for the
 inclusion of the vast majority of components necessary for complete
 reproducibility. Most journals, however, do not come close to meeting
-such high standards in their reproducibility statements. We will
-consider examples from several fields:
+such high standards in their reproducibility statements.
 
-In the biomedical sciences, a group of editors reproesenting over 30
-major journals met in 2014 to address reproducibility in their field,
-coming to a consensus on a set of principles they wanted to uphold
-(National Institutes of Health (2014)). Listed below are those relating
-specifically to the use of data and statistical methods:
+For example, in the biomedical sciences, a group of editors
+reproesenting over 30 major journals met in 2014 to address
+reproducibility in their field, coming to a consensus on a set of
+principles they wanted to uphold (National Institutes of Health (2014)).
+Listed below are those relating specifically to the use of data and
+statistical methods:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
@@ -668,28 +670,36 @@ encourages authors to submit datasets, code, other programs, and/or
 appendices that are directly relevant to their submitted articles,''
 while the latter appears to have no statement on reproducibility at all
 (The American Statistician (2020))s.
-
-\includegraphics[width=1\linewidth]{figure/stats-journals}
+\begin{center}\includegraphics[width=1\linewidth]{figure/stats-journals} \end{center}
 
 \subsection{The Bigger Picture}\label{the-bigger-picture}
 
-While previously we have focused on several case studies, it is
-important to also consider the wider view of the state of
-reproducibility policy across scientific journals. Are the examples
-considered previously relatively standard, or are their policies either
-stronger or weaker than the average policy in academia?
+The journals mentioned here are just some of the many academic
+publishers with reproducibility policies. While they provide a sense of
+the specific wording and requirements of some policies, they do not
+necessarily serve as a representative sample of all academic publishing.
+It is important to also consider the bigger picture, exploring the state
+of reproducibility policy in academic publishing as a whole.
 
-Academics at the Center for Open Science (COS) attempted to create a
-metric, called the TOP Factor, to help answer this. The TOP Factor
-reports the steps that a journal is taking to implement open science
-practices. Publications receive a score from 0 to 3 based on how well
-they achieve different aspects of open science. A journal's final score
-is the sum of the individual scores in each of the categories, broken
-down as seen in the rubric below:
+Given the scale of the academic publishing network and the sheer number
+of journals around the world, this is not necessarily an easy task.
 
-\includegraphics[width=1\linewidth]{figure/top-1}
+In order to simplify this process, academics at the Center for Open
+Science (COS) attempted to create a metric, called the TOP Factor. The
+TOP Factor reports the steps that a journal is taking to implement open
+science practices. It has been calculated for a wide variety of
+journals, though the COS is still far from scoring all of the
+publications that are currently available.
 
-\includegraphics[width=1\linewidth]{figure/top-2}
+The TOP Factor is calculated as follows. Publications are scored on a
+variety of categories associated with open science and reproducibility.
+For each category, they receive a score between 0 (poor) and 3
+(excellent) based on the degree to which they emphasize each category in
+their submission/publication policies. A journal's final score, which
+can range from 0 to 30, is the sum of the individual scores in each of
+the categories.
+\begin{center}\includegraphics[width=1\linewidth]{figure/top-1} \end{center}
+\begin{center}\includegraphics[width=1\linewidth]{figure/top-2} \end{center}
 
 When looking at the overall distribution of TOP Factor scores, we see a
 relatively grim picture: Around 50\% of journals score as low as 0-5
@@ -708,7 +718,7 @@ relatively robust policies.
 \subsection{Assessing the Success of Academic Reproducibility
 Policies}\label{assessing-the-success-of-academic-reproducibility-policies}
 
-We have seen that, although not necessarily the standard, many journals
+We have seen that, although not necessarily the standard, some journals
 across the sciences have enacted reproducibility policies. The simple
 implementation of a policy, however, does not ensure that its goals will
 be achieved. Reproducibility can only be addressed when both authors
@@ -896,8 +906,6 @@ As a result, journals often encourage reviewers to consider authors'
 compliance with data sharing policies, but do not formally require that
 they ensure it as a criterion for acceptance (Hrynaszkiewicz (2020)).
 
-\url{http://emiguel.econ.berkeley.edu/assets/miguel_research/78/jel.20171350.pdf}
-
 \section{Attempts to Address These
 Limitations}\label{attempts-to-address-these-limitations}
 
@@ -916,6 +924,9 @@ Additionally, science faces the additional challenge that many
 publishers do not emphasize reproducibility at all, providing many
 opportunities for all authors except those personally dedicated to
 producing reproducible work to leave reproducibility by the wayside.
+Many journals have no reproducibility requirements, and those that do
+often do not take the necessary steps to ensure that they are actually
+met.
 
 These issues, however, are not impossible to overcome. Proponents of
 reproducibility have taken action to help address them, both through
@@ -926,17 +937,20 @@ the process of achieving it.
 
 \subsection{Through Software}\label{through-software}
 
-Much of this work is highly generalized, written to be applicable to
-users working with a variety of statistical software programs. Because
-all statistical software programs operate differently, these
-recommendations are inherently vague and difficult to implement,
-particularly to new analysts who are relatively unfamiliar with their
-software. Focused attempts to address reproducibility in specific
-certain software programs are more likely to be successful. We focus on
-\texttt{R}, due to its open-source nature, accessibility, and popularity
-as a tool for statistical analysis.
+Several researchers and members of the Statistical and Data Sciences
+community have taken action to develop software focused on
+reproducibility which removes some of the load on data analysts by
+automating reproducibility processes and checking whether certain
+components are achieved.
 
-A small body of \texttt{R} packages focuses on research reproducibility.
+Much of this software has been written for users of the coding and data
+analysis language \texttt{R}. \texttt{R} is very popular in the data
+science community due to its open-source nature, accessibility,
+extensive developer and user base, and statsitical analysis-specific
+features.
+
+Some of the existing software solutions are listed below:
+
 \texttt{rrtools} (Marwick (2019)) addresses some of the issues discussed
 in Marwick, Boettiger, \& Mullen (2018) by creating a basic \texttt{R}
 package structure for a data analysis project and implementing a basic
@@ -945,53 +959,46 @@ et al. (2020)) package also focuses on file structure, requiring the
 user to declare a desired project structure (typically a step-by-step
 structure, where outputs from one step are inputs into the next) at the
 beginning and then creating the files necessary to achieve that
-structure. \texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens
-(2019)) functionality is based around version control and making code
-easily available online. It works to generate a website containing
-time-stamped, versioned, and documented results. \texttt{checkers}
-(Ross, DeCicco, \& Randhawa (2018)) allows you to create custom checks
-that examine different aspects of reproducibility. \texttt{packrat}
-(Ushey, McPherson, Cheng, Atkins, \& Allaire (2018)) is focused on
-dependencies, creating a packaged folder containing a project as well as
-all of its dependencies so that projects dependent on lesser-used
-packages can be easily shared across computers. \texttt{drake} (OpenSci
-(2020)) analyzes workflows, skips steps where results are up to date,
-and provides evidence that results match the underlying code and data.
+structure.
+
+\texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens (2019))
+functionality is based around version control and making code easily
+available online. It works to generate a website containing
+time-stamped, versioned, and documented results.
+
+\texttt{checkers} (Ross, DeCicco, \& Randhawa (2018)) allows you to
+create custom checks that examine different aspects of reproducibility.
+
+\texttt{packrat} (Ushey, McPherson, Cheng, Atkins, \& Allaire (2018)) is
+focused on dependencies, creating a packaged folder containing a project
+as well as all of its dependencies so that projects dependent on
+lesser-used packages can be easily shared across computers.
+
+\texttt{drake} (OpenSci (2020)) analyzes workflows, skips steps where
+results are up to date, and provides evidence that results match the
+underlying code and data.
+
 Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package
 focuses on the concept of caching: saving information so that projects
 can be run faster each time they are re-completed from the start.
+\begin{center}\includegraphics[width=0.5\linewidth]{figure/packages} \end{center}
 
-Many of these packages are narrow, with each effectively addressing a
-small component of reproducibility: file structure, modularization of
-code, version control, etc. These packages often succeed in their area
-of focus, but at the cost of accessibility to a wider audience. Their
-functions are often quite complex to use, and many steps must be
-completed to achieve the required reproducibility goal. This cumbersome
-nature means that most reproducibility packages currently available are
-not easily accessible to users near the beginning of their \texttt{R}
-journey, nor particularly useful to those looking for quick and easy
-reproducibility checks. A more effective way of realizing widespread
-reproducibility is to make the process for doing so simple enough that
-it takes little to no conscious effort to implement. You want users to
-``fall into a hole'' (we paraphrase Hadley Wickham) of good practice.
+There have also been several \texttt{Continuous\ integration} tools
+developed outside of R which can be used by those coding in almost any
+language. These provide more general approaches to automated checking,
+which can enhance reproducibility with minimal code.
 
-\texttt{Continuous\ integration} tools provide more general approaches
-to automated checking, which can enhance reproducibility with minimal
-code. For example, \texttt{wercker}---a command line tool that leverages
+For example, \texttt{wercker}---a command line tool that leverages
 Docker---enables users to test whether their projects will successfully
 compile when run on a variety of operating systems without access to the
 user's local hard drive (Oracle Corporation (2019)).
+
 \texttt{GitHub\ Actions} is integrated into GitHub and can be configured
 to do similar checks on projects hosted in repositories.
+
 \texttt{Travis\ CI} and \texttt{Circle\ CI} are popular continuous
 integration tools that can also be used to check \texttt{R} code.
-
-However, while these tools can be useful, they are generalized so as to
-be useful to the widest audience. As a result, their checks are not
-designed to be \texttt{R}-specific, which makes them sub-optimal for
-users looking to address reproducibility issues involving features
-specific to the \texttt{R} programming language, such as package
-installation and seed setting.
+\begin{center}\includegraphics[width=0.8\linewidth]{figure/ci-tools} \end{center}
 
 \chapter{Addressing the Challenges of
 Reproducibility}\label{my-solution}
@@ -1012,6 +1019,29 @@ community: RStudio users.
 
 \section{Identifying Gaps In Existing
 Solutions}\label{identifying-gaps-in-existing-solutions}
+
+\textbf{on r packages} Many of these packages are narrow, with each
+effectively addressing a small component of reproducibility: file
+structure, modularization of code, version control, etc. These packages
+often succeed in their area of focus, but at the cost of accessibility
+to a wider audience. Their functions are often quite complex to use, and
+many steps must be completed to achieve the required reproducibility
+goal. This cumbersome nature means that most reproducibility packages
+currently available are not easily accessible to users near the
+beginning of their \texttt{R} journey, nor particularly useful to those
+looking for quick and easy reproducibility checks.
+
+A more effective way of realizing widespread reproducibility is to make
+the process for doing so simple enough that it takes little to no
+conscious effort to implement. You want users to ``fall into a hole''
+(we paraphrase Hadley Wickham) of good practice.
+
+** on continuous integration ** However, while these tools can be
+useful, they are generalized so as to be useful to the widest audience.
+As a result, their checks are not designed to be \texttt{R}-specific,
+which makes them sub-optimal for users looking to address
+reproducibility issues involving features specific to the \texttt{R}
+programming language, such as package installation and seed setting.
 
 \section{\texorpdfstring{My Contribution: \texttt{fertile}, An R Package
 Creating Optimal Conditions For
@@ -1217,8 +1247,8 @@ used in code.
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     187.56K image/png                         
-3 proteins_v_time.~ png      379.7K image/png                         
+2 citrate_v_time.p~ png     184.83K image/png                         
+3 proteins_v_time.~ png     377.15K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1266,12 +1296,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-12 17:27:44
-2 package:th~ <NA>                        base::r~ 2020-09-12 17:27:44
-3 package:th~ <NA>                        base::l~ 2020-09-12 17:27:44
-4 package:pu~ <NA>                        base::l~ 2020-09-12 17:29:27
-5 package:fo~ <NA>                        base::l~ 2020-09-12 17:29:27
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 17:29:27
+1 package:re~ <NA>                        base::r~ 2020-09-12 18:43:44
+2 package:th~ <NA>                        base::r~ 2020-09-12 18:43:44
+3 package:th~ <NA>                        base::l~ 2020-09-12 18:43:44
+4 package:pu~ <NA>                        base::l~ 2020-09-12 18:45:27
+5 package:fo~ <NA>                        base::l~ 2020-09-12 18:45:27
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 18:45:28
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1381,7 +1411,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpKi122l/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1389,9 +1419,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpKi122l/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpKi122l/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpKi122l/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1470,7 +1500,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fed8420c068>
+<bytecode: 0x7f862e922cb0>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
