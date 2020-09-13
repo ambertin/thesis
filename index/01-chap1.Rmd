@@ -234,6 +234,12 @@ The main challenges listed by respondents were as follows:
 
 The relative frequency of these issues varied across several characteristics, including author seniority, subject area, and geographical location, though authors in all categories faced some issues.
 
+Beyond technical challenges, other reasons may lead authors to not place their focus on reproducibility. For example, some researchers might fear damage to their reputation if a reproduction attempt fails after they have provided the necessary materials.
+
+**ADD SOURCE**: LUPIA, ARTHUR, AND COLIN ELMAN. (2014) Openness in Political Science: Data Access and Research
+Transparency. PS, Political Science & Politics 47 (1): 19–42.
+
+
 Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that *recommend* the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
 
 ### Challenges for Journals
@@ -267,6 +273,27 @@ Additionally, science faces the additional challenge that many publishers do not
 These issues, however, are not impossible to overcome. Proponents of reproducibility have taken action to help address them, both through education on reproducibility and through software that helps simplify the process of achieving it. 
 
 ### Through Education
+
+"In spite of some pioneering effort such as (Howe [12]), reproducibility training and assessment in data science education is largely neglected, especially among undergraduates and Master’s students in professional schools such as the iSchools, probably because the students are usually considered to be non-research oriented." (https://www.mitpressjournals.org/doi/pdf/10.1162/dint_a_00053)
+
+* Natural place to bring awareness/education about reproducibility is early on in data science educational pipelines, either in undergraduate or graduate programs (https://arxiv.org/abs/1401.3269)
+
+* Teaching transparency tools and encouraging students to produce reproducible work early on can help lessen the burden on journals in the long run by increasing the number (and percentage) of researchers doing reproducible work. 
+
+* Teaching early gives students the opportunity to learn when something is reproducible and when it's not, as well as methods for achieving reproducibility.
+
+* It gives students the tools to add knowledge to their field in the best way possible (Bringing the Gold Standard into the Classroom: Replication in University Teaching - Nicole Janz)
+
+* Practicing from the start makes it so that reproducibility comes naturally and easily -- without much effort -- rather than having to struggle through it every time
+
+* Grading gives an incentive for students to pay attention, learn, and absorb the information better than if they tried to learn it elsewhere
+
+* There have been some efforts to introduce reproducibility in scientific education:
+
+See https://escholarship.org/uc/item/90b2f5xh (RMarkdown - Ben Baumer), KING, GARY. (2006) Publication. PS, Political Science & Politics 39 (1): 119–125. (forcing students to re-run the results of studies as part of class!), Cambridge Replication Workshop (described in Janz article on pg 399), Berkeley course where students each take a different piece of the pipeline and have to make sure their piece connects with the next piece (https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/)
+
+Pg 398 of the Nicole Janz article has a lot more examples!
+
 
 ### Through Software
 

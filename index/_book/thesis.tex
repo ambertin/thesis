@@ -223,10 +223,6 @@ Potential sources:
 
 \url{https://academic.oup.com/isp/article-abstract/17/4/392/2528285}
 
-\url{https://dl.acm.org/doi/abs/10.1145/3186266?casa_token=3yv8mooiZXYAAAAA:AUWshgsmm-4ulr7qYK2vm3a6EdJneFLgn3nxplGeaZpT7hgFcIRkRA7edGHdjg_pPvs5p-GoHHFo}
-
-\url{https://dl.acm.org/doi/abs/10.1145/3027385.3029445?casa_token=rgNbcFWIA1AAAAAA:cZRPAy1KYewKfheFe74GBDwKzF9Q8X0xMau0AtBVkYSTYrd7apJEnwDY_T8oqh1cZQED1gHjjtq4}
-
 \url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/}
 
 \url{https://guides.lib.uw.edu/research/reproducibility/teaching}
@@ -234,10 +230,6 @@ Potential sources:
 \url{https://escholarship.org/uc/item/90b2f5xh}
 
 \url{https://www.mitpressjournals.org/doi/full/10.1162/dint_a_00053}
-
-\url{https://www.pnas.org/content/115/11/2584}
-
-\url{https://www.pnas.org/content/115/11/2561}
 
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
@@ -847,6 +839,15 @@ characteristics, including author seniority, subject area, and
 geographical location, though authors in all categories faced some
 issues.
 
+Beyond technical challenges, other reasons may lead authors to not place
+their focus on reproducibility. For example, some researchers might fear
+damage to their reputation if a reproduction attempt fails after they
+have provided the necessary materials.
+
+\textbf{ADD SOURCE}: LUPIA, ARTHUR, AND COLIN ELMAN. (2014) Openness in
+Political Science: Data Access and Research Transparency. PS, Political
+Science \& Politics 47 (1): 19--42.
+
 Given the relatively high frequency of concern over achieving
 reproducibility, it follows that researchers will not make the necessary
 effort to do so if journal guidelines provide a way out. Policies that
@@ -934,6 +935,53 @@ education on reproducibility and through software that helps simplify
 the process of achieving it.
 
 \subsection{Through Education}\label{through-education}
+
+``In spite of some pioneering effort such as (Howe {[}12{]}),
+reproducibility training and assessment in data science education is
+largely neglected, especially among undergraduates and Master's students
+in professional schools such as the iSchools, probably because the
+students are usually considered to be non-research oriented.''
+(\url{https://www.mitpressjournals.org/doi/pdf/10.1162/dint_a_00053})
+\begin{itemize}
+\item
+  Natural place to bring awareness/education about reproducibility is
+  early on in data science educational pipelines, either in
+  undergraduate or graduate programs
+  (\url{https://arxiv.org/abs/1401.3269})
+\item
+  Teaching transparency tools and encouraging students to produce
+  reproducible work early on can help lessen the burden on journals in
+  the long run by increasing the number (and percentage) of researchers
+  doing reproducible work.
+\item
+  Teaching early gives students the opportunity to learn when something
+  is reproducible and when it's not, as well as methods for achieving
+  reproducibility.
+\item
+  It gives students the tools to add knowledge to their field in the
+  best way possible (Bringing the Gold Standard into the Classroom:
+  Replication in University Teaching - Nicole Janz)
+\item
+  Practicing from the start makes it so that reproducibility comes
+  naturally and easily -- without much effort -- rather than having to
+  struggle through it every time
+\item
+  Grading gives an incentive for students to pay attention, learn, and
+  absorb the information better than if they tried to learn it elsewhere
+\item
+  There have been some efforts to introduce reproducibility in
+  scientific education:
+\end{itemize}
+See \url{https://escholarship.org/uc/item/90b2f5xh} (RMarkdown - Ben
+Baumer), KING, GARY. (2006) Publication. PS, Political Science \&
+Politics 39 (1): 119--125. (forcing students to re-run the results of
+studies as part of class!), Cambridge Replication Workshop (described in
+Janz article on pg 399), Berkeley course where students each take a
+different piece of the pipeline and have to make sure their piece
+connects with the next piece
+(\url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/})
+
+Pg 398 of the Nicole Janz article has a lot more examples!
 
 \subsection{Through Software}\label{through-software}
 
@@ -1159,7 +1207,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: --- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1185,13 +1233,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ---------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... -- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ------------------------------ fertile 0.0.0.9027 --
+-- Rendering R scripts... --------------
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ---------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ------
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1200,7 +1248,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks --------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -----------
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1220,10 +1268,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------ fertile 0.0.0.9027 --
+-- Analysis of reproducibility for proje
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ---------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code 
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1240,15 +1288,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------ fertile 0.0.0.9027 --
+--   Files present in directory --------
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 4
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png     184.83K image/png                         
-3 proteins_v_time.~ png     377.15K image/png                         
+2 citrate_v_time.p~ png      186.2K image/png                         
+3 proteins_v_time.~ png     379.78K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1257,7 +1305,7 @@ used in code.
 9 analysis.Rmd      Rmd       4.94K text/x-markdown                   
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ---------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ------
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 7 x 3
@@ -1272,7 +1320,7 @@ used in code.
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged -------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ----------
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1296,12 +1344,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-12 18:43:44
-2 package:th~ <NA>                        base::r~ 2020-09-12 18:43:44
-3 package:th~ <NA>                        base::l~ 2020-09-12 18:43:44
-4 package:pu~ <NA>                        base::l~ 2020-09-12 18:45:27
-5 package:fo~ <NA>                        base::l~ 2020-09-12 18:45:27
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-12 18:45:28
+1 package:re~ <NA>                        base::r~ 2020-09-12 18:45:28
+2 package:th~ <NA>                        base::r~ 2020-09-12 18:45:28
+3 package:th~ <NA>                        base::l~ 2020-09-12 18:45:28
+4 package:pu~ <NA>                        base::l~ 2020-09-13 00:52:15
+5 package:fo~ <NA>                        base::l~ 2020-09-13 00:52:15
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-13 00:52:15
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1411,7 +1459,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1419,9 +1467,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqEI2kb/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1500,7 +1548,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f862e922cb0>
+<bytecode: 0x7f8aac438318>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
@@ -1616,7 +1664,10 @@ Scientists}\label{by-beginning-data-scientists}
 Scientists}\label{by-advanced-data-scientists}
 
 \subsection{For Teaching
-Reproducibily}\label{for-teaching-reproducibily}
+Reproducibility}\label{for-teaching-reproducibility}
+
+Nicole Janz -- Brining the Gold Standard into the Classroom: Replication
+in University Teaching
 
 \section{\texorpdfstring{Integration Of \texttt{fertile} And Other
 Reproducibility Tools in Data Science

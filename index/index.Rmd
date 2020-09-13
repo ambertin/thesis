@@ -121,9 +121,6 @@ https://arxiv.org/abs/1401.3269
 
 https://academic.oup.com/isp/article-abstract/17/4/392/2528285
 
-https://dl.acm.org/doi/abs/10.1145/3186266?casa_token=3yv8mooiZXYAAAAA:AUWshgsmm-4ulr7qYK2vm3a6EdJneFLgn3nxplGeaZpT7hgFcIRkRA7edGHdjg_pPvs5p-GoHHFo
-
-https://dl.acm.org/doi/abs/10.1145/3027385.3029445?casa_token=rgNbcFWIA1AAAAAA:cZRPAy1KYewKfheFe74GBDwKzF9Q8X0xMau0AtBVkYSTYrd7apJEnwDY_T8oqh1cZQED1gHjjtq4
 
 https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/
 
@@ -133,7 +130,4 @@ https://escholarship.org/uc/item/90b2f5xh
 
 https://www.mitpressjournals.org/doi/full/10.1162/dint_a_00053
 
-https://www.pnas.org/content/115/11/2584
-
-https://www.pnas.org/content/115/11/2561
 

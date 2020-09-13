@@ -8,7 +8,9 @@
 
 ### By Advanced Data Scientists
 
-### For Teaching Reproducibily
+### For Teaching Reproducibility
+
+Nicole Janz -- Brining the Gold Standard into the Classroom: Replication in University Teaching
 
 ## Integration Of `fertile` And Other Reproducibility Tools in Data Science Education
 
