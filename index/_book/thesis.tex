@@ -936,52 +936,106 @@ the process of achieving it.
 
 \subsection{Through Education}\label{through-education}
 
-``In spite of some pioneering effort such as (Howe {[}12{]}),
-reproducibility training and assessment in data science education is
-largely neglected, especially among undergraduates and Master's students
-in professional schools such as the iSchools, probably because the
-students are usually considered to be non-research oriented.''
-(\url{https://www.mitpressjournals.org/doi/pdf/10.1162/dint_a_00053})
+One way to address the reproducibility crisis is to educate data
+analysts on the topic so that they are aware of both the concept of
+reproducibility and how to achieve it in their own work. A natural place
+to focus this education is early on in the data science training
+pipeline as part of introductory or early-intermediate courses in
+undergraduate and graduate data science porgrams.
+(\url{https://arxiv.org/abs/1401.3269}) This sort of educational
+integration has a variety of benefits:
 \begin{itemize}
 \item
-  Natural place to bring awareness/education about reproducibility is
-  early on in data science educational pipelines, either in
-  undergraduate or graduate programs
-  (\url{https://arxiv.org/abs/1401.3269})
+  Bringing reproducibility into the discussion early on gives students
+  the tools to add knowledge to their field in the best way possible
+  before they actually conduct any substantive analysis on their own.
+  (Bringing the Gold Standard into the Classroom: Replication in
+  University Teaching - Nicole Janz). This produces many long run
+  benefits, helping lessen the burden on promoting reproducibility
+  placed on journals and increasing the number (and percentage) of
+  researchers doing and promoting reproducible work.
 \item
-  Teaching transparency tools and encouraging students to produce
-  reproducible work early on can help lessen the burden on journals in
-  the long run by increasing the number (and percentage) of researchers
-  doing reproducible work.
+  If covered in detail as part of the data science curriculum,
+  reproducibility will eventually come easily to students. If learned
+  independently, without effective tools, reproducibility can
+  challenging and even disheartening to try to understand and succeed
+  at. Practicing in the classroom gives students the ability to fail
+  without damaging their reputation, giving a great opportunity to truly
+  learn and understand the concepts so that they feel capable of
+  handling them when they begin their own research.
 \item
-  Teaching early gives students the opportunity to learn when something
-  is reproducible and when it's not, as well as methods for achieving
-  reproducibility.
-\item
-  It gives students the tools to add knowledge to their field in the
-  best way possible (Bringing the Gold Standard into the Classroom:
-  Replication in University Teaching - Nicole Janz)
-\item
-  Practicing from the start makes it so that reproducibility comes
-  naturally and easily -- without much effort -- rather than having to
-  struggle through it every time
-\item
-  Grading gives an incentive for students to pay attention, learn, and
-  absorb the information better than if they tried to learn it elsewhere
-\item
-  There have been some efforts to introduce reproducibility in
-  scientific education:
+  The application of grading to the topic provides an incentive for
+  students to pay attention, learn, and absorb the information. This
+  same incentive does not exist when researchers attempt to learn about
+  reproducibility independently. In that situation, internal motivation,
+  which may be weak in some individuals, is the only factor present to
+  help promote success.
 \end{itemize}
-See \url{https://escholarship.org/uc/item/90b2f5xh} (RMarkdown - Ben
-Baumer), KING, GARY. (2006) Publication. PS, Political Science \&
-Politics 39 (1): 119--125. (forcing students to re-run the results of
-studies as part of class!), Cambridge Replication Workshop (described in
-Janz article on pg 399), Berkeley course where students each take a
-different piece of the pipeline and have to make sure their piece
-connects with the next piece
+Several educators, primarily at the graduate level, have realized the
+opportunity and taken steps to introduce reproducibility into their
+courses.
+
+The primary way of achieving this integration is through the assignment
+of ``replication studies'' in standard methods choices. In these
+assignments, students are given a published study and its supporting
+materials and asked to reproduce the results. The most famous course of
+this kind is Government 2001, taught by Gary King at Harvard University.
+(Janz article) In King's course, students team up in small groups to
+reproduce a previous study. To help ensure that their workflow is
+reproducible, students are required to hand over their data and code to
+another student team who then tries to reproduce their work once again.
+
+In Thomas M. Carsey's intermediate statistics course at the University
+of North Carolina at Chapel Hill, students must reproduce the findings
+of a study by re-collecting the data from the original sources, then
+must extend the study by building on the analysis.
+
+Christopher Fariss of Penn State University asks his students to
+replicate a research paper published in the last five years, noting that
+students must describe the article and the ease in which the results
+replicate.
+
+The University of California at Berkeley has a similar course to Gary
+King's Harvard course, where students each take a different piece of an
+existing study to work on reproducing and have to ensure that their
+piece fits with the piece of the next student.
 (\url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/})
 
-Pg 398 of the Nicole Janz article has a lot more examples!
+At the undergraduate level, rather than assign replication studies the
+way many graduate schools tend to do, Smith College and Duke University
+have both integrated reproducibility into their introductory courses
+through the requirement that assignments be completed in the
+\texttt{RMarkdown} code + narration format.
+(\url{https://escholarship.org/uc/item/90b2f5xh}).
+
+Another way to provide education on reproducibility is through the
+creation of workshops that focus solely on the topic, rather than
+through integration as just one part of a class.
+
+For example, the University of Cambridge conducts a Replication
+Workshop, where graduate students are asked replicate a paper in their
+field over eight weekly sessions. When students encounter challenges,
+such as authors not responding to queries for data or steps of the
+analysis being poorly defined and explained, they gain a first hand
+understanding of the consequences of poor transparency.
+
+Workshops such as these are typically optional and not included as part
+of the primary curriculum, however, so while they may cover the topic of
+reproducibility in more detail than traditional courses, they often
+reach fewer students.
+
+In spite of all of the advantages that these educational tools provide,
+``reproducibility training and assessment in data science education is
+largely neglected, especially among undergraduates and Master's students
+in professional schools\ldots{}, probably because the students are
+usually considered to be non-research oriented.''
+(\url{https://www.mitpressjournals.org/doi/pdf/10.1162/dint_a_00053})
+While some examples of reproducibility education exist, they are
+certainly not commonplace. However, given the increased discussion and
+emphasis on reproducibility in academia over the past several years, it
+is likely that this will change, particularly if methods are provided to
+educators to make the integration of reproducibility into their courses
+simple and relatively unburdensome.
 
 \subsection{Through Software}\label{through-software}
 
@@ -1207,7 +1261,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are
+-- The available checks in `fertile` are as follows: --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1233,13 +1287,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... -- fertile 0.0.0.9027 --
+-- Compiling... ---------------------------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... --------------
+-- Rendering R scripts... ------------------------------------------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------
+-- Running reproducibility checks ---------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1248,7 +1302,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks -----------
+-- Summary of fertile checks --------------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1268,10 +1322,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for proje
+-- Analysis of reproducibility for project_miceps ------------------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code 
+--   Packages referenced in source code ---------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1288,15 +1342,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory --------
+--   Files present in directory ------------------------------------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 4
   file              ext        size mime                              
   <fs::path>        <chr> <fs::byt> <chr>                             
 1 Estrogen_Recepto~ docx     10.97K application/vnd.openxmlformats-of~
-2 citrate_v_time.p~ png      186.2K image/png                         
-3 proteins_v_time.~ png     379.78K image/png                         
+2 citrate_v_time.p~ png     185.79K image/png                         
+3 proteins_v_time.~ png     376.92K image/png                         
 4 Blot_data_update~ csv      14.43K text/csv                          
 5 CS_data_redone.c~ csv       7.39K text/csv                          
 6 mice.csv          csv      14.33K text/csv                          
@@ -1305,7 +1359,7 @@ used in code.
 9 analysis.Rmd      Rmd       4.94K text/x-markdown                   
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------
+--   Suggestions for moving files ---------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 7 x 3
@@ -1320,7 +1374,7 @@ used in code.
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ----------
+--   Problematic paths logged -------------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1344,12 +1398,12 @@ function:
 # A tibble: 6 x 4
   path        path_abs                    func     timestamp          
   <chr>       <chr>                       <chr>    <dttm>             
-1 package:re~ <NA>                        base::r~ 2020-09-12 18:45:28
-2 package:th~ <NA>                        base::r~ 2020-09-12 18:45:28
-3 package:th~ <NA>                        base::l~ 2020-09-12 18:45:28
-4 package:pu~ <NA>                        base::l~ 2020-09-13 00:52:15
-5 package:fo~ <NA>                        base::l~ 2020-09-13 00:52:15
-6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-13 00:52:15
+1 package:re~ <NA>                        base::r~ 2020-09-13 00:52:15
+2 package:th~ <NA>                        base::r~ 2020-09-13 00:52:15
+3 package:th~ <NA>                        base::l~ 2020-09-13 00:52:15
+4 package:pu~ <NA>                        base::l~ 2020-09-13 18:43:22
+5 package:fo~ <NA>                        base::l~ 2020-09-13 18:43:22
+6 project_mi~ /Users/audreybertin/Docume~ readr::~ 2020-09-13 18:43:22
 \end{verbatim}
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
@@ -1459,7 +1513,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7ozlFC/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1467,9 +1521,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpcAu5n8/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7ozlFC/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7ozlFC/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7ozlFC/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \subsection{Managing Project
 Dependencies}\label{managing-project-dependencies}
@@ -1548,7 +1602,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f8aac438318>
+<bytecode: 0x7f83d42ad378>
 <environment: namespace:fertile>
 \end{verbatim}
 \texttt{fertile} shims many common functions, including those that read
