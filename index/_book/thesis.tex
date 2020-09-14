@@ -1147,6 +1147,37 @@ and their associated challenges.
 
 \subsection{In Education}\label{in-education}
 
+The two primary concerns about the integration of reproducibility in
+data science curricula revolve around time and difficulty.
+
+As noted previously, the primary mode of teaching reproducibility is
+through the assignment of replication studies where students must take
+an existing study and go through the process of reproducing it
+themselves, including contacting the author for all necessary materials,
+rerunning code and analysis, and problem-solving when issues almost
+certainly come up.
+
+In addition to the time required for the professor to collect all of the
+studies that students will be working on, the inclusion of such an
+assignment places a significant burden on educators by taking up time
+where they could be teaching other important material. Replication
+studies, if done correctly, can take weeks for students to successfully
+complete. The choice to give such assignments is therefore associated
+with a significant opportunity cost which many professors are unwilling
+to take.
+
+Additionally, both replication studies assigned in class and replication
+workshops outside of normal coursework require a working knowledge of
+how to successfully complete and understand research. This makes them
+inaccessible to individuals who are still in their undergraduate career
+and may not yet have had an opportunity to conduct research or those who
+are studying in non-research-focused technical programs.
+
+In order to reach the widest variety of students possible, it is
+necessary to develop a new method of teaching reproducibility that is
+neither time consuming nor dependent on a prior understanding of the
+research process.
+
 \subsection{In Software}\label{in-software}
 
 Many of these packages are narrow, with each effectively addressing a
@@ -1394,8 +1425,8 @@ used in code.
   file               ext        size mime                                       
   <fs::path>         <chr> <fs::byt> <chr>                                      
 1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocum~
-2 citrate_v_time.png png     188.16K image/png                                  
-3 proteins_v_time.p~ png     379.63K image/png                                  
+2 citrate_v_time.png png     187.79K image/png                                  
+3 proteins_v_time.p~ png      377.7K image/png                                  
 4 Blot_data_updated~ csv      14.43K text/csv                                   
 5 CS_data_redone.csv csv       7.39K text/csv                                   
 6 mice.csv           csv      14.33K text/csv                                   
@@ -1444,12 +1475,15 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 3 x 4
+# A tibble: 6 x 4
   path          path_abs                           func      timestamp          
   <chr>         <chr>                              <chr>     <dttm>             
-1 package:purrr <NA>                               base::li~ 2020-09-14 17:45:51
-2 package:forc~ <NA>                               base::li~ 2020-09-14 17:45:51
-3 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-14 17:45:51
+1 package:remo~ <NA>                               base::re~ 2020-09-14 17:46:05
+2 package:thes~ <NA>                               base::re~ 2020-09-14 17:46:05
+3 package:thes~ <NA>                               base::li~ 2020-09-14 17:46:05
+4 package:purrr <NA>                               base::li~ 2020-09-14 18:06:13
+5 package:forc~ <NA>                               base::li~ 2020-09-14 18:06:13
+6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-14 18:06:13
 \end{verbatim}
 \normalsize
 
@@ -1565,11 +1599,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpmB9yPe/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpmB9yPe/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpmB9yPe/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -1659,7 +1693,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb99472fce0>
+<bytecode: 0x7fda46f55bc0>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
