@@ -19,6 +19,7 @@ params:
 # Can only choose one at a time.
 output:
   thesisdown::thesis_pdf: default 
+  
 #  thesisdown::thesis_gitbook: default         
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
@@ -59,7 +60,6 @@ If you'd like to include a comment that won't be produced in your resulting file
 
 If you receive a duplicate label error after knitting, make sure to delete the index.Rmd file and then knit again.
 -->
-
 
 ```{r include_packages, include=FALSE}
 # This chunk ensures that the thesisdown package is
@@ -107,6 +107,7 @@ knit_hooks$set(output = function(x, options) {
   }
   hook_output(x, options)
 })
+
 ```
 
 
