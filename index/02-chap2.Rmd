@@ -1,29 +1,25 @@
-# Addressing the Challenges of Reproducibility {#my-solution}
+# `fertile`: My Contribution To Addressing Reproducibility {#my-solution}
 
-[
+## Understanding The Gaps In Existing Reproducibility Solutions
 
-The relative simplicity of the reproducibility challenge makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term.
+Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term. 
 
-My research has focused on doing just this, providing tools to assist with achieving reproducibility in one segment of the scientific community: RStudio users.
+As we have seen, software developers, data scientists, and educators around the world have realized this potential, taking steps to help address the current crisis of reproducibility. Journals have put in place guidelines for authors, statisticians have developed `R` packages that help structure projects in a reproducible format, and educators have begun integrate reproducibility exercises into their courses.
 
-] --- DO WE NEED THIS?
+However, many of these attempts to address reproducibility have significant drawbacks associated with them. We have already explored the issues with journal policies, both for authors and reviewers, in-depth. In this section, we will consider the education and software solutions and their associated challenges.
 
+### In Education
 
-## Identifying Gaps In Existing Solutions
+### In Software
 
-**on r packages**
 Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
-
-
 
 A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
 
-
-** on continuous integration **
 However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R`  programming language, such as package installation and seed setting.
 
 
-## My Contribution: `fertile`, An R Package Creating Optimal Conditions For Reproducibility
+##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
 ### Package Overview
 
@@ -69,7 +65,7 @@ Users can access the majority of `fertile`'s retroactive features through two pr
 
 The `proj_check()` function runs fifteen different reproducibility tests, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
 
-```{r list-checks}
+```{r list-checks, linewidth = 60}
 list_checks()
 ```
 
@@ -88,7 +84,7 @@ if (file.exists(bad_file)) {
 
 ```
 
-```{r proj_check_some, warning = FALSE}
+```{r proj_check_some, warning = FALSE, linewidth = 60}
 proj_check_some(proj_dir, contains("paths"))
 ```
 
@@ -97,7 +93,7 @@ Each test can also be run individually by calling the function matching its chec
 
 The `proj_analyze()` function creates a report documenting the structure of a data analysis project. This report contains information about all packages referenced in code, the files present in the directory and their types, suggestions for moving files to create a more organized structure, and a list of reproducibility-breaking file paths used in code.
 
-```{r proj_analyze, out.width = 180}
+```{r proj_analyze, linewidth = 60}
 proj_analyze(proj_dir)
 ```
 
@@ -157,7 +153,7 @@ is_r_file(fs::path(proj_dir, "analysis.Rmd"))
 
 The `sandbox()` function allows the user to make a copy of their project in a temporary directory. This can be useful for ensuring that projects run properly when access to the local file system is removed.
 
-```{r sandbox}
+```{r sandbox, linewidth = 50}
 proj_dir
 fs::dir_ls(proj_dir) %>% head(3)
 temp_dir <- sandbox(proj_dir)
@@ -172,7 +168,7 @@ One of the challenges with ensuring that work is reproducible is the issue of de
 
 The `proj_pkg_script()`} function assists with this issue by making it simple and fast to download dependencies. When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 
-```{r proj_pkg_script, eval=TRUE, cache=TRUE}
+```{r proj_pkg_script, eval=TRUE, cache=TRUE, linewidth = 60}
 install_script <- proj_pkg_script(proj_dir)
 cat(readChar(install_script, 1e5))
 ```
