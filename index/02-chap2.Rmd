@@ -22,12 +22,19 @@ In order to reach the widest variety of students possible, it is necessary to de
 
 ### In Software
 
-Many of these packages are narrow, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. These packages often  succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users near the beginning of their `R` journey, nor particularly useful to those looking for quick and easy reproducibility checks.
+Previously, we considered several different types of software solutions: packages designed for users of `R` and continuous integration programs that can be used alongside a variety of coding languages. Although these solutions have their advantages, they also have significant drawbacks in terms of their ability to address reproducibility on a widespread scale.
 
-A more effective way of realizing widespread reproducibility is to make the process for doing so simple enough that it takes little to no conscious effort to implement. You want users to "fall into a hole" (we paraphrase Hadley Wickham) of good practice. 
+Many of the packages designed for `R` are incredibly narrow in scope, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. They often succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users with minimal `R` experience, nor particularly useful to those looking for quick and easy reproducibility checks. The significant learning curve associated with them can also detract potential users who may be interested in reproducibility but not willing to dedicate an extensive amount of time to understanding the intricacies of software operation.
 
-However, while these tools can be useful, they are generalized so as to be useful to the widest audience. As a result, their checks are not designed to be `R`-specific, which makes them sub-optimal for users looking to address reproducibility issues involving features specific to the `R`  programming language, such as package installation and seed setting.
+Due to their generalized design, Continuous Integration tools do not face the same issues with narrowness or complexity that `R` packages struggle with. However, this generalizability provides its own additional challenge. Since Continuous Integration tools are designed to be accessible to a wide variety of users with different coding preferences, they are not particularly customizable and lack the ability to address features specific to certain programming languages. 
 
+Neither of these different software solutions appear to adequately address the challenge of reproducibility. In order to be the most effective, a piece of software must instead:
+
+1) Be simple, with a small library of functions/tools that are straightforward to use.
+2) Be accessible to a variety of users, with a relatively small learning curvey.
+3) Be able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
+4) Have features specific to a particular coding language that can address that language's unique challenges.
+5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
 
 ##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 

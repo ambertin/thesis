@@ -1068,31 +1068,57 @@ features.
 
 Some of the existing software solutions are listed below:
 
-\texttt{rrtools} (Marwick (2019)) addresses some of the issues discussed
-in Marwick, Boettiger, \& Mullen (2018) by creating a basic \texttt{R}
-package structure for a data analysis project and implementing a basic
-\texttt{testthat::check} functionality. The \texttt{orderly} (FitzJohn
-et al. (2020)) package also focuses on file structure, requiring the
-user to declare a desired project structure (typically a step-by-step
-structure, where outputs from one step are inputs into the next) at the
-beginning and then creating the files necessary to achieve that
-structure.
+\texttt{rrtools} (Marwick (2019)) addresses many of the issues discussed
+in Marwick, Boettiger, \& Mullen (2018) by creating a basic reproducible
+structure based on the \texttt{R} package format for a data analysis
+project. In addition, it allows for isolation of the computer
+environment using \texttt{Docker}, provides a method to capture
+information about the versions of packages used in a project, contains
+tools for generating a README file, and provides an option for users to
+write tests to check that their functions operate as intended.
+
+The \texttt{orderly} (FitzJohn et al. (2020)) package also focuses on
+file structure, requiring the user to declare a desired project
+structure (typically a step-by-step structure, where outputs from one
+step are inputs into the next) at the beginning and then creating the
+files necessary to achieve that structure. Its principal aim is to
+automate many of the basic steps involved in writing analyses, making it
+simple to:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Track all inputs into an analysis.
+\item
+  Store multiple versions of an analysis where it is repeated.
+\item
+  Track outputs of an analysis.
+\item
+  Create analyses that depend on the outputs of previous analyses.
+\end{enumerate}
+When projects have a variety of components, \texttt{orderly} makes it
+easy to see inputs and outputs change with each re-run.
 
 \texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens (2019))
 functionality is based around version control and making code easily
 available online. It works to generate a website containing
-time-stamped, versioned, and documented results.
+time-stamped, versioned, and documented results. In addition, it manages
+the session and package information of each analysis and controls random
+number generation.
 
 \texttt{checkers} (Ross, DeCicco, \& Randhawa (2018)) allows you to
 create custom checks that examine different aspects of reproducibility.
-
-\texttt{packrat} (Ushey, McPherson, Cheng, Atkins, \& Allaire (2018)) is
-focused on dependencies, creating a packaged folder containing a project
-as well as all of its dependencies so that projects dependent on
-lesser-used packages can be easily shared across computers.
+It also contains some pre-built checks, such as seeing if users
+reference packages that are less preferred to other similar ones and
+ensuring that the project is under version control. \texttt{renv} (Ushey
+\& RStudio (2020)) (formerly \texttt{packrat}) helps to make projects
+more isolated, portable, and reproducible. It gives every project its
+own private package library, makes it easy to install the packages the
+project depends on if it is moved to another computer.
 
 \texttt{drake} (OpenSci (2020)) analyzes workflows, skips steps where
-results are up to date, and provides evidence that results match the
+results are up to date, utilizes optimized computing to complete the
+rest of the steps, and provides evidence that results match the
 underlying code and data.
 
 Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package
@@ -1180,29 +1206,58 @@ research process.
 
 \subsection{In Software}\label{in-software}
 
-Many of these packages are narrow, with each effectively addressing a
-small component of reproducibility: file structure, modularization of
-code, version control, etc. These packages often succeed in their area
-of focus, but at the cost of accessibility to a wider audience. Their
-functions are often quite complex to use, and many steps must be
-completed to achieve the required reproducibility goal. This cumbersome
-nature means that most reproducibility packages currently available are
-not easily accessible to users near the beginning of their \texttt{R}
-journey, nor particularly useful to those looking for quick and easy
-reproducibility checks.
+Previously, we considered several different types of software solutions:
+packages designed for users of \texttt{R} and continuous integration
+programs that can be used alongside a variety of coding languages.
+Although these solutions have their advantages, they also have
+significant drawbacks in terms of their ability to address
+reproducibility on a widespread scale.
 
-A more effective way of realizing widespread reproducibility is to make
-the process for doing so simple enough that it takes little to no
-conscious effort to implement. You want users to ``fall into a hole''
-(we paraphrase Hadley Wickham) of good practice.
+Many of the packages designed for \texttt{R} are incredibly narrow in
+scope, with each effectively addressing a small component of
+reproducibility: file structure, modularization of code, version
+control, etc. They often succeed in their area of focus, but at the cost
+of accessibility to a wider audience. Their functions are often quite
+complex to use, and many steps must be completed to achieve the required
+reproducibility goal. This cumbersome nature means that most
+reproducibility packages currently available are not easily accessible
+to users with minimal \texttt{R} experience, nor particularly useful to
+those looking for quick and easy reproducibility checks. The significant
+learning curve associated with them can also detract potential users who
+may be interested in reproducibility but not willing to dedicate an
+extensive amount of time to understanding the intricacies of software
+operation.
 
-However, while these tools can be useful, they are generalized so as to
-be useful to the widest audience. As a result, their checks are not
-designed to be \texttt{R}-specific, which makes them sub-optimal for
-users looking to address reproducibility issues involving features
-specific to the \texttt{R} programming language, such as package
-installation and seed setting.
+Due to their generalized design, Continuous Integration tools do not
+face the same issues with narrowness or complexity that \texttt{R}
+packages struggle with. However, this generalizability provides its own
+additional challenge. Since Continuous Integration tools are designed to
+be accessible to a wide variety of users with different coding
+preferences, they are not particularly customizable and lack the ability
+to address features specific to certain programming languages.
 
+Neither of these different software solutions appear to adequately
+address the challenge of reproducibility. In order to be the most
+effective, a piece of software must instead:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Be simple, with a small library of functions/tools that are
+  straightforward to use.
+\item
+  Be accessible to a variety of users, with a relatively small learning
+  curvey.
+\item
+  Be able to address a wide variety of aspects of reproducibility,
+  rather than just one or two key issues.
+\item
+  Have features specific to a particular coding language that can
+  address that language's unique challenges.
+\item
+  Be customizable, allowing users to choose for themselves which aspects
+  of reproducibility they want to focus on.
+\end{enumerate}
 \section{\texorpdfstring{\texttt{fertile}, An R Package Creating Optimal
 Conditions For
 Reproducibility}{fertile, An R Package Creating Optimal Conditions For Reproducibility}}\label{fertile-an-r-package-creating-optimal-conditions-for-reproducibility}
@@ -1329,7 +1384,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ----------------------
+-- The available checks in `fertile` are as follows: ---------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1359,13 +1414,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ----------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... --------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1374,7 +1429,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------ fertile 0.0.0.9027 --
+-- Summary of fertile checks ---------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1398,10 +1453,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps --- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ----------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1418,15 +1473,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory --------------------- fertile 0.0.0.9027 --
+--   Files present in directory ------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 4
   file               ext        size mime                                       
   <fs::path>         <chr> <fs::byt> <chr>                                      
 1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocum~
-2 citrate_v_time.png png     187.79K image/png                                  
-3 proteins_v_time.p~ png      377.7K image/png                                  
+2 citrate_v_time.png png     187.01K image/png                                  
+3 proteins_v_time.p~ png     377.53K image/png                                  
 4 Blot_data_updated~ csv      14.43K text/csv                                   
 5 CS_data_redone.csv csv       7.39K text/csv                                   
 6 mice.csv           csv      14.33K text/csv                                   
@@ -1435,7 +1490,7 @@ used in code.
 9 analysis.Rmd       Rmd       4.94K text/x-markdown                            
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 7 x 3
@@ -1450,7 +1505,7 @@ used in code.
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_time.png',~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ----------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged --------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1478,12 +1533,12 @@ function:
 # A tibble: 6 x 4
   path          path_abs                           func      timestamp          
   <chr>         <chr>                              <chr>     <dttm>             
-1 package:remo~ <NA>                               base::re~ 2020-09-14 17:46:05
-2 package:thes~ <NA>                               base::re~ 2020-09-14 17:46:05
-3 package:thes~ <NA>                               base::li~ 2020-09-14 17:46:05
-4 package:purrr <NA>                               base::li~ 2020-09-14 18:06:13
-5 package:forc~ <NA>                               base::li~ 2020-09-14 18:06:13
-6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-14 18:06:13
+1 package:remo~ <NA>                               base::re~ 2020-09-14 18:06:14
+2 package:thes~ <NA>                               base::re~ 2020-09-14 18:06:14
+3 package:thes~ <NA>                               base::li~ 2020-09-14 18:06:14
+4 package:purrr <NA>                               base::li~ 2020-09-15 21:26:38
+5 package:forc~ <NA>                               base::li~ 2020-09-15 21:26:38
+6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-15 21:26:39
 \end{verbatim}
 \normalsize
 
@@ -1599,11 +1654,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpRxPlxn/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -1693,7 +1748,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fda46f55bc0>
+<bytecode: 0x7ffd84d546a0>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
@@ -2132,11 +2187,9 @@ The American Statistician. (2020). Instructions for authors. Retrieved
 from
 \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
 
-\hypertarget{ref-R-packrat}{}
-Ushey, K., McPherson, J., Cheng, J., Atkins, A., \& Allaire, J. (2018).
-Packrat: A dependency management system for projects and their r package
-dependencies. Retrieved from
-\url{https://CRAN.R-project.org/package=packrat}
+\hypertarget{ref-R-renv}{}
+Ushey, K., \& RStudio. (2020). Renv: Project environments. Retrieved
+from \url{https://cran.r-project.org/web/packages/renv/index.html}
 
 \hypertarget{ref-plos-biology}{}
 Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018).
