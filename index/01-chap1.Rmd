@@ -74,7 +74,9 @@ Although these recommendations differ from one another, when considered in combi
 
   - Files are clearly named, preferably in a way where the order in which they should be run is clear.
   - A README is present.
+  - Code contains comments.
   - Software dependencies are noted.
+  
 
 4. File paths used in code are not system- or user-dependent:
 

@@ -445,6 +445,8 @@ important to research reproducibility across the scientific community:
 \item
   A README is present.
 \item
+  Code contains comments.
+\item
   Software dependencies are noted.
 \end{itemize}
 \begin{enumerate}
@@ -1262,16 +1264,216 @@ effective, a piece of software must instead:
 Conditions For
 Reproducibility}{fertile, An R Package Creating Optimal Conditions For Reproducibility}}\label{fertile-an-r-package-creating-optimal-conditions-for-reproducibility}
 
-\subsection{Package Overview}\label{package-overview}
+What if it were possible to address the existing issues with both
+educational and software reproducibility solutions simultaneously?
 
-\texttt{fertile} attempts to address these gaps in existing software by
-providing a simple, easy-to-learn reproducibility package that, rather
-than focusing intensely on a specific area, provides some information
-about a wide variety of aspects influencing reproducibility.
-\texttt{fertile} is flexible, offering benefits to users at any stage in
-the data analysis workflow, and provides \texttt{R}-specific features,
-which address certain aspects of reproducibility that can be missed by
-external project development software.
+That is where my work comes in. In an attempt to produce meaningful
+change in the field of reproducibility, I have been developing
+\texttt{fertile}, a software package designed for \texttt{R} which helps
+users create optimal conditions for achieving reproducibility in their
+projects.
+
+\texttt{fertile} attempts to address the gaps in existing reproducbility
+solutions by combining software and education in one product. The
+package provides a set of simple, easy-to-learn tools that, rather than
+focus intensely on a specific area like other software programs, provide
+some information about a wide variety of aspects influencing
+reproducibility. It is also designed to be incredibly flexible, offering
+benefits to users at any stage in the data analysis workflow and
+providing users with the option to select which aspects of
+reproducibility they want to focus on. \texttt{fertile} also contains
+several\texttt{R}-specific features, which address certain aspects of
+reproducibility that can be missed by external project development
+tools.
+
+In addition, \texttt{fertile} is designed to be educational, teaching
+its users about the components of reproducibility and how to achieve
+them in their work. The package provides users with detailed reports on
+the aspects of reproducibility where their projects fell short,
+identifying the root causes and, in many cases, providing a recommended
+solution.
+
+\texttt{fertile} is structured in such a way as to be understandable and
+operable to individuals of any skill level, from students in their first
+undergraduate data science course to experienced PhD statisticians. The
+majority of its tools can be accessed in only a handful of functions
+with minimal required arguments. This simplicity makes the process of
+achieving and learning about reproducibility accessible to a wide
+audience in a way that complex software programs or graduate courses
+requiring an advanced knowledge of research methods do not.
+
+Reproducibility is significantly easier to achieve when all of the tools
+necessary to do so are located in one place. \texttt{fertile} provides
+this optimal all-inclusive structure, addressing all six of the primary
+components of reproducibility discussed in Chapter 1. We will consider
+\texttt{fertile}'s treatment of each of these components in turn:
+
+\subsection{Component 1: Accessibility of Project
+Files}\label{component-1-accessibility-of-project-files}
+\begin{itemize}
+\tightlist
+\item
+  Data (raw and/or processed)
+\item
+  Metadata
+\item
+  Code
+\item
+  Related Software
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  proj\_report() gives the files present in the directory
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  can we report a checklist of the types of files we have available?
+\item
+  it should check for the existence of a code file and data file and
+  also readme
+\end{itemize}
+\subsection{Component 2: Organized Project
+Structure}\label{component-2-organized-project-structure}
+\begin{itemize}
+\tightlist
+\item
+  Separate folders for different file types.
+\item
+  No extraneous files.
+\item
+  Minimal clutter.
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  has\_tidy\_media/raw\_data/images/code/data/scripts
+\item
+  has\_proj\_root/has\_no\_nested\_proj\_root
+\item
+  has\_only\_used\_files
+\item
+  proj\_move\_files (and associated suggestions in proj\_analyze())
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  nothing!
+\end{itemize}
+\subsection{Component 3: Documentation}\label{component-3-documentation}
+\begin{itemize}
+\tightlist
+\item
+  Files are clearly named, preferably in a way where the order in which
+  they should be run is clear.
+\item
+  A README is present.
+\item
+  Code contains comments.
+\item
+  Software dependencies are noted.
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  has\_readme
+\item
+  has\_clear\_build\_chain
+\item
+  list of packages in proj\_analyze/report
+\item
+  proj\_pkg\_script install script generator
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  possibly a makefile generator? or improvements to order checking?
+\item
+  a way to note the sessioninfo and package numbers of a project
+\item
+  check if code contains comments
+\end{itemize}
+\subsection{Component 4: File Paths}\label{component-4-file-paths}
+\begin{itemize}
+\tightlist
+\item
+  No absolute paths.
+\item
+  No paths leading to locations outside of a project's directory.
+\item
+  Only relative paths, pointing to locations within a project's
+  directory, are permitted.
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  proj\_analyze\_paths
+\item
+  check\_path
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  Nothing!
+\end{itemize}
+\subsection{Component 5: Randomness}\label{component-5-randomness}
+\begin{itemize}
+\tightlist
+\item
+  If randomness is used in code, a seed must also be set.
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  has\_no\_randomness
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  Nothing!
+\end{itemize}
+\subsection{Component 6: Readability and
+Style}\label{component-6-readability-and-style}
+\begin{itemize}
+\tightlist
+\item
+  Though not mentioned in the sources described previously, it is also
+  important that code be written in a coherent style. This is because
+  code that conforms to a style guide or is written in a consistent
+  dialect is easier to read, simplifying the process of following a
+  researcher's work from beginning to end (Hermans \& Aldewereld
+  (2017)).
+\end{itemize}
+What we \emph{have}:
+\begin{itemize}
+\tightlist
+\item
+  has\_no\_lint
+\end{itemize}
+What we \emph{need}:
+\begin{itemize}
+\tightlist
+\item
+  nothing?? Ben's thoughts might be good here
+\end{itemize}
+Much of the available literature focuses on file structure,
+organization, and naming, and \texttt{fertile}'s features are consistent
+with this. Marwick et al. (2018) provide the framework for file
+structure that \texttt{fertile} is based on: a structure similar to that
+of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an
+\texttt{R} folder, as well as \texttt{data}, \texttt{data-raw},
+\texttt{inst}, and \texttt{vignettes}.
 
 \texttt{fertile} is designed to be used on data analyses organized as
 \texttt{R} Projects (i.e.~directories containing an \texttt{.Rproj}
@@ -1281,14 +1483,6 @@ as well as after the fact. \texttt{fertile} achieves this by operating
 in two modes: proactively (to prevent reproducibility mistakes from
 happening in the first place), and retroactively (analyzing code that
 has already been written for potential problems).
-
-Much of the available literature focuses on file structure,
-organization, and naming, and \texttt{fertile}'s features are consistent
-with this. Marwick et al. (2018) provide the framework for file
-structure that \texttt{fertile} is based on: a structure similar to that
-of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an
-\texttt{R} folder, as well as \texttt{data}, \texttt{data-raw},
-\texttt{inst}, and \texttt{vignettes}.
 
 \subsection{Proactive Use}\label{proactive-use}
 
@@ -1316,7 +1510,39 @@ file types.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Error: Detected absolute paths
+    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1324,7 +1550,39 @@ Error: Detected absolute paths
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Error: Detected paths that lead outside the project directory
+    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 \end{verbatim}
 \normalsize
 
@@ -1384,7 +1642,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ---------------------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: -------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1414,13 +1672,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ----------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... --------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ------------------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ----------------------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1429,7 +1687,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ---------------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1453,10 +1711,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------------------------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ----------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ----------------------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1473,27 +1731,28 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 9 x 4
-  file               ext        size mime                                       
-  <fs::path>         <chr> <fs::byt> <chr>                                      
-1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocum~
-2 citrate_v_time.png png     187.01K image/png                                  
-3 proteins_v_time.p~ png     377.53K image/png                                  
-4 Blot_data_updated~ csv      14.43K text/csv                                   
-5 CS_data_redone.csv csv       7.39K text/csv                                   
-6 mice.csv           csv      14.33K text/csv                                   
-7 README.md          md           39 text/markdown                              
-8 miceps.Rproj       Rproj       204 text/rstudio                               
-9 analysis.Rmd       Rmd       4.94K text/x-markdown                            
+# A tibble: 10 x 4
+   file               ext        size mime                                      
+   <fs::path>         <chr> <fs::byt> <chr>                                     
+ 1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
+ 2 citrate_v_time.png png     188.98K image/png                                 
+ 3 proteins_v_time.p~ png     377.53K image/png                                 
+ 4 Blot_data_updated~ csv      14.43K text/csv                                  
+ 5 CS_data_redone.csv csv       7.39K text/csv                                  
+ 6 mice.csv           csv      14.33K text/csv                                  
+ 7 README.md          md           39 text/markdown                             
+ 8 miceps.Rproj       Rproj       204 text/rstudio                              
+ 9 analysis.Rmd       Rmd       4.94K text/x-markdown                           
+10 tmp-pdfcrop-10664~ tex       3.32K text/x-tex                                
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ----------------------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 7 x 3
+# A tibble: 8 x 3
   path_rel           dir_rel    cmd                                             
   <fs::path>         <fs::path> <chr>                                           
 1 Blot_data_updated~ data-raw   file_move('project_miceps/Blot_data_updated.csv~
@@ -1503,9 +1762,10 @@ used in code.
 5 citrate_v_time.png inst/image file_move('project_miceps/citrate_v_time.png', ~
 6 mice.csv           data-raw   file_move('project_miceps/mice.csv', fs::dir_cr~
 7 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_time.png',~
+8 tmp-pdfcrop-10664~ inst/text  file_move('project_miceps/tmp-pdfcrop-10664.tex~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged --------------------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1530,15 +1790,17 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 6 x 4
-  path          path_abs                           func      timestamp          
-  <chr>         <chr>                              <chr>     <dttm>             
-1 package:remo~ <NA>                               base::re~ 2020-09-14 18:06:14
-2 package:thes~ <NA>                               base::re~ 2020-09-14 18:06:14
-3 package:thes~ <NA>                               base::li~ 2020-09-14 18:06:14
-4 package:purrr <NA>                               base::li~ 2020-09-15 21:26:38
-5 package:forc~ <NA>                               base::li~ 2020-09-15 21:26:38
-6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-15 21:26:39
+# A tibble: 8 x 4
+  path            path_abs                         func      timestamp          
+  <chr>           <chr>                            <chr>     <dttm>             
+1 package:remotes <NA>                             base::re~ 2020-09-16 19:49:31
+2 package:thesis~ <NA>                             base::re~ 2020-09-16 19:49:31
+3 package:thesis~ <NA>                             base::li~ 2020-09-16 19:49:31
+4 ~/Desktop/my_d~ ~/Desktop/my_data.csv            utils::r~ 2020-09-16 19:51:30
+5 ../../../Deskt~ /Users/audreybertin/Desktop/my_~ utils::r~ 2020-09-16 19:51:30
+6 package:purrr   <NA>                             base::li~ 2020-09-16 19:51:39
+7 package:forcats <NA>                             base::li~ 2020-09-16 19:51:40
+8 project_miceps~ /Users/audreybertin/Documents/t~ readr::r~ 2020-09-16 19:51:40
 \end{verbatim}
 \normalsize
 
@@ -1654,11 +1916,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW7Yquk/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW7Yquk/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpO2FxCl/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpW7Yquk/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -1748,7 +2010,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7ffd84d546a0>
+<bytecode: 0x7ff32a9607b8>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize

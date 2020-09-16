@@ -38,13 +38,120 @@ Neither of these different software solutions appear to adequately address the c
 
 ##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
-### Package Overview
+What if it were possible to address the existing issues with both educational and software reproducibility solutions simultaneously? 
 
-`fertile` attempts to address these gaps in existing software by providing a simple, easy-to-learn reproducibility package that, rather than focusing intensely on a specific area, provides some information about a wide variety of aspects influencing reproducibility. `fertile` is flexible, offering benefits to users at any stage in the data analysis workflow, and provides `R`-specific features, which address certain aspects of reproducibility that can be missed by external project development software.
+That is where my work comes in. In an attempt to produce meaningful change in the field of reproducibility, I have been developing `fertile`, a software package designed for `R` which helps users create optimal conditions for achieving reproducibility in their projects.
 
-`fertile` is designed to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file). Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
+`fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about a wide variety of aspects influencing reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. `fertile` also contains several`R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools.
+
+In addition, `fertile` is designed to be educational, teaching its users about the components of reproducibility and how to achieve them in their work. The package provides users with detailed reports on the aspects of reproducibility where their projects fell short, identifying the root causes and, in many cases, providing a recommended solution.
+
+`fertile` is structured in such a way as to be understandable and operable to individuals of any skill level, from students in their first undergraduate data science course to experienced PhD statisticians. The majority of its tools can be accessed in only a handful of functions with minimal required arguments. This simplicity makes the process of achieving and learning about reproducibility accessible to a wide audience in a way that complex software programs or graduate courses requiring an advanced knowledge of research methods do not.
+
+Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. `fertile` provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider `fertile`'s treatment of each of these components in turn:
+
+### Component 1: Accessibility of Project Files
+
+  - Data (raw and/or processed)
+  - Metadata
+  - Code
+  - Related Software
+  
+What we *have*:
+
+* proj_report() gives the files present in the directory
+
+What we *need*:
+
+* can we report a checklist of the types of files we have available?
+* it should check for the existence of a code file and data file and also readme
+
+### Component 2: Organized Project Structure
+
+  - Separate folders for different file types.
+  - No extraneous files.
+  - Minimal clutter.
+  
+What we *have*:
+
+* has_tidy_media/raw_data/images/code/data/scripts
+* has_proj_root/has_no_nested_proj_root
+* has_only_used_files
+* proj_move_files (and associated suggestions in proj_analyze())
+
+What we *need*:
+
+* nothing!
+
+
+### Component 3: Documentation
+
+  - Files are clearly named, preferably in a way where the order in which they should be run is clear.
+  - A README is present.
+  - Code contains comments.
+  - Software dependencies are noted.
+  
+What we *have*:
+
+* has_readme
+* has_clear_build_chain
+* list of packages in proj_analyze/report
+* proj_pkg_script install script generator
+
+What we *need*:
+
+  - possibly a makefile generator? or improvements to order checking?
+  - a way to note the sessioninfo and package numbers of a project
+  - check if code contains comments
+
+### Component 4: File Paths
+
+  - No absolute paths.
+  - No paths leading to locations outside of a project's directory.
+  - Only relative paths, pointing to locations within a project's directory, are permitted.
+
+What we *have*:
+
+* proj_analyze_paths
+* check_path
+
+What we *need*:
+
+* Nothing!
+
+### Component 5: Randomness
+
+  - If randomness is used in code, a seed must also be set.
+  
+What we *have*:
+
+* has_no_randomness
+
+What we *need*:
+
+* Nothing!
+
+### Component 6: Readability and Style
+
+  - Though not mentioned in the sources described previously, it is also important that code be written in a coherent style. This is because code that conforms to a style guide or is written in a consistent dialect is easier to read, simplifying the process of following a researcher's work from beginning to end (@hermans2017programming). 
+
+What we *have*:
+
+* has_no_lint
+
+What we *need*:
+
+* nothing?? Ben's thoughts might be good here
+  
+
+
+
+
 
 Much of the available literature focuses on file structure, organization, and naming, and `fertile`'s features are consistent with this. @marwick2018packaging provide the framework for file structure that `fertile` is based on: a structure similar to that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`.
+
+
+`fertile` is designed to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file). Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
 
 
 ### Proactive Use
