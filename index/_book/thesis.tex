@@ -1465,12 +1465,12 @@ within the directory.
  2 project_miceps/CS_d~    7.39K csv   text/csv                   CS_data_redon~
  3 project_miceps/Estr~   10.97K docx  application/vnd.openxmlfo~ Estrogen_Rece~
  4 project_miceps/READ~       39 md    text/markdown              README.md     
- 5 project_miceps/anal~    5.01K Rmd   text/x-markdown            analysis.Rmd  
+ 5 project_miceps/anal~    5.05K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  186.82K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~   188.3K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  377.58K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  377.39K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    1.82K txt   text/plain                 software-vers~
 \end{verbatim}
 \texttt{proj\_suggest\_moves()} provides suggestions for how the files
@@ -1545,8 +1545,10 @@ written.
 
 Proactively, \texttt{fertile} catches when an absolute path, or one
 leading outside of the project directory, is referenced in an input or
-output function and prevents that path from being used, providing an
-informative warning message.
+output function and outputs a warning message. This interactive behavior
+is one of the educational features of the package, as it immediately
+provides an informative message explaining what went wrong, giving the
+programmer an opportunity to learn and course-correct from there.
 
 \footnotesize
 \begin{Shaded}
@@ -1607,65 +1609,161 @@ Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \begin{verbatim}
 [1] "/Users/audreybertin/Documents/thesis/index"
 \end{verbatim}
-The \texttt{check\_path()} function analyzes a vector of paths (or a
-single path) to determine whether there are any absolute paths or paths
-that lead outside the project directory.
-
-** THIS CHUNK NEEDS TO BE EDITED **
+\texttt{fertile} also contains functionality that analyzes code for path
+information after it is written. For example,
+\texttt{proj\_analyze\_paths} goes through all of the paths used in a
+project's \texttt{.R} and \texttt{.Rmd} files and produces a report
+detailing which ones failed to meet reproducibility standards,
+explaining the problem, and providing a solution.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proj_analyze_paths}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+-- Generating reproducibility report... ------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+Checking for absolute paths...
+\end{verbatim}
+\begin{verbatim}
+Checking for paths outside project directory...
+\end{verbatim}
+\begin{verbatim}
+New names:
+* path -> path...1
+* path -> path...5
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 6
+  path...1        path_abs        func   path...5       problem     solution    
+  <chr>           <chr>           <chr>  <chr>          <chr>       <chr>       
+1 /Users/audreyb~ /Users/audreyb~ readr~ /Users/audrey~ Absolute p~ Use a relat~
+2 /Users/audreyb~ /Users/audreyb~ readr~ /Users/audrey~ Path is no~ Move the fi~
+\end{verbatim}
+Paths can also be checked individually, or in groups, using
+\texttt{check\_path()}.
 
 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Path inside the directory}
 \KeywordTok{check_path}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
-
-\CommentTok{# Absolute path (current working directory)}
-\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
-
-\CommentTok{# Path outside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"../fertile.Rmd"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+\begin{verbatim}
+# A tibble: 0 x 3
+# ... with 3 variables: path <chr>, problem <chr>, solution <chr>
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Absolute path (current working directory)}
+\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Error: Detected absolute paths
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Path outside the directory}
+\KeywordTok{check_path}\NormalTok{(}\StringTok{"../README.md"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Error: Detected paths that lead outside the project directory
+\end{verbatim}
 \normalsize
 
-\normalsize
+These functions, together, cover all of the reproducibility
+subcomponents involving file paths. Users are warned not to use absolute
+paths or paths pointing outside of the directory, both while they are
+coding and after the fact, and provided with a recommended solution to
+the problem if they do so. Additionally, users are prevented from using
+functions that will certainly break reproducibility and provided with
+safer alternatives.
 
-These proactive warning features are activated immediately after
-attaching the \texttt{fertile} package and require no additional effort
-by the user.
-
-What we \emph{have}:
-\begin{itemize}
-\tightlist
-\item
-  proj\_analyze\_paths
-\item
-  check\_path
-\end{itemize}
-What we \emph{need}:
-\begin{itemize}
-\tightlist
-\item
-  Nothing!
-\end{itemize}
 \subsection{Component 5: Randomness}\label{component-5-randomness}
 \begin{itemize}
 \tightlist
 \item
   If randomness is used in code, a seed must also be set.
 \end{itemize}
-What we \emph{have}:
-\begin{itemize}
-\tightlist
-\item
-  has\_no\_randomness
-\end{itemize}
-What we \emph{need}:
-\begin{itemize}
-\tightlist
-\item
-  Nothing!
-\end{itemize}
+The component of randomness is addressed by \texttt{fertile} in a
+reproducibility check function titled \texttt{has\_no\_randomness()},
+which does the following: First, it checks code files to determine
+whether they have employed random number generation. This is confirmed
+by recording the random number generation seed prior to running the
+files, rendering the files, and then checking to see whether the seed
+has changed. If the seed has changed, that indicates that random number
+generation has occurred. Then, it determines whether whether any
+randomness present was semi-random (i.e.~controlled and repeatable) or
+truly random, by checking whether the \texttt{set.seed()} function was
+called. If the randomness was semi-random, it is considered permissible
+and reproducible. Truly random code is flagged as dangerous.
+
+Let us consider an example from \texttt{project\_miceps}. The primary
+code file, \texttt{analysis.Rmd} contains the following code. In this
+code, we see that a data set is read in via \texttt{read\_csv} and
+reformatted. Then, the \texttt{sample\_frac()} function takes a random
+sample of 50\% of the rows of the data.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mice <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"Blot_data_updated.csv"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{time =} \StringTok{`}\DataTypeTok{Time point}\StringTok{`}\NormalTok{,}
+            \DataTypeTok{sex =}\NormalTok{ Sex,}
+            \DataTypeTok{id =} \StringTok{`}\DataTypeTok{Mouse #}\StringTok{`}\NormalTok{,}
+            \DataTypeTok{erb =} \StringTok{`}\DataTypeTok{ERB Normalized Final}\StringTok{`}\NormalTok{,}
+            \DataTypeTok{era =} \StringTok{`}\DataTypeTok{ERA Normalized Final}\StringTok{`}\NormalTok{,}
+            \DataTypeTok{gper =} \StringTok{`}\DataTypeTok{GPER Normalized Final}\StringTok{`}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{day =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\OperatorTok{-}\DecValTok{1}\NormalTok{,}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{~}\StringTok{ }\DecValTok{0}\NormalTok{,}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{2} \OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{,}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{3} \OperatorTok{~}\StringTok{ }\DecValTok{3}\NormalTok{,}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{4} \OperatorTok{~}\StringTok{ }\DecValTok{5}\NormalTok{,}
+\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ }\DecValTok{7}
+\NormalTok{  ),}
+  \DataTypeTok{type =} \KeywordTok{ifelse}\NormalTok{(time }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{, }\StringTok{"control"}\NormalTok{, }\StringTok{"treatment"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{mice_tidy <-}\StringTok{ }\NormalTok{mice }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{time) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{"protein"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"amount"}\NormalTok{, }\OperatorTok{-}\NormalTok{day, }\OperatorTok{-}\NormalTok{sex, }\OperatorTok{-}\NormalTok{id, }\OperatorTok{-}\NormalTok{type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{protein_label =} \KeywordTok{factor}\NormalTok{(protein,}
+    \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"paste(ER, alpha)"}\NormalTok{, }\StringTok{"paste(ER, beta)"}\NormalTok{, }\StringTok{"GPER"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sample_frac}\NormalTok{(mice, }\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+However, there is no seed set in the file. As a result,
+\texttt{has\_no\_randomness()} returns as a failure for the project. Had
+a seed been set, however, the project would have passed.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{has_no_randomness}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+* Checking for no randomness
+\end{verbatim}
+\begin{verbatim}
+   Problem: Your code uses randomness
+\end{verbatim}
+\begin{verbatim}
+   Solution: Set a seed using `set.seed()` to ensure reproducibility.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?set.seed
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit expr                
+  <chr>   <glue>              
+1 ?       Example: set.seed(1)
+\end{verbatim}
 \subsection{Component 6: Readability and
 Style}\label{component-6-readability-and-style}
 \begin{itemize}
@@ -1743,7 +1841,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1773,13 +1871,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... -------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ---------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks -------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 * Checking for no absolute paths
@@ -1818,7 +1916,7 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks ------------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 0
@@ -1881,10 +1979,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ---------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps --------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code -------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -1902,15 +2000,15 @@ used in code.
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ---------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.53K image/png                                 
- 3 proteins_v_time.p~ png     376.34K image/png                                 
+ 2 citrate_v_time.png png     187.83K image/png                                 
+ 3 proteins_v_time.p~ png     379.64K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1918,10 +2016,10 @@ used in code.
  8 README.md          md           39 text/markdown                             
  9 software-versions~ txt       1.82K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
-11 analysis.Rmd       Rmd       5.01K text/x-markdown                           
+11 analysis.Rmd       Rmd       5.05K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files -------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1938,7 +2036,7 @@ used in code.
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ------------------------------------ fertile 0.0.0.9027 --
+--   Problematic paths logged ----------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1963,16 +2061,18 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 7 x 4
-  path          path_abs                           func      timestamp          
-  <chr>         <chr>                              <chr>     <dttm>             
-1 package:remo~ <NA>                               base::re~ 2020-09-17 13:43:49
-2 package:thes~ <NA>                               base::re~ 2020-09-17 13:43:49
-3 package:thes~ <NA>                               base::li~ 2020-09-17 13:43:49
-4 ~/Desktop/my~ ~/Desktop/my_data.csv              readr::r~ 2020-09-17 14:15:00
-5 package:purrr <NA>                               base::li~ 2020-09-17 14:31:11
-6 package:forc~ <NA>                               base::li~ 2020-09-17 14:31:11
-7 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-17 14:31:11
+# A tibble: 9 x 4
+  path             path_abs                         func     timestamp          
+  <chr>            <chr>                            <chr>    <dttm>             
+1 package:remotes  <NA>                             base::r~ 2020-09-17 17:34:03
+2 package:thesisd~ <NA>                             base::r~ 2020-09-17 17:34:03
+3 package:thesisd~ <NA>                             base::l~ 2020-09-17 17:34:03
+4 package:dplyr    <NA>                             base::l~ 2020-09-17 17:35:14
+5 package:tidyr    <NA>                             base::l~ 2020-09-17 17:35:15
+6 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-17 17:35:15
+7 package:purrr    <NA>                             base::l~ 2020-09-17 17:35:27
+8 package:forcats  <NA>                             base::l~ 2020-09-17 17:35:27
+9 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-17 17:35:27
 \end{verbatim}
 \normalsize
 
@@ -2053,11 +2153,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpONPdG4/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpONPdG4/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpONPdG4/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -2147,7 +2247,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fde1b996b50>
+<bytecode: 0x7ff82b195828>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize

@@ -144,7 +144,8 @@ What we *need*:
 
 `fertile` contains a variety of features designed to address issues with file paths. Several of these features happen proactively, warning users that they are entering a non-reproducible file path as it happens, while others can be accessed after a project has already been written.
 
-Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and prevents that path from being used, providing an informative warning message.
+Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and outputs a warning message. This interactive behavior is one of the educational features of the package, as it immediately provides an informative message explaining what went wrong, giving the programmer an opportunity to learn and course-correct from there.
+
 
 \footnotesize
 
@@ -178,13 +179,17 @@ setwd("~/Desktop")
 getwd()
 ```
 
-The `check_path()` function analyzes a vector of paths (or a single path) to determine whether there are any absolute paths or paths that lead outside the project directory.
+`fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 
-** THIS CHUNK NEEDS TO BE EDITED **
+```{r}
+proj_analyze_paths('project_miceps')
+```
+
+Paths can also be checked individually, or in groups, using `check_path()`.
 
 \footnotesize
 
-```{r path checks, error = TRUE, message = FALSE,eval = FALSE}
+```{r path checks, error = TRUE, message = FALSE}
 # Path inside the directory
 check_path("project_miceps")
 
@@ -192,36 +197,85 @@ check_path("project_miceps")
 check_path(getwd())
 
 # Path outside the directory
-check_path("../fertile.Rmd")
+check_path("../README.md")
 ```
 
 \normalsize
 
-\normalsize
-
-These proactive warning features are activated immediately after attaching the `fertile` package and require no additional effort by the user.
-
-
-What we *have*:
-
-* proj_analyze_paths
-* check_path
-
-What we *need*:
-
-* Nothing!
+These functions, together, cover all of the reproducibility subcomponents involving file paths. Users are warned not to use absolute paths or paths pointing outside of the directory, both while they are coding and after the fact, and provided with a recommended solution to the problem if they do so. Additionally, users are prevented from using functions that will certainly break reproducibility and provided with safer alternatives. 
 
 ### Component 5: Randomness
 
   - If randomness is used in code, a seed must also be set.
   
-What we *have*:
+The component of randomness is addressed by `fertile` in a reproducibility check function titled `has_no_randomness()`, which does the following: First, it checks code files to determine whether they have employed random number generation. This is confirmed by recording the random number generation seed prior to running the files, rendering the files, and then checking to see whether the seed has changed. If the seed has changed, that indicates that random number generation has occurred. Then, it determines whether whether any randomness present was semi-random (i.e. controlled and repeatable) or truly random, by checking whether the `set.seed()` function was called. If the randomness was semi-random, it is considered permissible and reproducible. Truly random code is flagged as dangerous.
 
-* has_no_randomness
+Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
-What we *need*:
+```{r, message=FALSE, eval = FALSE}
 
-* Nothing!
+mice <- read_csv("Blot_data_updated.csv") %>%
+  transmute(time = `Time point`,
+            sex = Sex,
+            id = `Mouse #`,
+            erb = `ERB Normalized Final`,
+            era = `ERA Normalized Final`,
+            gper = `GPER Normalized Final`) %>%
+  mutate(day = case_when(
+    time == 0 ~ -1,
+    time == 1 ~ 0,
+    time == 2 ~ 1,
+    time == 3 ~ 3,
+    time == 4 ~ 5,
+    time == 5 ~ 7
+  ),
+  type = ifelse(time == 0, "control", "treatment")
+  )
+mice_tidy <- mice %>%
+  select(-time) %>%
+  gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>%
+  mutate(protein_label = factor(protein,
+    labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
+```
+
+```{r, message=FALSE, echo = FALSE}
+library(dplyr)
+library(tidyr)
+mice <- read_csv("project_miceps/Blot_data_updated.csv") %>%
+  transmute(time = `Time point`,
+            sex = Sex,
+            id = `Mouse #`,
+            erb = `ERB Normalized Final`,
+            era = `ERA Normalized Final`,
+            gper = `GPER Normalized Final`) %>%
+  mutate(day = case_when(
+    time == 0 ~ -1,
+    time == 1 ~ 0,
+    time == 2 ~ 1,
+    time == 3 ~ 3,
+    time == 4 ~ 5,
+    time == 5 ~ 7
+  ),
+  type = ifelse(time == 0, "control", "treatment")
+  )
+mice_tidy <- mice %>%
+  select(-time) %>%
+  gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>%
+  mutate(protein_label = factor(protein,
+   labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
+```
+
+
+```{r, eval = FALSE}
+sample_frac(mice, 0.5)
+```
+
+However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. Had a seed been set, however, the project would have passed.
+
+```{r}
+has_no_randomness('project_miceps')
+```
+
 
 ### Component 6: Readability and Style
 

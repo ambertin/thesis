@@ -15,6 +15,7 @@ library(ggplot2)
 library(purrr)
 ```
 
+
 Read and transform the data
 
 ```{r, message=FALSE}
@@ -45,6 +46,11 @@ mice_tidy <- mice %>%
   mutate(protein_label = factor(protein,
                                 labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
 ```
+
+```{r}
+sample_frac(mice, 0.5)
+```
+
 
 The plot
 
