@@ -40,9 +40,11 @@ Neither of these different software solutions appear to adequately address the c
 
 What if it were possible to address the existing issues with both educational and software reproducibility solutions simultaneously? 
 
-That is where my work comes in. In an attempt to produce meaningful change in the field of reproducibility, I have been developing `fertile`, a software package designed for `R` which helps users create optimal conditions for achieving reproducibility in their projects.
+That is where my work comes in. In an attempt to produce meaningful change in the field of reproducibility, I have been developing `fertile`, a software package designed for `R` which helps users create optimal conditions for achieving reproducibility in their projects. 
 
-`fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about a wide variety of aspects influencing reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. `fertile` also contains several`R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools.
+`fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about a wide variety of aspects influencing reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. 
+
+`fertile` also contains several`R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
 
 In addition, `fertile` is designed to be educational, teaching its users about the components of reproducibility and how to achieve them in their work. The package provides users with detailed reports on the aspects of reproducibility where their projects fell short, identifying the root causes and, in many cases, providing a recommended solution.
 
@@ -71,6 +73,13 @@ What we *need*:
   - Separate folders for different file types.
   - No extraneous files.
   - Minimal clutter.
+  
+`fertile` provides a wide variety of features for managing the file system of a project. Nine of the package's fifteen primary reproducibility checks relate to file structure.
+
+Two of these are focused on the `R project` aspect of the file system. `has_proj_root()` ensures that there is a single `.Rproj` file indicating a clear root directory for the project, while `has_no_nested_proj_root()` ensures that there are no sub-projects within. The recognition of a clear root directory is necessary to allow for file structure analysis and project restructuring as it provides a baseline directory to define relative file paths from.
+
+Six of the major checks, whose names begin with `has_tidy_` focus on file clutter. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
+  
   
 What we *have*:
 
@@ -151,7 +160,7 @@ What we *need*:
 Much of the available literature focuses on file structure, organization, and naming, and `fertile`'s features are consistent with this. @marwick2018packaging provide the framework for file structure that `fertile` is based on: a structure similar to that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`.
 
 
-`fertile` is designed to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file). Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
+ Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
 
 
 ### Proactive Use
