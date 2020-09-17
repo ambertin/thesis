@@ -18,6 +18,9 @@ library(purrr)
 Read and transform the data
 
 ```{r, message=FALSE}
+path <- fs::path_abs("Blot_data_updated.csv")
+blot_data <- read_csv(path)
+
 # mice <- read_csv("mice.csv") %>%
 mice <- read_csv("Blot_data_updated.csv") %>%
   transmute(time = `Time point`,
@@ -185,3 +188,4 @@ stargazer(citrate_mod, type = "text")
 citation()
 citation("ggplot2")
 ```
+

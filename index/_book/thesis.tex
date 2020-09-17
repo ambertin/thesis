@@ -1331,6 +1331,10 @@ What we \emph{have}:
 \tightlist
 \item
   proj\_report() gives the files present in the directory
+\item
+  Every time a project is rendered, a session info file is created
+\item
+  proj\_pkg\_script() for dependencies
 \end{itemize}
 What we \emph{need}:
 \begin{itemize}
@@ -1461,12 +1465,12 @@ within the directory.
  2 project_miceps/CS_d~    7.39K csv   text/csv                   CS_data_redon~
  3 project_miceps/Estr~   10.97K docx  application/vnd.openxmlfo~ Estrogen_Rece~
  4 project_miceps/READ~       39 md    text/markdown              README.md     
- 5 project_miceps/anal~    4.94K Rmd   text/x-markdown            analysis.Rmd  
+ 5 project_miceps/anal~    5.01K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  188.66K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  186.82K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  379.38K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  377.58K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    1.82K txt   text/plain                 software-vers~
 \end{verbatim}
 \texttt{proj\_suggest\_moves()} provides suggestions for how the files
@@ -1483,24 +1487,10 @@ R community. \texttt{proj\_move\_files()} executes these suggestions,
 building a package structure and sorting files into the correct folders
 by type.
 
-What we \emph{have}:
-\begin{itemize}
-\tightlist
-\item
-  has\_tidy\_media/raw\_data/images/code/data/scripts
-\item
-  has\_proj\_root/has\_no\_nested\_proj\_root
-\item
-  has\_only\_used\_files
-\item
-  proj\_move\_files (and associated suggestions in proj\_analyze())
-\end{itemize}
-What we \emph{need}:
-\begin{itemize}
-\tightlist
-\item
-  nothing!
-\end{itemize}
+Combined together, all of these functions make it simple to ensure that
+projects fall under a standard, simple, and reproducible structure with
+minimal clutter.
+
 \subsection{Component 3: Documentation}\label{component-3-documentation}
 \begin{itemize}
 \tightlist
@@ -1547,6 +1537,103 @@ What we \emph{need}:
   Only relative paths, pointing to locations within a project's
   directory, are permitted.
 \end{itemize}
+\texttt{fertile} contains a variety of features designed to address
+issues with file paths. Several of these features happen proactively,
+warning users that they are entering a non-reproducible file path as it
+happens, while others can be accessed after a project has already been
+written.
+
+Proactively, \texttt{fertile} catches when an absolute path, or one
+leading outside of the project directory, is referenced in an input or
+output function and prevents that path from being used, providing an
+informative warning message.
+
+\footnotesize
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(fertile)}
+\KeywordTok{file.exists}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Error: Detected absolute paths
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read.csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Error: Detected paths that lead outside the project directory
+\end{verbatim}
+\normalsize
+
+\texttt{fertile} is particularly strict with the function
+\texttt{setwd()}, as its use is almost certain to break reproducibility.
+Calls to \texttt{setwd()} are blocked from executing, and users must
+conduct a manual override, via the \texttt{danger()} function, to change
+their working directory.
+
+\footnotesize
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+[1] "/Users/audreybertin/Documents/thesis/index"
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"~/Desktop"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Error: setwd() is likely to break reproducibility. Use here::here() instead.
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+[1] "/Users/audreybertin/Documents/thesis/index"
+\end{verbatim}
+The \texttt{check\_path()} function analyzes a vector of paths (or a
+single path) to determine whether there are any absolute paths or paths
+that lead outside the project directory.
+
+** THIS CHUNK NEEDS TO BE EDITED **
+
+\footnotesize
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Path inside the directory}
+\KeywordTok{check_path}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+
+\CommentTok{# Absolute path (current working directory)}
+\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
+
+\CommentTok{# Path outside the directory}
+\KeywordTok{check_path}\NormalTok{(}\StringTok{"../fertile.Rmd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\normalsize
+
+\normalsize
+
+These proactive warning features are activated immediately after
+attaching the \texttt{fertile} package and require no additional effort
+by the user.
+
 What we \emph{have}:
 \begin{itemize}
 \tightlist
@@ -1603,14 +1690,6 @@ What we \emph{need}:
 \item
   nothing?? Ben's thoughts might be good here
 \end{itemize}
-Much of the available literature focuses on file structure,
-organization, and naming, and \texttt{fertile}'s features are consistent
-with this. Marwick et al. (2018) provide the framework for file
-structure that \texttt{fertile} is based on: a structure similar to that
-of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an
-\texttt{R} folder, as well as \texttt{data}, \texttt{data-raw},
-\texttt{inst}, and \texttt{vignettes}.
-
 Once an \texttt{R} Project is created, \texttt{fertile} provides
 benefits throughout the data analysis process, both during development
 as well as after the fact. \texttt{fertile} achieves this by operating
@@ -1627,54 +1706,6 @@ potentially problematic file path---such as an absolute path, or a path
 that points to a location outside of the project directory---to a
 variety of common input/output functions operating on many different
 file types.
-
-\footnotesize
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(fertile)}
-\KeywordTok{file.exists}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] TRUE
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected absolute paths
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected paths that lead outside the project directory
-\end{verbatim}
-\normalsize
-
-\texttt{fertile} is even more aggressive with functions (like
-\texttt{setwd()}) that are almost certain to break reproducibility,
-causing them to throw errors that prevent their execution and providing
-recommendations for better alternatives.
-
-\footnotesize
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"~/Desktop"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: setwd() is likely to break reproducibility. Use here::here() instead.
-\end{verbatim}
-\normalsize
-
-These proactive warning features are activated immediately after
-attaching the \texttt{fertile} package and require no additional effort
-by the user.
 
 \subsection{Retroactive Use}\label{retroactive-use}
 
@@ -1712,7 +1743,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ---------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1742,25 +1773,94 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ----------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... -------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ---------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ----------------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks -------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-v Checking for no absolute paths
+* Checking for no absolute paths
 \end{verbatim}
 \begin{verbatim}
-v Checking for only portable paths
+   Problem: Absolute paths are likely non-portable
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ---------------------------------------- fertile 0.0.0.9027 --
+   Solution: Use relative paths. Move files if necessary.
 \end{verbatim}
 \begin{verbatim}
-v Reproducibility checks passed: 2
+   See for help: ?fs::file_move; ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
+\end{verbatim}
+\begin{verbatim}
+* Checking for only portable paths
+\end{verbatim}
+\begin{verbatim}
+   Problem: Non-portable paths won't necessarily work for others
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use relative paths.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 0
+\end{verbatim}
+\begin{verbatim}
+* Reproducibility checks to work on: 2
+\end{verbatim}
+\begin{verbatim}
+* Checking for no absolute paths
+\end{verbatim}
+\begin{verbatim}
+   Problem: Absolute paths are likely non-portable
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use relative paths. Move files if necessary.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move; ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
+\end{verbatim}
+\begin{verbatim}
+* Checking for only portable paths
+\end{verbatim}
+\begin{verbatim}
+   Problem: Non-portable paths won't necessarily work for others
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use relative paths.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
 \end{verbatim}
 \normalsize
 
@@ -1781,35 +1881,36 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ---------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ----------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code -------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 9 x 3
-  package       N used_in                    
-  <chr>     <int> <chr>                      
-1 broom         1 project_miceps/analysis.Rmd
-2 dplyr         1 project_miceps/analysis.Rmd
-3 ggplot2       1 project_miceps/analysis.Rmd
-4 purrr         1 project_miceps/analysis.Rmd
-5 readr         1 project_miceps/analysis.Rmd
-6 rmarkdown     1 project_miceps/analysis.Rmd
-7 skimr         1 project_miceps/analysis.Rmd
-8 stargazer     1 project_miceps/analysis.Rmd
-9 tidyr         1 project_miceps/analysis.Rmd
+# A tibble: 10 x 3
+   package       N used_in                    
+   <chr>     <int> <chr>                      
+ 1 broom         1 project_miceps/analysis.Rmd
+ 2 dplyr         1 project_miceps/analysis.Rmd
+ 3 fs            1 project_miceps/analysis.Rmd
+ 4 ggplot2       1 project_miceps/analysis.Rmd
+ 5 purrr         1 project_miceps/analysis.Rmd
+ 6 readr         1 project_miceps/analysis.Rmd
+ 7 rmarkdown     1 project_miceps/analysis.Rmd
+ 8 skimr         1 project_miceps/analysis.Rmd
+ 9 stargazer     1 project_miceps/analysis.Rmd
+10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ---------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.86K image/png                                 
- 3 proteins_v_time.p~ png     379.37K image/png                                 
+ 2 citrate_v_time.png png     188.53K image/png                                 
+ 3 proteins_v_time.p~ png     376.34K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1817,10 +1918,10 @@ used in code.
  8 README.md          md           39 text/markdown                             
  9 software-versions~ txt       1.82K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
-11 analysis.Rmd       Rmd       4.94K text/x-markdown                           
+11 analysis.Rmd       Rmd       5.01K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ----------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files -------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1837,7 +1938,7 @@ used in code.
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged --------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------------------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1862,15 +1963,16 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 6 x 4
+# A tibble: 7 x 4
   path          path_abs                           func      timestamp          
   <chr>         <chr>                              <chr>     <dttm>             
-1 package:remo~ <NA>                               base::re~ 2020-09-17 13:05:58
-2 package:thes~ <NA>                               base::re~ 2020-09-17 13:05:58
-3 package:thes~ <NA>                               base::li~ 2020-09-17 13:05:58
-4 package:purrr <NA>                               base::li~ 2020-09-17 13:43:49
-5 package:forc~ <NA>                               base::li~ 2020-09-17 13:43:49
-6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-17 13:43:49
+1 package:remo~ <NA>                               base::re~ 2020-09-17 13:43:49
+2 package:thes~ <NA>                               base::re~ 2020-09-17 13:43:49
+3 package:thes~ <NA>                               base::li~ 2020-09-17 13:43:49
+4 ~/Desktop/my~ ~/Desktop/my_data.csv              readr::r~ 2020-09-17 14:15:00
+5 package:purrr <NA>                               base::li~ 2020-09-17 14:31:11
+6 package:forc~ <NA>                               base::li~ 2020-09-17 14:31:11
+7 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-17 14:31:11
 \end{verbatim}
 \normalsize
 
@@ -1884,41 +1986,6 @@ erase the log and start over.
 assist with the process of data analysis.
 
 \subsection{File Path Management}\label{file-path-management}
-
-The \texttt{check\_path()} function analyzes a vector of paths (or a
-single path) to determine whether there are any absolute paths or paths
-that lead outside the project directory.
-
-\footnotesize
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Path inside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-# A tibble: 0 x 3
-# ... with 3 variables: path <chr>, problem <chr>, solution <chr>
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Absolute path (current working directory)}
-\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected absolute paths
-\end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Path outside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"../fertile.Rmd"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-Error: Detected paths that lead outside the project directory
-\end{verbatim}
-\normalsize
 
 \subsection{File Types}\label{file-types}
 
@@ -1986,11 +2053,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpgPHncJ/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -2080,7 +2147,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fddde911c18>
+<bytecode: 0x7fde1b996b50>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize

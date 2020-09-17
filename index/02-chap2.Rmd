@@ -62,6 +62,8 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 What we *have*:
 
 * proj_report() gives the files present in the directory
+* Every time a project is rendered, a session info file is created
+* proj_pkg_script() for dependencies
 
 What we *need*:
 
@@ -110,18 +112,7 @@ proj_analyze_files("project_miceps")
 
 `proj_suggest_moves()` provides suggestions for how the files should be reorganized, if at all. These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. `proj_move_files()` executes these suggestions, building a package structure and sorting files into the correct folders by type.
 
-
-  
-What we *have*:
-
-* has_tidy_media/raw_data/images/code/data/scripts
-* has_proj_root/has_no_nested_proj_root
-* has_only_used_files
-* proj_move_files (and associated suggestions in proj_analyze())
-
-What we *need*:
-
-* nothing!
+Combined together, all of these functions make it simple to ensure that projects fall under a standard, simple, and reproducible structure with minimal clutter.
 
 
 ### Component 3: Documentation
@@ -149,6 +140,67 @@ What we *need*:
   - No absolute paths.
   - No paths leading to locations outside of a project's directory.
   - Only relative paths, pointing to locations within a project's directory, are permitted.
+  
+
+`fertile` contains a variety of features designed to address issues with file paths. Several of these features happen proactively, warning users that they are entering a non-reproducible file path as it happens, while others can be accessed after a project has already been written.
+
+Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and prevents that path from being used, providing an informative warning message.
+
+\footnotesize
+
+```{r, echo = FALSE, message = FALSE}
+library(stringr)
+wrapoutput <- function(output, width = 80) {
+ message(paste(strwrap(output, width = width), collapse = "\n"))
+}
+```
+
+```{r write_csv, include=FALSE}
+readr::write_csv(mtcars, "~/Desktop/my_data.csv")
+```
+
+```{r fertile, message = FALSE, error = TRUE}
+library(fertile)
+file.exists("~/Desktop/my_data.csv")
+read.csv("~/Desktop/my_data.csv")
+read.csv("../../../Desktop/my_data.csv")
+```
+
+\normalsize
+
+`fertile` is particularly strict with the function `setwd()`, as its use is almost certain to break reproducibility. Calls to `setwd()` are blocked from executing, and users must conduct a manual override, via the `danger()` function, to change their working directory.
+
+\footnotesize
+
+```{r setwd, message=FALSE, error = TRUE}
+getwd()
+setwd("~/Desktop")
+getwd()
+```
+
+The `check_path()` function analyzes a vector of paths (or a single path) to determine whether there are any absolute paths or paths that lead outside the project directory.
+
+** THIS CHUNK NEEDS TO BE EDITED **
+
+\footnotesize
+
+```{r path checks, error = TRUE, message = FALSE,eval = FALSE}
+# Path inside the directory
+check_path("project_miceps")
+
+# Absolute path (current working directory)
+check_path(getwd())
+
+# Path outside the directory
+check_path("../fertile.Rmd")
+```
+
+\normalsize
+
+\normalsize
+
+These proactive warning features are activated immediately after attaching the `fertile` package and require no additional effort by the user.
+
 
 What we *have*:
 
@@ -188,7 +240,6 @@ What we *need*:
 
 
 
-Much of the available literature focuses on file structure, organization, and naming, and `fertile`'s features are consistent with this. @marwick2018packaging provide the framework for file structure that `fertile` is based on: a structure similar to that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`.
 
 
  Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
@@ -198,39 +249,6 @@ Much of the available literature focuses on file structure, organization, and na
 
 Proactively, the package identifies potential mistakes as they are made by the user and outputs an informative message as well as a recommended solution. For example, `fertile` catches when a user passes a potentially problematic file path---such as an absolute path, or a path that points to a location outside of the project directory---to a variety of common input/output functions operating on many different file types.
 
-\footnotesize
-
-```{r, echo = FALSE, message = FALSE}
-library(stringr)
-wrapoutput <- function(output, width = 80) {
- message(paste(strwrap(output, width = width), collapse = "\n"))
-}
-```
-
-```{r write_csv, include=FALSE}
-readr::write_csv(mtcars, "~/Desktop/my_data.csv")
-```
-
-```{r fertile, message = FALSE, error = TRUE}
-library(fertile)
-file.exists("~/Desktop/my_data.csv")
-read.csv("~/Desktop/my_data.csv")
-read.csv("../../../Desktop/my_data.csv")
-```
-
-\normalsize
-
-`fertile` is even more aggressive with functions (like `setwd()`) that are almost certain to break reproducibility, causing them to throw errors that prevent their execution and providing recommendations for better alternatives.
-
-\footnotesize
-
-```{r setwd, message=FALSE, error = TRUE}
-setwd("~/Desktop")
-```
-
-\normalsize
-
-These proactive warning features are activated immediately after attaching the `fertile` package and require no additional effort by the user.
 
 ### Retroactive Use
 
@@ -315,22 +333,7 @@ log_report()
 
 ### File Path Management
 
-The `check_path()` function analyzes a vector of paths (or a single path) to determine whether there are any absolute paths or paths that lead outside the project directory.
 
-\footnotesize
-
-```{r path checks, error = TRUE, message = FALSE}
-# Path inside the directory
-check_path("project_miceps")
-
-# Absolute path (current working directory)
-check_path(getwd())
-
-# Path outside the directory
-check_path("../fertile.Rmd")
-```
-
-\normalsize
 
 
 ### File Types
