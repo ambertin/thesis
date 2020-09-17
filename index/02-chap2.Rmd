@@ -78,8 +78,39 @@ What we *need*:
 
 Two of these are focused on the `R project` aspect of the file system. `has_proj_root()` ensures that there is a single `.Rproj` file indicating a clear root directory for the project, while `has_no_nested_proj_root()` ensures that there are no sub-projects within. The recognition of a clear root directory is necessary to allow for file structure analysis and project restructuring as it provides a baseline directory to define relative file paths from.
 
-Six of the major checks, whose names begin with `has_tidy_` focus on file clutter. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
-  
+Six of the major checks, whose names begin with `has_tidy_` focus on file clutter, addressing one of the components of a clean file structure. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
+
+The last check that focuses on the file system is `has_only_used_files()`. One of the more complicated checks in `fertile`, this function checks to make sure that there are no extraneous files serving no purpose (that are not "used") included alongside the analysis. For this function to work properly, a clear definition of which files are considered as "used" is needed. In `fertile`, that definition includes the following:
+
+* `.R`,`.Rmd`, and `.Rproj` files
+* README files
+* Data/text/image files whose file path is referenced, either as an input or output, in any of the `.R` or `.Rmd` files
+* Outputs created by knitting any `.Rmd` files (`.html`, `.pdf`, or `.docx` files with the same name as the `.Rmd`)
+* Files created by `fertile`. In an effort to capture information about dependencies, `fertile` creates a text file capturing the session information when a project is run and provides an option to generate an `.R` script that can install all of the packages referenced in a project's code. These files are considered "used."
+
+
+```{r, message = FALSE}
+library(fertile)
+```
+
+```{r}
+# List the files in the directory
+fs::dir_ls("project_miceps")
+
+# Check to see which are "used"
+has_only_used_files("project_miceps")
+
+```
+
+There are also several functions that summarize and reshape the entire project structure. `proj_analyze_files()` lists all of the files in the project, along with their size, type, and relative path within the directory. 
+
+```{r}
+proj_analyze_files("project_miceps")
+```
+
+`proj_suggest_moves()` provides suggestions for how the files should be reorganized, if at all. These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. `proj_move_files()` executes these suggestions, building a package structure and sorting files into the correct folders by type.
+
+
   
 What we *have*:
 

@@ -1365,9 +1365,123 @@ necessary to allow for file structure analysis and project restructuring
 as it provides a baseline directory to define relative file paths from.
 
 Six of the major checks, whose names begin with \texttt{has\_tidy\_}
-focus on file clutter. They check to make sure that no audio/video,
-image, source, raw data, .rda, or .R files are found in the root
-directory of the project.
+focus on file clutter, addressing one of the components of a clean file
+structure. They check to make sure that no audio/video, image, source,
+raw data, .rda, or .R files are found in the root directory of the
+project.
+
+The last check that focuses on the file system is
+\texttt{has\_only\_used\_files()}. One of the more complicated checks in
+\texttt{fertile}, this function checks to make sure that there are no
+extraneous files serving no purpose (that are not ``used'') included
+alongside the analysis. For this function to work properly, a clear
+definition of which files are considered as ``used'' is needed. In
+\texttt{fertile}, that definition includes the following:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{.R},\texttt{.Rmd}, and \texttt{.Rproj} files
+\item
+  README files
+\item
+  Data/text/image files whose file path is referenced, either as an
+  input or output, in any of the \texttt{.R} or \texttt{.Rmd} files
+\item
+  Outputs created by knitting any \texttt{.Rmd} files (\texttt{.html},
+  \texttt{.pdf}, or \texttt{.docx} files with the same name as the
+  \texttt{.Rmd})
+\item
+  Files created by \texttt{fertile}. In an effort to capture information
+  about dependencies, \texttt{fertile} creates a text file capturing the
+  session information when a project is run and provides an option to
+  generate an \texttt{.R} script that can install all of the packages
+  referenced in a project's code. These files are considered ``used.''
+\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(fertile)}
+\end{Highlighting}
+\end{Shaded}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# List the files in the directory}
+\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+project_miceps/Blot_data_updated.csv   project_miceps/CS_data_redone.csv      
+project_miceps/Estrogen_Receptors.docx project_miceps/README.md               
+project_miceps/analysis.Rmd            project_miceps/analysis.html           
+project_miceps/citrate_v_time.png      project_miceps/mice.csv                
+project_miceps/miceps.Rproj            project_miceps/proteins_v_time.png     
+project_miceps/software-versions.txt   
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Check to see which are "used"}
+\KeywordTok{has_only_used_files}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Joining, by = "path_abs"
+\end{verbatim}
+\begin{verbatim}
+* Checking to see if all files in directory are used in code
+\end{verbatim}
+\begin{verbatim}
+   Problem: You have files in your project directory which are not being used.
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use or delete files.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_delete
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 1
+  path_abs                                                                      
+  <chr>                                                                         
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+\end{verbatim}
+There are also several functions that summarize and reshape the entire
+project structure. \texttt{proj\_analyze\_files()} lists all of the
+files in the project, along with their size, type, and relative path
+within the directory.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proj_analyze_files}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+# A tibble: 11 x 5
+   file                     size ext   mime                       path_rel      
+   <fs::path>           <fs::by> <chr> <chr>                      <fs::path>    
+ 1 project_miceps/Blot~   14.43K csv   text/csv                   Blot_data_upd~
+ 2 project_miceps/CS_d~    7.39K csv   text/csv                   CS_data_redon~
+ 3 project_miceps/Estr~   10.97K docx  application/vnd.openxmlfo~ Estrogen_Rece~
+ 4 project_miceps/READ~       39 md    text/markdown              README.md     
+ 5 project_miceps/anal~    4.94K Rmd   text/x-markdown            analysis.Rmd  
+ 6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
+ 7 project_miceps/citr~  188.66K png   image/png                  citrate_v_tim~
+ 8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
+ 9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
+10 project_miceps/prot~  379.38K png   image/png                  proteins_v_ti~
+11 project_miceps/soft~    1.82K txt   text/plain                 software-vers~
+\end{verbatim}
+\texttt{proj\_suggest\_moves()} provides suggestions for how the files
+should be reorganized, if at all. These suggestions are based on
+achieving the optimal file structure design for reproducibility, argued
+by Marwick et al. (2018) to be that of an \texttt{R} package
+(R-Core-Team (2020), Wickham (2015)), with an \texttt{R} folder, as well
+as \texttt{data}, \texttt{data-raw}, \texttt{inst}, and
+\texttt{vignettes}. Such a structure keeps all of the files separated
+and in clearly labeled directories where they are easy to find.
+Additionally, the extension of the \texttt{R} package structure to data
+analysis projects promotes standardization of file structure within the
+R community. \texttt{proj\_move\_files()} executes these suggestions,
+building a package structure and sorting files into the correct folders
+by type.
 
 What we \emph{have}:
 \begin{itemize}
@@ -1598,7 +1712,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ---------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1628,13 +1742,13 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... -------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ---------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks -------------------------- fertile 0.0.0.9027 --
+-- Running reproducibility checks ----------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no absolute paths
@@ -1643,7 +1757,7 @@ v Checking for no absolute paths
 v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks ---------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -1667,10 +1781,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ---------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code -------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ----------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -1687,15 +1801,15 @@ used in code.
 9 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ---------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 12 x 4
+# A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.66K image/png                                 
- 3 proteins_v_time.p~ png     379.38K image/png                                 
+ 2 citrate_v_time.png png     187.86K image/png                                 
+ 3 proteins_v_time.p~ png     379.37K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1704,28 +1818,26 @@ used in code.
  9 software-versions~ txt       1.82K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
 11 analysis.Rmd       Rmd       4.94K text/x-markdown                           
-12 tmp-pdfcrop-10664~ tex       3.32K text/x-tex                                
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files -------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ----------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 10 x 3
-   path_rel           dir_rel    cmd                                            
-   <fs::path>         <fs::path> <chr>                                          
- 1 Blot_data_updated~ data-raw   file_move('project_miceps/Blot_data_updated.cs~
- 2 CS_data_redone.csv data-raw   file_move('project_miceps/CS_data_redone.csv',~
- 3 Estrogen_Receptor~ inst/other file_move('project_miceps/Estrogen_Receptors.d~
- 4 analysis.Rmd       vignettes  file_move('project_miceps/analysis.Rmd', fs::d~
- 5 analysis.html      inst/text  file_move('project_miceps/analysis.html', fs::~
- 6 citrate_v_time.png inst/image file_move('project_miceps/citrate_v_time.png',~
- 7 mice.csv           data-raw   file_move('project_miceps/mice.csv', fs::dir_c~
- 8 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_time.png'~
- 9 software-versions~ inst/text  file_move('project_miceps/software-versions.tx~
-10 tmp-pdfcrop-10664~ inst/text  file_move('project_miceps/tmp-pdfcrop-10664.te~
+# A tibble: 9 x 3
+  path_rel           dir_rel    cmd                                             
+  <fs::path>         <fs::path> <chr>                                           
+1 Blot_data_updated~ data-raw   file_move('project_miceps/Blot_data_updated.csv~
+2 CS_data_redone.csv data-raw   file_move('project_miceps/CS_data_redone.csv', ~
+3 Estrogen_Receptor~ inst/other file_move('project_miceps/Estrogen_Receptors.do~
+4 analysis.Rmd       vignettes  file_move('project_miceps/analysis.Rmd', fs::di~
+5 analysis.html      inst/text  file_move('project_miceps/analysis.html', fs::d~
+6 citrate_v_time.png inst/image file_move('project_miceps/citrate_v_time.png', ~
+7 mice.csv           data-raw   file_move('project_miceps/mice.csv', fs::dir_cr~
+8 proteins_v_time.p~ inst/image file_move('project_miceps/proteins_v_time.png',~
+9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ------------------------------ fertile 0.0.0.9027 --
+--   Problematic paths logged --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -1753,12 +1865,12 @@ function:
 # A tibble: 6 x 4
   path          path_abs                           func      timestamp          
   <chr>         <chr>                              <chr>     <dttm>             
-1 package:remo~ <NA>                               base::re~ 2020-09-16 19:51:40
-2 package:thes~ <NA>                               base::re~ 2020-09-16 19:51:40
-3 package:thes~ <NA>                               base::li~ 2020-09-16 19:51:40
-4 package:purrr <NA>                               base::li~ 2020-09-17 13:05:57
-5 package:forc~ <NA>                               base::li~ 2020-09-17 13:05:57
-6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-17 13:05:57
+1 package:remo~ <NA>                               base::re~ 2020-09-17 13:05:58
+2 package:thes~ <NA>                               base::re~ 2020-09-17 13:05:58
+3 package:thes~ <NA>                               base::li~ 2020-09-17 13:05:58
+4 package:purrr <NA>                               base::li~ 2020-09-17 13:43:49
+5 package:forc~ <NA>                               base::li~ 2020-09-17 13:43:49
+6 project_mice~ /Users/audreybertin/Documents/the~ readr::r~ 2020-09-17 13:43:49
 \end{verbatim}
 \normalsize
 
@@ -1874,11 +1986,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp356OqA/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp356OqA/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp356OqA/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpscqNH1/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -1968,7 +2080,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7feb24c63b28>
+<bytecode: 0x7fddde911c18>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
