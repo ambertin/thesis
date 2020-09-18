@@ -281,12 +281,17 @@ has_no_randomness('project_miceps')
 
 Though not an absolutely necessary component of reproducibility, code style can have a significant impact on how easy it is to follow the steps being taken in an analysis. The use of consistent and highly-readable style in code greatly simplifies and speeds up the process of understanding a data analysis project and repeating the steps included within. 
 
-`fertile` addresses code style via the function `has_no_lint()`. This function checks code for compatibility with the `tidyverse` "tidy" code format, which promotes the following best practices:
+`fertile` addresses code style via the function `has_no_lint()`. This function checks code for compatibility with RStudio Chief Scientist Hadley Wikham's "tidy" code format, which promotes the following best practices:
 
 * Line length should not exceed 80 characters
 * There should not be trailing whitespace
 * All infix operators (`=`, `+`, `-`, `<-`, etc) should have spaces on either side
+* All commas should be followed by spaces
 * There is no code left in the file that is commented out
+* `<-` should be used instead of `=` to assign variables
+* Opening curly braces should never go on their own line and should always be followed by a new line
+* Closing curly braces should always be on their own line, unless followed by an `else` statement
+
 
 
 

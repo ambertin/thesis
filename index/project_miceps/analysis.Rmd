@@ -185,6 +185,11 @@ citrate_mod <- lm(citrate ~ time * sex, data = citrate)
 summary(citrate_mod)
 ```
 
+```{r}
+if (length(mice) > 1){ holder_var = 1 }
+```
+
+
 For the paper
 
 ```{r}

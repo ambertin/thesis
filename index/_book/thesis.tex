@@ -1428,6 +1428,15 @@ project_miceps/software-versions.txt
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
+-- Rendering R scripts... ------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+Please use `tibble()` instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated.
+\end{verbatim}
+\begin{verbatim}
 Joining, by = "path_abs"
 \end{verbatim}
 \begin{verbatim}
@@ -1466,12 +1475,12 @@ within the directory.
  2 project_miceps/CS_d~    7.39K csv   text/csv                   CS_data_redon~
  3 project_miceps/Estr~   10.97K docx  application/vnd.openxmlfo~ Estrogen_Rece~
  4 project_miceps/READ~       39 md    text/markdown              README.md     
- 5 project_miceps/anal~    5.05K Rmd   text/x-markdown            analysis.Rmd  
+ 5 project_miceps/anal~     5.1K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  183.41K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.51K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~     380K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  379.17K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    1.82K txt   text/plain                 software-vers~
 \end{verbatim}
 \texttt{proj\_suggest\_moves()} provides suggestions for how the files
@@ -1622,7 +1631,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... ------------------------------------------------- fertile 0.0.0.9027 --
+-- Generating reproducibility report... ----------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -1777,8 +1786,8 @@ included within.
 
 \texttt{fertile} addresses code style via the function
 \texttt{has\_no\_lint()}. This function checks code for compatibility
-with the \texttt{tidyverse} ``tidy'' code format, which promotes the
-following best practices:
+with RStudio Chief Scientist Hadley Wikham's ``tidy'' code format, which
+promotes the following best practices:
 \begin{itemize}
 \tightlist
 \item
@@ -1789,7 +1798,18 @@ following best practices:
   All infix operators (\texttt{=}, \texttt{+}, \texttt{-},
   \texttt{\textless{}-}, etc) should have spaces on either side
 \item
+  All commas should be followed by spaces
+\item
   There is no code left in the file that is commented out
+\item
+  \texttt{\textless{}-} should be used instead of \texttt{=} to assign
+  variables
+\item
+  Opening curly braces should never go on their own line and should
+  always be followed by a new line
+\item
+  Closing curly braces should always be on their own line, unless
+  followed by an \texttt{else} statement
 \end{itemize}
 Users can access the majority of \texttt{fertile}'s retroactive features
 through two primary functions, \texttt{proj\_check()} and
@@ -1812,7 +1832,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------------------------------------ fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ---- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -1842,94 +1862,28 @@ combination with the more limited \texttt{proj\_check\_some()} function.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Compiling... ----------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... --------------------------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------------------------------- fertile 0.0.0.9027 --
+Error in parse_block(g[-1], g[1], params.src, markdown_mode): Duplicate chunk label 'unnamed-chunk-1', which has been used for the chunk:
 \end{verbatim}
 \begin{verbatim}
-* Checking for no absolute paths
+-- Running reproducibility checks ----------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-   Problem: Absolute paths are likely non-portable
+v Checking for no absolute paths
 \end{verbatim}
 \begin{verbatim}
-   Solution: Use relative paths. Move files if necessary.
+v Checking for only portable paths
 \end{verbatim}
 \begin{verbatim}
-   See for help: ?fs::file_move; ?fs::path_rel
+-- Summary of fertile checks ---------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
-\end{verbatim}
-\begin{verbatim}
-* Checking for only portable paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Non-portable paths won't necessarily work for others
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
-\end{verbatim}
-\begin{verbatim}
--- Summary of fertile checks ------------------------------------------------------------ fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-v Reproducibility checks passed: 0
-\end{verbatim}
-\begin{verbatim}
-* Reproducibility checks to work on: 2
-\end{verbatim}
-\begin{verbatim}
-* Checking for no absolute paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Absolute paths are likely non-portable
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths. Move files if necessary.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::file_move; ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
-\end{verbatim}
-\begin{verbatim}
-* Checking for only portable paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Non-portable paths won't necessarily work for others
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
+v Reproducibility checks passed: 2
 \end{verbatim}
 \normalsize
 
@@ -1950,10 +1904,10 @@ used in code.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps --------------------------------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------------------------------------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ----------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -1971,15 +1925,15 @@ used in code.
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory --------------------------------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png        187K image/png                                 
- 3 proteins_v_time.p~ png     376.54K image/png                                 
+ 2 citrate_v_time.png png     187.51K image/png                                 
+ 3 proteins_v_time.p~ png     379.17K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1987,10 +1941,10 @@ used in code.
  8 README.md          md           39 text/markdown                             
  9 software-versions~ txt       1.82K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
-11 analysis.Rmd       Rmd       5.05K text/x-markdown                           
+11 analysis.Rmd       Rmd        5.1K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------------------------------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ----------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2007,7 +1961,7 @@ used in code.
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ----------------------------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged --------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -2035,15 +1989,15 @@ function:
 # A tibble: 9 x 4
   path             path_abs                         func     timestamp          
   <chr>            <chr>                            <chr>    <dttm>             
-1 package:remotes  <NA>                             base::r~ 2020-09-18 00:46:33
-2 package:thesisd~ <NA>                             base::r~ 2020-09-18 00:46:33
-3 package:thesisd~ <NA>                             base::l~ 2020-09-18 00:46:33
-4 package:dplyr    <NA>                             base::l~ 2020-09-18 00:50:30
-5 package:tidyr    <NA>                             base::l~ 2020-09-18 00:50:30
-6 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 00:50:30
-7 package:purrr    <NA>                             base::l~ 2020-09-18 00:50:38
-8 package:forcats  <NA>                             base::l~ 2020-09-18 00:50:39
-9 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 00:50:39
+1 package:remotes  <NA>                             base::r~ 2020-09-18 00:50:39
+2 package:thesisd~ <NA>                             base::r~ 2020-09-18 00:50:39
+3 package:thesisd~ <NA>                             base::l~ 2020-09-18 00:50:39
+4 package:dplyr    <NA>                             base::l~ 2020-09-18 01:03:41
+5 package:tidyr    <NA>                             base::l~ 2020-09-18 01:03:41
+6 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 01:03:41
+7 package:purrr    <NA>                             base::l~ 2020-09-18 01:03:41
+8 package:forcats  <NA>                             base::l~ 2020-09-18 01:03:42
+9 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 01:03:42
 \end{verbatim}
 \normalsize
 
@@ -2124,11 +2078,11 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpc6eYDa/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPlgfko/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpc6eYDa/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPlgfko/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpc6eYDa/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpPlgfko/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 \normalsize
@@ -2218,7 +2172,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7f9dab9635f0>
+<bytecode: 0x7fa3870b16d0>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
