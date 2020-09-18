@@ -308,7 +308,8 @@
     of the requirements for the degree of \\
     \@degree
     \vfil
-    \@advisor, Honors Project Advisor
+    \@advisor, Primary Faculty Advisor \\
+    \@altadvisor, Secondary Faculty Advisor \\
     \vfil
     \@date
   \end{center}

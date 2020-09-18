@@ -5,6 +5,7 @@ date: 'May 2021'
 institution: 'Smith College'
 division: 'Statistical and Data Sciences'
 advisor: 'Benjamin S. Baumer'
+altadvisor: 'Albert Y. Kim'
 department: 'Statistical and Data Sciences'
 degree: 'Bachelor of Arts'
 knit: bookdown::render_book

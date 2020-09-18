@@ -279,36 +279,18 @@ has_no_randomness('project_miceps')
 
 ### Component 6: Readability and Style
 
-  - Though not mentioned in the sources described previously, it is also important that code be written in a coherent style. This is because code that conforms to a style guide or is written in a consistent dialect is easier to read, simplifying the process of following a researcher's work from beginning to end (@hermans2017programming). 
+Though not an absolutely necessary component of reproducibility, code style can have a significant impact on how easy it is to follow the steps being taken in an analysis. The use of consistent and highly-readable style in code greatly simplifies and speeds up the process of understanding a data analysis project and repeating the steps included within. 
 
-What we *have*:
+`fertile` addresses code style via the function `has_no_lint()`. This function checks code for compatibility with the `tidyverse` "tidy" code format, which promotes the following best practices:
 
-* has_no_lint
-
-What we *need*:
-
-* nothing?? Ben's thoughts might be good here
-  
+* Line length should not exceed 80 characters
+* There should not be trailing whitespace
+* All infix operators (`=`, `+`, `-`, `<-`, etc) should have spaces on either side
+* There is no code left in the file that is commented out
 
 
 
 
-
-
-
- Once an `R` Project is created, `fertile` provides benefits throughout the data analysis process, both during development as well as after the fact. `fertile` achieves this by operating in two modes: proactively (to prevent reproducibility mistakes from happening in the first place), and retroactively (analyzing code that has already been written for potential problems).
-
-
-### Proactive Use
-
-Proactively, the package identifies potential mistakes as they are made by the user and outputs an informative message as well as a recommended solution. For example, `fertile` catches when a user passes a potentially problematic file path---such as an absolute path, or a path that points to a location outside of the project directory---to a variety of common input/output functions operating on many different file types.
-
-
-### Retroactive Use
-
-Retroactively, `fertile` analyzes potential obstacles to reproducibility in an RStudio Project (i.e., a directory that contains an `.Rproj` file). The package considers several different aspects of the project which may influence reproducibility, including the directory structure, file paths, and whether randomness is used thoughtfully.
-
-The end products of these analyses are reproducibility reports summarizing a project's adherence to reproducibility standards and recommending remedies for where the project falls short. For example, `fertile` might identify the use of randomness in code and recommend setting a seed if one is not present.
 
 Users can access the majority of `fertile`'s retroactive features through two primary functions, `proj_check()` and `proj_analyze()`. 
 
