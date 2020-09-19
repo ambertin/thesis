@@ -3,7 +3,6 @@
 ## Understanding The Gaps In Existing Reproducibility Solutions
 
 Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term. 
-
 As we have seen, software developers, data scientists, and educators around the world have realized this potential, taking steps to help address the current crisis of reproducibility. Journals have put in place guidelines for authors, statisticians have developed `R` packages that help structure projects in a reproducible format, and educators have begun integrate reproducibility exercises into their courses.
 
 However, many of these attempts to address reproducibility have significant drawbacks associated with them. We have already explored the issues with journal policies, both for authors and reviewers, in-depth. In this section, we will consider the education and software solutions and their associated challenges.
@@ -59,11 +58,49 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
   - Code
   - Related Software
   
+### Temporary Directories
+
+The `sandbox()` function allows the user to make a copy of their project in a temporary directory. This can be useful for ensuring that projects run properly when access to the local file system is removed.
+
+\footnotesize
+```{r, echo=FALSE}
+library(tidyverse)
+library(fertile)
+```
+
+
+```{r sandbox-1, results = 'hide'}
+fs::dir_ls('project_miceps') %>% head(3)
+```
+
+
+```{r sandbox-2, echo = FALSE}
+text <- fs::dir_ls('project_miceps') %>% head(3)
+#wrapoutput(str_wrap(text), 57)
+```
+
+```{r, sandbox-3, results = 'hide'}
+temp_dir <- sandbox('project_miceps')
+temp_dir
+fs::dir_ls(temp_dir) %>% head(3)
+```
+
+```{r sandbox-4, echo = FALSE}
+text <- fs::dir_ls(temp_dir) %>% head(3)
+#wrapoutput(str_wrap(text), 57)
+```
+
+\normalsize
+
+  
+  
+  
 What we *have*:
 
 * proj_report() gives the files present in the directory
 * Every time a project is rendered, a session info file is created
 * proj_pkg_script() for dependencies
+* sandbox
 
 What we *need*:
 
@@ -113,7 +150,6 @@ files <- proj_analyze_files("project_miceps")
 
 proj_suggest_moves(files)
 ```
-
 
 
 These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. `proj_move_files()` executes these suggestions, building a package structure and sorting files into the correct folders by type.
@@ -450,12 +486,12 @@ If users do not want to run functions in groups, and prefer to run them individu
 
 ### Educational Features
 
+Simply noting and correcting issues with reproducibility is not enough to produce lasting change in the scientific community. Data analysts and software users must also be educated on why their choices were not reproducible so that they do not fall victim to those mistakes again in the future, but also so that they can share their knowledge and experience with others in the scientific community.
+
+`fertile` prioritizes this idea of reproducibility education throughout many of its functionalities.
 
 
-
-### Logging
-
-`fertile` also contains logging functionality, which records commands run in the console that have the potential to affect reproducibility, enabling users to look at their past history at any time. The package focuses mostly on package loading and file opening, noting which function was used, the path or package it referenced, and the timestamp at which that event happened. Users can access the log recording their commands at any time via the `log_report()` function:
+ which records commands run in the console that have the potential to affect reproducibility, enabling users to look at their past history at any time. The package focuses mostly on package loading and file opening, noting which function was used, the path or package it referenced, and the timestamp at which that event happened. Users can access the log recording their commands at any time via the `log_report()` function:
 
 \footnotesize
 
@@ -494,35 +530,6 @@ is_r_file(fs::path('project_miceps', "analysis.Rmd"))
 
 \normalsize
 
-### Temporary Directories
-
-The `sandbox()` function allows the user to make a copy of their project in a temporary directory. This can be useful for ensuring that projects run properly when access to the local file system is removed.
-
-\footnotesize
-
-```{r sandbox-1, results = 'hide'}
-
-fs::dir_ls('project_miceps') %>% head(3)
-```
-
-
-```{r sandbox-2, echo = FALSE}
-text <- fs::dir_ls('project_miceps') %>% head(3)
-wrapoutput(str_wrap(text), 57)
-```
-
-```{r, sandbox-3, results = 'hide'}
-temp_dir <- sandbox('project_miceps')
-temp_dir
-fs::dir_ls(temp_dir) %>% head(3)
-```
-
-```{r sandbox-4, echo = FALSE}
-text <- fs::dir_ls(temp_dir) %>% head(3)
-wrapoutput(str_wrap(text), 57)
-```
-
-\normalsize
 
 
 ## How `fertile` Works

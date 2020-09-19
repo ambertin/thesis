@@ -13,3 +13,5 @@ fertile
 knitr
 formatR
 stringr
+tidyverse
+tibble
