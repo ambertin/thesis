@@ -163,16 +163,12 @@ install_script <- proj_pkg_script("project_miceps")
 cat(readChar(install_script, 1e5))
 ```
 
-
 \normalsize
-
-
 
 What we *need*:
 
   - possibly a makefile generator? or improvements to order checking?
-  - a way to note the sessioninfo and package numbers of a project
-  - check if code contains comments
+  
 
 ### Component 4: File Paths
 
@@ -372,12 +368,17 @@ The first issue flagged is the fact that `){`, in the middle of the line, has no
 
 These informative error messages provided by `fertile` help teach users to use consistent, tidy style in their code. They do so while making the learning process incredibly simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, `fertile` also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the `usethis::use_tidy_style()` function to format their code automatically.
 
+### User Customizability
 
+`fertile` does not force its users into a box, instead allowing for a great deal of user choice in terms of which aspects of reproducibility to focus on. Users can run reproducibility tests at three different scales: 
 
+1) Comprehensively, where all checks are run within a single function or two.
+2) In groups, where functions focused on similar aspects of reproducibility are run together.
+3) Individually, where only one reproducbility check is run at a time.
 
-Users can access the majority of `fertile`'s retroactive features through two primary functions, `proj_check()` and `proj_analyze()`. 
+Users who want comprehensive behavior can access it through two primary functions, `proj_check()` and `proj_analyze()`. 
 
-The `proj_check()` function runs fifteen different reproducibility tests, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
+The `proj_check()` function runs all fifteen reproducibility tests in the package, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests, many of which were described in detail previously, include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
 
 \footnotesize
 
@@ -387,16 +388,39 @@ list_checks()
 
 \normalsize
 
-Subsets of the fifteen tests can be invoked using the `tidyselect` helper functions (@R-tidyselect) in combination with the more limited `proj_check_some()` function.
+
+The `proj_analyze()` function creates a report documenting the structure of a data analysis project, combining four key functions from `fertile` into one complete unit:
+
+* `proj_analyze_packages()`, which captures a list of all packages referenced in the source code and which files they were referenced in
+* `proj_analyze_files()`, which captures a list of all of the files located in the directory along with their type and size
+* `proj_suggest_moves()`, which provides suggestions for how to reorganize files to create a more reproducible file structure
+* `proj_analyze_paths()`, which captures a list of the non-reproducible file paths referenced in source code
 
 \footnotesize
 
-```{r set-project}
-proj_dir <- "project_miceps"
+```{r proj_analyze, tidy.opts=list(width.cutoff=60)}
+proj_analyze('project_miceps')
 ```
 
+\normalsize
+
+Together, `proj_check()` and `proj_analyze()` cover a significant portion of all six major components of reproducibility.
+
+Users wanting to focus on groups of checks can do so using the `proj_check_some()` function.
+`proj_check_some()` leverages helper functions from `tidyselect` (@R-tidyselect) to allow users to call groups of similar checks together. `tidyselect` helpers tell `fertile` to call only the checks whose names meet certain conditions. The helper functions that can be passed to `proj_check_some()` are:
+
+* `starts_with()`: Starts with a prefix.
+* `ends_with()`: Ends with a suffix.
+* `contains()`: Contains a literal string.
+* `matches()`: Matches a regular expression.
+
+For example, a variety of checks in `fertile` focus on making sure the project has a "tidy" structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using `proj_check_some()` as follows:
+
+\footnotesize
+
+
 ```{r echo=FALSE}
-bad_file <- fs::path(proj_dir, "install_proj_packages.R")
+bad_file <- fs::path('project_miceps', "install_proj_packages.R")
 if (file.exists(bad_file)) {
   fs::file_delete(bad_file)
 }
@@ -404,22 +428,30 @@ if (file.exists(bad_file)) {
 ```
 
 ```{r proj_check_some, warning = FALSE, tidy.opts=list(width.cutoff=60)}
-proj_check_some(proj_dir, contains("paths"))
+proj_check_some("project_miceps", contains("tidy"))
 ```
 
 \normalsize
 
-Each test can also be run individually by calling the function matching its check name.
+Users might also attempt to call the two checks involving project roots together:
 
-The `proj_analyze()` function creates a report documenting the structure of a data analysis project. This report contains information about all packages referenced in code, the files present in the directory and their types, suggestions for moving files to create a more organized structure, and a list of reproducibility-breaking file paths used in code.
-
-\footnotesize
-
-```{r proj_analyze, tidy.opts=list(width.cutoff=60)}
-proj_analyze(proj_dir)
+```{r}
+proj_check_some("project_miceps", ends_with("root"))
 ```
 
-\normalsize
+Or, perhaps, they might want to run all the functions beginning with "has_only":
+
+```{r}
+proj_check_some("project_miceps", starts_with("has_only"))
+```
+
+If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
+
+
+### Educational Features
+
+
+
 
 ### Logging
 
@@ -430,7 +462,7 @@ proj_analyze(proj_dir)
 ```{r read-csv, message=FALSE, include=FALSE}
 library(purrr)
 library(forcats)
-read_csv(fs::path(proj_dir, "mice.csv"))
+read_csv(fs::path('project_miceps', "mice.csv"))
 ```
 
 ```{r log-report}
@@ -446,14 +478,6 @@ log_clear()
 log_report()
 ```
 
-### Utility Functions
-
-`fertile` also provides several useful utility functions that may assist with the process of data analysis. 
-
-### File Path Management
-
-
-
 
 ### File Types
 
@@ -462,10 +486,10 @@ There are several functions that can be used to check the type of a file:
 \footnotesize
 
 ```{r is_file}
-is_data_file(fs::path(proj_dir, "mice.csv"))
-is_image_file(fs::path(proj_dir, "proteins_v_time.png"))
-is_text_file(fs::path(proj_dir, "README.md"))
-is_r_file(fs::path(proj_dir, "analysis.Rmd"))
+is_data_file(fs::path('project_miceps', "mice.csv"))
+is_image_file(fs::path('project_miceps', "proteins_v_time.png"))
+is_text_file(fs::path('project_miceps', "README.md"))
+is_r_file(fs::path('project_miceps', "analysis.Rmd"))
 ```
 
 \normalsize
@@ -477,18 +501,18 @@ The `sandbox()` function allows the user to make a copy of their project in a te
 \footnotesize
 
 ```{r sandbox-1, results = 'hide'}
-proj_dir
-fs::dir_ls(proj_dir) %>% head(3)
+
+fs::dir_ls('project_miceps') %>% head(3)
 ```
 
 
 ```{r sandbox-2, echo = FALSE}
-text <- fs::dir_ls(proj_dir) %>% head(3)
+text <- fs::dir_ls('project_miceps') %>% head(3)
 wrapoutput(str_wrap(text), 57)
 ```
 
 ```{r, sandbox-3, results = 'hide'}
-temp_dir <- sandbox(proj_dir)
+temp_dir <- sandbox('project_miceps')
 temp_dir
 fs::dir_ls(temp_dir) %>% head(3)
 ```
@@ -500,22 +524,6 @@ wrapoutput(str_wrap(text), 57)
 
 \normalsize
 
-### Managing Project Dependencies
-
-One of the challenges with ensuring that work is reproducible is the issue of dependencies. Many data analysis projects reference a variety of `R` packages in their code. When such projects are shared with other users who may not have the required packages downloaded, it can cause errors that prevent the project from running properly. 
-
-The `proj_pkg_script()`} function assists with this issue by making it simple and fast to download dependencies. When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
-
-\footnotesize
-
-```{r proj_pkg_script, eval=TRUE, cache=TRUE, linewidth = 60}
-install_script <- proj_pkg_script(proj_dir)
-cat(readChar(install_script, 1e5))
-```
-
-
-
-\normalsize
 
 ## How `fertile` Works
 

@@ -1435,15 +1435,11 @@ Joining, by = "path_abs"
    See for help: ?fs::file_delete
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 6 x 1
+# A tibble: 2 x 1
   path_abs                                                                      
   <chr>                                                                         
-1 /Users/audreybertin/Documents/thesis/index/project_miceps/Blot_data_updated.c~
-2 /Users/audreybertin/Documents/thesis/index/project_miceps/CS_data_redone.csv  
-3 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
-4 /Users/audreybertin/Documents/thesis/index/project_miceps/citrate_v_time.png  
-5 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
-6 /Users/audreybertin/Documents/thesis/index/project_miceps/proteins_v_time.png 
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 There are also several functions that summarize and reshape the entire
 project structure. \texttt{proj\_analyze\_files()} lists all of the
@@ -1468,7 +1464,7 @@ within the directory.
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
 10 project_miceps/prot~  380.28K png   image/png                  proteins_v_ti~
-11 project_miceps/soft~    2.02K txt   text/plain                 software-vers~
+11 project_miceps/soft~    1.82K txt   text/plain                 software-vers~
 \end{verbatim}
 \texttt{proj\_suggest\_moves()} provides suggestions for how the files
 should be reorganized, if at all.
@@ -1491,7 +1487,7 @@ should be reorganized, if at all.
 6 project_mic~  187.52K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
 8 project_mic~  380.28K png   image/p~ proteins_~ inst/image project_mi~ file_m~
-9 project_mic~    2.02K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
+9 project_mic~    1.82K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 These suggestions are based on achieving the optimal file structure
 design for reproducibility, argued by Marwick et al. (2018) to be that
@@ -1592,28 +1588,25 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] stringr_1.4.0    formatR_1.7      forcats_0.5.0    stargazer_5.2.2 
- [5] skimr_2.1.2      purrr_0.3.4      ggplot2_3.3.2    tidyr_1.1.2     
- [9] readr_1.3.1      dplyr_1.0.2      knitr_1.29.5     thesisdown_0.1.0
-[13] remotes_2.2.0   
+ [1] stargazer_5.2.2  skimr_2.1.2      purrr_0.3.4      ggplot2_3.3.2   
+ [5] readr_1.3.1      tidyr_1.1.2      dplyr_1.0.2      stringr_1.4.0   
+ [9] knitr_1.29.5     thesisdown_0.1.0 remotes_2.2.0   
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5         stringdist_0.9.6   available_1.0.4    here_0.1          
- [5] lattice_0.20-41    assertthat_0.2.1   rprojroot_1.3-2    digest_0.6.25     
- [9] utf8_1.1.4         mime_0.9           R6_2.4.1           repr_1.1.0        
-[13] backports_1.1.9    evaluate_0.14      highr_0.8          pillar_1.4.6      
-[17] rlang_0.4.7        curl_4.3           rstudioapi_0.11    Matrix_1.2-18     
-[21] rmarkdown_2.3      desc_1.2.0         labeling_0.3       splines_4.0.2     
-[25] munsell_0.5.0      broom_0.7.0        compiler_4.0.2     xfun_0.17         
-[29] pkgconfig_2.0.3    base64enc_0.1-3    mgcv_1.8-31        htmltools_0.5.0   
-[33] tidyselect_1.1.0   tibble_3.0.3       fertile_0.0.0.9027 bookdown_0.20.3   
-[37] codetools_0.2-16   fansi_0.4.1        crayon_1.3.4       withr_2.2.0       
-[41] grid_4.0.2         nlme_3.1-148       jsonlite_1.7.1     gtable_0.3.0      
-[45] lifecycle_0.2.0    magrittr_1.5       scales_1.1.1       cli_2.0.2         
-[49] stringi_1.5.3      farver_2.0.3       fs_1.5.0           testthat_2.3.2    
-[53] ellipsis_0.3.1     generics_0.0.2     vctrs_0.3.4        tools_4.0.2       
-[57] glue_1.4.2         hms_0.5.3          parallel_4.0.2     yaml_2.2.1        
-[61] colorspace_1.4-1   memoise_1.1.0      usethis_1.6.1     
+ [1] tidyselect_1.1.0   xfun_0.17          repr_1.1.0         splines_4.0.2     
+ [5] lattice_0.20-41    colorspace_1.4-1   vctrs_0.3.4        generics_0.0.2    
+ [9] usethis_1.6.1      htmltools_0.5.0    base64enc_0.1-3    yaml_2.2.1        
+[13] mgcv_1.8-31        utf8_1.1.4         rlang_0.4.7        pillar_1.4.6      
+[17] glue_1.4.2         withr_2.2.0        lifecycle_0.2.0    munsell_0.5.0     
+[21] gtable_0.3.0       evaluate_0.14      labeling_0.3       fansi_0.4.1       
+[25] highr_0.8          broom_0.7.0        Rcpp_1.0.5         backports_1.1.9   
+[29] scales_1.1.1       jsonlite_1.7.1     mime_0.9           farver_2.0.3      
+[33] fs_1.5.0           hms_0.5.3          digest_0.6.25      stringi_1.5.3     
+[37] bookdown_0.20.3    rprojroot_1.3-2    grid_4.0.2         fertile_0.0.0.9027
+[41] here_0.1           cli_2.0.2          tools_4.0.2        magrittr_1.5      
+[45] tibble_3.0.3       crayon_1.3.4       pkgconfig_2.0.3    ellipsis_0.3.1    
+[49] Matrix_1.2-18      assertthat_0.2.1   rmarkdown_2.3      rstudioapi_0.11   
+[53] R6_2.4.1           nlme_3.1-148       compiler_4.0.2    
 \end{verbatim}
 The \texttt{proj\_pkg\_script()} makes it simple and fast to download
 these dependencies. When run on an \texttt{R} project directory, the
@@ -1645,10 +1638,6 @@ What we \emph{need}:
 \tightlist
 \item
   possibly a makefile generator? or improvements to order checking?
-\item
-  a way to note the sessioninfo and package numbers of a project
-\item
-  check if code contains comments
 \end{itemize}
 \subsection{Component 4: File Paths}\label{component-4-file-paths}
 
@@ -1736,7 +1725,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... ----------------- fertile 0.0.0.9027 --
+-- Generating reproducibility report... ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -1750,9 +1739,11 @@ New names:
 * path -> path...5
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 0 x 6
-# ... with 6 variables: path...1 <chr>, path_abs <chr>, func <chr>,
-#   path...5 <chr>, problem <chr>, solution <chr>
+# A tibble: 2 x 6
+  path...1        path_abs        func   path...5       problem     solution    
+  <chr>           <chr>           <chr>  <chr>          <chr>       <chr>       
+1 /Users/audreyb~ /Users/audreyb~ readr~ /Users/audrey~ Absolute p~ Use a relat~
+2 /Users/audreyb~ /Users/audreyb~ readr~ /Users/audrey~ Path is no~ Move the fi~
 \end{verbatim}
 Paths can also be checked individually, or in groups, using
 \texttt{check\_path()}.
@@ -1996,19 +1987,36 @@ solution for resolving the inconsistencies all at once, recommending
 that users apply the \texttt{usethis::use\_tidy\_style()} function to
 format their code automatically.
 
-Users can access the majority of \texttt{fertile}'s retroactive features
-through two primary functions, \texttt{proj\_check()} and
-\texttt{proj\_analyze()}.
+\subsection{User Customizability}\label{user-customizability}
 
-The \texttt{proj\_check()} function runs fifteen different
-reproducibility tests, noting which ones passed, which ones failed, the
+\texttt{fertile} does not force its users into a box, instead allowing
+for a great deal of user choice in terms of which aspects of
+reproducibility to focus on. Users can run reproducibility tests at
+three different scales:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Comprehensively, where all checks are run within a single function or
+  two.
+\item
+  In groups, where functions focused on similar aspects of
+  reproducibility are run together.
+\item
+  Individually, where only one reproducbility check is run at a time.
+\end{enumerate}
+Users who want comprehensive behavior can access it through two primary
+functions, \texttt{proj\_check()} and \texttt{proj\_analyze()}.
+
+The \texttt{proj\_check()} function runs all fifteen reproducibility
+tests in the package, noting which ones passed, which ones failed, the
 reason for failure, a recommended solution, and a guide to where to look
-for help. These tests include: looking for a clear build chain, checking
-to make sure the root level of the project is clear of clutter,
-confirming that there are no files present that are not being directly
-used by or created by the code, and looking for uses of randomness that
-do not have a call to \texttt{set.seed()} present. A full list is
-provided below:
+for help. These tests, many of which were described in detail
+previously, include: looking for a clear build chain, checking to make
+sure the root level of the project is clear of clutter, confirming that
+there are no files present that are not being directly used by or
+created by the code, and looking for uses of randomness that do not have
+a call to \texttt{set.seed()} present. A full list is provided below:
 
 \footnotesize
 \begin{Shaded}
@@ -2017,7 +2025,7 @@ provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ---- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ------------------------ fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -2031,134 +2039,36 @@ provided below:
 \end{verbatim}
 \normalsize
 
-Subsets of the fifteen tests can be invoked using the
-\texttt{tidyselect} helper functions (Henry \& Wickham (2020)) in
-combination with the more limited \texttt{proj\_check\_some()} function.
-
-\footnotesize
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{proj_dir <-}\StringTok{ "project_miceps"}
-\end{Highlighting}
-\end{Shaded}
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{proj_check_some}\NormalTok{(proj_dir, }\KeywordTok{contains}\NormalTok{(}\StringTok{"paths"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
--- Compiling... ----------------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
--- Rendering R scripts... ------------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
--- Running reproducibility checks ----------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-* Checking for no absolute paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Absolute paths are likely non-portable
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths. Move files if necessary.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::file_move; ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
-\end{verbatim}
-\begin{verbatim}
-* Checking for only portable paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Non-portable paths won't necessarily work for others
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
-\end{verbatim}
-\begin{verbatim}
--- Summary of fertile checks ---------------------------- fertile 0.0.0.9027 --
-\end{verbatim}
-\begin{verbatim}
-v Reproducibility checks passed: 0
-\end{verbatim}
-\begin{verbatim}
-* Reproducibility checks to work on: 2
-\end{verbatim}
-\begin{verbatim}
-* Checking for no absolute paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Absolute paths are likely non-portable
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths. Move files if necessary.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::file_move; ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::file_move('/Users/audreybertin/D~
-\end{verbatim}
-\begin{verbatim}
-* Checking for only portable paths
-\end{verbatim}
-\begin{verbatim}
-   Problem: Non-portable paths won't necessarily work for others
-\end{verbatim}
-\begin{verbatim}
-   Solution: Use relative paths.
-\end{verbatim}
-\begin{verbatim}
-   See for help: ?fs::path_rel
-\end{verbatim}
-\begin{verbatim}
-# A tibble: 1 x 2
-  culprit                                  expr                                 
-  <fs::path>                               <glue>                               
-1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
-\end{verbatim}
-\normalsize
-
-Each test can also be run individually by calling the function matching
-its check name.
-
 The \texttt{proj\_analyze()} function creates a report documenting the
-structure of a data analysis project. This report contains information
-about all packages referenced in code, the files present in the
-directory and their types, suggestions for moving files to create a more
-organized structure, and a list of reproducibility-breaking file paths
-used in code.
-
+structure of a data analysis project, combining four key functions from
+\texttt{fertile} into one complete unit:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{proj\_analyze\_packages()}, which captures a list of all
+  packages referenced in the source code and which files they were
+  referenced in
+\item
+  \texttt{proj\_analyze\_files()}, which captures a list of all of the
+  files located in the directory along with their type and size
+\item
+  \texttt{proj\_suggest\_moves()}, which provides suggestions for how to
+  reorganize files to create a more reproducible file structure
+\item
+  \texttt{proj\_analyze\_paths()}, which captures a list of the
+  non-reproducible file paths referenced in source code
+\end{itemize}
 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_analyze}\NormalTok{(proj_dir)}
+\KeywordTok{proj_analyze}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps --------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ----------------- fertile 0.0.0.9027 --
+--   Packages referenced in source code ------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -2176,7 +2086,7 @@ used in code.
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ------------------------- fertile 0.0.0.9027 --
+--   Files present in directory --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
@@ -2195,7 +2105,7 @@ used in code.
 11 analysis.Rmd       Rmd        5.1K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ----------------------- fertile 0.0.0.9027 --
+--   Suggestions for moving files ------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2212,12 +2122,286 @@ used in code.
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged --------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
 \end{verbatim}
 \normalsize
+
+Together, \texttt{proj\_check()} and \texttt{proj\_analyze()} cover a
+significant portion of all six major components of reproducibility.
+
+Users wanting to focus on groups of checks can do so using the
+\texttt{proj\_check\_some()} function. \texttt{proj\_check\_some()}
+leverages helper functions from \texttt{tidyselect} (Henry \& Wickham
+(2020)) to allow users to call groups of similar checks together.
+\texttt{tidyselect} helpers tell \texttt{fertile} to call only the
+checks whose names meet certain conditions. The helper functions that
+can be passed to \texttt{proj\_check\_some()} are:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{starts\_with()}: Starts with a prefix.
+\item
+  \texttt{ends\_with()}: Ends with a suffix.
+\item
+  \texttt{contains()}: Contains a literal string.
+\item
+  \texttt{matches()}: Matches a regular expression.
+\end{itemize}
+For example, a variety of checks in \texttt{fertile} focus on making
+sure the project has a ``tidy'' structure--essentially that there are
+not files cluttered together all in one folder. Users interested in
+checking their tidyness can do so all at once using
+\texttt{proj\_check\_some()} as follows:
+
+\footnotesize
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{contains}\NormalTok{(}\StringTok{"tidy"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+-- Running reproducibility checks ------------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Checking for no *.R scripts at root level
+\end{verbatim}
+\begin{verbatim}
+v Checking for no *.rda files at root level
+\end{verbatim}
+\begin{verbatim}
+v Checking for no A/V files at root level
+\end{verbatim}
+\begin{verbatim}
+* Checking for no image files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Image files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move source files to img/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/citrate_v_t~ fs::file_move('project_miceps/citrate_v_time.png'~
+2 project_miceps/proteins_v_~ fs::file_move('project_miceps/proteins_v_time.png~
+\end{verbatim}
+\begin{verbatim}
+* Checking for no raw data files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Raw data files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move raw data files to data-raw/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 3 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/Blot_data_u~ fs::file_move('project_miceps/Blot_data_updated.c~
+2 project_miceps/CS_data_red~ fs::file_move('project_miceps/CS_data_redone.csv'~
+3 project_miceps/mice.csv     fs::file_move('project_miceps/mice.csv', here::he~
+\end{verbatim}
+\begin{verbatim}
+v Checking for no source files at root level
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------------------------ fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 4
+\end{verbatim}
+\begin{verbatim}
+* Reproducibility checks to work on: 2
+\end{verbatim}
+\begin{verbatim}
+* Checking for no image files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Image files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move source files to img/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/citrate_v_t~ fs::file_move('project_miceps/citrate_v_time.png'~
+2 project_miceps/proteins_v_~ fs::file_move('project_miceps/proteins_v_time.png~
+\end{verbatim}
+\begin{verbatim}
+* Checking for no raw data files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Raw data files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move raw data files to data-raw/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 3 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/Blot_data_u~ fs::file_move('project_miceps/Blot_data_updated.c~
+2 project_miceps/CS_data_red~ fs::file_move('project_miceps/CS_data_redone.csv'~
+3 project_miceps/mice.csv     fs::file_move('project_miceps/mice.csv', here::he~
+\end{verbatim}
+\normalsize
+
+Users might also attempt to call the two checks involving project roots
+together:
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{ends_with}\NormalTok{(}\StringTok{"root"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+-- Running reproducibility checks ------------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Checking for nested .Rproj files within project
+\end{verbatim}
+\begin{verbatim}
+v Checking for single .Rproj file at root level
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------------------------ fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 2
+\end{verbatim}
+Or, perhaps, they might want to run all the functions beginning with
+``has\_only'':
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"has_only"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+-- Compiling... ------------------------------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+-- Rendering R scripts... --------------------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+Please use `tibble()` instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated.
+\end{verbatim}
+\begin{verbatim}
+-- Running reproducibility checks ------------------------------------------- fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+Joining, by = "path_abs"
+\end{verbatim}
+\begin{verbatim}
+* Checking for only portable paths
+\end{verbatim}
+\begin{verbatim}
+   Problem: Non-portable paths won't necessarily work for others
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use relative paths.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
+\end{verbatim}
+\begin{verbatim}
+* Checking to see if all files in directory are used in code
+\end{verbatim}
+\begin{verbatim}
+   Problem: You have files in your project directory which are not being used.
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use or delete files.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_delete
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 1
+  path_abs                                                                      
+  <chr>                                                                         
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------------------------ fertile 0.0.0.9027 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 0
+\end{verbatim}
+\begin{verbatim}
+* Reproducibility checks to work on: 2
+\end{verbatim}
+\begin{verbatim}
+* Checking for only portable paths
+\end{verbatim}
+\begin{verbatim}
+   Problem: Non-portable paths won't necessarily work for others
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use relative paths.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::path_rel
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  culprit                                  expr                                 
+  <fs::path>                               <glue>                               
+1 /Users/audreybertin/Documents/thesis/in~ fs::path_rel('/Users/audreybertin/Do~
+\end{verbatim}
+\begin{verbatim}
+* Checking to see if all files in directory are used in code
+\end{verbatim}
+\begin{verbatim}
+   Problem: You have files in your project directory which are not being used.
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use or delete files.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_delete
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 1
+  path_abs                                                                      
+  <chr>                                                                         
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+\end{verbatim}
+If users do not want to run functions in groups, and prefer to run them
+individually, that option is also provided to them. Every check that
+makes up \texttt{check()} and every subcomponent of
+\texttt{project\_analyze()}can be run individually.
+
+\subsection{Educational Features}\label{educational-features}
 
 \subsection{Logging}\label{logging}
 
@@ -2237,31 +2421,29 @@ function:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-# A tibble: 9 x 4
-  path             path_abs                         func     timestamp          
-  <chr>            <chr>                            <chr>    <dttm>             
-1 package:remotes  <NA>                             base::r~ 2020-09-18 14:01:46
-2 package:thesisd~ <NA>                             base::r~ 2020-09-18 14:01:46
-3 package:thesisd~ <NA>                             base::l~ 2020-09-18 14:01:46
-4 package:dplyr    <NA>                             base::l~ 2020-09-18 14:03:04
-5 package:tidyr    <NA>                             base::l~ 2020-09-18 14:03:04
-6 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 14:03:04
-7 package:purrr    <NA>                             base::l~ 2020-09-18 14:03:17
-8 package:forcats  <NA>                             base::l~ 2020-09-18 14:03:17
-9 project_miceps/~ /Users/audreybertin/Documents/t~ readr::~ 2020-09-18 14:03:17
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 319 x 4
+   path                path_abs                   func       timestamp          
+   <chr>               <chr>                      <chr>      <dttm>             
+ 1 ~/Desktop/my_data.~ ~/Desktop/my_data.csv      utils::re~ 2020-09-03 16:50:10
+ 2 ../../../Desktop/m~ /Users/audreybertin/Deskt~ utils::re~ 2020-09-03 16:50:10
+ 3 ~/Desktop/my_data.~ ~/Desktop/my_data.csv      utils::re~ 2020-09-03 16:57:02
+ 4 ../../../Desktop/m~ /Users/audreybertin/Deskt~ utils::re~ 2020-09-03 16:57:02
+ 5 ~/Desktop/my_data.~ ~/Desktop/my_data.csv      utils::re~ 2020-09-03 16:58:54
+ 6 ../../../Desktop/m~ /Users/audreybertin/Deskt~ utils::re~ 2020-09-03 16:58:54
+ 7 ~/Desktop/my_data.~ ~/Desktop/my_data.csv      utils::re~ 2020-09-04 14:56:50
+ 8 ../../../Desktop/m~ /Users/audreybertin/Deskt~ utils::re~ 2020-09-04 14:56:50
+ 9 ~/Desktop/my_data.~ ~/Desktop/my_data.csv      utils::re~ 2020-09-04 17:09:51
+10 ../../../Desktop/m~ /Users/audreybertin/Deskt~ utils::re~ 2020-09-04 17:09:51
+# ... with 309 more rows
 \end{verbatim}
 \normalsize
 
 The log, if not managed, can grow very long over time. For users who do
 not desire such functionality, \texttt{log\_clear()} provides a way to
 erase the log and start over.
-
-\subsection{Utility Functions}\label{utility-functions}
-
-\texttt{fertile} also provides several useful utility functions that may
-assist with the process of data analysis.
-
-\subsection{File Path Management}\label{file-path-management}
 
 \subsection{File Types}\label{file-types}
 
@@ -2271,7 +2453,7 @@ file:
 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{is_data_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"mice.csv"}\NormalTok{))}
+\KeywordTok{is_data_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{, }\StringTok{"mice.csv"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2279,7 +2461,7 @@ file:
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{is_image_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"proteins_v_time.png"}\NormalTok{))}
+\KeywordTok{is_image_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{, }\StringTok{"proteins_v_time.png"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2287,7 +2469,7 @@ file:
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{is_text_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"README.md"}\NormalTok{))}
+\KeywordTok{is_text_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{, }\StringTok{"README.md"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2295,7 +2477,7 @@ file:
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{is_r_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(proj_dir, }\StringTok{"analysis.Rmd"}\NormalTok{))}
+\KeywordTok{is_r_file}\NormalTok{(fs}\OperatorTok{::}\KeywordTok{path}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{, }\StringTok{"analysis.Rmd"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2312,8 +2494,7 @@ projects run properly when access to the local file system is removed.
 \footnotesize
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{proj_dir}
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(proj_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2323,51 +2504,18 @@ project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{temp_dir <-}\StringTok{ }\KeywordTok{sandbox}\NormalTok{(proj_dir)}
+\NormalTok{temp_dir <-}\StringTok{ }\KeywordTok{sandbox}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
 \NormalTok{temp_dir}
 \NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(temp_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbHz3QT/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYtuSzT/project_miceps/
 Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbHz3QT/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYtuSzT/project_miceps/
 CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbHz3QT/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYtuSzT/project_miceps/
 Estrogen_Receptors.docx
-\end{verbatim}
-\normalsize
-
-\subsection{Managing Project
-Dependencies}\label{managing-project-dependencies}
-
-One of the challenges with ensuring that work is reproducible is the
-issue of dependencies. Many data analysis projects reference a variety
-of \texttt{R} packages in their code. When such projects are shared with
-other users who may not have the required packages downloaded, it can
-cause errors that prevent the project from running properly.
-
-The \texttt{proj\_pkg\_script()}\} function assists with this issue by
-making it simple and fast to download dependencies. When run on an
-\texttt{R} project directory, the function creates a \texttt{.R} script
-file that contains the code needed to install all of the packages
-referenced in the project, differentiating between packages located on
-CRAN and those located on GitHub.
-
-\footnotesize
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{install_script <-}\StringTok{ }\KeywordTok{proj_pkg_script}\NormalTok{(proj_dir)}
-\KeywordTok{cat}\NormalTok{(}\KeywordTok{readChar}\NormalTok{(install_script, }\FloatTok{1e5}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-# Run this script to install the required packages for this
-R project.
-# Packages hosted on CRAN...
-install.packages(c( 'broom', 'dplyr', 'ggplot2', 'purrr',
-'readr', 'rmarkdown', 'skimr', 'stargazer', 'tidyr' ))
-# Packages hosted on GitHub...
 \end{verbatim}
 \normalsize
 
@@ -2423,7 +2571,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fd751e67240>
+<bytecode: 0x7fe41c27a300>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
@@ -2609,6 +2757,13 @@ chunk tag) to help with readibility and/or setup.
 \NormalTok{    )}
 \NormalTok{  \}}
 \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
 \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(thesisdown)) \{}
   \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
 \NormalTok{    remotes}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
@@ -2622,7 +2777,21 @@ chunk tag) to help with readibility and/or setup.
 \NormalTok{    )}
 \NormalTok{  \}}
 \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(thesisdown)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# Set how wide the R output will go}
 \end{Highlighting}
 \end{Shaded}
