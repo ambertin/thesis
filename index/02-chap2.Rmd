@@ -53,14 +53,40 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 
 ### Component 1: Accessibility of Project Files
 
+```{r, message = FALSE}
+library(fertile)
+```
+
   - Data (raw and/or processed)
   - Metadata
   - Code
   - Related Software
   
-### Temporary Directories
+`fertile` takes several steps to help users ensure that all of files necessary to run an analysis are provided in the project folder. 
 
-The `sandbox()` function allows the user to make a copy of their project in a temporary directory. This can be useful for ensuring that projects run properly when access to the local file system is removed.
+One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxilliary (image or text) files they have. 
+
+\footnotesize
+
+```{r}
+proj_analyze_files("project_miceps")
+```
+
+\normalsize
+
+Users can also check for the existence of a README description file with `has_readme()`:
+
+\footnotesize
+
+```{r}
+has_readme("project_miceps")
+```
+
+\normalsize
+
+In order to truly check that a project is self contained, however, is is necessary to remove it from the environment it is located, ensuring that it can still run when cut off from the main file system.
+
+The `sandbox()` function is designed to help facilitate this. `sandbox()` allows the user to make a copy of their project in a temporary directory that is isolated from the file system. 
 
 \footnotesize
 ```{r, echo=FALSE}
@@ -92,8 +118,25 @@ text <- fs::dir_ls(temp_dir) %>% head(3)
 
 \normalsize
 
-  
-  
+Once a directory is sandboxed, users can run the `proj_render()` function, which checks all `.R` and `.Rmd` code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
+
+\footnotesize
+
+```{r, results = 'hide'}
+proj_render(temp_dir)
+```
+
+\normalsize
+
+If `proj_render()` executes without error, this indicates that all the necessary files are present. Users can also confirm this by checking the time stamp of the last successful render, captured in the `render_log_report()` function. If the time stamp matches the current time, the project successfully compiled.
+
+\footnotesize
+
+```{r}
+slice_tail(render_log_report(temp_dir))
+```
+
+\normalsize
   
 What we *have*:
 
@@ -124,10 +167,7 @@ The last check that focuses on the file system is `has_only_used_files()`. One o
 * Files created by `fertile`. In an effort to capture information about dependencies, `fertile` creates a text file capturing the session information when a project is run and provides an option to generate an `.R` script that can install all of the packages referenced in a project's code. These files are considered "used."
 
 
-```{r, message = FALSE}
-library(fertile)
-```
-
+\footnotesize
 ```{r}
 # List the files in the directory
 fs::dir_ls("project_miceps")
@@ -136,14 +176,11 @@ fs::dir_ls("project_miceps")
 has_only_used_files("project_miceps")
 
 ```
+\normalsize
 
-There are also several functions that summarize and reshape the entire project structure. `proj_analyze_files()` lists all of the files in the project, along with their size, type, and relative path within the directory. 
+There are also several functions help with reshaping the entire project structure to a more reproducibile format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
 
-```{r}
-proj_analyze_files("project_miceps")
-```
-
-`proj_suggest_moves()` provides suggestions for how the files should be reorganized, if at all. 
+\footnotesize
 
 ```{r}
 files <- proj_analyze_files("project_miceps")
@@ -151,11 +188,13 @@ files <- proj_analyze_files("project_miceps")
 proj_suggest_moves(files)
 ```
 
+\normalsize
 
-These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. `proj_move_files()` executes these suggestions, building a package structure and sorting files into the correct folders by type.
+These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. 
+
+Users can execute these suggestions individually, using the code snippets provided next to each file name when running `proj_suggest_moves()`, but they can also run them all together. `proj_move_files()` executes all of the suggestions from `proj_suggest_moves()` at once, building an `R` package style structure and sorting files into the correct folders by type.
 
 Combined together, all of these functions make it simple to ensure that projects fall under a standard, simple, and reproducible structure with minimal clutter.
-
 
 ### Component 3: Documentation
 
@@ -170,25 +209,36 @@ High quality documentation, including the presence of a README file, comments ex
 
 The `has_readme()` function ensures that a README file is included alongside a project.
 
+\footnotesize
+
 ```{r}
 has_readme("project_miceps")
 ```
 
+\normalsize
 
 `has_clear_build_chain()` looks to see if the project includes a `makefile`/`drakefile` (make-style file generated by the `Drake` package in `R`) or, if multiple code files are included, whether they are numbered. Any of these conditions being true would indicate that the order in which to run different pieces of code is clear. `project_miceps`, since it only contains one code file, passes this check easily:
+
+\footnotesize
 
 ```{r}
 has_clear_build_chain("project_miceps")
 ```
 
+\normalsize
+
 There are also several features focused on software dependencies. Every time the code contained within a project is rendered/run by `fertile`, the package generates a file capturing the `sessionInfo()` just after the code was run. This file contains information about the R version in which the code was run, the list of packages that were loaded, and their specific versions. 
 
 The dependency information from `project_miceps` looks as follows:
+
+\footnotesize
 
 ```{r}
 session_info <- "project_miceps/software-versions.txt"
 cat(readChar(session_info, 1e5))
 ```
+
+\normalsize
 
 The `proj_pkg_script()` makes it simple and fast to download these dependencies. When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 
@@ -245,11 +295,17 @@ setwd("~/Desktop")
 getwd()
 ```
 
+\normalsize
+
 `fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
+
+\footnotesize
 
 ```{r}
 proj_analyze_paths('project_miceps')
 ```
+
+\normalsize
 
 Paths can also be checked individually, or in groups, using `check_path()`.
 
@@ -276,6 +332,7 @@ The component of randomness is addressed by `fertile` in a reproducibility check
 
 Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
+\footnotesize
 ```{r, message=FALSE, eval = FALSE}
 
 mice <- read_csv("Blot_data_updated.csv") %>%
@@ -334,11 +391,15 @@ mice_tidy <- mice %>%
 sample_frac(mice, 0.5)
 ```
 
+\normalsize
+
 However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. Had a seed been set, however, the project would have passed.
 
+\footnotesize
 ```{r}
 has_no_randomness('project_miceps')
 ```
+\normalsize
 
 `fertile`'s randomness-centered feature helps analysts know that their use of randomness is controlled, ensuring that functions involving random number generation will always produce the same output each time they are run.
 
@@ -364,12 +425,14 @@ Let us consider an example. `project_miceps` contains an `RMarkdown` file titled
 
 For example, line 71, part of a `ggplot` call, contains the following code:
 
+\footnotesize
 ```{r, eval = FALSE}
 # Line 71 of `project_miceps/analysis.Rmd'
 
 geom_hline(aes(yintercept = estimate + 1.96*std.error, color = sex), linetype = 3) + 
   
 ```
+\normalsize
 
 For this line, `has_no_lint()` finds the following inconsistencies with tidy style:
 
@@ -383,12 +446,15 @@ The first comes up because the true line length, including spaces, is 84 charact
 
 An even less tidy piece of code is that found on line 189, written as follows:
 
+\footnotesize
 ```{r}
 # Line 189 of `project_miceps/analysis.Rmd'
 
 if (length(mice) > 1){ holder_var = 1 }
 
 ```
+
+\normalsize
 
 For this line, `has_no_lint()` finds the following errors:
 
@@ -471,15 +537,19 @@ proj_check_some("project_miceps", contains("tidy"))
 
 Users might also attempt to call the two checks involving project roots together:
 
+\footnotesize
 ```{r}
 proj_check_some("project_miceps", ends_with("root"))
 ```
+\normalsize
 
 Or, perhaps, they might want to run all the functions beginning with "has_only":
 
+\footnotesize
 ```{r}
 proj_check_some("project_miceps", starts_with("has_only"))
 ```
+\normalsize
 
 If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
 
@@ -509,11 +579,14 @@ log_report()
 
 The log, if not managed, can grow very long over time. For users who do not desire such functionality, `log_clear()` provides a way to erase the log and start over.
 
+\footnotesize
+
 ```{r log-clear, include=FALSE}
 log_clear()
 log_report()
 ```
 
+\normalsize
 
 ### File Types
 

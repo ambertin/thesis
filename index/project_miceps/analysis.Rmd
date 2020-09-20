@@ -7,7 +7,7 @@ output:
   html_document: default
 ---
 
-```{r, message=FALSE}
+```{r load-packages, message=FALSE}
 library(dplyr)
 library(readr)
 library(tidyr)
@@ -18,7 +18,7 @@ library(purrr)
 
 Read and transform the data
 
-```{r, message=FALSE}
+```{r read-data, message=FALSE}
 path <- fs::path_abs("Blot_data_updated.csv")
 blot_data <- read_csv(path)
 
@@ -47,14 +47,14 @@ mice_tidy <- mice %>%
                                 labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
 ```
 
-```{r}
+```{r random}
 sample_frac(mice, 0.5)
 ```
 
 
 The plot
 
-```{r, fig.width=10, fig.height=8}
+```{r plot-data, fig.width=10, fig.height=8}
 # baseline
 mice_baselines <- mice_tidy %>%
   filter(type == "control") %>%
@@ -87,7 +87,7 @@ ggsave("proteins_v_time.png")
 
 Other plot
 
-```{r}
+```{r plot-again}
 citrate <- read_csv("CS_data_redone.csv") %>%
   transmute(time = `Time Point`,
             sex = Sex,
@@ -120,7 +120,7 @@ ggsave("citrate_v_time.png")
 
 Check the baseline amounts
 
-```{r}
+```{r check-baselines}
 library(skimr)
 skim_format(numeric = list(digits = 3))
 mice_tidy %>%
@@ -151,7 +151,7 @@ mice_tidy %>%
 
 ## Modeling
 
-```{r}
+```{r modeling}
 lhs <- c("era", "erb", "gper")
 rhs <- " day * sex"
 
@@ -168,7 +168,7 @@ mods <- lapply(lhs, test_models, rhs)
 plot(mods[[3]], which = 1)
 ```
 
-```{r}
+```{r more-modeling}
 citrate_mods <- citrate %>%
   filter(type == "treatment") %>%
   group_by(sex) %>%
@@ -185,14 +185,14 @@ citrate_mod <- lm(citrate ~ time * sex, data = citrate)
 summary(citrate_mod)
 ```
 
-```{r}
+```{r if-statement}
 if (length(mice) > 1){ holder_var = 1 }
 ```
 
 
 For the paper
 
-```{r}
+```{r stargazer}
 library(stargazer)
 stargazer(mods, type = "text")
 stargazer(citrate_mod, type = "text")
