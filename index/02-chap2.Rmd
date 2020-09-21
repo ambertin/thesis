@@ -553,15 +553,18 @@ proj_check_some("project_miceps", starts_with("has_only"))
 
 If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
 
-
 ### Educational Features
 
 Simply noting and correcting issues with reproducibility is not enough to produce lasting change in the scientific community. Data analysts and software users must also be educated on why their choices were not reproducible so that they do not fall victim to those mistakes again in the future, but also so that they can share their knowledge and experience with others in the scientific community.
 
 `fertile` prioritizes this idea of reproducibility education throughout many of its functionalities.
 
+One of the major ways through which `fertile` educates is users is a system of command tracking and interactive messaging. As long as `fertile` is loaded in `R`, the package records when commands that have the potential to affect reproducibility are run in the console. 
 
- which records commands run in the console that have the potential to affect reproducibility, enabling users to look at their past history at any time. The package focuses mostly on package loading and file opening, noting which function was used, the path or package it referenced, and the timestamp at which that event happened. Users can access the log recording their commands at any time via the `log_report()` function:
+As soon as a dangerous function is called, `fertile` alerts the user of their mistake and provides suggestions for alternative solutions. This behavior, explained in more detail in Chapter 2.2.4, gives users immediate feedback on their behavior. In addition to assisting users in the moment, this method has also been shown to increase long-run retention of information when compared with feedback after the fact (@epstein2002immediate).
+
+Users interested in looking back at their past choices and mistakes can do so as well. The `log_report()` function provides access to a log listing the commands with a link to reproducibility that have been called.
+
 
 \footnotesize
 
@@ -577,35 +580,28 @@ log_report()
 
 \normalsize
 
-The log, if not managed, can grow very long over time. For users who do not desire such functionality, `log_clear()` provides a way to erase the log and start over.
+Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function `log_clear()`.
 
-\footnotesize
+In addition to this educational logging behavior, the reproducibility checks contained in the `check()` function also include educational messages. We consider several examples below:
 
-```{r log-clear, include=FALSE}
-log_clear()
-log_report()
-```
+* `has_no_randomness()`, when it fails, tells users that their code uses randomness and they should use the `set.seed()` function to control it.
 
-\normalsize
+* `has_only_used_files()`, when it fails, tells users that there are files present in the directory not being used for any purpose and provides a function (`fs::file_delete`) to use in order to remove them.
 
-### File Types
+* `has_no_lint()`, when it fails, provides users a list of all of the ways in which their code fails to follow tidy style and points them to the exact lines and characters in the code where the mistakes occurred.
 
-There are several functions that can be used to check the type of a file: 
+* `has_tidy_images`, when it fails, tells users that it has found files in the root directory which add clutter and recommends that they be moved to an `img/` directory.
 
-\footnotesize
+Users are provided with an informative message about their issue but are not always provided a fully automated solution. This behavior encourages them to learn as they have to execute the suggested solution themselves.
 
-```{r is_file}
-is_data_file(fs::path('project_miceps', "mice.csv"))
-is_image_file(fs::path('project_miceps', "proteins_v_time.png"))
-is_text_file(fs::path('project_miceps', "README.md"))
-is_r_file(fs::path('project_miceps', "analysis.Rmd"))
-```
+However, even though `fertile` often requires users to take their own actions, that does not mean that the package requires users to be of high skill level to use. `fertile` is designed in such a way so its educational benefits can be achieved with relative simplicity and minimal effort so that even users brand new to `R` can gain knowledge and awareness of reproducibility from using it. 
 
-\normalsize
-
+For example, the interactive messaging features require no effort beyond the loading of the package with `library(fertile)` to activate. And many of the educational benefits contained within the checks can be gained all at once as well, with a single call of the `check()` function. Users looking for more customizability have the option to go into more detail with the more complex functions like `sandbox()`, but they are not necessary for users to gain benefit from the package. 
 
 
 ## How `fertile` Works
+
+### Shims
 
 
 Much of the functionality in `fertile` is achieved by writing `shims` **link to wikipedia page here**. `fertile`'s shimmed functions intercept the user's commands and perform various logging and checking tasks before executing the desired function. Our process is:
@@ -633,6 +629,12 @@ fertile::read_csv
 `fertile` shims many common functions, including those that read in a variety of data types, write data, and load packages. This works both proactively and retroactively, as the shimmed functions written in `fertile` are activated both when the user is coding interactively and when a file containing code is rendered.
 
 In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. In the `fertile` version of `library()`, we detach `fertile` from the search path, load the requested package, and then re-attach `fertile`. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. While it is possible that this shifty behavior could lead to unintended consequences, our goal is to catch a good deal of problems before they become problematic. Users can easily disable `fertile` by detaching it, or not loading it in the first place. 
+
+### Environment Variables
+
+### Hidden Files
+
+### File Path Manipulation
 
 
 ## `fertile` in Practice: Experimental Results From Smith College Student Use
