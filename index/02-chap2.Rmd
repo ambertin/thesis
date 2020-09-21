@@ -601,10 +601,19 @@ For example, the interactive messaging features require no effort beyond the loa
 
 ## How `fertile` Works
 
+In the world of `R` packages, `fertile`'s behavior is rather unusual. Almost no other packages manipulate their users' `R` environments or file structure, instead remaining relatively self-contained. This unique behavior necessitates the use of several non-traditional techniques, described below.
+
 ### Shims
 
+Much of the functionality in `fertile` is achieved by writing `shims`. In their application to `fertile`, shims can be defined as functions that transparently intercept users' intended actions and slightly alter their execution. 
 
-Much of the functionality in `fertile` is achieved by writing `shims` **link to wikipedia page here**. `fertile`'s shimmed functions intercept the user's commands and perform various logging and checking tasks before executing the desired function. Our process is:
+`fertile` contains shims for a variety of common functions that may affect reproducibilty, including those that read and write files, load libraries, and set random number generation seeds.
+
+When users perform actions that may threaten reproducibility, the package's shimmed functions intercept the user's commands and perform various logging and checking tasks before executing the desired function.
+
+This allows `fertile` to warn users when they make mistakes and also to keep track of past behavior via a log of previously entered commands.
+
+The process for writing a shim is as follows:
 
 1. Identify an `R` function that is likely to be involved in operations that may break reproducibility. Popular functions associated with only one package (e.g., `read_csv()` from `readr`) are ideal candidates.
 
@@ -616,7 +625,7 @@ Much of the functionality in `fertile` is achieved by writing `shims` **link to 
   c) performs any checks on these arguments, and 
   d) calls the original function with the original arguments. Except where warranted, the execution looks the same to the user as if they were calling the original function.
   
-Most shims are quite simple and look something like what is shown below for `read_csv()`. 
+Most shims, when written, are relatively simple. Several, such as that for `library()` are more complex, but many follow the same basic format that can be seen in this example for`read_csv()`:
 
 \footnotesize
 
@@ -626,9 +635,11 @@ fertile::read_csv
 
 \normalsize
 
-`fertile` shims many common functions, including those that read in a variety of data types, write data, and load packages. This works both proactively and retroactively, as the shimmed functions written in `fertile` are activated both when the user is coding interactively and when a file containing code is rendered.
+This functionality all occurs without the knowledge of the user. Consider the example of `read_csv()`. `read_csv()` is a very popular function from the `readr` package for reading in data files. Users with both `readr` and `fertile` loaded, will experience the following. The user will call `read_csv()` as normal, thinking that they are calling `readr::read_csv()`. However, they will actually be calling `fertile::read_csv()`, a very similar function with the same name. `fertile::read_csv()` will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as `readr::read_csv()` would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, `fertile` will record that the user called `read_csv()` and note the path that was provided to it for future reference.
 
-In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. In the `fertile` version of `library()`, we detach `fertile` from the search path, load the requested package, and then re-attach `fertile`. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. While it is possible that this shifty behavior could lead to unintended consequences, our goal is to catch a good deal of problems before they become problematic. Users can easily disable `fertile` by detaching it, or not loading it in the first place. 
+This behavior, however, is dependent `fertile` remaining at the top of the `search()` path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. 
+
+In the `fertile` version of `library()`,`fertile` is detached from the search path, the requested package is loaded, and then `fertile` is reattached. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. 
 
 ### Environment Variables
 
