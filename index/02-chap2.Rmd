@@ -641,9 +641,34 @@ This behavior, however, is dependent `fertile` remaining at the top of the `sear
 
 In the `fertile` version of `library()`,`fertile` is detached from the search path, the requested package is loaded, and then `fertile` is reattached. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. 
 
+### Hidden Files
+
+In order to store and analyze information about user behavior and code structure, `fertile` utilizes two different types of hidden files, both of which are `.csv` format.
+
+The interactive log, accessible via `log_report()`, is created as soon as a user executes their first piece of code that could threaten reproducibility. This file tracks all of the shimmed functions executed by the user, either in the console or when running code chunks by hand (rather than knitting a file). It reports the function called, the relevant argument passed in (either a file path or `R` package name), and the time stamp of when the function was executed. Users can clear the data from this file and start fresh at any time with `log_clear()`.
+
+The render log, accessible via `render_log_report()`, has a similar structure to the interactive log but is not under the control of the user. It tracks information about the code contained within `.R` and `.Rmd` files within the project a user is testing for reproducibility. A new render log file can be generated in one of three different ways:
+
+1. The first time a user runs one of the major reproducibility checks from `fertile`, such as `proj_check()`, `proj_analyze()`, or one of the smaller checks within that requires access to the contents of code files.
+
+2. Any time a check involving code is called in `fertile`, the package checks to see whether any code files have been updated since the last time a render log was generated. If so, a new render log is generated.
+
+3. The user can generate a new file manually at any time by executing the `proj_render()` command.
+
+The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a timestamp of the last time the code was run by `fertile`. Users cannot erase it easily.
+
+```{r}
+render_log_report("project_miceps")
+```
+
+These files, integral to many of the functionalities in `fertile`, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that `fertile` always retains accurate information of user behavior. 
+
+
 ### Environment Variables
 
-### Hidden Files
+
+
+
 
 ### File Path Manipulation
 
