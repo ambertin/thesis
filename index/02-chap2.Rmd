@@ -666,11 +666,32 @@ These files, integral to many of the functionalities in `fertile`, are not visib
 
 ### Environment Variables
 
+The shims in `fertile` are designed to be able to write to both the interactive and render logs. That way, no matter whether a user calls `read_csv()` interactively or writes it in their code file, `fertile` will still take note of the fact that the action has happened. 
 
+Given the different purposes of each file, however, it is important that `fertile` be able to identify when a function execution should be saved to the interactive log versus when it should be saved to the render log.
 
+This information is tracked via a logical environment variable: `FERTILE_RENDER_MODE`. When `FERTILE_RENDER_MODE` is `TRUE`, executed shims are saved to the render log. When it is `FALSE`, they are saved to the interactive log.
 
+Since `fertile` is designed to always be capturing information about interactive user behavior, `FERTILE_RENDER_MODE` is `FALSE` by default. 
 
-### File Path Manipulation
+It is only changed to `TRUE` when `fertile` is executing functions that involve the rendering of `.R` and `.Rmd` code files. At the start of all such functions, `fertile` sets the environment variable to `TRUE`, executes the majority of the function, and then sets it back to `FALSE` before exiting. This ensures that as soon as the function has finished running, all new commands get executed on the interactive log, rather on the render log which was just generated. 
+
+The example of `has_only_portable_paths()` illustrates this functionality. We see several clear steps to this function:
+
+1. The environment variable is set to `TRUE`, so that `fertile` knows to write any information about shimmed functions to the render log.
+
+2. If a render log does not yet exist or the project has been updated since the last time one was generated, then the project is rendered with `proj_render()`, generating a new render log.
+
+3. This render log is read to find information about the file paths that were captured when executing the code files. 
+
+4. `fertile` checks to see if the paths are portable and outputs a a list of the ones that are not, if any, in addition to some information about how to correct that.
+
+5. The environment variable is set back to `FALSE` so that interactive behavior is once again captured. 
+
+```{r}
+has_only_portable_paths
+```
+
 
 
 ## `fertile` in Practice: Experimental Results From Smith College Student Use
