@@ -4,25 +4,34 @@ Finding a solution to addressing reproducibility on a widespread scale is a chal
 
 A) Only address one small aspect of reproducibility--for example, software that focuses on version control or a set of journal guidelines requesting only that code and data be provided, but giving no further detail. 
 
-*OR*
+\begin{center}
+OR
+\end{center}
 
 B) Are challenging, time consuming, and/or burdensome to implement--for example, extensive journal guidelines, complex software packages with confusing functions, or academic courses on reproducibility that are only accessible to masters' students and take time away from other topics.
 
-`fertile` is an attempt to address reproducibility in a way that does not fall victim to either of these challenges.
+`fertile` is an attempt to address reproducibility in a way that does not fall victim to either of these challenges. Rather than focus on one area of expertise, `fertile` contains features focused on each of the six major components of reproducibility. Its self-contained nature allows users to address all aspects of reproducibility in one package; users can achieve near- or complete reproducibility with just a single piece of software. 
 
+`fertile` also makes the processes of both achieving *and* checking reproducibility simple and fast. Those looking to check whether a project is reproducible can almost instantaneously receive a full report of where the project succeeds and where it fails, and those looking to improve their reproducibility can receive and act on `fertile`'s clear suggestions with minimal effort. Some of the package's features are enabled automatically and most others can be accessed with only a handful of functions, all of which are very simple in function. 
+
+Additionally, `fertile` does not just provide a report on reproducibility and leave it at that. Instead, it attempts to teach its users the concepts of reproducibility in the same way that reproducibility-focused classes are meant to do. Users receive instant feedback when making mistakes and, when checking work after writing it, receive reports clearly indicating where issues were found, why they occurred, and how to correct them. 
+
+It is also highly customizable, allowing users to utilize the tool in the way that fits their needs best. Those who want to focus their reproducibility checking in a certain direction have that option and those who want widespread overviews can also have their needs meet. Users who are interested in going beyond the base functionality of `proj_analyze` and `proj_check` also have additional functions at their disposal that they can use to check reproducibility, file paths, file types, etc.
 
 ## Potential Applications of `fertile`
 
+These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. 
+
+
 ### In Journal Review
-
-### By Beginning Data Scientists
-
-### By Advanced Data Scientists
 
 ### For Teaching Reproducibility
 
+### In Other Areas
+
+
+
 Nicole Janz -- Brining the Gold Standard into the Classroom: Replication in University Teaching
 
-## Integration Of `fertile` And Other Reproducibility Tools in Data Science Education
 
 
