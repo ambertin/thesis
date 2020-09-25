@@ -1,4 +1,15 @@
-# Incorporating Reproducibility Tools Into The Greater Data Science Community {#applications}
+# Incorporating `fertile` Into The Greater Data Science Community {#applications}
+
+Finding a solution to addressing reproducibility on a widespread scale is a challenging problem. Attempts to do so--in academic publishing, software, and data science education--have made some progress, but many solutions have significant flaws. Primarily, they either:
+
+A) Only address one small aspect of reproducibility--for example, software that focuses on version control or a set of journal guidelines requesting only that code and data be provided, but giving no further detail. 
+
+*OR*
+
+B) Are challenging, time consuming, and/or burdensome to implement--for example, extensive journal guidelines, complex software packages with confusing functions, or academic courses on reproducibility that are only accessible to masters' students and take time away from other topics.
+
+`fertile` is an attempt to address reproducibility in a way that does not fall victim to either of these challenges.
+
 
 ## Potential Applications of `fertile`
 

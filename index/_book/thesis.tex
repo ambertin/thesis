@@ -1450,13 +1450,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpErnNMi/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp4Ym5r0/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-09-25 12:58:46
+1 LAST RENDERED <NA>     proj_render 2020-09-25 14:06:42
 \end{verbatim}
 \normalsize
 
@@ -2602,7 +2602,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 57 x 4
+# A tibble: 66 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2615,7 +2615,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 47 more rows
+# ... with 56 more rows
 \end{verbatim}
 \normalsize
 
@@ -2741,7 +2741,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb2d1f8f7f0>
+<bytecode: 0x7ffbb57efb88>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
@@ -2833,21 +2833,21 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 15 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      238     2020-09-25 12:58:47
- 2 package:dplyr           <NA>                      base::~ 2020-09-25 12:58:47
- 3 package:readr           <NA>                      base::~ 2020-09-25 12:58:47
- 4 package:tidyr           <NA>                      base::~ 2020-09-25 12:58:48
- 5 package:ggplot2         <NA>                      base::~ 2020-09-25 12:58:48
- 6 package:purrr           <NA>                      base::~ 2020-09-25 12:58:48
- 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-09-25 12:58:48
- 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-09-25 12:58:48
- 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-09-25 12:58:48
-10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-09-25 12:58:50
-11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-09-25 12:58:50
-12 package:skimr           <NA>                      base::~ 2020-09-25 12:58:51
-13 package:stargazer       <NA>                      base::~ 2020-09-25 12:58:53
-14 Seed @ End              <NA>                      484     2020-09-25 12:58:54
-15 LAST RENDERED           <NA>                      proj_r~ 2020-09-25 12:58:54
+ 1 Seed @ Start            <NA>                      238     2020-09-25 14:06:45
+ 2 package:dplyr           <NA>                      base::~ 2020-09-25 14:06:45
+ 3 package:readr           <NA>                      base::~ 2020-09-25 14:06:45
+ 4 package:tidyr           <NA>                      base::~ 2020-09-25 14:06:45
+ 5 package:ggplot2         <NA>                      base::~ 2020-09-25 14:06:45
+ 6 package:purrr           <NA>                      base::~ 2020-09-25 14:06:45
+ 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-09-25 14:06:45
+ 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-09-25 14:06:46
+ 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-09-25 14:06:47
+10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-09-25 14:06:49
+11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-09-25 14:06:50
+12 package:skimr           <NA>                      base::~ 2020-09-25 14:06:51
+13 package:stargazer       <NA>                      base::~ 2020-09-25 14:06:53
+14 Seed @ End              <NA>                      484     2020-09-25 14:06:55
+15 LAST RENDERED           <NA>                      proj_r~ 2020-09-25 14:06:55
 \end{verbatim}
 These files, integral to many of the functionalities in
 \texttt{fertile}, are not visible when looking at the file system. Users
@@ -2954,7 +2954,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fb2db2d5200>
+<bytecode: 0x7ffbbe9aab00>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2988,7 +2988,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fb2d1c43c70>
+<bytecode: 0x7ffbb1bf27e8>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3013,7 +3013,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb2d1f8f7f0>
+<bytecode: 0x7ffbb57efb88>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
@@ -3116,8 +3116,37 @@ metrics would provide evidence showing \texttt{fertile}'s benefit as
 tool to help educators introduce reproducibility concepts in the
 classroom.
 
-\chapter{Incorporating Reproducibility Tools Into The Greater Data
-Science Community}\label{applications}
+\chapter{\texorpdfstring{Incorporating \texttt{fertile} Into The Greater
+Data Science
+Community}{Incorporating fertile Into The Greater Data Science Community}}\label{applications}
+
+Finding a solution to addressing reproducibility on a widespread scale
+is a challenging problem. Attempts to do so--in academic publishing,
+software, and data science education--have made some progress, but many
+solutions have significant flaws. Primarily, they either:
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  Only address one small aspect of reproducibility--for example,
+  software that focuses on version control or a set of journal
+  guidelines requesting only that code and data be provided, but giving
+  no further detail.
+\end{enumerate}
+\emph{OR}
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Are challenging, time consuming, and/or burdensome to implement--for
+  example, extensive journal guidelines, complex software packages with
+  confusing functions, or academic courses on reproducibility that are
+  only accessible to masters' students and take time away from other
+  topics.
+\end{enumerate}
+\texttt{fertile} is an attempt to address reproducibility in a way that
+does not fall victim to either of these challenges.
 
 \section{\texorpdfstring{Potential Applications of
 \texttt{fertile}}{Potential Applications of fertile}}\label{potential-applications-of-fertile}
