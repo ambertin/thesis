@@ -663,7 +663,6 @@ render_log_report("project_miceps")
 
 These files, integral to many of the functionalities in `fertile`, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that `fertile` always retains accurate information of user behavior. 
 
-
 ### Environment Variables
 
 The shims in `fertile` are designed to be able to write to both the interactive and render logs. That way, no matter whether a user calls `read_csv()` interactively or writes it in their code file, `fertile` will still take note of the fact that the action has happened. 
@@ -692,9 +691,31 @@ The example of `has_only_portable_paths()` illustrates this functionality. We se
 has_only_portable_paths
 ```
 
+### The Dots (...)
 
+`fertile` utilizes the dots (...), which allow a function to accept additional arguments beyond those pre-defined in the function, to facilitate much of its behavior. The two primary locations the dots are used are in shims and the `proj_check_some()` function. 
 
-## `fertile` in Practice: Experimental Results From Smith College Student Use
+Many of the shimmed functions in `fertile` accept a large number of arguments. Consider `read_csv`. The function requires only one argument (`file`) but allows for up to 14. 
+
+```{r}
+readr::read_csv
+```
+
+When users call the shimmed version of `read_csv`, `fertile` does not need to process any arguments other than `file`, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, `fertile`'s `read_csv` is written to accept a file name and the dots , which then capture and save the additional input provided by the user. `fertile` checks the file path, and then uses the saved dots to then execute `readr::read_csv` the way that the user originally intended. 
+
+```{r}
+fertile::read_csv
+```
+
+The majority of shims have a similar structure. Since almost all shimmed functions in `fertile` take a large number of arguments, the `fertile` versions utilize the dots to simplify the process of capturing this user input and saving it for execution later. 
+
+The dots are also utilized in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
+
+This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
+
+This functionality, along with the other methods of shims, hidden files, and environment variables, helps improve the user experience of `fertile`. These unconventional techniques allow for the reliable tracking of user behavior behind the scenes and provide functions, like `proj_check_some`, that are intuitive for the user to operate.
+
+## `fertile` in Practice
 
 `fertile` is designed to: 1) be simple enough that users with minimal `R` experience can use the package without issue, 2) increase the reproducibility of work produced by its users, and 3) educate its users on why their work is or is not reproducible and provide guidance on how to address any problems.
 
