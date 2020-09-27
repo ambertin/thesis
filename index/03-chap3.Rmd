@@ -20,10 +20,22 @@ It is also highly customizable, allowing users to utilize the tool in the way th
 
 ## Potential Applications of `fertile`
 
-These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. 
-
+These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. `fertile` can provide a variety of benefits to users in all different application domains and with all different experiences. In this section, we consider the many potential uses of the package.
 
 ### In Journal Review
+
+As discussed in Chapter 1, Academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting researchers to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducibile as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
+
+`fertile` could provide significant assistance with this process. Journals could integrate `fertile` into their article review workflow, running the primary checks in the package to see whether they are passed or if they fail. This would be an incredibly fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
+
+Journals could easily build a standard of reproducibility around `fertile`'s checking system, requiring that a minimum set of checks be passed for any submitted article to be approved. This would improve the quality of submitted work and reduce the burden on journals of ensuring reproducibility in their published articles. Since `fertile` is publicly available, users would have access to the exact same testing system as any journal and therefore be able to ensure before submission that their articles would meet the provided standards. 
+
+This process would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, the journal would only need to run `fertile`'s functions once to confirm that the standards were met. 
+
+Although this would only solve a small aspect of reproducibility: that involving data analysis projects written in R, it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
+
+
+
 
 ### For Teaching Reproducibility
 
