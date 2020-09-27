@@ -32,12 +32,29 @@ Journals could easily build a standard of reproducibility around `fertile`'s che
 
 This process would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, the journal would only need to run `fertile`'s functions once to confirm that the standards were met. 
 
-Although this would only solve a small aspect of reproducibility: that involving data analysis projects written in R, it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
-
-
+Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
 
 
 ### For Teaching Reproducibility
+
+`fertile` could also be integrated into Statistical and Data Sciences coursework in order to educate students on topics of reproducibility. 
+
+Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
+
+Undergraduate students, therefore, do not get exposed to reproducibility very often. There are a few exceptions--for instance, introductory courses at Smith College and Duke University that integrate RMarkdown to promote reproducible workflows--but overall, reproducibility is not covered in data science courses the undergraduate level.
+
+`fertile` could change this, allowing for many more colleges and universities to integrate reproducibility into their courses.
+
+In order for `fertile` to successfully be integrated into a college course, the participating students must have the following:
+
+* R and RStudio installed on their computer
+* Knowledge of how to install a package from GitHub and load it
+* Knowledge of how to create an R project
+* Knowledge of how to run basic functions and input simple file paths
+
+These are relatively basic skills that can be taught to students within the first week or two of their introduction to `R`. 
+
+
 
 ### In Other Areas
 
