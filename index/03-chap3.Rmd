@@ -66,6 +66,9 @@ Students would learn about reproducibility at the beginning of their data scienc
 
 * Integrating concepts early helps ingrain them in the minds of students, ensuring that reproducibility begins to come naturally to them.
 
+These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way. 
+
+
 
 ** INTRODUCE EXPERIMENT HERE **
 
@@ -90,13 +93,18 @@ The experiment was structured as follows:
 Based on the results, we hope to determine whether `fertile` was successful at achieving its intended goals. A lack of notable difference between the *experimental* and *control* groups in terms of the number of code-related questions asked throughout the semester would indicate that `fertile` achieved its goal of simplicity. A higher average for the *experimental* group in terms of the number of homework assignments that compiled successfully would indicate that `fertile` was successful in increasing reproducibility. A greater increase over the semester in the reproducibility quiz scores for students in the *experimental* group compared with the *control* group would indicate that `fertile` achieved its goal of educating users on reproducibility. Success according to these metrics would provide evidence showing `fertile`'s benefit as tool to help educators introduce reproducibility concepts in the classroom.
 
 
-
-
 ### In Other Areas
 
+`fertile` can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are: 
 
+* *Private Companies*: Data analysis-focused companies could require their employees to use `fertile` to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced. 
 
-Nicole Janz -- Brining the Gold Standard into the Classroom: Replication in University Teaching
+* *Conferences*: Similar to academic journals, conferences promoting open research could require that papers written in `R` pass a `fertile` check as a condition for acceptance. Even if there were an exception given for those using confidential/identifiable data, this would likely increase the overall reproducibility of conference papers significantly.
 
+* *Informal Data Analysis*: A lot of content in the `R` community is created purely for fun and interest. Outside of work, many `R` users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through `fertile` to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!  
 
+```{r, echo = FALSE, out.width = '100%'}
+knitr::include_graphics("figure/tidytuesday.png")
+```
 
+`fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 

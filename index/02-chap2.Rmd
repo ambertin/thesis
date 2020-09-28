@@ -643,11 +643,15 @@ In the `fertile` version of `library()`,`fertile` is detached from the search pa
 
 ### Hidden Files
 
-In order to store and analyze information about user behavior and code structure, `fertile` utilizes two different types of hidden files, both of which are `.csv` format.
+In order to store and analyze information about user behavior and code structure, `fertile` utilizes two different types of hidden files, both of which are `.csv` format. The hidden files for `project_miceps` can be seen below:
 
-The interactive log, accessible via `log_report()`, is created as soon as a user executes their first piece of code that could threaten reproducibility. This file tracks all of the shimmed functions executed by the user, either in the console or when running code chunks by hand (rather than knitting a file). It reports the function called, the relevant argument passed in (either a file path or `R` package name), and the time stamp of when the function was executed. Users can clear the data from this file and start fresh at any time with `log_clear()`.
+```{r}
+fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv")
+```
 
-The render log, accessible via `render_log_report()`, has a similar structure to the interactive log but is not under the control of the user. It tracks information about the code contained within `.R` and `.Rmd` files within the project a user is testing for reproducibility. A new render log file can be generated in one of three different ways:
+The interactive log (`.fertile_log.csv`), accessible via `log_report()`, is created as soon as a user executes their first piece of code that could threaten reproducibility. This file tracks all of the shimmed functions executed by the user, either in the console or when running code chunks by hand (rather than knitting a file). It reports the function called, the relevant argument passed in (either a file path or `R` package name), and the time stamp of when the function was executed. Users can clear the data from this file and start fresh at any time with `log_clear()`.
+
+The render log (`.fertile_render_log.csv`), accessible via `render_log_report()`, has a similar structure to the interactive log but is not under the control of the user. It tracks information about the code contained within `.R` and `.Rmd` files within the project a user is testing for reproducibility. A new render log file can be generated in one of three different ways:
 
 1. The first time a user runs one of the major reproducibility checks from `fertile`, such as `proj_check()`, `proj_analyze()`, or one of the smaller checks within that requires access to the contents of code files.
 
@@ -714,7 +718,4 @@ The dots are also utilized in the `proj_check_some` function. Recall that `proj_
 This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
 
 This functionality, along with the other methods of shims, hidden files, and environment variables, helps improve the user experience of `fertile`. These unconventional techniques allow for the reliable tracking of user behavior behind the scenes and provide functions, like `proj_check_some`, that are intuitive for the user to operate.
-
-
-
 
