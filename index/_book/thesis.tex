@@ -245,8 +245,6 @@ Potential sources:
 
 \url{https://escholarship.org/uc/item/90b2f5xh}
 
-\url{https://www.mitpressjournals.org/doi/full/10.1162/dint_a_00053}
-
 \chapter{An Introduction to Reproducibility}\label{reproducibility}
 
 \section{What Is Reproducibility?}\label{what-is-reproducibility}
@@ -1282,13 +1280,15 @@ benefits to users at any stage in the data analysis workflow and
 providing users with the option to select which aspects of
 reproducibility they want to focus on.
 
-\texttt{fertile} also contains several\texttt{R}-specific features,
+\texttt{fertile} also contains several \texttt{R}-specific features,
 which address certain aspects of reproducibility that can be missed by
 external project development tools. It is designed primarily to be used
 on data analyses organized as \texttt{R} Projects (i.e.~directories
 containing an \texttt{.Rproj} file) and contains several associated
 features to ensure that the project structure meets the standards
 discussed in the \texttt{R} community.
+
+\includegraphics[width=1\linewidth]{figure/sample-project}
 
 In addition, \texttt{fertile} is designed to be educational, teaching
 its users about the components of reproducibility and how to achieve
@@ -1356,11 +1356,11 @@ code, data, and auxilliary (image or text) files they have.
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  186.97K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.75K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  377.19K png   image/png                  proteins_v_ti~
-11 project_miceps/soft~    1.79K txt   text/plain                 software-vers~
+10 project_miceps/prot~  378.04K png   image/png                  proteins_v_ti~
+11 project_miceps/soft~    2.09K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
 
@@ -1388,10 +1388,7 @@ temporary directory that is isolated from the file system.
 
 \footnotesize
 \begin{verbatim}
-Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
-\end{verbatim}
-\begin{verbatim}
--- Attaching packages --------------------------------------------------------- tidyverse 1.3.0 --
+-- Attaching packages ------------------ tidyverse 1.3.0 --
 \end{verbatim}
 \begin{verbatim}
 v ggplot2 3.3.2     v purrr   0.3.4
@@ -1400,12 +1397,9 @@ v tidyr   1.1.2     v stringr 1.4.0
 v readr   1.3.1     v forcats 0.5.0
 \end{verbatim}
 \begin{verbatim}
--- Conflicts ------------------------------------------------------------ tidyverse_conflicts() --
+-- Conflicts --------------------- tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-\end{verbatim}
-\begin{verbatim}
-Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1433,7 +1427,7 @@ their project is self-contained.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Rendering R scripts... -------------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Warning: `data_frame()` is deprecated as of tibble 1.1.0.
@@ -1456,13 +1450,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpKXYZ6R/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp8yFxK1/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-09-28 14:32:11
+1 LAST RENDERED <NA>     proj_render 2020-09-30 16:55:51
 \end{verbatim}
 \normalsize
 
@@ -1602,10 +1596,10 @@ reorganize the files into folders.
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  186.97K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.75K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  377.19K png   image/p~ proteins_~ inst/image project_mi~ file_m~
-9 project_mic~    1.79K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
+8 project_mic~  378.04K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+9 project_mic~    2.09K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
 
@@ -1702,6 +1696,9 @@ The dependency information from \texttt{project\_miceps} looks as
 follows:
 
 \footnotesize
+\begin{verbatim}
+-- Rendering R scripts... ----------- fertile 0.0.0.9027 --
+\end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{session_info <-}\StringTok{ "project_miceps/software-versions.txt"}
@@ -1714,7 +1711,7 @@ Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Catalina 10.15.5
 
 Matrix products: default
-BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
 LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
@@ -1724,24 +1721,29 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] stargazer_5.2.2 skimr_2.1.2     purrr_0.3.4     ggplot2_3.3.2   tidyr_1.1.2    
-[6] readr_1.3.1     dplyr_1.0.2     fs_1.5.0       
+ [1] stargazer_5.2.2  skimr_2.1.2      forcats_0.5.0    stringr_1.4.0   
+ [5] dplyr_1.0.2      purrr_0.3.4      readr_1.3.1      tidyr_1.1.2     
+ [9] tibble_3.0.3     ggplot2_3.3.2    tidyverse_1.3.0  knitr_1.29.5    
+[13] thesisdown_0.1.0 remotes_2.2.0   
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0   xfun_0.17          repr_1.1.0         splines_4.0.2     
- [5] lattice_0.20-41    colorspace_1.4-1   vctrs_0.3.4        generics_0.0.2    
- [9] usethis_1.6.1      htmltools_0.5.0    yaml_2.2.1         mgcv_1.8-31       
-[13] base64enc_0.1-3    utf8_1.1.4         rlang_0.4.7        pillar_1.4.6      
-[17] glue_1.4.2         withr_2.2.0        lifecycle_0.2.0    stringr_1.4.0     
-[21] munsell_0.5.0      gtable_0.3.0       evaluate_0.14      labeling_0.3      
-[25] knitr_1.29.5       fansi_0.4.1        highr_0.8          broom_0.7.0       
-[29] Rcpp_1.0.5         backports_1.1.9    scales_1.1.1       jsonlite_1.7.1    
-[33] mime_0.9           farver_2.0.3       hms_0.5.3          digest_0.6.25     
-[37] stringi_1.5.3      bookdown_0.20.3    rprojroot_1.3-2    grid_4.0.2        
-[41] fertile_0.0.0.9027 cli_2.0.2          tools_4.0.2        magrittr_1.5      
-[45] tibble_3.0.3       crayon_1.3.4       pkgconfig_2.0.3    ellipsis_0.3.1    
-[49] Matrix_1.2-18      assertthat_0.2.1   rmarkdown_2.3      rstudioapi_0.11   
-[53] R6_2.4.1           nlme_3.1-148       compiler_4.0.2    
+ [1] Rcpp_1.0.5.2       lubridate_1.7.9    here_0.1           lattice_0.20-41   
+ [5] assertthat_0.2.1   rprojroot_1.3-2    digest_0.6.25      utf8_1.1.4        
+ [9] mime_0.9           repr_1.1.0         R6_2.4.1           cellranger_1.1.0  
+[13] backports_1.1.9    reprex_0.3.0       evaluate_0.14      highr_0.8         
+[17] httr_1.4.2         pillar_1.4.6       rlang_0.4.7        readxl_1.3.1      
+[21] rstudioapi_0.11    blob_1.2.1         Matrix_1.2-18      rmarkdown_2.3     
+[25] labeling_0.3       splines_4.0.2      munsell_0.5.0      broom_0.7.0       
+[29] compiler_4.0.2     modelr_0.1.8       xfun_0.17          base64enc_0.1-3   
+[33] pkgconfig_2.0.3    mgcv_1.8-31        htmltools_0.5.0    tidyselect_1.1.0  
+[37] fertile_0.0.0.9027 bookdown_0.20.3    fansi_0.4.1        crayon_1.3.4      
+[41] dbplyr_1.4.4       withr_2.2.0        grid_4.0.2         nlme_3.1-148      
+[45] jsonlite_1.7.1     gtable_0.3.0       lifecycle_0.2.0    DBI_1.1.0         
+[49] magrittr_1.5       scales_1.1.1       cli_2.0.2          stringi_1.5.3     
+[53] farver_2.0.3       fs_1.5.0           xml2_1.3.2         ellipsis_0.3.1    
+[57] generics_0.0.2     vctrs_0.3.4        tools_4.0.2        glue_1.4.2        
+[61] hms_0.5.3          yaml_2.2.1         colorspace_1.4-1   rvest_0.3.6       
+[65] haven_2.3.1        usethis_1.6.1     
 \end{verbatim}
 \normalsize
 
@@ -1866,7 +1868,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... ------------------------------------ fertile 0.0.0.9027 --
+-- Generating reproducibility report... -------------------
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -2088,13 +2090,14 @@ following code:
 
 For this line, \texttt{has\_no\_lint()} finds the following
 inconsistencies with tidy style:
-
-\textbf{Line 71} Lines should not be more than 80 characters.
-
-\textbf{Line 71} Put spaces around all infix operators.
-
-\textbf{Line 71} Trailing whitespace is superfluous.
-
+\begin{itemize}
+\item
+  Line 71: Lines should not be more than 80 characters.
+\item
+  Line 71: Put spaces around all infix operators.
+\item
+  Line 71: Trailing whitespace is superfluous.
+\end{itemize}
 The first comes up because the true line length, including spaces, is 84
 characters. The second comes up because the \texttt{*} between
 \texttt{1.96} and \texttt{std.error} is not surrounded by spaces. The
@@ -2115,18 +2118,19 @@ follows:
 \normalsize
 
 For this line, \texttt{has\_no\_lint()} finds the following errors:
-
-\textbf{Line 189} There should be a space between right parenthesis and
-an opening curly brace.
-
-\textbf{Line 189} Opening curly braces should never go on their own line
-and should always be followed by a new line.
-
-\textbf{Line 189} Use \textless{}-, not =, for assignment.
-
-\textbf{Line 189} Closing curly braces should always be on their own
-line, unless it's followed by an else.
-
+\begin{itemize}
+\item
+  Line 189: There should be a space between right parenthesis and an
+  opening curly brace.
+\item
+  Line 189: Opening curly braces should never go on their own line and
+  should always be followed by a new line.
+\item
+  Line 189: Use \textless{}-, not =, for assignment.
+\item
+  Line 189: Closing curly braces should always be on their own line,
+  unless it's followed by an else.
+\end{itemize}
 The first issue flagged is the fact that \texttt{)\{}, in the middle of
 the line, has no space in the middle. The second issue is flagged
 because the code to execute when the \texttt{if} statement is true
@@ -2154,7 +2158,6 @@ reproducibility to focus on. Users can run reproducibility tests at
 three different scales:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
-\tightlist
 \item
   Comprehensively, where all checks are run within a single function or
   two.
@@ -2184,7 +2187,7 @@ a call to \texttt{set.seed()} present. A full list is provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ----------------------- fertile 0.0.0.9027 --
+-- The available checks in `fertile` are as follows: ------
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -2224,10 +2227,10 @@ structure of a data analysis project, combining four key functions from
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps -------------------------- fertile 0.0.0.9027 --
+-- Analysis of reproducibility for project_miceps ---------
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------------------------------ fertile 0.0.0.9027 --
+--   Packages referenced in source code -------------------
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -2245,26 +2248,26 @@ structure of a data analysis project, combining four key functions from
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory -------------------------------------------- fertile 0.0.0.9027 --
+--   Files present in directory ----- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     186.97K image/png                                 
- 3 proteins_v_time.p~ png     377.19K image/png                                 
+ 2 citrate_v_time.png png     183.77K image/png                                 
+ 3 proteins_v_time.p~ png     377.73K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
  7 analysis.html      html      1.41M text/html                                 
  8 README.md          md           39 text/markdown                             
- 9 software-versions~ txt       1.79K text/plain                                
+ 9 software-versions~ txt       2.09K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
 11 analysis.Rmd       Rmd       5.21K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------------------------------ fertile 0.0.0.9027 --
+--   Suggestions for moving files --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2281,7 +2284,7 @@ structure of a data analysis project, combining four key functions from
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ---------------------------------------------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -2322,7 +2325,7 @@ checking their tidyness can do so all at once using
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------------------ fertile 0.0.0.9027 --
+-- Running reproducibility checks --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no *.R scripts at root level
@@ -2376,7 +2379,7 @@ v Checking for no A/V files at root level
 v Checking for no source files at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 4
@@ -2435,7 +2438,7 @@ together:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------------------ fertile 0.0.0.9027 --
+-- Running reproducibility checks --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for nested .Rproj files within project
@@ -2444,7 +2447,7 @@ v Checking for nested .Rproj files within project
 v Checking for single .Rproj file at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -2461,13 +2464,13 @@ Or, perhaps, they might want to run all the functions beginning with
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------------------------------ fertile 0.0.0.9027 --
+-- Compiling... --------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... -------------------------------------------------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------------------------------ fertile 0.0.0.9027 --
+-- Running reproducibility checks --- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Joining, by = "path_abs"
@@ -2510,7 +2513,7 @@ Joining, by = "path_abs"
 2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------------------------------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 0
@@ -2603,7 +2606,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 121 x 4
+# A tibble: 195 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2616,7 +2619,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 111 more rows
+# ... with 185 more rows
 \end{verbatim}
 \normalsize
 
@@ -2685,7 +2688,11 @@ actions and slightly alter their execution.
 
 \texttt{fertile} contains shims for a variety of common functions that
 may affect reproducibilty, including those that read and write files,
-load libraries, and set random number generation seeds.
+load libraries, and set random number generation seeds. A full list of
+shimmed functions, organized by their original package, is provided
+below:
+
+\includegraphics[width=1\linewidth]{figure/shims-list}
 
 When users perform actions that may threaten reproducibility, the
 package's shimmed functions intercept the user's commands and perform
@@ -2742,7 +2749,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fd16a140c08>
+<bytecode: 0x7fb2d80c0000>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
@@ -2843,21 +2850,21 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 15 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      238     2020-09-28 14:32:13
- 2 package:dplyr           <NA>                      base::~ 2020-09-28 14:32:13
- 3 package:readr           <NA>                      base::~ 2020-09-28 14:32:13
- 4 package:tidyr           <NA>                      base::~ 2020-09-28 14:32:13
- 5 package:ggplot2         <NA>                      base::~ 2020-09-28 14:32:13
- 6 package:purrr           <NA>                      base::~ 2020-09-28 14:32:13
- 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-09-28 14:32:13
- 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-09-28 14:32:13
- 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-09-28 14:32:14
-10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-09-28 14:32:15
-11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-09-28 14:32:15
-12 package:skimr           <NA>                      base::~ 2020-09-28 14:32:16
-13 package:stargazer       <NA>                      base::~ 2020-09-28 14:32:17
-14 Seed @ End              <NA>                      484     2020-09-28 14:32:18
-15 LAST RENDERED           <NA>                      proj_r~ 2020-09-28 14:32:18
+ 1 Seed @ Start            <NA>                      480     2020-09-30 16:56:00
+ 2 package:dplyr           <NA>                      base::~ 2020-09-30 16:56:00
+ 3 package:readr           <NA>                      base::~ 2020-09-30 16:56:00
+ 4 package:tidyr           <NA>                      base::~ 2020-09-30 16:56:00
+ 5 package:ggplot2         <NA>                      base::~ 2020-09-30 16:56:00
+ 6 package:purrr           <NA>                      base::~ 2020-09-30 16:56:00
+ 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:00
+ 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:00
+ 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-09-30 16:56:01
+10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:03
+11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-09-30 16:56:03
+12 package:skimr           <NA>                      base::~ 2020-09-30 16:56:04
+13 package:stargazer       <NA>                      base::~ 2020-09-30 16:56:06
+14 Seed @ End              <NA>                      105     2020-09-30 16:56:07
+15 LAST RENDERED           <NA>                      proj_r~ 2020-09-30 16:56:07
 \end{verbatim}
 These files, integral to many of the functionalities in
 \texttt{fertile}, are not visible when looking at the file system. Users
@@ -2964,7 +2971,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fd17227af28>
+<bytecode: 0x7fb2c6e363d0>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2998,7 +3005,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fd16900abe0>
+<bytecode: 0x7fb2d5e807c0>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3023,7 +3030,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fd16a140c08>
+<bytecode: 0x7fb2d80c0000>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed

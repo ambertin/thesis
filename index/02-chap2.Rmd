@@ -43,7 +43,12 @@ That is where my work comes in. In an attempt to produce meaningful change in th
 
 `fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about a wide variety of aspects influencing reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. 
 
-`fertile` also contains several`R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
+`fertile` also contains several `R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
+
+```{r, echo = FALSE, out.width="100%"}
+knitr::include_graphics("figure/sample-project.png")
+```
+
 
 In addition, `fertile` is designed to be educational, teaching its users about the components of reproducibility and how to achieve them in their work. The package provides users with detailed reports on the aspects of reproducibility where their projects fell short, identifying the root causes and, in many cases, providing a recommended solution.
 
@@ -232,6 +237,10 @@ There are also several features focused on software dependencies. Every time the
 The dependency information from `project_miceps` looks as follows:
 
 \footnotesize
+
+```{r echo = FALSE}
+proj_render("project_miceps")
+```
 
 ```{r}
 session_info <- "project_miceps/software-versions.txt"
@@ -436,11 +445,11 @@ geom_hline(aes(yintercept = estimate + 1.96*std.error, color = sex), linetype = 
 
 For this line, `has_no_lint()` finds the following inconsistencies with tidy style:
 
-**Line 71** Lines should not be more than 80 characters.  
+* Line 71: Lines should not be more than 80 characters.  
 
-**Line 71** Put spaces around all infix operators.  
+* Line 71: Put spaces around all infix operators.  
 
-**Line 71** Trailing whitespace is superfluous.    
+* Line 71: Trailing whitespace is superfluous.    
 
 The first comes up because the true line length, including spaces, is 84 characters. The second comes up because the `*` between `1.96` and `std.error` is not surrounded by spaces. The third is flagged because there is an empty space after the `+` at the end of the line.
 
@@ -458,13 +467,13 @@ if (length(mice) > 1){ holder_var = 1 }
 
 For this line, `has_no_lint()` finds the following errors:
 
-**Line 189** There should be a space between right parenthesis and an opening curly brace.  
+* Line 189: There should be a space between right parenthesis and an opening curly brace.  
 
-**Line 189** Opening curly braces should never go on their own line and should always be followed by a new line.  
+* Line 189: Opening curly braces should never go on their own line and should always be followed by a new line.  
 
-**Line 189** Use <-, not =, for assignment.  
+* Line 189: Use <-, not =, for assignment.  
 
-**Line 189** Closing curly braces should always be on their own line, unless it's followed by an else.  
+* Line 189: Closing curly braces should always be on their own line, unless it's followed by an else.  
 
 The first issue flagged is the fact that `){`, in the middle of the line, has no space in the middle. The second issue is flagged because the code to execute when the `if` statement is true (`holder_var = 1`) is on the same line as the `if` statement, rather than on its own line. The third error occurs because `holder_var` is defined using an `=`. And the fourth occurs because the closing curly brace is on the same line as other code rather than by itself.
 
@@ -475,7 +484,9 @@ These informative error messages provided by `fertile` help teach users to use c
 `fertile` does not force its users into a box, instead allowing for a great deal of user choice in terms of which aspects of reproducibility to focus on. Users can run reproducibility tests at three different scales: 
 
 1) Comprehensively, where all checks are run within a single function or two.
+
 2) In groups, where functions focused on similar aspects of reproducibility are run together.
+
 3) Individually, where only one reproducbility check is run at a time.
 
 Users who want comprehensive behavior can access it through two primary functions, `proj_check()` and `proj_analyze()`. 
@@ -489,7 +500,6 @@ list_checks()
 ```
 
 \normalsize
-
 
 The `proj_analyze()` function creates a report documenting the structure of a data analysis project, combining four key functions from `fertile` into one complete unit:
 
@@ -607,7 +617,13 @@ In the world of `R` packages, `fertile`'s behavior is rather unusual. Almost no 
 
 Much of the functionality in `fertile` is achieved by writing `shims`. In their application to `fertile`, shims can be defined as functions that transparently intercept users' intended actions and slightly alter their execution. 
 
-`fertile` contains shims for a variety of common functions that may affect reproducibilty, including those that read and write files, load libraries, and set random number generation seeds.
+`fertile` contains shims for a variety of common functions that may affect reproducibilty, including those that read and write files, load libraries, and set random number generation seeds. A full list of shimmed functions, organized by their original package, is provided below:
+
+```{r echo = FALSE, out.width = '100%'}
+knitr::include_graphics("figure/shims-list.png")
+```
+
+
 
 When users perform actions that may threaten reproducibility, the package's shimmed functions intercept the user's commands and perform various logging and checking tasks before executing the desired function.
 
