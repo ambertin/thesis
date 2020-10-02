@@ -62,12 +62,9 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 library(fertile)
 ```
 
-  - Data (raw and/or processed)
-  - Metadata
-  - Code
-  - Related Software
-  
 `fertile` takes several steps to help users ensure that all of files necessary to run an analysis are provided in the project folder. 
+
+#### File Overview
 
 One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxilliary (image or text) files they have. 
 
@@ -89,36 +86,28 @@ has_readme("project_miceps")
 
 \normalsize
 
+#### Testing For Self-Containment
+
 In order to truly check that a project is self contained, however, is is necessary to remove it from the environment it is located, ensuring that it can still run when cut off from the main file system.
 
 The `sandbox()` function is designed to help facilitate this. `sandbox()` allows the user to make a copy of their project in a temporary directory that is isolated from the file system. 
 
 \footnotesize
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(fertile)
 ```
 
 
-```{r sandbox-1, results = 'hide'}
+```{r sandbox-1}
 fs::dir_ls('project_miceps') %>% head(3)
 ```
 
 
-```{r sandbox-2, echo = FALSE}
-text <- fs::dir_ls('project_miceps') %>% head(3)
-#wrapoutput(str_wrap(text), 57)
-```
-
-```{r, sandbox-3, results = 'hide'}
+```{r, sandbox-2}
 temp_dir <- sandbox('project_miceps')
 temp_dir
 fs::dir_ls(temp_dir) %>% head(3)
-```
-
-```{r sandbox-4, echo = FALSE}
-text <- fs::dir_ls(temp_dir) %>% head(3)
-#wrapoutput(str_wrap(text), 57)
 ```
 
 \normalsize
@@ -143,13 +132,6 @@ slice_tail(render_log_report(temp_dir))
 
 \normalsize
   
-What we *have*:
-
-* proj_report() gives the files present in the directory
-* Every time a project is rendered, a session info file is created
-* proj_pkg_script() for dependencies
-* sandbox
-
 What we *need*:
 
 * can we report a checklist of the types of files we have available?
@@ -159,7 +141,12 @@ What we *need*:
 
 `fertile` provides a wide variety of features for managing the file system of a project. Nine of the package's fifteen primary reproducibility checks relate to file structure.
 
+#### Clear Project Root
+
 Two of these are focused on the `R project` aspect of the file system. `has_proj_root()` ensures that there is a single `.Rproj` file indicating a clear root directory for the project, while `has_no_nested_proj_root()` ensures that there are no sub-projects within. The recognition of a clear root directory is necessary to allow for file structure analysis and project restructuring as it provides a baseline directory to define relative file paths from.
+
+
+#### No File Clutter
 
 Six of the major checks, whose names begin with `has_tidy_` focus on file clutter, addressing one of the components of a clean file structure. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
 
@@ -183,6 +170,8 @@ has_only_used_files("project_miceps")
 ```
 \normalsize
 
+#### Reorganizing File Structure
+
 There are also several functions help with reshaping the entire project structure to a more reproducibile format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
 
 \footnotesize
@@ -203,16 +192,23 @@ Combined together, all of these functions make it simple to ensure that projects
 
 ### Component 3: Documentation
 
-  - Files are clearly named, preferably in a way where the order in which they should be run is clear.
-  - A README is present.
-  - Code contains comments.
-  - Software dependencies are noted.
   
 High quality documentation, including the presence of a README file, comments explaining the code, a list of software packages an analysis is dependent on, and a method in which to understand which order to run code files in, is incredibly important to reproducibility. Without written guidance, individuals looking to reproduce results may not understand how to take all of the project components and combine them in the right way to produce the desired outcome. Additionally, code used without the proper dependencies and software versions, even if it is perfectly functional and correctly written, will often result in errors when compiled. 
 
 `fertile` contains a variety of functions to ensure that projects are well documented.
 
-The `has_readme()` function ensures that a README file is included alongside a project.
+#### README
+
+One important component of documentation is the inclusion of a README file. A README is a text file that introduces and explains a project. Commonly, a project README contains background information necessary to understand a project. Some of the components that might be contained within are:
+
+1. Background on the purpose of the project and the questions of interest.
+2. Background on where the data used in the project came from and what they contain.
+3. Information about installing and setting up the software necessary to run it.
+4. A list of included files.
+5. A description of how to run the project---for example, a summary of the order in which the included files should be run.
+6. Contact information for the author of the project.
+
+`fertile` ensures that a README is included alongside the user's project with the `has_readme()` function:
 
 \footnotesize
 
@@ -222,7 +218,11 @@ has_readme("project_miceps")
 
 \normalsize
 
-`has_clear_build_chain()` looks to see if the project includes a `makefile`/`drakefile` (make-style file generated by the `Drake` package in `R`) or, if multiple code files are included, whether they are numbered. Any of these conditions being true would indicate that the order in which to run different pieces of code is clear. `project_miceps`, since it only contains one code file, passes this check easily:
+#### Clear File Order
+
+Another important component of documentation is that it must be clear in which order provided files should be run. While this information can be included as part of the README, it is sometimes provided via other methods---for example, through a `makefile`/`drakefile` (make-style file generated by the `Drake` package in `R`) or through a standardized naming or numbering convention of files. 
+
+`has_clear_build_chain()` checks for these non-README methods of ensuring that file ordering is clear. `project_miceps`, since it only contains one code file, passes this check easily:
 
 \footnotesize
 
@@ -232,24 +232,30 @@ has_clear_build_chain("project_miceps")
 
 \normalsize
 
-There are also several features focused on software dependencies. Every time the code contained within a project is rendered/run by `fertile`, the package generates a file capturing the `sessionInfo()` just after the code was run. This file contains information about the R version in which the code was run, the list of packages that were loaded, and their specific versions. 
+#### Software Dependencies
+
+There are also several features focused on software dependencies. Every time the code contained within a project is rendered by `fertile`, the package generates a file capturing the `sessionInfo()` just after the code was run. This file contains information about the R version in which the code was run, the list of packages that were loaded, and their specific versions. 
 
 The dependency information from `project_miceps` looks as follows:
 
 \footnotesize
 
-```{r echo = FALSE}
+```{r echo = FALSE, results = 'hide'}
 proj_render("project_miceps")
 ```
 
 ```{r}
-session_info <- "project_miceps/software-versions.txt"
+session_info <- "project_miceps/.software-versions.txt"
 cat(readChar(session_info, 1e5))
 ```
 
 \normalsize
 
-The `proj_pkg_script()` makes it simple and fast to download these dependencies. When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
+Interactively, users can access this dependency summary using the function `proj_dependency_report()`. 
+
+The `proj_pkg_script()` function builds off of this behavior, providing a method to simplify the process of installing the packages seen in the dependency report.  
+
+When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 
 \footnotesize
 
@@ -260,6 +266,29 @@ cat(readChar(install_script, 1e5))
 
 \normalsize
 
+Users interested in ensuring that their project is reproducible can provide alongside it both:
+
+1. The text-based summary of dependencies produced by `proj_dependency_report()`.
+2. The `.R` dependency installation script.
+
+Then, anyone wanting to re-create the results would have the documentation necessary to do so alongside a quick and easy method to set up the required software. 
+
+#### Code Commenting
+
+In addition to README and dependency documentation, `fertile` also analyzes the quality of documentation provided directly alongside code. 
+
+Code commenting---the process of placing human-readable descriptions next to code to explain what the code is doing---is incredibly important for ensuring that a project can be understood by someone other than its author. To ensure that their code is understandable, data analysts must regularly include comments throughout their project code files.
+
+`has_well_commented_code()` is designed to check for this. The function reads through all `.R` and `.Rmd` files in a project directory and, for each, calculates the fraction of lines in the file that are comments. Files for which comments make up less than 10% of the written lines are flagged as poorly commented, warning users to make corrections and increase the number of comments in their code. 
+
+The primary code file in `project_miceps`, "analysis.Rmd", is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by `has_well_commented_code()`:
+
+```{r}
+has_well_commented_code("project_miceps")
+```
+
+
+
 What we *need*:
 
   - possibly a makefile generator? or improvements to order checking?
@@ -268,6 +297,8 @@ What we *need*:
 ### Component 4: File Paths
 
 `fertile` contains a variety of features designed to address issues with file paths. Several of these features happen proactively, warning users that they are entering a non-reproducible file path as it happens, while others can be accessed after a project has already been written.
+
+#### Proactive Warnings When Coding
 
 Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and outputs a warning message. This interactive behavior is one of the educational features of the package, as it immediately provides an informative message explaining what went wrong, giving the programmer an opportunity to learn and course-correct from there.
 
@@ -305,6 +336,8 @@ getwd()
 ```
 
 \normalsize
+
+#### Project Path Summaries
 
 `fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 

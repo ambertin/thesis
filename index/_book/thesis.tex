@@ -1319,19 +1319,10 @@ Files}\label{component-1-accessibility-of-project-files}
 \KeywordTok{library}\NormalTok{(fertile)}
 \end{Highlighting}
 \end{Shaded}
-\begin{itemize}
-\tightlist
-\item
-  Data (raw and/or processed)
-\item
-  Metadata
-\item
-  Code
-\item
-  Related Software
-\end{itemize}
 \texttt{fertile} takes several steps to help users ensure that all of
 files necessary to run an analysis are provided in the project folder.
+
+\subsubsection{File Overview}\label{file-overview}
 
 One of the fastest ways to gain an overview of the existing files
 (including data, code, and metadata) is with the
@@ -1360,7 +1351,7 @@ code, data, and auxilliary (image or text) files they have.
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
 10 project_miceps/prot~  378.04K png   image/png                  proteins_v_ti~
-11 project_miceps/soft~    2.09K txt   text/plain                 software-vers~
+11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
 
@@ -1378,6 +1369,9 @@ v Checking for README file(s) at root level
 \end{verbatim}
 \normalsize
 
+\subsubsection{Testing For
+Self-Containment}\label{testing-for-self-containment}
+
 In order to truly check that a project is self contained, however, is is
 necessary to remove it from the environment it is located, ensuring that
 it can still run when cut off from the main file system.
@@ -1387,32 +1381,34 @@ The \texttt{sandbox()} function is designed to help facilitate this.
 temporary directory that is isolated from the file system.
 
 \footnotesize
-\begin{verbatim}
--- Attaching packages ------------------ tidyverse 1.3.0 --
-\end{verbatim}
-\begin{verbatim}
-v ggplot2 3.3.2     v purrr   0.3.4
-v tibble  3.0.3     v dplyr   1.0.2
-v tidyr   1.1.2     v stringr 1.4.0
-v readr   1.3.1     v forcats 0.5.0
-\end{verbatim}
-\begin{verbatim}
--- Conflicts --------------------- tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-\end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+\begin{verbatim}
+project_miceps/Blot_data_updated.csv   project_miceps/CS_data_redone.csv      
+project_miceps/Estrogen_Receptors.docx 
+\end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{temp_dir <-}\StringTok{ }\KeywordTok{sandbox}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
 \NormalTok{temp_dir}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpMysp1x/project_miceps
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(temp_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+\begin{verbatim}
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpMysp1x/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpMysp1x/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpMysp1x/project_miceps/Estrogen_Receptors.docx
+\end{verbatim}
 \normalsize
 
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
@@ -1427,7 +1423,7 @@ their project is self-contained.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Rendering R scripts... ----------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Warning: `data_frame()` is deprecated as of tibble 1.1.0.
@@ -1450,28 +1446,16 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp8yFxK1/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpMysp1x/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-09-30 16:55:51
+1 LAST RENDERED <NA>     proj_render 2020-10-02 20:58:09
 \end{verbatim}
 \normalsize
 
-What we \emph{have}:
-\begin{itemize}
-\tightlist
-\item
-  proj\_report() gives the files present in the directory
-\item
-  Every time a project is rendered, a session info file is created
-\item
-  proj\_pkg\_script() for dependencies
-\item
-  sandbox
-\end{itemize}
 What we \emph{need}:
 \begin{itemize}
 \tightlist
@@ -1488,6 +1472,8 @@ Structure}\label{component-2-organized-project-structure}
 file system of a project. Nine of the package's fifteen primary
 reproducibility checks relate to file structure.
 
+\subsubsection{Clear Project Root}\label{clear-project-root}
+
 Two of these are focused on the \texttt{R\ project} aspect of the file
 system. \texttt{has\_proj\_root()} ensures that there is a single
 \texttt{.Rproj} file indicating a clear root directory for the project,
@@ -1495,6 +1481,8 @@ while \texttt{has\_no\_nested\_proj\_root()} ensures that there are no
 sub-projects within. The recognition of a clear root directory is
 necessary to allow for file structure analysis and project restructuring
 as it provides a baseline directory to define relative file paths from.
+
+\subsubsection{No File Clutter}\label{no-file-clutter}
 
 Six of the major checks, whose names begin with \texttt{has\_tidy\_}
 focus on file clutter, addressing one of the components of a clean file
@@ -1574,6 +1562,9 @@ Joining, by = "path_abs"
 \end{verbatim}
 \normalsize
 
+\subsubsection{Reorganizing File
+Structure}\label{reorganizing-file-structure}
+
 There are also several functions help with reshaping the entire project
 structure to a more reproducibile format. For example,
 \texttt{proj\_suggest\_moves()} provides suggestions for how to
@@ -1599,7 +1590,7 @@ reorganize the files into folders.
 6 project_mic~  187.75K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
 8 project_mic~  378.04K png   image/p~ proteins_~ inst/image project_mi~ file_m~
-9 project_mic~    2.09K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
+9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
 
@@ -1626,18 +1617,7 @@ projects fall under a standard, simple, and reproducible structure with
 minimal clutter.
 
 \subsection{Component 3: Documentation}\label{component-3-documentation}
-\begin{itemize}
-\tightlist
-\item
-  Files are clearly named, preferably in a way where the order in which
-  they should be run is clear.
-\item
-  A README is present.
-\item
-  Code contains comments.
-\item
-  Software dependencies are noted.
-\end{itemize}
+
 High quality documentation, including the presence of a README file,
 comments explaining the code, a list of software packages an analysis is
 dependent on, and a method in which to understand which order to run
@@ -1652,8 +1632,35 @@ when compiled.
 \texttt{fertile} contains a variety of functions to ensure that projects
 are well documented.
 
-The \texttt{has\_readme()} function ensures that a README file is
-included alongside a project.
+\subsubsection{README}\label{readme}
+
+One important component of documentation is the inclusion of a README
+file. A README is a text file that introduces and explains a project.
+Commonly, a project README contains background information necessary to
+understand a project. Some of the components that might be contained
+within are:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Background on the purpose of the project and the questions of
+  interest.
+\item
+  Background on where the data used in the project came from and what
+  they contain.
+\item
+  Information about installing and setting up the software necessary to
+  run it.
+\item
+  A list of included files.
+\item
+  A description of how to run the project---for example, a summary of
+  the order in which the included files should be run.
+\item
+  Contact information for the author of the project.
+\end{enumerate}
+\texttt{fertile} ensures that a README is included alongside the user's
+project with the \texttt{has\_readme()} function:
 
 \footnotesize
 \begin{Shaded}
@@ -1666,13 +1673,18 @@ v Checking for README file(s) at root level
 \end{verbatim}
 \normalsize
 
-\texttt{has\_clear\_build\_chain()} looks to see if the project includes
-a \texttt{makefile}/\texttt{drakefile} (make-style file generated by the
-\texttt{Drake} package in \texttt{R}) or, if multiple code files are
-included, whether they are numbered. Any of these conditions being true
-would indicate that the order in which to run different pieces of code
-is clear. \texttt{project\_miceps}, since it only contains one code
-file, passes this check easily:
+\subsubsection{Clear File Order}\label{clear-file-order}
+
+Another important component of documentation is that it must be clear in
+which order provided files should be run. While this information can be
+included as part of the README, it is sometimes provided via other
+methods---for example, through a \texttt{makefile}/\texttt{drakefile}
+(make-style file generated by the \texttt{Drake} package in \texttt{R})
+or through a standardized naming or numbering convention of files.
+
+\texttt{has\_clear\_build\_chain()} checks for these non-README methods
+of ensuring that file ordering is clear. \texttt{project\_miceps}, since
+it only contains one code file, passes this check easily:
 
 \footnotesize
 \begin{Shaded}
@@ -1685,8 +1697,10 @@ v Checking for clear build chain
 \end{verbatim}
 \normalsize
 
+\subsubsection{Software Dependencies}\label{software-dependencies}
+
 There are also several features focused on software dependencies. Every
-time the code contained within a project is rendered/run by
+time the code contained within a project is rendered by
 \texttt{fertile}, the package generates a file capturing the
 \texttt{sessionInfo()} just after the code was run. This file contains
 information about the R version in which the code was run, the list of
@@ -1697,15 +1711,18 @@ follows:
 
 \footnotesize
 \begin{verbatim}
--- Rendering R scripts... ----------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{session_info <-}\StringTok{ "project_miceps/software-versions.txt"}
+\NormalTok{session_info <-}\StringTok{ "project_miceps/.software-versions.txt"}
 \KeywordTok{cat}\NormalTok{(}\KeywordTok{readChar}\NormalTok{(session_info, }\FloatTok{1e5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
+The R project located at '/Users/audreybertin/Documents/thesis/index/project_miceps' was last run in the following software environment:
+
+
 R version 4.0.2 (2020-06-22)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Catalina 10.15.5
@@ -1715,44 +1732,28 @@ BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dyli
 LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] stargazer_5.2.2  skimr_2.1.2      forcats_0.5.0    stringr_1.4.0   
- [5] dplyr_1.0.2      purrr_0.3.4      readr_1.3.1      tidyr_1.1.2     
- [9] tibble_3.0.3     ggplot2_3.3.2    tidyverse_1.3.0  knitr_1.29.5    
-[13] thesisdown_0.1.0 remotes_2.2.0   
-
-loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5.2       lubridate_1.7.9    here_0.1           lattice_0.20-41   
- [5] assertthat_0.2.1   rprojroot_1.3-2    digest_0.6.25      utf8_1.1.4        
- [9] mime_0.9           repr_1.1.0         R6_2.4.1           cellranger_1.1.0  
-[13] backports_1.1.9    reprex_0.3.0       evaluate_0.14      highr_0.8         
-[17] httr_1.4.2         pillar_1.4.6       rlang_0.4.7        readxl_1.3.1      
-[21] rstudioapi_0.11    blob_1.2.1         Matrix_1.2-18      rmarkdown_2.3     
-[25] labeling_0.3       splines_4.0.2      munsell_0.5.0      broom_0.7.0       
-[29] compiler_4.0.2     modelr_0.1.8       xfun_0.17          base64enc_0.1-3   
-[33] pkgconfig_2.0.3    mgcv_1.8-31        htmltools_0.5.0    tidyselect_1.1.0  
-[37] fertile_0.0.0.9027 bookdown_0.20.3    fansi_0.4.1        crayon_1.3.4      
-[41] dbplyr_1.4.4       withr_2.2.0        grid_4.0.2         nlme_3.1-148      
-[45] jsonlite_1.7.1     gtable_0.3.0       lifecycle_0.2.0    DBI_1.1.0         
-[49] magrittr_1.5       scales_1.1.1       cli_2.0.2          stringi_1.5.3     
-[53] farver_2.0.3       fs_1.5.0           xml2_1.3.2         ellipsis_0.3.1    
-[57] generics_0.0.2     vctrs_0.3.4        tools_4.0.2        glue_1.4.2        
-[61] hms_0.5.3          yaml_2.2.1         colorspace_1.4-1   rvest_0.3.6       
-[65] haven_2.3.1        usethis_1.6.1     
+stargazer_5.2.2    skimr_2.1.2        purrr_0.3.4       
+ggplot2_3.3.2      tidyr_1.1.2        readr_1.3.1        dplyr_1.0.2       
 \end{verbatim}
 \normalsize
 
-The \texttt{proj\_pkg\_script()} makes it simple and fast to download
-these dependencies. When run on an \texttt{R} project directory, the
-function creates a \texttt{.R} script file that contains the code needed
-to install all of the packages referenced in the project,
-differentiating between packages located on CRAN and those located on
-GitHub.
+Interactively, users can access this dependency summary using the
+function \texttt{proj\_dependency\_report()}.
+
+The \texttt{proj\_pkg\_script()} function builds off of this behavior,
+providing a method to simplify the process of installing the packages
+seen in the dependency report.
+
+When run on an \texttt{R} project directory, the function creates a
+\texttt{.R} script file that contains the code needed to install all of
+the packages referenced in the project, differentiating between packages
+located on CRAN and those located on GitHub.
 
 \footnotesize
 \begin{Shaded}
@@ -1772,6 +1773,67 @@ install.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2',
 \end{verbatim}
 \normalsize
 
+Users interested in ensuring that their project is reproducible can
+provide alongside it both:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The text-based summary of dependencies produced by
+  \texttt{proj\_dependency\_report()}.
+\item
+  The \texttt{.R} dependency installation script.
+\end{enumerate}
+Then, anyone wanting to re-create the results would have the
+documentation necessary to do so alongside a quick and easy method to
+set up the required software.
+
+\subsubsection{Code Commenting}\label{code-commenting}
+
+In addition to README and dependency documentation, \texttt{fertile}
+also analyzes the quality of documentation provided directly alongside
+code.
+
+Code commenting---the process of placing human-readable descriptions
+next to code to explain what the code is doing---is incredibly important
+for ensuring that a project can be understood by someone other than its
+author. To ensure that their code is understandable, data analysts must
+regularly include comments throughout their project code files.
+
+\texttt{has\_well\_commented\_code()} is designed to check for this. The
+function reads through all \texttt{.R} and \texttt{.Rmd} files in a
+project directory and, for each, calculates the fraction of lines in the
+file that are comments. Files for which comments make up less than 10\%
+of the written lines are flagged as poorly commented, warning users to
+make corrections and increase the number of comments in their code.
+
+The primary code file in \texttt{project\_miceps}, ``analysis.Rmd'', is
+a great example of a poorly commented file. It only contains 6 lines of
+comments, while including over 100 lines of code. As such, it is flagged
+by \texttt{has\_well\_commented\_code()}:
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{has_well_commented_code}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+* Checking that code is adequately commented
+\end{verbatim}
+\begin{verbatim}
+   Problem: Poorly commented .R or .Rmd files found
+\end{verbatim}
+\begin{verbatim}
+   Solution: Add more comments to the files below. At least 10% of the lines should be comments.
+\end{verbatim}
+\begin{verbatim}
+   See for help: https://intelligea.wordpress.com/2013/06/30/inline-and-block-comments-in-r/
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  file_name                   fraction_lines_commented
+  <chr>                                          <dbl>
+1 project_miceps/analysis.Rmd                     0.04
+\end{verbatim}
 What we \emph{need}:
 \begin{itemize}
 \tightlist
@@ -1785,6 +1847,9 @@ issues with file paths. Several of these features happen proactively,
 warning users that they are entering a non-reproducible file path as it
 happens, while others can be accessed after a project has already been
 written.
+
+\subsubsection{Proactive Warnings When
+Coding}\label{proactive-warnings-when-coding}
 
 Proactively, \texttt{fertile} catches when an absolute path, or one
 leading outside of the project directory, is referenced in an input or
@@ -1854,6 +1919,8 @@ Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \end{verbatim}
 \normalsize
 
+\subsubsection{Project Path Summaries}\label{project-path-summaries}
+
 \texttt{fertile} also contains functionality that analyzes code for path
 information after it is written. For example,
 \texttt{proj\_analyze\_paths} goes through all of the paths used in a
@@ -1868,7 +1935,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... -------------------
+-- Generating reproducibility report... --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -2187,7 +2254,7 @@ a call to \texttt{set.seed()} present. A full list is provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------
+-- The available checks in `fertile` are as follows: -------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -2197,7 +2264,7 @@ a call to \texttt{set.seed()} present. A full list is provided below:
  [9] "has_proj_root"           "has_no_nested_proj_root"
 [11] "has_only_used_files"     "has_clear_build_chain"  
 [13] "has_no_absolute_paths"   "has_only_portable_paths"
-[15] "has_no_randomness"      
+[15] "has_no_randomness"       "has_well_commented_code"
 \end{verbatim}
 \normalsize
 
@@ -2227,10 +2294,10 @@ structure of a data analysis project, combining four key functions from
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ---------
+-- Analysis of reproducibility for project_miceps ----------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code -------------------
+--   Packages referenced in source code --------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -2248,26 +2315,26 @@ structure of a data analysis project, combining four key functions from
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ----- fertile 0.0.0.9027 --
+--   Files present in directory ----------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     183.77K image/png                                 
- 3 proteins_v_time.p~ png     377.73K image/png                                 
+ 2 citrate_v_time.png png     187.33K image/png                                 
+ 3 proteins_v_time.p~ png     378.55K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
  7 analysis.html      html      1.41M text/html                                 
  8 README.md          md           39 text/markdown                             
- 9 software-versions~ txt       2.09K text/plain                                
+ 9 software-versions~ txt       5.34K text/plain                                
 10 miceps.Rproj       Rproj       204 text/rstudio                              
 11 analysis.Rmd       Rmd       5.21K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files --- fertile 0.0.0.9027 --
+--   Suggestions for moving files --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2284,7 +2351,7 @@ structure of a data analysis project, combining four key functions from
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ------- fertile 0.0.0.9027 --
+--   Problematic paths logged ------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -2325,7 +2392,7 @@ checking their tidyness can do so all at once using
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks --- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no *.R scripts at root level
@@ -2379,7 +2446,7 @@ v Checking for no A/V files at root level
 v Checking for no source files at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks -------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 4
@@ -2438,7 +2505,7 @@ together:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks --- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for nested .Rproj files within project
@@ -2447,7 +2514,7 @@ v Checking for nested .Rproj files within project
 v Checking for single .Rproj file at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks -------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -2464,13 +2531,13 @@ Or, perhaps, they might want to run all the functions beginning with
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... --------------------- fertile 0.0.0.9027 --
+-- Compiling... --------------------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ----------- fertile 0.0.0.9027 --
+-- Rendering R scripts... ----------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks --- fertile 0.0.0.9027 --
+-- Running reproducibility checks --------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 Joining, by = "path_abs"
@@ -2513,7 +2580,7 @@ Joining, by = "path_abs"
 2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks -------- fertile 0.0.0.9027 --
+-- Summary of fertile checks -------------------------------------------------- fertile 0.0.0.9027 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 0
@@ -2606,7 +2673,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 195 x 4
+# A tibble: 222 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2619,7 +2686,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 185 more rows
+# ... with 212 more rows
 \end{verbatim}
 \normalsize
 
@@ -2749,7 +2816,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb2d80c0000>
+<bytecode: 0x7feb5a830208>
 <environment: namespace:fertile>
 \end{verbatim}
 \normalsize
@@ -2850,21 +2917,21 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 15 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      480     2020-09-30 16:56:00
- 2 package:dplyr           <NA>                      base::~ 2020-09-30 16:56:00
- 3 package:readr           <NA>                      base::~ 2020-09-30 16:56:00
- 4 package:tidyr           <NA>                      base::~ 2020-09-30 16:56:00
- 5 package:ggplot2         <NA>                      base::~ 2020-09-30 16:56:00
- 6 package:purrr           <NA>                      base::~ 2020-09-30 16:56:00
- 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:00
- 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:00
- 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-09-30 16:56:01
-10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-09-30 16:56:03
-11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-09-30 16:56:03
-12 package:skimr           <NA>                      base::~ 2020-09-30 16:56:04
-13 package:stargazer       <NA>                      base::~ 2020-09-30 16:56:06
-14 Seed @ End              <NA>                      105     2020-09-30 16:56:07
-15 LAST RENDERED           <NA>                      proj_r~ 2020-09-30 16:56:07
+ 1 Seed @ Start            <NA>                      480     2020-10-02 20:58:20
+ 2 package:dplyr           <NA>                      base::~ 2020-10-02 20:58:20
+ 3 package:readr           <NA>                      base::~ 2020-10-02 20:58:20
+ 4 package:tidyr           <NA>                      base::~ 2020-10-02 20:58:20
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-02 20:58:20
+ 6 package:purrr           <NA>                      base::~ 2020-10-02 20:58:20
+ 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-02 20:58:20
+ 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-10-02 20:58:21
+ 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-10-02 20:58:21
+10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-10-02 20:58:23
+11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-10-02 20:58:23
+12 package:skimr           <NA>                      base::~ 2020-10-02 20:58:24
+13 package:stargazer       <NA>                      base::~ 2020-10-02 20:58:25
+14 Seed @ End              <NA>                      105     2020-10-02 20:58:26
+15 LAST RENDERED           <NA>                      proj_r~ 2020-10-02 20:58:26
 \end{verbatim}
 These files, integral to many of the functionalities in
 \texttt{fertile}, are not visible when looking at the file system. Users
@@ -2971,7 +3038,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fb2c6e363d0>
+<bytecode: 0x7feb41c9e078>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3005,7 +3072,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fb2d5e807c0>
+<bytecode: 0x7feb56086928>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3030,7 +3097,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fb2d80c0000>
+<bytecode: 0x7feb5a830208>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
