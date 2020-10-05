@@ -20,7 +20,7 @@ Reproducible research has a wide variety of benefits in the scientific community
 
 Although often confused, the concept of *reproducibility* is distinct from the similar idea of *replicability*: the ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data. Replicability has larger-scale implications than reproducibilty; the findings of research studies can not be accepted unless a variety of other researchers come to the same conclusions through independent work.
 
-```{r out.width = '100%', echo = FALSE, fig.align = 'center'}
+```{r out.width = '100%', echo = FALSE, fig.align = 'center', fig.cap = "Reproducibility vs. Replicability"}
 knitr::include_graphics("figure/versus.png")
 ```
 
@@ -153,9 +153,9 @@ The *Journal of Statistical Software* also has strong guidelines, though less th
 
 The expectations of the *Journal of Computational and Graphical Statistics* are notably weaker, requiring only that authors "submit code and datasets as online supplements to the manuscript," with exceptions for security or confidentiality, but providing no further detail (@jcgs-guide). The *R Journal* has the same requirements, but with no exceptions on the data provision policy, stating that authors should "not use such datasets as examples" (@r-journal).
 
-Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all (@ams-guide)s.
+Perhaps the weakest reproducibility policies come from *The American Statistician* and the *Annals of Statistics*. The former appears to have no requirements, stating only that it "strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles," while the latter appears to have no statement on reproducibility at all (@ams-guide).
 
-```{r out.width = '100%', echo = FALSE, fig.align = 'center'}
+```{r out.width = '100%', echo = FALSE, fig.align = 'center', fig.cap = "Reprodubility Policies of Top Statistical and Data Sciences Journals"}
 knitr::include_graphics("figure/stats-journals.png")
 ```
 
@@ -174,7 +174,7 @@ knitr::include_graphics("figure/top-1.png")
 
 ```
 
-```{r top-factor2, echo = FALSE, out.width = '100%', fig.align = 'center'}
+```{r top-factor2, echo = FALSE, out.width = '100%', fig.align = 'center', fig.cap="The TOP Factor Rubric"}
 knitr::include_graphics("figure/top-2.png")
 ```
 
@@ -236,11 +236,7 @@ The main challenges listed by respondents were as follows:
 
 The relative frequency of these issues varied across several characteristics, including author seniority, subject area, and geographical location, though authors in all categories faced some issues.
 
-Beyond technical challenges, other reasons may lead authors to not place their focus on reproducibility. For example, some researchers might fear damage to their reputation if a reproduction attempt fails after they have provided the necessary materials.
-
-**ADD SOURCE**: LUPIA, ARTHUR, AND COLIN ELMAN. (2014) Openness in Political Science: Data Access and Research
-Transparency. PS, Political Science & Politics 47 (1): 19–42.
-
+Beyond technical challenges, other reasons may lead authors to not place their focus on reproducibility. For example, some researchers might fear damage to their reputation if a reproduction attempt fails after they have provided the necessary materials (@lupia2014openness).
 
 Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that *recommend* the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
 
@@ -276,33 +272,32 @@ These issues, however, are not impossible to overcome. Proponents of reproducibi
 
 ### Through Education
 
-One way to address the reproducibility crisis is to educate data analysts on the topic so that they are aware of both the concept of reproducibility and how to achieve it in their own work. A natural place to focus this education is early on in the data science training pipeline as part of introductory or early-intermediate courses in undergraduate and graduate data science porgrams. (https://arxiv.org/abs/1401.3269) This sort of educational integration has a variety of benefits:
+One way to address the reproducibility crisis is to educate data analysts on the topic so that they are aware of both the concept of reproducibility and how to achieve it in their own work. A natural place to focus this education is early on in the data science training pipeline as part of introductory or early-intermediate courses in undergraduate and graduate data science porgrams (@horton2014teaching). This sort of educational integration has a variety of benefits:
 
-* Bringing reproducibility into the discussion early on gives students the tools to add knowledge to their field in the best way possible before they actually conduct any substantive analysis on their own. (Bringing the Gold Standard into the Classroom: Replication in University Teaching - Nicole Janz). This produces many long run benefits, helping lessen the burden on promoting reproducibility placed on journals and increasing the number (and percentage) of researchers doing and promoting reproducible work. 
+* Bringing reproducibility into the discussion early on gives students the tools to add knowledge to their field in the best way possible before they actually conduct any substantive analysis on their own (@janz2016bringing). This produces many long run benefits, helping lessen the burden on promoting reproducibility placed on journals and increasing the number (and percentage) of researchers doing and promoting reproducible work. 
 
 * If covered in detail as part of the data science curriculum, reproducibility will eventually come easily to students. If learned independently, without effective tools, reproducibility can challenging and even disheartening to try to understand and succeed at. Practicing in the classroom gives students the ability to fail without damaging their reputation, giving a great opportunity to truly learn and understand the concepts so that they feel capable of handling them when they begin their own research. 
 
 * The application of grading to the topic provides an incentive for students to pay attention, learn, and absorb the information. This same incentive does not exist when researchers attempt to learn about reproducibility independently. In that situation, internal motivation, which may be weak in some individuals, is the only factor present to help promote success.
 
 Several educators, primarily at the graduate level, have realized the opportunity and taken steps to introduce reproducibility into their courses. 
-
-The primary way of achieving this integration is through the assignment of "replication studies" in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. The most famous course of this kind is Government 2001, taught by Gary King at Harvard University. (Janz article) In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
+According to @janz2016bringing, the primary way of achieving this integration is through the assignment of "replication studies" in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. The most famous course of this kind is Government 2001, taught by Gary King at Harvard University.  In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
 
 In Thomas M. Carsey's intermediate statistics course at the University of North Carolina at Chapel Hill, students must reproduce the findings of a study by re-collecting the data from the original sources, then must extend the study by building on the analysis.
 
 Christopher Fariss of Penn State University asks his students to replicate a research paper published in the last five years, noting that students must describe the article and the ease in which the results replicate.
 
-The University of California at Berkeley has a similar course to Gary King's Harvard course, where students each take a different piece of an existing study to work on reproducing and have to ensure that their piece fits with the piece of the next student. (https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/)
+The University of California at Berkeley has a similar course to Gary King's Harvard course, where students each take a different piece of an existing study to work on reproducing and have to ensure that their piece fits with the piece of the next student (@berkeley_teaching).
 
-At the undergraduate level, rather than assign replication studies the way many graduate schools tend to do, Smith College and Duke University have both integrated reproducibility into their introductory courses through the requirement that assignments be completed in the `RMarkdown` code + narration format. (https://escholarship.org/uc/item/90b2f5xh). 
+At the undergraduate level, rather than assign replication studies the way many graduate schools tend to do, Smith College and Duke University have both integrated reproducibility into their introductory courses through the requirement that assignments be completed in the `RMarkdown` code + narration format (@baumer2014r). 
 
-Another way to provide education on reproducibility is through the creation of workshops that focus solely on the topic, rather than through integration as just one part of a class. 
+Another way to provide education on reproducibility is through the creation of workshops that focus solely on the topic, rather than through integration as just one part of a class (@@janz2016bringing).
 
 For example, the University of Cambridge conducts a Replication Workshop, where graduate students are asked replicate a paper in their field over eight weekly sessions. When students encounter challenges, such as authors not responding to queries for data or steps of the analysis being poorly defined and explained, they gain a first hand understanding of the consequences of poor transparency. 
 
 Workshops such as these are typically optional and not included as part of the primary curriculum, however, so while they may cover the topic of reproducibility in more detail than traditional courses, they often reach fewer students.
 
-In spite of all of the advantages that these educational tools provide, "reproducibility training and assessment in data science education is largely neglected, especially among undergraduates and Master’s students in professional schools..., probably because the students are usually considered to be non-research oriented." (https://www.mitpressjournals.org/doi/pdf/10.1162/dint_a_00053) While some examples of reproducibility education exist, they are certainly not commonplace. However, given the increased discussion and emphasis on reproducibility in academia over the past several years, it is likely that this will change, particularly if methods are provided to educators to make the integration of reproducibility into their courses simple and relatively unburdensome.
+In spite of all of the advantages that these educational tools provide, "reproducibility training and assessment in data science education is largely neglected, especially among undergraduates and Master’s students in professional schools..., probably because the students are usually considered to be non-research oriented" (@yu2019toward). While some examples of reproducibility education exist, they are certainly not commonplace. However, given the increased discussion and emphasis on reproducibility in academia over the past several years, it is likely that this will change, particularly if methods are provided to educators to make the integration of reproducibility into their courses simple and relatively unburdensome.
 
 ### Through Software
 
@@ -332,7 +327,7 @@ When projects have a variety of components, `orderly` makes it easy to see input
  
  Lastly, the `reproducible` (@R-reproducible) package focuses on the concept of caching: saving information so that projects can be run faster each time they are re-completed from the start.
 
-```{r, echo = FALSE, out.width = '50%', fig.align = 'center'}
+```{r, echo = FALSE, out.width = '50%', fig.align = 'center', fig.cap='Popular Reproducibility Packages in R'}
 knitr::include_graphics("figure/packages.png")
 ```
 
@@ -344,7 +339,7 @@ For example, `wercker`---a command line tool that leverages Docker---enables use
 
 `Travis CI` and `Circle CI` are popular continuous integration tools that can also be used to check `R` code. 
 
-```{r, echo = FALSE, out.width = '80%', fig.align = 'center'}
+```{r, echo = FALSE, out.width = '80%', fig.align = 'center', fig.cap="Popular Continuous Integration Tools"}
 knitr::include_graphics("figure/ci-tools.png")
 ```
 

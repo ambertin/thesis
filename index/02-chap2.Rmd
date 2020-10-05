@@ -45,18 +45,18 @@ That is where my work comes in. In an attempt to produce meaningful change in th
 
 `fertile` also contains several `R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
 
-```{r, echo = FALSE, out.width="100%"}
-knitr::include_graphics("figure/sample-project.png")
-```
-
-
 In addition, `fertile` is designed to be educational, teaching its users about the components of reproducibility and how to achieve them in their work. The package provides users with detailed reports on the aspects of reproducibility where their projects fell short, identifying the root causes and, in many cases, providing a recommended solution.
 
 `fertile` is structured in such a way as to be understandable and operable to individuals of any skill level, from students in their first undergraduate data science course to experienced PhD statisticians. The majority of its tools can be accessed in only a handful of functions with minimal required arguments. This simplicity makes the process of achieving and learning about reproducibility accessible to a wide audience in a way that complex software programs or graduate courses requiring an advanced knowledge of research methods do not.
 
-Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. `fertile` provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider `fertile`'s treatment of each of these components in turn:
+Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. `fertile` provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider `fertile`'s treatment of each of these components in turn, exploring its analysis of the sample R project shown below, titled "project_miceps":
 
-### Component 1: Accessibility of Project Files
+```{r, echo = FALSE, out.width="100%", fig.cap="A Sample R Project"}
+knitr::include_graphics("figure/sample-project.png")
+```
+
+
+### Component 1: Accessibile Project Files
 
 ```{r, message = FALSE}
 library(fertile)
@@ -68,23 +68,23 @@ library(fertile)
 
 One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxilliary (image or text) files they have. 
 
-\footnotesize
+ 
 
 ```{r}
 proj_analyze_files("project_miceps")
 ```
 
-\normalsize
+ 
 
 Users can also check for the existence of a README description file with `has_readme()`:
 
-\footnotesize
+ 
 
 ```{r}
 has_readme("project_miceps")
 ```
 
-\normalsize
+ 
 
 #### Testing For Self-Containment
 
@@ -92,7 +92,7 @@ In order to truly check that a project is self contained, however, is is necessa
 
 The `sandbox()` function is designed to help facilitate this. `sandbox()` allows the user to make a copy of their project in a temporary directory that is isolated from the file system. 
 
-\footnotesize
+ 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(fertile)
@@ -110,27 +110,27 @@ temp_dir
 fs::dir_ls(temp_dir) %>% head(3)
 ```
 
-\normalsize
+ 
 
 Once a directory is sandboxed, users can run the `proj_render()` function, which checks all `.R` and `.Rmd` code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 
-\footnotesize
+ 
 
 ```{r, results = 'hide'}
 proj_render(temp_dir)
 ```
 
-\normalsize
+ 
 
 If `proj_render()` executes without error, this indicates that all the necessary files are present. Users can also confirm this by checking the time stamp of the last successful render, captured in the `render_log_report()` function. If the time stamp matches the current time, the project successfully compiled.
 
-\footnotesize
+ 
 
 ```{r}
 slice_tail(render_log_report(temp_dir))
 ```
 
-\normalsize
+ 
   
 What we *need*:
 
@@ -159,7 +159,7 @@ The last check that focuses on the file system is `has_only_used_files()`. One o
 * Files created by `fertile`. In an effort to capture information about dependencies, `fertile` creates a text file capturing the session information when a project is run and provides an option to generate an `.R` script that can install all of the packages referenced in a project's code. These files are considered "used."
 
 
-\footnotesize
+ 
 ```{r}
 # List the files in the directory
 fs::dir_ls("project_miceps")
@@ -168,13 +168,13 @@ fs::dir_ls("project_miceps")
 has_only_used_files("project_miceps")
 
 ```
-\normalsize
+ 
 
 #### Reorganizing File Structure
 
 There are also several functions help with reshaping the entire project structure to a more reproducibile format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
 
-\footnotesize
+ 
 
 ```{r}
 files <- proj_analyze_files("project_miceps")
@@ -182,7 +182,7 @@ files <- proj_analyze_files("project_miceps")
 proj_suggest_moves(files)
 ```
 
-\normalsize
+ 
 
 These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. 
 
@@ -210,13 +210,13 @@ One important component of documentation is the inclusion of a README file. A RE
 
 `fertile` ensures that a README is included alongside the user's project with the `has_readme()` function:
 
-\footnotesize
+ 
 
 ```{r}
 has_readme("project_miceps")
 ```
 
-\normalsize
+ 
 
 #### Clear File Order
 
@@ -224,13 +224,13 @@ Another important component of documentation is that it must be clear in which o
 
 `has_clear_build_chain()` checks for these non-README methods of ensuring that file ordering is clear. `project_miceps`, since it only contains one code file, passes this check easily:
 
-\footnotesize
+ 
 
 ```{r}
 has_clear_build_chain("project_miceps")
 ```
 
-\normalsize
+ 
 
 #### Software Dependencies
 
@@ -238,7 +238,7 @@ There are also several features focused on software dependencies. Every time the
 
 The dependency information from `project_miceps` looks as follows:
 
-\footnotesize
+ 
 
 ```{r echo = FALSE, results = 'hide'}
 proj_render("project_miceps")
@@ -249,7 +249,7 @@ session_info <- "project_miceps/.software-versions.txt"
 cat(readChar(session_info, 1e5))
 ```
 
-\normalsize
+ 
 
 Interactively, users can access this dependency summary using the function `proj_dependency_report()`. 
 
@@ -257,14 +257,14 @@ The `proj_pkg_script()` function builds off of this behavior, providing a method
 
 When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 
-\footnotesize
+ 
 
 ```{r eval=TRUE, cache=TRUE, linewidth = 60}
 install_script <- proj_pkg_script("project_miceps")
 cat(readChar(install_script, 1e5))
 ```
 
-\normalsize
+ 
 
 Users interested in ensuring that their project is reproducible can provide alongside it both:
 
@@ -288,7 +288,6 @@ has_well_commented_code("project_miceps")
 ```
 
 
-
 What we *need*:
 
   - possibly a makefile generator? or improvements to order checking?
@@ -303,7 +302,7 @@ What we *need*:
 Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and outputs a warning message. This interactive behavior is one of the educational features of the package, as it immediately provides an informative message explaining what went wrong, giving the programmer an opportunity to learn and course-correct from there.
 
 
-\footnotesize
+ 
 
 ```{r, echo = FALSE, message = FALSE}
 library(stringr)
@@ -323,11 +322,11 @@ read.csv("~/Desktop/my_data.csv")
 read.csv("../../../Desktop/my_data.csv")
 ```
 
-\normalsize
+ 
 
 `fertile` is particularly strict with the function `setwd()`, as its use is almost certain to break reproducibility. Calls to `setwd()` are blocked from executing, and users must conduct a manual override, via the `danger()` function, to change their working directory.
 
-\footnotesize
+ 
 
 ```{r setwd, message=FALSE, error = TRUE}
 getwd()
@@ -335,23 +334,23 @@ setwd("~/Desktop")
 getwd()
 ```
 
-\normalsize
+ 
 
 #### Project Path Summaries
 
 `fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 
-\footnotesize
+ 
 
 ```{r}
 proj_analyze_paths('project_miceps')
 ```
 
-\normalsize
+ 
 
 Paths can also be checked individually, or in groups, using `check_path()`.
 
-\footnotesize
+ 
 
 ```{r path checks, error = TRUE, message = FALSE}
 # Path inside the directory
@@ -364,7 +363,7 @@ check_path(getwd())
 check_path("../README.md")
 ```
 
-\normalsize
+ 
 
 These functions, together, cover all of the reproducibility subcomponents involving file paths. Users are warned not to use absolute paths or paths pointing outside of the directory, both while they are coding and after the fact, and provided with a recommended solution to the problem if they do so. Additionally, users are prevented from using functions that will certainly break reproducibility and provided with safer alternatives. 
 
@@ -374,7 +373,7 @@ The component of randomness is addressed by `fertile` in a reproducibility check
 
 Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
-\footnotesize
+ 
 ```{r, message=FALSE, eval = FALSE}
 
 mice <- read_csv("Blot_data_updated.csv") %>%
@@ -433,15 +432,15 @@ mice_tidy <- mice %>%
 sample_frac(mice, 0.5)
 ```
 
-\normalsize
+ 
 
 However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. Had a seed been set, however, the project would have passed.
 
-\footnotesize
+ 
 ```{r}
 has_no_randomness('project_miceps')
 ```
-\normalsize
+ 
 
 `fertile`'s randomness-centered feature helps analysts know that their use of randomness is controlled, ensuring that functions involving random number generation will always produce the same output each time they are run.
 
@@ -467,14 +466,14 @@ Let us consider an example. `project_miceps` contains an `RMarkdown` file titled
 
 For example, line 71, part of a `ggplot` call, contains the following code:
 
-\footnotesize
+ 
 ```{r, eval = FALSE}
 # Line 71 of `project_miceps/analysis.Rmd'
 
 geom_hline(aes(yintercept = estimate + 1.96*std.error, color = sex), linetype = 3) + 
   
 ```
-\normalsize
+ 
 
 For this line, `has_no_lint()` finds the following inconsistencies with tidy style:
 
@@ -488,7 +487,7 @@ The first comes up because the true line length, including spaces, is 84 charact
 
 An even less tidy piece of code is that found on line 189, written as follows:
 
-\footnotesize
+ 
 ```{r}
 # Line 189 of `project_miceps/analysis.Rmd'
 
@@ -496,7 +495,7 @@ if (length(mice) > 1){ holder_var = 1 }
 
 ```
 
-\normalsize
+ 
 
 For this line, `has_no_lint()` finds the following errors:
 
@@ -512,6 +511,17 @@ The first issue flagged is the fact that `){`, in the middle of the line, has no
 
 These informative error messages provided by `fertile` help teach users to use consistent, tidy style in their code. They do so while making the learning process incredibly simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, `fertile` also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the `usethis::use_tidy_style()` function to format their code automatically.
 
+### Summary of Reproducibility Components
+
+As described in the previous sections, `fertile` addresses all six major components of reproducibility via a variety of functions. Some complex components have many associated functions attached to them, while others only have one. 
+
+A summary of the six components of reproducibility and the functionalities in `fertile` associated with them is provided below.
+
+```{r, echo = FALSE, out.width = '100%', fig.cap="Summary of Reproducibility Components and the Related Functionalities in 'fertile'"}
+knitr::include_graphics("figure/components-summary.png")
+```
+
+
 ### User Customizability
 
 `fertile` does not force its users into a box, instead allowing for a great deal of user choice in terms of which aspects of reproducibility to focus on. Users can run reproducibility tests at three different scales: 
@@ -526,13 +536,13 @@ Users who want comprehensive behavior can access it through two primary function
 
 The `proj_check()` function runs all fifteen reproducibility tests in the package, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests, many of which were described in detail previously, include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
 
-\footnotesize
+ 
 
 ```{r list-checks, tidy.opts=list(width.cutoff=60)}
 list_checks()
 ```
 
-\normalsize
+ 
 
 The `proj_analyze()` function creates a report documenting the structure of a data analysis project, combining four key functions from `fertile` into one complete unit:
 
@@ -541,13 +551,13 @@ The `proj_analyze()` function creates a report documenting the structure of a da
 * `proj_suggest_moves()`, which provides suggestions for how to reorganize files to create a more reproducible file structure
 * `proj_analyze_paths()`, which captures a list of the non-reproducible file paths referenced in source code
 
-\footnotesize
+ 
 
 ```{r proj_analyze, tidy.opts=list(width.cutoff=60)}
 proj_analyze('project_miceps')
 ```
 
-\normalsize
+ 
 
 Together, `proj_check()` and `proj_analyze()` cover a significant portion of all six major components of reproducibility.
 
@@ -561,7 +571,7 @@ Users wanting to focus on groups of checks can do so using the `proj_check_some(
 
 For example, a variety of checks in `fertile` focus on making sure the project has a "tidy" structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using `proj_check_some()` as follows:
 
-\footnotesize
+ 
 
 
 ```{r echo=FALSE}
@@ -576,23 +586,23 @@ if (file.exists(bad_file)) {
 proj_check_some("project_miceps", contains("tidy"))
 ```
 
-\normalsize
+ 
 
 Users might also attempt to call the two checks involving project roots together:
 
-\footnotesize
+ 
 ```{r}
 proj_check_some("project_miceps", ends_with("root"))
 ```
-\normalsize
+ 
 
 Or, perhaps, they might want to run all the functions beginning with "has_only":
 
-\footnotesize
+ 
 ```{r}
 proj_check_some("project_miceps", starts_with("has_only"))
 ```
-\normalsize
+ 
 
 If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
 
@@ -609,7 +619,7 @@ As soon as a dangerous function is called, `fertile` alerts the user of their mi
 Users interested in looking back at their past choices and mistakes can do so as well. The `log_report()` function provides access to a log listing the commands with a link to reproducibility that have been called.
 
 
-\footnotesize
+ 
 
 ```{r read-csv, message=FALSE, include=FALSE}
 library(purrr)
@@ -621,7 +631,7 @@ read_csv(fs::path('project_miceps', "mice.csv"))
 log_report()
 ```
 
-\normalsize
+ 
 
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function `log_clear()`.
 
@@ -652,7 +662,7 @@ Much of the functionality in `fertile` is achieved by writing `shims`. In their 
 
 `fertile` contains shims for a variety of common functions that may affect reproducibilty, including those that read and write files, load libraries, and set random number generation seeds. A full list of shimmed functions, organized by their original package, is provided below:
 
-```{r echo = FALSE, out.width = '100%'}
+```{r echo = FALSE, out.width = '100%', fig.cap="List of Functions Shimmed by 'fertile'"}
 knitr::include_graphics("figure/shims-list.png")
 ```
 
@@ -676,13 +686,13 @@ The process for writing a shim is as follows:
   
 Most shims, when written, are relatively simple. Several, such as that for `library()` are more complex, but many follow the same basic format that can be seen in this example for`read_csv()`:
 
-\footnotesize
+ 
 
 ```{r}
 fertile::read_csv
 ```
 
-\normalsize
+ 
 
 This functionality all occurs without the knowledge of the user. Consider the example of `read_csv()`. `read_csv()` is a very popular function from the `readr` package for reading in data files. Users with both `readr` and `fertile` loaded, will experience the following. The user will call `read_csv()` as normal, thinking that they are calling `readr::read_csv()`. However, they will actually be calling `fertile::read_csv()`, a very similar function with the same name. `fertile::read_csv()` will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as `readr::read_csv()` would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, `fertile` will record that the user called `read_csv()` and note the path that was provided to it for future reference.
 
