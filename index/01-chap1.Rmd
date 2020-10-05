@@ -344,3 +344,53 @@ knitr::include_graphics("figure/ci-tools.png")
 ```
 
 
+## Understanding The Gaps In Existing Reproducibility Solutions
+
+Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term. 
+
+As we have seen, software developers, data scientists, and educators around the world have realized this potential, taking steps to help address the current crisis of reproducibility. Journals have put in place guidelines for authors, statisticians have developed `R` packages that help structure projects in a reproducible format, and educators have begun integrate reproducibility exercises into their courses.
+
+We have already explored the issues with journal policies, both for authors and reviewers, in-depth. Educational and software-based strategies attempt to address these policy issues by spreading ideas of reproducibility to more people and simplifying the process of achieving it, therefore resulting (in theory) in an improvement in the reproducibility of published scientific articles.
+
+However, the reality is not quite so rosy. Many current educational and software-based solutions face their own challenges that limit them from achieving the desired outcome. In this section, we will consider these issues.
+
+### In Education
+
+The two primary concerns about the integration of reproducibility in data science curricula revolve around time and difficulty.
+
+As noted previously, the primary mode of teaching reproducibility is through the assignment of replication studies where students must take an existing study and go through the process of reproducing it themselves, including contacting the author for all necessary materials, rerunning code and analysis, and problem-solving when issues almost certainly come up. 
+
+In addition to the time required for the professor to collect all of the studies that students will be working on, the inclusion of such an assignment places a significant burden on educators by taking up time where they could be teaching other important material. Replication studies, if done correctly, can take weeks for students to successfully complete. The choice to give such assignments is therefore associated with a significant opportunity cost which many professors are unwilling to take.
+
+Additionally, both replication studies assigned in class and replication workshops outside of normal coursework require a working knowledge of how to successfully complete and understand research. This makes them inaccessible to individuals who are still in their undergraduate career and may not yet have had an opportunity to conduct research or those who are studying in non-research-focused technical programs.
+
+In order to reach the widest variety of students possible, it is necessary to develop a new method of teaching reproducibility that is neither time consuming nor dependent on a prior understanding of the research process.
+
+### In Software
+
+Previously, we considered several different types of software solutions: packages designed for users of `R` and continuous integration programs that can be used alongside a variety of coding languages. Although these solutions have their advantages, they also have significant drawbacks in terms of their ability to address reproducibility on a widespread scale.
+
+Many of the packages designed for `R` are incredibly narrow in scope, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. They often succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users with minimal `R` experience, nor particularly useful to those looking for quick and easy reproducibility checks. The significant learning curve associated with them can also detract potential users who may be interested in reproducibility but not willing to dedicate an extensive amount of time to understanding the intricacies of software operation.
+
+Due to their generalized design, Continuous Integration tools do not face the same issues with narrowness or complexity that `R` packages struggle with. However, this generalizability provides its own additional challenge. Since Continuous Integration tools are designed to be accessible to a wide variety of users with different coding preferences, they are not particularly customizable and lack the ability to address features specific to certain programming languages. 
+
+Neither of these different software solutions appear to adequately address the challenge of reproducibility. 
+
+
+### What We Need Moving Forward
+
+While a variety of attempts to address reproducibility have been made, they all face their own set of challenges. Most focus on only one area of reproducibility, are too time consuming and burdensome to attempt, or require an extensive amount of background knowledge.
+
+In order to truly improve scientific reproducibility, a better solution is needed. The optimal solution should combine the positive aspects of the previously discussed educational and software methods, while remaining simple and easy to use. It should also have a variety of potential applications---journal reviewers should benefit from it, as should authors, as should educators and students and even those outside of academia.
+
+The full list of necessary features for an effective reproducibility tool are provided below:
+
+1) Be simple, with a small library of functions/tools that are straightforward to use.
+2) Be accessible to a variety of users, with a relatively small learning curve.
+3) Be able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
+4) Have features specific to a particular coding language that can address that language's unique challenges.
+5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
+6) Be educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.
+7) Be applicable to a wide variety of domains and users.
+
+While this seems like a lot to ask, such a task is not impossible. In the next chapter, we will consider one potential solution: `fertile`, an R package focused on reproducibility that I have worked to develop.

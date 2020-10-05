@@ -1,40 +1,5 @@
 # `fertile`: My Contribution To Addressing Reproducibility {#my-solution}
 
-## Understanding The Gaps In Existing Reproducibility Solutions
-
-Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term. 
-As we have seen, software developers, data scientists, and educators around the world have realized this potential, taking steps to help address the current crisis of reproducibility. Journals have put in place guidelines for authors, statisticians have developed `R` packages that help structure projects in a reproducible format, and educators have begun integrate reproducibility exercises into their courses.
-
-However, many of these attempts to address reproducibility have significant drawbacks associated with them. We have already explored the issues with journal policies, both for authors and reviewers, in-depth. In this section, we will consider the education and software solutions and their associated challenges.
-
-### In Education
-
-The two primary concerns about the integration of reproducibility in data science curricula revolve around time and difficulty.
-
-As noted previously, the primary mode of teaching reproducibility is through the assignment of replication studies where students must take an existing study and go through the process of reproducing it themselves, including contacting the author for all necessary materials, rerunning code and analysis, and problem-solving when issues almost certainly come up. 
-
-In addition to the time required for the professor to collect all of the studies that students will be working on, the inclusion of such an assignment places a significant burden on educators by taking up time where they could be teaching other important material. Replication studies, if done correctly, can take weeks for students to successfully complete. The choice to give such assignments is therefore associated with a significant opportunity cost which many professors are unwilling to take.
-
-Additionally, both replication studies assigned in class and replication workshops outside of normal coursework require a working knowledge of how to successfully complete and understand research. This makes them inaccessible to individuals who are still in their undergraduate career and may not yet have had an opportunity to conduct research or those who are studying in non-research-focused technical programs.
-
-In order to reach the widest variety of students possible, it is necessary to develop a new method of teaching reproducibility that is neither time consuming nor dependent on a prior understanding of the research process.
-
-### In Software
-
-Previously, we considered several different types of software solutions: packages designed for users of `R` and continuous integration programs that can be used alongside a variety of coding languages. Although these solutions have their advantages, they also have significant drawbacks in terms of their ability to address reproducibility on a widespread scale.
-
-Many of the packages designed for `R` are incredibly narrow in scope, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. They often succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users with minimal `R` experience, nor particularly useful to those looking for quick and easy reproducibility checks. The significant learning curve associated with them can also detract potential users who may be interested in reproducibility but not willing to dedicate an extensive amount of time to understanding the intricacies of software operation.
-
-Due to their generalized design, Continuous Integration tools do not face the same issues with narrowness or complexity that `R` packages struggle with. However, this generalizability provides its own additional challenge. Since Continuous Integration tools are designed to be accessible to a wide variety of users with different coding preferences, they are not particularly customizable and lack the ability to address features specific to certain programming languages. 
-
-Neither of these different software solutions appear to adequately address the challenge of reproducibility. In order to be the most effective, a piece of software must instead:
-
-1) Be simple, with a small library of functions/tools that are straightforward to use.
-2) Be accessible to a variety of users, with a relatively small learning curvey.
-3) Be able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
-4) Have features specific to a particular coding language that can address that language's unique challenges.
-5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
-
 ##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
 What if it were possible to address the existing issues with both educational and software reproducibility solutions simultaneously? 
@@ -702,7 +667,7 @@ In the `fertile` version of `library()`,`fertile` is detached from the search pa
 
 ### Hidden Files
 
-In order to store and analyze information about user behavior and code structure, `fertile` utilizes two different types of hidden files, both of which are `.csv` format. The hidden files for `project_miceps` can be seen below:
+In order to store and analyze information about user behavior and code structure, `fertile` utilizes three different types of hidden files, two of which are `.csv` format and one of which is a text file. The hidden `.csv` files for `project_miceps` can be seen below:
 
 ```{r}
 fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv")
@@ -725,6 +690,8 @@ render_log_report("project_miceps")
 ```
 
 These files, integral to many of the functionalities in `fertile`, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that `fertile` always retains accurate information of user behavior. 
+
+In addition to the two log files, `fertile` keeps a third hidden file to track project dependencies. Described in detail in the section on documentation, this file keeps track of the software setup that a project is run under. A new version is generated every time `fertile` compiles the project code files or when users request to view the file (via a special access function).  Like the log files, however, there is no simple way to manually modify or delete the file, ensuring that it does not accidentally get changed in a way that would damage reproducibility.
 
 ### Environment Variables
 
