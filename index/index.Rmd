@@ -34,12 +34,15 @@ abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims"
 # like below, use a command like that for the abstract above.  Note that a tab 
 # is needed on the line after the `|`.
 acknowledgements: |
-  I want to thank a few people.
-dedication: |
-  You can have a dedication here if you wish. 
-preface: |
-  This is an example of a thesis setup to use the reed thesis document class 
-  (for LaTeX) and the R bookdown package, in general.
+  This project would not have been possible without the guidance of Professor Ben Baumer, who helped inspire my interest in data science and mentored me throughout this project for the last two years. 
+  I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in `fertile`, and the authors of all of the R packages utilized by `fertile` to achieve its functionality. 
+  
+  
+#dedication: |
+#  You can have a dedication here if you wish. 
+#preface: |
+#  This is an example of a thesis setup to use the reed thesis document class 
+#  (for LaTeX) and the R bookdown package, in general.
   
 # Specify the location of the bibliography below
 bibliography: bib/thesis.bib
@@ -135,6 +138,17 @@ Alternatively, you can put that content in files like 00--prelim.Rmd and
 -->
 
 # Introduction {.unnumbered}
+
+This project would not have been possible without the help of Prof. Ben Baumer. Ben has been interested in scientific reproducibility for a number of years and has done great work in the field. Some of this work has been theoretical, but much has also been practical. Ben is one of the pioneers in the practice of teaching reproducibility at the undergraduate level, and his work in this area has received a lot of positive feedback. 
+
+I would not be here writing this thesis without him. The Introduction to Data Science course I took with him in my first semester at Smith College spurred on my love for the field, prompting me to declare a major---with Ben as my advisor---soon after. That course was my first introduction to reproducibility. In it, I learned about how to create narrative reports with RMarkdown, how to implement version control on GitHub, how to write well-styled code, and how to use R projects to structure my files in a way that was easy to manage. Through this work, I began to see the benefits of a reproducible workflow. When I worked on projects with other students, these tools enabled us to collaborate with one another easily, and when I tried to look back at my own work from the past, my attention to reproducibility meant that it was much easier for me to re-compute and understand what I had done previously.
+
+  The love for R and data science that I developed in Ben's course prompted me to pursue research in the field. As soon as I felt that I had built up enough coding experience to be able to tackle challenging issues, I reached out to the data science faculty for an opportunity. Ben enthusiastically welcomed me in, telling me that he had recently started developing an R package focused on reproducibility and offering me a position assisting him with writing it. That package was `fertile`. 
+  
+  The `fertile` project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, `fertile` provided a perfect opportunity for me to familiarize myself with the process of writing R packages. 
+
+
+
 
 Potential sources:
 
