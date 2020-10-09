@@ -35,7 +35,8 @@ abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims"
 # is needed on the line after the `|`.
 acknowledgements: |
   This project would not have been possible without the guidance of Professor Ben Baumer, who helped inspire my interest in data science and mentored me throughout this project for the last two years. 
-  I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in `fertile`, and the authors of all of the R packages utilized by `fertile` to achieve its functionality. 
+  I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in `fertile`, along with the authors of all of the R packages utilized by `fertile` to achieve its functionality. 
+  Additionally, many people have assisted me throughout the development of `fertile` with testing its features. Emma Livingston '20, Arielle Dror '20, and Kathleen Hablutzel '23 provided valuable insight by helping test the package to find small bugs and errors. A variety of introductory data science students, who will remain anonymous, also volunteered their time as part of a study to test the effectiveness of implementing `fertile` in the classroom. The help of all these Smithies was invaluable in ensuring that the overall `fertile` product was as user friendly and effective as possible.  
   
   
 #dedication: |
@@ -139,13 +140,24 @@ Alternatively, you can put that content in files like 00--prelim.Rmd and
 
 # Introduction {.unnumbered}
 
-This project would not have been possible without the help of Prof. Ben Baumer. Ben has been interested in scientific reproducibility for a number of years and has done great work in the field. Some of this work has been theoretical, but much has also been practical. Ben is one of the pioneers in the practice of teaching reproducibility at the undergraduate level, and his work in this area has received a lot of positive feedback. 
+If it weren't for Professor Ben Baumer, I would not be here writing this thesis today. The Introduction to Data Science course I took with him in my first semester at Smith College spurred on my love for the field, prompting me to declare a major---with Ben as my advisor---soon after. 
 
-I would not be here writing this thesis without him. The Introduction to Data Science course I took with him in my first semester at Smith College spurred on my love for the field, prompting me to declare a major---with Ben as my advisor---soon after. That course was my first introduction to reproducibility. In it, I learned about how to create narrative reports with RMarkdown, how to implement version control on GitHub, how to write well-styled code, and how to use R projects to structure my files in a way that was easy to manage. Through this work, I began to see the benefits of a reproducible workflow. When I worked on projects with other students, these tools enabled us to collaborate with one another easily, and when I tried to look back at my own work from the past, my attention to reproducibility meant that it was much easier for me to re-compute and understand what I had done previously.
+That course---SDS 192---was my first introduction to the topic of scientific reproducibility. In Ben's class, one of the first undergraduate courses in the country to implement reproducibility as part of the curriculum, I was introduced to a variety of tools that could help make my work more reproducible. I learned how to write effective narrative reports with RMarkdown, how to implement version control on GitHub, how to write well-styled code, and how to use R projects to structure my files in a way that was easy to manage. 
 
-  The love for R and data science that I developed in Ben's course prompted me to pursue research in the field. As soon as I felt that I had built up enough coding experience to be able to tackle challenging issues, I reached out to the data science faculty for an opportunity. Ben enthusiastically welcomed me in, telling me that he had recently started developing an R package focused on reproducibility and offering me a position assisting him with writing it. That package was `fertile`. 
+Through this work, I began to see the benefits of emphasizing a reproducible workflow. When I worked on projects with other students, the tools I learned in class enabled us to collaborate with one another easily and keep track of the progress we had made. And when I tried to look back at my own work from the past, my attention to reproducibility meant that it was much easier for me to re-compute and understand what I had done previously.
+
+Additionally, my work in Introduction to Data Science helped build a strong interest in R. I developed a love for programming in the language and was curious to learn more about how it worked---both behind the scenes and practice. This interest prompted me to pursue research in the field. I wanted to expand my knowledge and challenge myself by learning about and solving cutting-edge issues in the data science domain. 
+
+
+As soon as I felt that I had built up enough coding experience to be able to tackle challenging issues, I reached out to the data science faculty to see if there were any opportunities. Ben enthusiastically welcomed me in, telling me that he had recently started developing an R package focused on reproducibility and offering me a position assisting him with writing it. That was when I first learned about `fertile`. 
+
+As part of his interest in reproducibility, Ben had been working---with help from Hadley Wickham and Jenny Bryan of RStudio---to develop a package designed to help users create optimul conditions for reproducible work in R (titled "fertile").  
+
+When it was presented to me, the package was incomplete. Several of the major functions that still exist now were there at the time, but there were not many features beyond the basics. Additionally, several functions were not fully written or throwing errors, the package had little to no documentation, and the majority of tests that had been written to test the functions were failing.
+
+I was given the opportunity to join in on the project and help move `fertile` to a functional state: to fix the errors that were present, document the package, and write new functions to expand the operation beyond the barebones structure that was present.
   
-  The `fertile` project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, `fertile` provided a perfect opportunity for me to familiarize myself with the process of writing R packages. 
+The `fertile` project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, `fertile` provided a perfect opportunity for me to familiarize myself with the process of writing R packages. 
 
 
 

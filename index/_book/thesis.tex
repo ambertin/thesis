@@ -176,8 +176,17 @@ Professor Ben Baumer, who helped inspire my interest in data science and
 mentored me throughout this project for the last two years. I would also
 like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice
 has helped guide the development of several features in
-\texttt{fertile}, and the authors of all of the R packages utilized by
-\texttt{fertile} to achieve its functionality.
+\texttt{fertile}, along with the authors of all of the R packages
+utilized by \texttt{fertile} to achieve its functionality. Additionally,
+many people have assisted me throughout the development of
+\texttt{fertile} with testing its features. Emma Livingston '20, Arielle
+Dror '20, and Kathleen Hablutzel '23 provided valuable insight by
+helping test the package to find small bugs and errors. A variety of
+introductory data science students, who will remain anonymous, also
+volunteered their time as part of a study to test the effectiveness of
+implementing \texttt{fertile} in the classroom. The help of all these
+Smithies was invaluable in ensuring that the overall \texttt{fertile}
+product was as user friendly and effective as possible.
 }
 
 \Dedication{
@@ -211,8 +220,17 @@ Second paragraph of abstract starts here.
     mentored me throughout this project for the last two years. I would also
     like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice
     has helped guide the development of several features in
-    \texttt{fertile}, and the authors of all of the R packages utilized by
-    \texttt{fertile} to achieve its functionality.
+    \texttt{fertile}, along with the authors of all of the R packages
+    utilized by \texttt{fertile} to achieve its functionality. Additionally,
+    many people have assisted me throughout the development of
+    \texttt{fertile} with testing its features. Emma Livingston '20, Arielle
+    Dror '20, and Kathleen Hablutzel '23 provided valuable insight by
+    helping test the package to find small bugs and errors. A variety of
+    introductory data science students, who will remain anonymous, also
+    volunteered their time as part of a study to test the effectiveness of
+    implementing \texttt{fertile} in the classroom. The help of all these
+    Smithies was invaluable in ensuring that the overall \texttt{fertile}
+    product was as user friendly and effective as possible.
   \end{acknowledgements}
 
   \hypersetup{linkcolor=black}
@@ -247,36 +265,59 @@ Second paragraph of abstract starts here.
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-This project would not have been possible without the help of Prof.~Ben
-Baumer. Ben has been interested in scientific reproducibility for a
-number of years and has done great work in the field. Some of this work
-has been theoretical, but much has also been practical. Ben is one of
-the pioneers in the practice of teaching reproducibility at the
-undergraduate level, and his work in this area has received a lot of
-positive feedback.
+If it weren't for Professor Ben Baumer, I would not be here writing this
+thesis today. The Introduction to Data Science course I took with him in
+my first semester at Smith College spurred on my love for the field,
+prompting me to declare a major---with Ben as my advisor---soon after.
 
-I would not be here writing this thesis without him. The Introduction to
-Data Science course I took with him in my first semester at Smith
-College spurred on my love for the field, prompting me to declare a
-major---with Ben as my advisor---soon after. That course was my first
-introduction to reproducibility. In it, I learned about how to create
-narrative reports with RMarkdown, how to implement version control on
-GitHub, how to write well-styled code, and how to use R projects to
-structure my files in a way that was easy to manage. Through this work,
-I began to see the benefits of a reproducible workflow. When I worked on
-projects with other students, these tools enabled us to collaborate with
-one another easily, and when I tried to look back at my own work from
-the past, my attention to reproducibility meant that it was much easier
-for me to re-compute and understand what I had done previously.
+That course---SDS 192---was my first introduction to the topic of
+scientific reproducibility. In Ben's class, one of the first
+undergraduate courses in the country to implement reproducibility as
+part of the curriculum, I was introduced to a variety of tools that
+could help make my work more reproducible. I learned how to write
+effective narrative reports with RMarkdown, how to implement version
+control on GitHub, how to write well-styled code, and how to use R
+projects to structure my files in a way that was easy to manage.
 
-The love for R and data science that I developed in Ben's course
-prompted me to pursue research in the field. As soon as I felt that I
-had built up enough coding experience to be able to tackle challenging
-issues, I reached out to the data science faculty for an opportunity.
-Ben enthusiastically welcomed me in, telling me that he had recently
-started developing an R package focused on reproducibility and offering
-me a position assisting him with writing it. That package was
+Through this work, I began to see the benefits of emphasizing a
+reproducible workflow. When I worked on projects with other students,
+the tools I learned in class enabled us to collaborate with one another
+easily and keep track of the progress we had made. And when I tried to
+look back at my own work from the past, my attention to reproducibility
+meant that it was much easier for me to re-compute and understand what I
+had done previously.
+
+Additionally, my work in Introduction to Data Science helped build a
+strong interest in R. I developed a love for programming in the language
+and was curious to learn more about how it worked---both behind the
+scenes and practice. This interest prompted me to pursue research in the
+field. I wanted to expand my knowledge and challenge myself by learning
+about and solving cutting-edge issues in the data science domain.
+
+As soon as I felt that I had built up enough coding experience to be
+able to tackle challenging issues, I reached out to the data science
+faculty to see if there were any opportunities. Ben enthusiastically
+welcomed me in, telling me that he had recently started developing an R
+package focused on reproducibility and offering me a position assisting
+him with writing it. That was when I first learned about
 \texttt{fertile}.
+
+As part of his interest in reproducibility, Ben had been working---with
+help from Hadley Wickham and Jenny Bryan of RStudio---to develop a
+package designed to help users create optimul conditions for
+reproducible work in R (titled ``fertile'').
+
+When it was presented to me, the package was incomplete. Several of the
+major functions that still exist now were there at the time, but there
+were not many features beyond the basics. Additionally, several
+functions were not fully written or throwing errors, the package had
+little to no documentation, and the majority of tests that had been
+written to test the functions were failing.
+
+I was given the opportunity to join in on the project and help move
+\texttt{fertile} to a functional state: to fix the errors that were
+present, document the package, and write new functions to expand the
+operation beyond the barebones structure that was present.
 
 The \texttt{fertile} project was an excellent fit for me. The package
 was not yet in a functional state, but had an excellent base of code to
@@ -1498,7 +1539,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxzK47i/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWR3fNa/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1506,9 +1547,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxzK47i/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxzK47i/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxzK47i/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWR3fNa/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWR3fNa/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWR3fNa/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
 function, which checks all \texttt{.R} and \texttt{.Rmd} code files in
@@ -1539,13 +1580,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpxzK47i/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWR3fNa/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-10-09 16:25:49
+1 LAST RENDERED <NA>     proj_render 2020-10-09 19:14:34
 \end{verbatim}
 What we \emph{need}:
 \begin{itemize}
@@ -2367,8 +2408,8 @@ structure of a data analysis project, combining four key functions from
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.28K image/png                                 
- 3 proteins_v_time.p~ png     378.27K image/png                                 
+ 2 citrate_v_time.png png     186.72K image/png                                 
+ 3 proteins_v_time.p~ png     379.83K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2702,7 +2743,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 294 x 4
+# A tibble: 303 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2715,7 +2756,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 284 more rows
+# ... with 293 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the
 option to clear the log and start from scratch via the function
@@ -2841,7 +2882,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fac1dccdd18>
+<bytecode: 0x7feece493410>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user.
@@ -2941,21 +2982,21 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 15 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      480     2020-10-09 16:26:04
- 2 package:dplyr           <NA>                      base::~ 2020-10-09 16:26:04
- 3 package:readr           <NA>                      base::~ 2020-10-09 16:26:04
- 4 package:tidyr           <NA>                      base::~ 2020-10-09 16:26:04
- 5 package:ggplot2         <NA>                      base::~ 2020-10-09 16:26:04
- 6 package:purrr           <NA>                      base::~ 2020-10-09 16:26:04
- 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-09 16:26:04
- 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-10-09 16:26:04
- 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-10-09 16:26:05
-10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-10-09 16:26:07
-11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-10-09 16:26:07
-12 package:skimr           <NA>                      base::~ 2020-10-09 16:26:08
-13 package:stargazer       <NA>                      base::~ 2020-10-09 16:26:10
-14 Seed @ End              <NA>                      105     2020-10-09 16:26:11
-15 LAST RENDERED           <NA>                      proj_r~ 2020-10-09 16:26:11
+ 1 Seed @ Start            <NA>                      480     2020-10-09 19:14:47
+ 2 package:dplyr           <NA>                      base::~ 2020-10-09 19:14:47
+ 3 package:readr           <NA>                      base::~ 2020-10-09 19:14:47
+ 4 package:tidyr           <NA>                      base::~ 2020-10-09 19:14:47
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-09 19:14:47
+ 6 package:purrr           <NA>                      base::~ 2020-10-09 19:14:47
+ 7 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-09 19:14:47
+ 8 Blot_data_updated.csv   /Users/audreybertin/Docu~ readr:~ 2020-10-09 19:14:47
+ 9 proteins_v_time.png     /Users/audreybertin/Docu~ ggplot~ 2020-10-09 19:14:48
+10 CS_data_redone.csv      /Users/audreybertin/Docu~ readr:~ 2020-10-09 19:14:50
+11 citrate_v_time.png      /Users/audreybertin/Docu~ ggplot~ 2020-10-09 19:14:50
+12 package:skimr           <NA>                      base::~ 2020-10-09 19:14:51
+13 package:stargazer       <NA>                      base::~ 2020-10-09 19:14:53
+14 Seed @ End              <NA>                      105     2020-10-09 19:14:54
+15 LAST RENDERED           <NA>                      proj_r~ 2020-10-09 19:14:54
 \end{verbatim}
 These files, integral to many of the functionalities in
 \texttt{fertile}, are not visible when looking at the file system. Users
@@ -3072,7 +3113,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fac05b57e18>
+<bytecode: 0x7feeb4d41aa8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3106,7 +3147,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fac1a0cce80>
+<bytecode: 0x7feec9639560>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3131,7 +3172,7 @@ function(file, ...) {
     readr::read_csv(file, ...)
   }
 }
-<bytecode: 0x7fac1dccdd18>
+<bytecode: 0x7feece493410>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
