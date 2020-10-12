@@ -151,29 +151,22 @@ Additionally, my work in Introduction to Data Science helped build a strong inte
 
 As soon as I felt that I had built up enough coding experience to be able to tackle challenging issues, I reached out to the data science faculty to see if there were any opportunities. Ben enthusiastically welcomed me in, telling me that he had recently started developing an R package focused on reproducibility and offering me a position assisting him with writing it. That was when I first learned about `fertile`. 
 
-As part of his interest in reproducibility, Ben had been working---with help from Hadley Wickham and Jenny Bryan of RStudio---to develop a package designed to help users create optimul conditions for reproducible work in R (titled "fertile").  
+As part of his interest in reproducibility, Ben had been working---with help from Hadley Wickham and Jenny Bryan of RStudio---to develop a package designed to help users create optimal conditions for reproducible work in R (titled "fertile").  
 
 When it was presented to me, the package was incomplete. Several of the major functions that still exist now were there at the time, but there were not many features beyond the basics. Additionally, several functions were not fully written or throwing errors, the package had little to no documentation, and the majority of tests that had been written to test the functions were failing.
 
 I was given the opportunity to join in on the project and help move `fertile` to a functional state: to fix the errors that were present, document the package, and write new functions to expand the operation beyond the barebones structure that was present.
   
-The `fertile` project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, `fertile` provided a perfect opportunity for me to familiarize myself with the process of writing R packages. 
+The `fertile` project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, `fertile` provided a perfect opportunity for me to learn about the process of writing R packages. 
 
+The more I worked on `fertile`, the more interested in the project I became. The package was unlike anything else I had been exposed to in data science. Most of my course work had been in the form of front-end coding: conducting data analyses and visualizing information. `fertile` is nothing like that. It operates completely behind the scenes, conducting a kind of meta-analysis to determine the reproducibility of a data science project. Rather than writing code to analyze data, I had to learn how to write code to analyze code that *other people* wrote to analyze data. 
 
+This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something defniitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. [On the question](https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in) of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was "probably impossible", while another said there was "fundamentally no way" to achieve it.
 
+The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times incredibly frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills. 
 
-Potential sources:
+Every problem I solved made me more confident in my abilities and more excited to work on the `fertile`. I delved more into the topic of reproducibility and looked at some of the work by other researchers and code developers. This research introduced me to new aspects of reproducibility I wanted to include in the package and inspired me to expand its scope. 
 
-https://arxiv.org/abs/1401.3269
-
-https://academic.oup.com/isp/article-abstract/17/4/392/2528285
-
-
-https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/
-
-https://guides.lib.uw.edu/research/reproducibility/teaching
-
-https://escholarship.org/uc/item/90b2f5xh
-
+This paper is the culmination of the work I have been doing with `fertile` for the past two years. 
 
 

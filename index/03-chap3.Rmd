@@ -108,3 +108,23 @@ knitr::include_graphics("figure/tidytuesday.png")
 ```
 
 `fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
+
+
+
+
+
+
+
+Potential sources:
+
+https://arxiv.org/abs/1401.3269
+
+https://academic.oup.com/isp/article-abstract/17/4/392/2528285
+
+
+https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/
+
+https://guides.lib.uw.edu/research/reproducibility/teaching
+
+https://escholarship.org/uc/item/90b2f5xh
+
