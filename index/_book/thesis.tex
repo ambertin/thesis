@@ -1463,11 +1463,10 @@ projects.
 solutions by combining software and education in one product. The
 package provides a set of simple, easy-to-learn tools that, rather than
 focus intensely on a specific area like other software programs, provide
-some information about a wide variety of aspects influencing
-reproducibility. It is also designed to be incredibly flexible, offering
-benefits to users at any stage in the data analysis workflow and
-providing users with the option to select which aspects of
-reproducibility they want to focus on.
+some information about all six major components of reproducibility. It
+is also designed to be incredibly flexible, offering benefits to users
+at any stage in the data analysis workflow and providing users with the
+option to select which aspects of reproducibility they want to focus on.
 
 \texttt{fertile} also contains several \texttt{R}-specific features,
 which address certain aspects of reproducibility that can be missed by
@@ -1578,7 +1577,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpaaTDj2/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1586,9 +1585,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpaaTDj2/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpaaTDj2/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpaaTDj2/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
 function, which checks all \texttt{.R} and \texttt{.Rmd} code files in
@@ -1613,13 +1612,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpaaTDj2/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-10-13 14:06:05
+1 LAST RENDERED <NA>     proj_render 2020-10-13 17:11:28
 \end{verbatim}
 \subsection{Component 2: Organized Project
 Structure}\label{component-2-organized-project-structure}
@@ -2451,8 +2450,8 @@ structure of a data analysis project, combining four key functions from
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.43K image/png                                 
- 3 proteins_v_time.p~ png     379.55K image/png                                 
+ 2 citrate_v_time.png png     187.89K image/png                                 
+ 3 proteins_v_time.p~ png     376.76K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2786,7 +2785,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 367 x 4
+# A tibble: 375 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2799,7 +2798,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 357 more rows
+# ... with 365 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the
 option to clear the log and start from scratch via the function
@@ -2938,7 +2937,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7f976eb0e108>
+<bytecode: 0x7fc8090e8320>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user.
@@ -3038,16 +3037,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      623     2020-10-13 14:06:20
- 2 package:dplyr           <NA>                      base::~ 2020-10-13 14:06:20
- 3 package:readr           <NA>                      base::~ 2020-10-13 14:06:20
- 4 package:tidyr           <NA>                      base::~ 2020-10-13 14:06:20
- 5 package:ggplot2         <NA>                      base::~ 2020-10-13 14:06:20
- 6 package:purrr           <NA>                      base::~ 2020-10-13 14:06:21
- 7 Seed Before             <NA>                      623     2020-10-13 14:06:21
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-13 14:06:21
- 9 Seed After              <NA>                      13      2020-10-13 14:06:21
-10 Seed Before             <NA>                      13      2020-10-13 14:06:21
+ 1 Seed @ Start            <NA>                      623     2020-10-13 17:11:45
+ 2 package:dplyr           <NA>                      base::~ 2020-10-13 17:11:45
+ 3 package:readr           <NA>                      base::~ 2020-10-13 17:11:45
+ 4 package:tidyr           <NA>                      base::~ 2020-10-13 17:11:45
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-13 17:11:45
+ 6 package:purrr           <NA>                      base::~ 2020-10-13 17:11:45
+ 7 Seed Before             <NA>                      623     2020-10-13 17:11:45
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-13 17:11:45
+ 9 Seed After              <NA>                      13      2020-10-13 17:11:45
+10 Seed Before             <NA>                      13      2020-10-13 17:11:45
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in
@@ -3165,7 +3164,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7f976c33fd10>
+<bytecode: 0x7fc806c9c098>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3200,7 +3199,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f976bb27f20>
+<bytecode: 0x7fc805ed3940>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3238,7 +3237,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7f976eb0e108>
+<bytecode: 0x7fc8090e8320>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
@@ -3390,7 +3389,7 @@ These features make \texttt{fertile} an excellent tool for addressing
 the issue of scientific reproducibility on a widespread scale.
 \texttt{fertile} can provide a variety of benefits to users in all
 different application domains and with all different experiences. In
-this section, we consider the many potential uses of the package.
+this chapter, we consider the many potential uses of the package.
 
 \subsection{In Journal Review}\label{in-journal-review}
 
@@ -3426,7 +3425,14 @@ of ensuring reproducibility in their published articles. Since
 \texttt{fertile} is publicly available, users would have access to the
 exact same testing system as any journal and therefore be able to ensure
 before submission that their articles would meet the provided standards.
-
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figure/journal-process.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{figure}
+\includegraphics[width=10in]{figure/journal-process} \caption{A Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-42}
+\end{figure}
 This process would be much faster than that employed currently at the
 American Journal of Political Science, which goes through a thorough,
 multi-week-long reproducibility confirmation procedure for all submitted
