@@ -1501,7 +1501,7 @@ components of reproducibility discussed in Chapter 1. We will consider
 exploring its analysis of the sample R project shown below, titled
 ``project\_miceps'':
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-7}
+\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-8}
 \end{figure}
 \subsection{Component 1: Accessibile Project
 Files}\label{component-1-accessibile-project-files}
@@ -1536,10 +1536,10 @@ code, data, and auxilliary (image or text) files they have.
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.36K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.49K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.43K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.79K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 Users can also check for the existence of a README description file with
@@ -1578,7 +1578,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpdKF3M2/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1586,9 +1586,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpdKF3M2/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpdKF3M2/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpdKF3M2/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
 function, which checks all \texttt{.R} and \texttt{.Rmd} code files in
@@ -1613,23 +1613,14 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpdKF3M2/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9UI74p/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-10-12 20:23:16
+1 LAST RENDERED <NA>     proj_render 2020-10-13 14:06:05
 \end{verbatim}
-What we \emph{need}:
-\begin{itemize}
-\tightlist
-\item
-  can we report a checklist of the types of files we have available?
-\item
-  it should check for the existence of a code file and data file and
-  also readme
-\end{itemize}
 \subsection{Component 2: Organized Project
 Structure}\label{component-2-organized-project-structure}
 
@@ -1718,13 +1709,11 @@ Joining, by = "path_abs"
    See for help: ?fs::file_delete
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 4 x 1
+# A tibble: 2 x 1
   path_abs                                                                      
   <chr>                                                                         
-1 /Users/audreybertin/Documents/thesis/index/project_miceps/CS_data_redone.csv  
-2 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
-3 /Users/audreybertin/Documents/thesis/index/project_miceps/citrate_v_time.png  
-4 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 \subsubsection{Reorganizing File
 Structure}\label{reorganizing-file-structure}
@@ -1749,9 +1738,9 @@ reorganize the files into folders.
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.36K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.49K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.43K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.79K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 These suggestions are based on achieving the optimal file structure
@@ -1997,10 +1986,28 @@ Coding}\label{proactive-warnings-when-coding}
 
 Proactively, \texttt{fertile} catches when an absolute path, or one
 leading outside of the project directory, is referenced in an input or
-output function and outputs a warning message. This interactive behavior
-is one of the educational features of the package, as it immediately
-provides an informative message explaining what went wrong, giving the
-programmer an opportunity to learn and course-correct from there.
+output function and throws an error.
+
+This interactive behavior is one of the educational features of the
+package, as it immediately provides an informative message explaining to
+the user that such a path is not reproducible, giving the programmer an
+opportunity to learn and course-correct from there.
+
+One of the important components of R package development, however, is
+that a package should not interfere too much with user behavior. Users
+who are trying to code in their console, for example, might still want
+to open a file if they know the path is not reproducible if they are
+just trying to take a quick look at some data.
+
+\texttt{fertile} accounts for this. Even though the package throws an
+error when non-reproducible paths are used, it also provides a solution
+for users to override this behavior and execute the command anyway. This
+is done through the error messaging system. The message provided when an
+error is thrown is custom created, responding to the command and path
+which triggered the error in the first place. For example, in the code
+below, \texttt{read.csv("\textasciitilde{}/Desktop/my\_data.csv")},
+gives a different message than
+\texttt{read\_csv("../../../Desktop/my\_data.csv")}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(fertile)}
@@ -2020,17 +2027,23 @@ Error: Detected absolute paths. Absolute paths are not reproducible and will lik
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
+\KeywordTok{read_csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('../../../Desktop/my_data.csv')
+Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')
 \end{verbatim}
-\texttt{fertile} is particularly strict with the function
-\texttt{setwd()}, as its use is almost certain to break reproducibility.
-Calls to \texttt{setwd()} are blocked from executing, and users must
-conduct a manual override, via the \texttt{danger()} function, to change
-their working directory.
+In addition to catching non-reproducible file paths, \texttt{fertile}
+also stops the user when they try to change the working directory.
+Unlike with input and output functions like \texttt{read\_csv()}, which
+can take a variety of different file paths---some which may be
+reproducible and some not, \texttt{setwd()} is essentially guaranteed to
+break reproducibility, no matter what directory it is set to. As a
+result, \texttt{fertile} is particularly strict with it. When a call to
+\texttt{setwd()} is caught, \texttt{fertile} throws an error and does
+not provide an option to override. Rather, the user is given an
+alternative function (\texttt{here::here()}) to use that achieves the
+same behavior in a much more reproducible way.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{getwd}\NormalTok{()}
@@ -2438,8 +2451,8 @@ structure of a data analysis project, combining four key functions from
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.38K image/png                                 
- 3 proteins_v_time.p~ png     379.74K image/png                                 
+ 2 citrate_v_time.png png     187.43K image/png                                 
+ 3 proteins_v_time.p~ png     379.55K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2773,7 +2786,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 341 x 4
+# A tibble: 367 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2786,7 +2799,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 331 more rows
+# ... with 357 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the
 option to clear the log and start from scratch via the function
@@ -2925,7 +2938,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7fced6346520>
+<bytecode: 0x7f976eb0e108>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user.
@@ -3025,16 +3038,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      495     2020-10-12 20:23:28
- 2 package:dplyr           <NA>                      base::~ 2020-10-12 20:23:28
- 3 package:readr           <NA>                      base::~ 2020-10-12 20:23:28
- 4 package:tidyr           <NA>                      base::~ 2020-10-12 20:23:28
- 5 package:ggplot2         <NA>                      base::~ 2020-10-12 20:23:28
- 6 package:purrr           <NA>                      base::~ 2020-10-12 20:23:29
- 7 Seed Before             <NA>                      495     2020-10-12 20:23:29
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-12 20:23:29
- 9 Seed After              <NA>                      509     2020-10-12 20:23:29
-10 Seed Before             <NA>                      509     2020-10-12 20:23:29
+ 1 Seed @ Start            <NA>                      623     2020-10-13 14:06:20
+ 2 package:dplyr           <NA>                      base::~ 2020-10-13 14:06:20
+ 3 package:readr           <NA>                      base::~ 2020-10-13 14:06:20
+ 4 package:tidyr           <NA>                      base::~ 2020-10-13 14:06:20
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-13 14:06:20
+ 6 package:purrr           <NA>                      base::~ 2020-10-13 14:06:21
+ 7 Seed Before             <NA>                      623     2020-10-13 14:06:21
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-13 14:06:21
+ 9 Seed After              <NA>                      13      2020-10-13 14:06:21
+10 Seed Before             <NA>                      13      2020-10-13 14:06:21
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in
@@ -3152,7 +3165,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fcedc025e78>
+<bytecode: 0x7f976c33fd10>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3162,7 +3175,8 @@ attr(,"req_compilation")
 \texttt{fertile} utilizes the dots (\ldots{}), which allow a function to
 accept additional arguments beyond those pre-defined in the function, to
 facilitate much of its behavior. The two primary locations the dots are
-used are in shims and the \texttt{proj\_check\_some()} function.
+used are in shims, the file path messaging system, and the
+\texttt{proj\_check\_some()} function.
 
 Many of the shimmed functions in \texttt{fertile} accept a large number
 of arguments. Consider \texttt{read\_csv}. The function requires only
@@ -3186,7 +3200,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fced3599d30>
+<bytecode: 0x7f976bb27f20>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3224,7 +3238,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7fced6346520>
+<bytecode: 0x7f976eb0e108>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
@@ -3232,10 +3246,62 @@ functions in \texttt{fertile} take a large number of arguments, the
 \texttt{fertile} versions utilize the dots to simplify the process of
 capturing this user input and saving it for execution later.
 
-The dots are also utilized in the \texttt{proj\_check\_some} function.
-Recall that \texttt{proj\_check\_some} allows users to run a selection
-of \texttt{fertile}'s checks by calling a \texttt{tidyselect} helper to
-pull out a subset of checks with names matching a certain definition.
+The dots are also used in the interactive file path messaging system,
+which notifies the user when they reference an absolute path or one
+leading outside of their project directory by throwing an error and
+providing an informative warning message. They are used in combination
+with shims to capture information about the user action that caused the
+error and to pass this information to the messaging system. This ensures
+that the override code provided at the end of the error message is
+customized to the user's behavior. In the example below, the warning
+message recognizes that \texttt{read.csv} was called with the path
+\texttt{\textasciitilde{}/Desktop/my\_data.csv}, and incorporates that
+into the suggested code:
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+\end{verbatim}
+Finally, the dots play a big role in the \texttt{proj\_check\_some}
+function. Recall that \texttt{proj\_check\_some} allows users to run a
+selection of \texttt{fertile}'s checks by calling a \texttt{tidyselect}
+helper to pull out a subset of checks with names matching a certain
+definition.
 
 This function, which accepts the arguments ``(path,\ldots{}),'' operates
 by allowing the users to pass in their \texttt{tidyselect} call to the

@@ -2,6 +2,13 @@
 
 ##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
+```{r, echo = FALSE, message = FALSE}
+library(stringr)
+wrapoutput <- function(output, width = 80) {
+ message(paste(strwrap(output, width = width), collapse = "\n"))
+}
+```
+
 What if it were possible to address the existing issues with both educational and software reproducibility solutions simultaneously? 
 
 That is where my work comes in. In an attempt to produce meaningful change in the field of reproducibility, I have been developing `fertile`, a software package designed for `R` which helps users create optimal conditions for achieving reproducibility in their projects. 
@@ -96,11 +103,6 @@ slice_tail(render_log_report(temp_dir))
 ```
 
  
-  
-What we *need*:
-
-* can we report a checklist of the types of files we have available?
-* it should check for the existence of a code file and data file and also readme
 
 ### Component 2: Organized Project Structure
 
@@ -264,17 +266,14 @@ What we *need*:
 
 #### Proactive Warnings When Coding
 
-Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and outputs a warning message. This interactive behavior is one of the educational features of the package, as it immediately provides an informative message explaining what went wrong, giving the programmer an opportunity to learn and course-correct from there.
+Proactively, `fertile` catches when an absolute path, or one leading outside of the project directory, is referenced in an input or output function and throws an error. 
 
+This interactive behavior is one of the educational features of the package, as it immediately provides an informative message explaining to the user that such a path is not reproducible, giving the programmer an opportunity to learn and course-correct from there.
 
- 
+One of the important components of R package development, however, is that a package should not interfere too much with user behavior. Users who are trying to code in their console, for example, might still want to open a file if they know the path is not reproducible if they are just trying to take a quick look at some data.  
 
-```{r, echo = FALSE, message = FALSE}
-library(stringr)
-wrapoutput <- function(output, width = 80) {
- message(paste(strwrap(output, width = width), collapse = "\n"))
-}
-```
+`fertile` accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, `read.csv("~/Desktop/my_data.csv")`, gives a different message than `read_csv("../../../Desktop/my_data.csv")`.
+
 
 ```{r write_csv, include=FALSE}
 readr::write_csv(mtcars, "~/Desktop/my_data.csv")
@@ -284,14 +283,11 @@ readr::write_csv(mtcars, "~/Desktop/my_data.csv")
 library(fertile)
 file.exists("~/Desktop/my_data.csv")
 read.csv("~/Desktop/my_data.csv")
-read.csv("../../../Desktop/my_data.csv")
+read_csv("../../../Desktop/my_data.csv")
 ```
 
  
-
-`fertile` is particularly strict with the function `setwd()`, as its use is almost certain to break reproducibility. Calls to `setwd()` are blocked from executing, and users must conduct a manual override, via the `danger()` function, to change their working directory.
-
- 
+In addition to catching non-reproducible file paths, `fertile` also stops the user when they try to change the working directory. Unlike with input and output functions like `read_csv()`, which can take a variety of different file paths---some which may be reproducible and some not, `setwd()` is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, `fertile` is particularly strict with it. When a call to `setwd()` is caught, `fertile` throws an error and does not provide an option to override. Rather, the user is given an alternative function (`here::here()`) to use that achieves the same behavior in a much more reproducible way.
 
 ```{r setwd, message=FALSE, error = TRUE}
 getwd()
@@ -299,7 +295,7 @@ setwd("~/Desktop")
 getwd()
 ```
 
- 
+
 
 #### Project Path Summaries
 
@@ -723,7 +719,7 @@ has_only_portable_paths
 
 ### The Dots (...)
 
-`fertile` utilizes the dots (...), which allow a function to accept additional arguments beyond those pre-defined in the function, to facilitate much of its behavior. The two primary locations the dots are used are in shims and the `proj_check_some()` function. 
+`fertile` utilizes the dots (...), which allow a function to accept additional arguments beyond those pre-defined in the function, to facilitate much of its behavior. The two primary locations the dots are used are in shims, the file path messaging system, and the `proj_check_some()` function. 
 
 Many of the shimmed functions in `fertile` accept a large number of arguments. Consider `read_csv`. The function requires only one argument (`file`) but allows for up to 14. 
 
@@ -739,7 +735,14 @@ fertile::read_csv
 
 The majority of shims have a similar structure. Since almost all shimmed functions in `fertile` take a large number of arguments, the `fertile` versions utilize the dots to simplify the process of capturing this user input and saving it for execution later. 
 
-The dots are also utilized in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
+The dots are also used in the interactive file path messaging system, which notifies the user when they reference an absolute path or one leading outside of their project directory by throwing an error and providing an informative warning message. They are used in combination with shims to capture information about the user action that caused the error and to pass this information to the messaging system. This ensures that the override code provided at the end of the error message is customized to the user's behavior. In the example below, the warning message recognizes that `read.csv` was called with the path `~/Desktop/my_data.csv`, and incorporates that into the suggested code:
+
+```{r}
+read.csv("~/Desktop/my_data.csv")
+```
+
+
+Finally, the dots play a big role in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
 
 This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
 
