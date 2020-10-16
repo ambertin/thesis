@@ -1,10 +1,23 @@
 # Conclusion {-}
 
-`fertile` is an `R` package that lowers barriers to reproducible data analysis projects in `R`, providing a wide array of checks and suggestions addressing many different aspects of project reproducibility, including file organization, file path usage, documentation, and dependencies.
-`fertile` is meant to be educational, providing informative error messages that indicate why users' mistakes are problematic and sharing recommendations on how to fix them. The package is designed in this way so as to promote a greater understanding of reproducibility concepts in its users, with the goal of increasing the overall awareness and understanding of reproducibility in the `R` community.
+In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst.
 
-The package has very low barriers to entry, making it accessible to users with various levels of background knowledge. Unlike many other `R` packages focused on reproducibility that are currently available, the features of `fertile` can be accessed almost effortlessly. Many of the retroactive features can be accessed in only two lines of code requiring minimal arguments and some of the proactive features can be accessed with no additional effort beyond loading the package. This, in combination with the fact that `fertile` does not focus on one specific area of reproducibility, instead covering (albeit in less detail) a wide variety of topics, means that `fertile` makes it easy for data analysts of all skill levels to quickly gain a better understanding of the reproducibility of the work.
+Reproducibility is incredibly important to the scientific community, helping ensure the accuracy of the findings of studies and data analyses and simplifying the process of collaboration and knowledge sharing. When all of the files necessary for a study to be run are published simultaneously, it makes it much easier for others to understand the methods and ideas that were used and apply them to other work in similar areas, promoting the process of scientific advancement. 
 
-In the moment, it often feels easiest to take a shortcut---to use an absolute path or change a working directory. However, when considering the long term path of a project, spending the extra time to improve reproducibility is worthwhile. `fertile`'s user-friendly features can help data analysts avoid these harmful shortcuts with minimal effort.
+However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. The vast majority of researchers across all scientific fields have been unable to reproduce another researcher's results, and many have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
+
+Recognizing the issue, scientists from a variety of communities have begun to write about reproducibility, working to define and spread information about the components necessary for a project to be considered reproducible. Though there has not been a clear consensus on the exact components necessary, several clear trends emerge when looking at a variety of authors' reproducibility criteria. These, when combined, require that a reproducible project meet the following standards.
+
+1. The basic project components are made accessible to the public.
+
+2. The file structure of project is well-organized.
+
+3. The project is documented well.
+
+4. File paths used in code are not system- or user-dependent.
+
+5. Randomness is accounted for.
+
+6. Code is readable and consistently styled.
 
 

@@ -1458,7 +1458,14 @@ change in the field of reproducibility, I have been developing
 \texttt{fertile}, a software package designed for \texttt{R} which helps
 users create optimal conditions for achieving reproducibility in their
 projects.
+\begin{figure}
 
+{\centering \includegraphics[width=0.3\linewidth]{figure/fertile-hex} 
+
+}
+
+\caption{fertile's Package Logo}\label{fig:unnamed-chunk-8}
+\end{figure}
 \texttt{fertile} attempts to address the gaps in existing reproducbility
 solutions by combining software and education in one product. The
 package provides a set of simple, easy-to-learn tools that, rather than
@@ -1500,7 +1507,7 @@ components of reproducibility discussed in Chapter 1. We will consider
 exploring its analysis of the sample R project shown below, titled
 ``project\_miceps'':
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-8}
+\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-9}
 \end{figure}
 \subsection{Component 1: Accessibile Project
 Files}\label{component-1-accessibile-project-files}
@@ -1535,10 +1542,10 @@ code, data, and auxilliary (image or text) files they have.
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.49K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.12K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.79K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.75K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 Users can also check for the existence of a README description file with
@@ -1577,7 +1584,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp023Zt2/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpATavon/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1585,9 +1592,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp023Zt2/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp023Zt2/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp023Zt2/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpATavon/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpATavon/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpATavon/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
 function, which checks all \texttt{.R} and \texttt{.Rmd} code files in
@@ -1599,7 +1606,7 @@ their project is self-contained.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Rendering R scripts... ---------------------------------------------------- fertile 0.0.0.9028 --
+-- Rendering R scripts... ------------------------------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 If \texttt{proj\_render()} executes without error, this indicates that
 all the necessary files are present. Users can also confirm this by
@@ -1612,13 +1619,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp023Zt2/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpATavon/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-10-14 13:59:24
+1 LAST RENDERED <NA>     proj_render 2020-10-16 17:07:10
 \end{verbatim}
 \subsection{Component 2: Organized Project
 Structure}\label{component-2-organized-project-structure}
@@ -1737,9 +1744,9 @@ reorganize the files into folders.
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.49K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.12K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.79K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.75K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 These suggestions are based on achieving the optimal file structure
@@ -1849,7 +1856,7 @@ packages that were loaded, and their specific versions.
 The dependency information from \texttt{project\_miceps} looks as
 follows:
 \begin{verbatim}
--- Rendering R scripts... ---------------------------------------------------- fertile 0.0.0.9028 --
+-- Rendering R scripts... ------------------------------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2081,7 +2088,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... -------------------------------------- fertile 0.0.0.9028 --
+-- Generating reproducibility report... ---------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -2348,7 +2355,7 @@ A summary of the six components of reproducibility and the
 functionalities in \texttt{fertile} associated with them is provided
 below.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/components-summary} \caption{Summary of Reproducibility Components and the Related Functionalities in 'fertile'}\label{fig:unnamed-chunk-30}
+\includegraphics[width=1\linewidth]{figure/components-summary} \caption{Summary of Reproducibility Components and the Related Functionalities in 'fertile'}\label{fig:unnamed-chunk-31}
 \end{figure}
 \subsection{User Customizability}\label{user-customizability}
 
@@ -2385,7 +2392,7 @@ a call to \texttt{set.seed()} present. A full list is provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ------------------------- fertile 0.0.0.9028 --
+-- The available checks in `fertile` are as follows: --------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -2422,10 +2429,10 @@ structure of a data analysis project, combining four key functions from
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps ---------------------------- fertile 0.0.0.9028 --
+-- Analysis of reproducibility for project_miceps ------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code -------------------------------------- fertile 0.0.0.9028 --
+--   Packages referenced in source code ---------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -2443,15 +2450,15 @@ structure of a data analysis project, combining four key functions from
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory ---------------------------------------------- fertile 0.0.0.9028 --
+--   Files present in directory ------------------------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.14K image/png                                 
- 3 proteins_v_time.p~ png     377.87K image/png                                 
+ 2 citrate_v_time.png png     188.06K image/png                                 
+ 3 proteins_v_time.p~ png      378.6K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2462,7 +2469,7 @@ structure of a data analysis project, combining four key functions from
 11 analysis.Rmd       Rmd       5.21K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files -------------------------------------------- fertile 0.0.0.9028 --
+--   Suggestions for moving files ---------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2479,7 +2486,7 @@ structure of a data analysis project, combining four key functions from
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ------------------------------------------------ fertile 0.0.0.9028 --
+--   Problematic paths logged -------------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -2516,7 +2523,7 @@ checking their tidyness can do so all at once using
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks -------------------------------------------- fertile 0.0.0.9028 --
+-- Running reproducibility checks ---------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no *.R scripts at root level
@@ -2570,7 +2577,7 @@ v Checking for no A/V files at root level
 v Checking for no source files at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------------------------- fertile 0.0.0.9028 --
+-- Summary of fertile checks --------------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 4
@@ -2625,7 +2632,7 @@ together:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks -------------------------------------------- fertile 0.0.0.9028 --
+-- Running reproducibility checks ---------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for nested .Rproj files within project
@@ -2634,7 +2641,7 @@ v Checking for nested .Rproj files within project
 v Checking for single .Rproj file at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------------------------- fertile 0.0.0.9028 --
+-- Summary of fertile checks --------------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -2647,13 +2654,13 @@ Or, perhaps, they might want to run all the functions beginning with
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... -------------------------------------------------------------- fertile 0.0.0.9028 --
+-- Compiling... ---------------------------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... ---------------------------------------------------- fertile 0.0.0.9028 --
+-- Rendering R scripts... ------------------------------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks -------------------------------------------- fertile 0.0.0.9028 --
+-- Running reproducibility checks ---------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 Joining, by = "path_abs"
@@ -2696,7 +2703,7 @@ Joining, by = "path_abs"
 2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ------------------------------------------------- fertile 0.0.0.9028 --
+-- Summary of fertile checks --------------------------------------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 0
@@ -2785,7 +2792,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 415 x 4
+# A tibble: 439 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2798,7 +2805,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 405 more rows
+# ... with 429 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the
 option to clear the log and start from scratch via the function
@@ -2869,7 +2876,7 @@ load libraries, and set random number generation seeds. A full list of
 shimmed functions, organized by their original package, is provided
 below:
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-34}
+\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-35}
 \end{figure}
 When users perform actions that may threaten reproducibility, the
 package's shimmed functions intercept the user's commands and perform
@@ -2937,7 +2944,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7f94083cf1e8>
+<bytecode: 0x7f8278db9f58>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user.
@@ -3037,16 +3044,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      623     2020-10-14 13:59:36
- 2 package:dplyr           <NA>                      base::~ 2020-10-14 13:59:37
- 3 package:readr           <NA>                      base::~ 2020-10-14 13:59:37
- 4 package:tidyr           <NA>                      base::~ 2020-10-14 13:59:37
- 5 package:ggplot2         <NA>                      base::~ 2020-10-14 13:59:37
- 6 package:purrr           <NA>                      base::~ 2020-10-14 13:59:37
- 7 Seed Before             <NA>                      623     2020-10-14 13:59:37
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-14 13:59:37
- 9 Seed After              <NA>                      13      2020-10-14 13:59:37
-10 Seed Before             <NA>                      13      2020-10-14 13:59:37
+ 1 Seed @ Start            <NA>                      599     2020-10-16 17:07:23
+ 2 package:dplyr           <NA>                      base::~ 2020-10-16 17:07:23
+ 3 package:readr           <NA>                      base::~ 2020-10-16 17:07:23
+ 4 package:tidyr           <NA>                      base::~ 2020-10-16 17:07:23
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-16 17:07:23
+ 6 package:purrr           <NA>                      base::~ 2020-10-16 17:07:23
+ 7 Seed Before             <NA>                      599     2020-10-16 17:07:23
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-16 17:07:23
+ 9 Seed After              <NA>                      613     2020-10-16 17:07:23
+10 Seed Before             <NA>                      613     2020-10-16 17:07:23
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in
@@ -3164,7 +3171,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7f940179af30>
+<bytecode: 0x7f827aec0978>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3199,7 +3206,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f9405144b68>
+<bytecode: 0x7f8275937c80>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3237,7 +3244,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7f94083cf1e8>
+<bytecode: 0x7f8278db9f58>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
@@ -3551,7 +3558,7 @@ of ensuring reproducibility in their published articles. Since
 exact same testing system as any journal and therefore be able to ensure
 before submission that their articles would meet the provided standards.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process} \caption{A Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-42}
+\includegraphics[width=1\linewidth]{figure/journal-process} \caption{A Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-43}
 \end{figure}
 This process would be much faster than that employed currently at the
 American Journal of Political Science, which goes through a thorough,
@@ -3584,7 +3591,7 @@ often requires that participants have knowledge of data analysis and the
 scientific research process to be successful. As a result, such courses
 focused on reproducibility tend to exist only at the graduate level.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course (Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf)}\label{fig:unnamed-chunk-43}
+\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course (Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf)}\label{fig:unnamed-chunk-44}
 \end{figure}
 Undergraduate students, therefore, do not get exposed to reproducibility
 very often. There are a few exceptions--for instance, introductory
@@ -3835,38 +3842,47 @@ Potential sources:
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-\texttt{fertile} is an \texttt{R} package that lowers barriers to
-reproducible data analysis projects in \texttt{R}, providing a wide
-array of checks and suggestions addressing many different aspects of
-project reproducibility, including file organization, file path usage,
-documentation, and dependencies. \texttt{fertile} is meant to be
-educational, providing informative error messages that indicate why
-users' mistakes are problematic and sharing recommendations on how to
-fix them. The package is designed in this way so as to promote a greater
-understanding of reproducibility concepts in its users, with the goal of
-increasing the overall awareness and understanding of reproducibility in
-the \texttt{R} community.
+In the field of data science, research is considered fully
+\emph{reproducible} when the requisite code and data files produce
+identical results when run by another analyst.
 
-The package has very low barriers to entry, making it accessible to
-users with various levels of background knowledge. Unlike many other
-\texttt{R} packages focused on reproducibility that are currently
-available, the features of \texttt{fertile} can be accessed almost
-effortlessly. Many of the retroactive features can be accessed in only
-two lines of code requiring minimal arguments and some of the proactive
-features can be accessed with no additional effort beyond loading the
-package. This, in combination with the fact that \texttt{fertile} does
-not focus on one specific area of reproducibility, instead covering
-(albeit in less detail) a wide variety of topics, means that
-\texttt{fertile} makes it easy for data analysts of all skill levels to
-quickly gain a better understanding of the reproducibility of the work.
+Reproducibility is incredibly important to the scientific community,
+helping ensure the accuracy of the findings of studies and data analyses
+and simplifying the process of collaboration and knowledge sharing. When
+all of the files necessary for a study to be run are published
+simultaneously, it makes it much easier for others to understand the
+methods and ideas that were used and apply them to other work in similar
+areas, promoting the process of scientific advancement.
 
-In the moment, it often feels easiest to take a shortcut---to use an
-absolute path or change a working directory. However, when considering
-the long term path of a project, spending the extra time to improve
-reproducibility is worthwhile. \texttt{fertile}'s user-friendly features
-can help data analysts avoid these harmful shortcuts with minimal
-effort.
+However, even though it has many benefits in the scientific community,
+reproducibility is currently facing a crisis. The vast majority of
+researchers across all scientific fields have been unable to reproduce
+another researcher's results, and many have been unable to reproduce
+even their own. In some fields, more than half of published articles
+have failed attempts at reproducibility.
 
+Recognizing the issue, scientists from a variety of communities have
+begun to write about reproducibility, working to define and spread
+information about the components necessary for a project to be
+considered reproducible. Though there has not been a clear consensus on
+the exact components necessary, several clear trends emerge when looking
+at a variety of authors' reproducibility criteria. These, when combined,
+require that a reproducible project meet the following standards.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The basic project components are made accessible to the public.
+\item
+  The file structure of project is well-organized.
+\item
+  The project is documented well.
+\item
+  File paths used in code are not system- or user-dependent.
+\item
+  Randomness is accounted for.
+\item
+  Code is readable and consistently styled.
+\end{enumerate}
 \appendix
 
 \chapter{The First Appendix}\label{the-first-appendix}

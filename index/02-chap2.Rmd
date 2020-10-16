@@ -13,6 +13,11 @@ What if it were possible to address the existing issues with both educational an
 
 That is where my work comes in. In an attempt to produce meaningful change in the field of reproducibility, I have been developing `fertile`, a software package designed for `R` which helps users create optimal conditions for achieving reproducibility in their projects. 
 
+```{r, echo = FALSE, out.width = "30%", fig.align = 'center', fig.cap = "fertile's Package Logo"}
+knitr::include_graphics("figure/fertile-hex.png")
+```
+
+
 `fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about all six major components of reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. 
 
 `fertile` also contains several `R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
