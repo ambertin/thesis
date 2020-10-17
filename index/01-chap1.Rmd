@@ -395,6 +395,6 @@ The full list of necessary features for an effective reproducibility tool are pr
 4) Have features specific to a particular coding language that can address that language's unique challenges.
 5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
 6) Be educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.
-7) Be applicable to a wide variety of domains and users.
+7) Be applicable to a wide variety of domains.
 
 While this seems like a lot to ask, such a task is not impossible. In the next chapter, we will consider one potential solution: `fertile`, an R package focused on reproducibility that I have worked to develop.

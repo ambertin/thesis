@@ -791,5 +791,6 @@ As discussed in Chapter 2.1.8, `fertile` is highly customizable, providing users
 
 `fertile` contains many different educational features. All of the reproducibility checks, when they fail, produce an informative warning message detailing where the failure occurred and providing a solution for how to address it. Additionally, the interactive warning system plays a big role in reproducibility education. Users are stopped immediately any time they use a non-reproducible file path and told why their path is problematic. This helps educate users on the correct use of file paths, ensuring that such mistakes do not happen many times.
 
-**7) Be applicable to a wide variety of domains and users.**
+**7) Be applicable to a wide variety of domains.**
 
+Due to its low learning curve, customizability, and all-component-encompassing nature, `fertile` has the potential to provide benefits to users in a wide variety of donains. We will consider these in detail in the next chapter.

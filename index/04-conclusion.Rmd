@@ -1,12 +1,6 @@
 # Conclusion {-}
 
-In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst.
-
-Reproducibility is incredibly important to the scientific community, helping ensure the accuracy of the findings of studies and data analyses and simplifying the process of collaboration and knowledge sharing. When all of the files necessary for a study to be run are published simultaneously, it makes it much easier for others to understand the methods and ideas that were used and apply them to other work in similar areas, promoting the process of scientific advancement. 
-
-However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. The vast majority of researchers across all scientific fields have been unable to reproduce another researcher's results, and many have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
-
-Recognizing the issue, scientists from a variety of communities have begun to write about reproducibility, working to define and spread information about the components necessary for a project to be considered reproducible. Though there has not been a clear consensus on the exact components necessary, several clear trends emerge when looking at a variety of authors' reproducibility criteria. These, when combined, require that a reproducible project meet the following standards.
+In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst. Though there is no clear consensus on the exact standards necessary to achieve reproducibility, writing on the topic identifies several components of great importance:
 
 1. The basic project components are made accessible to the public.
 
@@ -20,4 +14,28 @@ Recognizing the issue, scientists from a variety of communities have begun to wr
 
 6. Code is readable and consistently styled.
 
+Reproducibility is incredibly important to the scientific community, helping ensure the accuracy of the findings of studies and data analyses and simplifying the process of collaboration and knowledge sharing. When all of the files necessary for a study to be run are published simultaneously, it makes it much easier for others to understand the methods and ideas that were used and apply them to other work in similar areas, promoting the process of scientific advancement. 
+
+However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. The vast majority of researchers across all scientific fields have been unable to reproduce another researcher's results, and many have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
+
+Researchers across the sciences have recognized this problem and taken steps to address it.
+Data-intensive academic journals have put in place reproducibility guidelines requiring that submitted articles meet at least some of the standards listed above. Software developers have built tools to help data analysts make their projects more reproducible. These include a small library of `R` packages, which provide benefits to users of the popular statistical language `R`, as well as several continuous integration tools, which are much more broad in their application. Educators have also taken action on reproducibility, introducing courses and workshops focused on the topic at their universities. 
+
+However, many of these solutions have fallen short. Even with reproducibility guidelines, many journals still publish work that is not reproducible. Journal review takes significantly longer and requires many more resources when ensuring that reproducibility guidelines are fully met. Journals often cannot spare the additional time and money, leaving it up to submitting authors to ensure that their articles meet standards. Since the adherence to standards is not often checked, and achieving full reproducibility can sometimes be time consuming and challenging, many authors fail to take this step. 
+
+Software solutions have not fared much better. Many of the `R` specific solutions only address a single component of reproducibility---for example, version control---and leave out the rest, making it challenging for researchers to address their problems all at once. Additionally, a lot of the software is quite complex in its operation, containing barriers to entry that prevent less-experienced `R` users from trying them. The continuous integration tools do not face the same issues, but have their own problems. Due to their general nature, these tools do not have any way of addressing coding-language-specific reproducibility problems such as managing software dependencies.
+
+Finally, educational attempts to address reproducibility are inaccessible and time consuming to implement. Many of the existing educational options require a great deal of research knowledge, and as a result are only available at the graduate level, leaving undergraduate students with little to no exposure on the subject. Additionally, many current versions of reproducibility education require a lot of time and focus in class. Professors wanting to share the topic of reproducibility with their students must do so while sacrificing a significant portion of time from other important topics. 
+
+Due to their many associated shortcomings, none of these solutions appear to have the potential to address the problem of reproducibility on a wider scale. That is where my work comes in. I have worked to develop `fertile`, a package built for `R` users that is focused on creating optimum conditions for reproducibility for data analysis projects written in `R`.
+
+The package is designed to possess none of the challenges apparent in other solutions---to serve as a one-stop solution, where users can go to address all of their reproducibility needs at one time. Rather than being time consuming, complicated, inaccessible, or too focused on one issue, `fertile` is:
+
+1) Simple, with a small library of functions/tools that are straightforward to use.
+2) Accessible to a variety of users, with a relatively small learning curve.
+3) Able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
+4) Language specific, possessing features that address some of the reproducibility challenges associated with `R`.
+5) Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
+6) Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.
+7) Applicable to a wide variety of domains.
 
