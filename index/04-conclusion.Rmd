@@ -31,11 +31,22 @@ Due to their many associated shortcomings, none of these solutions appear to hav
 
 The package is designed to possess none of the challenges apparent in other solutions---to serve as a one-stop solution, where users can go to address all of their reproducibility needs at one time. Rather than being time consuming, complicated, inaccessible, or too focused on one issue, `fertile` is:
 
-1) Simple, with a small library of functions/tools that are straightforward to use.
-2) Accessible to a variety of users, with a relatively small learning curve.
-3) Able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
-4) Language specific, possessing features that address some of the reproducibility challenges associated with `R`.
-5) Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
-6) Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.
-7) Applicable to a wide variety of domains.
+1) Simple, with a small library of functions/tools that are straightforward to use. Some of the package's functionalities, like the interactive file path warning system, require no effort from the user to enable, while most others can be run with only a handful of functions requiring one argument: a path to a project directory.
 
+2) *Accessible to a variety of users, with a relatively small learning curve.* Users do not need a background in research, nor do they need an advanced knowledge of `R` programming, to run the majority of functions in `fertile`.
+
+3) *Able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.* `fertile` contains functions to address all six previously defined reproducibility components, unlike most software which addresses only one or two.
+
+4) *Language specific, possessing features that address some of the reproducibility challenges associated with `R`.* The `has_no_randomness()`, `proj_pkg_script()`, and `proj_dependency_report()` functions handle the `R`-specific issues of random number generation and package dependencies.
+
+5) *Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.* There is no one way that users are forced to use `fertile`. Those who only want to focus on one aspect of reproducibility can do so, while those who want to address everything at once have that option as well. 
+
+6) *Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.* Throughout the reproducibility checking process, `fertile` provides informative messages that explain to users the flaws in their code and show them ways to correct the issues.
+
+Due to its many advantages compared with traditional reproducibility solutions, `fertile` has the potential to provide significant benefits in a variety of domains, including in the areas of journal review and education, where other solutions have not quite met the mark.
+
+In the journal review process, `fertile` can be integrated to help ensure that submitted articles meet reproducibility standards. Since `fertile` is both free and publicly available, authors and journal reviewers could take advantage of it in their reproducibility-checking process. Journals might require that certain `fertile` checks be passed for articles to be approved, submitting authors could ensure that their projects pass on their end, and then all that would be required for journals to ensure reproducibility would be a quick run of `fertile`'s functions. This would greatly reduce the barriers on both the reviewing and authoring side of the issue and would vastly speed up the reproducibility-checking process, making it much easier to ensure that published articles are truly reproducible.
+
+In the classroom, `fertile` could be used to extend reproducibility education to undergraduate students---even those at the introductory level. Due to its simplicity, the package would take minimal time and effort to integrate into courses, allowing professors to teach reproducibility without taking important time away from other key topics. If professors were to integrate `fertile` in to their courses, students would be able begin learning about reproducibility much earlier in their data science careers than would likely happen otherwise, increasing the chance that they prioritize reproducibility in their future work.
+
+Academia and research are not the only applications, however. `fertile` could also assist the general world of data science. `R` bloggers and Tidy Tuesday participants could use the package to improve the quality of their code- and data- sharing, making it easier for others to learn from their work. Data journalists, in some situations, could do something similar, sharing the (reproducible) code and data behind their projects to remove the black-box nature that some such projects possess, building a relationship of trust with their readers. And private companies doing consulting work could integrate `fertile` into their workflow as a way of increasing transparency between themselves and their clients. 
