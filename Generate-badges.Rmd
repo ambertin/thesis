@@ -1,0 +1,54 @@
+---
+title: "Generate package badges"
+author: "Audrey Bertin"
+date: "10/19/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(hexSticker)
+```
+
+# Badge 1: Good File Structure
+
+```{r}
+sticker("badge-images/good-structure.png", package="Project Structure", p_size=5, s_x=1, s_y=.75, s_width=.5,  h_fill="#f9690e", h_color="#f39c12",
+        filename="structure-badge.png")
+```
+
+# Badge 2: Documentation
+
+```{r}
+sticker("badge-images/documentation.png", package="Documentation", p_size=5, s_x=1, s_y=.75, s_width=.4,  h_fill="#2e856e", h_color="#5ca08e",
+        filename="documentation-badge.png")
+```
+
+# Badge 3: File Paths
+
+```{r}
+sticker("badge-images/paths.png", package="File Paths", p_size=6, s_x=1, s_y=.75, s_width=.4,  h_fill="#10a5f5", h_color="#0c71e0",
+        filename="paths-badge.png")
+```
+
+# Badge 4: Tidy Files
+
+```{r}
+sticker("badge-images/tidy-files.png", package="Tidy Files", p_size=6, s_x=1, s_y=.75, s_width=.5,  h_fill="#ffd700", h_color="#ffb404",
+        filename="tidy-badge.png")
+```
+
+# Badge 5: Randomness
+
+```{r}
+sticker("badge-images/randomness.png", package="Randomness", p_size=6, s_x=1, s_y=.75, s_width=.6,  h_fill="#b53737", h_color="#8e1600",
+        filename="randomness-badge.png")
+```
+
+# Badge 6: Style
+
+```{r}
+sticker("badge-images/code-style.png", package="Code Style", p_size=6, s_x=1, s_y=0.8, s_width=.8,  h_fill="#000000", h_color="#909090",
+        filename="style-badge.png")
+```
+
