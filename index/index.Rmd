@@ -99,7 +99,7 @@ library(thesisdown)
 ```
 
 
-```{r wrap-hook}
+```{r wrap-hook, echo = FALSE}
 library(knitr)
 hook_output = knit_hooks$get('output')
 knit_hooks$set(output = function(x, options) {

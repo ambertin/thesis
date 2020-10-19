@@ -246,22 +246,7 @@ Second paragraph of abstract starts here.
 
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(knitr)}
-\NormalTok{hook_output =}\StringTok{ }\NormalTok{knit_hooks}\OperatorTok{$}\KeywordTok{get}\NormalTok{(}\StringTok{'output'}\NormalTok{)}
-\NormalTok{knit_hooks}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{output =} \ControlFlowTok{function}\NormalTok{(x, options) \{}
-  \CommentTok{# this hook is used only when the linewidth option is not NULL}
-  \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{is.null}\NormalTok{(n <-}\StringTok{ }\NormalTok{options}\OperatorTok{$}\NormalTok{linewidth)) \{}
-\NormalTok{    x =}\StringTok{ }\NormalTok{knitr}\OperatorTok{:::}\KeywordTok{split_lines}\NormalTok{(x)}
-    \CommentTok{# any lines wider than n should be wrapped}
-    \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{any}\NormalTok{(}\KeywordTok{nchar}\NormalTok{(x) }\OperatorTok{>}\StringTok{ }\NormalTok{n)) x =}\StringTok{ }\KeywordTok{strwrap}\NormalTok{(x, }\DataTypeTok{width =}\NormalTok{ n)}
-\NormalTok{    x =}\StringTok{ }\KeywordTok{paste}\NormalTok{(x, }\DataTypeTok{collapse =} \StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}\NormalTok{)}
-\NormalTok{  \}}
-  \KeywordTok{hook_output}\NormalTok{(x, options)}
-\NormalTok{\})}
-\end{Highlighting}
-\end{Shaded}
+
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
@@ -1584,7 +1569,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbDCDud/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWNQu7p/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1592,9 +1577,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbDCDud/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbDCDud/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbDCDud/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWNQu7p/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWNQu7p/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWNQu7p/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()}
 function, which checks all \texttt{.R} and \texttt{.Rmd} code files in
@@ -1606,7 +1591,7 @@ their project is self-contained.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Rendering R scripts... -------------------------- fertile 0.0.0.9029 --
+-- Rendering R scripts... -------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 If \texttt{proj\_render()} executes without error, this indicates that
 all the necessary files are present. Users can also confirm this by
@@ -1619,13 +1604,13 @@ current time, the project successfully compiled.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpbDCDud/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpWNQu7p/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2020-10-17 15:33:15
+1 LAST RENDERED <NA>     proj_render 2020-10-19 13:37:15
 \end{verbatim}
 \subsection{Component 2: Organized Project
 Structure}\label{component-2-organized-project-structure}
@@ -1856,7 +1841,7 @@ packages that were loaded, and their specific versions.
 The dependency information from \texttt{project\_miceps} looks as
 follows:
 \begin{verbatim}
--- Rendering R scripts... -------------------------- fertile 0.0.0.9029 --
+-- Rendering R scripts... -------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2088,7 +2073,7 @@ explaining the problem, and providing a solution.
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Generating reproducibility report... ------------ fertile 0.0.0.9029 --
+-- Generating reproducibility report... ------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 Checking for absolute paths...
@@ -2392,7 +2377,7 @@ a call to \texttt{set.seed()} present. A full list is provided below:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- The available checks in `fertile` are as follows: ---------------------
+-- The available checks in `fertile` are as follows: ----- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
  [1] "has_tidy_media"          "has_tidy_images"        
@@ -2429,10 +2414,10 @@ structure of a data analysis project, combining four key functions from
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Analysis of reproducibility for project_miceps -- fertile 0.0.0.9029 --
+-- Analysis of reproducibility for project_miceps -------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
---   Packages referenced in source code ------------ fertile 0.0.0.9029 --
+--   Packages referenced in source code ------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 10 x 3
@@ -2450,15 +2435,15 @@ structure of a data analysis project, combining four key functions from
 10 tidyr         1 project_miceps/analysis.Rmd
 \end{verbatim}
 \begin{verbatim}
---   Files present in directory -------------------- fertile 0.0.0.9029 --
+--   Files present in directory -------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 11 x 4
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.95K image/png                                 
- 3 proteins_v_time.p~ png      379.7K image/png                                 
+ 2 citrate_v_time.png png     185.67K image/png                                 
+ 3 proteins_v_time.p~ png     377.97K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2469,7 +2454,7 @@ structure of a data analysis project, combining four key functions from
 11 analysis.Rmd       Rmd       5.21K text/x-markdown                           
 \end{verbatim}
 \begin{verbatim}
---   Suggestions for moving files ------------------ fertile 0.0.0.9029 --
+--   Suggestions for moving files ------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 9 x 3
@@ -2486,7 +2471,7 @@ structure of a data analysis project, combining four key functions from
 9 software-versions~ inst/text  file_move('project_miceps/software-versions.txt~
 \end{verbatim}
 \begin{verbatim}
---   Problematic paths logged ---------------------- fertile 0.0.0.9029 --
+--   Problematic paths logged ---------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 NULL
@@ -2523,7 +2508,7 @@ checking their tidyness can do so all at once using
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks ------------------ fertile 0.0.0.9029 --
+-- Running reproducibility checks ------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for no *.R scripts at root level
@@ -2577,7 +2562,7 @@ v Checking for no A/V files at root level
 v Checking for no source files at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------- fertile 0.0.0.9029 --
+-- Summary of fertile checks ----------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 4
@@ -2632,7 +2617,7 @@ together:
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Running reproducibility checks ------------------ fertile 0.0.0.9029 --
+-- Running reproducibility checks ------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Checking for nested .Rproj files within project
@@ -2641,7 +2626,7 @@ v Checking for nested .Rproj files within project
 v Checking for single .Rproj file at root level
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------- fertile 0.0.0.9029 --
+-- Summary of fertile checks ----------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 2
@@ -2654,13 +2639,13 @@ Or, perhaps, they might want to run all the functions beginning with
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
--- Compiling... ------------------------------------ fertile 0.0.0.9029 --
+-- Compiling... ------------------------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
--- Rendering R scripts... -------------------------- fertile 0.0.0.9029 --
+-- Rendering R scripts... -------------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
--- Running reproducibility checks ------------------ fertile 0.0.0.9029 --
+-- Running reproducibility checks ------------------------ fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 Joining, by = "path_abs"
@@ -2703,7 +2688,7 @@ Joining, by = "path_abs"
 2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
 \end{verbatim}
 \begin{verbatim}
--- Summary of fertile checks ----------------------- fertile 0.0.0.9029 --
+-- Summary of fertile checks ----------------------------- fertile 0.0.0.9029 --
 \end{verbatim}
 \begin{verbatim}
 v Reproducibility checks passed: 0
@@ -2792,7 +2777,7 @@ called.
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 455 x 4
+# A tibble: 471 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2805,7 +2790,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 445 more rows
+# ... with 461 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the
 option to clear the log and start from scratch via the function
@@ -2944,7 +2929,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7fce3a829cf0>
+<bytecode: 0x7fd589d1e890>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user.
@@ -3044,16 +3029,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2020-10-17 15:33:28
- 2 package:dplyr           <NA>                      base::~ 2020-10-17 15:33:28
- 3 package:readr           <NA>                      base::~ 2020-10-17 15:33:29
- 4 package:tidyr           <NA>                      base::~ 2020-10-17 15:33:29
- 5 package:ggplot2         <NA>                      base::~ 2020-10-17 15:33:29
- 6 package:purrr           <NA>                      base::~ 2020-10-17 15:33:29
- 7 Seed Before             <NA>                      599     2020-10-17 15:33:29
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-17 15:33:29
- 9 Seed After              <NA>                      613     2020-10-17 15:33:29
-10 Seed Before             <NA>                      613     2020-10-17 15:33:29
+ 1 Seed @ Start            <NA>                      599     2020-10-19 13:37:28
+ 2 package:dplyr           <NA>                      base::~ 2020-10-19 13:37:28
+ 3 package:readr           <NA>                      base::~ 2020-10-19 13:37:28
+ 4 package:tidyr           <NA>                      base::~ 2020-10-19 13:37:28
+ 5 package:ggplot2         <NA>                      base::~ 2020-10-19 13:37:29
+ 6 package:purrr           <NA>                      base::~ 2020-10-19 13:37:29
+ 7 Seed Before             <NA>                      599     2020-10-19 13:37:29
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2020-10-19 13:37:29
+ 9 Seed After              <NA>                      613     2020-10-19 13:37:29
+10 Seed Before             <NA>                      613     2020-10-19 13:37:29
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in
@@ -3171,7 +3156,7 @@ function(path = ".") {
   )
 
 }
-<bytecode: 0x7fce37344ef8>
+<bytecode: 0x7fd5879fe328>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -3206,7 +3191,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fce36b5b310>
+<bytecode: 0x7fd5871c2558>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv},
@@ -3244,7 +3229,7 @@ function(file, ...) {
     return (data)
   }
 }
-<bytecode: 0x7fce3a829cf0>
+<bytecode: 0x7fd589d1e890>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed
