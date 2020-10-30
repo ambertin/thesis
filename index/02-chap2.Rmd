@@ -26,7 +26,7 @@ In addition, `fertile` is designed to be educational, teaching its users about t
 
 `fertile` is structured in such a way as to be understandable and operable to individuals of any skill level, from students in their first undergraduate data science course to experienced PhD statisticians. The majority of its tools can be accessed in only a handful of functions with minimal required arguments. This simplicity makes the process of achieving and learning about reproducibility accessible to a wide audience in a way that complex software programs or graduate courses requiring an advanced knowledge of research methods do not.
 
-Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. `fertile` provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider `fertile`'s treatment of each of these components in turn, exploring its analysis of the sample R project shown below, titled "project_miceps":
+Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. `fertile` provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider `fertile`'s treatment of each of these components in turn, exploring its analysis of the sample R project shown below, titled `project_miceps`:
 
 ```{r, echo = FALSE, out.width="100%", fig.cap="A Sample R Project"}
 knitr::include_graphics("figure/sample-project.png")
@@ -259,11 +259,6 @@ The primary code file in `project_miceps`, "analysis.Rmd", is a great example of
 has_well_commented_code("project_miceps")
 ```
 
-
-What we *need*:
-
-  - possibly a makefile generator? or improvements to order checking?
-  
 
 ### Component 4: File Paths
 
@@ -498,11 +493,12 @@ knitr::include_graphics("figure/components-summary.png")
 
 3) Individually, where only one reproducbility check is run at a time.
 
-Users who want comprehensive behavior can access it through two primary functions, `proj_check()` and `proj_analyze()`. 
+#### Comprehensive Features
 
-The `proj_check()` function runs all fifteen reproducibility tests in the package, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests, many of which were described in detail previously, include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
+Users who want comprehensive behavior can access it through three primary functions: `proj_check()`,`proj_analyze()`, and `proj_badges()`. 
 
- 
+The `proj_check()` function runs all sixteen reproducibility tests in the package, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests, many of which were described in detail previously, include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to `set.seed()` present. A full list is provided below:
+
 
 ```{r list-checks, tidy.opts=list(width.cutoff=60)}
 list_checks()
@@ -523,9 +519,66 @@ The `proj_analyze()` function creates a report documenting the structure of a da
 proj_analyze('project_miceps')
 ```
 
- 
+Similar to `proj_check()`, `proj_badges()` runs all sixteen reproducibility checks---`has_tidy_media`, `has_readme`, `has_no_absolute_paths`, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, `proj_badges()` provides a higher level summary, reporting on the *groups* of checks that either passed or failed.
 
-Together, `proj_check()` and `proj_analyze()` cover a significant portion of all six major components of reproducibility.
+In `proj_badges()`, the reproducibility checks are grouped into six categories corresponding to the six major components of reproducibility. These categories, alongside the checks which belong to them, are listed below:
+
+* Project Structure
+    - `has_proj_root()`
+    - `has_no_nested_proj_root()`
+  
+* Tidy Files
+    - `has_tidy_media()`
+    - `has_tidy_images()`
+    - `has_tidy_code()`
+    - `has_tidy_raw_data()`
+    - `has_tidy_data()`
+    - `has_tidy_scripts()`
+    - `has_only_used_files()`
+    
+* Documentation
+    - `has_readme()`
+    - `has_clear_build_chain()`
+    - `has_well_commented_code()`
+    
+* File Paths
+    - `has_no_absolute_paths()`
+    - `has_only_portable_paths()`
+    
+* Randomness
+    - `has_no_randomness()`
+    
+* Code Style
+    - `has_no_lint()`
+    
+    
+When users pass all of the checks associated with one of the categories, they receive a badge certifying their success in that area. If any fewer than *all* available checks in a category are passed, then the user fails that category.
+ 
+`proj_badges()` identifies the badges that a data analysis project should receive and then outputs a summary of this information---in the form of an `html` document---to the RStudio `Viewer` pane. This document---designed to produce a summary of a project that can be easily shared in places outside of `RStudio` (unlike the summaries produced by most other functions, which just produce output in the `R` console)---contains the following primary pieces of information:
+
+1. The name of the folder where the project is stored. 
+2. The reproducibility badges awarded to the project.
+3. The reproducibility badges failed by the project.
+4. If failures occurred, the reasons why. These are broken down by badge and list the checks associated with that badge that did not pass.
+5. A date/time/timezone stamp of when the `html` summary was created.
+6. Information about the user who generated the `html` summary (their full name, computer username, email, and GitHub username, if available).
+7. Information about the `R` version, platform, and operating system of the computer used to generate the `html` at the time that it was created.
+8. The names of files in the project that the `html` found the badges for as well as their date of last modification.
+
+The `html` output for `project_miceps` can be seen below:
+
+```{r badges-1, echo = FALSE, fig.cap="Output: Badges and Reasons for Failure", out.width = "100%"}
+knitr::include_graphics("figure/badges-1.png")
+```
+
+```{r badges-2, echo = FALSE, fig.cap="Output: System/User Information and File List", out.width = "100%"}
+knitr::include_graphics("figure/badges-2.png")
+```
+
+
+Together, `proj_check()`,`proj_analyze()`, and `proj_badges()` cover a significant portion of all six major components of reproducibility.
+
+#### Features Allowing For Summary By Group
 
 Users wanting to focus on groups of checks can do so using the `proj_check_some()` function.
 `proj_check_some()` leverages helper functions from `tidyselect` (@R-tidyselect) to allow users to call groups of similar checks together. `tidyselect` helpers tell `fertile` to call only the checks whose names meet certain conditions. The helper functions that can be passed to `proj_check_some()` are:
@@ -538,7 +591,6 @@ Users wanting to focus on groups of checks can do so using the `proj_check_some(
 For example, a variety of checks in `fertile` focus on making sure the project has a "tidy" structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using `proj_check_some()` as follows:
 
  
-
 
 ```{r echo=FALSE}
 bad_file <- fs::path('project_miceps', "install_proj_packages.R")
@@ -569,6 +621,7 @@ Or, perhaps, they might want to run all the functions beginning with "has_only":
 proj_check_some("project_miceps", starts_with("has_only"))
 ```
  
+#### Individual Checks
 
 If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
 
