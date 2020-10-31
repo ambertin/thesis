@@ -27,17 +27,39 @@ These features make `fertile` an excellent tool for addressing the issue of scie
 
 As discussed in Chapter 1, Academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting researchers to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducibile as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
 
-`fertile` could provide significant assistance with this process. Journals could integrate `fertile` into their article review workflow, running the primary checks in the package to see whether they are passed or if they fail. This would be an incredibly fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
+`fertile` could provide significant assistance with this process. Journals could integrate `fertile` into their article review workflow, ensuring that certain reproducibility checks were passed before an article could be accepted.
 
-Journals could easily build a standard of reproducibility around `fertile`'s checking system, requiring that a minimum set of checks be passed for any submitted article to be approved. This would improve the quality of submitted work and reduce the burden on journals of ensuring reproducibility in their published articles. Since `fertile` is publicly available, users would have access to the exact same testing system as any journal and therefore be able to ensure before submission that their articles would meet the provided standards. 
+Depending on the level of detail with which the journal wanted to examine reproducibility, the integration could be done in a variety of ways. Here, we'll consider two:
+
+1. Journal reviewers run `fertile` on every submitted `R` project.
+
+Journals that desire a detailed summary of the reasons for reproducibility failure (such as information that one specific file was not commented enough)---and whose editors were willing to put in a little bit of time to collect this information---could choose to run `fertile` on all submitted papers that included `R` code.
+
+They could require a list of checks to pass and provide a list of exceptions for cases in which checks could fail---for instance, a journal could state that even though they support good documentation, they do not require code to be fully commented. 
+
+Authors could run `fertile` on their work before submitting it to a journal to ensure that they passed the required list of checks and that any failures they saw were accounted for in the journal exceptions. Then journals, in order to ensure that authors followed the provided reproducibility guidelines, could run `fertile` on each submitted article as part of the review process. If the required checks were passed, the article could be accepted, but if they failed it would be rejected.
+
+Although it would require some effort on the journal's side, this would still be an incredibly fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
 
 
-```{r, echo = FALSE, out.width = '100%', fig.cap="A Potential 'fertile' Journal Review Process"}
+```{r, echo = FALSE, out.width = '100%', fig.cap="Potential 'fertile' Journal Review Process"}
 knitr::include_graphics("figure/journal-process.png")
 ```
 
+2. Journal reviewers do not run `fertile` on each project, but instead require submitting authors to include a `fertile` summary sheet showing the reproducibility badges awarded to their work.
 
-This process would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, the journal would only need to run `fertile`'s functions once to confirm that the standards were met. 
+Some journals may desire a reproducibility summary, but not require details as specific as the exact reasons for failure. These journals could run a simplified approach to reproducibility review. Rather than spend the additional time to run `fertile` on every submission and review the reasons for check failure, the journals could instead require that authors include a coversheet---produced by the `proj_badges()` function---with their submission. 
+
+This cover sheet would show which of the six primary reproducibility components were met and which ones failed, a short summary of specific checks that were not successful, and information about the cover sheet's generation: who generated it, when, and with which files. 
+
+Journals could place an acceptance requirement that articles achieve a certain subset of badges---for instance, file paths, randomness, and documentation. Submitting authors would run `fertile` on their end to see which badges they passed. Once they met the requirements, they could run `proj_badges()` to generate an article coversheet. This coversheet would then be submitted alongside the article and considered as part of the review process. All that reviewers would need to do to ensure that reproducibility requirements are met would be to look at the cover sheet to see which badges the project achieved and check the cover sheet generation information to ensure that it was truly produced by the project that the author says it was produced by. 
+
+```{r, echo = FALSE, out.width = '100%', fig.cap="Another Potential 'fertile' Journal Review Process"}
+knitr::include_graphics("figure/journal-process-2.png")
+```
+
+
+Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
 Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
 
