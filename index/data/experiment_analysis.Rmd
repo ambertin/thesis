@@ -1,0 +1,195 @@
+---
+title: "Experiment Analysis"
+author: "Audrey Bertin"
+date: "2/16/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(tidyverse)
+library(kableExtra)
+```
+
+### Read in data
+
+```{r}
+fall2020 <- readr::read_csv("Fall_2020_Single_Post_test.csv")
+jterm2021 <- readr::read_csv("JTerm_2021_Pre_Post.csv")
+```
+
+### Update Levels for jterm test variable
+```{r}
+jterm2021$Test <- factor(jterm2021$Test, levels = c("Pre", "Post"))
+```
+
+
+# Fall 2020 Analysis:
+
+### Basic overview
+
+```{r}
+glimpse(fall2020)
+```
+
+```{r}
+fall2020 %>% 
+  group_by(Group) %>%
+  summarize(Q1 = mean(Q1_Points),
+            Q2 = mean(Q2_Points),
+            Q3 = mean(Q3_Points),
+            Q4 = mean(Q4_Points),
+            Q5 = mean(Q5_Points),
+            Q6 = mean(Q6_Points),
+            Q7 = mean(Q7_Points),
+            Q8 = mean(Q8_Points),
+            Q9 = mean(Q9_Points)) %>%
+  pivot_longer(cols = 2:10, names_to = "Question_Number") %>%
+  arrange(Question_Number) %>%
+  relocate(Question_Number)
+```
+
+```{r}
+fall2020 %>% 
+  group_by(Group) %>%
+  summarize(Projects_Avg = mean(Projects_Total),
+            Paths_Avg = mean(Paths_Total),
+            Overall_Avg = mean(Overall_Total))
+```
+
+### Visualizations
+
+```{r}
+fall2020_averages <- fall2020 %>% 
+  group_by(Group) %>%
+  summarize(Projects = mean(Projects_Total),
+            Paths = mean(Paths_Total),
+            Overall = mean(Overall_Total)) %>%
+  pivot_longer(cols = 2:4, names_to = "Question_Average")
+  
+```
+
+```{r}
+ggplot(fall2020_averages, aes(x = Group, fill = Group, y = value)) + 
+  facet_wrap(~Question_Average) + 
+  geom_col() +
+  ylab("Average Score")
+```
+
+```{r}
+ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + geom_point()
+```
+
+
+### Statistical Models
+
+```{r}
+fall_model <- lm(Overall_Total ~ Group, data = fall2020)
+```
+
+```{r}
+summary(fall_model)
+```
+
+```{r}
+anova(fall_model)
+```
+
+
+
+# J-Term 2021 Analysis:
+
+### Basic Overview
+
+```{r}
+glimpse(jterm2021)
+```
+
+```{r}
+jterm2021 %>% 
+  group_by(Group, Test) %>%
+  summarize(Q1 = mean(Q1_Points),
+            Q2 = mean(Q2_Points),
+            Q3 = mean(Q3_Points),
+            Q4 = mean(Q4_Points),
+            Q5 = mean(Q5_Points),
+            Q6 = mean(Q6_Points),
+            Q7 = mean(Q7_Points),
+            Q8 = mean(Q8_Points),
+            Q9 = mean(Q9_Points)) %>%
+  pivot_longer(cols = 3:11, names_to = "Question_Number") %>%
+  arrange(Question_Number) %>%
+  relocate(Question_Number)
+```
+```{r}
+jterm2021 %>% 
+  group_by(Group, Test) %>%
+  summarize(Projects = mean(Projects_Total),
+            Paths = mean(Paths_Total),
+            Overall = mean(Overall_Total)) %>%
+  pivot_longer(cols = 3:5, names_to = "Question_Average") %>%
+  arrange(Question_Average)
+```
+
+```{r}
+pre_post_differences <- jterm2021 %>% group_by(Student_ID, Group, Previous_Classes) %>%
+  summarize(pre_total = ifelse(Test == "Pre", Overall_Total, NA),
+            post_total = ifelse(Test == "Post", Overall_Total, NA),
+            pre_projects = ifelse(Test == "Pre", Projects_Total, NA),
+            post_projects = ifelse(Test == "Post", Projects_Total, NA),
+            pre_paths = ifelse(Test == "Pre", Paths_Total, NA),
+            post_paths = ifelse(Test == "Pre", Paths_Total, NA)) %>%
+  group_by(Student_ID, Group, Previous_Classes) %>%
+  summarize(Total = na.omit(post_total) - na.omit(pre_total),
+            Projects = na.omit(post_projects) - na.omit(pre_projects),
+            Paths = na.omit(post_paths) - na.omit(pre_paths)) %>%
+  pivot_longer(cols = 4:6, names_to = "Question_Group", values_to = "Score_Difference")
+
+```
+
+```{r}
+pre_post_differences
+```
+
+
+### Visualizations
+
+```{r}
+group_scores <- jterm2021 %>% select(1:5, 15:17) %>%
+  rename(Projects = "Projects_Total", Paths = "Paths_Total", Overall = "Overall_Total") %>%
+  pivot_longer(cols = 6:8, names_to = "Question_Group", values_to = "Score")
+
+ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) + geom_boxplot() + facet_wrap(~Question_Group)
+```
+
+```{r}
+ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + geom_point() + geom_smooth() + facet_wrap(~Group)
+```
+
+
+### Statistical Models
+
+```{r}
+jterm_model_data <- pre_post_differences %>% 
+  filter(Question_Group == "Total")
+
+jterm_model <- lm(Score_Difference ~ Group, data = jterm_model_data)
+```
+
+```{r}
+summary(jterm_model)
+```
+
+```{r}
+anova(jterm_model)
+```
+
+```{r}
+jterm_model_mr <- lm(Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
+```
+
+```{r}
+summary(jterm_model_mr)
+```
+
