@@ -843,10 +843,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.12K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~   187.1K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.75K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.74K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 Users can also check for the existence of a README description file with \texttt{has\_readme()}:
@@ -880,7 +880,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYiFaSf/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -888,9 +888,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYiFaSf/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYiFaSf/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYiFaSf/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
@@ -908,13 +908,13 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpYiFaSf/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-04 16:03:40
+1 LAST RENDERED <NA>     proj_render 2021-02-17 17:51:08
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1007,9 +1007,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.12K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~   187.1K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.75K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.74K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 These suggestions are based on achieving the optimal file structure design for reproducibility, argued by Marwick et al. (2018) to be that of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an \texttt{R} folder, as well as \texttt{data}, \texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the \texttt{R} package structure to data analysis projects promotes standardization of file structure within the R community.
@@ -1519,7 +1519,7 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
  2 citrate_v_time.png png     187.97K image/png                                 
- 3 proteins_v_time.p~ png     378.87K image/png                                 
+ 3 proteins_v_time.p~ png     377.97K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1926,7 +1926,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 601 x 4
+# A tibble: 619 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1939,7 +1939,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 591 more rows
+# ... with 609 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function \texttt{log\_clear()}.
 
@@ -2007,22 +2007,26 @@ Most shims, when written, are relatively simple. Several, such as that for \text
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-function (file, ...) 
-{
-    if (interactive_log_on()) {
-        if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
-            log_push("Seed Before", .Random.seed[2])
-        }
-        log_push(file, "readr::read_csv")
-        check_path_safe(file, ... = "readr::read_csv")
-        data <- readr::read_csv(file, ...)
-        if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
-            log_push("Seed After", .Random.seed[2])
-        }
-        return(data)
+function(file, ...) {
+  if (interactive_log_on()) {
+    if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
+      log_push("Seed Before", .Random.seed[2])
     }
+
+    log_push(file, "readr::read_csv")
+
+    check_path_safe(file, ... = "readr::read_csv")
+
+    data <- readr::read_csv(file, ...)
+
+    if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
+      log_push("Seed After", .Random.seed[2])
+    }
+
+    return(data)
+  }
 }
-<bytecode: 0x7f8f123d97e0>
+<bytecode: 0x7fea6febd6a8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2068,16 +2072,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2021-02-04 16:04:03
- 2 package:dplyr           <NA>                      base::~ 2021-02-04 16:04:04
- 3 package:readr           <NA>                      base::~ 2021-02-04 16:04:04
- 4 package:tidyr           <NA>                      base::~ 2021-02-04 16:04:04
- 5 package:ggplot2         <NA>                      base::~ 2021-02-04 16:04:04
- 6 package:purrr           <NA>                      base::~ 2021-02-04 16:04:04
- 7 Seed Before             <NA>                      599     2021-02-04 16:04:04
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-04 16:04:04
- 9 Seed After              <NA>                      613     2021-02-04 16:04:04
-10 Seed Before             <NA>                      613     2021-02-04 16:04:04
+ 1 Seed @ Start            <NA>                      599     2021-02-17 17:51:30
+ 2 package:dplyr           <NA>                      base::~ 2021-02-17 17:51:30
+ 3 package:readr           <NA>                      base::~ 2021-02-17 17:51:30
+ 4 package:tidyr           <NA>                      base::~ 2021-02-17 17:51:30
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-17 17:51:30
+ 6 package:purrr           <NA>                      base::~ 2021-02-17 17:51:30
+ 7 Seed Before             <NA>                      599     2021-02-17 17:51:30
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-17 17:51:30
+ 9 Seed After              <NA>                      613     2021-02-17 17:51:31
+10 Seed Before             <NA>                      613     2021-02-17 17:51:31
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in \texttt{fertile}, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that \texttt{fertile} always retains accurate information of user behavior.
@@ -2117,24 +2121,39 @@ The example of \texttt{has\_only\_portable\_paths()} illustrates this functional
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-function (path = ".") 
-{
-    Sys.setenv(FERTILE_RENDER_MODE = TRUE)
-    check_is_dir(path)
-    if (!has_rendered(path)) {
-        proj_render(path)
-    }
-    paths <- log_report(path) %>% dplyr::filter(!grepl("package:", 
-        path)) %>% dplyr::pull(path)
-    good <- paths %>% is_path_portable()
-    errors <- tibble(culprit = as_fs_path(paths[!good]), expr = glue("fs::path_rel('{culprit}')"))
-    Sys.setenv(FERTILE_RENDER_MODE = FALSE)
-    make_check(name = "Checking for only portable paths", state = all(good), 
-        problem = "Non-portable paths won't necessarily work for others", 
-        solution = "Use relative paths.", help = "?fs::path_rel", 
-        errors = errors)
+function(path = ".") {
+  Sys.setenv("FERTILE_RENDER_MODE" = TRUE)
+
+  check_is_dir(path)
+
+  if (!has_rendered(path)) {
+    proj_render(path)
+  }
+
+  paths <- log_report(path) %>%
+    dplyr::filter(!grepl("package:", path)) %>%
+    dplyr::pull(path)
+
+  good <- paths %>%
+    is_path_portable()
+
+  errors <- tibble(
+    culprit = as_fs_path(paths[!good]),
+    expr = glue("fs::path_rel('{culprit}')")
+  )
+
+  Sys.setenv("FERTILE_RENDER_MODE" = FALSE)
+
+  make_check(
+    name = "Checking for only portable paths",
+    state = all(good),
+    problem = "Non-portable paths won't necessarily work for others",
+    solution = "Use relative paths.",
+    help = "?fs::path_rel",
+    errors = errors
+  )
 }
-<bytecode: 0x7f8f10a89f10>
+<bytecode: 0x7fea753ade08>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2164,7 +2183,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f8f0fa90450>
+<bytecode: 0x7fea67554298>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
@@ -2174,22 +2193,26 @@ When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-function (file, ...) 
-{
-    if (interactive_log_on()) {
-        if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
-            log_push("Seed Before", .Random.seed[2])
-        }
-        log_push(file, "readr::read_csv")
-        check_path_safe(file, ... = "readr::read_csv")
-        data <- readr::read_csv(file, ...)
-        if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
-            log_push("Seed After", .Random.seed[2])
-        }
-        return(data)
+function(file, ...) {
+  if (interactive_log_on()) {
+    if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
+      log_push("Seed Before", .Random.seed[2])
     }
+
+    log_push(file, "readr::read_csv")
+
+    check_path_safe(file, ... = "readr::read_csv")
+
+    data <- readr::read_csv(file, ...)
+
+    if (Sys.getenv("FERTILE_RENDER_MODE") == TRUE) {
+      log_push("Seed After", .Random.seed[2])
+    }
+
+    return(data)
+  }
 }
-<bytecode: 0x7f8f123d97e0>
+<bytecode: 0x7fea6febd6a8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2431,15 +2454,65 @@ There are a variety of benefits to introducing students to reproducibility soone
 \end{itemize}
 These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way.
 
-** INTRODUCE EXPERIMENT HERE **
+\hypertarget{in-other-areas}{%
+\subsection{In Other Areas}\label{in-other-areas}}
 
-\texttt{fertile} is designed to: 1) be simple enough that users with minimal \texttt{R} experience can use the package without issue, 2) increase the reproducibility of work produced by its users, and 3) educate its users on why their work is or is not reproducible and provide guidance on how to address any problems.
+\texttt{fertile} can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are:
+\begin{itemize}
+\item
+  \emph{Private Companies}: Data analysis-focused companies could require their employees to use \texttt{fertile} to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced.
+\item
+  \emph{Conferences}: Similar to academic journals, conferences promoting open research could require that papers written in \texttt{R} pass a \texttt{fertile} check as a condition for acceptance. Even if there were an exception given for those using confidential/identifiable data, this would likely increase the overall reproducibility of conference papers significantly.
+\item
+  \emph{Informal Data Analysis}: A lot of content in the \texttt{R} community is created purely for fun and interest. Outside of work, many \texttt{R} users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through \texttt{fertile} to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!
+\end{itemize}
+\includegraphics[width=1\linewidth]{figure/tidytuesday}
 
-To test \texttt{fertile}'s effectiveness, we began an initial randomized control trial of the package on an introductory undergraduate data science course at Smith College in Spring 2020 \textbf{ADD FOOTNOTE} (This study was approved by Smith College IRB, Protocol \#19-032).
+\texttt{fertile} is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
+
+\hypertarget{testing-fertile-in-the-real-world-experimental-design-and-analysis}{%
+\section{Testing Fertile in the Real World: Experimental Design and Analysis}\label{testing-fertile-in-the-real-world-experimental-design-and-analysis}}
+
+\hypertarget{background}{%
+\subsection{Background}\label{background}}
+
+Many of the suggested uses for \texttt{fertile} in the previous section are hypothetical, included for the purpose of demonstrating the potential that the package could have. Without experimentation or testing, though, it is difficult to know just how successful \texttt{fertile} would be when employed for any given purpose.
+
+In order to gain a better understanding of the practical effects of using \texttt{fertile} in a real life scenario, Professor Baumer and I decided to conduct an experiment (approved by Smith College IRB, Protocol \#19-032). We were interested in testing whether the integration of \texttt{fertile} into an introductory data science course might have an effect on students' learning of reproducibility concepts.
+
+After designing our experimental structure, working out technical mechanics, and creating the necessary materials, we chose to use the following two course sections for our study:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Introduction to Data Science (SDS 192), Fall 2020 Semester
+\item
+  Introduction to Data Science (SDS 192), January-Term 2021
+\end{enumerate}
+There were several motives for selecting these specific courses:
+\begin{itemize}
+\tightlist
+\item
+  They were both being taught by Prof.~Baumer, which made it easy to ensure that everything went smoothly by removing the need to interact with a 3rd party.
+\item
+  They were two different sessions of the same course, with essentially identical material, ensuring that we could compare results from each section of the experiment.
+\item
+  They involved introductory data science students, one of the groups that were of most interest as we wanted to ensure that \texttt{fertile} could provide benefit to users of all skill levels.
+\item
+  They were somewhat larger than many other classes in the Statistical and Data Sciences department, providing an opportunity for more data collection.
+\end{itemize}
+\hypertarget{experimental-design}{%
+\subsection{Experimental Design}\label{experimental-design}}
+
+For the experimental structure, we chose to complete a randomized controlled trial (RCT) since RCT designs can be used to conclude causality and are designed in such a way as to limit bias in the results.
+
+Our goal was to determine whether students who had \texttt{fertile} installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
+
+To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received an experimental or control condition--in this case, whether they had \texttt{fertile} installed and loaded while working on course assignments, or whether they didn't.
 
 The experiment was structured as follows:
 
-1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through the command \texttt{Sys.getenv("LOGNAME")}. To maintain privacy the results are then transformed into a hexadecimal string via the \texttt{md5()} hashing function.
+1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through either the command \texttt{Sys.getenv("LOGNAME")} or \texttt{Sys.getenv("USERNAME")}, depending on the student's computer operating system. To maintain privacy the results are then transformed into a hexadecimal string via the \texttt{md5()} hashing function.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
@@ -2500,21 +2573,17 @@ The experiment was structured as follows:
 \end{enumerate}
 Based on the results, we hope to determine whether \texttt{fertile} was successful at achieving its intended goals. A lack of notable difference between the \emph{experimental} and \emph{control} groups in terms of the number of code-related questions asked throughout the semester would indicate that \texttt{fertile} achieved its goal of simplicity. A higher average for the \emph{experimental} group in terms of the number of homework assignments that compiled successfully would indicate that \texttt{fertile} was successful in increasing reproducibility. A greater increase over the semester in the reproducibility quiz scores for students in the \emph{experimental} group compared with the \emph{control} group would indicate that \texttt{fertile} achieved its goal of educating users on reproducibility. Success according to these metrics would provide evidence showing \texttt{fertile}'s benefit as tool to help educators introduce reproducibility concepts in the classroom.
 
-\hypertarget{in-other-areas}{%
-\subsection{In Other Areas}\label{in-other-areas}}
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
 
-\texttt{fertile} can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are:
-\begin{itemize}
-\item
-  \emph{Private Companies}: Data analysis-focused companies could require their employees to use \texttt{fertile} to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced.
-\item
-  \emph{Conferences}: Similar to academic journals, conferences promoting open research could require that papers written in \texttt{R} pass a \texttt{fertile} check as a condition for acceptance. Even if there were an exception given for those using confidential/identifiable data, this would likely increase the overall reproducibility of conference papers significantly.
-\item
-  \emph{Informal Data Analysis}: A lot of content in the \texttt{R} community is created purely for fun and interest. Outside of work, many \texttt{R} users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through \texttt{fertile} to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!
-\end{itemize}
-\includegraphics[width=1\linewidth]{figure/tidytuesday}
+\hypertarget{implications}{%
+\subsection{Implications}\label{implications}}
 
-\texttt{fertile} is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
+\hypertarget{limitations}{%
+\subsection{Limitations}\label{limitations}}
+
+\hypertarget{future-work}{%
+\subsection{Future Work}\label{future-work}}
 
 Potential sources:
 

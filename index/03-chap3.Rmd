@@ -108,16 +108,55 @@ There are a variety of benefits to introducing students to reproducibility soone
 These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way. 
 
 
-** INTRODUCE EXPERIMENT HERE **
+### In Other Areas
 
-`fertile` is designed to: 1) be simple enough that users with minimal `R` experience can use the package without issue, 2) increase the reproducibility of work produced by its users, and 3) educate its users on why their work is or is not reproducible and provide guidance on how to address any problems.
+`fertile` can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are: 
 
-To test `fertile`'s effectiveness, we began an initial randomized control trial of the package on an introductory undergraduate data science course at Smith College in Spring 2020 **ADD FOOTNOTE** (This study was approved by Smith College IRB, Protocol #19-032).
+* *Private Companies*: Data analysis-focused companies could require their employees to use `fertile` to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced. 
+
+* *Conferences*: Similar to academic journals, conferences promoting open research could require that papers written in `R` pass a `fertile` check as a condition for acceptance. Even if there were an exception given for those using confidential/identifiable data, this would likely increase the overall reproducibility of conference papers significantly.
+
+* *Informal Data Analysis*: A lot of content in the `R` community is created purely for fun and interest. Outside of work, many `R` users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through `fertile` to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!  
+
+```{r, echo = FALSE, out.width = '100%'}
+knitr::include_graphics("figure/tidytuesday.png")
+```
+
+`fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
+
+
+## Testing Fertile in the Real World: Experimental Design and Analysis
+
+### Background
+
+Many of the suggested uses for `fertile` in the previous section are hypothetical, included for the purpose of demonstrating the potential that the package could have. Without experimentation or testing, though, it is difficult to know just how successful `fertile` would be when employed for any given purpose. 
+
+In order to gain a better understanding of the practical effects of using `fertile` in a real life scenario, Professor Baumer and I decided to conduct an experiment (approved by Smith College IRB, Protocol #19-032). We were interested in testing whether the integration of `fertile` into an introductory data science course might have an effect on students' learning of reproducibility concepts. 
+
+After designing our experimental structure, working out technical mechanics, and creating the necessary materials, we chose to use the following two course sections for our study:
+
+1. Introduction to Data Science (SDS 192), Fall 2020 Semester
+2. Introduction to Data Science (SDS 192), January-Term 2021
+
+There were several motives for selecting these specific courses:
+
+- They were both being taught by Prof. Baumer, which made it easy to ensure that everything went smoothly by removing the need to interact with a 3rd party.
+- They were two different sessions of the same course, with essentially identical material, ensuring that we could compare results from each section of the experiment. 
+- They involved introductory data science students, one of the groups that were of most interest as we wanted to ensure that `fertile` could provide benefit to users of all skill levels. 
+- They were somewhat larger than many other classes in the Statistical and Data Sciences department, providing an opportunity for more data collection. 
+
+
+### Experimental Design
+
+For the experimental structure, we chose to complete a randomized controlled trial (RCT) since RCT designs can be used to conclude causality and are designed in such a way as to limit bias in the results. 
+
+Our goal was to determine whether students who had `fertile` installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
+
+To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received an experimental or control condition--in this case, whether they had `fertile` installed and loaded while working on course assignments, or whether they didn't.
 
 The experiment was structured as follows:
 
-
-1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through the command `Sys.getenv("LOGNAME")`. To maintain privacy the results are then transformed into a hexadecimal string via the `md5()` hashing function. 
+1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through either the command `Sys.getenv("LOGNAME")` or `Sys.getenv("USERNAME")`, depending on the student's computer operating system. To maintain privacy the results are then transformed into a hexadecimal string via the `md5()` hashing function. 
 
 2. These hexadecimal strings are then randomly assigned into equally sized groups, one experimental group that receives the features of `fertile` and one group that receives a control.
 
@@ -173,26 +212,16 @@ is_experimental <- function(logname = whoami::username()) {
 
 Based on the results, we hope to determine whether `fertile` was successful at achieving its intended goals. A lack of notable difference between the *experimental* and *control* groups in terms of the number of code-related questions asked throughout the semester would indicate that `fertile` achieved its goal of simplicity. A higher average for the *experimental* group in terms of the number of homework assignments that compiled successfully would indicate that `fertile` was successful in increasing reproducibility. A greater increase over the semester in the reproducibility quiz scores for students in the *experimental* group compared with the *control* group would indicate that `fertile` achieved its goal of educating users on reproducibility. Success according to these metrics would provide evidence showing `fertile`'s benefit as tool to help educators introduce reproducibility concepts in the classroom.
 
-
-### In Other Areas
-
-`fertile` can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are: 
-
-* *Private Companies*: Data analysis-focused companies could require their employees to use `fertile` to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced. 
-
-* *Conferences*: Similar to academic journals, conferences promoting open research could require that papers written in `R` pass a `fertile` check as a condition for acceptance. Even if there were an exception given for those using confidential/identifiable data, this would likely increase the overall reproducibility of conference papers significantly.
-
-* *Informal Data Analysis*: A lot of content in the `R` community is created purely for fun and interest. Outside of work, many `R` users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through `fertile` to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!  
-
-```{r, echo = FALSE, out.width = '100%'}
-knitr::include_graphics("figure/tidytuesday.png")
-```
-
-`fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
+### Results
 
 
+### Implications
 
 
+### Limitations
+
+
+### Future Work
 
 
 
