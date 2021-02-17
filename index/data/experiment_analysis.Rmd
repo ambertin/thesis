@@ -168,6 +168,17 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
 ```
 
 
+```{r}
+ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Score_Difference, fill = Group)) + 
+  geom_col() + 
+  coord_flip() + 
+  geom_hline(yintercept = 0) + 
+  theme(axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank()) + 
+  xlab(NULL)
+```
+
+
 ### Statistical Models
 
 ```{r}
