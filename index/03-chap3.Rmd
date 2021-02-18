@@ -152,16 +152,36 @@ For the experimental structure, we chose to complete a randomized controlled tri
 
 Our goal was to determine whether students who had `fertile` installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
 
-To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received an experimental or control condition--in this case, whether they had `fertile` installed and loaded while working on course assignments, or whether they didn't.
+In order to measure this potential effect, we opted to use reproducibility "tests," forms containing multiple choice and select-all-that-apply questions about different aspects of reproducibility that are focused on in `fertile`. 
 
-The experiment was structured as follows:
+We used two different testing structures for our two experimental sections--partially due to challenges which led to our first experiment session starting on a slight delay, but also so that we could compare which structure worked more effectively. While the primary goal of the experiment was to determine the effect of `fertile`, a secondary interest was in the experimental method itself--a new method that we developed, which has implications beyond purely this case. 
 
-1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through either the command `Sys.getenv("LOGNAME")` or `Sys.getenv("USERNAME")`, depending on the student's computer operating system. To maintain privacy the results are then transformed into a hexadecimal string via the `md5()` hashing function. 
+- Structure #1 (Used in Fall 2020): Students received a reproducibility test at the end of the semester to test their knowledge after the course. Final scores were compared between students who had `fertile` installed and loaded and those who did not.
 
-2. These hexadecimal strings are then randomly assigned into equally sized groups, one experimental group that receives the features of `fertile` and one group that receives a control.
+- Structure #2 (Used in January Term 2021): Students received a reproducibility test both at the beginning of the course *and* at the end of the course in order to test their *change* in knowledge. *Differences in scores* were compared to see if any given group learned more, less, or the same.
 
-3. The students are then asked to download a package called `sds192` (the course number and prefix), which was created for the purpose of this trial. It leverages an `.onAttach()` function to scan the `R` environment and collect the username of the user who is loading the package and run it through the same hashing algorithm as used previously. It then identifies whether that user belongs to the experimental or the control group. Depending on the group they are in, they receive a different version of the package. The structure of this function can be seen below:
+Although the testing structures were different across the two different sections, the reproducibility tests were identical.
 
+To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had `fertile` installed and loaded while working on course assignments, or whether they didn't.
+
+To achieve the desired blinding, we decided to use some unique features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of. 
+This technique is described in the step by step experimental structure, explained below: 
+
+1.Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. 
+
+In order to successfully consent, students had to provide a unique computer identifier, collected through either the command `Sys.getenv("LOGNAME")` or `Sys.getenv("USERNAME")`, depending on the student's operating system. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups. 
+
+2. To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the `md5()` hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
+
+3. These hexadecimal strings, which correspond to unique students, were then randomly assigned into equally sized groups, one experimental group that receives the features of `fertile` and one group that receives a control.
+
+4. The students in the course were then asked to download a package called `sds192` (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
+
+The `sds192` package operated by leveraging an `.onAttach()` function to scan the `R` environment of each student *each time the package is loaded*, collect their unique identifier--again, via `Sys.getenv("LOGNAME)` or `Sys.getenv("USERNAME")`-- and run it through the same hashing algorithm as before. This function came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group. 
+
+Each time a student's hashed identifier was collected (every time they loaded the `sds192` package for class), it was then compared with the provided groups to determine how the package should function for that individual.
+
+The structure of this function can be seen below:
 
 ```{r, eval = FALSE}
 
@@ -200,17 +220,20 @@ is_experimental <- function(logname = whoami::username()) {
     "0ff07a4f6faaf3df57b348dad7bd22c9"
   )
   
+
   digest::digest(logname, algo = "md5") %in% fertile_group
   
 }
 ```
 
 
-4. The experimental group receives the basic `sds192` package, which consists of some data sets and `R` Markdown templates necessary for completing homework assignments and projects in the class, but also has `fertile` installed and loaded silently in the background. The package's proactive features are enabled, and therefore users will receive warning messages when they use absolute or non-portable paths or attempt to change their working directory. The control group receives only the basic `sds192` package, including its data sets and `R` Markdown templates. All students from both groups then use their version of the package throughout the semester on a variety of projects.
+5. The experimental group received the basic `sds192` package, which consisted of some data sets and `R` Markdown templates necessary for completing homework assignments and projects in the class, but also loaded `fertile` silently in the background. The package's proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. The control group received only the basic `sds192` package, including its data sets and `R` Markdown templates. 
 
-5. Both groups are given a short quiz on different components of reproducibility that are intended to be taught by `fertile` at both the beginning and end of the semester. Their scores are then compared to see whether one group learned more than the other group or whether their scores were essentially equivalent. Additionally, for every homework assignment submitted, the professor takes note of whether or not the project compiles successfully.
+6. [January Term 2021 Only] Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
 
-Based on the results, we hope to determine whether `fertile` was successful at achieving its intended goals. A lack of notable difference between the *experimental* and *control* groups in terms of the number of code-related questions asked throughout the semester would indicate that `fertile` achieved its goal of simplicity. A higher average for the *experimental* group in terms of the number of homework assignments that compiled successfully would indicate that `fertile` was successful in increasing reproducibility. A greater increase over the semester in the reproducibility quiz scores for students in the *experimental* group compared with the *control* group would indicate that `fertile` achieved its goal of educating users on reproducibility. Success according to these metrics would provide evidence showing `fertile`'s benefit as tool to help educators introduce reproducibility concepts in the classroom.
+7. The students then completed their coursework as normal, regularly using the `sds192` package for projects and homework assignments.
+
+8. [Both Fall 2020 and January Term 2021] The last step was for students to take a reproducibility test at the end of the course, to measure their knowledge of the subject after having completed the coursework and used the `sds192` package.
 
 ### Results
 

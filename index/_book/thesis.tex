@@ -880,7 +880,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -888,9 +888,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
@@ -908,13 +908,13 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpkQwtPZ/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-17 17:51:08
+1 LAST RENDERED <NA>     proj_render 2021-02-18 17:13:04
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1518,8 +1518,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.97K image/png                                 
- 3 proteins_v_time.p~ png     377.97K image/png                                 
+ 2 citrate_v_time.png png     189.24K image/png                                 
+ 3 proteins_v_time.p~ png     377.33K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1926,7 +1926,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 619 x 4
+# A tibble: 627 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1939,7 +1939,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 609 more rows
+# ... with 617 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function \texttt{log\_clear()}.
 
@@ -2026,7 +2026,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fea6febd6a8>
+<bytecode: 0x7f977a687368>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2072,16 +2072,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2021-02-17 17:51:30
- 2 package:dplyr           <NA>                      base::~ 2021-02-17 17:51:30
- 3 package:readr           <NA>                      base::~ 2021-02-17 17:51:30
- 4 package:tidyr           <NA>                      base::~ 2021-02-17 17:51:30
- 5 package:ggplot2         <NA>                      base::~ 2021-02-17 17:51:30
- 6 package:purrr           <NA>                      base::~ 2021-02-17 17:51:30
- 7 Seed Before             <NA>                      599     2021-02-17 17:51:30
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-17 17:51:30
- 9 Seed After              <NA>                      613     2021-02-17 17:51:31
-10 Seed Before             <NA>                      613     2021-02-17 17:51:31
+ 1 Seed @ Start            <NA>                      599     2021-02-18 17:13:38
+ 2 package:dplyr           <NA>                      base::~ 2021-02-18 17:13:38
+ 3 package:readr           <NA>                      base::~ 2021-02-18 17:13:38
+ 4 package:tidyr           <NA>                      base::~ 2021-02-18 17:13:39
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-18 17:13:39
+ 6 package:purrr           <NA>                      base::~ 2021-02-18 17:13:39
+ 7 Seed Before             <NA>                      599     2021-02-18 17:13:39
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-18 17:13:39
+ 9 Seed After              <NA>                      613     2021-02-18 17:13:39
+10 Seed Before             <NA>                      613     2021-02-18 17:13:39
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in \texttt{fertile}, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that \texttt{fertile} always retains accurate information of user behavior.
@@ -2153,7 +2153,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fea753ade08>
+<bytecode: 0x7f9780c12eb8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2183,7 +2183,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fea67554298>
+<bytecode: 0x7f9777c10e30>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
@@ -2212,7 +2212,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fea6febd6a8>
+<bytecode: 0x7f977a687368>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2508,19 +2508,40 @@ For the experimental structure, we chose to complete a randomized controlled tri
 
 Our goal was to determine whether students who had \texttt{fertile} installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
 
-To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received an experimental or control condition--in this case, whether they had \texttt{fertile} installed and loaded while working on course assignments, or whether they didn't.
+In order to measure this potential effect, we opted to use reproducibility ``tests,'' forms containing multiple choice and select-all-that-apply questions about different aspects of reproducibility that are focused on in \texttt{fertile}.
 
-The experiment was structured as follows:
+We used two different testing structures for our two experimental sections--partially due to challenges which led to our first experiment session starting on a slight delay, but also so that we could compare which structure worked more effectively. While the primary goal of the experiment was to determine the effect of \texttt{fertile}, a secondary interest was in the experimental method itself--a new method that we developed, which has implications beyond purely this case.
+\begin{itemize}
+\item
+  Structure \#1 (Used in Fall 2020): Students received a reproducibility test at the end of the semester to test their knowledge after the course. Final scores were compared between students who had \texttt{fertile} installed and loaded and those who did not.
+\item
+  Structure \#2 (Used in January Term 2021): Students received a reproducibility test both at the beginning of the course \emph{and} at the end of the course in order to test their \emph{change} in knowledge. \emph{Differences in scores} were compared to see if any given group learned more, less, or the same.
+\end{itemize}
+Although the testing structures were different across the two different sections, the reproducibility tests were identical.
 
-1.Students are given a form at the start of the semester asking whether they consent to participate in a study on data science education. In order to successfully consent, they must provide their system username, collected through either the command \texttt{Sys.getenv("LOGNAME")} or \texttt{Sys.getenv("USERNAME")}, depending on the student's computer operating system. To maintain privacy the results are then transformed into a hexadecimal string via the \texttt{md5()} hashing function.
+To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had \texttt{fertile} installed and loaded while working on course assignments, or whether they didn't.
+
+To achieve the desired blinding, we decided to use some unique features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of.
+This technique is described in the step by step experimental structure, explained below:
+
+1.Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility.
+
+In order to successfully consent, students had to provide a unique computer identifier, collected through either the command \texttt{Sys.getenv("LOGNAME")} or \texttt{Sys.getenv("USERNAME")}, depending on the student's operating system. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
 \item
-  These hexadecimal strings are then randomly assigned into equally sized groups, one experimental group that receives the features of \texttt{fertile} and one group that receives a control.
+  To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the \texttt{md5()} hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
 \item
-  The students are then asked to download a package called \texttt{sds192} (the course number and prefix), which was created for the purpose of this trial. It leverages an \texttt{.onAttach()} function to scan the \texttt{R} environment and collect the username of the user who is loading the package and run it through the same hashing algorithm as used previously. It then identifies whether that user belongs to the experimental or the control group. Depending on the group they are in, they receive a different version of the package. The structure of this function can be seen below:
+  These hexadecimal strings, which correspond to unique students, were then randomly assigned into equally sized groups, one experimental group that receives the features of \texttt{fertile} and one group that receives a control.
+\item
+  The students in the course were then asked to download a package called \texttt{sds192} (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 \end{enumerate}
+The \texttt{sds192} package operated by leveraging an \texttt{.onAttach()} function to scan the \texttt{R} environment of each student \emph{each time the package is loaded}, collect their unique identifier--again, via \texttt{Sys.getenv("LOGNAME)} or \texttt{Sys.getenv("USERNAME")}-- and run it through the same hashing algorithm as before. This function came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group.
+
+Each time a student's hashed identifier was collected (every time they loaded the \texttt{sds192} package for class), it was then compared with the provided groups to determine how the package should function for that individual.
+
+The structure of this function can be seen below:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# .onAttach() from the sds192 package}
@@ -2558,6 +2579,7 @@ The experiment was structured as follows:
     \StringTok{"0ff07a4f6faaf3df57b348dad7bd22c9"}
 \NormalTok{  )}
   
+
 \NormalTok{  digest}\OperatorTok{::}\KeywordTok{digest}\NormalTok{(logname, }\DataTypeTok{algo =} \StringTok{"md5"}\NormalTok{) }\OperatorTok{%in%}\StringTok{ }\NormalTok{fertile_group}
   
 \NormalTok{\}}
@@ -2565,14 +2587,16 @@ The experiment was structured as follows:
 \end{Shaded}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
+\setcounter{enumi}{4}
 \item
-  The experimental group receives the basic \texttt{sds192} package, which consists of some data sets and \texttt{R} Markdown templates necessary for completing homework assignments and projects in the class, but also has \texttt{fertile} installed and loaded silently in the background. The package's proactive features are enabled, and therefore users will receive warning messages when they use absolute or non-portable paths or attempt to change their working directory. The control group receives only the basic \texttt{sds192} package, including its data sets and \texttt{R} Markdown templates. All students from both groups then use their version of the package throughout the semester on a variety of projects.
+  The experimental group received the basic \texttt{sds192} package, which consisted of some data sets and \texttt{R} Markdown templates necessary for completing homework assignments and projects in the class, but also loaded \texttt{fertile} silently in the background. The package's proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. The control group received only the basic \texttt{sds192} package, including its data sets and \texttt{R} Markdown templates.
 \item
-  Both groups are given a short quiz on different components of reproducibility that are intended to be taught by \texttt{fertile} at both the beginning and end of the semester. Their scores are then compared to see whether one group learned more than the other group or whether their scores were essentially equivalent. Additionally, for every homework assignment submitted, the professor takes note of whether or not the project compiles successfully.
+  {[}January Term 2021 Only{]} Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
+\item
+  The students then completed their coursework as normal, regularly using the \texttt{sds192} package for projects and homework assignments.
+\item
+  {[}Both Fall 2020 and January Term 2021{]} The last step was for students to take a reproducibility test at the end of the course, to measure their knowledge of the subject after having completed the coursework and used the \texttt{sds192} package.
 \end{enumerate}
-Based on the results, we hope to determine whether \texttt{fertile} was successful at achieving its intended goals. A lack of notable difference between the \emph{experimental} and \emph{control} groups in terms of the number of code-related questions asked throughout the semester would indicate that \texttt{fertile} achieved its goal of simplicity. A higher average for the \emph{experimental} group in terms of the number of homework assignments that compiled successfully would indicate that \texttt{fertile} was successful in increasing reproducibility. A greater increase over the semester in the reproducibility quiz scores for students in the \emph{experimental} group compared with the \emph{control} group would indicate that \texttt{fertile} achieved its goal of educating users on reproducibility. Success according to these metrics would provide evidence showing \texttt{fertile}'s benefit as tool to help educators introduce reproducibility concepts in the classroom.
-
 \hypertarget{results}{%
 \subsection{Results}\label{results}}
 
