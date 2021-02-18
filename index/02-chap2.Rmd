@@ -798,14 +798,7 @@ fertile::read_csv
 
 The majority of shims have a similar structure. Since almost all shimmed functions in `fertile` take a large number of arguments, the `fertile` versions utilize the dots to simplify the process of capturing this user input and saving it for execution later. 
 
-The dots are also used in the interactive file path messaging system, which notifies the user when they reference an absolute path or one leading outside of their project directory by throwing an error and providing an informative warning message. They are used in combination with shims to capture information about the user action that caused the error and to pass this information to the messaging system. This ensures that the override code provided at the end of the error message is customized to the user's behavior. In the example below, the warning message recognizes that `read.csv` was called with the path `~/Desktop/my_data.csv`, and incorporates that into the suggested code:
-
-```{r}
-read.csv("~/Desktop/my_data.csv")
-```
-
-
-Finally, the dots play a big role in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
+Additionally, the dots play a big role in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
 
 This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
 

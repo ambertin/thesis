@@ -75,7 +75,7 @@ Although this would only address a small aspect of reproducibility--that involvi
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
 
-```{r, echo = FALSE, out.width = '100%', fig.cap = "The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course (Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf)"}
+```{r, echo = FALSE, out.width = '100%', fig.cap = "The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course", fig.subcap="Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf"}
 knitr::include_graphics("figure/gov-2001-replication.png")
 ```
 
@@ -236,6 +236,72 @@ is_experimental <- function(logname = whoami::username()) {
 8. [Both Fall 2020 and January Term 2021] The last step was for students to take a reproducibility test at the end of the course, to measure their knowledge of the subject after having completed the coursework and used the `sds192` package.
 
 ### Results
+
+In order to understand the results, it is important to understand the structure of the experimental reproducibility "test" and the way in which each student's answers were scored.
+
+The test consisted of two primary sections:
+
+1. A set of six questions on RStudio projects, two of which were select-all-that-apply, and four of which were multiple choice. These questions tested students knowledge of RStudio projects, their understanding of which file paths they could include in code submitted in project format, and their awareness of the dangers of changing working directories while coding.
+
+```{r, echo = FALSE, out.width = '100%', fig.cap = "Sample Question From The Section On RStudio Projects"}
+knitr::include_graphics("figure/projects-1.png")
+
+```
+
+```{r, echo = FALSE, out.width = '100%', fig.cap = "Another Sample Question From The Section On RStudio Projects"}
+knitr::include_graphics("figure/projects-2.png")
+
+```
+
+
+2. A set of three questions about file paths, all of which were select-all-that apply. These questions tested students' knowledge of the difference between absolute and relative paths and their understanding of which paths are reproducible.
+
+```{r, echo = FALSE, out.width = '100%', fig.cap = "Sample Question From The Section On File Paths"}
+knitr::include_graphics("figure/paths-1.png")
+
+```
+
+For each test submission, every question was scored individually and then scores for each section (projects and paths) were calculated, as well as an overall total score. 
+
+The following method was used to compute scores:
+
+- For each question, students would start at a score of zero. Based on their answers, points would then be added, subtracted, or stay constant. 
+
+- On select-all-that apply questions, the following scoring rules were used. This meant that students who answered some things correctly, but other things incorrectly, could still receive negative or neutral scores, based on the overall analysis of how correct they were:
+     - Each correct box that was checked --> +1 Point
+     - Each incorrect box that was checked --> -1 Point
+     - Each box that was not checked but should have been checked --> No change (0)
+     
+- On multiple choice questions, the scoring rules were slightly different. This was due to the inclusion of an option for "I'm not sure," which was included as a way to discourage random guessing and ensure that students were answering based on their actual knowledge.
+     - If the correct answer was selected --> +1 Point
+     - If the incorrect answer was selected --> -1 Point
+     - If the student expressed uncertainty ("I'm not sure") --> No change (0)
+     
+This method meant that individual questions could have negative, positive, or neutral scores, and total scores could vary quite dramatically, from large negative scores (<-10) for students who regularly answered incorrectly to large positive scores for those who often answered correctly (>10).
+
+
+```{r, echo = FALSE,  message = FALSE}
+library(readr)
+library(tidyverse)
+library(kableExtra)
+
+fall2020 <- readr::read_csv("data/Fall_2020_Single_Post_test.csv")
+jterm2021 <- readr::read_csv("data/JTerm_2021_Pre_Post.csv")
+jterm2021$Test <- factor(jterm2021$Test, levels = c("Pre", "Post"))
+
+```
+
+#### Fall 2020 Results
+
+The data from Fall 2020, after being scored and cleaned up, looked as follows:
+
+```{r}
+glimpse(fall2020)
+```
+
+
+
+#### January Term 2021 Results
 
 
 ### Implications

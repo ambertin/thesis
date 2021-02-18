@@ -172,7 +172,7 @@
 \Acknowledgements{
 This project would not have been possible without the guidance of Professor Ben Baumer, who helped inspire my interest in data science and mentored me throughout this project for the last two years.
 I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in \texttt{fertile}, along with the authors of all of the R packages utilized by \texttt{fertile} to achieve its functionality.
-Additionally, many people have assisted me throughout the development of \texttt{fertile} with testing its features. Emma Livingston '20, Arielle Dror '20, and Kathleen Hablutzel '23 provided valuable insight by helping test the package to find small bugs and errors. A variety of introductory data science students, who will remain anonymous, also volunteered their time as part of a study to test the effectiveness of implementing \texttt{fertile} in the classroom. The help of all these Smithies was invaluable in ensuring that the overall \texttt{fertile} product was as user friendly and effective as possible.
+Additionally, a huge thanks to the many introductory data science students who volunteered their time as part of a study to test the effectiveness of implementing \texttt{fertile} in the classroom. The help of all these Smithies was invaluable in ensuring that the overall \texttt{fertile} product was as user friendly and effective as possible.
 }
 
 \Dedication{
@@ -191,6 +191,20 @@ The preface pretty much says it all.
 Second paragraph of abstract starts here.
 }
 
+	\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 % End of CII addition
 %%
 %% End Preamble
@@ -206,7 +220,7 @@ Second paragraph of abstract starts here.
   \begin{acknowledgements}
     This project would not have been possible without the guidance of Professor Ben Baumer, who helped inspire my interest in data science and mentored me throughout this project for the last two years.
     I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in \texttt{fertile}, along with the authors of all of the R packages utilized by \texttt{fertile} to achieve its functionality.
-    Additionally, many people have assisted me throughout the development of \texttt{fertile} with testing its features. Emma Livingston '20, Arielle Dror '20, and Kathleen Hablutzel '23 provided valuable insight by helping test the package to find small bugs and errors. A variety of introductory data science students, who will remain anonymous, also volunteered their time as part of a study to test the effectiveness of implementing \texttt{fertile} in the classroom. The help of all these Smithies was invaluable in ensuring that the overall \texttt{fertile} product was as user friendly and effective as possible.
+    Additionally, a huge thanks to the many introductory data science students who volunteered their time as part of a study to test the effectiveness of implementing \texttt{fertile} in the classroom. The help of all these Smithies was invaluable in ensuring that the overall \texttt{fertile} product was as user friendly and effective as possible.
   \end{acknowledgements}
 
   \hypersetup{linkcolor=black}
@@ -250,7 +264,7 @@ The \texttt{fertile} project was an excellent fit for me. The package was not ye
 
 The more I worked on \texttt{fertile}, the more interested in the project I became. The package was unlike anything else I had been exposed to in data science. Most of my course work had been in the form of front-end coding: conducting data analyses and visualizing information. \texttt{fertile} is nothing like that. It operates completely behind the scenes, conducting a kind of meta-analysis to determine the reproducibility of a data science project. Rather than writing code to analyze data, I had to learn how to write code to analyze code that \emph{other people} wrote to analyze data.
 
-This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something defniitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. \href{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}{On the question} of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible'', while another said there was ``fundamentally no way'' to achieve it.
+This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. \href{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}{On the question} of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible'', while another said there was ``fundamentally no way'' to achieve it.
 
 The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times incredibly frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills.
 
@@ -880,7 +894,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -888,9 +902,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
@@ -908,13 +922,13 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpSJSYDd/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-18 17:13:04
+1 LAST RENDERED <NA>     proj_render 2021-02-18 22:21:39
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1518,8 +1532,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     189.24K image/png                                 
- 3 proteins_v_time.p~ png     377.33K image/png                                 
+ 2 citrate_v_time.png png     187.98K image/png                                 
+ 3 proteins_v_time.p~ png     378.48K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1926,7 +1940,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 627 x 4
+# A tibble: 685 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1939,7 +1953,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 617 more rows
+# ... with 675 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function \texttt{log\_clear()}.
 
@@ -2026,7 +2040,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f977a687368>
+<bytecode: 0x7feb3712aac8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2072,16 +2086,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2021-02-18 17:13:38
- 2 package:dplyr           <NA>                      base::~ 2021-02-18 17:13:38
- 3 package:readr           <NA>                      base::~ 2021-02-18 17:13:38
- 4 package:tidyr           <NA>                      base::~ 2021-02-18 17:13:39
- 5 package:ggplot2         <NA>                      base::~ 2021-02-18 17:13:39
- 6 package:purrr           <NA>                      base::~ 2021-02-18 17:13:39
- 7 Seed Before             <NA>                      599     2021-02-18 17:13:39
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-18 17:13:39
- 9 Seed After              <NA>                      613     2021-02-18 17:13:39
-10 Seed Before             <NA>                      613     2021-02-18 17:13:39
+ 1 Seed @ Start            <NA>                      599     2021-02-18 22:21:59
+ 2 package:dplyr           <NA>                      base::~ 2021-02-18 22:22:00
+ 3 package:readr           <NA>                      base::~ 2021-02-18 22:22:00
+ 4 package:tidyr           <NA>                      base::~ 2021-02-18 22:22:00
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-18 22:22:00
+ 6 package:purrr           <NA>                      base::~ 2021-02-18 22:22:00
+ 7 Seed Before             <NA>                      599     2021-02-18 22:22:00
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-18 22:22:00
+ 9 Seed After              <NA>                      613     2021-02-18 22:22:00
+10 Seed Before             <NA>                      613     2021-02-18 22:22:00
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in \texttt{fertile}, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that \texttt{fertile} always retains accurate information of user behavior.
@@ -2153,7 +2167,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f9780c12eb8>
+<bytecode: 0x7feb3add2a78>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2183,7 +2197,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f9777c10e30>
+<bytecode: 0x7feb2e6c5298>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
@@ -2212,53 +2226,12 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f977a687368>
+<bytecode: 0x7feb3712aac8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
 
-The dots are also used in the interactive file path messaging system, which notifies the user when they reference an absolute path or one leading outside of their project directory by throwing an error and providing an informative warning message. They are used in combination with shims to capture information about the user action that caused the error and to pass this information to the messaging system. This ensures that the override code provided at the end of the error message is customized to the user's behavior. In the example below, the warning message recognizes that \texttt{read.csv} was called with the path \texttt{\textasciitilde{}/Desktop/my\_data.csv}, and incorporates that into the suggested code:
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
-\end{verbatim}
-Finally, the dots play a big role in the \texttt{proj\_check\_some} function. Recall that \texttt{proj\_check\_some} allows users to run a selection of \texttt{fertile}'s checks by calling a \texttt{tidyselect} helper to pull out a subset of checks with names matching a certain definition.
+Additionally, the dots play a big role in the \texttt{proj\_check\_some} function. Recall that \texttt{proj\_check\_some} allows users to run a selection of \texttt{fertile}'s checks by calling a \texttt{tidyselect} helper to pull out a subset of checks with names matching a certain definition.
 
 This function, which accepts the arguments ``(path,\ldots),'' operates by allowing the users to pass in their \texttt{tidyselect} call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through \texttt{dplyr::select(...)}, where the dots contain the information about the user's \texttt{tidyselect} call. Then, all of the checks matching the \texttt{tidyselect} call are run on the provided directory path.
 
@@ -2387,7 +2360,7 @@ Authors could run \texttt{fertile} on their work before submitting it to a journ
 
 Although it would require some effort on the journal's side, this would still be an incredibly fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-43}
+\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-42}
 \end{figure}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2402,7 +2375,7 @@ This cover sheet would show which of the six primary reproducibility components 
 
 Journals could place an acceptance requirement that articles achieve a certain subset of badges---for instance, file paths, randomness, and documentation. Submitting authors would run \texttt{fertile} on their end to see which badges they passed. Once they met the requirements, they could run \texttt{proj\_badges()} to generate an article coversheet. This coversheet would then be submitted alongside the article and considered as part of the review process. All that reviewers would need to do to ensure that reproducibility requirements are met would be to look at the cover sheet to see which badges the project achieved and check the cover sheet generation information to ensure that it was truly produced by the project that the author says it was produced by.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-44}
+\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-43}
 \end{figure}
 Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
@@ -2419,7 +2392,7 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course (Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf)}\label{fig:unnamed-chunk-45}
+\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-44}
 \end{figure}
 Undergraduate students, therefore, do not get exposed to reproducibility very often. There are a few exceptions--for instance, introductory courses at Smith College and Duke University that integrate RMarkdown to promote reproducible workflows--but overall, reproducibility is not covered in data science courses the undergraduate level.
 
@@ -2599,6 +2572,93 @@ The structure of this function can be seen below:
 \end{enumerate}
 \hypertarget{results}{%
 \subsection{Results}\label{results}}
+
+In order to understand the results, it is important to understand the structure of the experimental reproducibility ``test'' and the way in which each student's answers were scored.
+
+The test consisted of two primary sections:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A set of six questions on RStudio projects, two of which were select-all-that-apply, and four of which were multiple choice. These questions tested students knowledge of RStudio projects, their understanding of which file paths they could include in code submitted in project format, and their awareness of the dangers of changing working directories while coding.
+\end{enumerate}
+\begin{figure}
+\includegraphics[width=1\linewidth]{figure/projects-1} \caption{Sample Question From The Section On RStudio Projects}\label{fig:unnamed-chunk-47}
+\end{figure}
+\begin{figure}
+\includegraphics[width=1\linewidth]{figure/projects-2} \caption{Another Sample Question From The Section On RStudio Projects}\label{fig:unnamed-chunk-48}
+\end{figure}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  A set of three questions about file paths, all of which were select-all-that apply. These questions tested students' knowledge of the difference between absolute and relative paths and their understanding of which paths are reproducible.
+\end{enumerate}
+\begin{figure}
+\includegraphics[width=1\linewidth]{figure/paths-1} \caption{Sample Question From The Section On File Paths}\label{fig:unnamed-chunk-49}
+\end{figure}
+For each test submission, every question was scored individually and then scores for each section (projects and paths) were calculated, as well as an overall total score.
+
+The following method was used to compute scores:
+\begin{itemize}
+\item
+  For each question, students would start at a score of zero. Based on their answers, points would then be added, subtracted, or stay constant.
+\item
+  On select-all-that apply questions, the following scoring rules were used. This meant that students who answered some things correctly, but other things incorrectly, could still receive negative or neutral scores, based on the overall analysis of how correct they were:
+  \begin{itemize}
+  \tightlist
+  \item
+    Each correct box that was checked --\textgreater{} +1 Point
+  \item
+    Each incorrect box that was checked --\textgreater{} -1 Point
+  \item
+    Each box that was not checked but should have been checked --\textgreater{} No change (0)
+  \end{itemize}
+\item
+  On multiple choice questions, the scoring rules were slightly different. This was due to the inclusion of an option for ``I'm not sure,'' which was included as a way to discourage random guessing and ensure that students were answering based on their actual knowledge.
+  \begin{itemize}
+  \tightlist
+  \item
+    If the correct answer was selected --\textgreater{} +1 Point
+  \item
+    If the incorrect answer was selected --\textgreater{} -1 Point
+  \item
+    If the student expressed uncertainty (``I'm not sure'') --\textgreater{} No change (0)
+  \end{itemize}
+\end{itemize}
+This method meant that individual questions could have negative, positive, or neutral scores, and total scores could vary quite dramatically, from large negative scores (\textless-10) for students who regularly answered incorrectly to large positive scores for those who often answered correctly (\textgreater10).
+
+\hypertarget{fall-2020-results}{%
+\subsubsection{Fall 2020 Results}\label{fall-2020-results}}
+
+The data from Fall 2020, after being scored and cleaned up, looked as follows:
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glimpse}\NormalTok{(fall2020)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Rows: 18
+Columns: 15
+$ User_Hash        <chr> "\"67b8da3952e07ba3f2c5c715c4042220\"", "\"f030209...
+$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Ferti...
+$ Previous_Classes <dbl> 0, 0, 2, 1, 2, 1, 6, 0, 1, 1, 1, 2, 1, 1, 5, 1, 3, 1
+$ Q1_Points        <dbl> 3, 1, 1, 3, 3, 2, 3, 3, 3, 1, 1, 3, 1, 1, 2, 2, 3, 1
+$ Q2_Points        <dbl> 0, -1, 0, -1, -1, 1, -1, 1, -1, 0, -1, -1, 0, -1, ...
+$ Q3_Points        <dbl> 0, 1, 0, -1, -1, 0, -1, 1, -1, 0, -1, -1, 0, 1, 1,...
+$ Q4_Points        <dbl> 1, 1, 1, 1, 1, 0, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1,...
+$ Q5_Points        <dbl> -1, 1, 0, 1, 1, 1, 0, 1, 1, 0, -1, 1, 0, -1, 1, -1...
+$ Q6_Points        <dbl> 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, -1, 1, 0
+$ Q7_Points        <dbl> 2, 2, 3, 0, -1, 3, 3, 3, -1, 2, 2, 2, 2, 2, 3, 1, ...
+$ Q8_Points        <dbl> -1, 2, -2, 2, -2, 2, 2, 2, -2, 2, 1, 1, -1, 1, 2, ...
+$ Q9_Points        <dbl> 1, 1, 0, 2, 2, 2, 2, 2, 1, -1, 1, -2, 0, 1, 1, 1, ...
+$ Projects_Total   <dbl> 3, 4, 3, 4, 4, 5, 2, 5, 4, 1, -1, 1, 1, 2, 7, -2, ...
+$ Paths_Total      <dbl> 2, 5, 1, 4, -1, 7, 7, 7, -2, 3, 4, 1, 1, 4, 6, 1, ...
+$ Overall_Total    <dbl> 5, 9, 4, 8, 3, 12, 9, 12, 2, 4, 3, 2, 2, 6, 13, -1...
+\end{verbatim}
+\hypertarget{january-term-2021-results}{%
+\subsubsection{January Term 2021 Results}\label{january-term-2021-results}}
 
 \hypertarget{implications}{%
 \subsection{Implications}\label{implications}}
