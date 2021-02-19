@@ -125,7 +125,7 @@ knitr::include_graphics("figure/tidytuesday.png")
 `fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
 
 
-## Testing Fertile in the Real World: Experimental Design and Analysis
+## Testing fertile in the Real World: Experimental Design and Analysis
 
 ### Background
 
@@ -283,7 +283,7 @@ This method meant that individual questions could have negative, positive, or ne
 ```{r, echo = FALSE,  message = FALSE}
 library(readr)
 library(tidyverse)
-library(kableExtra)
+
 
 fall2020 <- readr::read_csv("data/Fall_2020_Single_Post_test.csv")
 jterm2021 <- readr::read_csv("data/JTerm_2021_Pre_Post.csv")
@@ -302,7 +302,7 @@ glimpse(fall2020)
 There were 18 students who completed the reproducibility test, split evenly into two groups of 9, and 15 variables per student. Since the Fall 2020 section of the experiment contained only one reproducibility test, each student only has one associated observation in the data.
 
 1. `User_Hash`: Hashed identifiers, representing unique students.
-2. `Group`: A categorical variable summarizing whether the student was in the experimental (`Fertile`) or control group.
+2. `Group`: A categorical variable summarizing whether the student was in the experimental (`fertile`) or control group.
 3. `Previous_Classes`: The number of previous data science / computer science courses the student had taken at the start of the semester.
 4-12. `Qx_Points`: The number of points scored on each individual question.
 13. `Projects_Total`: The total number of points scored on the six questions associated with R Projects.
@@ -347,7 +347,7 @@ ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) +
   scale_color_brewer(palette = "Paired")
 ```
 
-However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `Fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 
 ```{r, echo = FALSE}
 fall_model <- lm(Overall_Total ~ Group, data = fall2020)
@@ -376,9 +376,9 @@ It has many of the same features as the Fall 2020 data, though there are a few d
 3. There are two new variables, `Student_ID` and `Test`. `Student_ID` is an index, used to keep track of which rows belong to the same student. This was created as an alternative to `User_Hash` as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. `Test` has either the value "Pre" or "Post", identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively. 
 
 
-When calculating the difference in reproducibility test scores between the end ("Post") and beginning ("Pre") of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of `Fertile`. 
+When calculating the difference in reproducibility test scores between the end ("Post") and beginning ("Pre") of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of `fertile`. 
 
-For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the `Fertile` group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the `Control` group and 2.22 for `Fertile`).
+For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the `fertile` group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the `control` group and 2.22 for `fertile`).
 
 ```{r, echo = FALSE, message = FALSE}
 pre_post_differences <- jterm2021 %>% group_by(Student_ID, Group, Previous_Classes) %>%
@@ -402,9 +402,9 @@ pre_post_differences %>%
   summarize(Avg_Score_Difference = round(mean(Score_Difference), 2))
 ```
 
-When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the `Fertile` group appeared to score worse than the `Control` group, on average. Yet, when considered all together, the `Fertile` group's scores improved slightly more over the time of the course than the `Control` group's.
+When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the `fertile` group appeared to score worse than the `control` group, on average. Yet, when considered all together, the `fertile` group's scores improved slightly more over the time of the course than the `control` group's.
 
-This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `Fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `Fertile` group performed slightly worse than the `Control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `Fertile` directly affected their scores.
+This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `fertile` group performed slightly worse than the `control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `fertile` directly affected their scores.
 
 
 ```{r, echo = FALSE}
@@ -424,9 +424,9 @@ ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
 
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at `Overall_Total`, rather than just `Paths` or `Projects`) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their pre-test), to highest.
 
-As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `Fertile` and `Control` group had negative performances such as these, more of the highly-negative showings came from those in the `Control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `Control` group. 
+As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `fertile` and `control` group had negative performances such as these, more of the highly-negative showings came from those in the `control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `control` group. 
 
-Once again, there is not much evidence that `Fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `Fertile` in terms of average score differences might just be due to one student skewing the `Control` group's averages.
+Once again, there is not much evidence that `fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `fertile` in terms of average score differences might just be due to one student skewing the `control` group's averages.
 
 ```{r, echo = FALSE}
 jterm_model_data <- pre_post_differences %>% 
@@ -445,7 +445,7 @@ It is also interesting to examine the relationship between the number of previou
 
 Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
 
-Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `Control`, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `Fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `Fertile` group always performed better on their Post-Tests than on their Pre-Tests.
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `control`, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `fertile` group always performed better on their Post-Tests than on their Pre-Tests.
 
 ```{r, echo = FALSE, message = FALSE}
 ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
@@ -455,9 +455,9 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) +
   scale_color_brewer(palette = "Paired")
 ```
 
-Although, visually, it does not seem as though `Fertile` provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
+Although, visually, it does not seem as though `fertile` provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
-After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`Fertile` or `Control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `Fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `Fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`fertile` or `control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
 
 
 ```{r, echo = FALSE}
@@ -485,12 +485,41 @@ summary(jterm_model_mr)
 
 ### Limitations
 
+Although the findings of the `fertile` experiment are interesting, they come with many caveats and should be treated with caution.
+
+For one, the sample sizes of both experimental sections were very small. The first only contained data on 18 students, while the second on only 38. While sample sizes like these may provide some evidence of the existence of experimental relationships, conclusive statements should not be made without additional data. 
+
+Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from `fertile` the classroom setting meant that students who had questions about some of the errors that appeared as a result of having `fertile` loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be impelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results. 
+
+Additionally, students in a classroom have the unfortunate characteristic---in experimental terms---of not being fully independent from one another. Students regularly communicated with each other, asking and answering questions, on a course `Slack` channel and also worked in groups on many of the class projects. This meant that they could spread knowledge; experiences from the `fertile` group could be disseminated to the `control` group and vice versa. Any sort of cross-contamination could be a potential threat to the validity of the experimental results, as independence is a key assumption necessary for linear regression.
+
+Although independence is at risk, many of the other assumptions for linear regression appear to be mostly met---with the caveat, of course, that there are not enough data points to make a definitive conclusion.
+
+In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
+
+```{r, message = FALSE, echo = FALSE}
+plot(fall_model, which = c(1,2)) 
+```
+
+```{r, message = FALSE, echo = FALSE}
+plot(jterm_model, which = c(1,2))
+```
+
+Finally, there is the additional limitation that, although this experimental structure tests the pure educational power of `fertile`, it does not accurately represent the ways in which `fertile` would be used in practice.
+
+Those who use R packages for their own benefit do so with specific intention and knowledge that they are doing so. In practice, unless attempting to do some sort of software testing, no one will use a package that they do not know is loaded. 
+
+In order to create an effective experimental environment, however, concessions must be made. If `fertile` were tested in its natural use state, where students were aware that they were using it, it would introduce the possibility of significant bias in the results. Students in the `fertile` group, for example, might change their behavior, knowing that their software is designed to improve reproducibility, and pursue extra research into the topic, affecting their test performance. 
+
+We do not know, from this data, whether `fertile` has significant benefits in its standard practice. All we can conclude from this study is that we do not have evidence that the package's interactive reproducibility messaging provides learning benefits when used without students' knowledge.
 
 
+### Implications 
 
-### Implications
+Although the conclusions from this experiment are not particularly exciting, the implications of the study extend far beyond just this software.
 
 
+... [**Go into idea of software A/B testing**]
 
 
 

@@ -191,20 +191,6 @@ The preface pretty much says it all.
 Second paragraph of abstract starts here.
 }
 
-	\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 % End of CII addition
 %%
 %% End Preamble
@@ -894,7 +880,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmprlc45x/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -902,9 +888,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmprlc45x/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmprlc45x/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmprlc45x/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
@@ -922,13 +908,13 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmprlc45x/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-19 15:33:05
+1 LAST RENDERED <NA>     proj_render 2021-02-19 21:57:20
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1554,8 +1540,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     185.37K image/png                                 
- 3 proteins_v_time.p~ png      378.3K image/png                                 
+ 2 citrate_v_time.png png     188.04K image/png                                 
+ 3 proteins_v_time.p~ png     378.25K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1962,7 +1948,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 727 x 4
+# A tibble: 735 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1975,7 +1961,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 717 more rows
+# ... with 725 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function \texttt{log\_clear()}.
 
@@ -2062,7 +2048,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f82acffae48>
+<bytecode: 0x7f824046d608>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2108,16 +2094,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2021-02-19 15:33:27
- 2 package:dplyr           <NA>                      base::~ 2021-02-19 15:33:27
- 3 package:readr           <NA>                      base::~ 2021-02-19 15:33:27
- 4 package:tidyr           <NA>                      base::~ 2021-02-19 15:33:27
- 5 package:ggplot2         <NA>                      base::~ 2021-02-19 15:33:27
- 6 package:purrr           <NA>                      base::~ 2021-02-19 15:33:27
- 7 Seed Before             <NA>                      599     2021-02-19 15:33:28
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-19 15:33:28
- 9 Seed After              <NA>                      613     2021-02-19 15:33:28
-10 Seed Before             <NA>                      613     2021-02-19 15:33:28
+ 1 Seed @ Start            <NA>                      599     2021-02-19 21:57:39
+ 2 package:dplyr           <NA>                      base::~ 2021-02-19 21:57:39
+ 3 package:readr           <NA>                      base::~ 2021-02-19 21:57:39
+ 4 package:tidyr           <NA>                      base::~ 2021-02-19 21:57:39
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-19 21:57:39
+ 6 package:purrr           <NA>                      base::~ 2021-02-19 21:57:39
+ 7 Seed Before             <NA>                      599     2021-02-19 21:57:39
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-19 21:57:40
+ 9 Seed After              <NA>                      613     2021-02-19 21:57:40
+10 Seed Before             <NA>                      613     2021-02-19 21:57:40
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in \texttt{fertile}, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that \texttt{fertile} always retains accurate information of user behavior.
@@ -2189,7 +2175,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f82aef5f840>
+<bytecode: 0x7f824688b5b8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2219,7 +2205,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f82aa13a3a0>
+<bytecode: 0x7f823cd95098>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
@@ -2248,7 +2234,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f82acffae48>
+<bytecode: 0x7f824046d608>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2466,7 +2452,7 @@ These students would then be prepared for entering the research world and contri
 \texttt{fertile} is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
 
 \hypertarget{testing-fertile-in-the-real-world-experimental-design-and-analysis}{%
-\section{Testing Fertile in the Real World: Experimental Design and Analysis}\label{testing-fertile-in-the-real-world-experimental-design-and-analysis}}
+\section{Testing fertile in the Real World: Experimental Design and Analysis}\label{testing-fertile-in-the-real-world-experimental-design-and-analysis}}
 
 \hypertarget{background}{%
 \subsection{Background}\label{background}}
@@ -2686,7 +2672,7 @@ There were 18 students who completed the reproducibility test, split evenly into
 \item
   \texttt{User\_Hash}: Hashed identifiers, representing unique students.
 \item
-  \texttt{Group}: A categorical variable summarizing whether the student was in the experimental (\texttt{Fertile}) or control group.
+  \texttt{Group}: A categorical variable summarizing whether the student was in the experimental (\texttt{fertile}) or control group.
 \item
   \texttt{Previous\_Classes}: The number of previous data science / computer science courses the student had taken at the start of the semester.
   4-12. \texttt{Qx\_Points}: The number of points scored on each individual question.
@@ -2719,7 +2705,7 @@ Looking at the overall total score (\texttt{Overall\_Total}), this was true even
 \end{Shaded}
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-54-1.pdf}
 
-However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{Fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
 
 Call:
@@ -2786,9 +2772,9 @@ It has many of the same features as the Fall 2020 data, though there are a few d
 \item
   There are two new variables, \texttt{Student\_ID} and \texttt{Test}. \texttt{Student\_ID} is an index, used to keep track of which rows belong to the same student. This was created as an alternative to \texttt{User\_Hash} as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. \texttt{Test} has either the value ``Pre'' or ``Post'', identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively.
 \end{enumerate}
-When calculating the difference in reproducibility test scores between the end (``Post'') and beginning (``Pre'') of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of \texttt{Fertile}.
+When calculating the difference in reproducibility test scores between the end (``Post'') and beginning (``Pre'') of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of \texttt{fertile}.
 
-For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the \texttt{Fertile} group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the \texttt{Control} group and 2.22 for \texttt{Fertile}).
+For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the \texttt{fertile} group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the \texttt{control} group and 2.22 for \texttt{fertile}).
 \begin{verbatim}
 # A tibble: 6 x 3
 # Groups:   Group [2]
@@ -2801,17 +2787,17 @@ For the questions about file paths, there appears to be no difference in the ave
 5 Fertile Projects                       1.89
 6 Fertile Total                          2.22
 \end{verbatim}
-When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the \texttt{Fertile} group appeared to score worse than the \texttt{Control} group, on average. Yet, when considered all together, the \texttt{Fertile} group's scores improved slightly more over the time of the course than the \texttt{Control} group's.
+When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the \texttt{fertile} group appeared to score worse than the \texttt{control} group, on average. Yet, when considered all together, the \texttt{fertile} group's scores improved slightly more over the time of the course than the \texttt{control} group's.
 
-This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{Fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{Fertile} group performed slightly worse than the \texttt{Control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{Fertile} directly affected their scores.
+This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
 
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their pre-test), to highest.
 
-As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{Fertile} and \texttt{Control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{Control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{Control} group.
+As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{fertile} and \texttt{control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{control} group.
 
-Once again, there is not much evidence that \texttt{Fertile} is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of \texttt{Fertile} in terms of average score differences might just be due to one student skewing the \texttt{Control} group's averages.
+Once again, there is not much evidence that \texttt{fertile} is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of \texttt{fertile} in terms of average score differences might just be due to one student skewing the \texttt{control} group's averages.
 
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-60-1.pdf}
 
@@ -2819,7 +2805,7 @@ It is also interesting to examine the relationship between the number of previou
 
 Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
 
-Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{Control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{Fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{Fertile} group always performed better on their Post-Tests than on their Pre-Tests.
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
 \begin{verbatim}
 Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
 parametric, : pseudoinverse used at 2
@@ -2846,9 +2832,9 @@ parametric, : reciprocal condition number 0
 \end{verbatim}
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-61-1.pdf}
 
-Although, visually, it does not seem as though \texttt{Fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
+Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
-After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{Fertile} or \texttt{Control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{Fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{Fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
 \begin{verbatim}
 
 Call:
@@ -2902,8 +2888,36 @@ F-statistic: 0.7581 on 2 and 35 DF,  p-value: 0.4761
 \hypertarget{limitations}{%
 \subsection{Limitations}\label{limitations}}
 
+Although the findings of the \texttt{fertile} experiment are interesting, they come with many caveats and should be treated with caution.
+
+For one, the sample sizes of both experimental sections were very small. The first only contained data on 18 students, while the second on only 38. While sample sizes like these may provide some evidence of the existence of experimental relationships, conclusive statements should not be made without additional data.
+
+Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from \texttt{fertile} the classroom setting meant that students who had questions about some of the errors that appeared as a result of having \texttt{fertile} loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be impelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results.
+
+Additionally, students in a classroom have the unfortunate characteristic---in experimental terms---of not being fully independent from one another. Students regularly communicated with each other, asking and answering questions, on a course \texttt{Slack} channel and also worked in groups on many of the class projects. This meant that they could spread knowledge; experiences from the \texttt{fertile} group could be disseminated to the \texttt{control} group and vice versa. Any sort of cross-contamination could be a potential threat to the validity of the experimental results, as independence is a key assumption necessary for linear regression.
+
+Although independence is at risk, many of the other assumptions for linear regression appear to be mostly met---with the caveat, of course, that there are not enough data points to make a definitive conclusion.
+
+In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
+
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-65-1.pdf} \includegraphics{thesis_files/figure-latex/unnamed-chunk-65-2.pdf}
+
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-66-1.pdf} \includegraphics{thesis_files/figure-latex/unnamed-chunk-66-2.pdf}
+
+Finally, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
+
+Those who use R packages for their own benefit do so with specific intention and knowledge that they are doing so. In practice, unless attempting to do some sort of software testing, no one will use a package that they do not know is loaded.
+
+In order to create an effective experimental environment, however, concessions must be made. If \texttt{fertile} were tested in its natural use state, where students were aware that they were using it, it would introduce the possibility of significant bias in the results. Students in the \texttt{fertile} group, for example, might change their behavior, knowing that their software is designed to improve reproducibility, and pursue extra research into the topic, affecting their test performance.
+
+We do not know, from this data, whether \texttt{fertile} has significant benefits in its standard practice. All we can conclude from this study is that we do not have evidence that the package's interactive reproducibility messaging provides learning benefits when used without students' knowledge.
+
 \hypertarget{implications}{%
 \subsection{Implications}\label{implications}}
+
+Although the conclusions from this experiment are not particularly exciting, the implications of the study extend far beyond just this software.
+
+\ldots{} {[}\textbf{Go into idea of software A/B testing}{]}
 
 \hypertarget{future-work}{%
 \subsection{Future Work}\label{future-work}}
