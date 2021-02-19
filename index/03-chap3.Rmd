@@ -299,15 +299,199 @@ The data from Fall 2020, after being scored and cleaned up, looked as follows:
 glimpse(fall2020)
 ```
 
+There were 18 students who completed the reproducibility test, split evenly into two groups of 9, and 15 variables per student. Since the Fall 2020 section of the experiment contained only one reproducibility test, each student only has one associated observation in the data.
 
+1. `User_Hash`: Hashed identifiers, representing unique students.
+2. `Group`: A categorical variable summarizing whether the student was in the experimental (`Fertile`) or control group.
+3. `Previous_Classes`: The number of previous data science / computer science courses the student had taken at the start of the semester.
+4-12. `Qx_Points`: The number of points scored on each individual question.
+13. `Projects_Total`: The total number of points scored on the six questions associated with R Projects.
+14. `Paths_Total`: The total number of points scored on the three questions associated with file paths.
+15. `Overall_Total`: The total combined score of all nine questions.
+
+The score averages for both groups of students were as follows
+
+```{r, echo = FALSE}
+fall2020 %>% 
+  group_by(Group) %>%
+  summarize(Projects_Avg = mean(Projects_Total),
+            Paths_Avg = mean(Paths_Total),
+            Overall_Avg = mean(Overall_Total))
+```
+
+These numbers, combined with the visual below seem to indicate, at least in this small sample, that the `fertile` group actually performed slightly worse, overall, than the `control` group.
+
+```{r, echo = FALSE}
+library(RColorBrewer)
+
+fall2020_averages <- fall2020 %>% 
+  group_by(Group) %>%
+  summarize(Projects_Total = mean(Projects_Total),
+            Paths_Total = mean(Paths_Total),
+            Overall_Total = mean(Overall_Total)) %>%
+  pivot_longer(cols = 2:4, names_to = "Question_Average")
+
+ggplot(fall2020_averages, aes(x = Group, fill = Group, y = value)) + 
+  facet_wrap(~Question_Average) + 
+  geom_col() +
+  ylab("Average Score") +
+  scale_fill_brewer(palette = "Paired") +
+  xlab(NULL)
+```
+
+Looking at the overall total score (`Overall_Total`), this was true even when controlling for the number of relevant courses taken previously:
+
+```{r}
+ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + 
+  geom_point(size = 4) +
+  scale_color_brewer(palette = "Paired")
+```
+
+However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `Fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+
+```{r, echo = FALSE}
+fall_model <- lm(Overall_Total ~ Group, data = fall2020)
+summary(fall_model)
+```
+
+
+```{r, echo = FALSE}
+anova(fall_model)
+```
 
 #### January Term 2021 Results
+
+We see a similar story with the data from January Term 2021, though the structure of the data set is different.
+
+The January Term data looks as follows:
+
+```{r, echo = FALSE}
+glimpse(jterm2021)
+```
+
+It has many of the same features as the Fall 2020 data, though there are a few differences.
+
+1. This data set contains data on 38 students, rather than 18.
+2. Each student has two rows of data that correspond to them, rather than just one.
+3. There are two new variables, `Student_ID` and `Test`. `Student_ID` is an index, used to keep track of which rows belong to the same student. This was created as an alternative to `User_Hash` as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. `Test` has either the value "Pre" or "Post", identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively. 
+
+
+When calculating the difference in reproducibility test scores between the end ("Post") and beginning ("Pre") of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of `Fertile`. 
+
+For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the `Fertile` group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the `Control` group and 2.22 for `Fertile`).
+
+```{r, echo = FALSE, message = FALSE}
+pre_post_differences <- jterm2021 %>% group_by(Student_ID, Group, Previous_Classes) %>%
+  summarize(pre_total = ifelse(Test == "Pre", Overall_Total, NA),
+            post_total = ifelse(Test == "Post", Overall_Total, NA),
+            pre_projects = ifelse(Test == "Pre", Projects_Total, NA),
+            post_projects = ifelse(Test == "Post", Projects_Total, NA),
+            pre_paths = ifelse(Test == "Pre", Paths_Total, NA),
+            post_paths = ifelse(Test == "Pre", Paths_Total, NA)) %>%
+  group_by(Student_ID, Group, Previous_Classes) %>%
+  summarize(Total = na.omit(post_total) - na.omit(pre_total),
+            Projects = na.omit(post_projects) - na.omit(pre_projects),
+            Paths = na.omit(post_paths) - na.omit(pre_paths)) %>%
+  pivot_longer(cols = 4:6, names_to = "Question_Group", values_to = "Score_Difference")
+
+
+
+
+pre_post_differences %>%
+  group_by(Group, Question_Group) %>%
+  summarize(Avg_Score_Difference = round(mean(Score_Difference), 2))
+```
+
+When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the `Fertile` group appeared to score worse than the `Control` group, on average. Yet, when considered all together, the `Fertile` group's scores improved slightly more over the time of the course than the `Control` group's.
+
+This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `Fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `Fertile` group performed slightly worse than the `Control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `Fertile` directly affected their scores.
+
+
+```{r, echo = FALSE}
+group_scores <- jterm2021 %>% select(1:5, 15:17) %>%
+  rename(Projects = "Projects_Total",
+         Paths = "Paths_Total",
+         Overall = "Overall_Total") %>%
+  pivot_longer(cols = 6:8,
+               names_to = "Question_Group",
+               values_to = "Score")
+
+ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
+  geom_boxplot() +
+  facet_wrap(~Question_Group) +
+  scale_fill_brewer(palette = "Paired")
+```
+
+We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at `Overall_Total`, rather than just `Paths` or `Projects`) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their pre-test), to highest.
+
+As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `Fertile` and `Control` group had negative performances such as these, more of the highly-negative showings came from those in the `Control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `Control` group. 
+
+Once again, there is not much evidence that `Fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `Fertile` in terms of average score differences might just be due to one student skewing the `Control` group's averages.
+
+```{r, echo = FALSE}
+jterm_model_data <- pre_post_differences %>% 
+  filter(Question_Group == "Total")
+
+ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Score_Difference, fill = Group)) + 
+  geom_col(color = 'black') + 
+  geom_hline(yintercept = 0) + 
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank()) + 
+  xlab(NULL) +
+  scale_fill_brewer(palette = "Paired")
+```
+
+It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
+
+Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
+
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `Control`, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `Fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `Fertile` group always performed better on their Post-Tests than on their Pre-Tests.
+
+```{r, echo = FALSE, message = FALSE}
+ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  facet_wrap(~Group) +
+  scale_color_brewer(palette = "Paired")
+```
+
+Although, visually, it does not seem as though `Fertile` provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
+
+After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`Fertile` or `Control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `Fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `Fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
+
+
+```{r, echo = FALSE}
+
+jterm_model <- lm(Score_Difference ~ Group, data = jterm_model_data)
+
+summary(jterm_model)
+```
+
+
+```{r, echo = FALSE}
+anova(jterm_model)
+```
+
+Adding in a second variable, the number of previous related courses taken by the student, we see the same story. Neither the student's experimental group, nor their number of previous classes have a statistically significant relationship with score difference, holding the other variable constant.
+
+
+```{r, echo = FALSE}
+jterm_model_mr <- lm(Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
+
+summary(jterm_model_mr)
+
+```
+
+
+### Limitations
+
+
 
 
 ### Implications
 
 
-### Limitations
+
 
 
 ### Future Work

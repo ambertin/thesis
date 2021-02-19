@@ -279,7 +279,7 @@ One of the important components of R package development, however, is that a pac
 readr::write_csv(mtcars, "~/Desktop/my_data.csv")
 ```
 
-```{r fertile, message = FALSE, error = TRUE}
+```{r fertile, error = TRUE}
 library(fertile)
 file.exists("~/Desktop/my_data.csv")
 read.csv("~/Desktop/my_data.csv")
@@ -289,7 +289,7 @@ read_csv("../../../Desktop/my_data.csv")
  
 In addition to catching non-reproducible file paths, `fertile` also stops the user when they try to change the working directory. Unlike with input and output functions like `read_csv()`, which can take a variety of different file paths---some which may be reproducible and some not, `setwd()` is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, `fertile` is particularly strict with it. When a call to `setwd()` is caught, `fertile` throws an error and does not provide an option to override. Rather, the user is given an alternative function (`here::here()`) to use that achieves the same behavior in a much more reproducible way.
 
-```{r setwd, message=FALSE, error = TRUE}
+```{r setwd, error = TRUE}
 getwd()
 setwd("~/Desktop")
 getwd()
@@ -429,9 +429,11 @@ For example, line 71, part of a `ggplot` call, contains the following code:
 
  
 ```{r, eval = FALSE}
-# Line 71 of `project_miceps/analysis.Rmd'
+# Line 71 of `project_miceps/analysis.Rmd', 
+# Test has been wrapped so it can all be seen at once
 
-geom_hline(aes(yintercept = estimate + 1.96*std.error, color = sex), linetype = 3) + 
+geom_hline(aes(yintercept = estimate + 1.96*std.error, color = sex),
+linetype = 3) + 
   
 ```
  

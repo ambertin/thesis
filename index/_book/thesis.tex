@@ -894,7 +894,7 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -902,9 +902,9 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/Blot_data_updated.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/CS_data_redone.csv
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/Estrogen_Receptors.docx
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/Blot_data_updated.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/CS_data_redone.csv
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
@@ -922,13 +922,13 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpVLy0c1/project_miceps/.fertile_render_log.csv
+Reading from /var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppdoNII/project_miceps/.fertile_render_log.csv
 \end{verbatim}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-18 22:21:39
+1 LAST RENDERED <NA>     proj_render 2021-02-19 15:33:05
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1201,6 +1201,13 @@ One of the important components of R package development, however, is that a pac
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(fertile)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{file.exists}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1213,6 +1220,12 @@ One of the important components of R package development, however, is that a pac
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+\end{verbatim}
+\begin{verbatim}
+Checking for absolute paths...
+\end{verbatim}
+\begin{verbatim}
 Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('~/Desktop/my_data.csv')
 \end{verbatim}
 \begin{Shaded}
@@ -1220,6 +1233,13 @@ Error: Detected absolute paths. Absolute paths are not reproducible and will lik
 \KeywordTok{read_csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+\begin{verbatim}
+Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+Checking for absolute paths...
+\end{verbatim}
+\begin{verbatim}
+Checking for paths outside project directory...
+\end{verbatim}
 \begin{verbatim}
 Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')
 \end{verbatim}
@@ -1401,9 +1421,11 @@ Let us consider an example. \texttt{project\_miceps} contains an \texttt{RMarkdo
 For example, line 71, part of a \texttt{ggplot} call, contains the following code:
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Line 71 of `project_miceps/analysis.Rmd'}
+\CommentTok{# Line 71 of `project_miceps/analysis.Rmd', }
+\CommentTok{# Test has been wrapped so it can all be seen at once}
 
-\KeywordTok{geom_hline}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{yintercept =}\NormalTok{ estimate }\OperatorTok{+}\StringTok{ }\FloatTok{1.96}\OperatorTok{*}\NormalTok{std.error, }\DataTypeTok{color =}\NormalTok{ sex), }\DataTypeTok{linetype =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\KeywordTok{geom_hline}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{yintercept =}\NormalTok{ estimate }\OperatorTok{+}\StringTok{ }\FloatTok{1.96}\OperatorTok{*}\NormalTok{std.error, }\DataTypeTok{color =}\NormalTok{ sex),}
+\DataTypeTok{linetype =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \end{Highlighting}
 \end{Shaded}
 For this line, \texttt{has\_no\_lint()} finds the following inconsistencies with tidy style:
@@ -1532,8 +1554,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.98K image/png                                 
- 3 proteins_v_time.p~ png     378.48K image/png                                 
+ 2 citrate_v_time.png png     185.37K image/png                                 
+ 3 proteins_v_time.p~ png      378.3K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1940,7 +1962,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 685 x 4
+# A tibble: 727 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1953,7 +1975,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 675 more rows
+# ... with 717 more rows
 \end{verbatim}
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function \texttt{log\_clear()}.
 
@@ -2040,7 +2062,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7feb3712aac8>
+<bytecode: 0x7f82acffae48>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2086,16 +2108,16 @@ Reading from /Users/audreybertin/Documents/thesis/index/project_miceps/.fertile_
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      599     2021-02-18 22:21:59
- 2 package:dplyr           <NA>                      base::~ 2021-02-18 22:22:00
- 3 package:readr           <NA>                      base::~ 2021-02-18 22:22:00
- 4 package:tidyr           <NA>                      base::~ 2021-02-18 22:22:00
- 5 package:ggplot2         <NA>                      base::~ 2021-02-18 22:22:00
- 6 package:purrr           <NA>                      base::~ 2021-02-18 22:22:00
- 7 Seed Before             <NA>                      599     2021-02-18 22:22:00
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-18 22:22:00
- 9 Seed After              <NA>                      613     2021-02-18 22:22:00
-10 Seed Before             <NA>                      613     2021-02-18 22:22:00
+ 1 Seed @ Start            <NA>                      599     2021-02-19 15:33:27
+ 2 package:dplyr           <NA>                      base::~ 2021-02-19 15:33:27
+ 3 package:readr           <NA>                      base::~ 2021-02-19 15:33:27
+ 4 package:tidyr           <NA>                      base::~ 2021-02-19 15:33:27
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-19 15:33:27
+ 6 package:purrr           <NA>                      base::~ 2021-02-19 15:33:27
+ 7 Seed Before             <NA>                      599     2021-02-19 15:33:28
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-19 15:33:28
+ 9 Seed After              <NA>                      613     2021-02-19 15:33:28
+10 Seed Before             <NA>                      613     2021-02-19 15:33:28
 # ... with 11 more rows
 \end{verbatim}
 These files, integral to many of the functionalities in \texttt{fertile}, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that \texttt{fertile} always retains accurate information of user behavior.
@@ -2167,7 +2189,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7feb3add2a78>
+<bytecode: 0x7f82aef5f840>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2197,7 +2219,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7feb2e6c5298>
+<bytecode: 0x7f82aa13a3a0>
 <environment: namespace:readr>
 \end{verbatim}
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
@@ -2226,7 +2248,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7feb3712aac8>
+<bytecode: 0x7f82acffae48>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2657,14 +2679,231 @@ $ Projects_Total   <dbl> 3, 4, 3, 4, 4, 5, 2, 5, 4, 1, -1, 1, 1, 2, 7, -2, ...
 $ Paths_Total      <dbl> 2, 5, 1, 4, -1, 7, 7, 7, -2, 3, 4, 1, 1, 4, 6, 1, ...
 $ Overall_Total    <dbl> 5, 9, 4, 8, 3, 12, 9, 12, 2, 4, 3, 2, 2, 6, 13, -1...
 \end{verbatim}
+There were 18 students who completed the reproducibility test, split evenly into two groups of 9, and 15 variables per student. Since the Fall 2020 section of the experiment contained only one reproducibility test, each student only has one associated observation in the data.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{User\_Hash}: Hashed identifiers, representing unique students.
+\item
+  \texttt{Group}: A categorical variable summarizing whether the student was in the experimental (\texttt{Fertile}) or control group.
+\item
+  \texttt{Previous\_Classes}: The number of previous data science / computer science courses the student had taken at the start of the semester.
+  4-12. \texttt{Qx\_Points}: The number of points scored on each individual question.
+\item
+  \texttt{Projects\_Total}: The total number of points scored on the six questions associated with R Projects.
+\item
+  \texttt{Paths\_Total}: The total number of points scored on the three questions associated with file paths.
+\item
+  \texttt{Overall\_Total}: The total combined score of all nine questions.
+\end{enumerate}
+The score averages for both groups of students were as follows
+\begin{verbatim}
+# A tibble: 2 x 4
+  Group   Projects_Avg Paths_Avg Overall_Avg
+* <chr>          <dbl>     <dbl>       <dbl>
+1 Control         3.33      4.22        7.56
+2 Fertile         2.11      2.44        4.56
+\end{verbatim}
+These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed slightly worse, overall, than the \texttt{control} group.
+
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-53-1.pdf}
+
+Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(fall2020, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Previous_Classes, }\DataTypeTok{y =}\NormalTok{ Overall_Total, }\DataTypeTok{col =}\NormalTok{ Group)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{4}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Paired"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-54-1.pdf}
+
+However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{Fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+\begin{verbatim}
+
+Call:
+lm(formula = Overall_Total ~ Group, data = fall2020)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-5.556 -2.556 -1.056  2.194  8.444 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     7.556      1.281   5.896 2.25e-05 ***
+GroupFertile   -3.000      1.812  -1.655    0.117    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.844 on 16 degrees of freedom
+Multiple R-squared:  0.1462,    Adjusted R-squared:  0.09288 
+F-statistic: 2.741 on 1 and 16 DF,  p-value: 0.1173
+\end{verbatim}
+\begin{verbatim}
+Analysis of Variance Table
+
+Response: Overall_Total
+          Df Sum Sq Mean Sq F value Pr(>F)
+Group      1  40.50  40.500  2.7406 0.1173
+Residuals 16 236.44  14.778               
+\end{verbatim}
 \hypertarget{january-term-2021-results}{%
 \subsubsection{January Term 2021 Results}\label{january-term-2021-results}}
 
-\hypertarget{implications}{%
-\subsection{Implications}\label{implications}}
+We see a similar story with the data from January Term 2021, though the structure of the data set is different.
 
+The January Term data looks as follows:
+\begin{verbatim}
+Rows: 76
+Columns: 17
+$ User_Hash        <chr> "\"96eb0673c18b9fa79740686995b1d970\"", "\"980a97c...
+$ Student_ID       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,...
+$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Ferti...
+$ Previous_Classes <dbl> 1, 1, 2, 1, 1, 4, 3, 0, 0, 1, 1, 4, 3, 4, 2, 4, 4,...
+$ Test             <fct> Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, ...
+$ Q1_Points        <dbl> 2, 2, 1, 2, 1, 3, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1,...
+$ Q2_Points        <dbl> -1, 0, -1, -1, 1, 1, 1, 0, 0, -1, -1, 0, 1, -1, -1...
+$ Q3_Points        <dbl> -1, 0, -1, 0, 0, 1, -1, 0, 0, -1, 0, 0, 1, -1, 0, ...
+$ Q4_Points        <dbl> 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, -1, 1, 1, 1, 1, 0, 1...
+$ Q5_Points        <dbl> 1, 0, -1, 1, 0, 1, -1, 0, 0, -1, 1, 0, 1, 1, 0, 0,...
+$ Q6_Points        <dbl> 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+$ Q7_Points        <dbl> 2, -2, 0, 0, 3, 2, 3, 1, 2, 3, 1, 2, 3, 3, 2, 2, -...
+$ Q8_Points        <dbl> 1, -3, -1, -2, 2, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 1,...
+$ Q9_Points        <dbl> 1, 2, 1, 1, 1, 1, -2, 0, -2, 2, -1, -2, 2, 2, -1, ...
+$ Projects_Total   <dbl> 3, 3, 0, 4, 3, 8, 2, 3, 3, 1, 1, 4, 7, 2, 3, 2, 6,...
+$ Paths_Total      <dbl> 4, -3, 0, -1, 6, 4, 3, 1, 1, 7, 1, 1, 7, 7, 2, 4, ...
+$ Overall_Total    <dbl> 7, 0, 0, 3, 9, 12, 5, 4, 4, 8, 2, 5, 14, 9, 5, 6, ...
+\end{verbatim}
+It has many of the same features as the Fall 2020 data, though there are a few differences.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This data set contains data on 38 students, rather than 18.
+\item
+  Each student has two rows of data that correspond to them, rather than just one.
+\item
+  There are two new variables, \texttt{Student\_ID} and \texttt{Test}. \texttt{Student\_ID} is an index, used to keep track of which rows belong to the same student. This was created as an alternative to \texttt{User\_Hash} as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. \texttt{Test} has either the value ``Pre'' or ``Post'', identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively.
+\end{enumerate}
+When calculating the difference in reproducibility test scores between the end (``Post'') and beginning (``Pre'') of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of \texttt{Fertile}.
+
+For the questions about file paths, there appears to be no difference in the average score at the beginning and end of the course for either group. For the questions about R Projects, the \texttt{Fertile} group had slightly higher average score differences but not by that much (1.92). For the overall total number of points, the score differences were very similar (2.15 for the \texttt{Control} group and 2.22 for \texttt{Fertile}).
+\begin{verbatim}
+# A tibble: 6 x 3
+# Groups:   Group [2]
+  Group   Question_Group Avg_Score_Difference
+  <chr>   <chr>                         <dbl>
+1 Control Paths                          0   
+2 Control Projects                       1.2 
+3 Control Total                          2.15
+4 Fertile Paths                          0   
+5 Fertile Projects                       1.89
+6 Fertile Total                          2.22
+\end{verbatim}
+When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the \texttt{Fertile} group appeared to score worse than the \texttt{Control} group, on average. Yet, when considered all together, the \texttt{Fertile} group's scores improved slightly more over the time of the course than the \texttt{Control} group's.
+
+This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{Fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{Fertile} group performed slightly worse than the \texttt{Control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{Fertile} directly affected their scores.
+
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-59-1.pdf}
+
+We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their pre-test), to highest.
+
+As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{Fertile} and \texttt{Control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{Control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{Control} group.
+
+Once again, there is not much evidence that \texttt{Fertile} is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of \texttt{Fertile} in terms of average score differences might just be due to one student skewing the \texttt{Control} group's averages.
+
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-60-1.pdf}
+
+It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
+
+Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
+
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{Control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{Fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{Fertile} group always performed better on their Post-Tests than on their Pre-Tests.
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : pseudoinverse used at 2
+\end{verbatim}
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : neighborhood radius 1
+\end{verbatim}
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : reciprocal condition number 0
+\end{verbatim}
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : pseudoinverse used at 2
+\end{verbatim}
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : neighborhood radius 1
+\end{verbatim}
+\begin{verbatim}
+Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+parametric, : reciprocal condition number 0
+\end{verbatim}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+Although, visually, it does not seem as though \texttt{Fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
+
+After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{Fertile} or \texttt{Control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{Fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{Fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
+\begin{verbatim}
+
+Call:
+lm(formula = Score_Difference ~ Group, data = jterm_model_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-14.150  -2.918   0.850   3.546   8.850 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   2.15000    1.10658   1.943   0.0599 .
+GroupFertile  0.07222    1.60783   0.045   0.9644  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.949 on 36 degrees of freedom
+Multiple R-squared:  5.604e-05, Adjusted R-squared:  -0.02772 
+F-statistic: 0.002018 on 1 and 36 DF,  p-value: 0.9644
+\end{verbatim}
+\begin{verbatim}
+Analysis of Variance Table
+
+Response: Score_Difference
+          Df Sum Sq Mean Sq F value Pr(>F)
+Group      1   0.05  0.0494   0.002 0.9644
+Residuals 36 881.66 24.4906               
+\end{verbatim}
+Adding in a second variable, the number of previous related courses taken by the student, we see the same story. Neither the student's experimental group, nor their number of previous classes have a statistically significant relationship with score difference, holding the other variable constant.
+\begin{verbatim}
+
+Call:
+lm(formula = Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-13.395  -2.130   1.043   2.996   8.232 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)  
+(Intercept)       3.45431    1.52672   2.263    0.030 *
+GroupFertile      0.06459    1.59648   0.040    0.968  
+Previous_Classes -0.68648    0.55789  -1.230    0.227  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.914 on 35 degrees of freedom
+Multiple R-squared:  0.04152,   Adjusted R-squared:  -0.01325 
+F-statistic: 0.7581 on 2 and 35 DF,  p-value: 0.4761
+\end{verbatim}
 \hypertarget{limitations}{%
 \subsection{Limitations}\label{limitations}}
+
+\hypertarget{implications}{%
+\subsection{Implications}\label{implications}}
 
 \hypertarget{future-work}{%
 \subsection{Future Work}\label{future-work}}
