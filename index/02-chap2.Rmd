@@ -2,12 +2,6 @@
 
 ##  `fertile`, An R Package Creating Optimal Conditions For Reproducibility
 
-```{r, echo = FALSE, message = FALSE}
-library(stringr)
-wrapoutput <- function(output, width = 80) {
- message(paste(strwrap(output, width = width), collapse = "\n"))
-}
-```
 
 What if it were possible to address the existing issues with both educational and software reproducibility solutions simultaneously? 
 
@@ -45,13 +39,19 @@ library(fertile)
 
 One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxilliary (image or text) files they have. 
 
- 
 
-```{r}
+
+```{r, eval = FALSE}
 proj_analyze_files("project_miceps")
 ```
 
- 
+\footnotesize 
+
+```{r, echo = FALSE}
+proj_analyze_files("project_miceps")
+```
+
+\normalsize
 
 Users can also check for the existence of a README description file with `has_readme()`:
 
@@ -76,24 +76,41 @@ library(fertile)
 ```
 
 
-```{r sandbox-1}
+```{r sandbox-1, eval = FALSE}
 fs::dir_ls('project_miceps') %>% head(3)
 ```
 
+```{r, sandbox-better-output-1, echo = FALSE}
+output <- as.character(fs::dir_ls('project_miceps') %>% head(3))
 
-```{r, sandbox-2}
+cat(output[1], "\n")
+cat(output[2], "\n")
+cat(output[3])
+```
+
+
+```{r, sandbox-2, eval = FALSE}
 temp_dir <- sandbox('project_miceps')
-temp_dir
 fs::dir_ls(temp_dir) %>% head(3)
 ```
 
+```{r, sandbox-better-output-2, echo = FALSE}
+temp_dir <- sandbox('project_miceps')
+output <- as.character(fs::dir_ls(temp_dir) %>% head(3))
+
+cat(stringr::str_wrap(output[1], width = 80, indent = 0, exdent = 0), "\n")
+cat(stringr::str_wrap(output[2], width = 80, indent = 0, exdent = 0), "\n")
+cat(stringr::str_wrap(output[3], width = 80, indent = 0, exdent = 0))
+
+
+```
  
 
 Once a directory is sandboxed, users can run the `proj_render()` function, which checks all `.R` and `.Rmd` code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 
  
 
-```{r, results = 'hide'}
+```{r, eval = FALSE}
 proj_render(temp_dir)
 ```
 
@@ -103,7 +120,7 @@ If `proj_render()` executes without error, this indicates that all the necessary
 
  
 
-```{r}
+```{r, message = FALSE}
 slice_tail(render_log_report(temp_dir))
 ```
 
@@ -144,17 +161,25 @@ has_only_used_files("project_miceps")
 
 #### Reorganizing File Structure
 
-There are also several functions help with reshaping the entire project structure to a more reproducibile format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
+There are also several functions help with reshaping the entire project structure to a more reproducible format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
 
- 
 
-```{r}
+
+```{r, eval = FALSE}
 files <- proj_analyze_files("project_miceps")
 
 proj_suggest_moves(files)
 ```
 
- 
+\footnotesize 
+
+```{r, echo = FALSE}
+files <- proj_analyze_files("project_miceps")
+
+proj_suggest_moves(files)
+```
+
+\normalsize 
 
 These suggestions are based on achieving the optimal file structure design for reproducibility, argued by @marwick2018packaging to be that of an `R` package (@coreteam-extensions, @hadley-packages), with an `R` folder, as well as `data`, `data-raw`, `inst`, and `vignettes`. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the `R` package structure to data analysis projects promotes standardization of file structure within the R community. 
 
@@ -212,14 +237,24 @@ The dependency information from `project_miceps` looks as follows:
 
  
 
-```{r echo = FALSE, results = 'hide'}
+```{r echo = FALSE, eval = FALSE}
 proj_render("project_miceps")
-```
-
-```{r}
 session_info <- "project_miceps/.software-versions.txt"
 cat(readChar(session_info, 1e5))
 ```
+
+```{r, echo = FALSE}
+proj_render("project_miceps")
+session_info <- "project_miceps/.software-versions.txt"
+output <- readChar(session_info, 1e5)
+
+string_intro <- "The R project located at '/Users/audreybertin/Documents/thesis/index/project_miceps' \nwas last run in the following software environment:"
+
+cat(string_intro)
+cat(substr(output, 138, 742))
+```
+
+
 
  
 
@@ -255,8 +290,21 @@ Code commenting---the process of placing human-readable descriptions next to cod
 
 The primary code file in `project_miceps`, "analysis.Rmd", is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by `has_well_commented_code()`:
 
-```{r}
+```{r, eval = FALSE}
 has_well_commented_code("project_miceps")
+```
+
+```{r, echo = FALSE}
+comments_tbl <- has_well_commented_code("project_miceps")
+
+cat("*", comments_tbl$name, "\n")
+cat("Problem:", comments_tbl$problem, "\n")
+cat("Solution:", stringr::str_wrap(comments_tbl$solution, width = 60), "\n")
+cat("See for help:", stringr::str_wrap(comments_tbl$help, width = 60))
+
+errors <- comments_tbl$error
+
+errors[[1]]
 ```
 
 
@@ -279,11 +327,32 @@ One of the important components of R package development, however, is that a pac
 readr::write_csv(mtcars, "~/Desktop/my_data.csv")
 ```
 
-```{r fertile, error = TRUE}
+```{r, message = FALSE}
 library(fertile)
+```
+
+```{r file-testing}
 file.exists("~/Desktop/my_data.csv")
+```
+
+```{r, eval = FALSE}
 read.csv("~/Desktop/my_data.csv")
+```
+
+```{r, echo = FALSE}
+error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('~/Desktop/my_data.csv')"
+
+cat(stringr::str_wrap(error_msg, width = 70))
+```
+
+```{r, eval = FALSE}
 read_csv("../../../Desktop/my_data.csv")
+```
+
+```{r, echo = FALSE}
+error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')"
+
+cat(stringr::str_wrap(error_msg, width = 80))
 ```
 
  
@@ -303,30 +372,48 @@ getwd()
 
  
 
-```{r}
+```{r, eval = FALSE}
 proj_analyze_paths('project_miceps')
 ```
 
+\footnotesize
+```{r, echo = FALSE}
+proj_analyze_paths('project_miceps')
+```
+\normalsize
  
 
 Paths can also be checked individually, or in groups, using `check_path()`.
 
- 
-
-```{r path checks, error = TRUE, message = FALSE}
+```{r path checks-1, error = TRUE, message = FALSE}
 # Path inside the directory
 check_path("project_miceps")
+```
 
+```{r path checks-2, eval = FALSE}
 # Absolute path (current working directory)
 check_path(getwd())
+```
 
+```{r, echo = FALSE}
+error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer."
+
+cat(stringr::str_wrap(error_msg, width = 80))
+```
+
+
+```{r path checks-3, eval = FALSE}
 # Path outside the directory
 check_path("../README.md")
 ```
+```{r, echo = FALSE}
+error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer."
 
+cat(stringr::str_wrap(error_msg, width = 80))
+```
  
 
-These functions, together, cover all of the reproducibility subcomponents involving file paths. Users are warned not to use absolute paths or paths pointing outside of the directory, both while they are coding and after the fact, and provided with a recommended solution to the problem if they do so. Additionally, users are prevented from using functions that will certainly break reproducibility and provided with safer alternatives. 
+These functions, together, cover all of the reproducibility sub-components involving file paths. Users are warned not to use absolute paths or paths pointing outside of the directory, both while they are coding and after the fact, and provided with a recommended solution to the problem if they do so. Additionally, users are prevented from using functions that will certainly break reproducibility and provided with safer alternatives. 
 
 ### Component 5: Randomness
 
@@ -335,7 +422,7 @@ The component of randomness is addressed by `fertile` in a reproducibility check
 Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
  
-```{r, message=FALSE, eval = FALSE}
+```{r, message=FALSE, eval = FALSE, tidy = TRUE}
 
 mice <- read_csv("Blot_data_updated.csv") %>%
   transmute(time = `Time point`,
@@ -359,33 +446,6 @@ mice_tidy <- mice %>%
   gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>%
   mutate(protein_label = factor(protein,
     labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
-```
-
-```{r, message=FALSE, echo = FALSE}
-library(dplyr)
-library(tidyr)
-mice <- read_csv("project_miceps/Blot_data_updated.csv") %>%
-  transmute(time = `Time point`,
-            sex = Sex,
-            id = `Mouse #`,
-            erb = `ERB Normalized Final`,
-            era = `ERA Normalized Final`,
-            gper = `GPER Normalized Final`) %>%
-  mutate(day = case_when(
-    time == 0 ~ -1,
-    time == 1 ~ 0,
-    time == 2 ~ 1,
-    time == 3 ~ 3,
-    time == 4 ~ 5,
-    time == 5 ~ 7
-  ),
-  type = ifelse(time == 0, "control", "treatment")
-  )
-mice_tidy <- mice %>%
-  select(-time) %>%
-  gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>%
-  mutate(protein_label = factor(protein,
-   labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
 ```
 
 
@@ -451,7 +511,7 @@ The first comes up because the true line length, including spaces, is 84 charact
 An even less tidy piece of code is that found on line 189, written as follows:
 
  
-```{r}
+```{r, eval = FALSE}
 # Line 189 of `project_miceps/analysis.Rmd'
 
 if (length(mice) > 1){ holder_var = 1 }
@@ -462,7 +522,7 @@ if (length(mice) > 1){ holder_var = 1 }
 
 For this line, `has_no_lint()` finds the following errors:
 
-* Line 189: There should be a space between right parenthesis and an opening curly brace.  
+* Line 189: There should be a space between right parenthesis and an opening curly brace.
 
 * Line 189: Opening curly braces should never go on their own line and should always be followed by a new line.  
 
@@ -517,9 +577,15 @@ The `proj_analyze()` function creates a report documenting the structure of a da
 
  
 
-```{r proj_analyze, tidy.opts=list(width.cutoff=60)}
+```{r proj_analyze, tidy.opts=list(width.cutoff=60), eval = FALSE}
 proj_analyze('project_miceps')
 ```
+
+\footnotesize
+```{r, echo = FALSE, message = FALSE}
+proj_analyze('project_miceps')
+```
+\normalsize
 
 Similar to `proj_check()`, `proj_badges()` runs all sixteen reproducibility checks---`has_tidy_media`, `has_readme`, `has_no_absolute_paths`, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, `proj_badges()` provides a higher level summary, reporting on the *groups* of checks that either passed or failed.
 
@@ -607,30 +673,45 @@ if (file.exists(bad_file)) {
 
 ```
 
-```{r proj_check_some, warning = FALSE, tidy.opts=list(width.cutoff=60)}
+```{r proj_check_some, warning = FALSE, tidy.opts=list(width.cutoff=60), eval = FALSE}
 proj_check_some("project_miceps", contains("tidy"))
 ```
 
- 
+\footnotesize
+```{r warning = FALSE, tidy.opts=list(width.cutoff=60), echo = FALSE}
+proj_check_some("project_miceps", contains("tidy"))
+```
+\normalsize
 
 Users might also attempt to call the two checks involving project roots together:
 
  
-```{r}
+```{r, eval = FALSE}
 proj_check_some("project_miceps", ends_with("root"))
 ```
  
+\footnotesize
+```{r, echo = FALSE}
+proj_check_some("project_miceps", ends_with("root"))
+```
+\normalsize
 
 Or, perhaps, they might want to run all the functions beginning with "has_only":
 
  
-```{r}
+```{r, eval = FALSE}
 proj_check_some("project_miceps", starts_with("has_only"))
 ```
  
+\footnotesize
+```{r, echo = FALSE}
+proj_check_some("project_miceps", starts_with("has_only"))
+```
+\normalsize 
+ 
 #### Individual Checks
 
-If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every subcomponent of `project_analyze()`can be run individually. 
+If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every sub-component of `project_analyze()`can be run individually. 
 
 ### Educational Features
 
@@ -653,11 +734,15 @@ library(forcats)
 read_csv(fs::path('project_miceps', "mice.csv"))
 ```
 
-```{r log-report}
+```{r log-report, eval = FALSE}
 log_report()
 ```
 
- 
+\footnotesize
+```{r, echo = FALSE}
+log_report()
+```
+\normalsize
 
 Depending on how much history they want to keep track of, users have the option to clear the log and start from scratch via the function `log_clear()`.
 
@@ -731,8 +816,11 @@ In the `fertile` version of `library()`,`fertile` is detached from the search pa
 In order to store and analyze information about user behavior and code structure, `fertile` utilizes three different types of hidden files, two of which are `.csv` format and one of which is a text file. The hidden `.csv` files for `project_miceps` can be seen below:
 
 ```{r}
-fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv")
+as.character(
+  fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv"))
 ```
+
+
 
 The interactive log (`.fertile_log.csv`), accessible via `log_report()`, is created as soon as a user executes their first piece of code that could threaten reproducibility. This file tracks all of the shimmed functions executed by the user, either in the console or when running code chunks by hand (rather than knitting a file). It reports the function called, the relevant argument passed in (either a file path or `R` package name), and the time stamp of when the function was executed. Users can clear the data from this file and start fresh at any time with `log_clear()`.
 
@@ -746,9 +834,15 @@ The render log (`.fertile_render_log.csv`), accessible via `render_log_report()`
 
 The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a timestamp of the last time the code was run by `fertile`. Users cannot erase it easily.
 
-```{r}
+```{r, eval = FALSE}
 render_log_report("project_miceps")
 ```
+
+\footnotesize
+```{r, message = FALSE, echo = FALSE}
+render_log_report("project_miceps")
+```
+\normalsize
 
 These files, integral to many of the functionalities in `fertile`, are not visible when looking at the file system. Users can only access them with functions provided by fertile, and user permissions are quite restrictive. Except for removing the command history in the interactive log, users cannot modify their contents, and neither the render log nor the interactive log can be deleted without the user modifying their file system. This prevents the files from mistakenly being tampered with, potentially impairing their functionality, and ensures that `fertile` always retains accurate information of user behavior. 
 

@@ -1,3 +1,9 @@
+```{r, echo = FALSE}
+library(formatR)
+opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
+```
+
+
 # Incorporating `fertile` Into The Greater Data Science Community {#applications}
 
 Finding a solution to addressing reproducibility on a widespread scale is a challenging problem. Attempts to do so--in academic publishing, software, and data science education--have made some progress, but many solutions have significant flaws. Primarily, they either:
@@ -299,6 +305,7 @@ The data from Fall 2020, after being scored and cleaned up, looked as follows:
 glimpse(fall2020)
 ```
 
+
 There were 18 students who completed the reproducibility test, split evenly into two groups of 9, and 15 variables per student. Since the Fall 2020 section of the experiment contained only one reproducibility test, each student only has one associated observation in the data.
 
 1. `User_Hash`: Hashed identifiers, representing unique students.
@@ -309,7 +316,9 @@ There were 18 students who completed the reproducibility test, split evenly into
 14. `Paths_Total`: The total number of points scored on the three questions associated with file paths.
 15. `Overall_Total`: The total combined score of all nine questions.
 
-The score averages for both groups of students were as follows
+The de-identified data, including all 15 variables of interest, are available with open access at https://github.com/ambertin/thesis.
+
+The score averages for both groups of students were as follows:
 
 ```{r, echo = FALSE}
 fall2020 %>% 
@@ -374,6 +383,8 @@ It has many of the same features as the Fall 2020 data, though there are a few d
 1. This data set contains data on 38 students, rather than 18.
 2. Each student has two rows of data that correspond to them, rather than just one.
 3. There are two new variables, `Student_ID` and `Test`. `Student_ID` is an index, used to keep track of which rows belong to the same student. This was created as an alternative to `User_Hash` as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. `Test` has either the value "Pre" or "Post", identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively. 
+
+Just as with the Fall 2020 data, these de-identified data are available publicly at https://github.com/ambertin/thesis.
 
 
 When calculating the difference in reproducibility test scores between the end ("Post") and beginning ("Pre") of the course, the story looks a little bit less negative than before, but once again there does not appear to be much strong evidence in favor of `fertile`. 
@@ -516,27 +527,51 @@ We do not know, from this data, whether `fertile` has significant benefits in it
 
 ### Implications 
 
-Although the conclusions from this experiment are not particularly exciting, the implications of the study extend far beyond just this software.
+Although the conclusions from this experiment are not particularly dramatic or exciting, the implications of the study extend far beyond just this software.
+
+#### Implications for the Future of `fertile`
+
+Through this experiment, we did not discover any significant relationship between students' blind use of `fertile`'s interactive warning system and their knowledge or learning of reproducibility across the time span of the Introduction to Data Science (SDS 192) course. 
+
+This is not particularly good news, but it is also not bad news. `fertile` does not appear to have a negative effect on students' learning, rather just neutral. 
+
+Additionally, this experiment does not test `fertile` in its natural environment---use by an individual who has specifically chosen to use it and studied the documentation in order to understand how it works---or consider the ways in which `fertile` fills current gaps in software that exist in the `R` community.
+
+Despite `fertile`'s lack of success in the experiment, it has been recognized elsewhere as a helpful tool with the potential to positively help the `R` community:
+
+- An article written by myself and Professor Baumer, which details the background, implications, and operation of the package was accepted at the 2020 American Statistical Association's Symposium on Data Science and Statistics and, in early 2021, published in the Wiley journal *Stat* (https://doi.org/10.1002/sta4.332).
+
+- Several influential and popular people in the `R` community have liked and shared some of the work related to `fertile` on social media:
+  - Hadley Wickham (Chief Scientist at RStudio)
+  - Jenny Bryan (Software engineer at RStudio)
+  - Tom Mock (Customer success team at RStudio)
+  - Michael Lopez (Director of Data and Football Analytics at the NFL)
+  - Ron Yurko (Known for creating an extremely popular R package, alongside other work in sports analytics)
+  - Sharla Gelfand (Freelance developer, speaker, and organizer of R Ladies Toronto, with a focus on reproducibility)
+  - Ben Marwick (Author of some of the reproducibility-focused content discussed in the literature review)
+  
+As the project continues to spread and be shared, we hope to find a dedicated community of users who find benefit in its software tools and see an increased shift toward reproducibility in the `R` community.
+
+#### Implications for the Experimental Design in Other Applications
+
+Although this particular experiment did not produce any particularly interesting results, it has produced some exciting ideas for the future of software testing. 
+
+As far as I am aware, the experimental design developed by myself and Professor Baumer is the first of its kind---a structure designed to test the difference between two versions of `R` software without the experimental participants being aware. 
+
+Typically, `R` package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be incredibly effective, but it does not have the same scientific backing behind it as experimental testing does. 
+
+If this experimental design gained traction in the `R` community, it could pave the way for scientific A/B testing of `R` packages.
+
+A/B testing is an experimental methodology focused on user experience. In an A/B test, designers compare two different versions of a product, randomly assigning participants to groups to determine which version they will receive. Using statistical hypothesis testing, the researchers attempt to identify which software version was most successful. 
+
+```{r, echo = FALSE, out.width = '100%', fig.cap = "A/B Testing"}
+knitr::include_graphics("figure/a-b_testing.png")
+```
 
 
-... [**Go into idea of software A/B testing**]
+One of the most popular applications of this form of testing is in marketing. Product sellers, in an attempt to drive traffic to their website and maximize profits, will test several different methods of advertising or web design to see which one results in the most clicks and/or purchase. 
 
+Though popular in the marketing industry, A/B testing has the potential to have a positive impact in any software-related domain, including `R` package development. 
 
-
-### Future Work
-
-
-
-Potential sources:
-
-https://arxiv.org/abs/1401.3269
-
-https://academic.oup.com/isp/article-abstract/17/4/392/2528285
-
-
-https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/
-
-https://guides.lib.uw.edu/research/reproducibility/teaching
-
-https://escholarship.org/uc/item/90b2f5xh
+This will be particularly useful for those `R` developers looking to build a deeper scientific understanding of how to code more effectively, and may pave the way for more research-based improvements to software written in the `R` language.
 
