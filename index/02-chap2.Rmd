@@ -422,14 +422,14 @@ The component of randomness is addressed by `fertile` in a reproducibility check
 Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
  
-```{r, message=FALSE, eval = FALSE, tidy = TRUE}
+```{r, message=FALSE, eval = FALSE}
 
 mice <- read_csv("Blot_data_updated.csv") %>%
   transmute(time = `Time point`,
-            sex = Sex,
-            id = `Mouse #`,
-            erb = `ERB Normalized Final`,
-            era = `ERA Normalized Final`,
+            sex = Sex, 
+            id = `Mouse #`, 
+            erb = `ERB Normalized Final`, 
+            era = `ERA Normalized Final`, 
             gper = `GPER Normalized Final`) %>%
   mutate(day = case_when(
     time == 0 ~ -1,
@@ -437,15 +437,14 @@ mice <- read_csv("Blot_data_updated.csv") %>%
     time == 2 ~ 1,
     time == 3 ~ 3,
     time == 4 ~ 5,
-    time == 5 ~ 7
-  ),
-  type = ifelse(time == 0, "control", "treatment")
-  )
-mice_tidy <- mice %>%
-  select(-time) %>%
-  gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>%
+    time == 5 ~ 7),
+  type = ifelse(time == 0, "control", "treatment"))
+
+mice_tidy <- mice %>% 
+  select(-time) %>% 
+  gather(key = "protein", value = "amount", -day, -sex, -id, -type) %>% 
   mutate(protein_label = factor(protein,
-    labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
+           labels = c("paste(ER, alpha)", "paste(ER, beta)", "GPER")))
 ```
 
 
