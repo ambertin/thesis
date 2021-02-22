@@ -243,20 +243,19 @@ session_info <- "project_miceps/.software-versions.txt"
 cat(readChar(session_info, 1e5))
 ```
 
+\small
 ```{r, echo = FALSE}
 proj_render("project_miceps")
 session_info <- "project_miceps/.software-versions.txt"
 output <- readChar(session_info, 1e5)
 
-string_intro <- "The R project located at '/Users/audreybertin/Documents/thesis/index/project_miceps' \nwas last run in the following software environment:"
+string_intro <- "The R project located at '/Users/audreybertin/Documents/thesis/index/\nproject_miceps' was last run in the following software environment:"
 
 cat(string_intro)
 cat(substr(output, 138, 742))
 ```
+\normalsize
 
-
-
- 
 
 Interactively, users can access this dependency summary using the function `proj_dependency_report()`. 
 
@@ -266,8 +265,11 @@ When run on an `R` project directory, the function creates a `.R` script file th
 
  
 
-```{r eval=TRUE, cache=TRUE, linewidth = 60}
+```{r}
 install_script <- proj_pkg_script("project_miceps")
+```
+
+```{r, echo = FALSE, linewidth = 60}
 cat(readChar(install_script, 1e5))
 ```
 
@@ -398,7 +400,7 @@ check_path(getwd())
 ```{r, echo = FALSE}
 error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer."
 
-cat(stringr::str_wrap(error_msg, width = 80))
+cat(stringr::str_wrap(error_msg, width = 70))
 ```
 
 
@@ -409,7 +411,7 @@ check_path("../README.md")
 ```{r, echo = FALSE}
 error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer."
 
-cat(stringr::str_wrap(error_msg, width = 80))
+cat(stringr::str_wrap(error_msg, width = 70))
 ```
  
 
@@ -810,6 +812,47 @@ A full list of the shimmed functions provided by `fertile` is listed below. Note
 knitr::include_graphics("figure/shims-list.png")
 ```
 
+#### Shim Customization Functionality
+
+Not all `R` programmers use the same packages, nor do they use the same functions at the same level of regularity. Additionally, some users might not always want to have their shimmed functions enabled---for example, they may purposefully be writing code with absolute paths, and would want to be able to do so without warnings and interruptions.
+
+As a result of this, we believed it important to include features in `fertile` that enable the package's user to customize which functions that their version of `fertile` has active shims for as well as when those shims are enabled or disabled.
+
+Several functions in `fertile` have been written to implement this behavior:
+
+1. The `add_shim()` function allows users to write a new shim to `fertile`. When this function is called, `fertile` writes the code for the shimmed function using the standard structure explained previously. It then adds that code to a file located alongside `fertile`'s documentation on the user's computer so that it is permanently saved, and then executes it in order to activate the new shim and immediately bring it into the user's `R` environment. With `add_shim()`, users can only add shims individually, as in the example below.
+
+```{r, eval = FALSE}
+# Code to add a shim for stats::write.ftable 
+add_shim(func = "write.ftable", package = "stats")
+```
+
+2. If users want to not limit themselves to a handful of specific shims and rather just automatically create all of the possible shims, the `find_all_shimmable_functions()`, `find_pkg_shimmable_functions` and `add_all_possible_shims()` functions can assist. 
+
+`find_all_shimmable_functions()` searches the namespaces of all of the loaded libraries in `search()` and returns the names and associated packages of all functions found to potentially be shimmable (i.e. those that accept file path-related arguments). This list provides a reference for those who want to know which functions they could potentially write shims for. 
+
+`find_pkg_shimmable_functions()` does the same thing as `find_all_shimmable_`
+`functions()`, but on a smaller scale. Rather than looking at all loaded packages, it just looks at the namespace of a specific package, passed as an argument to the user.
+
+`add_all_possible_shims()` will look at the list of functions provided by `find_all_shimmable_functions()` and perform the actions of `add_shim()` on all of them individually. This will generate and then add all of those functions to the shim file included alongside the `fertile` documentation and then load them into the environment.
+
+
+```{r, eval = FALSE}
+# Return list of all potential shims in ALL loaded packages
+find_all_shimmable_functions()
+
+# Return list of all potential shims from a SPECIFIC package (e.g dplyr)
+find_pkg_shimmable_functions(package = "dplyr")
+
+# Write/load all of the shims from find_all_shimmable_functions()
+add_all_possible_shims()
+```
+
+3. By default, all of the shims in `fertile`---both those included in the package as well as those written by the user---are activated when `fertile` is loaded (using `library()`) and deactivated, i.e. removed from the environment, when it is unloaded.
+
+There is no method currently in the package to deactivate the shims included in `fertile` without unloading it. However, the shims written by the user are completely controllable in this respect. `load_shims()` will find the file of user generated shims and execute it to bring those shims into the environment. `unload_shims()` will search the environment for functions that are linked to `fertile`, via unique attributes written into the functions, and remove them. 
+
+4. Finally, users can edit the file containing the shims they have written using the function `edit_shims()`. This will open an interactive window which provides the user with access to the file so that they can delete or reorganize shims as desired.
 
 ### Hidden Files
 
@@ -819,7 +862,6 @@ In order to store and analyze information about user behavior and code structure
 as.character(
   fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv"))
 ```
-
 
 
 The interactive log (`.fertile_log.csv`), accessible via `log_report()`, is created as soon as a user executes their first piece of code that could threaten reproducibility. This file tracks all of the shimmed functions executed by the user, either in the console or when running code chunks by hand (rather than knitting a file). It reports the function called, the relevant argument passed in (either a file path or `R` package name), and the time stamp of when the function was executed. Users can clear the data from this file and start fresh at any time with `log_clear()`.
@@ -882,9 +924,15 @@ has_only_portable_paths
 
 Many of the shimmed functions in `fertile` accept a large number of arguments. Consider `read_csv`. The function requires only one argument (`file`) but allows for up to 14. 
 
-```{r}
+```{r, eval = FALSE}
 readr::read_csv
 ```
+
+\small
+```{r, echo = FALSE}
+readr::read_csv
+```
+\normalsize
 
 When users call the shimmed version of `read_csv`, `fertile` does not need to process any arguments other than `file`, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, `fertile`'s `read_csv` is written to accept a file name and the dots , which then capture and save the additional input provided by the user. `fertile` checks the file path, and then uses the saved dots to then execute `readr::read_csv` the way that the user originally intended. 
 

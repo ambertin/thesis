@@ -80,12 +80,6 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
-
-```{r, echo = FALSE, out.width = '100%', fig.cap = "The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course", fig.subcap="Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf"}
-knitr::include_graphics("figure/gov-2001-replication.png")
-```
-
-
 Undergraduate students, therefore, do not get exposed to reproducibility very often. There are a few exceptions--for instance, introductory courses at Smith College and Duke University that integrate RMarkdown to promote reproducible workflows--but overall, reproducibility is not covered in data science courses the undergraduate level.
 
 `fertile` could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
@@ -94,6 +88,12 @@ Undergraduate students, therefore, do not get exposed to reproducibility very of
 * Knowledge of how to install a package from GitHub and load it into their environment
 * Knowledge of how to create an R project
 * Knowledge of how to run basic functions and input simple file paths
+
+
+```{r, echo = FALSE, out.width = '100%', fig.cap = "The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course", fig.subcap="Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf"}
+knitr::include_graphics("figure/gov-2001-replication.png")
+```
+
 
 Though the process may entail some confusion and troubleshooting at first, even those brand new to `R` could succeed in overcoming these barriers in only a few days of class. As a result, `fertile` could provide professors with an opportunity to teach reproducibility concepts in introductory level courses. 
 
@@ -330,7 +330,6 @@ fall2020 %>%
             Paths_Avg = mean(Paths_Total),
             Overall_Avg = mean(Overall_Total))
 
-output
 ```
 
 These numbers, combined with the visual below seem to indicate, at least in this small sample, that the `fertile` group actually performed slightly worse, overall, than the `control` group.
