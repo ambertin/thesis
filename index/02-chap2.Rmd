@@ -12,7 +12,7 @@ knitr::include_graphics("figure/fertile-hex.png")
 ```
 
 
-`fertile` attempts to address the gaps in existing reproducbility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about all six major components of reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. 
+`fertile` attempts to address the gaps in existing reproducibility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about all six major components of reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on. 
 
 `fertile` also contains several `R`-specific features, which address certain aspects of reproducibility that can be missed by external project development tools. It is designed primarily to be used on data analyses organized as `R` Projects (i.e. directories containing an `.Rproj` file) and contains several associated features to ensure that the project structure meets the standards discussed in the `R` community.
 
@@ -37,7 +37,7 @@ library(fertile)
 
 #### File Overview
 
-One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxilliary (image or text) files they have. 
+One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxiliary (image or text) files they have. 
 
 
 
@@ -468,7 +468,7 @@ has_no_randomness('project_miceps')
 
 Though not an absolutely necessary component of reproducibility, code style can have a significant impact on how easy it is to follow the steps being taken in an analysis. The use of consistent and highly-readable style in code greatly simplifies and speeds up the process of understanding a data analysis project and repeating the steps included within. 
 
-`fertile` addresses code style via the function `has_no_lint()`. This function checks code for compatibility with RStudio Chief Scientist Hadley Wikham's "tidy" code format, which promotes the following best practices:
+`fertile` addresses code style via the function `has_no_lint()`. This function checks code for compatibility with RStudio Chief Scientist Hadley Wickham's "tidy" code format, which promotes the following best practices:
 
 * Line length should not exceed 80 characters
 * There should not be trailing whitespace
@@ -770,13 +770,7 @@ In the world of `R` packages, `fertile`'s behavior is rather unusual. Almost no 
 
 Much of the functionality in `fertile` is achieved by writing `shims`. In their application to `fertile`, shims can be defined as functions that transparently intercept users' intended actions and slightly alter their execution. 
 
-`fertile` contains shims for a variety of common functions that may affect reproducibilty, including those that read and write files, load libraries, and set random number generation seeds. A full list of shimmed functions, organized by their original package, is provided below:
-
-```{r echo = FALSE, out.width = '100%', fig.cap="List of Functions Shimmed by 'fertile'"}
-knitr::include_graphics("figure/shims-list.png")
-```
-
-
+`fertile` contains shims for a variety of common functions that may affect reproducibility, including those that read and write files, load libraries, and set random number generation seeds. 
 
 When users perform actions that may threaten reproducibility, the package's shimmed functions intercept the user's commands and perform various logging and checking tasks before executing the desired function.
 
@@ -794,7 +788,7 @@ The process for writing a shim is as follows:
   c) performs any checks on these arguments, and 
   d) calls the original function with the original arguments. Except where warranted, the execution looks the same to the user as if they were calling the original function.
   
-Most shims, when written, are relatively simple. Several, such as that for `library()` are more complex, but many follow the same basic format that can be seen in this example for`read_csv()`:
+Most shims, when written, are relatively simple. Several, such as that for `library()` are more complex, but many follow the same basic format that can be seen in this example for `read_csv()`:
 
  
 
@@ -809,6 +803,13 @@ This functionality all occurs without the knowledge of the user. Consider the ex
 This behavior, however, is dependent `fertile` remaining at the top of the `search()` path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. 
 
 In the `fertile` version of `library()`,`fertile` is detached from the search path, the requested package is loaded, and then `fertile` is reattached. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. 
+
+A full list of the shimmed functions provided by `fertile` is listed below. Note that---in order to reduce the software dependencies of `fertile` the shims from the less common `readxl`, `rjson`, `foreign`, and `sas7bdat` packages are only activated if the user has those packages installed and loaded on their computer.
+
+```{r echo = FALSE, out.width = '100%', fig.cap="List of Functions Shimmed by 'fertile'"}
+knitr::include_graphics("figure/shims-list.png")
+```
+
 
 ### Hidden Files
 
@@ -831,7 +832,7 @@ The render log (`.fertile_render_log.csv`), accessible via `render_log_report()`
 
 3. The user can generate a new file manually at any time by executing the `proj_render()` command.
 
-The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a timestamp of the last time the code was run by `fertile`. Users cannot erase it easily.
+The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a time stamp of the last time the code was run by `fertile`. Users cannot erase it easily.
 
 ```{r, eval = FALSE}
 render_log_report("project_miceps")
@@ -895,7 +896,7 @@ The majority of shims have a similar structure. Since almost all shimmed functio
 
 Additionally, the dots play a big role in the `proj_check_some` function. Recall that `proj_check_some` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
 
-This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a dataframe, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
+This function, which accepts the arguments "(path,...)," operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a data frame, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
 
 ### Parameterized Reports
 
@@ -959,4 +960,4 @@ As discussed in Chapter 2.1.8, `fertile` is highly customizable, providing users
 
 **7) Be applicable to a wide variety of domains.**
 
-Due to its low learning curve, customizability, and all-component-encompassing nature, `fertile` has the potential to provide benefits to users in a wide variety of donains. We will consider these in detail in the next chapter.
+Due to its low learning curve, customizability, and all-component-encompassing nature, `fertile` has the potential to provide benefits to users in a wide variety of domains. We will consider these in detail in the next chapter.
