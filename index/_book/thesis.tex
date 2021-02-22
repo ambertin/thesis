@@ -24,7 +24,7 @@
 %% Preamble
 %%
 % \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,oneside]{reedthesis}
+\documentclass[12pt,twoside]{reedthesis}
 % Packages are extensions to the basic LaTeX functions. Whatever you
 % want to typeset, there is probably a package out there for it.
 % Chemistry (chemtex), screenplays, you name it.
@@ -41,17 +41,10 @@
 \usepackage{lmodern}
 \usepackage{float}
 \floatplacement{figure}{H}
+% Thanks, @Xyv
+\usepackage{calc}
 % End of CII addition
 \usepackage{rotating}
-\renewcommand{\topfraction}{.85}
-\renewcommand{\bottomfraction}{.7}
-\renewcommand{\textfraction}{.15}
-\renewcommand{\floatpagefraction}{.66}
-\setcounter{topnumber}{3}
-\setcounter{bottomnumber}{3}
-\setcounter{totalnumber}{4}
-
-\setlength{\headheight}{18pt}%
 
 % Next line commented out by CII
 %%% \usepackage{natbib}
@@ -158,6 +151,11 @@
 \makeatother
 
 %Added by @MyKo101, code provided by @GerbrichFerdinands
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{CSLReferences}%
+  {}%
+  {\par}
 
 \renewcommand{\contentsname}{Table of Contents}
 % End of CII addition
@@ -184,11 +182,7 @@ Additionally, a huge thanks to the many introductory data science students who v
 }
 
 \Abstract{
-The preface pretty much says it all.
-
-\par
-
-Second paragraph of abstract starts here.
+In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Although reproducibility is important to the advancement of scientific knowledge in many ways, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are either challenging to use, are too generalized, and are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) specific to challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 of this thesis considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
 }
 
 % End of CII addition
@@ -210,17 +204,14 @@ Second paragraph of abstract starts here.
   \end{acknowledgements}
 
   \hypersetup{linkcolor=black}
+  \setcounter{secnumdepth}{2}
   \setcounter{tocdepth}{2}
   \tableofcontents
 
 
   \listoffigures
   \begin{abstract}
-    The preface pretty much says it all.
-    
-    \par
-    
-    Second paragraph of abstract starts here.
+    In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Although reproducibility is important to the advancement of scientific knowledge in many ways, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are either challenging to use, are too generalized, and are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) specific to challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 of this thesis considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
   \end{abstract}
 
 \mainmatter % here the regular arabic numbering starts
@@ -250,7 +241,7 @@ The \texttt{fertile} project was an excellent fit for me. The package was not ye
 
 The more I worked on \texttt{fertile}, the more interested in the project I became. The package was unlike anything else I had been exposed to in data science. Most of my course work had been in the form of front-end coding: conducting data analyses and visualizing information. \texttt{fertile} is nothing like that. It operates completely behind the scenes, conducting a kind of meta-analysis to determine the reproducibility of a data science project. Rather than writing code to analyze data, I had to learn how to write code to analyze code that \emph{other people} wrote to analyze data.
 
-This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. \href{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}{On the question} of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible'', while another said there was ``fundamentally no way'' to achieve it.
+This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. \href{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}{On the question} of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible,'' while another said there was ``fundamentally no way'' to achieve it.
 
 The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times incredibly frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills.
 
@@ -297,11 +288,11 @@ Academics have recognized this, and publications on the topic appear to have inc
 
 In order to see why there is an issue with reproducibility and gain a sense of how to solve it, it is important to first understand the components of reproducibility. Essentially, to answer, ``What parts does researcher need to include, or what steps do they need to take, to be able to declare their work reproducible?''
 
-Publications attempting to answer this can be found in all areas of scientific research. However, as Goodman et al. (2016) argue, the language and conceptual framework used to describe research reproducibility varies significantly across the sciences, and there are no clear standards on reproducibility agreed upon by the scientific community as a whole.
+Publications attempting to answer this can be found in all areas of scientific research. However, as Goodman, Fanelli, \& Ioannidis (2016) argue, the language and conceptual framework used to describe research reproducibility varies significantly across the sciences, and there are no clear standards on reproducibility agreed upon by the scientific community as a whole.
 
-At a minimum, according to Goodman et al. (2016), achieving reproducibility requires the sharing of data (raw or processed), relevant metadata, code, and related software. However, according to other authors, the full achievement of reproducibility may require additional components.
+At a minimum, according to Goodman, Fanelli, \& Ioannidis (2016), achieving reproducibility requires the sharing of data (raw or processed), relevant metadata, code, and related software. However, according to other authors, the full achievement of reproducibility may require additional components.
 
-Kitzes, Turek, \& Deniz (2017) present a collection of case studies on reproducibility practices from across the data-intensive sciences, illustrating a variety of recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their case studies that extend beyond the minimum recommendations of Goodman et al. (2016):
+Kitzes, Turek, \& Deniz (2017) present a collection of case studies on reproducibility practices from across the data-intensive sciences, illustrating a variety of recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their case studies that extend beyond the minimum recommendations of Goodman, Fanelli, \& Ioannidis (2016):
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \tightlist
@@ -471,7 +462,7 @@ For example, in the biomedical sciences, a group of editors representing over 30
 \item
   Software sharing should be encouraged. At the minimum, authors should provide a statement describing if software is available and how to obtain it.
 \end{enumerate}
-Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by Goodman et al. (2016) previously. Several of the principles are purely recommendations; there is no requirement that code be shared, nor metadata. Additionally, software requirements are quite loose, requiring no information about dependencies or software version.
+Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by Goodman, Fanelli, \& Ioannidis (2016) previously. Several of the principles are purely recommendations; there is no requirement that code be shared, nor metadata. Additionally, software requirements are quite loose, requiring no information about dependencies or software version.
 
 We see a similar issue even in journals designed specifically for the purpose of improving scientific reproducibility. \emph{Experimental Results}, a publication created by Cambridge University Press to address some of the reproducibility and open access issues in academia, also falls short of meeting high standards. The journal, which showcases articles from a variety of scientific decisions disciplines, states in their transparency and openness policy:
 \begin{quote}
@@ -541,7 +532,7 @@ All data necessary to understand, assess, and extend the conclusions of the manu
 \end{quote}
 This policy is similar to many of the others considered previously, requiring the publishing of code and data with exceptions permitted when necessary.
 
-Stodden et al. (2018a) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after \emph{Science} first implemented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36\% of authors. This low rates were due to several factors:
+Stodden, Seiler, \& Ma (2018a) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after \emph{Science} first implemented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36\% of authors. This low rates were due to several factors:
 \begin{itemize}
 \tightlist
 \item
@@ -581,7 +572,7 @@ There are several reasons for this apparent divide between journal reproducibili
 \hypertarget{challenges-for-authors}{%
 \subsection{Challenges for Authors}\label{challenges-for-authors}}
 
-Stodden et al. (2018b) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public
+Stodden, Seiler, \& Ma (2018b) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public
 
 The main challenges listed by respondents were as follows:
 \begin{itemize}
@@ -819,7 +810,7 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 \subsection{Component 1: Accessibile Project Files}\label{component-1-accessibile-project-files}}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(fertile)}
+\FunctionTok{library}\NormalTok{(fertile)}
 \end{Highlighting}
 \end{Shaded}
 \texttt{fertile} takes several steps to help users ensure that all of files necessary to run an analysis are provided in the project folder.
@@ -830,7 +821,7 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the \texttt{proj\_analyze\_files()} function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxiliary (image or text) files they have.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_analyze_files}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{proj\_analyze\_files}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -844,10 +835,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.58K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.53K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  375.28K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  376.45K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -855,7 +846,7 @@ One of the fastest ways to gain an overview of the existing files (including dat
 Users can also check for the existence of a README description file with \texttt{has\_readme()}:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{has_readme}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{has\_readme}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -869,7 +860,7 @@ In order to truly check that a project is self contained, however, is is necessa
 The \texttt{sandbox()} function is designed to help facilitate this. \texttt{sandbox()} allows the user to make a copy of their project in a temporary directory that is isolated from the file system.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -883,39 +874,39 @@ project_miceps/Estrogen_Receptors.docx
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{temp_dir <-}\StringTok{ }\KeywordTok{sandbox}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(temp_dir) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{temp\_dir }\OtherTok{\textless{}{-}} \FunctionTok{sandbox}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{)}
+\NormalTok{fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(temp\_dir) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoolAEU/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoolAEU/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoolAEU/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_render}\NormalTok{(temp_dir)}
+\FunctionTok{proj\_render}\NormalTok{(temp\_dir)}
 \end{Highlighting}
 \end{Shaded}
 If \texttt{proj\_render()} executes without error, this indicates that all the necessary files are present. Users can also confirm this by checking the time stamp of the last successful render, captured in the \texttt{render\_log\_report()} function. If the time stamp matches the current time, the project successfully compiled.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{slice_tail}\NormalTok{(}\KeywordTok{render_log_report}\NormalTok{(temp_dir))}
+\FunctionTok{slice\_tail}\NormalTok{(}\FunctionTok{render\_log\_report}\NormalTok{(temp\_dir))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-22 15:18:08
+1 LAST RENDERED <NA>     proj_render 2021-02-22 21:43:03
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -948,8 +939,8 @@ The last check that focuses on the file system is \texttt{has\_only\_used\_files
 \end{itemize}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# List the files in the directory}
-\NormalTok{fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\CommentTok{\# List the files in the directory}
+\NormalTok{fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -962,8 +953,8 @@ project_miceps/software-versions.txt
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Check to see which are "used"}
-\KeywordTok{has_only_used_files}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\CommentTok{\# Check to see which are "used"}
+\FunctionTok{has\_only\_used\_files}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -994,9 +985,9 @@ Joining, by = "path_abs"
 There are also several functions help with reshaping the entire project structure to a more reproducible format. For example, \texttt{proj\_suggest\_moves()} provides suggestions for how to reorganize the files into folders.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{files <-}\StringTok{ }\KeywordTok{proj_analyze_files}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\NormalTok{files }\OtherTok{\textless{}{-}} \FunctionTok{proj\_analyze\_files}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 
-\KeywordTok{proj_suggest_moves}\NormalTok{(files)}
+\FunctionTok{proj\_suggest\_moves}\NormalTok{(files)}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1009,14 +1000,14 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.58K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.53K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  375.28K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  376.45K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
 
-These suggestions are based on achieving the optimal file structure design for reproducibility, argued by Marwick et al. (2018) to be that of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an \texttt{R} folder, as well as \texttt{data}, \texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the \texttt{R} package structure to data analysis projects promotes standardization of file structure within the R community.
+These suggestions are based on achieving the optimal file structure design for reproducibility, argued by Marwick, Boettiger, \& Mullen (2018) to be that of an \texttt{R} package (R-Core-Team (2020), Wickham (2015)), with an \texttt{R} folder, as well as \texttt{data}, \texttt{data-raw}, \texttt{inst}, and \texttt{vignettes}. Such a structure keeps all of the files separated and in clearly labeled directories where they are easy to find. Additionally, the extension of the \texttt{R} package structure to data analysis projects promotes standardization of file structure within the R community.
 
 Users can execute these suggestions individually, using the code snippets provided next to each file name when running \texttt{proj\_suggest\_moves()}, but they can also run them all together. \texttt{proj\_move\_files()} executes all of the suggestions from \texttt{proj\_suggest\_moves()} at once, building an \texttt{R} package style structure and sorting files into the correct folders by type.
 
@@ -1052,7 +1043,7 @@ One important component of documentation is the inclusion of a README file. A RE
 \texttt{fertile} ensures that a README is included alongside the user's project with the \texttt{has\_readme()} function:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{has_readme}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{has\_readme}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1066,7 +1057,7 @@ Another important component of documentation is that it must be clear in which o
 \texttt{has\_clear\_build\_chain()} checks for these non-README methods of ensuring that file ordering is clear. \texttt{project\_miceps}, since it only contains one code file, passes this check easily:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{has_clear_build_chain}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{has\_clear\_build\_chain}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1089,10 +1080,9 @@ project_miceps' was last run in the following software environment:
 \end{verbatim}
 \begin{verbatim}
 
-
-R version 4.0.2 (2020-06-22)
+R version 4.0.4 (2021-02-15)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS  10.16
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -1106,7 +1096,7 @@ stats     graphics  grDevices utils     datasets  methods   base
 
 other attached packages:
 stargazer_5.2.2  skimr_2.1.2      purrr_0.3.4     
-ggplot2_3.3.3    tidyr_1.1.2      readr_1.4.0      dplyr_1.0.3     
+ggplot2_3.3.3    tidyr_1.1.2      readr_1.4.0      dplyr_1.0.
 \end{verbatim}
 \normalsize
 
@@ -1117,7 +1107,7 @@ The \texttt{proj\_pkg\_script()} function builds off of this behavior, providing
 When run on an \texttt{R} project directory, the function creates a \texttt{.R} script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{install_script <-}\StringTok{ }\KeywordTok{proj_pkg_script}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\NormalTok{install\_script }\OtherTok{\textless{}{-}} \FunctionTok{proj\_pkg\_script}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1149,10 +1139,10 @@ Code commenting---the process of placing human-readable descriptions next to cod
 
 \texttt{has\_well\_commented\_code()} is designed to check for this. The function reads through all \texttt{.R} and \texttt{.Rmd} files in a project directory and, for each, calculates the fraction of lines in the file that are comments. Files for which comments make up less than 10\% of the written lines are flagged as poorly commented, warning users to make corrections and increase the number of comments in their code.
 
-The primary code file in \texttt{project\_miceps}, ``analysis.Rmd'', is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by \texttt{has\_well\_commented\_code()}:
+The primary code file in \texttt{project\_miceps}, ``analysis.Rmd,'' is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by \texttt{has\_well\_commented\_code()}:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{has_well_commented_code}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{has\_well\_commented\_code}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1192,12 +1182,12 @@ One of the important components of R package development, however, is that a pac
 \texttt{fertile} accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, \texttt{read.csv("\textasciitilde{}/Desktop/my\_data.csv")}, gives a different message than \texttt{read\_csv("../../../Desktop/my\_data.csv")}.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(fertile)}
+\FunctionTok{library}\NormalTok{(fertile)}
 \end{Highlighting}
 \end{Shaded}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{file.exists}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
+\FunctionTok{file.exists}\NormalTok{(}\StringTok{"\textasciitilde{}/Desktop/my\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1205,7 +1195,7 @@ One of the important components of R package development, however, is that a pac
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Desktop/my_data.csv"}\NormalTok{)}
+\FunctionTok{read.csv}\NormalTok{(}\StringTok{"\textasciitilde{}/Desktop/my\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1216,7 +1206,7 @@ utils::read.csv('~/Desktop/my_data.csv')
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{read_csv}\NormalTok{(}\StringTok{"../../../Desktop/my_data.csv"}\NormalTok{)}
+\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../../../Desktop/my\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1228,7 +1218,7 @@ readr::read_csv('../../../Desktop/my_data.csv')
 In addition to catching non-reproducible file paths, \texttt{fertile} also stops the user when they try to change the working directory. Unlike with input and output functions like \texttt{read\_csv()}, which can take a variety of different file paths---some which may be reproducible and some not, \texttt{setwd()} is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, \texttt{fertile} is particularly strict with it. When a call to \texttt{setwd()} is caught, \texttt{fertile} throws an error and does not provide an option to override. Rather, the user is given an alternative function (\texttt{here::here()}) to use that achieves the same behavior in a much more reproducible way.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{getwd}\NormalTok{()}
+\FunctionTok{getwd}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1236,7 +1226,7 @@ In addition to catching non-reproducible file paths, \texttt{fertile} also stops
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{setwd}\NormalTok{(}\StringTok{"~/Desktop"}\NormalTok{)}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/Desktop"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1244,7 +1234,7 @@ Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{getwd}\NormalTok{()}
+\FunctionTok{getwd}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1256,7 +1246,7 @@ Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \texttt{fertile} also contains functionality that analyzes code for path information after it is written. For example, \texttt{proj\_analyze\_paths} goes through all of the paths used in a project's \texttt{.R} and \texttt{.Rmd} files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_analyze_paths}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
+\FunctionTok{proj\_analyze\_paths}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1284,8 +1274,8 @@ Checking for paths outside project directory...
 Paths can also be checked individually, or in groups, using \texttt{check\_path()}.
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Path inside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\CommentTok{\# Path inside the directory}
+\FunctionTok{check\_path}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1294,8 +1284,8 @@ Paths can also be checked individually, or in groups, using \texttt{check\_path(
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Absolute path (current working directory)}
-\KeywordTok{check_path}\NormalTok{(}\KeywordTok{getwd}\NormalTok{())}
+\CommentTok{\# Absolute path (current working directory)}
+\FunctionTok{check\_path}\NormalTok{(}\FunctionTok{getwd}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1304,8 +1294,8 @@ and will likely only work on your computer.
 \end{verbatim}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Path outside the directory}
-\KeywordTok{check_path}\NormalTok{(}\StringTok{"../README.md"}\NormalTok{)}
+\CommentTok{\# Path outside the directory}
+\FunctionTok{check\_path}\NormalTok{(}\StringTok{"../README.md"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1322,38 +1312,38 @@ The component of randomness is addressed by \texttt{fertile} in a reproducibilit
 Let us consider an example from \texttt{project\_miceps}. The primary code file, \texttt{analysis.Rmd} contains the following code. In this code, we see that a data set is read in via \texttt{read\_csv} and reformatted. Then, the \texttt{sample\_frac()} function takes a random sample of 50\% of the rows of the data.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mice <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"Blot_data_updated.csv"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{time =} \StringTok{`}\DataTypeTok{Time point}\StringTok{`}\NormalTok{,}
-            \DataTypeTok{sex =}\NormalTok{ Sex, }
-            \DataTypeTok{id =} \StringTok{`}\DataTypeTok{Mouse #}\StringTok{`}\NormalTok{, }
-            \DataTypeTok{erb =} \StringTok{`}\DataTypeTok{ERB Normalized Final}\StringTok{`}\NormalTok{, }
-            \DataTypeTok{era =} \StringTok{`}\DataTypeTok{ERA Normalized Final}\StringTok{`}\NormalTok{, }
-            \DataTypeTok{gper =} \StringTok{`}\DataTypeTok{GPER Normalized Final}\StringTok{`}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{day =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{~}\StringTok{ }\DecValTok{-1}\NormalTok{,}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{~}\StringTok{ }\DecValTok{0}\NormalTok{,}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{2} \OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{,}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{3} \OperatorTok{~}\StringTok{ }\DecValTok{3}\NormalTok{,}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{4} \OperatorTok{~}\StringTok{ }\DecValTok{5}\NormalTok{,}
-\NormalTok{    time }\OperatorTok{==}\StringTok{ }\DecValTok{5} \OperatorTok{~}\StringTok{ }\DecValTok{7}\NormalTok{),}
-  \DataTypeTok{type =} \KeywordTok{ifelse}\NormalTok{(time }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{, }\StringTok{"control"}\NormalTok{, }\StringTok{"treatment"}\NormalTok{))}
+\NormalTok{mice }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"Blot\_data\_updated.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{transmute}\NormalTok{(}\AttributeTok{time =} \StringTok{\textasciigrave{}}\AttributeTok{Time point}\StringTok{\textasciigrave{}}\NormalTok{,}
+            \AttributeTok{sex =}\NormalTok{ Sex, }
+            \AttributeTok{id =} \StringTok{\textasciigrave{}}\AttributeTok{Mouse \#}\StringTok{\textasciigrave{}}\NormalTok{, }
+            \AttributeTok{erb =} \StringTok{\textasciigrave{}}\AttributeTok{ERB Normalized Final}\StringTok{\textasciigrave{}}\NormalTok{, }
+            \AttributeTok{era =} \StringTok{\textasciigrave{}}\AttributeTok{ERA Normalized Final}\StringTok{\textasciigrave{}}\NormalTok{, }
+            \AttributeTok{gper =} \StringTok{\textasciigrave{}}\AttributeTok{GPER Normalized Final}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{day =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{0} \SpecialCharTok{\textasciitilde{}} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\textasciitilde{}} \DecValTok{0}\NormalTok{,}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{,}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{3} \SpecialCharTok{\textasciitilde{}} \DecValTok{3}\NormalTok{,}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{4} \SpecialCharTok{\textasciitilde{}} \DecValTok{5}\NormalTok{,}
+\NormalTok{    time }\SpecialCharTok{==} \DecValTok{5} \SpecialCharTok{\textasciitilde{}} \DecValTok{7}\NormalTok{),}
+  \AttributeTok{type =} \FunctionTok{ifelse}\NormalTok{(time }\SpecialCharTok{==} \DecValTok{0}\NormalTok{, }\StringTok{"control"}\NormalTok{, }\StringTok{"treatment"}\NormalTok{))}
 
-\NormalTok{mice_tidy <-}\StringTok{ }\NormalTok{mice }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{time) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{"protein"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"amount"}\NormalTok{, }\OperatorTok{-}\NormalTok{day, }\OperatorTok{-}\NormalTok{sex, }\OperatorTok{-}\NormalTok{id, }\OperatorTok{-}\NormalTok{type) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{protein_label =} \KeywordTok{factor}\NormalTok{(protein,}
-           \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"paste(ER, alpha)"}\NormalTok{, }\StringTok{"paste(ER, beta)"}\NormalTok{, }\StringTok{"GPER"}\NormalTok{)))}
+\NormalTok{mice\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ mice }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{time) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"protein"}\NormalTok{, }\AttributeTok{value =} \StringTok{"amount"}\NormalTok{, }\SpecialCharTok{{-}}\NormalTok{day, }\SpecialCharTok{{-}}\NormalTok{sex, }\SpecialCharTok{{-}}\NormalTok{id, }\SpecialCharTok{{-}}\NormalTok{type) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{protein\_label =} \FunctionTok{factor}\NormalTok{(protein,}
+           \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"paste(ER, alpha)"}\NormalTok{, }\StringTok{"paste(ER, beta)"}\NormalTok{, }\StringTok{"GPER"}\NormalTok{)))}
 \end{Highlighting}
 \end{Shaded}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sample_frac}\NormalTok{(mice, }\FloatTok{0.5}\NormalTok{)}
+\FunctionTok{sample\_frac}\NormalTok{(mice, }\FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 However, there is no seed set in the file. As a result, \texttt{has\_no\_randomness()} returns as a failure for the project. Had a seed been set, however, the project would have passed.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{has_no_randomness}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
+\FunctionTok{has\_no\_randomness}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1410,11 +1400,11 @@ Let us consider an example. \texttt{project\_miceps} contains an \texttt{RMarkdo
 For example, line 71, part of a \texttt{ggplot} call, contains the following code:
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Line 71 of `project_miceps/analysis.Rmd', }
-\CommentTok{# Test has been wrapped so it can all be seen at once}
+\CommentTok{\# Line 71 of \textasciigrave{}project\_miceps/analysis.Rmd\textquotesingle{}, }
+\CommentTok{\# Test has been wrapped so it can all be seen at once}
 
-\KeywordTok{geom_hline}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{yintercept =}\NormalTok{ estimate }\OperatorTok{+}\StringTok{ }\FloatTok{1.96}\OperatorTok{*}\NormalTok{std.error, }\DataTypeTok{color =}\NormalTok{ sex),}
-\DataTypeTok{linetype =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\FunctionTok{geom\_hline}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{yintercept =}\NormalTok{ estimate }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\NormalTok{std.error, }\AttributeTok{color =}\NormalTok{ sex),}
+\AttributeTok{linetype =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
 \end{Highlighting}
 \end{Shaded}
 For this line, \texttt{has\_no\_lint()} finds the following inconsistencies with tidy style:
@@ -1431,9 +1421,9 @@ The first comes up because the true line length, including spaces, is 84 charact
 An even less tidy piece of code is that found on line 189, written as follows:
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Line 189 of `project_miceps/analysis.Rmd'}
+\CommentTok{\# Line 189 of \textasciigrave{}project\_miceps/analysis.Rmd\textquotesingle{}}
 
-\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{length}\NormalTok{(mice) }\OperatorTok{>}\StringTok{ }\DecValTok{1}\NormalTok{)\{ holder_var =}\StringTok{ }\DecValTok{1}\NormalTok{ \}}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(mice) }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{)\{ holder\_var }\OtherTok{=} \DecValTok{1}\NormalTok{ \}}
 \end{Highlighting}
 \end{Shaded}
 For this line, \texttt{has\_no\_lint()} finds the following errors:
@@ -1481,7 +1471,7 @@ Users who want comprehensive behavior can access it through three primary functi
 The \texttt{proj\_check()} function runs all sixteen reproducibility tests in the package, noting which ones passed, which ones failed, the reason for failure, a recommended solution, and a guide to where to look for help. These tests, many of which were described in detail previously, include: looking for a clear build chain, checking to make sure the root level of the project is clear of clutter, confirming that there are no files present that are not being directly used by or created by the code, and looking for uses of randomness that do not have a call to \texttt{set.seed()} present. A full list is provided below:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{list_checks}\NormalTok{()}
+\FunctionTok{list\_checks}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -1511,7 +1501,7 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
 \end{itemize}
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_analyze}\NormalTok{(}\StringTok{'project_miceps'}\NormalTok{)}
+\FunctionTok{proj\_analyze}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1533,8 +1523,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.42K image/png                                 
- 3 proteins_v_time.p~ png     377.97K image/png                                 
+ 2 citrate_v_time.png png     183.02K image/png                                 
+ 3 proteins_v_time.p~ png     376.97K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1682,7 +1672,7 @@ Users wanting to focus on groups of checks can do so using the \texttt{proj\_che
 For example, a variety of checks in \texttt{fertile} focus on making sure the project has a ``tidy'' structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using \texttt{proj\_check\_some()} as follows:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{contains}\NormalTok{(}\StringTok{"tidy"}\NormalTok{))}
+\FunctionTok{proj\_check\_some}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\FunctionTok{contains}\NormalTok{(}\StringTok{"tidy"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1793,7 +1783,7 @@ v Reproducibility checks passed: 4
 Users might also attempt to call the two checks involving project roots together:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{ends_with}\NormalTok{(}\StringTok{"root"}\NormalTok{))}
+\FunctionTok{proj\_check\_some}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"root"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1817,7 +1807,7 @@ v Reproducibility checks passed: 2
 Or, perhaps, they might want to run all the functions beginning with ``has\_only'':
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{proj_check_some}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\KeywordTok{starts_with}\NormalTok{(}\StringTok{"has_only"}\NormalTok{))}
+\FunctionTok{proj\_check\_some}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"has\_only"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1937,7 +1927,7 @@ As soon as a dangerous function is called, \texttt{fertile} alerts the user of t
 Users interested in looking back at their past choices and mistakes can do so as well. The \texttt{log\_report()} function provides access to a log listing the commands with a link to reproducibility that have been called.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{log_report}\NormalTok{()}
+\FunctionTok{log\_report}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -1945,7 +1935,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 923 x 4
+# A tibble: 1,013 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1958,7 +1948,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 913 more rows
+# ... with 1,003 more rows
 \end{verbatim}
 \normalsize
 
@@ -2022,7 +2012,7 @@ The process for writing a shim is as follows:
 Most shims, when written, are relatively simple. Several, such as that for \texttt{library()} are more complex, but many follow the same basic format that can be seen in this example for \texttt{read\_csv()}:
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fertile}\OperatorTok{::}\NormalTok{read_csv}
+\NormalTok{fertile}\SpecialCharTok{::}\NormalTok{read\_csv}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2045,7 +2035,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fa65a422d20>
+<bytecode: 0x7faf95f3d4b0>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2074,8 +2064,8 @@ Several functions in \texttt{fertile} have been written to implement this behavi
 \end{enumerate}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Code to add a shim for stats::write.ftable }
-\KeywordTok{add_shim}\NormalTok{(}\DataTypeTok{func =} \StringTok{"write.ftable"}\NormalTok{, }\DataTypeTok{package =} \StringTok{"stats"}\NormalTok{)}
+\CommentTok{\# Code to add a shim for stats::write.ftable }
+\FunctionTok{add\_shim}\NormalTok{(}\AttributeTok{func =} \StringTok{"write.ftable"}\NormalTok{, }\AttributeTok{package =} \StringTok{"stats"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{enumerate}
@@ -2093,14 +2083,14 @@ Several functions in \texttt{fertile} have been written to implement this behavi
 \texttt{add\_all\_possible\_shims()} will look at the list of functions provided by \texttt{find\_all\_shimmable\_functions()} and perform the actions of \texttt{add\_shim()} on all of them individually. This will generate and then add all of those functions to the shim file included alongside the \texttt{fertile} documentation and then load them into the environment.
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Return list of all potential shims in ALL loaded packages}
-\KeywordTok{find_all_shimmable_functions}\NormalTok{()}
+\CommentTok{\# Return list of all potential shims in ALL loaded packages}
+\FunctionTok{find\_all\_shimmable\_functions}\NormalTok{()}
 
-\CommentTok{# Return list of all potential shims from a SPECIFIC package (e.g dplyr)}
-\KeywordTok{find_pkg_shimmable_functions}\NormalTok{(}\DataTypeTok{package =} \StringTok{"dplyr"}\NormalTok{)}
+\CommentTok{\# Return list of all potential shims from a SPECIFIC package (e.g dplyr)}
+\FunctionTok{find\_pkg\_shimmable\_functions}\NormalTok{(}\AttributeTok{package =} \StringTok{"dplyr"}\NormalTok{)}
 
-\CommentTok{# Write/load all of the shims from find_all_shimmable_functions()}
-\KeywordTok{add_all_possible_shims}\NormalTok{()}
+\CommentTok{\# Write/load all of the shims from find\_all\_shimmable\_functions()}
+\FunctionTok{add\_all\_possible\_shims}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \begin{enumerate}
@@ -2124,8 +2114,8 @@ There is no method currently in the package to deactivate the shims included in 
 In order to store and analyze information about user behavior and code structure, \texttt{fertile} utilizes three different types of hidden files, two of which are \texttt{.csv} format and one of which is a text file. The hidden \texttt{.csv} files for \texttt{project\_miceps} can be seen below:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{as.character}\NormalTok{(}
-\NormalTok{  fs}\OperatorTok{::}\KeywordTok{dir_ls}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{, }\DataTypeTok{all =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{glob =} \StringTok{"*_log.csv"}\NormalTok{))}
+\FunctionTok{as.character}\NormalTok{(}
+\NormalTok{  fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\AttributeTok{all =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{glob =} \StringTok{"*\_log.csv"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2147,7 +2137,7 @@ The render log (\texttt{.fertile\_render\_log.csv}), accessible via \texttt{rend
 The render log contains information used to run many of the checks in \texttt{fertile}. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a time stamp of the last time the code was run by \texttt{fertile}. Users cannot erase it easily.
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{render_log_report}\NormalTok{(}\StringTok{"project_miceps"}\NormalTok{)}
+\FunctionTok{render\_log\_report}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \footnotesize
@@ -2155,16 +2145,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      271     2021-02-22 15:18:55
- 2 package:dplyr           <NA>                      base::~ 2021-02-22 15:18:55
- 3 package:readr           <NA>                      base::~ 2021-02-22 15:18:55
- 4 package:tidyr           <NA>                      base::~ 2021-02-22 15:18:56
- 5 package:ggplot2         <NA>                      base::~ 2021-02-22 15:18:56
- 6 package:purrr           <NA>                      base::~ 2021-02-22 15:18:56
- 7 Seed Before             <NA>                      271     2021-02-22 15:18:56
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-22 15:18:56
- 9 Seed After              <NA>                      285     2021-02-22 15:18:56
-10 Seed Before             <NA>                      285     2021-02-22 15:18:56
+ 1 Seed @ Start            <NA>                      254     2021-02-22 21:43:36
+ 2 package:dplyr           <NA>                      base::~ 2021-02-22 21:43:36
+ 3 package:readr           <NA>                      base::~ 2021-02-22 21:43:36
+ 4 package:tidyr           <NA>                      base::~ 2021-02-22 21:43:36
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-22 21:43:36
+ 6 package:purrr           <NA>                      base::~ 2021-02-22 21:43:36
+ 7 Seed Before             <NA>                      254     2021-02-22 21:43:36
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-22 21:43:36
+ 9 Seed After              <NA>                      268     2021-02-22 21:43:37
+10 Seed Before             <NA>                      268     2021-02-22 21:43:37
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2202,7 +2192,7 @@ The example of \texttt{has\_only\_portable\_paths()} illustrates this functional
 \end{enumerate}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{has_only_portable_paths}
+\NormalTok{has\_only\_portable\_paths}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2238,7 +2228,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fa652933af8>
+<bytecode: 0x7faf7fdf1298>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2251,7 +2241,7 @@ attr(,"req_compilation")
 Many of the shimmed functions in \texttt{fertile} accept a large number of arguments. Consider \texttt{read\_csv}. The function requires only one argument (\texttt{file}) but allows for up to 14.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{readr}\OperatorTok{::}\NormalTok{read_csv}
+\NormalTok{readr}\SpecialCharTok{::}\NormalTok{read\_csv}
 \end{Highlighting}
 \end{Shaded}
 \small
@@ -2269,7 +2259,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fa656f290b8>
+<bytecode: 0x7faf8c9c2258>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2277,7 +2267,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
 When users call the shimmed version of \texttt{read\_csv}, \texttt{fertile} does not need to process any arguments other than \texttt{file}, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, \texttt{fertile}'s \texttt{read\_csv} is written to accept a file name and the dots , which then capture and save the additional input provided by the user. \texttt{fertile} checks the file path, and then uses the saved dots to then execute \texttt{readr::read\_csv} the way that the user originally intended.
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fertile}\OperatorTok{::}\NormalTok{read_csv}
+\NormalTok{fertile}\SpecialCharTok{::}\NormalTok{read\_csv}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
@@ -2300,7 +2290,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fa65a422d20>
+<bytecode: 0x7faf95f3d4b0>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2593,41 +2583,41 @@ Each time a student's hashed identifier was collected (every time they loaded th
 The structure of this function can be seen below:
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# .onAttach() from the sds192 package}
-\CommentTok{# Run automatically any time the sds192 package is loaded}
+\CommentTok{\# .onAttach() from the sds192 package}
+\CommentTok{\# Run automatically any time the sds192 package is loaded}
 
-\NormalTok{.onAttach <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(libname, pkgname) \{}
+\NormalTok{.onAttach }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(libname, pkgname) \{}
 
-  \CommentTok{# The experimental group gets `fertile` loaded secretly}
-  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{is_experimental}\NormalTok{()) \{}
-    \KeywordTok{suppressMessages}\NormalTok{(}\KeywordTok{library}\NormalTok{(fertile))}
+  \CommentTok{\# The experimental group gets \textasciigrave{}fertile\textasciigrave{} loaded secretly}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is\_experimental}\NormalTok{()) \{}
+    \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(fertile))}
 \NormalTok{  \}}
 \NormalTok{\}}
 
-\NormalTok{is_experimental <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{logname =}\NormalTok{ whoami}\OperatorTok{::}\KeywordTok{username}\NormalTok{()) \{}
+\NormalTok{is\_experimental }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{logname =}\NormalTok{ whoami}\SpecialCharTok{::}\FunctionTok{username}\NormalTok{()) \{}
   
-  \CommentTok{# Students are placed into experimental and control}
-  \CommentTok{# groups but remain anonymous}
-\NormalTok{  fertile_group <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+  \CommentTok{\# Students are placed into experimental and control}
+  \CommentTok{\# groups but remain anonymous}
+\NormalTok{  fertile\_group }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
     \StringTok{"f7b0a9d5117b88cecec122f8ba0e52fb"}\NormalTok{,}
     \StringTok{"4d0295a810fb8491f91f914771572485"}\NormalTok{,}
     \StringTok{"36211a1f19f82ae07aed990b671c9b20"}\NormalTok{,}
     \StringTok{"b5d2b72b4f36f3afdce32a8409dc6ea0"}\NormalTok{,}
     \StringTok{"d498227fd9e6a4c42494bbebc42f6aa8"}\NormalTok{,}
-    \CommentTok{# ... and so on}
+    \CommentTok{\# ... and so on}
 \NormalTok{  )}
-\NormalTok{  control_group <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+\NormalTok{  control\_group }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
     \StringTok{"9aa36583f54766205850428e8f1a4c89"}\NormalTok{, }
     \StringTok{"f03020938b31818063c79d2422755183"}\NormalTok{, }
     \StringTok{"7ec57b1f2bca9ac1e702fb68427b781b"}\NormalTok{, }
     \StringTok{"e5e30623e9d09d29ded851b7fb40cb51"}\NormalTok{, }
     \StringTok{"592572bb9fce168f37117fd0d6e0e5ee"}\NormalTok{,}
-    \CommentTok{# ... and so on}
+    \CommentTok{\# ... and so on}
  
 \NormalTok{  )}
   
 
-\NormalTok{  digest}\OperatorTok{::}\KeywordTok{digest}\NormalTok{(logname, }\DataTypeTok{algo =} \StringTok{"md5"}\NormalTok{) }\OperatorTok{%in%}\StringTok{ }\NormalTok{fertile_group}
+\NormalTok{  digest}\SpecialCharTok{::}\FunctionTok{digest}\NormalTok{(logname, }\AttributeTok{algo =} \StringTok{"md5"}\NormalTok{) }\SpecialCharTok{\%in\%}\NormalTok{ fertile\_group}
   
 \NormalTok{\}}
 \end{Highlighting}
@@ -2709,28 +2699,28 @@ This method meant that individual questions could have negative, positive, or ne
 The data from Fall 2020, after being scored and cleaned up, looked as follows:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{glimpse}\NormalTok{(fall2020)}
+\FunctionTok{glimpse}\NormalTok{(fall2020)}
 \end{Highlighting}
 \end{Shaded}
 \small
 \begin{verbatim}
 Rows: 18
 Columns: 15
-$ User_Hash        <chr> "\"67b8da3952e07ba3f2c5c715c4042220\"", "\"f030209...
-$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Ferti...
+$ User_Hash        <chr> "\"67b8da3952e07ba3f2c5c715c4042220\"", "\"f03020938b~
+$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Fertile"~
 $ Previous_Classes <dbl> 0, 0, 2, 1, 2, 1, 6, 0, 1, 1, 1, 2, 1, 1, 5, 1, 3, 1
 $ Q1_Points        <dbl> 3, 1, 1, 3, 3, 2, 3, 3, 3, 1, 1, 3, 1, 1, 2, 2, 3, 1
-$ Q2_Points        <dbl> 0, -1, 0, -1, -1, 1, -1, 1, -1, 0, -1, -1, 0, -1, ...
-$ Q3_Points        <dbl> 0, 1, 0, -1, -1, 0, -1, 1, -1, 0, -1, -1, 0, 1, 1,...
-$ Q4_Points        <dbl> 1, 1, 1, 1, 1, 0, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1,...
-$ Q5_Points        <dbl> -1, 1, 0, 1, 1, 1, 0, 1, 1, 0, -1, 1, 0, -1, 1, -1...
+$ Q2_Points        <dbl> 0, -1, 0, -1, -1, 1, -1, 1, -1, 0, -1, -1, 0, -1, 1, ~
+$ Q3_Points        <dbl> 0, 1, 0, -1, -1, 0, -1, 1, -1, 0, -1, -1, 0, 1, 1, 0,~
+$ Q4_Points        <dbl> 1, 1, 1, 1, 1, 0, 1, -1, 1, 0, 1, -1, 0, 1, 1, -1, 1,~
+$ Q5_Points        <dbl> -1, 1, 0, 1, 1, 1, 0, 1, 1, 0, -1, 1, 0, -1, 1, -1, 1~
 $ Q6_Points        <dbl> 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, -1, 1, 0
-$ Q7_Points        <dbl> 2, 2, 3, 0, -1, 3, 3, 3, -1, 2, 2, 2, 2, 2, 3, 1, ...
-$ Q8_Points        <dbl> -1, 2, -2, 2, -2, 2, 2, 2, -2, 2, 1, 1, -1, 1, 2, ...
-$ Q9_Points        <dbl> 1, 1, 0, 2, 2, 2, 2, 2, 1, -1, 1, -2, 0, 1, 1, 1, ...
-$ Projects_Total   <dbl> 3, 4, 3, 4, 4, 5, 2, 5, 4, 1, -1, 1, 1, 2, 7, -2, ...
-$ Paths_Total      <dbl> 2, 5, 1, 4, -1, 7, 7, 7, -2, 3, 4, 1, 1, 4, 6, 1, ...
-$ Overall_Total    <dbl> 5, 9, 4, 8, 3, 12, 9, 12, 2, 4, 3, 2, 2, 6, 13, -1...
+$ Q7_Points        <dbl> 2, 2, 3, 0, -1, 3, 3, 3, -1, 2, 2, 2, 2, 2, 3, 1, 2, 2
+$ Q8_Points        <dbl> -1, 2, -2, 2, -2, 2, 2, 2, -2, 2, 1, 1, -1, 1, 2, -1,~
+$ Q9_Points        <dbl> 1, 1, 0, 2, 2, 2, 2, 2, 1, -1, 1, -2, 0, 1, 1, 1, 2, 2
+$ Projects_Total   <dbl> 3, 4, 3, 4, 4, 5, 2, 5, 4, 1, -1, 1, 1, 2, 7, -2, 4, 2
+$ Paths_Total      <dbl> 2, 5, 1, 4, -1, 7, 7, 7, -2, 3, 4, 1, 1, 4, 6, 1, 5, 5
+$ Overall_Total    <dbl> 5, 9, 4, 8, 3, 12, 9, 12, 2, 4, 3, 2, 2, 6, 13, -1, 9~
 \end{verbatim}
 \normalsize
 
@@ -2776,7 +2766,6 @@ Looking at the overall total score (\texttt{Overall\_Total}), this was true even
 \end{figure}
 However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
-
 Call:
 lm(formula = Overall_Total ~ Group, data = fall2020)
 
@@ -2811,30 +2800,30 @@ We see a similar story with the data from January Term 2021, though the structur
 The January Term data looks as follows:
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{glimpse}\NormalTok{(jterm2021)}
+\FunctionTok{glimpse}\NormalTok{(jterm2021)}
 \end{Highlighting}
 \end{Shaded}
 \small
 \begin{verbatim}
 Rows: 76
 Columns: 17
-$ User_Hash        <chr> "\"96eb0673c18b9fa79740686995b1d970\"", "\"980a97c...
-$ Student_ID       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,...
-$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Ferti...
-$ Previous_Classes <dbl> 1, 1, 2, 1, 1, 4, 3, 0, 0, 1, 1, 4, 3, 4, 2, 4, 4,...
-$ Test             <fct> Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, ...
-$ Q1_Points        <dbl> 2, 2, 1, 2, 1, 3, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1,...
-$ Q2_Points        <dbl> -1, 0, -1, -1, 1, 1, 1, 0, 0, -1, -1, 0, 1, -1, -1...
-$ Q3_Points        <dbl> -1, 0, -1, 0, 0, 1, -1, 0, 0, -1, 0, 0, 1, -1, 0, ...
-$ Q4_Points        <dbl> 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, -1, 1, 1, 1, 1, 0, 1...
-$ Q5_Points        <dbl> 1, 0, -1, 1, 0, 1, -1, 0, 0, -1, 1, 0, 1, 1, 0, 0,...
-$ Q6_Points        <dbl> 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
-$ Q7_Points        <dbl> 2, -2, 0, 0, 3, 2, 3, 1, 2, 3, 1, 2, 3, 3, 2, 2, -...
-$ Q8_Points        <dbl> 1, -3, -1, -2, 2, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 1,...
-$ Q9_Points        <dbl> 1, 2, 1, 1, 1, 1, -2, 0, -2, 2, -1, -2, 2, 2, -1, ...
-$ Projects_Total   <dbl> 3, 3, 0, 4, 3, 8, 2, 3, 3, 1, 1, 4, 7, 2, 3, 2, 6,...
-$ Paths_Total      <dbl> 4, -3, 0, -1, 6, 4, 3, 1, 1, 7, 1, 1, 7, 7, 2, 4, ...
-$ Overall_Total    <dbl> 7, 0, 0, 3, 9, 12, 5, 4, 4, 8, 2, 5, 14, 9, 5, 6, ...
+$ User_Hash        <chr> "\"96eb0673c18b9fa79740686995b1d970\"", "\"980a97cbb1~
+$ Student_ID       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16~
+$ Group            <chr> "Control", "Control", "Fertile", "Fertile", "Fertile"~
+$ Previous_Classes <dbl> 1, 1, 2, 1, 1, 4, 3, 0, 0, 1, 1, 4, 3, 4, 2, 4, 4, 0,~
+$ Test             <fct> Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre, Pre~
+$ Q1_Points        <dbl> 2, 2, 1, 2, 1, 3, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1, 2,~
+$ Q2_Points        <dbl> -1, 0, -1, -1, 1, 1, 1, 0, 0, -1, -1, 0, 1, -1, -1, 0~
+$ Q3_Points        <dbl> -1, 0, -1, 0, 0, 1, -1, 0, 0, -1, 0, 0, 1, -1, 0, 0, ~
+$ Q4_Points        <dbl> 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, -1, 1, 1, 1, 1, 0, 1, 0~
+$ Q5_Points        <dbl> 1, 0, -1, 1, 0, 1, -1, 0, 0, -1, 1, 0, 1, 1, 0, 0, 1,~
+$ Q6_Points        <dbl> 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1~
+$ Q7_Points        <dbl> 2, -2, 0, 0, 3, 2, 3, 1, 2, 3, 1, 2, 3, 3, 2, 2, -1, ~
+$ Q8_Points        <dbl> 1, -3, -1, -2, 2, 1, 2, 0, 1, 2, 1, 1, 2, 2, 1, 1, -2~
+$ Q9_Points        <dbl> 1, 2, 1, 1, 1, 1, -2, 0, -2, 2, -1, -2, 2, 2, -1, 1, ~
+$ Projects_Total   <dbl> 3, 3, 0, 4, 3, 8, 2, 3, 3, 1, 1, 4, 7, 2, 3, 2, 6, 1,~
+$ Paths_Total      <dbl> 4, -3, 0, -1, 6, 4, 3, 1, 1, 7, 1, 1, 7, 7, 2, 4, -5,~
+$ Overall_Total    <dbl> 7, 0, 0, 3, 9, 12, 5, 4, 4, 8, 2, 5, 14, 9, 5, 6, 1, ~
 \end{verbatim}
 \normalsize
 
@@ -2847,7 +2836,7 @@ It has many of the same features as the Fall 2020 data, though there are a few d
 \item
   Each student has two rows of data that correspond to them, rather than just one.
 \item
-  There are two new variables, \texttt{Student\_ID} and \texttt{Test}. \texttt{Student\_ID} is an index, used to keep track of which rows belong to the same student. This was created as an alternative to \texttt{User\_Hash} as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. \texttt{Test} has either the value ``Pre'' or ``Post'', identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively.
+  There are two new variables, \texttt{Student\_ID} and \texttt{Test}. \texttt{Student\_ID} is an index, used to keep track of which rows belong to the same student. This was created as an alternative to \texttt{User\_Hash} as we found that users of Smith College-provided laptop computers would occasionally have non-unique hashed IDs. \texttt{Test} has either the value ``Pre'' or ``Post,'' identifying which test the row corresponds to--the test at the beginning of the course, or the one at the end, respectively.
 \end{enumerate}
 Just as with the Fall 2020 data, these de-identified data are available publicly at \url{https://github.com/ambertin/thesis}.
 
@@ -2898,7 +2887,6 @@ Although, visually, it does not seem as though \texttt{fertile} provided a stati
 
 After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
 \begin{verbatim}
-
 Call:
 lm(formula = Score_Difference ~ Group, data = jterm_model_data)
 
@@ -2927,7 +2915,6 @@ Residuals 36 881.66 24.4906
 \end{verbatim}
 Adding in a second variable, the number of previous related courses taken by the student, we see the same story. Neither the student's experimental group, nor their number of previous classes have a statistically significant relationship with score difference, holding the other variable constant.
 \begin{verbatim}
-
 Call:
 lm(formula = Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
 
@@ -3075,7 +3062,7 @@ The package is designed to possess none of the challenges apparent in other solu
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
-  Simple, with a small library of functions/tools that are straightforward to use. Some of the package's functionalities, like the interactive file path warning system, require no effort from the user to enable, while most others can be run with only a handful of functions requiring one argument: a path to a project directory.
+  \emph{Simple, with a small library of functions/tools that are straightforward to use}. Some of the package's functionalities, like the interactive file path warning system, require no effort from the user to enable, while most others can be run with only a handful of functions requiring one argument: a path to a project directory.
 \item
   \emph{Accessible to a variety of users, with a relatively small learning curve.} Users do not need a background in research, nor do they need an advanced knowledge of \texttt{R} programming, to run the majority of functions in \texttt{fertile}.
 \item
@@ -3105,26 +3092,26 @@ This first appendix includes all of the R chunks of code that were hidden throug
 \textbf{In the main Rmd file}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# This chunk ensures that the thesisdown package is installed and loaded. This}
-\CommentTok{# thesisdown package includes the template files for the thesis.}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(remotes)) \{}
-    \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-        \KeywordTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\DataTypeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
+\CommentTok{\# This chunk ensures that the thesisdown package is installed and loaded. This}
+\CommentTok{\# thesisdown package includes the template files for the thesis.}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(remotes)) \{}
+    \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
+        \FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
 \NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-        \KeywordTok{stop}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"You need to run install.packages(}\CharTok{\textbackslash{}"}\StringTok{remotes}\CharTok{\textbackslash{}"}\StringTok{)}\CharTok{\textbackslash{}"}\StringTok{,}
-\StringTok{            }\CharTok{\textbackslash{}"}\StringTok{first in the Console."}\NormalTok{))}
+        \FunctionTok{stop}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"You need to run install.packages(}\SpecialCharTok{\textbackslash{}"}\StringTok{remotes}\SpecialCharTok{\textbackslash{}"}\StringTok{)}\SpecialCharTok{\textbackslash{}"}\StringTok{,}
+\StringTok{            }\SpecialCharTok{\textbackslash{}"}\StringTok{first in the Console."}\NormalTok{))}
 \NormalTok{    \}}
 \NormalTok{\}}
-\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(thesisdown)) \{}
-    \ControlFlowTok{if}\NormalTok{ (params}\OperatorTok{$}\StringTok{`}\DataTypeTok{Install needed packages for \{thesisdown\}}\StringTok{`}\NormalTok{) \{}
-\NormalTok{        remotes}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(thesisdown)) \{}
+    \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
+\NormalTok{        remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
 \NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-        \KeywordTok{stop}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"You need to run"}\NormalTok{, }\StringTok{"remotes::install_github(}\CharTok{\textbackslash{}"}\StringTok{ismayc/thesisdown}\CharTok{\textbackslash{}"}\StringTok{)"}\NormalTok{, }
+        \FunctionTok{stop}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"You need to run"}\NormalTok{, }\StringTok{"remotes::install\_github(}\SpecialCharTok{\textbackslash{}"}\StringTok{ismayc/thesisdown}\SpecialCharTok{\textbackslash{}"}\StringTok{)"}\NormalTok{, }
             \StringTok{"first in the Console."}\NormalTok{))}
 \NormalTok{    \}}
 \NormalTok{\}}
-\KeywordTok{library}\NormalTok{(thesisdown)}
-\CommentTok{# Set how wide the R output will go}
+\FunctionTok{library}\NormalTok{(thesisdown)}
+\CommentTok{\# Set how wide the R output will go}
 \end{Highlighting}
 \end{Shaded}
 \hypertarget{the-second-appendix-for-fun}{%
@@ -3145,6 +3132,7 @@ This first appendix includes all of the R chunks of code that were hidden throug
 \setlength{\parskip}{8pt}
 
 \hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
 \leavevmode\hypertarget{ref-aee-policy}{}%
 American Economic Association. (2020). Data and code availability policy. Retrieved from \url{https://www.aeaweb.org/journals/data/data-code-policy}
 
@@ -3152,7 +3140,7 @@ American Economic Association. (2020). Data and code availability policy. Retrie
 American Journal of Political Science. (2016, May). Guidelines for preparing replication files. Retrieved from \url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
 
 \leavevmode\hypertarget{ref-asa-guide}{}%
-American Statistical Association. (2020). JASA acs reproducibility guide. Retrieved from \url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
+American Statistical Association. (2020). JASA ACS reproducibility guide. Retrieved from \url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
 
 \leavevmode\hypertarget{ref-nature-psych}{}%
 Baker, M. (2015). Over half of psychological studies fail reproducibility test. \emph{Nature}. Retrieved from \url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248}
@@ -3173,7 +3161,7 @@ Biostatistics. (2020). Information for authors. Retrieved from \url{https://acad
 Blischak, J., Carbonetto, P., \& Stephens, M. (2019). Workflowr: A framework for reproducible and collaborative data science. Retrieved from \url{https://CRAN.R-project.org/package=workflowr}
 
 \leavevmode\hypertarget{ref-arlington}{}%
-Bollen, K., Cacioppo, J. T., Kaplan, R. M., Krosnick, J. A., Olds, J. L., \& Dean, H. (2015). Report of the subcommittee on replicability in science advisory committee to the nsf sbe directorate. Retrieved from \url{https://www.nsf.gov/sbe/SBE_Spring_2015_AC_Meeting_Presentations/Bollen_Report_on_Replicability_SubcommitteeMay_2015.pdf}
+Bollen, K., Cacioppo, J. T., Kaplan, R. M., Krosnick, J. A., Olds, J. L., \& Dean, H. (2015). Report of the subcommittee on replicability in science advisory committee to the NSF SBE directorate. Retrieved from \url{https://www.nsf.gov/sbe/SBE_Spring_2015_AC_Meeting_Presentations/Bollen_Report_on_Replicability_SubcommitteeMay_2015.pdf}
 
 \leavevmode\hypertarget{ref-broman}{}%
 Broman, K. (2019). Initial steps toward reproducible research: Organize your data and code. \emph{Sitewide ATOM}. Retrieved from \url{https://kbroman.org/steps2rr/pages/organize.html}
@@ -3188,7 +3176,7 @@ Claerbout, J. F., \& Karrenbach, M. (1992). Electronic documents give reproducib
 Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T., Krystalli, A., \& Michonneau, F. (2017). A guide to reproducible code in ecology and evolution. \emph{British Ecological Society}. Retrieved from \url{https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf}
 
 \leavevmode\hypertarget{ref-eisner-reproducibility}{}%
-Eisner, D. A. (2018). Reproducibility of science: Fraud, impact factors and carelessness. \emph{Journal of Molecular and Cellular Cardiology}, \emph{114}, 364--368. \url{http://doi.org/https://doi.org/10.1016/j.yjmcc.2017.10.009}
+Eisner, D. A. (2018). Reproducibility of science: Fraud, impact factors and carelessness. \emph{Journal of Molecular and Cellular Cardiology}, \emph{114}, 364--368. http://doi.org/\url{https://doi.org/10.1016/j.yjmcc.2017.10.009}
 
 \leavevmode\hypertarget{ref-epstein2002immediate}{}%
 Epstein, M. L., Lazarus, A. D., Calvano, T. B., Matthews, K. A., Hendel, R. A., Epstein, B. B., \& Brosvic, G. M. (2002). Immediate feedback assessment technique promotes learning and corrects inaccurate first responses. \emph{The Psychological Record}, \emph{52}(2), 187--201.
@@ -3203,10 +3191,10 @@ FitzJohn, R., Ashton, R., Hill, A., Eden, M., Hinsley, W., Russell, E., \& Thomp
 Gancarz, M. (2003). \emph{Linux and the unix philosophy} (2nd ed.). Woburn, MA: Digital Press.
 
 \leavevmode\hypertarget{ref-Goodman341ps12}{}%
-Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What does research reproducibility mean? \emph{Science Translational Medicine}, \emph{8}(341), 1--6. \url{http://doi.org/10.1126/scitranslmed.aaf5027}
+Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What does research reproducibility mean? \emph{Science Translational Medicine}, \emph{8}(341), 1--6. http://doi.org/\href{https://doi.org/10.1126/scitranslmed.aaf5027}{10.1126/scitranslmed.aaf5027}
 
 \leavevmode\hypertarget{ref-bioessays-gosselin}{}%
-Gosselin, R.-D. (2020). Statistical analysis must improve to address the reproducibility crisis: The access to transparent statistics (acts) call to action. \emph{BioEssays}, \emph{42}(1), 1900189. \url{http://doi.org/10.1002/bies.201900189}
+Gosselin, R.-D. (2020). Statistical analysis must improve to address the reproducibility crisis: The ACcess to transparent statistics (ACTS) call to action. \emph{BioEssays}, \emph{42}(1), 1900189. http://doi.org/\href{https://doi.org/10.1002/bies.201900189}{10.1002/bies.201900189}
 
 \leavevmode\hypertarget{ref-hardwicke2018data}{}%
 Hardwicke, T. E., Mathur, M. B., MacDonald, K., Nilsonne, G., Banks, G. C., Kidwell, M. C., \ldots{} others. (2018). Data availability, reusability, and analytic reproducibility: Evaluating the impact of a mandatory open data policy at the journal cognition. \emph{Royal Society Open Science}, \emph{5}(8), 180448. Retrieved from \url{https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448}
@@ -3224,7 +3212,7 @@ Hillenbrand, S. (2014). Reproducible and collaborative: Teaching the data scienc
 Horton, N. J., Baumer, B. S., \& Wickham, H. (2014). Teaching precursors to data science in introductory and second courses in statistics. \emph{arXiv Preprint arXiv:1401.3269}.
 
 \leavevmode\hypertarget{ref-hrynaszkiewicz2020publishers}{}%
-Hrynaszkiewicz, I. (2020). Publishers' responsibilities in promoting data quality and reproducibility. \emph{Handbook of Experimental Pharmacology}, \emph{257}, 319--348. \url{http://doi.org/https://doi.org/10.1007/164_2019_290}
+Hrynaszkiewicz, I. (2020). Publishers' responsibilities in promoting data quality and reproducibility. \emph{Handbook of Experimental Pharmacology}, \emph{257}, 319--348. http://doi.org/\url{https://doi.org/10.1007/164_2019_290}
 
 \leavevmode\hypertarget{ref-higher-ed}{}%
 Jacoby, W. G., Lafferty-Hess, S., \& Christian, T.-M. (2017). Should journals be responsible for reproducibility? Inside Higher Ed. Retrieved from \url{https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility}
@@ -3245,22 +3233,22 @@ Journal of the American Statistical Association Editors. (2020). JASA editors ta
 Kitzes, J., Turek, D., \& Deniz, F. (2017). \emph{The practice of reproducible research: Case studies and lessons from the data-intensive sciences}. Berkeley, CA: University of California Press. Retrieved from \url{https://www.practicereproducibleresearch.org}
 
 \leavevmode\hypertarget{ref-leopold2015increased}{}%
-Leopold, S. S. (2015). Editorial: Increased manuscript submissions prompt journals to make hard choices. \emph{Clinical Orthopaedics and Related Research}, \emph{473}(3), 753--755. \url{http://doi.org/10.1007/s11999-014-4129-1}
+Leopold, S. S. (2015). Editorial: Increased manuscript submissions prompt journals to make hard choices. \emph{Clinical Orthopaedics and Related Research}, \emph{473}(3), 753--755. http://doi.org/\href{https://doi.org/10.1007/s11999-014-4129-1}{10.1007/s11999-014-4129-1}
 
 \leavevmode\hypertarget{ref-lupia2014openness}{}%
 Lupia, A., \& Elman, C. (2014). Openness in political science: Data access and research transparency. \emph{PS, Political Science \& Politics}, \emph{47}(1), 19.
 
 \leavevmode\hypertarget{ref-r-opensci}{}%
-Martinez, C., Hollister, J., Marwick, B., Szöcs, E., Zeitlin, S., Kinoshita, B. P., \ldots{} Meinke, B. (2018). Reproducibility in Science: A Guide to enhancing reproducibility in scientific results and writing. Retrieved from \url{http://ropensci.github.io/reproducibility-guide/}
+Martinez, C., Hollister, J., Marwick, B., Szöcs, E., Zeitlin, S., Kinoshita, B. P., \ldots{} Meinke, B. (2018). {Reproducibility in Science: A Guide to enhancing reproducibility in scientific results and writing}. Retrieved from \url{http://ropensci.github.io/reproducibility-guide/}
 
 \leavevmode\hypertarget{ref-R-rrtools}{}%
 Marwick, B. (2019). Rrtools: Creates a reproducible research compendium. Retrieved from \url{https://github.com/benmarwick/rrtools}
 
 \leavevmode\hypertarget{ref-marwick2018packaging}{}%
-Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data analytical work reproducibly using R (and friends). \emph{The American Statistician}, \emph{72}(1), 80--88. \url{http://doi.org/doi.org/10.1080/00031305.2017.1375986}
+Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data analytical work reproducibly using {R} (and friends). \emph{The American Statistician}, \emph{72}(1), 80--88. http://doi.org/\href{https://doi.org/doi.org/10.1080/00031305.2017.1375986}{doi.org/10.1080/00031305.2017.1375986}
 
 \leavevmode\hypertarget{ref-engineering-reproducibility}{}%
-McArthur, S. L. (2019). Repeatability, reproducibility, and replicability: Tackling the 3R challenge in biointerface science and engineering. \emph{Biointerphases}, \emph{14}(2), 1--2. \url{http://doi.org/10.1116/1.5093621}
+McArthur, S. L. (2019). Repeatability, reproducibility, and replicability: Tackling the 3R challenge in biointerface science and engineering. \emph{Biointerphases}, \emph{14}(2), 1--2. http://doi.org/\href{https://doi.org/10.1116/1.5093621}{10.1116/1.5093621}
 
 \leavevmode\hypertarget{ref-R-reproducible}{}%
 McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of tools that enhance reproducibility beyond package management. Retrieved from \url{https://CRAN.R-project.org/package=reproducible}
@@ -3274,11 +3262,11 @@ OpenSci, R. (2020). Drake: A pipeline toolkit for reproducible computation at sc
 \leavevmode\hypertarget{ref-wercker}{}%
 Oracle Corporation. (2019). Wercker. Retrieved from \url{https://github.com/wercker/wercker}
 
-\leavevmode\hypertarget{ref-coreteam-extensions}{}%
-R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for Statistical Computing}. Retrieved from \url{http://cran.stat.unipd.it/doc/manuals/r-release/R-exts.pdf}
-
 \leavevmode\hypertarget{ref-r-journal}{}%
 R Journal Editors. (2020). Instructions for authors. Retrieved from \url{https://journal.r-project.org/share/author-guide.pdf}
+
+\leavevmode\hypertarget{ref-coreteam-extensions}{}%
+R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for Statistical Computing}. Retrieved from \url{http://cran.stat.unipd.it/doc/manuals/r-release/R-exts.pdf}
 
 \leavevmode\hypertarget{ref-R-checkers}{}%
 Ross, N., DeCicco, L., \& Randhawa, N. (2018). Checkers: Automated checking of best practices for research compendia. Retrieved from \url{https://github.com/ropenscilabs/checkers/blob/master/DESCRIPTIONr}
@@ -3287,7 +3275,7 @@ Ross, N., DeCicco, L., \& Randhawa, N. (2018). Checkers: Automated checking of b
 Stodden, V., Seiler, J., \& Ma, Z. (2018a). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. Retrieved from \url{https://www.pnas.org/content/115/11/2584}
 
 \leavevmode\hypertarget{ref-Stodden2584}{}%
-Stodden, V., Seiler, J., \& Ma, Z. (2018b). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. \url{http://doi.org/10.1073/pnas.1708290115}
+Stodden, V., Seiler, J., \& Ma, Z. (2018b). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. http://doi.org/\href{https://doi.org/10.1073/pnas.1708290115}{10.1073/pnas.1708290115}
 
 \leavevmode\hypertarget{ref-ams-guide}{}%
 The American Statistician. (2020). Instructions for authors. Retrieved from \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
@@ -3296,7 +3284,7 @@ The American Statistician. (2020). Instructions for authors. Retrieved from \url
 Ushey, K., \& RStudio. (2020). Renv: Project environments. Retrieved from \url{https://cran.r-project.org/web/packages/renv/index.html}
 
 \leavevmode\hypertarget{ref-plos-biology}{}%
-Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018). Reproducible research practices, transparency, and open access data in the biomedical literature, 2015-2017. \emph{PLOS Biology}, \emph{16}(11), 1--20. \url{http://doi.org/10.1371/journal.pbio.2006930}
+Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018). Reproducible research practices, transparency, and open access data in the biomedical literature, 2015-2017. \emph{PLOS Biology}, \emph{16}(11), 1--20. http://doi.org/\href{https://doi.org/10.1371/journal.pbio.2006930}{10.1371/journal.pbio.2006930}
 
 \leavevmode\hypertarget{ref-hadley-packages}{}%
 Wickham, H. (2015). \emph{R packages} (1st ed.). Sebastopol, CA: O'Reilly Media, Inc.
@@ -3313,6 +3301,7 @@ Woolston, C. (2020). TOP factor rates journals on transparency, openness. Nature
 \leavevmode\hypertarget{ref-yu2019toward}{}%
 Yu, B., \& Hu, X. (2019). Toward training and assessing reproducible data analysis in data science education. \emph{Data Intelligence}, \emph{1}(4), 381--392.
 
+\end{CSLReferences}
 
 % Index?
 

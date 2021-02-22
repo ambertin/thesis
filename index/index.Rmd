@@ -28,10 +28,9 @@ output:
 # (e.g., abstract, acknowledgements) below or use code similar to line 25-26 
 # for the .RMD files. If you are NOT producing a PDF, delete or silence
 # lines 25-39 in this YAML header.
-abstract: '`r if(knitr:::is_latex_output()) paste(readLines(here::here("prelims", "00-abstract.Rmd")), collapse = "\n  ")`'
-# If you'd rather include the preliminary content in files instead of inline
-# like below, use a command like that for the abstract above.  Note that a tab 
-# is needed on the line after the `|`.
+abstract: |
+  In the field of data science, research is considered fully *reproducible* when the requisite code and data files produce identical results when run by another analyst. Although reproducibility is important to the advancement of scientific knowledge in many ways, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are either challenging to use, are too generalized, and are not accessible to a wide audience. In this thesis, I present my work on developing `fertile`, an `R` package designed to help improve the reproducibility of `R Projects` and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) specific to challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 of this thesis considers the background information motivating `fertile`, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in `fertile` to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers `fertile`'s potential applications in the real world, including an in-depth analysis of an experiment involving `fertile`'s integration into an introductory data science course at Smith College.
+
 acknowledgements: |
   This project would not have been possible without the guidance of Professor Ben Baumer, who helped inspire my interest in data science and mentored me throughout this project for the last two years. 
   I would also like to extend my thanks to Jenny Bryan and Hadley Wickham, whose advice has helped guide the development of several features in `fertile`, along with the authors of all of the R packages utilized by `fertile` to achieve its functionality. 
