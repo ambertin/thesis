@@ -686,6 +686,7 @@ When projects have a variety of components, \texttt{orderly} makes it easy to se
 \texttt{workflowr}'s (Blischak, Carbonetto, \& Stephens (2019)) functionality is based around version control and making code easily available online. It works to generate a website containing time-stamped, versioned, and documented results. In addition, it manages the session and package information of each analysis and controls random number generation.
 
 \texttt{checkers} (Ross, DeCicco, \& Randhawa (2018)) allows you to create custom checks that examine different aspects of reproducibility. It also contains some pre-built checks, such as seeing if users reference packages that are less preferred to other similar ones and ensuring that the project is under version control.
+
 \texttt{renv} (Ushey \& RStudio (2020)) (formerly \texttt{packrat}) helps to make projects more isolated, portable, and reproducible. It gives every project its own private package library, makes it easy to install the packages the project depends on if it is moved to another computer.
 
 \texttt{drake} (OpenSci (2020)) analyzes workflows, skips steps where results are up to date, utilizes optimized computing to complete the rest of the steps, and provides evidence that results match the underlying code and data.
@@ -806,6 +807,8 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-8}
 \end{figure}
+All of the code for \texttt{fertile} that will be discussed in this chapter can be found at \url{https://github.com/baumer-lab/fertile}, while the local branch tracking my changes can be found at \url{https://github.com/ambertin/fertile}.
+
 \hypertarget{component-1-accessibile-project-files}{%
 \subsection{Component 1: Accessibile Project Files}\label{component-1-accessibile-project-files}}
 \begin{Shaded}
@@ -835,10 +838,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.53K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.14K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  376.45K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.27K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -857,7 +860,7 @@ v Checking for README file(s) at root level
 
 In order to truly check that a project is self contained, however, is is necessary to remove it from the environment it is located, ensuring that it can still run when cut off from the main file system.
 
-The \texttt{sandbox()} function is designed to help facilitate this. \texttt{sandbox()} allows the user to make a copy of their project in a temporary directory that is isolated from the file system.
+The \texttt{sandbox()} function is designed to help facilitate this. \texttt{sandbox()} allows the user to make a copy of their project in a temporary directory that is isolated from the file system. This function works on both compressed (\texttt{.zip}) and non-compressed directories.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fs}\SpecialCharTok{::}\FunctionTok{dir\_ls}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
@@ -879,15 +882,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpQGzPsp/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -906,7 +909,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-22 21:43:03
+1 LAST RENDERED <NA>     proj_render 2021-02-24 16:01:44
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1000,9 +1003,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.53K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.14K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  376.45K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.27K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1119,7 +1122,7 @@ install.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2',
 'tidyr' ))
 # Packages (likely) hosted on GitHub...
 \end{verbatim}
-Users interested in ensuring that their project is reproducible can provide alongside it both:
+As good practice, users interested in ensuring that their project is reproducible should include both of the following files alongside it.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -1240,6 +1243,8 @@ Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \begin{verbatim}
 [1] "/Users/audreybertin/Documents/thesis/index"
 \end{verbatim}
+For more information about the interactive warning system and some of its customization features, see Section 2.2.1.
+
 \hypertarget{project-path-summaries}{%
 \subsubsection{Project Path Summaries}\label{project-path-summaries}}
 
@@ -1523,8 +1528,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     183.02K image/png                                 
- 3 proteins_v_time.p~ png     376.97K image/png                                 
+ 2 citrate_v_time.png png     187.87K image/png                                 
+ 3 proteins_v_time.p~ png     376.89K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1935,7 +1940,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,013 x 4
+# A tibble: 1,019 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1948,7 +1953,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,003 more rows
+# ... with 1,009 more rows
 \end{verbatim}
 \normalsize
 
@@ -2035,7 +2040,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7faf95f3d4b0>
+<bytecode: 0x7f82d3f205f8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2145,16 +2150,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      254     2021-02-22 21:43:36
- 2 package:dplyr           <NA>                      base::~ 2021-02-22 21:43:36
- 3 package:readr           <NA>                      base::~ 2021-02-22 21:43:36
- 4 package:tidyr           <NA>                      base::~ 2021-02-22 21:43:36
- 5 package:ggplot2         <NA>                      base::~ 2021-02-22 21:43:36
- 6 package:purrr           <NA>                      base::~ 2021-02-22 21:43:36
- 7 Seed Before             <NA>                      254     2021-02-22 21:43:36
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-22 21:43:36
- 9 Seed After              <NA>                      268     2021-02-22 21:43:37
-10 Seed Before             <NA>                      268     2021-02-22 21:43:37
+ 1 Seed @ Start            <NA>                      276     2021-02-24 16:02:35
+ 2 package:dplyr           <NA>                      base::~ 2021-02-24 16:02:35
+ 3 package:readr           <NA>                      base::~ 2021-02-24 16:02:35
+ 4 package:tidyr           <NA>                      base::~ 2021-02-24 16:02:36
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-24 16:02:36
+ 6 package:purrr           <NA>                      base::~ 2021-02-24 16:02:36
+ 7 Seed Before             <NA>                      276     2021-02-24 16:02:36
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-24 16:02:36
+ 9 Seed After              <NA>                      290     2021-02-24 16:02:36
+10 Seed Before             <NA>                      290     2021-02-24 16:02:36
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2228,7 +2233,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7faf7fdf1298>
+<bytecode: 0x7f82be096068>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2259,7 +2264,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7faf8c9c2258>
+<bytecode: 0x7f82cb166b30>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2290,7 +2295,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7faf95f3d4b0>
+<bytecode: 0x7f82d3f205f8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2359,7 +2364,9 @@ Another R-specific feature that \texttt{fertile} addresses is randomness. Random
 
 \textbf{5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.}
 
-As discussed in Chapter 2.1.8, \texttt{fertile} is highly customizable, providing users with a wide variety of options for how they can run the package's reproducibility tests. The main reproducibility checks can be run all at once (using \texttt{proj\_check()}), in groups (using \texttt{proj\_check\_some()}), or individually. Users who only want basic information can rely on only \texttt{proj\_analyze()} and \texttt{proj\_check()}, while those looking for more advanced reproducibility information can delve into the project dependency functions, as well as \texttt{sandbox()} + \texttt{proj\_render()}, to ensure that projects are completely self contained.
+As discussed in Section 2.1.8, \texttt{fertile} is highly customizable, providing users with a wide variety of options for how they can run the package's reproducibility tests. The main reproducibility checks can be run all at once (using \texttt{proj\_check()}), in groups (using \texttt{proj\_check\_some()}), or individually. Users who only want basic information can rely on only \texttt{proj\_analyze()} and \texttt{proj\_check()}, while those looking for more advanced reproducibility information can delve into the project dependency functions, as well as \texttt{sandbox()} + \texttt{proj\_render()}, to ensure that projects are completely self contained.
+
+Additionally, as discussed in Section 2.2.1, the interactive warning system is also highly customizable, providing users with functions to write their own shimmed functions that check for file paths and enable or disable those as desired.
 
 \textbf{6) Be educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.}
 
@@ -3070,52 +3077,285 @@ The package is designed to possess none of the challenges apparent in other solu
 \item
   \emph{Language specific, possessing features that address some of the reproducibility challenges associated with \texttt{R}.} The \texttt{has\_no\_randomness()}, \texttt{proj\_pkg\_script()}, and \texttt{proj\_dependency\_report()} functions handle the \texttt{R}-specific issues of random number generation and package dependencies.
 \item
-  \emph{Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.} There is no one way that users are forced to use \texttt{fertile}. Those who only want to focus on one aspect of reproducibility can do so, while those who want to address everything at once have that option as well.
+  \emph{Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.} There is no one way that users are forced to use \texttt{fertile}. Those who only want to focus on one aspect of reproducibility can do so, while those who want to address everything at once have that option as well. Users can also control which functions interactively warn them about non-reproducible file paths.
 \item
   \emph{Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.} Throughout the reproducibility checking process, \texttt{fertile} provides informative messages that explain to users the flaws in their code and show them ways to correct the issues.
 \end{enumerate}
 Due to its many advantages compared with traditional reproducibility solutions, \texttt{fertile} has the potential to provide significant benefits in a variety of domains, including in the areas of journal review and education, where other solutions have not quite met the mark.
 
-In the journal review process, \texttt{fertile} can be integrated to help ensure that submitted articles meet reproducibility standards. Since \texttt{fertile} is both free and publicly available, authors and journal reviewers could take advantage of it in their reproducibility-checking process. Journals might require that certain \texttt{fertile} checks be passed for articles to be approved, submitting authors could ensure that their projects pass on their end, and then all that would be required for journals to ensure reproducibility would be a quick run of \texttt{fertile}'s functions. This would greatly reduce the barriers on both the reviewing and authoring side of the issue and would vastly speed up the reproducibility-checking process, making it much easier to ensure that published articles are truly reproducible.
+In the journal review process, \texttt{fertile} can be integrated to help ensure that submitted articles meet reproducibility standards. Since \texttt{fertile} is both free and publicly available, authors and journal reviewers could take advantage of it in their reproducibility-checking process. Journals might require that certain \texttt{fertile} checks be passed for articles to be approved, submitting authors could ensure that their projects pass on their end, and then all that would be required for journals to ensure reproducibility would be a quick run of \texttt{fertile}'s functions, or to require that authors submit a \texttt{proj\_badges()} report certifying the project's adherence to reproducibility standards. This would greatly reduce the barriers on both the reviewing and authoring side of the issue and would vastly speed up the reproducibility-checking process, making it much easier to ensure that published articles are truly reproducible.
 
 In the classroom, \texttt{fertile} could be used to extend reproducibility education to undergraduate students---even those at the introductory level. Due to its simplicity, the package would take minimal time and effort to integrate into courses, allowing professors to teach reproducibility without taking important time away from other key topics. If professors were to integrate \texttt{fertile} in to their courses, students would be able begin learning about reproducibility much earlier in their data science careers than would likely happen otherwise, increasing the chance that they prioritize reproducibility in their future work.
 
 Academia and research are not the only applications, however. \texttt{fertile} could also assist the general world of data science. \texttt{R} bloggers and Tidy Tuesday participants could use the package to improve the quality of their code- and data- sharing, making it easier for others to learn from their work. Data journalists, in some situations, could do something similar, sharing the (reproducible) code and data behind their projects to remove the black-box nature that some such projects possess, building a relationship of trust with their readers. And private companies doing consulting work could integrate \texttt{fertile} into their workflow as a way of increasing transparency between themselves and their clients.
 
+\textbf{NEED TO ADD: mention of experiment and overall implications}
+
 \appendix
 
-\hypertarget{the-first-appendix}{%
-\chapter{The First Appendix}\label{the-first-appendix}}
+\hypertarget{a-summary-of-relevant-links}{%
+\chapter{A Summary of Relevant Links}\label{a-summary-of-relevant-links}}
 
-This first appendix includes all of the R chunks of code that were hidden throughout the document (using the \texttt{include\ =\ FALSE} chunk tag) to help with readibility and/or setup.
+Several links relevant to \texttt{fertile} were shared throughout the text. To make them easier to find and review, they are all provided together below.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  GitHub repository for \texttt{fertile}: \url{https://github.com/baumer-lab/fertile}
+\item
+  My GitHub fork of \texttt{fertile}, where you can track my changes and code contributions more easily: \url{https://github.com/ambertin/fertile}
+\item
+  GitHub repository for this thesis, which contains the sample project \texttt{project\_miceps}, all of the non-R-generated figures that were included, as well as the de-identified data from the experiment: \url{https://github.com/ambertin/thesis}
+\item
+  DOI for the paper about \texttt{fertile} which was published in \texttt{Stat}: \url{http://dx.doi.org/10.1002/sta4.332}
+\end{enumerate}
+\hypertarget{full-overview-of-the-experimental-reproducibility-test}{%
+\chapter{Full Overview of the Experimental Reproducibility Test}\label{full-overview-of-the-experimental-reproducibility-test}}
 
-\textbf{In the main Rmd file}
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# This chunk ensures that the thesisdown package is installed and loaded. This}
-\CommentTok{\# thesisdown package includes the template files for the thesis.}
-\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(remotes)) \{}
-    \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
-        \FunctionTok{install.packages}\NormalTok{(}\StringTok{"remotes"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"https://cran.rstudio.com"}\NormalTok{)}
-\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-        \FunctionTok{stop}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"You need to run install.packages(}\SpecialCharTok{\textbackslash{}"}\StringTok{remotes}\SpecialCharTok{\textbackslash{}"}\StringTok{)}\SpecialCharTok{\textbackslash{}"}\StringTok{,}
-\StringTok{            }\SpecialCharTok{\textbackslash{}"}\StringTok{first in the Console."}\NormalTok{))}
-\NormalTok{    \}}
-\NormalTok{\}}
-\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(thesisdown)) \{}
-    \ControlFlowTok{if}\NormalTok{ (params}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Install needed packages for \{thesisdown\}}\StringTok{\textasciigrave{}}\NormalTok{) \{}
-\NormalTok{        remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ismayc/thesisdown"}\NormalTok{)}
-\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
-        \FunctionTok{stop}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"You need to run"}\NormalTok{, }\StringTok{"remotes::install\_github(}\SpecialCharTok{\textbackslash{}"}\StringTok{ismayc/thesisdown}\SpecialCharTok{\textbackslash{}"}\StringTok{)"}\NormalTok{, }
-            \StringTok{"first in the Console."}\NormalTok{))}
-\NormalTok{    \}}
-\NormalTok{\}}
-\FunctionTok{library}\NormalTok{(thesisdown)}
-\CommentTok{\# Set how wide the R output will go}
-\end{Highlighting}
-\end{Shaded}
-\hypertarget{the-second-appendix-for-fun}{%
-\chapter{The Second Appendix, for Fun}\label{the-second-appendix-for-fun}}
+Chapter 3 discusses an experiment that Professor Baumer and myself conducted at Smith College to test \texttt{fertile} in a classroom environment.
+
+In order to measure the package's effectiveness, we constructed a test that could capture information about students' knowledge of reproducibility. A sample of these questions was included in Chapter 3. The full list, alongside with a step-by-step example of the scoring process, is provided here:
+
+\hypertarget{full-reproducibility-test}{%
+\section{Full Reproducibility Test}\label{full-reproducibility-test}}
+
+\hypertarget{test-introduction}{%
+\subsubsection{Test Introduction}\label{test-introduction}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-intro}
+
+\hypertarget{question-1-projects}{%
+\subsubsection{Question 1 (Projects)}\label{question-1-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-1}
+
+\textbf{Correct Answers:} 1) They make it easy to share all of your code/files with other people, 2) They help keep all your files in one place on your computer, separated from other unrelated files, 3) They allow you to connect to version controls like GitHub.
+
+\hypertarget{question-2-projects}{%
+\subsubsection{Question 2 (Projects)}\label{question-2-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-2}
+
+\textbf{Correct Answer:} ``It depends''
+
+\hypertarget{question-3-projects}{%
+\subsubsection{Question 3 (Projects)}\label{question-3-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-3}
+
+\textbf{Correct Answer:} ``It depends''
+
+\hypertarget{question-4-projects}{%
+\subsubsection{Question 4 (Projects)}\label{question-4-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-4}
+
+\textbf{Correct Answer:} ``Yes''
+
+\hypertarget{question-5-projects}{%
+\subsubsection{Question 5 (Projects)}\label{question-5-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-5}
+
+\textbf{Correct Answer:} ``No''
+
+\hypertarget{question-6-projects}{%
+\subsubsection{Question 6 (Projects)}\label{question-6-projects}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-6}
+
+\textbf{Correct Answers:} 3) Because if your code is run on another computer, that directory might not exist. \textbf{Note}: \emph{1) Because the execution of the R Markdown file depends on where it is located} is sort of ambiguous. Because of this, in scoring, it was considered to be a no change (0) answer if it was selected. Students would not gain or lose points from choosing that answer.
+
+\hypertarget{question-7-paths}{%
+\subsubsection{Question 7 (Paths)}\label{question-7-paths}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-7}
+
+\textbf{Correct Answers:} 1) \texttt{"C:\textbackslash{}Documents\textbackslash{}Datasets\textbackslash{}SnowConeSales.csv"} ~(Windows), 4) \texttt{"\textasciitilde{}/Desktop/bikes.csv"} (Mac), 5) \texttt{"/Users/\textless{}yourname\textgreater{}} ~
+\texttt{/Documents/SDS192/mp2/contributions.csv"} (Mac).
+
+\hypertarget{question-8-paths}{%
+\subsubsection{Question 8 (Paths)}\label{question-8-paths}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-8}
+
+\textbf{Correct Answers:} 2) \texttt{"Datasets\textbackslash{}SnowConeSales.csv"} (Windows), ~
+3) \texttt{"mp2/contributions.csv"} (Mac).
+
+\hypertarget{question-9-paths}{%
+\subsubsection{Question 9 (Paths)}\label{question-9-paths}}
+
+\includegraphics[width=0.8\linewidth]{figure/appendix/test-9}
+
+\textbf{Correct Answers:} 2) \texttt{"Datasets\textbackslash{}SnowConeSales.csv"} (Windows), 3) \texttt{"mp2/contributions.csv"} (Mac). \textbf{Note}: 1) and 4) might also be considered plausible, as they could theoretically work under some conditions, though after some discussion, Professor Baumer and I decided that they would be marked incorrect due to the wording of the question, which specifies that you provide the files and folders.
+
+\hypertarget{sample-scoring-example}{%
+\section{Sample Scoring Example}\label{sample-scoring-example}}
+
+Below, we will consider a student's sample answers to this reproducibility test and how they will be scored. As discussed in Chapter 3, the following scoring method was used:
+\begin{itemize}
+\item
+  For each question, students would start at a score of zero. Based on their answers, points would then be added, subtracted, or stay constant.
+\item
+  On select-all-that apply questions, the following scoring rules were used. This meant that students who answered some things correctly, but other things incorrectly, could still receive negative or neutral scores, based on the overall analysis of how correct they were:
+  \begin{itemize}
+  \tightlist
+  \item
+    Each correct box that was checked --\textgreater{} +1 Point
+  \item
+    Each incorrect box that was checked --\textgreater{} -1 Point
+  \item
+    Each box not checked but should have been --\textgreater{} No change (0)
+  \end{itemize}
+\item
+  On multiple choice questions, the scoring rules were slightly different. This was due to the inclusion of an option for ``I'm not sure,'' which was included as a way to discourage random guessing and ensure that students were answering based on their actual knowledge.
+  \begin{itemize}
+  \tightlist
+  \item
+    If the correct answer was selected --\textgreater{} +1 Point
+  \item
+    If the incorrect answer was selected --\textgreater{} -1 Point
+  \item
+    If the student expressed uncertainty (``I'm not sure'') --\textgreater{} No change (0)
+  \end{itemize}
+\end{itemize}
+Prior to scoring question 1, the total score of the student is set at 0, as is their projects questions score and paths questions score.
+
+\hypertarget{question-1-projects-1}{%
+\subsubsection{Question 1 (Projects)}\label{question-1-projects-1}}
+
+A student has selected all of the following options:
+\begin{itemize}
+\tightlist
+\item
+  They make it easy to share all of your code/files with other people (CORRECT)
+\item
+  They help keep all your files in one place on your computer, separated from other unrelated files (CORRECT)
+\item
+  They allow you to connect to version control tools like GitHub (CORRECT)
+\item
+  They speed up how fast your R session loads/saves (NOT CORRECT)
+\item
+  They take up less space in your hard drive than when storing all of your files in one place (NOT CORRECT)
+\end{itemize}
+This student will receive {[}+1{]} for each of the three correct answers, and {[}-1{]} for each of the two incorrect ones, for a total of \textbf{{[}+1{]}}, for a new total score of 1. Since this question was about R projects, the student will also increase their \texttt{Projects\ Score} from 0 to 1.
+
+\emph{Question Score}: 1 \emph{Projects Score}: 1 \emph{Total Score}: 1
+
+\hypertarget{question-2-projects-1}{%
+\subsubsection{Question 2 (Projects)}\label{question-2-projects-1}}
+
+The student has selected the following answer:
+\begin{itemize}
+\tightlist
+\item
+  Yes (NOT CORRECT) --- the correct answer is ``It Depends''
+\end{itemize}
+The student will receive {[}-1{]} for this answer, since it is incorrect. This will be added to their previous projects score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: -1 \emph{Projects Score}: 0 \emph{Total Score}: 0
+
+\hypertarget{question-3-projects-1}{%
+\subsubsection{Question 3 (Projects)}\label{question-3-projects-1}}
+
+The student has selected the following answer:
+\begin{itemize}
+\tightlist
+\item
+  Yes (NOT CORRECT) --- the correct answer is ``It Depends''
+\end{itemize}
+The student will receive {[}-1{]} for this answer, since it is incorrect. This will be added to their previous projects score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: -1 \emph{Projects Score}: -1 \emph{Total Score}: -1
+
+\hypertarget{question-4-projects-1}{%
+\subsubsection{Question 4 (Projects)}\label{question-4-projects-1}}
+
+The student has selected the following answer:
+\begin{itemize}
+\tightlist
+\item
+  Yes (CORRECT)
+\end{itemize}
+The student will receive {[}+1{]} for this answer, since it is correct. This will be added to their previous projects score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 1 \emph{Projects Score}: 0 \emph{Total Score}: 0
+
+\hypertarget{question-5-projects-1}{%
+\subsubsection{Question 5 (Projects)}\label{question-5-projects-1}}
+
+The student has selected the following answer:
+\begin{itemize}
+\tightlist
+\item
+  No (CORRECT)
+\end{itemize}
+The student will receive {[}+1{]} for this answer, since it is correct. This will be added to their previous projects score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 1 \emph{Projects Score}: 1 \emph{Total Score}: 1
+
+\hypertarget{question-6-projects-1}{%
+\subsubsection{Question 6 (Projects)}\label{question-6-projects-1}}
+
+The student has clicked one of the boxes:
+\begin{itemize}
+\tightlist
+\item
+  Because if your code is run on another computer, that directory might not exist (CORRECT)
+\end{itemize}
+The student will receive {[}+1{]} for this answer, since the box they chose was correct. Their choice not to select any other boxes will not affect their score. This will be added to their previous projects score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 1 \emph{Projects Score}: 2 \emph{Total Score}: 2
+
+At the end of the section on projects, the student has gained a projects score of 2 and is at a total score of 2 as well.
+
+\hypertarget{question-7-paths-1}{%
+\subsubsection{Question 7 (Paths)}\label{question-7-paths-1}}
+
+The student has clicked two of the boxes:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{"C:\textbackslash{}Documents\textbackslash{}Datasets\textbackslash{}SnowConeSales.csv"} (Windows) (CORRECT)
+\item
+  \texttt{"\textasciitilde{}/Desktop/bikes.csv"} (Mac) (CORRECT)
+\end{itemize}
+The student will receive {[}+2{]} for this answer, since both of the boxes they chose was correct. Their choice not to select any other boxes will not affect their score. This will be added to their their paths score (which started at zero) and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 2 \emph{Paths Score}: 2 \emph{Total Score}: 4
+
+\hypertarget{question-8-paths-1}{%
+\subsubsection{Question 8 (Paths)}\label{question-8-paths-1}}
+
+The student has clicked three of the boxes:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{"Datasets\textbackslash{}SnowConeSales.csv"} (Windows) (CORRECT)
+\item
+  \texttt{"mp2/contributions.csv"} (Mac) (CORRECT)
+\item
+  \texttt{"/Users/\textless{}yourname\textgreater{}/Documents/SDS192/mp2/contributions.csv"} (Mac) (NOT CORRECT)
+\end{itemize}
+The student will receive {[}+1{]} for this answer, {[}+2{]} for the correct boxes and {[}-1{]} for the incorrect one. Their choice not to select any other boxes will not affect their score. This will be added to their their paths score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 1 \emph{Paths Score}: 3 \emph{Total Score}: 5
+
+\hypertarget{question-9-paths-1}{%
+\subsubsection{Question 9 (Paths)}\label{question-9-paths-1}}
+
+The student has clicked two of the boxes:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{"mp2/contributions.csv"} (CORRECT)
+\item
+  \texttt{"/Users/\textless{}yourname\textgreater{}/Documents/SDS192/mp2/contributions.csv"} (Mac) (NOT CORRECT)
+\end{itemize}
+The student will receive {[}0{]} for this answer, {[}+1{]} for the correct box and {[}-1{]} for the incorrect one. Their choice not to select any other boxes will not affect their score. This will be added to their their paths score and total score, resulting in the following updated scores:
+
+\emph{Question Score}: 0 \emph{Paths Score}: 3 \emph{Total Score}: 5
+
+At the end of the test, they will be left with a Projects Score of 2, a Paths Score of 3, and a Total Score of 5.
 
 \backmatter
 

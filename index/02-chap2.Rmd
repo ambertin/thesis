@@ -26,6 +26,8 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 knitr::include_graphics("figure/sample-project.png")
 ```
 
+All of the code for `fertile` that will be discussed in this chapter can be found at https://github.com/baumer-lab/fertile, while the local branch tracking my changes can be found at https://github.com/ambertin/fertile.
+
 
 ### Component 1: Accessibile Project Files
 
@@ -67,7 +69,7 @@ has_readme("project_miceps")
 
 In order to truly check that a project is self contained, however, is is necessary to remove it from the environment it is located, ensuring that it can still run when cut off from the main file system.
 
-The `sandbox()` function is designed to help facilitate this. `sandbox()` allows the user to make a copy of their project in a temporary directory that is isolated from the file system. 
+The `sandbox()` function is designed to help facilitate this. `sandbox()` allows the user to make a copy of their project in a temporary directory that is isolated from the file system. This function works on both compressed (`.zip`) and non-compressed directories.
 
  
 ```{r, echo=FALSE, message=FALSE}
@@ -275,7 +277,7 @@ cat(readChar(install_script, 1e5))
 
  
 
-Users interested in ensuring that their project is reproducible can provide alongside it both:
+As good practice, users interested in ensuring that their project is reproducible should include both of the following files alongside it.
 
 1. The text-based summary of dependencies produced by `proj_dependency_report()`.
 2. The `.R` dependency installation script.
@@ -366,7 +368,7 @@ setwd("~/Desktop")
 getwd()
 ```
 
-
+For more information about the interactive warning system and some of its customization features, see Section 2.2.1.
 
 #### Project Path Summaries
 
@@ -1000,7 +1002,9 @@ Another R-specific feature that `fertile` addresses is randomness. Randomness is
 
 **5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.**
 
-As discussed in Chapter 2.1.8, `fertile` is highly customizable, providing users with a wide variety of options for how they can run the package's reproducibility tests. The main reproducibility checks can be run all at once (using `proj_check()`), in groups (using `proj_check_some()`), or individually. Users who only want basic information can rely on only `proj_analyze()` and `proj_check()`, while those looking for more advanced reproducibility information can delve into the project dependency functions, as well as `sandbox()` + `proj_render()`, to ensure that projects are completely self contained.
+As discussed in Section 2.1.8, `fertile` is highly customizable, providing users with a wide variety of options for how they can run the package's reproducibility tests. The main reproducibility checks can be run all at once (using `proj_check()`), in groups (using `proj_check_some()`), or individually. Users who only want basic information can rely on only `proj_analyze()` and `proj_check()`, while those looking for more advanced reproducibility information can delve into the project dependency functions, as well as `sandbox()` + `proj_render()`, to ensure that projects are completely self contained.
+
+Additionally, as discussed in Section 2.2.1, the interactive warning system is also highly customizable, providing users with functions to write their own shimmed functions that check for file paths and enable or disable those as desired.
 
 **6) Be educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.**
 

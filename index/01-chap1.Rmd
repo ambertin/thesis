@@ -327,6 +327,7 @@ When projects have a variety of components, `orderly` makes it easy to see input
  `workflowr`'s (@R-workflowr) functionality is based around version control and making code easily available online. It works to generate a website containing time-stamped, versioned, and documented results. In addition, it manages the session and package information of each analysis and controls random number generation. 
  
  `checkers` (@R-checkers) allows you to create custom checks that examine different aspects of reproducibility. It also contains some pre-built checks, such as seeing if users reference packages that are less preferred to other similar ones and ensuring that the project is under version control. 
+ 
  `renv` (@R-renv) (formerly `packrat`) helps to make projects more isolated, portable, and reproducible. It gives every project its own private package library, makes it easy to install the packages the project depends on if it is moved to another computer.
  
  `drake` (@R-drake) analyzes workflows, skips steps where results are up to date, utilizes optimized computing to complete the rest of the steps, and provides evidence that results match the underlying code and data. 
