@@ -89,13 +89,15 @@ Undergraduate students, therefore, do not get exposed to reproducibility very of
 * Knowledge of how to create an R project
 * Knowledge of how to run basic functions and input simple file paths
 
+Though the process may entail some confusion and troubleshooting at first, even those brand new to `R` could succeed in overcoming these barriers in only a few days of class. As a result, `fertile` could provide professors with an opportunity to teach reproducibility concepts in introductory level courses. 
+
+
 
 ```{r, echo = FALSE, out.width = '100%', fig.cap = "The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course", fig.subcap="Source: https://projects.iq.harvard.edu/files/gov2001/files/syllabus.pdf"}
 knitr::include_graphics("figure/gov-2001-replication.png")
 ```
 
 
-Though the process may entail some confusion and troubleshooting at first, even those brand new to `R` could succeed in overcoming these barriers in only a few days of class. As a result, `fertile` could provide professors with an opportunity to teach reproducibility concepts in introductory level courses. 
 
 `fertile` could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of `fertile` could look as follows:
 
@@ -247,23 +249,9 @@ The test consisted of two primary sections:
 
 1. A set of six questions on RStudio projects, two of which were select-all-that-apply, and four of which were multiple choice. These questions tested students knowledge of RStudio projects, their understanding of which file paths they could include in code submitted in project format, and their awareness of the dangers of changing working directories while coding.
 
-```{r, echo = FALSE, out.width = '100%', fig.cap = "Sample Question From Experimental Section On RStudio Projects"}
-knitr::include_graphics("figure/projects-1.png")
-
-```
-
-```{r, echo = FALSE, out.width = '100%', fig.cap = "Another Sample Question From Experimental Section On RStudio Projects"}
-knitr::include_graphics("figure/projects-2.png")
-
-```
-
-
 2. A set of three questions about file paths, all of which were select-all-that apply. These questions tested students' knowledge of the difference between absolute and relative paths and their understanding of which paths are reproducible.
 
-```{r, echo = FALSE, out.width = '100%', fig.cap = "Sample Question From Experimental Section On File Paths"}
-knitr::include_graphics("figure/paths-1.png")
-
-```
+For reference, the full list of questions is provided in Appendix B.
 
 For each test submission, every question was scored individually and then scores for each section (projects and paths) were calculated, as well as an overall total score. 
 
@@ -334,7 +322,7 @@ fall2020 %>%
 
 These numbers, combined with the visual below seem to indicate, at least in this small sample, that the `fertile` group actually performed slightly worse, overall, than the `control` group.
 
-```{r, echo = FALSE, fig.cap = 'Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020'}
+```{r, echo = FALSE, fig.cap = 'Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020', fig.height = 3, fig.width = 5}
 library(RColorBrewer)
 
 fall2020_averages <- fall2020 %>% 
@@ -354,7 +342,7 @@ ggplot(fall2020_averages, aes(x = Group, fill = Group, y = value)) +
 
 Looking at the overall total score (`Overall_Total`), this was true even when controlling for the number of relevant courses taken previously:
 
-```{r, echo = FALSE, fig.cap = 'Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020'}
+```{r, echo = FALSE, fig.cap = 'Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020', fig.height = 3, fig.width = 5}
 ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + 
   geom_point(size = 4) +
   scale_color_brewer(palette = "Paired")
@@ -428,7 +416,7 @@ When considering the distribution of test scores, in addition to just the pure d
 This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `fertile` group performed slightly worse than the `control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `fertile` directly affected their scores.
 
 
-```{r, echo = FALSE, fig.cap = "Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021"}
+```{r, echo = FALSE, fig.cap = "Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021", fig.height = 3, fig.width = 5}
 group_scores <- jterm2021 %>% select(1:5, 15:17) %>%
   rename(Projects = "Projects_Total",
          Paths = "Paths_Total",
@@ -445,11 +433,7 @@ ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
 
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at `Overall_Total`, rather than just `Paths` or `Projects`) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
 
-As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `fertile` and `control` group had negative performances such as these, more of the highly-negative showings came from those in the `control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `control` group. 
-
-Once again, there is not much evidence that `fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `fertile` in terms of average score differences might just be due to one student skewing the `control` group's averages.
-
-```{r, echo = FALSE, fig.cap = 'Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021'}
+```{r, echo = FALSE, fig.cap = 'Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021', fig.height = 3, fig.width = 5}
 jterm_model_data <- pre_post_differences %>% 
   filter(Question_Group == "Total")
 
@@ -462,13 +446,17 @@ ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Scor
   scale_fill_brewer(palette = "Paired")
 ```
 
+As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `fertile` and `control` group had negative performances such as these, more of the highly-negative showings came from those in the `control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `control` group. 
+
+Once again, there is not much evidence that `fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `fertile` in terms of average score differences might just be due to one student skewing the `control` group's averages.
+
 It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
 
 Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
 
 Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `control`, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `fertile` group always performed better on their Post-Tests than on their Pre-Tests.
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.cap = 'Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021'}
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.cap = 'Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021', fig.height = 3, fig.width = 5}
 ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
   geom_point() +
   geom_smooth(se = FALSE) +
@@ -518,11 +506,8 @@ Although independence is at risk, many of the other assumptions for linear regre
 
 In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
 
-```{r, echo = FALSE, fig.show="hold", out.width="50%", fig.cap = 'RvF and QQ Plots for Fall 2020 Simple Linear Regression Model'}
+```{r, echo = FALSE, fig.show="hold", out.width="50%", fig.cap = 'RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models'}
 plot(fall_model, which = c(1,2)) 
-```
-
-```{r, echo = FALSE, fig.show="hold", out.width="50%", fig.cap = 'RvF and QQ Plots for January Term 2021 Simple Linear Regression Model'}
 plot(jterm_model, which = c(1,2))
 ```
 

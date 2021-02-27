@@ -172,12 +172,6 @@ Given the scale of the academic publishing network and the sheer number of journ
 
 In order to simplify this process, academics at the Center for Open Science (COS) attempted to create a metric, called the TOP Factor. The TOP Factor reports the steps that a journal is taking to implement open science practices. It has been calculated for a wide variety of journals, though the COS is still far from scoring all of the publications that are currently available. 
 
-The TOP Factor is calculated as follows. Publications are scored on a variety of categories associated with open science and reproducibility. For each category, they receive a score between 0 (poor) and 3 (excellent) based on the degree to which they emphasize each category in their submission/publication policies.  A journal's final score, which can range from 0 to 30, is the sum of the individual scores in each of the categories. 
-
-When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (@top-guidelines).
-
-Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than requirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
-
 
 ```{r top-factor, echo = FALSE, out.width = '100%', fig.align = 'center'}
 knitr::include_graphics("figure/top-1.png")
@@ -187,6 +181,14 @@ knitr::include_graphics("figure/top-1.png")
 ```{r top-factor2, echo = FALSE, out.width = '100%', fig.align = 'center', fig.cap="The TOP Factor Rubric"}
 knitr::include_graphics("figure/top-2.png")
 ```
+
+
+The TOP Factor is calculated as follows. Publications are scored on a variety of categories associated with open science and reproducibility. For each category, they receive a score between 0 (poor) and 3 (excellent) based on the degree to which they emphasize each category in their submission/publication policies.  A journal's final score, which can range from 0 to 30, is the sum of the individual scores in each of the categories. 
+
+When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50% of journals score as low as 0-5 overall, while only just over 5% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (@top-guidelines).
+
+Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than requirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
+
 
 
 ### Assessing the Success of Academic Reproducibility Policies

@@ -504,12 +504,6 @@ The journals mentioned here are just some of the many academic publishers with r
 Given the scale of the academic publishing network and the sheer number of journals around the world, this is not necessarily an easy task.
 
 In order to simplify this process, academics at the Center for Open Science (COS) attempted to create a metric, called the TOP Factor. The TOP Factor reports the steps that a journal is taking to implement open science practices. It has been calculated for a wide variety of journals, though the COS is still far from scoring all of the publications that are currently available.
-
-The TOP Factor is calculated as follows. Publications are scored on a variety of categories associated with open science and reproducibility. For each category, they receive a score between 0 (poor) and 3 (excellent) based on the degree to which they emphasize each category in their submission/publication policies. A journal's final score, which can range from 0 to 30, is the sum of the individual scores in each of the categories.
-
-When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50\% of journals score as low as 0-5 overall, while only just over 5\% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (Woolston (2020)).
-
-Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than requirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
 \begin{center}\includegraphics[width=1\linewidth]{figure/top-1} \end{center}
 \begin{figure}
 
@@ -519,6 +513,12 @@ Although it is clear that some journals have relatively strong reproducibility a
 
 \caption{The TOP Factor Rubric}\label{fig:top-factor2}
 \end{figure}
+The TOP Factor is calculated as follows. Publications are scored on a variety of categories associated with open science and reproducibility. For each category, they receive a score between 0 (poor) and 3 (excellent) based on the degree to which they emphasize each category in their submission/publication policies. A journal's final score, which can range from 0 to 30, is the sum of the individual scores in each of the categories.
+
+When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50\% of journals score as low as 0-5 overall, while only just over 5\% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (Woolston (2020)).
+
+Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than requirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
+
 \hypertarget{assessing-the-success-of-academic-reproducibility-policies}{%
 \subsection{Assessing the Success of Academic Reproducibility Policies}\label{assessing-the-success-of-academic-reproducibility-policies}}
 
@@ -838,10 +838,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.14K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~   187.3K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.27K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  379.73K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -882,15 +882,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0oMeD1/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -909,7 +909,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-24 16:01:44
+1 LAST RENDERED <NA>     proj_render 2021-02-27 16:02:09
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1003,9 +1003,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.14K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~   187.3K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.27K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  379.73K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1528,8 +1528,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.87K image/png                                 
- 3 proteins_v_time.p~ png     376.89K image/png                                 
+ 2 citrate_v_time.png png     187.62K image/png                                 
+ 3 proteins_v_time.p~ png     380.29K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1556,7 +1556,7 @@ NULL
 \end{verbatim}
 \normalsize
 
-Similar to \texttt{proj\_check()}, \texttt{proj\_badges()} runs all sixteen reproducibility checks---\texttt{has\_tidy\_media}, \texttt{has\_readme}, \texttt{has\_no\_absolute\_paths}, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, \texttt{proj\_badges()} provides a higher level summary, reporting on the \emph{groups} of checks that either passed or failed.
+Similar to \texttt{proj\_check()}, \texttt{proj\_badges()} runs all sixteen reproducibility checks---\texttt{has\_tidy\_media()}, \texttt{has\_readme()}, \texttt{has\_no\_absolute\_paths()}, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, \texttt{proj\_badges()} provides a higher level summary, reporting on the \emph{groups} of checks that either passed or failed.
 
 In \texttt{proj\_badges()}, the reproducibility checks are grouped into six categories corresponding to the six major components of reproducibility. These categories, alongside the checks which belong to them, are listed below:
 \begin{itemize}
@@ -1575,19 +1575,7 @@ In \texttt{proj\_badges()}, the reproducibility checks are grouped into six cate
   \begin{itemize}
   \tightlist
   \item
-    \texttt{has\_tidy\_media()}
-  \item
-    \texttt{has\_tidy\_images()}
-  \item
-    \texttt{has\_tidy\_code()}
-  \item
-    \texttt{has\_tidy\_raw\_data()}
-  \item
-    \texttt{has\_tidy\_data()}
-  \item
-    \texttt{has\_tidy\_scripts()}
-  \item
-    \texttt{has\_only\_used\_files()}
+    \texttt{has\_tidy} \ldots{} \texttt{\_media()}, \texttt{\_images()}, \texttt{\_code()}, \texttt{\_raw\_data()}, \texttt{\_data()}, \texttt{\_scripts()}, \texttt{\_used\_files()}
   \end{itemize}
 \item
   Documentation
@@ -1940,7 +1928,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,019 x 4
+# A tibble: 1,093 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1953,7 +1941,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,009 more rows
+# ... with 1,083 more rows
 \end{verbatim}
 \normalsize
 
@@ -2040,7 +2028,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f82d3f205f8>
+<bytecode: 0x7f7f15a47c10>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2150,16 +2138,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      276     2021-02-24 16:02:35
- 2 package:dplyr           <NA>                      base::~ 2021-02-24 16:02:35
- 3 package:readr           <NA>                      base::~ 2021-02-24 16:02:35
- 4 package:tidyr           <NA>                      base::~ 2021-02-24 16:02:36
- 5 package:ggplot2         <NA>                      base::~ 2021-02-24 16:02:36
- 6 package:purrr           <NA>                      base::~ 2021-02-24 16:02:36
- 7 Seed Before             <NA>                      276     2021-02-24 16:02:36
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-24 16:02:36
- 9 Seed After              <NA>                      290     2021-02-24 16:02:36
-10 Seed Before             <NA>                      290     2021-02-24 16:02:36
+ 1 Seed @ Start            <NA>                      273     2021-02-27 16:02:58
+ 2 package:dplyr           <NA>                      base::~ 2021-02-27 16:02:58
+ 3 package:readr           <NA>                      base::~ 2021-02-27 16:02:58
+ 4 package:tidyr           <NA>                      base::~ 2021-02-27 16:02:58
+ 5 package:ggplot2         <NA>                      base::~ 2021-02-27 16:02:58
+ 6 package:purrr           <NA>                      base::~ 2021-02-27 16:02:58
+ 7 Seed Before             <NA>                      273     2021-02-27 16:02:58
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-27 16:02:58
+ 9 Seed After              <NA>                      287     2021-02-27 16:02:59
+10 Seed Before             <NA>                      287     2021-02-27 16:02:59
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2233,7 +2221,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f82be096068>
+<bytecode: 0x7f7efd685fc8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2264,7 +2252,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f82cb166b30>
+<bytecode: 0x7f7f0c95cca8>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2295,7 +2283,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f82d3f205f8>
+<bytecode: 0x7f7f15a47c10>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2477,11 +2465,10 @@ Undergraduate students, therefore, do not get exposed to reproducibility very of
 \item
   Knowledge of how to run basic functions and input simple file paths
 \end{itemize}
+Though the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-64}
 \end{figure}
-Though the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
-
 \texttt{fertile} could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of \texttt{fertile} could look as follows:
 
 At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the \texttt{fertile} package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run \texttt{fertile} on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teaching moments: the professor can share the error, explain why it happened, walk through \texttt{fertile}'s response to it, and interactively work with students to illustrate how it can be fixed.
@@ -2649,26 +2636,13 @@ In order to understand the results, it is important to understand the structure 
 The test consisted of two primary sections:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   A set of six questions on RStudio projects, two of which were select-all-that-apply, and four of which were multiple choice. These questions tested students knowledge of RStudio projects, their understanding of which file paths they could include in code submitted in project format, and their awareness of the dangers of changing working directories while coding.
-\end{enumerate}
-\begin{figure}
-\includegraphics[width=1\linewidth]{figure/projects-1} \caption{Sample Question From Experimental Section On RStudio Projects}\label{fig:unnamed-chunk-67}
-\end{figure}
-\begin{figure}
-\includegraphics[width=1\linewidth]{figure/projects-2} \caption{Another Sample Question From Experimental Section On RStudio Projects}\label{fig:unnamed-chunk-68}
-\end{figure}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
 \item
   A set of three questions about file paths, all of which were select-all-that apply. These questions tested students' knowledge of the difference between absolute and relative paths and their understanding of which paths are reproducible.
 \end{enumerate}
-\begin{figure}
-\includegraphics[width=1\linewidth]{figure/paths-1} \caption{Sample Question From Experimental Section On File Paths}\label{fig:unnamed-chunk-69}
-\end{figure}
+For reference, the full list of questions is provided in Appendix B.
+
 For each test submission, every question was scored individually and then scores for each section (projects and paths) were calculated, as well as an overall total score.
 
 The following method was used to compute scores:
@@ -2762,14 +2736,14 @@ The score averages for both groups of students were as follows:
 These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed slightly worse, overall, than the \texttt{control} group.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-74-1.pdf}
-\caption{\label{fig:unnamed-chunk-74}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-71-1.pdf}
+\caption{\label{fig:unnamed-chunk-71}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
 \end{figure}
 Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-75-1.pdf}
-\caption{\label{fig:unnamed-chunk-75}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-72-1.pdf}
+\caption{\label{fig:unnamed-chunk-72}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
 \end{figure}
 However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
@@ -2867,19 +2841,19 @@ When considering the distribution of test scores, in addition to just the pure d
 This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-81-1.pdf}
-\caption{\label{fig:unnamed-chunk-81}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-78-1.pdf}
+\caption{\label{fig:unnamed-chunk-78}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
 \end{figure}
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
-
+\begin{figure}
+\centering
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-79-1.pdf}
+\caption{\label{fig:unnamed-chunk-79}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
+\end{figure}
 As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{fertile} and \texttt{control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{control} group.
 
 Once again, there is not much evidence that \texttt{fertile} is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of \texttt{fertile} in terms of average score differences might just be due to one student skewing the \texttt{control} group's averages.
-\begin{figure}
-\centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-82-1.pdf}
-\caption{\label{fig:unnamed-chunk-82}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
-\end{figure}
+
 It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
 
 Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
@@ -2887,8 +2861,8 @@ Below, we see a graphical representation of the number of previous courses taken
 Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-83-1.pdf}
-\caption{\label{fig:unnamed-chunk-83}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-80-1.pdf}
+\caption{\label{fig:unnamed-chunk-80}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
 \end{figure}
 Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
@@ -2956,10 +2930,7 @@ Although independence is at risk, many of the other assumptions for linear regre
 
 In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-87-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-87-2} \caption{RvF and QQ Plots for Fall 2020 Simple Linear Regression Model}\label{fig:unnamed-chunk-87}
-\end{figure}
-\begin{figure}
-\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-88-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-88-2} \caption{RvF and QQ Plots for January Term 2021 Simple Linear Regression Model}\label{fig:unnamed-chunk-88}
+\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-84}
 \end{figure}
 Finally, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
 
@@ -3022,7 +2993,7 @@ If this experimental design gained traction in the \texttt{R} community, it coul
 
 A/B testing is an experimental methodology focused on user experience. In an A/B test, designers compare two different versions of a product, randomly assigning participants to groups to determine which version they will receive. Using statistical hypothesis testing, the researchers attempt to identify which software version was most successful.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-89}
+\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-85}
 \end{figure}
 One of the most popular applications of this form of testing is in marketing. Product sellers, in an attempt to drive traffic to their website and maximize profits, will test several different methods of advertising or web design to see which one results in the most clicks and/or purchase.
 
@@ -3054,8 +3025,7 @@ Reproducibility is incredibly important to the scientific community, helping ens
 
 However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. The vast majority of researchers across all scientific fields have been unable to reproduce another researcher's results, and many have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
 
-Researchers across the sciences have recognized this problem and taken steps to address it.
-Data-intensive academic journals have put in place reproducibility guidelines requiring that submitted articles meet at least some of the standards listed above. Software developers have built tools to help data analysts make their projects more reproducible. These include a small library of \texttt{R} packages, which provide benefits to users of the popular statistical language \texttt{R}, as well as several continuous integration tools, which are much more broad in their application. Educators have also taken action on reproducibility, introducing courses and workshops focused on the topic at their universities.
+Researchers across the sciences have recognized this problem and taken steps to address it. Data-intensive academic journals have put in place reproducibility guidelines requiring that submitted articles meet at least some of the standards listed above. Software developers have built tools to help data analysts make their projects more reproducible. These include a small library of \texttt{R} packages, which provide benefits to users of the popular statistical language \texttt{R}, as well as several continuous integration tools, which are much more broad in their application. Educators have also taken action on reproducibility, introducing courses and workshops focused on the topic at their universities.
 
 However, many of these solutions have fallen short. Even with reproducibility guidelines, many journals still publish work that is not reproducible. Journal review takes significantly longer and requires many more resources when ensuring that reproducibility guidelines are fully met. Journals often cannot spare the additional time and money, leaving it up to submitting authors to ensure that their articles meet standards. Since the adherence to standards is not often checked, and achieving full reproducibility can sometimes be time consuming and challenging, many authors fail to take this step.
 
@@ -3089,7 +3059,13 @@ In the classroom, \texttt{fertile} could be used to extend reproducibility educa
 
 Academia and research are not the only applications, however. \texttt{fertile} could also assist the general world of data science. \texttt{R} bloggers and Tidy Tuesday participants could use the package to improve the quality of their code- and data- sharing, making it easier for others to learn from their work. Data journalists, in some situations, could do something similar, sharing the (reproducible) code and data behind their projects to remove the black-box nature that some such projects possess, building a relationship of trust with their readers. And private companies doing consulting work could integrate \texttt{fertile} into their workflow as a way of increasing transparency between themselves and their clients.
 
-\textbf{NEED TO ADD: mention of experiment and overall implications}
+To test \texttt{fertile\textquotesingle{}s} effectiveness in the classroom, we designed a randomized experiment on an introductory data science course to compare reproducibility learning between students who received \texttt{fertile} on their computer and those who didn't. Although no indication of a relationship between \texttt{fertile} use and knowledge improvement was found in this study---with the caveat that the study format, with blinding, did not fit the intended use of \texttt{fertile} in the real world---the experiment design itself has the potential to open up new avenues of code and package testing in the \texttt{R} community.
+
+\texttt{R} programmers working in a variety of domains could use the experimental structure to employ A/B testing of their software, a type of scientifically-backed testing that has previously not been used---at least to a notable degree---to test \texttt{R} code. This method of testing could pave the way for developers to scientifically measure which coding practices are most effective, efficient, and user-friendly.
+
+Additionally, outside of the experiment, \texttt{fertile} appears to already be making an impact in the \texttt{R} community. A paper on the package, written by myself and Professor Baumer, was published in the journal \texttt{Stat} in early 2021 and the project has also gained traction on social media, with many influential \texttt{R} community members sharing it to their networks.
+
+Although it is difficult to predict the future of \texttt{fertile}, my hope is for this project is for it to help bring the \texttt{R} community, even if just a few users, toward improved reproducibility and to improve knowledge around the issue within the community. Anything beyond that---journal integration of \texttt{fertile} features, deployment of \texttt{fertile}'s A/B testing design, integration into the workflow by RStudio employees, or the like---would just be the cherry on top.
 
 \appendix
 
@@ -3113,7 +3089,7 @@ Several links relevant to \texttt{fertile} were shared throughout the text. To m
 
 Chapter 3 discusses an experiment that Professor Baumer and myself conducted at Smith College to test \texttt{fertile} in a classroom environment.
 
-In order to measure the package's effectiveness, we constructed a test that could capture information about students' knowledge of reproducibility. A sample of these questions was included in Chapter 3. The full list, alongside with a step-by-step example of the scoring process, is provided here:
+In order to measure the package's effectiveness, we constructed a test that could capture information about students' knowledge of reproducibility. The full list of questions on that test, alongside with a step-by-step example of the scoring process, is provided here:
 
 \hypertarget{full-reproducibility-test}{%
 \section{Full Reproducibility Test}\label{full-reproducibility-test}}

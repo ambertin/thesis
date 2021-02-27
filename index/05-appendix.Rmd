@@ -21,7 +21,7 @@ Several links relevant to `fertile` were shared throughout the text. To make the
 
 Chapter 3 discusses an experiment that Professor Baumer and myself conducted at Smith College to test `fertile` in a classroom environment. 
 
-In order to measure the package's effectiveness, we constructed a test that could capture information about students' knowledge of reproducibility. A sample of these questions was included in Chapter 3. The full list, alongside with a step-by-step example of the scoring process, is provided here:
+In order to measure the package's effectiveness, we constructed a test that could capture information about students' knowledge of reproducibility. The full list of questions on that test, alongside with a step-by-step example of the scoring process, is provided here:
 
 ## Full Reproducibility Test
 

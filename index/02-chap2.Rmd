@@ -590,7 +590,7 @@ proj_analyze('project_miceps')
 ```
 \normalsize
 
-Similar to `proj_check()`, `proj_badges()` runs all sixteen reproducibility checks---`has_tidy_media`, `has_readme`, `has_no_absolute_paths`, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, `proj_badges()` provides a higher level summary, reporting on the *groups* of checks that either passed or failed.
+Similar to `proj_check()`, `proj_badges()` runs all sixteen reproducibility checks---`has_tidy_media()`, `has_readme()`, `has_no_absolute_paths()`, etc. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, `proj_badges()` provides a higher level summary, reporting on the *groups* of checks that either passed or failed.
 
 In `proj_badges()`, the reproducibility checks are grouped into six categories corresponding to the six major components of reproducibility. These categories, alongside the checks which belong to them, are listed below:
 
@@ -599,14 +599,8 @@ In `proj_badges()`, the reproducibility checks are grouped into six categories c
     - `has_no_nested_proj_root()`
   
 * Tidy Files
-    - `has_tidy_media()`
-    - `has_tidy_images()`
-    - `has_tidy_code()`
-    - `has_tidy_raw_data()`
-    - `has_tidy_data()`
-    - `has_tidy_scripts()`
-    - `has_only_used_files()`
-    
+    - `has_tidy` ... `_media()`, `_images()`, `_code()`, `_raw_data()`, `_data()`, `_scripts()`, `_used_files()`
+
 * Documentation
     - `has_readme()`
     - `has_clear_build_chain()`
