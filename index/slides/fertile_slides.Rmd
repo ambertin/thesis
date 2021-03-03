@@ -51,13 +51,139 @@ knitr::include_graphics("fertile-hex.png")
 ---
 ## What is reproducibility?
 
+> In data science, research is considered fully __reproducible__ when the requisite code and data files produce identical results when run by another analyst.
+
+
+.center[VS]
+
+> __Replicability__: The ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data
 
 
 ---
-## The six major components of reproducibility
+## The benefits of reproducibility
+
+1. Trusting findings
+
+2. Receiving feedback
+
+3. Extending ideas
 
 ---
 ## The reproducibility crisis
+
+*Nature (2016)*: 52% respondents claim "crisis"
+
+Vast majority cannot reproduce others' work. 
+
+Half cannot even reproduce their own!
+
+Some fields have reproducibility rate <10%.
+
+```{r, echo = FALSE, out.width = '50%'}
+knitr::include_graphics("nature-1.jpeg")
+```
+
+---
+```{r, echo = FALSE}
+knitr::include_graphics("nature-2.png")
+```
+
+---
+background-image: url("tidy-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+
+1. Basic project components made accessible to the public:
+
+- Data (raw and/or processed)
+
+- Metadata
+
+- Code
+
+- Related Software
+
+
+
+---
+background-image: url("structure-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+2. Well-organized file structure:
+
+- Separate folders for different file types
+
+- No extraneous files
+
+- Minimal clutter
+
+
+---
+background-image: url("documentation-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+
+3. The project is documented well:
+
+- Files are clearly named / ordered
+
+- A README is present
+
+- Code contains comments
+
+- Software dependencies are noted
+
+
+
+---
+background-image: url("paths-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+
+4. Good file paths:
+
+- No absolute paths
+
+- No paths leading outside of a project’s directory
+
+- Only relative paths within directory
+
+
+---
+background-image: url("randomness-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+
+5. Randomness is accounted for:
+
+- If used, seed must be set
+
+---
+background-image: url("style-badge.png")
+background-position: right bottom
+background-size: 30%
+
+## The six major components of reproducibility
+
+6. Code is readable and consistently styled:
+
+- Coherent style
+- Follow guide (e.g. `tidyverse`)
 
 
 ---
