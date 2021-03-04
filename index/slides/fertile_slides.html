@@ -184,20 +184,85 @@ background-size: 30%
 ---
 ## Attempts to address reproducibility: journals
 
+&lt;img src="stats-journals.png" width="80%" /&gt;
+- Even if you have a reproducibility statement that does not mean that all the articles are reproducible!! 
+
+---
+## Attempts to address reproducibility: journals
+
+### TOP Factor
+
+- Helps measure state of academic reproducibility on the whole
+- Score range: 0-30
+- Approx 50% of journals = 5 or below
+- Only 5% score &gt; 15
+
 ---
 ## Attempts to address reproducibility: educational programs
 
+- Replication studies at Graduate level (Cambridge, Harvard, UNC, Penn State, Berkeley)
+- At undergraduate level, requirement for work to be completed in `.Rmd` (Smith, Duke)
 
 ---
 ## Attempts to address reproducibility: software
+
+- `rrtools`: create basic package structure, Docker dependency management
+- `orderly`: automation of projects
+- `workflowr`: version control
+- `checkers`: custom checks to assess reproducibility
+- `renv` (formerly `packrat`): dependency management
+- `drake`: makefiles
+- `reproducible`: caching to speed up analysis
+
+
+- Continuous integration tools: `wercker`, `GitHub Actions`, `Travis CI`, `Circle CI`.
+
+&lt;img src="ci-tools.png" width="1047" /&gt;
 
 
 ---
 ## Shortcomings of current attempts
 
+- Journals:
+
+    1. Authors lack knowledge and/or time to make changes
+    2. Reproducibility review is time/cost intensive for journals
+
+- Education:
+
+    1. Workshops often optional
+    2. Only really at graduate level
+    3. Takes time away from other important class topics
+    4. Takes a lot of effort for professor to set up
+
+- Software:
+
+    1. Packages narrow in scope
+    2. Complex functions, bad for new users
+    3. Cumbersome, with steep learning curve
+    4. CI tools: lack software-specific tools 
 
 ---
 ## Setting `fertile` apart: package goals
+
+1) Be simple, with a small library of functions/tools that are straightforward to use.
+
+2) Be accessible to a variety of users, with a relatively small learning curve.
+
+3) Be able to address a wide variety of aspects of reproducibility, rather than just
+one or two key issues.
+
+4) Have features specific to a particular coding language that can address that
+language’s unique challenges.
+
+5) Be customizable, allowing users to choose for themselves which aspects of
+reproducibility they want to focus on.
+
+6) Be educational, teaching those that use it about why their projects are not
+reproducible and how to correct that in the future.
+
+7) Be applicable to a wide variety of domains.
+
 
 
 ---
