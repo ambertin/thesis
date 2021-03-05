@@ -91,7 +91,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-1. Basic project components made accessible to the public:
+Component 1: Basic project components made accessible to the public:
 
 - Data (raw and/or processed)
 
@@ -110,7 +110,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-2. Well-organized file structure:
+Component 2: Well-organized file structure:
 
 - Separate folders for different file types
 
@@ -127,7 +127,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-3. The project is documented well:
+Component 3: The project is documented well:
 
 - Files are clearly named / ordered
 
@@ -147,7 +147,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-4. Good file paths:
+Component 4: Good file paths:
 
 - No absolute paths
 
@@ -164,7 +164,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-5. Randomness is accounted for:
+Component 5: Randomness is accounted for:
 
 - If used, seed must be set
 
@@ -175,7 +175,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-6. Code is readable and consistently styled:
+Component 6: Code is readable and consistently styled:
 
 - Coherent style
 - Follow guide (e.g. `tidyverse`)
@@ -264,21 +264,296 @@ reproducible and how to correct that in the future.
 7) Be applicable to a wide variety of domains.
 
 
+---
+## R Projects
+
+&lt;img src="sample-project.png" width="772" /&gt;
+
+
+---
+
+
+## Component 1: accessible project files
+
+
+```r
+ proj_analyze_files("project_miceps")
+```
+
+```
+## # A tibble: 11 x 5
+##    file                     size ext   mime                       path_rel      
+##    &lt;fs::path&gt;           &lt;fs::by&gt; &lt;chr&gt; &lt;chr&gt;                      &lt;fs::path&gt;    
+##  1 project_miceps/Blot…   14.43K csv   text/csv                   Blot_data_upd…
+##  2 project_miceps/CS_d…    7.39K csv   text/csv                   CS_data_redon…
+##  3 project_miceps/Estr…   10.97K docx  application/vnd.openxmlfo… Estrogen_Rece…
+##  4 project_miceps/READ…       39 md    text/markdown              README.md     
+##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
+##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
+##  7 project_miceps/citr…  187.59K png   image/png                  citrate_v_tim…
+##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
+##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
+## 10 project_miceps/prot…  378.19K png   image/png                  proteins_v_ti…
+## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
+```
+
+
+```r
+has_readme("project_miceps")
+```
+
+```
+## ✓ Checking for README file(s) at root level
+```
 
 ---
 ## Component 1: accessible project files
 
+- `sandbox()`: copying project to temp directory
+
+- `proj_render()`
+
+
+```r
+proj_render("project_miceps")
+```
+
+```
+## ── Rendering R scripts... ────────────────────────────────── fertile 1.1.9003 ──
+```
+
+```r
+slice_tail(render_log_report('project_miceps'))
+```
+
+```
+## Reading from /Users/audreybertin/Documents/thesis/index/slides/project_miceps/.fertile_render_log.csv
+```
+
+```
+## # A tibble: 1 x 4
+##   path          path_abs func        timestamp          
+##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-05 14:12:53
+```
+
 ---
 ## Component 2: organized project structure
+
+- `has_proj_root()` / `has_no_nested_proj_root()`
+
+- `has_tidy_` series
+
+
+```r
+has_only_used_files("project_miceps")
+```
+
+```
+## Joining, by = "path_abs"
+```
+
+```
+## ● Checking to see if all files in directory are used in code
+```
+
+```
+##    Problem: You have files in your project directory which are not being used.
+```
+
+```
+##    Solution: Use or delete files.
+```
+
+```
+##    See for help: ?fs::file_delete
+```
+
+```
+## # A tibble: 2 x 1
+##   path_abs                                                                      
+##   &lt;chr&gt;                                                                         
+## 1 /Users/audreybertin/Documents/thesis/index/slides/project_miceps/Estrogen_Rec…
+## 2 /Users/audreybertin/Documents/thesis/index/slides/project_miceps/mice.csv
+```
+
+---
+## Component 2: organized project structure
+
+
+```r
+files &lt;- proj_analyze_files("project_miceps")
+proj_suggest_moves(files)
+```
+
+```
+## # A tibble: 9 x 8
+##   file             size ext   mime     path_rel   dir_rel    path_new    cmd    
+##   &lt;fs::path&gt;   &lt;fs::by&gt; &lt;chr&gt; &lt;chr&gt;    &lt;fs::path&gt; &lt;fs::path&gt; &lt;fs::path&gt;  &lt;chr&gt;  
+## 1 project_mic…   14.43K csv   text/csv Blot_data… data-raw   project_mi… file_m…
+## 2 project_mic…    7.39K csv   text/csv CS_data_r… data-raw   project_mi… file_m…
+## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
+## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
+## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
+## 6 project_mic…  188.22K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
+## 8 project_mic…  379.18K png   image/p… proteins_… inst/image project_mi… file_m…
+## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
+```
+
+- `proj_move_files()`
 
 ---
 ## Component 3: documentation
 
+- `has_readme()`
+
+- `has_clear_build_chain()`
+
+- `has_well_commented_code()`
+
+---
+## Component 3: documentation
+
+- `proj_dependency_report()`
+
+
+```r
+install_script &lt;- proj_pkg_script("project_miceps")
+```
+
+&gt; # Run this script to install the required packages for this
+R project.
+# Packages hosted on CRAN...
+install.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2',
+'purrr', 'readr', 'rmarkdown', 'skimr', 'stargazer',
+'tidyr' ))
+# Packages (likely) hosted on GitHub...
+
+---
+## Component 4: File Paths
+
+
+```r
+read.csv("~/Desktop/my_data.csv")
+```
+
+```
+## Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+```
+
+```
+## Checking for absolute paths...
+```
+
+```
+## Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('~/Desktop/my_data.csv')
+```
+
+
+```r
+read_csv("../../../Desktop/my_data.csv")
+```
+
+```
+## Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
+```
+
+```
+## Checking for absolute paths...
+```
+
+```
+## Checking for paths outside project directory...
+```
+
+```
+## Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')
+```
+
+
+```r
+setwd("~/Desktop")
+```
+
+```
+## Error: setwd() is likely to break reproducibility. Use here::here() instead.
+```
+
+---
+## Component 4: File Paths
+
+
+```r
+proj_analyze_paths("project_miceps")
+```
+
+```
+## ── Generating reproducibility report... ──────────────────── fertile 1.1.9003 ──
+```
+
+```
+## Checking for absolute paths...
+```
+
+```
+## Checking for paths outside project directory...
+```
+
+```
+## # A tibble: 2 x 5
+##   path              path_abs             func    problem        solution        
+##   &lt;chr&gt;             &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           
+## 1 /Users/audreyber… /Users/audreybertin… readr:… Absolute path… Use a relative …
+## 2 /Users/audreyber… /Users/audreybertin… readr:… Path is not c… Move the file a…
+```
+
+- `check_path()`
+
 ---
 ## Component 5: randomness
 
+
+```r
+has_no_randomness('project_miceps')
+```
+
+```
+## ● Checking for no randomness
+```
+
+```
+##    Problem: Your code uses randomness
+```
+
+```
+##    Solution: Set a seed using `set.seed()` to ensure reproducibility.
+```
+
+```
+##    See for help: ?set.seed
+```
+
+```
+## # A tibble: 1 x 2
+##   culprit expr                
+##   &lt;chr&gt;   &lt;glue&gt;              
+## 1 ?       Example: set.seed(1)
+```
+
 ---
 ## Component 6: readability and style
+
+- `has_no_lint()`
+
+- `tidy` code style (Hadley Wickham)
+
+
+---
+## Summary of Components
+
+&lt;img src="components-summary.png" width="1697" /&gt;
+
 
 ---
 ## Overview functions

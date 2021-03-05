@@ -16,6 +16,7 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+library(fertile)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -96,7 +97,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-1. Basic project components made accessible to the public:
+Component 1: Basic project components made accessible to the public:
 
 - Data (raw and/or processed)
 
@@ -115,7 +116,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-2. Well-organized file structure:
+Component 2: Well-organized file structure:
 
 - Separate folders for different file types
 
@@ -132,7 +133,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-3. The project is documented well:
+Component 3: The project is documented well:
 
 - Files are clearly named / ordered
 
@@ -152,7 +153,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-4. Good file paths:
+Component 4: Good file paths:
 
 - No absolute paths
 
@@ -169,7 +170,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-5. Randomness is accounted for:
+Component 5: Randomness is accounted for:
 
 - If used, seed must be set
 
@@ -180,7 +181,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-6. Code is readable and consistently styled:
+Component 6: Code is readable and consistently styled:
 
 - Coherent style
 - Follow guide (e.g. `tidyverse`)
@@ -273,21 +274,132 @@ reproducible and how to correct that in the future.
 7) Be applicable to a wide variety of domains.
 
 
+---
+## R Projects
+
+```{r, echo = FALSE}
+knitr::include_graphics('sample-project.png')
+```
+
+
+---
+
+
+## Component 1: accessible project files
+
+```{r}
+ proj_analyze_files("project_miceps")
+```
+
+```{r}
+has_readme("project_miceps")
+```
 
 ---
 ## Component 1: accessible project files
 
+- `sandbox()`: copying project to temp directory
+
+- `proj_render()`
+
+```{r}
+proj_render("project_miceps")
+slice_tail(render_log_report('project_miceps'))
+```
+
 ---
 ## Component 2: organized project structure
+
+- `has_proj_root()` / `has_no_nested_proj_root()`
+
+- `has_tidy_` series
+
+```{r}
+has_only_used_files("project_miceps")
+```
+
+---
+## Component 2: organized project structure
+
+```{r}
+files <- proj_analyze_files("project_miceps")
+proj_suggest_moves(files)
+```
+
+- `proj_move_files()`
 
 ---
 ## Component 3: documentation
 
+- `has_readme()`
+
+- `has_clear_build_chain()`
+
+- `has_well_commented_code()`
+
+---
+## Component 3: documentation
+
+- `proj_dependency_report()`
+
+```{r, eval = FALSE}
+install_script <- proj_pkg_script("project_miceps")
+```
+
+> # Run this script to install the required packages for this
+R project.
+# Packages hosted on CRAN...
+install.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2',
+'purrr', 'readr', 'rmarkdown', 'skimr', 'stargazer',
+'tidyr' ))
+# Packages (likely) hosted on GitHub...
+
+---
+## Component 4: File Paths
+
+```{r, error=TRUE}
+read.csv("~/Desktop/my_data.csv")
+```
+
+```{r, error=TRUE}
+read_csv("../../../Desktop/my_data.csv")
+```
+
+```{r, error=TRUE}
+setwd("~/Desktop")
+```
+
+---
+## Component 4: File Paths
+
+```{r}
+proj_analyze_paths("project_miceps")
+```
+
+- `check_path()`
+
 ---
 ## Component 5: randomness
 
+```{r}
+has_no_randomness('project_miceps')
+```
+
 ---
 ## Component 6: readability and style
+
+- `has_no_lint()`
+
+- `tidy` code style (Hadley Wickham)
+
+
+---
+## Summary of Components
+
+```{r, echo = FALSE}
+knitr::include_graphics('components-summary.png')
+```
+
 
 ---
 ## Overview functions
