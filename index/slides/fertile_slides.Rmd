@@ -404,15 +404,52 @@ knitr::include_graphics('components-summary.png')
 ---
 ## Overview functions
 
+- `proj_check()`: run all 16 individual checks
+
+- `proj_analyze()`: package dependencies, files, file move suggestions, paths
+
+- `proj_badges()`: earn/display badges for different components, summary of project generation info
+
+```{r badge-graphics, out.width="15%",  fig.show='hold', echo = FALSE}
+knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentation-badge.png", "paths-badge.png", "randomness-badge.png", "style-badge.png"))
+```
+
+---
+## Overview functions
+
+```{r, echo = FALSE}
+knitr::include_graphics('badges-1.png')
+```
+
+---
+## Overview functions
+
+```{r, echo = FALSE}
+knitr::include_graphics('badges-2.png')
+```
+
+---
+## Educational features
+
+- Interactive path warning system
+
+- Checks provide informative messages
+  - Explain problem
+  - Provide solution
 
 
 ---
 ## Customizability
 
+- `proj_check_some()`: run subset of checks; `tidyselect`
 
----
-## Educational features
+- Controlling which functions throw warnings about paths:
 
+  - Some built in, but users can add/edit others:
+  - `add_shim()`: add a function to the warning list
+  - `edit_shims()`: edit warning list
+  - `load_shims()`: activate warning system
+  - `unload_shims()`: deactivate warning system
 
 
 ---

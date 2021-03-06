@@ -290,10 +290,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…  187.59K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…  188.47K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…  378.19K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…   380.3K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -334,7 +334,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-05 14:12:53
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-06 16:04:31
 ```
 
 ---
@@ -395,9 +395,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…  188.22K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…   188.2K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  379.18K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  378.56K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -558,15 +558,46 @@ has_no_randomness('project_miceps')
 ---
 ## Overview functions
 
+- `proj_check()`: run all 16 individual checks
+
+- `proj_analyze()`: package dependencies, files, file move suggestions, paths
+
+- `proj_badges()`: earn/display badges for different components, summary of project generation info
+
+&lt;img src="structure-badge.png" width="15%" /&gt;&lt;img src="tidy-badge.png" width="15%" /&gt;&lt;img src="documentation-badge.png" width="15%" /&gt;&lt;img src="paths-badge.png" width="15%" /&gt;&lt;img src="randomness-badge.png" width="15%" /&gt;&lt;img src="style-badge.png" width="15%" /&gt;
+
+---
+## Overview functions
+
+&lt;img src="badges-1.png" width="968" /&gt;
+
+---
+## Overview functions
+
+&lt;img src="badges-2.png" width="968" /&gt;
+
+---
+## Educational features
+
+- Interactive path warning system
+
+- Checks provide informative messages
+  - Explain problem
+  - Provide solution
 
 
 ---
 ## Customizability
 
+- `proj_check_some()`: run subset of checks; `tidyselect`
 
----
-## Educational features
+- Controlling which functions throw warnings about paths:
 
+  - Some built in, but users can add/edit others:
+  - `add_shim()`: add a function to the warning list
+  - `edit_shims()`: edit warning list
+  - `load_shims()`: activate warning system
+  - `unload_shims()`: deactivate warning system
 
 
 ---
