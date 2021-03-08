@@ -290,10 +290,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…   188.2K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…  187.45K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…  378.56K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…  376.97K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -334,7 +334,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-08 14:09:23
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-08 14:36:48
 ```
 
 ---
@@ -395,9 +395,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…  187.45K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…  188.05K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  376.97K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  378.92K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -629,7 +629,7 @@ fertile::read.csv
 ##     utils::read.csv(file, ...)
 ##   }
 ## }
-## &lt;bytecode: 0x7fc683dd2e80&gt;
+## &lt;bytecode: 0x7f9f41534490&gt;
 ## &lt;environment: namespace:fertile&gt;
 ```
 
@@ -694,16 +694,58 @@ environment
 ---
 ## Experimental testing: design
 
+- 2 Sessions: Fall 2020 (18 students), J-Term 2021 (38 students)
+- Students randomly divided into two groups: `fertile` and no `fertile` 
+- Students are unaware of group!
+- Measuring reproducibility: post-test (fall) and pre/post- tests (j-term)
+- Fall: Final Score, J-Term: Difference in scores
+
+
+1. Provide us unique computer username / login name
+2. Convert that with `md5()` hashing algorithm 
+3. Assign hashed names to groups
+4. `sds192` package `.onAttach()` pulls username, hashes it, and compares to pre-written assignment
+5. If in `fertile` group, `fertile` secretly loaded. If not, nothing happens.
+
 ---
 ## Experimental testing: results
+
+- Test format:
+
+- 6 questions on R projects (mix of multiple choice/select all that apply)
+- 3 questions on file paths (select all that apply)
+
+- Start at 0 points
+- +1 for correct answers
+- -1 for incorrect answers
+- 0 for ambiguous or "I don't know" answers
+
+---
+## Experimental testing: results
+
+- What we found:
+
+1. No evidence of relationship between `fertile` and test score (or difference in scores)
+2. Fall results seemed to actually have `fertile` group scoring worse overall (not statistically significant), but this was somewhat reversed in `J-term`. `fertile` students started worse and finished worse, but made overall (slightly) larger score improvements—again, not significant!
+3. Students across both groups seemed to learn about reproducibility throughout the class
 
 
 ---
 ## Experimental testing: limitations
 
+- Tiny sample size
+- Non-independent subjects
+- Classroom environment not same as true testing environment
+- Experiment structure does not accurately represent real-world use of `fertile`
+
 
 ---
 ## Experimental testing: implications
+
+- Not much in terms of `fertile`
+- However, potential for A/B testing of other R software
+
+&lt;img src="a-b_testing.png" width="1680" /&gt;
 
 
 ---
@@ -720,6 +762,11 @@ https://github.com/ambertin/fertile
 
 - Repository for this thesis, containing additional text, figures, and experimental data:
 https://github.com/ ambertin/thesis
+
+
+---
+
+## Additional Info: Experiment Data Visualizations
 
 
     </textarea>

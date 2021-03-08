@@ -537,16 +537,60 @@ environment
 ---
 ## Experimental testing: design
 
+- 2 Sessions: Fall 2020 (18 students), J-Term 2021 (38 students)
+- Students randomly divided into two groups: `fertile` and no `fertile` 
+- Students are unaware of group!
+- Measuring reproducibility: post-test (fall) and pre/post- tests (j-term)
+- Fall: Final Score, J-Term: Difference in scores
+
+
+1. Provide us unique computer username / login name
+2. Convert that with `md5()` hashing algorithm 
+3. Assign hashed names to groups
+4. `sds192` package `.onAttach()` pulls username, hashes it, and compares to pre-written assignment
+5. If in `fertile` group, `fertile` secretly loaded. If not, nothing happens.
+
 ---
 ## Experimental testing: results
+
+- Test format:
+
+- 6 questions on R projects (mix of multiple choice/select all that apply)
+- 3 questions on file paths (select all that apply)
+
+- Start at 0 points
+- +1 for correct answers
+- -1 for incorrect answers
+- 0 for ambiguous or "I don't know" answers
+
+---
+## Experimental testing: results
+
+- What we found:
+
+1. No evidence of relationship between `fertile` and test score (or difference in scores)
+2. Fall results seemed to actually have `fertile` group scoring worse overall (not statistically significant), but this was somewhat reversed in `J-term`. `fertile` students started worse and finished worse, but made overall (slightly) larger score improvements—again, not significant!
+3. Students across both groups seemed to learn about reproducibility throughout the class
 
 
 ---
 ## Experimental testing: limitations
 
+- Tiny sample size
+- Non-independent subjects
+- Classroom environment not same as true testing environment
+- Experiment structure does not accurately represent real-world use of `fertile`
+
 
 ---
 ## Experimental testing: implications
+
+- Not much in terms of `fertile`
+- However, potential for A/B testing of other R software
+
+```{r, echo = FALSE}
+knitr::include_graphics("a-b_testing.png")
+```
 
 
 ---
@@ -563,5 +607,10 @@ https://github.com/ambertin/fertile
 
 - Repository for this thesis, containing additional text, figures, and experimental data:
 https://github.com/ ambertin/thesis
+
+
+---
+
+## Additional Info: Experiment Data Visualizations
 
 
