@@ -455,28 +455,84 @@ knitr::include_graphics('badges-2.png')
 ---
 ## How it works: shims
 
+- Invisibly intercept users' actions and alter them slightly
+
+1. Identify path-accepting function.
+2. Create function in `fertile` w/ same name/arguments (and the dots...)
+3. Write this new function so that it:
+a) captures any arguments,
+b) logs the name of the function called,
+c) performs `fertile` file path checks on these arguments, and
+d) calls the original function with the original arguments. 
+
+---
+## How it works: shims
+
+```{r}
+fertile::read.csv
+```
+
+
 ---
 ## How it works: hidden files
 
+- Hidden log files track user behavior (calls to shimmed functions, seeds, dependencies)
+- Update when `fertile` functions are run
+- User cannot see them, but can access them: `render_log_report()`, `log_report()`
 
 ---
 ## How it works: environment variables
 
+- Multiple hidden log files must be kept separate
+- Environment variables determine which file gets written to
+- When interactive --> normal log
+- When rendering --> render log
 
 ---
 ## How it works: the dots (...)
 
-
+- Shims must be flexible!
+- Definitions only explicitly include required args and path-related args
+- All other args accepted through dots
 
 ---
 ## Potential applications: journal review
 
+- Drastically speed up review process, save money
+- Two methods: 1. Run fertile checks, 2. Require `proj_badges()` output
+
+
+```{r, echo = FALSE}
+knitr::include_graphics('journal-process.png')
+```
+---
+## Potential applications: journal review
+
+```{r, echo = FALSE}
+knitr::include_graphics('journal-process-2.png')
+```
 
 ---
 ## Potential applications: teaching reproducibility
 
+- Introduce reproducibility in undergrad classrooms
+
+- Limited barriers to entry:
+1. R and RStudio installed on their computer
+2. Knowledge of how to install a package from GitHub and load it into their
+environment
+3. Knowledge of how to create an R project
+4. Knowledge of how to run basic functions and input simple file paths
+
+
 ---
 ## Potential applications: miscellaneous
+
+- Private companies: increasing transparency w/ clients, building trust
+
+- Conferences: reproducibility standards as requirement for acceptance
+
+- Informal analysis: more reproducible work for events like `tidy tuesday` --> share knowledge!
 
 ---
 ## Experimental testing: design

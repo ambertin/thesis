@@ -290,10 +290,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…  188.47K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…   188.2K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…   380.3K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…  378.56K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -334,7 +334,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-06 16:04:31
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-08 14:09:23
 ```
 
 ---
@@ -395,9 +395,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…   188.2K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…  187.45K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  378.56K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  376.97K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -603,28 +603,93 @@ has_no_randomness('project_miceps')
 ---
 ## How it works: shims
 
+- Invisibly intercept users' actions and alter them slightly
+
+1. Identify path-accepting function.
+2. Create function in `fertile` w/ same name/arguments (and the dots...)
+3. Write this new function so that it:
+a) captures any arguments,
+b) logs the name of the function called,
+c) performs `fertile` file path checks on these arguments, and
+d) calls the original function with the original arguments. 
+
+---
+## How it works: shims
+
+
+```r
+fertile::read.csv
+```
+
+```
+## function(file, ...) {
+##   if (interactive_log_on()) {
+##     log_push(file, "utils::read.csv")
+##     check_path_safe(file, ... = "utils::read.csv")
+##     utils::read.csv(file, ...)
+##   }
+## }
+## &lt;bytecode: 0x7fc683dd2e80&gt;
+## &lt;environment: namespace:fertile&gt;
+```
+
+
 ---
 ## How it works: hidden files
 
+- Hidden log files track user behavior (calls to shimmed functions, seeds, dependencies)
+- Update when `fertile` functions are run
+- User cannot see them, but can access them: `render_log_report()`, `log_report()`
 
 ---
 ## How it works: environment variables
 
+- Multiple hidden log files must be kept separate
+- Environment variables determine which file gets written to
+- When interactive --&gt; normal log
+- When rendering --&gt; render log
 
 ---
 ## How it works: the dots (...)
 
-
+- Shims must be flexible!
+- Definitions only explicitly include required args and path-related args
+- All other args accepted through dots
 
 ---
 ## Potential applications: journal review
 
+- Drastically speed up review process, save money
+- Two methods: 1. Run fertile checks, 2. Require `proj_badges()` output
+
+
+&lt;img src="journal-process.png" width="960" /&gt;
+---
+## Potential applications: journal review
+
+&lt;img src="journal-process-2.png" width="960" /&gt;
 
 ---
 ## Potential applications: teaching reproducibility
 
+- Introduce reproducibility in undergrad classrooms
+
+- Limited barriers to entry:
+1. R and RStudio installed on their computer
+2. Knowledge of how to install a package from GitHub and load it into their
+environment
+3. Knowledge of how to create an R project
+4. Knowledge of how to run basic functions and input simple file paths
+
+
 ---
 ## Potential applications: miscellaneous
+
+- Private companies: increasing transparency w/ clients, building trust
+
+- Conferences: reproducibility standards as requirement for acceptance
+
+- Informal analysis: more reproducible work for events like `tidy tuesday` --&gt; share knowledge!
 
 ---
 ## Experimental testing: design
