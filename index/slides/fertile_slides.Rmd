@@ -890,3 +890,18 @@ plot(fall_model, which = c(1,2))
 ```{r, echo = FALSE, fig.show="hold", out.width="50%"}
 plot(jterm_model, which = c(1,2))
 ```
+
+---
+## Additional Info: Test Questions
+
+```{r, echo = FALSE, out.width = '80%'}
+knitr::include_graphics("test-4.png")
+```
+
+---
+## Additional Info: Test Questions
+
+```{r, echo = FALSE, out.width = '80%'}
+knitr::include_graphics("test-8.png")
+```
+
