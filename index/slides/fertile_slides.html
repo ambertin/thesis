@@ -290,10 +290,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…  187.45K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…  189.13K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…  376.97K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…  376.98K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -334,7 +334,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-08 14:36:48
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-09 12:07:04
 ```
 
 ---
@@ -395,9 +395,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…  188.05K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…  188.19K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  378.92K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  379.39K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -629,7 +629,7 @@ fertile::read.csv
 ##     utils::read.csv(file, ...)
 ##   }
 ## }
-## &lt;bytecode: 0x7f9f41534490&gt;
+## &lt;bytecode: 0x7fcf6e4a8bd0&gt;
 ## &lt;environment: namespace:fertile&gt;
 ```
 
@@ -751,6 +751,16 @@ environment
 ---
 ## Conclusion: The future of `fertile`?
 
+- Not many exciting findings from experiment, **but**
+
+1. `fertile` got published!
+
+&lt;img src="stat.png" width="1289" /&gt;
+
+
+2. Getting some traction among top names (including RStudio/tidyverse team)
+3. Hoping one day for journals and educators to pick it up!
+
 
 ---
 ## How to access project materials
@@ -763,11 +773,206 @@ https://github.com/ambertin/fertile
 - Repository for this thesis, containing additional text, figures, and experimental data:
 https://github.com/ ambertin/thesis
 
+---
+
+
+
+
+# .center[Questions?]
+
 
 ---
 
-## Additional Info: Experiment Data Visualizations
+## Additional Info: Experiment 
 
+- `.onAttach()`:
+
+
+```r
+# .onAttach() from the sds192 package
+# Run automatically any time the sds192 package is loaded
+
+.onAttach &lt;- function(libname, pkgname) {
+
+  # The experimental group gets `fertile` loaded secretly
+  if (is_experimental()) {
+    suppressMessages(library(fertile))
+  }
+}
+
+is_experimental &lt;- function(logname = whoami::username()) {
+  
+  # Students are placed into experimental and control
+  # groups but remain anonymous
+  fertile_group &lt;- c(
+    "f7b0a9d5117b88cecec122f8ba0e52fb",
+    "4d0295a810fb8491f91f914771572485",
+    "36211a1f19f82ae07aed990b671c9b20",
+    "b5d2b72b4f36f3afdce32a8409dc6ea0",
+    "d498227fd9e6a4c42494bbebc42f6aa8",
+    # ... and so on
+  )
+  control_group &lt;- c(
+    "9aa36583f54766205850428e8f1a4c89", 
+    "f03020938b31818063c79d2422755183", 
+    "7ec57b1f2bca9ac1e702fb68427b781b", 
+    "e5e30623e9d09d29ded851b7fb40cb51", 
+    "592572bb9fce168f37117fd0d6e0e5ee",
+    # ... and so on
+ 
+  )
+  
+
+  digest::digest(logname, algo = "md5") %in% fertile_group
+  
+}
+```
+
+---
+## Additional Info: Experiment (Fall 2020)
+
+
+
+![](fertile_slides_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+---
+## Additional Info: Experiment (Fall 2020)
+
+
+
+![](fertile_slides_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+---
+## Additional Info: Experiment (Fall 2020)
+
+
+```
+## 
+## Call:
+## lm(formula = Overall_Total ~ Group, data = fall2020)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -5.556 -2.556 -1.056  2.194  8.444 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     7.556      1.281   5.896 2.25e-05 ***
+## GroupFertile   -3.000      1.812  -1.655    0.117    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.844 on 16 degrees of freedom
+## Multiple R-squared:  0.1462,	Adjusted R-squared:  0.09288 
+## F-statistic: 2.741 on 1 and 16 DF,  p-value: 0.1173
+```
+
+---
+## Additional Info: Experiment (J-Term 2021)
+
+![](fertile_slides_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+
+---
+## Additional Info: Experiment (J-Term 2021)
+
+
+![](fertile_slides_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
+---
+## Additional Info: Experiment (J-Term 2021)
+
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at 2
+```
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 1
+```
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0
+```
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at 2
+```
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 1
+```
+
+```
+## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0
+```
+
+![](fertile_slides_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+
+---
+## Additional Info: Experiment (J-Term 2021)
+
+
+```
+## 
+## Call:
+## lm(formula = Score_Difference ~ Group, data = jterm_model_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -14.150  -2.918   0.850   3.546   8.850 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   2.15000    1.10658   1.943   0.0599 .
+## GroupFertile  0.07222    1.60783   0.045   0.9644  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.949 on 36 degrees of freedom
+## Multiple R-squared:  5.604e-05,	Adjusted R-squared:  -0.02772 
+## F-statistic: 0.002018 on 1 and 36 DF,  p-value: 0.9644
+```
+
+---
+## Additional Info: Experiment (J-Term 2021)
+
+
+```r
+jterm_model_mr &lt;- lm(Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
+
+summary(jterm_model_mr)
+```
+
+```
+## 
+## Call:
+## lm(formula = Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -13.395  -2.130   1.043   2.996   8.232 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)       3.45431    1.52672   2.263    0.030 *
+## GroupFertile      0.06459    1.59648   0.040    0.968  
+## Previous_Classes -0.68648    0.55789  -1.230    0.227  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 4.914 on 35 degrees of freedom
+## Multiple R-squared:  0.04152,	Adjusted R-squared:  -0.01325 
+## F-statistic: 0.7581 on 2 and 35 DF,  p-value: 0.4761
+```
+
+
+---
+## Additional Info: Both Experiments
+
+&lt;img src="fertile_slides_files/figure-html/unnamed-chunk-36-1.png" width="50%" /&gt;&lt;img src="fertile_slides_files/figure-html/unnamed-chunk-36-2.png" width="50%" /&gt;&lt;img src="fertile_slides_files/figure-html/unnamed-chunk-36-3.png" width="50%" /&gt;&lt;img src="fertile_slides_files/figure-html/unnamed-chunk-36-4.png" width="50%" /&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
