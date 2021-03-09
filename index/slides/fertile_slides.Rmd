@@ -24,6 +24,19 @@ library(xaringanthemer)
 style_mono_light(base_color = "#23395b")
 ```
 
+```{css, echo= FALSE}
+.remark-code {
+  font-size: 24px;
+}
+
+.small .remark-code {
+  font-size: 80% !important;
+}
+.tiny .remark-code {
+  font-size: 50% !important;
+}
+```
+
 
 ## Introduction
 
@@ -85,7 +98,8 @@ knitr::include_graphics("nature-1.jpeg")
 ```
 
 ---
-```{r, echo = FALSE}
+## The reproducibility crisis
+```{r, echo = FALSE, out.width = '60%'}
 knitr::include_graphics("nature-2.png")
 ```
 
@@ -97,7 +111,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-Component 1: Basic project components made accessible to the public:
+### Component 1: Basic project components made accessible to the public:
 
 - Data (raw and/or processed)
 
@@ -116,7 +130,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-Component 2: Well-organized file structure:
+### Component 2: Well-organized file structure:
 
 - Separate folders for different file types
 
@@ -133,7 +147,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-Component 3: The project is documented well:
+### Component 3: The project is documented well:
 
 - Files are clearly named / ordered
 
@@ -153,7 +167,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-Component 4: Good file paths:
+### Component 4: Good file paths:
 
 - No absolute paths
 
@@ -170,7 +184,7 @@ background-size: 30%
 ## The six major components of reproducibility
 
 
-Component 5: Randomness is accounted for:
+### Component 5: Randomness is accounted for:
 
 - If used, seed must be set
 
@@ -181,7 +195,7 @@ background-size: 30%
 
 ## The six major components of reproducibility
 
-Component 6: Code is readable and consistently styled:
+### Component 6: Code is readable and consistently styled:
 
 - Coherent style
 - Follow guide (e.g. `tidyverse`)
@@ -287,6 +301,8 @@ knitr::include_graphics('sample-project.png')
 
 ## Component 1: accessible project files
 
+.small[
+
 ```{r}
  proj_analyze_files("project_miceps")
 ```
@@ -294,6 +310,7 @@ knitr::include_graphics('sample-project.png')
 ```{r}
 has_readme("project_miceps")
 ```
+]
 
 ---
 ## Component 1: accessible project files
@@ -302,11 +319,13 @@ has_readme("project_miceps")
 
 - `proj_render()`
 
+.small[
+
 ```{r}
 proj_render("project_miceps")
 slice_tail(render_log_report('project_miceps'))
 ```
-
+]
 ---
 ## Component 2: organized project structure
 
@@ -314,17 +333,23 @@ slice_tail(render_log_report('project_miceps'))
 
 - `has_tidy_` series
 
+.small[
 ```{r}
 has_only_used_files("project_miceps")
 ```
+]
 
 ---
 ## Component 2: organized project structure
+
+.small[
 
 ```{r}
 files <- proj_analyze_files("project_miceps")
 proj_suggest_moves(files)
 ```
+
+]
 
 - `proj_move_files()`
 
@@ -342,48 +367,70 @@ proj_suggest_moves(files)
 
 - `proj_dependency_report()`
 
+.small[
 ```{r, eval = FALSE}
 install_script <- proj_pkg_script("project_miceps")
 ```
 
-> # Run this script to install the required packages for this
-R project.
-# Packages hosted on CRAN...
-install.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2',
-'purrr', 'readr', 'rmarkdown', 'skimr', 'stargazer',
-'tidyr' ))
-# Packages (likely) hosted on GitHub...
+```{r, echo = FALSE}
+message_print <- "Run this script to install the required packages for this R project. \n Packages hosted on CRAN... \ninstall.packages(c( 'broom', 'dplyr', 'fs', 'ggplot2', 'purrr', 'readr', 'rmarkdown', 'skimr', 'stargazer', 'tidyr' )) \nPackages (likely) hosted on GitHub..."
+
+cat(stringr::str_wrap(message_print, width = 70))
+
+
+```
+
+]
 
 ---
 ## Component 4: File Paths
 
-```{r, error=TRUE}
+.small[
+```{r, error=TRUE, eval = FALSE}
 read.csv("~/Desktop/my_data.csv")
 ```
 
-```{r, error=TRUE}
+```{r, echo = FALSE}
+error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('~/Desktop/my_data.csv')"
+
+cat(stringr::str_wrap(error_msg, width = 70))
+```
+
+```{r, error=TRUE, eval = FALSE}
 read_csv("../../../Desktop/my_data.csv")
 ```
+
+```{r, echo = FALSE}
+error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')"
+
+cat(stringr::str_wrap(error_msg, width = 80))
+```
+
 
 ```{r, error=TRUE}
 setwd("~/Desktop")
 ```
+]
 
 ---
 ## Component 4: File Paths
 
+.small[
 ```{r}
 proj_analyze_paths("project_miceps")
 ```
+]
 
 - `check_path()`
 
 ---
 ## Component 5: randomness
 
+.small[
 ```{r}
 has_no_randomness('project_miceps')
 ```
+]
 
 ---
 ## Component 6: readability and style
@@ -396,10 +443,11 @@ has_no_randomness('project_miceps')
 ---
 ## Summary of Components
 
+.small[
 ```{r, echo = FALSE}
 knitr::include_graphics('components-summary.png')
 ```
-
+]
 
 ---
 ## Overview functions
@@ -417,7 +465,7 @@ knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentatio
 ---
 ## Overview functions
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width = '90%'}
 knitr::include_graphics('badges-1.png')
 ```
 
@@ -460,18 +508,23 @@ knitr::include_graphics('badges-2.png')
 1. Identify path-accepting function.
 2. Create function in `fertile` w/ same name/arguments (and the dots...)
 3. Write this new function so that it:
+
 a) captures any arguments,
+
 b) logs the name of the function called,
+
 c) performs `fertile` file path checks on these arguments, and
+
 d) calls the original function with the original arguments. 
 
 ---
 ## How it works: shims
 
+.small[
 ```{r}
 fertile::read.csv
 ```
-
+]
 
 ---
 ## How it works: hidden files
@@ -479,6 +532,12 @@ fertile::read.csv
 - Hidden log files track user behavior (calls to shimmed functions, seeds, dependencies)
 - Update when `fertile` functions are run
 - User cannot see them, but can access them: `render_log_report()`, `log_report()`
+
+.small[
+```{r}
+render_log_report('project_miceps')
+```
+]
 
 ---
 ## How it works: environment variables
@@ -598,15 +657,15 @@ knitr::include_graphics("a-b_testing.png")
 
 - Not many exciting findings from experiment, **but**
 
-1. `fertile` got published!
+- `fertile` got published!
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width= '80%'}
 knitr::include_graphics("stat.png")
 ```
 
 
-2. Getting some traction among top names (including RStudio/tidyverse team)
-3. Hoping one day for journals and educators to pick it up!
+- Getting some traction among top names (including RStudio/tidyverse team)
+- Hoping one day for journals and educators to pick it up!
 
 
 ---
@@ -634,6 +693,7 @@ https://github.com/ ambertin/thesis
 
 - `.onAttach()`:
 
+.tiny[
 ```{r, eval = FALSE}
 
 # .onAttach() from the sds192 package
@@ -674,6 +734,7 @@ is_experimental <- function(logname = whoami::username()) {
   
 }
 ```
+]
 
 ---
 ## Additional Info: Experiment (Fall 2020)
@@ -721,13 +782,15 @@ ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) +
 ---
 ## Additional Info: Experiment (Fall 2020)
 
+.small[
 ```{r, echo = FALSE}
 fall_model <- lm(Overall_Total ~ Group, data = fall2020)
 summary(fall_model)
 ```
+]
 
 ---
-## Additional Info: Experiment (J-Term 2021)
+## Additional Info: Experiment (Jan 2021)
 
 ```{r, echo = FALSE, message = FALSE}
 group_scores <- jterm2021 %>% select(1:5, 15:17) %>%
@@ -746,10 +809,10 @@ ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
 ```
 
 ---
-## Additional Info: Experiment (J-Term 2021)
+## Additional Info: Experiment (Jan 2021)
 
 
-```{r, echo = FALSE, message = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 pre_post_differences <- jterm2021 %>% group_by(Student_ID, Group, Previous_Classes) %>%
   summarize(pre_total = ifelse(Test == "Pre", Overall_Total, NA),
             post_total = ifelse(Test == "Post", Overall_Total, NA),
@@ -776,9 +839,9 @@ ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Scor
   ggtitle("Score Changes Across Course for All Students, J-Term 2021")
 ```
 ---
-## Additional Info: Experiment (J-Term 2021)
+## Additional Info: Experiment (Jan 2021)
 
-```{r, echo = FALSE, message = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
   geom_point() +
   geom_smooth(se = FALSE) +
@@ -788,30 +851,42 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) +
 ```
 
 ---
-## Additional Info: Experiment (J-Term 2021)
+## Additional Info: Experiment (Jan 2021)
 
+.small[
 ```{r, echo = FALSE}
 jterm_model <- lm(Score_Difference ~ Group, data = jterm_model_data)
 
 summary(jterm_model)
 ```
+]
 
 ---
-## Additional Info: Experiment (J-Term 2021)
+## Additional Info: Experiment (Jan 2021)
 
-```{r}
+.small[
+```{r, echo = FALSE}
 jterm_model_mr <- lm(Score_Difference ~ Group + Previous_Classes, data = jterm_model_data)
 
 summary(jterm_model_mr)
 
 ```
-
+]
 
 ---
-## Additional Info: Both Experiments
+## Additional Info: Assumptions
+
+### Fall 2020
 
 ```{r, echo = FALSE, fig.show="hold", out.width="50%"}
 plot(fall_model, which = c(1,2)) 
-plot(jterm_model, which = c(1,2))
 ```
 
+---
+## Additional Info: Assumptions
+
+### Jan 2021
+
+```{r, echo = FALSE, fig.show="hold", out.width="50%"}
+plot(jterm_model, which = c(1,2))
+```
