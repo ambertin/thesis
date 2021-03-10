@@ -182,7 +182,7 @@ Additionally, a huge thanks to the many introductory data science students who v
 }
 
 \Abstract{
-In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Although reproducibility is important to the advancement of scientific knowledge in many ways, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are either challenging to use, are too generalized, and are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) specific to challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 of this thesis considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
+Data science research is considered \emph{reproducible} when the associated code and data files produce identical results when run by another analyst. Although reproducibility is a key component in the advancement of scientific knowledge, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are challenging to use, are too generalized, or are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) tailored to the specific challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
 }
 
 % End of CII addition
@@ -211,19 +211,19 @@ In the field of data science, research is considered fully \emph{reproducible} w
 
   \listoffigures
   \begin{abstract}
-    In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Although reproducibility is important to the advancement of scientific knowledge in many ways, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are either challenging to use, are too generalized, and are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) specific to challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 of this thesis considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
+    Data science research is considered \emph{reproducible} when the associated code and data files produce identical results when run by another analyst. Although reproducibility is a key component in the advancement of scientific knowledge, a significant proportion of research articles and other analyses fail to meet reproducibility standards. Steps have been taken to address this issue, including academic courses on reproducibility, additional requirements or recommendations for journal article acceptance, and a variety of software tools. However, many of these are challenging to use, are too generalized, or are not accessible to a wide audience. In this thesis, I present my work on developing \texttt{fertile}, an \texttt{R} package designed to help improve the reproducibility of \texttt{R\ Projects} and address the limitations of other solutions by being 1) simple to use, 2) easily accessible, 2) broad in scope, 3) tailored to the specific challenges faced by R users, 4) customizable, and 5) educational. Chapter 1 considers the background information motivating \texttt{fertile}, including explanation of reproducibility, its issues, current solutions, and their limitations. Chapter 2 is code-focused, demonstrating the functions available in \texttt{fertile} to address different aspects of reproducibility and delving into some of the details of how the software works. Finally, Chapter 3 considers \texttt{fertile}'s potential applications in the real world, including an in-depth analysis of an experiment involving \texttt{fertile}'s integration into an introductory data science course at Smith College.
   \end{abstract}
 
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
-\hypertarget{introduction}{%
-\chapter*{Introduction}\label{introduction}}
-\addcontentsline{toc}{chapter}{Introduction}
+\hypertarget{prologue}{%
+\chapter*{Prologue}\label{prologue}}
+\addcontentsline{toc}{chapter}{Prologue}
 
 If it weren't for Professor Ben Baumer, I would not be here writing this thesis today. The Introduction to Data Science course I took with him in my first semester at Smith College spurred on my love for the field, prompting me to declare a major---with Ben as my adviser---soon after.
 
-That course---SDS 192---was my first introduction to the topic of scientific reproducibility. In Ben's class, one of the first undergraduate courses in the country to implement reproducibility as part of the curriculum, I was introduced to a variety of tools that could help make my work more reproducible. I learned how to write effective narrative reports with RMarkdown, how to implement version control on GitHub, how to write well-styled code, and how to use R projects to structure my files in a way that was easy to manage.
+That course---SDS 192---was my first introduction to the topic of scientific reproducibility. In Ben's class, one of the first undergraduate courses in the country to implement reproducibility as part of the curriculum (Baumer, Cetinkaya-Rundel, Bray, Loi, \& Horton (2014)), I was introduced to a variety of tools that could help make my work more reproducible. I learned how to write effective narrative reports with RMarkdown, how to implement version control on GitHub, how to write well-styled code, and how to use R projects to structure my files in a way that was easy to manage.
 
 Through this work, I began to see the benefits of emphasizing a reproducible workflow. When I worked on projects with other students, the tools I learned in class enabled us to collaborate with one another easily and keep track of the progress we had made. And when I tried to look back at my own work from the past, my attention to reproducibility meant that it was much easier for me to re-compute and understand what I had done previously.
 
@@ -233,15 +233,15 @@ As soon as I felt that I had built up enough coding experience to be able to tac
 
 As part of his interest in reproducibility, Ben had been working---with help from Hadley Wickham and Jenny Bryan of RStudio---to develop a package designed to help users create optimal conditions for reproducible work in R (titled ``fertile'').
 
-When it was presented to me, the package was incomplete. Several of the major functions that still exist now were there at the time, but there were not many features beyond the basics. Additionally, several functions were not fully written or throwing errors, the package had little to no documentation, and the majority of tests that had been written to test the functions were failing.
+When it was presented to me, the package was incomplete. Several of the major functions that exist now were there at the time, but there were not many features beyond the basics. Additionally, several functions were not fully written or were throwing errors, the package had little to no documentation, and the majority of tests that had been written to test the functions were failing.
 
-I was given the opportunity to join in on the project and help move \texttt{fertile} to a functional state: to fix the errors that were present, document the package, and write new functions to expand the operation beyond the barebones structure that was present.
+I was given the opportunity to join the project and help move \texttt{fertile} to a functional state: to fix the errors that were present, document the package, and write new functions to expand the operation beyond the barebones structure that was present.
 
 The \texttt{fertile} project was an excellent fit for me. The package was not yet in a functional state, but had an excellent base of code to work off of. Given that it already had some basic functions and a strong structure, \texttt{fertile} provided a perfect opportunity for me to learn about the process of writing R packages.
 
 The more I worked on \texttt{fertile}, the more interested in the project I became. The package was unlike anything else I had been exposed to in data science. Most of my course work had been in the form of front-end coding: conducting data analyses and visualizing information. \texttt{fertile} is nothing like that. It operates completely behind the scenes, conducting a kind of meta-analysis to determine the reproducibility of a data science project. Rather than writing code to analyze data, I had to learn how to write code to analyze code that \emph{other people} wrote to analyze data.
 
-This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. \href{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}{On the question} of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible,'' while another said there was ``fundamentally no way'' to achieve it.
+This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. On the question of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible,'' while another said there was ``fundamentally no way'' to achieve it (see \url{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}).
 
 The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times incredibly frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills.
 
@@ -255,15 +255,15 @@ This paper is the culmination of the work I have been doing with \texttt{fertile
 \hypertarget{what-is-reproducibility}{%
 \section{What Is Reproducibility?}\label{what-is-reproducibility}}
 
-In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst, or more generally, when a researcher can ``duplicate the results of a prior study using the same materials as were used by the original investigator'' (Bollen et al. (2015)).
+Research in the field of data science is considered fully \emph{reproducible} when the relevant code and data files produce identical results when run by another analyst, or more generally, when a researcher can ``duplicate the results of a prior study using the same materials as were used by the original investigator'' (Bollen et al. (2015)).
 
 This term was first coined in 1992 by computer scientist Jon Claerbout, who associated it with a ``software platform and set of procedures that permit the reader of a paper to see the entire processing trail from the raw data and code to figures and tables'' (Claerbout \& Karrenbach (1992)).
 
 Since its inception, the concept of reproducibility has been applied across many different data-intensive fields, including epidemiology, computational biology, economics, clinical trials, and, now, the more general domain of statistical and data sciences (Goodman, Fanelli, \& Ioannidis (2016)).
 
-Reproducible research has a wide variety of benefits in the scientific community. When researchers provide the code and data used for their work in a well-organized and reproducible format, readers are more easily able to determine the veracity of any findings by following the steps from raw data to conclusions. The creators of reproducible research can also more easily receive more specific feedback (including bug fixes) on their work. Moreover, others interested in the research topic can use the code to apply the methods and ideas used in one project to their own work with minimal effort.
+There are many benefits to reproducibility in scientific research. When researchers share their work in a reproducible format, readers can much more easily determine the accuracy of any findings by following the steps from raw data to conclusions. The creators of reproducible work can also more easily receive more specific feedback on their work, by allowing others to look through their process and even attempt pieces of the work themselves. Moreover, reproducibility makes it much simpler to pass on knowledge. Others interested in the same research topic as in a published work can review the associated code and/or data and then apply some of the the methods and ideas to their own work.
 
-Although often confused, the concept of \emph{reproducibility} is distinct from the similar idea of \emph{replicability}: the ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data. Replicability has larger-scale implications than reproducibility; the findings of research studies can not be accepted unless a variety of other researchers come to the same conclusions through independent work.
+Although often confused, the concept of \emph{reproducibility} is distinct from the related idea of \emph{replicability}: the ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data. Replicability has larger-scale implications than reproducibility; the findings of research studies can not be accepted unless a variety of other researchers come to the same conclusions through independent work.
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/versus} 
@@ -272,139 +272,49 @@ Although often confused, the concept of \emph{reproducibility} is distinct from 
 
 \caption{Reproducibility vs. Replicability}\label{fig:unnamed-chunk-3}
 \end{figure}
-Reproducibility and replicability are both necessary to the advancement of scientific research, but they vary significantly in terms of their difficulty to achieve. Reproducibility, in theory, is somewhat simple to attain in data analyses--because code is inherently non-random (excepting applications involving random number generation) and data remain consistent, variability is highly restricted. The achievement of replicability, on the other hand, is a much more complex challenge, involving significantly more variablility and requiring high quality data, effective study design, and incredibly robust hypotheses.
+Reproducibility and replicability are both necessary to the advancement of scientific research, but they vary significantly in terms of their difficulty to achieve. Reproducibility, in theory, is somewhat simple to attain in data analyses--because code is inherently non-random (excepting applications involving random number generation) and data remain consistent, variability is highly restricted. The achievement of replicability, on the other hand, is a much more complex challenge, involving significantly more variablility and requiring high quality data, effective study design, and robust hypotheses.
 
 \hypertarget{the-reproducibility-crisis}{%
 \section{The Reproducibility Crisis}\label{the-reproducibility-crisis}}
 
-Despite the relative simplicity of achieving reproducibility, a significant proportion of the work produced in the scientific community fails to meet reproducibility standards. 52\% of respondents in a 2016 Nature survey believed that science was going through a ``crisis'' of reproducibility. Additionally, the vast majority of researchers across all fields studied reported having been unable to reproduce another researcher's results, while approximately half reported having been unable to reproduce their own (Baker (2016)). Other studies paint an even bleaker picture: a 2015 study found that over 50\% of studies psychology failed reproducibility tests and research from 2012 found that figure closer to 90\% in the field of cancer biology (Baker (2015), Begley \& Ellis (2012)).
+Despite the apparent simplicity of achieving reproducibility, a significant proportion of the work produced in the scientific community fails to meet reproducibility standards. 52\% of respondents in a 2016 Nature survey believed that science was going through a ``crisis'' of reproducibility. Additionally, the vast majority of researchers across all fields studied reported having been unable to reproduce another researcher's results, while approximately half reported having been unable to reproduce their own (Baker (2016)). Other studies paint an even bleaker picture: Baker (2015) found that over 50\% of studies psychology failed reproducibility tests and Begley \& Ellis (2012) found that figure closer to 90\% in the field of cancer biology.
 
-In the past several years, this ``crisis'' of reproducibility has risen toward the forefront of scientific discussion. Without reproducibility, the scientific community cannot properly verify study results.This makes it difficult to identify which information should be believed and which should not and increases the likelihood that studies sharing misleading information will be dispersed. The rise of data-driven technologies, alongside our newly founded ability to instantly share knowledge worldwide, has made reproducibility increasingly critical to the advancement of scientific understanding, necessitating the development of solutions for addressing the issue.
+In the past several years, this ``crisis'' of reproducibility has risen toward the forefront of scientific discussion. Without reproducibility, the scientific community cannot properly verify study results. This makes it difficult to identify which information should be believed and which should not, and increases the likelihood that studies sharing misleading information will be dispersed. The rise of data-driven technologies, alongside our newfound ability to instantly share knowledge worldwide, has made reproducibility increasingly critical to the advancement of scientific understanding, necessitating the development of solutions for addressing the issue.
 
 Academics have recognized this, and publications on the topic appear to have increased significantly in the last several years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin (2020); McArthur (2019); Wallach, Boyack, \& Ioannidis (2018)).
 
 \hypertarget{the-components-of-reproducible-research}{%
 \section{The Components of Reproducible Research}\label{the-components-of-reproducible-research}}
 
-In order to see why there is an issue with reproducibility and gain a sense of how to solve it, it is important to first understand the components of reproducibility. Essentially, to answer, ``What parts does researcher need to include, or what steps do they need to take, to be able to declare their work reproducible?''
+In order to see why there is an issue with reproducibility and gain a sense of how to solve it, it is important to first understand the components of reproducibility. ``What parts does researcher need to include, or what steps do they need to take, to be able to declare their work reproducible?''
 
-Publications attempting to answer this can be found in all areas of scientific research. However, as Goodman, Fanelli, \& Ioannidis (2016) argue, the language and conceptual framework used to describe research reproducibility varies significantly across the sciences, and there are no clear standards on reproducibility agreed upon by the scientific community as a whole.
+Publications attempting to answer this question can be found across a variety of fields. However, as Goodman, Fanelli, \& Ioannidis (2016) argue, both the framework and terms used to describe reproducibility vary significantly across the sciences, and the scientific community has been unable to agree upon universally applicable clear standards.
 
-At a minimum, according to Goodman, Fanelli, \& Ioannidis (2016), achieving reproducibility requires the sharing of data (raw or processed), relevant metadata, code, and related software. However, according to other authors, the full achievement of reproducibility may require additional components.
+At a minimum, according to Goodman, Fanelli, \& Ioannidis (2016), achieving reproducibility requires the sharing of data (either raw or processed), relevant metadata, code, and related software. However, according to others, the full achievement of reproducibility may require additional components.
 
-Kitzes, Turek, \& Deniz (2017) present a collection of case studies on reproducibility practices from across the data-intensive sciences, illustrating a variety of recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their case studies that extend beyond the minimum recommendations of Goodman, Fanelli, \& Ioannidis (2016):
+Kitzes, Turek, \& Deniz (2017) present a series of case studies on reproducibility practices from across the data-intensive sciences, illustrating many different recommendations and techniques for achieving reproducibility. Although their work does not come to a consensus on the exact standards of reproducibility that should be followed, several common trends and principles emerge from their analysis that extend beyond the minimum recommendations of Goodman, Fanelli, \& Ioannidis (2016):
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \tightlist
 \item
   use clear separation, labeling, and documentation in provided code,
 \item
-  automate processes when possible, and
+  automate processes (when possible), and
 \item
-  design the data analysis workflow as a sequence of small steps glued together, with outputs from one step serving as inputs into the next. This is a common suggestion within the computing community, originating as part of the Unix philosophy (Gancarz (2003)).
+  design the analysis workflow as a sequence of small steps working together, with outputs from one step as inputs into the next. This suggestion is popular within the computing community, originating as part of the Unix philosophy (Gancarz (2003)).
 \end{enumerate}
-Cooper et al. (2017) focus on data analysis completed in \texttt{R} and identify a similar list of important reproducibility components, reinforcing the need for clearly labeled, well-documented, and well-separated files. In addition, they recommend publishing a list of software dependencies and using version control to track project changes over time.
+Cooper et al. (2017) focus on \texttt{R}-specific data analysis and identify a similar list of important reproducibility components, reinforcing the need for clearly labeled, well-separated, and well-documented files. In addition, they recommend using version control to record project changes over time and sharing information about software dependencies.
 
-Broman (2019) reiterates the need for clear naming and file separation while sharing several additional suggestions: keep the project contained in one directory, use relative paths when accessing the file system, and include a \texttt{README} file describing the project.
-
-Wilson et al. (2017) argue that to follow good practice, an analysis must be located in a well-organized directory, be supplemented by a file containing information about the project (i.e., a README), and a provide an explicit list of dependencies.
+Broman (2019) reiterates the need for clear naming and file separation while sharing several additional suggestions: keep the project contained in one directory, use relative paths when accessing files, and include a descriptive \texttt{README} file. Wilson et al. (2017) argue that to follow good practice, an analysis must be located in a well-organized directory, be supplemented by a file containing information about the project (i.e., a README), and a provide an explicit list of dependencies.
 
 Wilson et al. (2014) emphasize communication, recommending that code be human-readable and consistently styled for ease of understanding once shared.
 
-The reproducibility recommendations from R OpenSci, a non-profit initiative founded in 2011 to make scientific data retrieval reproducible, share similar principles to those discussed previously. They focus on a need for a well-developed file system, with no extraneous files and clear labeling. They also reiterate the need to note dependencies and use automation when possible, while making clear a suggestion not present in the previously-discussed literature: the need to use seeds, which allow for the saving and restoring of the random number generator state, when running code involving randomness (Martinez et al. (2018)).
+R OpenSci, a non-profit initiative founded in 2011 to make scientific data retrieval reproducible, has shared recommendations which focus on similar principles to those discussed previously. They emphasize the need for a well-developed file system, with clear labeling and no extraneous files. They also reiterate the necessity of noting dependencies and using automation when possible, while making clear a suggestion not present in the previously-discussed literature: the need to use seeds, which allow for the saving and restoring of the random number generator state, when running code involving randomness (Martinez et al. (2018)).
 
 Although these recommendations differ from one another, when considered in combination they provide a well-rounded picture of the components important to research reproducibility across the scientific community:
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  The basic project components are made accessible to the public:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  Data (raw and/or processed)
-\item
-  Metadata
-\item
-  Code
-\item
-  Related Software
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  The file structure of project is well-organized:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  Separate folders for different file types.
-\item
-  No extraneous files.
-\item
-  Minimal clutter.
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  The project is documented well:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  Files are clearly named, preferably in a way where the order in which they should be run is clear.
-\item
-  A README is present.
-\item
-  Code contains comments.
-\item
-  Software dependencies are noted.
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  File paths used in code are not system- or user-dependent:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  No absolute paths.
-\item
-  No paths leading to locations outside of a project's directory.
-\item
-  Only relative paths, pointing to locations within a project's directory, are permitted.
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  Randomness is accounted for:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  If randomness is used in code, a seed must also be set.
-\end{itemize}
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
-\tightlist
-\item
-  Code is readable and consistently styled:
-\end{enumerate}
-\begin{itemize}
-\tightlist
-\item
-  Though not mentioned in the sources described previously, it is also important that code be written in a coherent style. This is because code that conforms to a style guide or is written in a consistent dialect is easier to read, simplifying the process of following a researcher's work from beginning to end (Hermans \& Aldewereld (2017)).
-\end{itemize}
+\begin{figure}
+\includegraphics[width=1\linewidth]{figure/6-components} \caption{The 6 Major Components of Reproducibility}\label{fig:unnamed-chunk-4}
+\end{figure}
 \hypertarget{current-attempts-to-address-reproducibility-in-scientific-publishing}{%
 \section{Current Attempts to Address Reproducibility in Scientific Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}}
 
@@ -421,7 +331,7 @@ The journal whose requirements appear to align most closely with those component
 \item
   The dataset analyzed in the paper and information about its source. If the dataset has been processed, instructions for manipulating the raw data to achieve the final data must also be shared.
 \item
-  Detailed, clear code necessary for reproducing all of the tables and figures in the paper.
+  Detailed, clear code necessary for reproducing all of the tables and figures in the paper. Note that this requirement goes beyond most of what is recommended in reproducibility literature, which simply recommends code to produce the analysis results---and not necessarily all outputs.
 \item
   Documentation, including a README and codebook.
 \item
@@ -446,7 +356,7 @@ For example, in the biomedical sciences, a group of editors representing over 30
 \item
   Investigators report how often each experiment was performed and whether results were substantiated by repetition under a range of conditions.
 \item
-  Statistics must be fully reported in the paper (including test used, value of N, definition of center, dispersion and precision measures).
+  Statistics must be fully reported in the paper (including test used, value of \texttt{N}, definition of center, dispersion and precision measures).
 \item
   Authors must state whether samples were randomized and how.
 \item
@@ -462,7 +372,7 @@ For example, in the biomedical sciences, a group of editors representing over 30
 \item
   Software sharing should be encouraged. At the minimum, authors should provide a statement describing if software is available and how to obtain it.
 \end{enumerate}
-Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by Goodman, Fanelli, \& Ioannidis (2016) previously. Several of the principles are purely recommendations; there is no requirement that code be shared, nor metadata. Additionally, software requirements are quite loose, requiring no information about dependencies or software version.
+Even though these principles seem well-developed on the surface, they fail to meet even the basic requirements defined by Goodman, Fanelli, \& Ioannidis (2016) previously. Several of the principles are purely recommendations; there is no requirement that code be shared, nor metadata. Additionally, software requirements are quite loose. No information about dependencies or software version needs to be included. Beyond that, there is not even a requirement that analysis be completed in a scriptable programming language---allowing for the potential that some submitted work may be entirely non-reproducible due to its format.
 
 We see a similar issue even in journals designed specifically for the purpose of improving scientific reproducibility. \emph{Experimental Results}, a publication created by Cambridge University Press to address some of the reproducibility and open access issues in academia, also falls short of meeting high standards. The journal, which showcases articles from a variety of scientific decisions disciplines, states in their transparency and openness policy:
 \begin{quote}
@@ -477,24 +387,24 @@ It is the policy of the American Economic Association to publish papers only if 
 These requirements are quite strict, prohibiting exceptions for papers using data or code not available to the public in the way that many other journals claiming to promote reproducibility do.
 
 \hypertarget{case-studies-in-the-statistical-and-data-sciences}{%
-\subsection{Case Studies In The Statistical And Data Sciences}\label{case-studies-in-the-statistical-and-data-sciences}}
+\subsection{Case Studies in the Statistical and Data Sciences}\label{case-studies-in-the-statistical-and-data-sciences}}
 
 When considering reproducibility policy, the field of Statistical and Data Sciences performs relatively well. The majority of highly ranked journals in the field contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
 
-The \emph{Journal of the American Statistical Association} stands out as having relatively robust requirements. The publication's guidelines require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a process form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (American Statistical Association (2020)).
+The \emph{Journal of the American Statistical Association} stands out as having relatively robust requirements. The publication's guidelines require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a processed form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (American Statistical Association (2020)).
 
-The \emph{Journal of Statistical Software} also has strong guidelines, though less thorough. Authors must provide \emph{commented} source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform, and random number generation must be controlled; and replication materials (typically in the form of a script) must be provided (Journal of Statistical Software (2020)).
+The \emph{Journal of Statistical Software} also has strong guidelines, though less thorough. Authors must provide \emph{commented} source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform; random number generation must be controlled; and replication materials (typically in the form of a script) must be provided (Journal of Statistical Software (2020)).
 
 The expectations of the \emph{Journal of Computational and Graphical Statistics} are notably weaker, requiring only that authors ``submit code and datasets as online supplements to the manuscript,'' with exceptions for security or confidentiality, but providing no further detail (Journal of Computational and Graphical Statistics (2020)). The \emph{R Journal} has the same requirements, but with no exceptions on the data provision policy, stating that authors should ``not use such datasets as examples'' (R Journal Editors (2020)).
 
-Perhaps the weakest reproducibility policies come from \emph{The American Statistician} and the \emph{Annals of Statistics}. The former appears to have no requirements, stating only that it ``strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles,'' while the latter appears to have no statement on reproducibility at all (The American Statistician (2020)).
+Perhaps the least strict reproducibility policies come from \emph{The American Statistician} and the \emph{Annals of Statistics}. The former appears to have no requirements, stating only that it ``strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles,'' while the latter appears to have no statement on reproducibility at all (The American Statistician (2020)).
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/stats-journals} 
 
 }
 
-\caption{Reprodubility Policies of Top Statistical and Data Sciences Journals}\label{fig:unnamed-chunk-4}
+\caption{Reprodubility Policies of Top Statistical and Data Sciences Journals}\label{fig:unnamed-chunk-5}
 \end{figure}
 \hypertarget{the-bigger-picture}{%
 \subsection{The Bigger Picture}\label{the-bigger-picture}}
@@ -517,12 +427,10 @@ The TOP Factor is calculated as follows. Publications are scored on a variety of
 
 When looking at the overall distribution of TOP Factor scores, we see a relatively grim picture: Around 50\% of journals score as low as 0-5 overall, while only just over 5\% score more than 15, just half of the maximum possible score. Over 40 journals failed to score a single point (Woolston (2020)).
 
-Although it is clear that some journals have relatively strong reproducibility and openness policies, that is clearly not the norm. And many that do appear to have policies lacking in robustness, including exceptions for data privacy and security concerns or phrasing guidelines as recommendations rather than requirements. The field of data science stands out among the rest, with the majority of top journals having relatively robust policies.
-
 \hypertarget{assessing-the-success-of-academic-reproducibility-policies}{%
 \subsection{Assessing the Success of Academic Reproducibility Policies}\label{assessing-the-success-of-academic-reproducibility-policies}}
 
-We have seen that, although not necessarily the standard, some journals across the sciences have enacted reproducibility policies. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors \emph{and} journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
+We have seen that, although not necessarily the standard, some journals from across the sciences have enacted reproducibility policies. The simple implementation of a policy, however, does not ensure that its goals will be achieved. Reproducibility can only be addressed when both authors \emph{and} journal reviewers actively implement publishing standards in practice. Without participation and dedication from all involved, reproducibility guidelines serve more as a theoretical goal than a practical achievement.
 
 It is important to ask, then, whether academic reproducibility standards \emph{actually} result in a greater number of reproducible publications.
 
@@ -554,25 +462,23 @@ Stodden, Seiler, \& Ma (2018a) tested the efficacy of this policy in practice, e
 \end{itemize}
 Of the 56 papers they deemed likely reproducible, the authors randomly selected 22 and were able to replicate the results for all but 1, which failed due to its reliance on software that was no longer available.
 
-Hardwicke et al. (2018) conducted a study on the journal \emph{Cognition}, where researchers compared the reproducibility of published work both before and after the journal instituted an open data policy, which required that authors make relevant research data publicly available prior to publication of an article.
+Hardwicke et al. (2018) compared the reproducibility of published work both before and after the journal \emph{Cognition} instituted an open data policy, that required authors to make relevant research data publicly available prior to publication of an article.
 
 The researchers found a considerable increase in the proportion of data available statements (in contrast to `data not available' statements, which could be present due to privacy or security concerns) since the implementation of the policy. Pre-open data policy, only 25\% of articles had data available, while that number was a much higher 78\% after the policy was put in place.
 
-While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62\% of the articles with data available statements had truly reusable datasets--in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49\% of articles with data availability statements as reusable in practice, it is still far from ideal.
-
-Combining these two data points indicates that \emph{less than half} of articles published after the open data policy was instituted actually contained truly usable data.
+While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62\% of the articles with data available statements had truly reusable datasets---in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49\% of articles with data availability statements as reusable in practice, it is still far from ideal.
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
 
 \hypertarget{limitations-on-achieving-reproducibility-in-scientific-publishing}{%
 \section{Limitations on Achieving Reproducibility in Scientific Publishing}\label{limitations-on-achieving-reproducibility-in-scientific-publishing}}
 
-There are several reasons for this apparent divide between journal reproducibility standards and the true proportion of submitted articles that are truly reproducible. Some of these are challenges faced by the article authors, while others are faced by the journal editors.
+There are several reasons for this apparent divide between journal reproducibility standards and the proportion of submitted articles that are truly reproducible. Some of these are challenges faced by the article authors, while others are faced by the journal editors.
 
 \hypertarget{challenges-for-authors}{%
 \subsection{Challenges for Authors}\label{challenges-for-authors}}
 
-Stodden, Seiler, \& Ma (2018b) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility -- open data -- and gathered information about the reasons why authors found difficulties in making their data available to the public
+Stodden, Seiler, \& Ma (2018b) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility---open data---and gathered information about the reasons why authors found difficulties in making their data available to the public
 
 The main challenges listed by respondents were as follows:
 \begin{itemize}
@@ -592,7 +498,7 @@ The relative frequency of these issues varied across several characteristics, in
 
 Beyond technical challenges, other reasons may lead authors to not place their focus on reproducibility. For example, some researchers might fear damage to their reputation if a reproduction attempt fails after they have provided the necessary materials (Lupia \& Elman (2014)).
 
-Given the relatively high frequency of concern over achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that \emph{recommend} the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
+Given the importance of achieving reproducibility, it follows that researchers will not make the necessary effort to do so if journal guidelines provide a way out. Policies that \emph{recommend} the inclusion of data or that allow exceptions to open data for certain reasons are likely to be associated with a lower proportion of reproducible articles than those that make open data mandatory.
 
 \hypertarget{challenges-for-journals}{%
 \subsection{Challenges for Journals}\label{challenges-for-journals}}
@@ -601,7 +507,7 @@ In addition to the challenges faced on the part of the authors, journal reviewer
 
 In order to make sure that all submitted articles comply with reproducibility guidelines, reviewers must go through them one by one and reproduce all of the results by hand using the provided materials.
 
-This is an incredibly intensive process, as we will see in the example of the \emph{American Journal for Political Science} (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
+This is an incredibly time and labor intensive process, as we will see in the example of the \emph{American Journal for Political Science} (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
 
 Jacoby, Lafferty-Hess, \& Christian (2017) describe the AJPS process in detail:
 
@@ -615,12 +521,14 @@ The verification process slows down the journal review process significantly, ad
 
 Journals are often reluctant to take on such an intensive task due to the drastically increased burden it places on reviewers and on the publication's financial resources. This is particularly true given that the number of submitted articles per year has been increasing over time (Leopold (2015)). Every additional submission increases the burden of achieving reproducibility, and with a large enough volume, the challenge can quickly become seemingly impossible to manage reasonably.
 
+Reviewers themselves are also not inclined to support an increased focus on reproducibility. AJPS is an exception, but Journal review is often not a paid position. In many cases, reviewers are obligated to participate as part of their expected contribution to academia. They receive no compensation for their efforts and every additional hour of labor is an unwanted burden. Any changes that add complication to the review process are not desirable; although reproducibility may be important, reviewers are not likely to support a focus on it unless the process is streamlined.
+
 As a result, journals often encourage reviewers to consider authors' compliance with data sharing policies, but do not formally require that they ensure it as a criterion for acceptance (Hrynaszkiewicz (2020)).
 
 \hypertarget{attempts-to-address-these-limitations}{%
 \section{Attempts to Address These Limitations}\label{attempts-to-address-these-limitations}}
 
-The previous discussion makes clear that, although reproducibility is critically important to scientific progress and academic journals are taking steps to encourage it, the scientific community is far from achieving the desired level of widespread reproducibility. In large part, this appears due to the challenge and complexity of actually achieving reproducibility. Those attempting to improve the reproducibility of work can face issues with concerns over legality of sharing data, large commitments of time or money, challenges finding a good repository, and organizing all of the many components of their work in an understandable way, among other things.
+The previous discussion makes clear that, although reproducibility is critically important to scientific progress and academic journals are taking steps to encourage it, the scientific community is far from achieving the desired level of widespread reproducibility. In large part, this appears due to the challenge and complexity of actually achieving reproducibility. Those attempting to improve the reproducibility of work can face challenges over legality of sharing data, large commitments of time or money, difficulties in finding a good repository and organizing all of the many components of their work in an understandable way, among other things.
 
 Additionally, science faces the additional challenge that many publishers do not emphasize reproducibility at all, providing many opportunities for all authors except those personally dedicated to producing reproducible work to leave reproducibility by the wayside. Many journals have no reproducibility requirements, and those that do often do not take the necessary steps to ensure that they are actually met.
 
@@ -632,13 +540,13 @@ These issues, however, are not impossible to overcome. Proponents of reproducibi
 One way to address the reproducibility crisis is to educate data analysts on the topic so that they are aware of both the concept of reproducibility and how to achieve it in their own work. A natural place to focus this education is early on in the data science training pipeline as part of introductory or early-intermediate courses in undergraduate and graduate data science programs (Horton, Baumer, \& Wickham (2014)). This sort of educational integration has a variety of benefits:
 \begin{itemize}
 \item
-  Bringing reproducibility into the discussion early on gives students the tools to add knowledge to their field in the best way possible before they actually conduct any substantive analysis on their own (Janz (2016)). This produces many long run benefits, helping lessen the burden on promoting reproducibility placed on journals and increasing the number (and percentage) of researchers doing and promoting reproducible work.
+  Bringing reproducibility into the discussion early on gives students the tools to add knowledge to their field in the best way possible before they actually conduct any substantive analysis on their own (Janz (2016)). This produces many long run benefits, helping to lessen the burden on promoting reproducibility placed on journals and increasing the number (and percentage) of researchers doing and promoting reproducible work.
 \item
-  If covered in detail as part of the data science curriculum, reproducibility will eventually come easily to students. If learned independently, without effective tools, reproducibility can challenging and even disheartening to try to understand and succeed at. Practicing in the classroom gives students the ability to fail without damaging their reputation, giving a great opportunity to truly learn and understand the concepts so that they feel capable of handling them when they begin their own research.
+  If covered in detail as part of the data science curriculum, reproducibility will eventually seem natural to students. If learned independently, without effective tools, it can be challenging and even disheartening to try to understand and succeed at achieving reproducibility. Practicing in the classroom gives students the ability to fail without damaging their reputation, giving a great opportunity to truly learn and understand the concepts so that they feel capable of handling them when they begin their own research.
 \item
   The application of grading to the topic provides an incentive for students to pay attention, learn, and absorb the information. This same incentive does not exist when researchers attempt to learn about reproducibility independently. In that situation, internal motivation, which may be weak in some individuals, is the only factor present to help promote success.
 \end{itemize}
-Several educators, primarily at the graduate level, have realized the opportunity and taken steps to introduce reproducibility into their courses.
+Several educators, primarily at the graduate level, have realized the opportunity and have taken steps to introduce reproducibility into their courses.
 According to Janz (2016), the primary way of achieving this integration is through the assignment of ``replication studies'' in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. The most famous course of this kind is Government 2001, taught by Gary King at Harvard University. In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
 
 In Thomas M. Carsey's intermediate statistics course at the University of North Carolina at Chapel Hill, students must reproduce the findings of a study by re-collecting the data from the original sources, then must extend the study by building on the analysis.
@@ -649,7 +557,7 @@ The University of California at Berkeley has a similar course to Gary King's Har
 
 At the undergraduate level, rather than assign replication studies the way many graduate schools tend to do, Smith College and Duke University have both integrated reproducibility into their introductory courses through the requirement that assignments be completed in the \texttt{RMarkdown} code + narration format (Baumer, Cetinkaya-Rundel, Bray, Loi, \& Horton (2014)).
 
-Another way to provide education on reproducibility is through the creation of workshops that focus solely on the topic, rather than through integration as just one part of a class (@Janz (2016)).
+Another way to provide education on reproducibility is through the creation of workshops that focus solely on the topic, rather than through integration as just one part of a class (Janz (2016)).
 
 For example, the University of Cambridge conducts a Replication Workshop, where graduate students are asked replicate a paper in their field over eight weekly sessions. When students encounter challenges, such as authors not responding to queries for data or steps of the analysis being poorly defined and explained, they gain a first hand understanding of the consequences of poor transparency.
 
@@ -673,11 +581,11 @@ The \texttt{orderly} (FitzJohn et al. (2020)) package also focuses on file struc
 \def\labelenumi{\arabic{enumi})}
 \tightlist
 \item
-  Track all inputs into an analysis.
+  Track all inputs into an analysis;
 \item
-  Store multiple versions of an analysis where it is repeated.
+  Store multiple versions of an analysis where it is repeated;
 \item
-  Track outputs of an analysis.
+  Track outputs of an analysis; and
 \item
   Create analyses that depend on the outputs of previous analyses.
 \end{enumerate}
@@ -698,7 +606,7 @@ Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package focuses o
 
 }
 
-\caption{Popular Reproducibility Packages in R}\label{fig:unnamed-chunk-5}
+\caption{Popular Reproducibility Packages in R}\label{fig:unnamed-chunk-6}
 \end{figure}
 There have also been several \texttt{Continuous\ integration} tools developed outside of R which can be used by those coding in almost any language. These provide more general approaches to automated checking, which can enhance reproducibility with minimal code.
 
@@ -713,12 +621,12 @@ For example, \texttt{wercker}---a command line tool that leverages Docker---enab
 
 }
 
-\caption{Popular Continuous Integration Tools}\label{fig:unnamed-chunk-6}
+\caption{Popular Continuous Integration Tools}\label{fig:unnamed-chunk-7}
 \end{figure}
 \hypertarget{understanding-the-gaps-in-existing-reproducibility-solutions}{%
 \section{Understanding The Gaps In Existing Reproducibility Solutions}\label{understanding-the-gaps-in-existing-reproducibility-solutions}}
 
-Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress--if on a smaller scale--can be achieved in the short-term.
+Although the current state of reproducibility in academia is quite poor, it is not an impossible challenge to overcome. The relative simplicity of addressing reproducibility, particularly when compared with replicability, makes it an ideal candidate for solution-building. Although significant progress on addressing reproducibility on a widespread scale is a long-term challenge, impactful forward progress---if on a smaller scale---can be achieved in the short-term.
 
 As we have seen, software developers, data scientists, and educators around the world have realized this potential, taking steps to help address the current crisis of reproducibility. Journals have put in place guidelines for authors, statisticians have developed \texttt{R} packages that help structure projects in a reproducible format, and educators have begun integrate reproducibility exercises into their courses.
 
@@ -744,11 +652,9 @@ In order to reach the widest variety of students possible, it is necessary to de
 
 Previously, we considered several different types of software solutions: packages designed for users of \texttt{R} and continuous integration programs that can be used alongside a variety of coding languages. Although these solutions have their advantages, they also have significant drawbacks in terms of their ability to address reproducibility on a widespread scale.
 
-Many of the packages designed for \texttt{R} are incredibly narrow in scope, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. They often succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users with minimal \texttt{R} experience, nor particularly useful to those looking for quick and easy reproducibility checks. The significant learning curve associated with them can also detract potential users who may be interested in reproducibility but not willing to dedicate an extensive amount of time to understanding the intricacies of software operation.
+Many of the packages designed for \texttt{R} are narrow in scope, with each effectively addressing a small component of reproducibility: file structure, modularization of code, version control, etc. They often succeed in their area of focus, but at the cost of accessibility to a wider audience. Their functions are often quite complex to use, and many steps must be completed to achieve the required reproducibility goal. This cumbersome nature means that most reproducibility packages currently available are not easily accessible to users with minimal \texttt{R} experience, nor particularly useful to those looking for quick and easy reproducibility checks. Their significant learning curve can also drive away potential users who may be interested in reproducibility but not willing to dedicate an extensive amount of time to understanding the intricacies of software operation.
 
-Due to their generalized design, Continuous Integration tools do not face the same issues with narrowness or complexity that \texttt{R} packages struggle with. However, this generalizability provides its own additional challenge. Since Continuous Integration tools are designed to be accessible to a wide variety of users with different coding preferences, they are not particularly customizable and lack the ability to address features specific to certain programming languages.
-
-Neither of these different software solutions appear to adequately address the challenge of reproducibility.
+Due to their generalized design, Continuous Integration tools do not face the same issues with narrowness or complexity that \texttt{R} packages struggle with. However, this generalizability provides its own additional challenge. Since Continuous Integration tools are designed to be accessible to a wide variety of users with different coding preferences, they are not particularly user-friendly and lack the ability to address features specific to certain programming languages.
 
 \hypertarget{what-we-need-moving-forward}{%
 \subsection{What We Need Moving Forward}\label{what-we-need-moving-forward}}
@@ -776,7 +682,7 @@ The full list of necessary features for an effective reproducibility tool are pr
 \item
   Be applicable to a wide variety of domains.
 \end{enumerate}
-While this seems like a lot to ask, such a task is not impossible. In the next chapter, we will consider one potential solution: \texttt{fertile}, an R package focused on reproducibility that I have worked to develop.
+While this seems like a lot to ask, such a task is not impossible. In the next chapter, we will consider one potential solution: \texttt{fertile}, an R package focused on reproducibility that I developed.
 
 \hypertarget{my-solution}{%
 \chapter{\texorpdfstring{\texttt{fertile}: My Contribution To Addressing Reproducibility}{fertile: My Contribution To Addressing Reproducibility}}\label{my-solution}}
@@ -793,7 +699,7 @@ That is where my work comes in. In an attempt to produce meaningful change in th
 
 }
 
-\caption{fertile's Package Logo}\label{fig:unnamed-chunk-7}
+\caption{fertile's Package Logo}\label{fig:unnamed-chunk-8}
 \end{figure}
 \texttt{fertile} attempts to address the gaps in existing reproducibility solutions by combining software and education in one product. The package provides a set of simple, easy-to-learn tools that, rather than focus intensely on a specific area like other software programs, provide some information about all six major components of reproducibility. It is also designed to be incredibly flexible, offering benefits to users at any stage in the data analysis workflow and providing users with the option to select which aspects of reproducibility they want to focus on.
 
@@ -805,7 +711,7 @@ In addition, \texttt{fertile} is designed to be educational, teaching its users 
 
 Reproducibility is significantly easier to achieve when all of the tools necessary to do so are located in one place. \texttt{fertile} provides this optimal all-inclusive structure, addressing all six of the primary components of reproducibility discussed in Chapter 1. We will consider \texttt{fertile}'s treatment of each of these components in turn, exploring its analysis of the sample R project shown below, titled \texttt{project\_miceps}:
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-8}
+\includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-9}
 \end{figure}
 All of the code for \texttt{fertile} that will be discussed in this chapter can be found at \url{https://github.com/baumer-lab/fertile}, while the local branch tracking my changes can be found at \url{https://github.com/ambertin/fertile}.
 
@@ -838,10 +744,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~   187.3K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  185.16K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  379.73K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  376.78K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -882,15 +788,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp9TxSC4/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -909,7 +815,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-02-27 16:02:09
+1 LAST RENDERED <NA>     proj_render 2021-03-10 16:07:40
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -1003,9 +909,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~   187.3K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  185.16K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  379.73K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  376.78K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1453,7 +1359,7 @@ As described in the previous sections, \texttt{fertile} addresses all six major 
 
 A summary of the six components of reproducibility and the functionalities in \texttt{fertile} associated with them is provided below.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/components-summary} \caption{Summary of Reproducibility Components and the Related Functionalities in 'fertile'}\label{fig:unnamed-chunk-41}
+\includegraphics[width=1\linewidth]{figure/components-summary} \caption{Summary of Reproducibility Components and the Related Functionalities in 'fertile'}\label{fig:unnamed-chunk-42}
 \end{figure}
 \hypertarget{user-customizability}{%
 \subsection{User Customizability}\label{user-customizability}}
@@ -1528,8 +1434,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.62K image/png                                 
- 3 proteins_v_time.p~ png     380.29K image/png                                 
+ 2 citrate_v_time.png png     187.69K image/png                                 
+ 3 proteins_v_time.p~ png     378.48K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1928,7 +1834,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,093 x 4
+# A tibble: 1,160 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1941,7 +1847,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,083 more rows
+# ... with 1,150 more rows
 \end{verbatim}
 \normalsize
 
@@ -2028,7 +1934,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f7f15a47c10>
+<bytecode: 0x7fe1ca6e0cb8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2039,7 +1945,7 @@ In the \texttt{fertile} version of \texttt{library()},\texttt{fertile} is detach
 
 A full list of the shimmed functions provided by \texttt{fertile} is listed below. Note that---in order to reduce the software dependencies of \texttt{fertile} the shims from the less common \texttt{readxl}, \texttt{rjson}, \texttt{foreign}, and \texttt{sas7bdat} packages are only activated if the user has those packages installed and loaded on their computer.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-51}
+\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-52}
 \end{figure}
 \hypertarget{shim-customization-functionality}{%
 \subsubsection{Shim Customization Functionality}\label{shim-customization-functionality}}
@@ -2138,16 +2044,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      273     2021-02-27 16:02:58
- 2 package:dplyr           <NA>                      base::~ 2021-02-27 16:02:58
- 3 package:readr           <NA>                      base::~ 2021-02-27 16:02:58
- 4 package:tidyr           <NA>                      base::~ 2021-02-27 16:02:58
- 5 package:ggplot2         <NA>                      base::~ 2021-02-27 16:02:58
- 6 package:purrr           <NA>                      base::~ 2021-02-27 16:02:58
- 7 Seed Before             <NA>                      273     2021-02-27 16:02:58
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-02-27 16:02:58
- 9 Seed After              <NA>                      287     2021-02-27 16:02:59
-10 Seed Before             <NA>                      287     2021-02-27 16:02:59
+ 1 Seed @ Start            <NA>                      283     2021-03-10 16:08:21
+ 2 package:dplyr           <NA>                      base::~ 2021-03-10 16:08:21
+ 3 package:readr           <NA>                      base::~ 2021-03-10 16:08:21
+ 4 package:tidyr           <NA>                      base::~ 2021-03-10 16:08:21
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-10 16:08:21
+ 6 package:purrr           <NA>                      base::~ 2021-03-10 16:08:21
+ 7 Seed Before             <NA>                      283     2021-03-10 16:08:21
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-10 16:08:21
+ 9 Seed After              <NA>                      300     2021-03-10 16:08:21
+10 Seed Before             <NA>                      300     2021-03-10 16:08:21
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2221,7 +2127,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f7efd685fc8>
+<bytecode: 0x7fe1a27076e8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2252,7 +2158,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f7f0c95cca8>
+<bytecode: 0x7fe1c634b590>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2283,7 +2189,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f7f15a47c10>
+<bytecode: 0x7fe1ca6e0cb8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2419,7 +2325,7 @@ Authors could run \texttt{fertile} on their work before submitting it to a journ
 
 Although it would require some effort on the journal's side, this would still be an incredibly fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-62}
+\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-63}
 \end{figure}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2434,7 +2340,7 @@ This cover sheet would show which of the six primary reproducibility components 
 
 Journals could place an acceptance requirement that articles achieve a certain subset of badges---for instance, file paths, randomness, and documentation. Submitting authors would run \texttt{fertile} on their end to see which badges they passed. Once they met the requirements, they could run \texttt{proj\_badges()} to generate an article cover sheet. This cover sheet would then be submitted alongside the article and considered as part of the review process. All that reviewers would need to do to ensure that reproducibility requirements are met would be to look at the cover sheet to see which badges the project achieved and check the cover sheet generation information to ensure that it was truly produced by the project that the author says it was produced by.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-63}
+\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-64}
 \end{figure}
 Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
@@ -2467,7 +2373,7 @@ Undergraduate students, therefore, do not get exposed to reproducibility very of
 \end{itemize}
 Though the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-64}
+\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-65}
 \end{figure}
 \texttt{fertile} could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of \texttt{fertile} could look as follows:
 
@@ -2499,7 +2405,7 @@ These students would then be prepared for entering the research world and contri
   \emph{Informal Data Analysis}: A lot of content in the \texttt{R} community is created purely for fun and interest. Outside of work, many \texttt{R} users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through \texttt{fertile} to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!
 \end{itemize}
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/tidytuesday} \caption{The Logo For Popular Tidy Tuesday Event}\label{fig:unnamed-chunk-65}
+\includegraphics[width=1\linewidth]{figure/tidytuesday} \caption{The Logo For Popular Tidy Tuesday Event}\label{fig:unnamed-chunk-66}
 \end{figure}
 \texttt{fertile} is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
 
@@ -2736,14 +2642,14 @@ The score averages for both groups of students were as follows:
 These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed slightly worse, overall, than the \texttt{control} group.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-71-1.pdf}
-\caption{\label{fig:unnamed-chunk-71}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-72-1.pdf}
+\caption{\label{fig:unnamed-chunk-72}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
 \end{figure}
 Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-72-1.pdf}
-\caption{\label{fig:unnamed-chunk-72}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-73-1.pdf}
+\caption{\label{fig:unnamed-chunk-73}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
 \end{figure}
 However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
@@ -2841,14 +2747,14 @@ When considering the distribution of test scores, in addition to just the pure d
 This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-78-1.pdf}
-\caption{\label{fig:unnamed-chunk-78}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-79-1.pdf}
+\caption{\label{fig:unnamed-chunk-79}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
 \end{figure}
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-79-1.pdf}
-\caption{\label{fig:unnamed-chunk-79}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-80-1.pdf}
+\caption{\label{fig:unnamed-chunk-80}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
 \end{figure}
 As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{fertile} and \texttt{control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{control} group.
 
@@ -2861,8 +2767,8 @@ Below, we see a graphical representation of the number of previous courses taken
 Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-80-1.pdf}
-\caption{\label{fig:unnamed-chunk-80}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-81-1.pdf}
+\caption{\label{fig:unnamed-chunk-81}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
 \end{figure}
 Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
@@ -2930,7 +2836,7 @@ Although independence is at risk, many of the other assumptions for linear regre
 
 In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-84-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-84}
+\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-85}
 \end{figure}
 Finally, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
 
@@ -2993,7 +2899,7 @@ If this experimental design gained traction in the \texttt{R} community, it coul
 
 A/B testing is an experimental methodology focused on user experience. In an A/B test, designers compare two different versions of a product, randomly assigning participants to groups to determine which version they will receive. Using statistical hypothesis testing, the researchers attempt to identify which software version was most successful.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-85}
+\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-86}
 \end{figure}
 One of the most popular applications of this form of testing is in marketing. Product sellers, in an attempt to drive traffic to their website and maximize profits, will test several different methods of advertising or web design to see which one results in the most clicks and/or purchase.
 
@@ -3367,6 +3273,9 @@ Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. \emph{Nature
 \leavevmode\hypertarget{ref-baumer2014r}{}%
 Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{arXiv Preprint arXiv:1402.1894}.
 
+\leavevmode\hypertarget{ref-baumer2014r}{}%
+Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{arXiv Preprint arXiv:1402.1894}.
+
 \leavevmode\hypertarget{ref-begley2012raise}{}%
 Begley, C. G., \& Ellis, L. M. (2012). Raise standards for preclinical cancer research. \emph{Nature}, \emph{483}(7391), 531--533.
 
@@ -3417,9 +3326,6 @@ Hardwicke, T. E., Mathur, M. B., MacDonald, K., Nilsonne, G., Banks, G. C., Kidw
 
 \leavevmode\hypertarget{ref-R-tidyselect}{}%
 Henry, L., \& Wickham, H. (2020). Tidyselect: Select from a set of strings. Retrieved from \url{https://CRAN.R-project.org/package=tidyselect}
-
-\leavevmode\hypertarget{ref-hermans2017programming}{}%
-Hermans, F., \& Aldewereld, M. (2017). Programming is writing is programming. In \emph{Companion to the first international conference on the art, science and engineering of programming} (pp. 1--8).
 
 \leavevmode\hypertarget{ref-berkeley_teaching}{}%
 Hillenbrand, S. (2014). Reproducible and collaborative: Teaching the data science life. Berkeley Science Review. Retrieved from \url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/}

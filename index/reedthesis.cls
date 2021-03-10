@@ -302,7 +302,7 @@
     \vfil
     \@author
     \vfil
-    Submitted to the Department of \@department \\
+    Submitted to the Program in \@department \\
     of \@institution \\
     in partial fulfillment \\
     of the requirements for the degree of \\
