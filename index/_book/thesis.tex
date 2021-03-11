@@ -31,6 +31,7 @@
 % Check out CTAN to see: https://www.ctan.org/
 %%
 \usepackage{graphicx,latexsym}
+\usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{amssymb,amsthm}
 \usepackage{longtable,booktabs,setspace}
@@ -270,7 +271,7 @@ Although often confused, the concept of \emph{reproducibility} is distinct from 
 
 }
 
-\caption{Reproducibility vs. Replicability}\label{fig:unnamed-chunk-3}
+\caption{Reproducibility vs. Replicability. In reproducibility, data and code remain constant, while in replicability they are variable.}\label{fig:unnamed-chunk-3}
 \end{figure}
 Reproducibility and replicability are both necessary to the advancement of scientific research, but they vary significantly in terms of their difficulty to achieve. Reproducibility, in theory, is somewhat simple to attain in data analyses--because code is inherently non-random (excepting applications involving random number generation) and data remain consistent, variability is highly restricted. The achievement of replicability, on the other hand, is a much more complex challenge, involving significantly more variablility and requiring high quality data, effective study design, and robust hypotheses.
 
@@ -313,7 +314,7 @@ R OpenSci, a non-profit initiative founded in 2011 to make scientific data retri
 
 Although these recommendations differ from one another, when considered in combination they provide a well-rounded picture of the components important to research reproducibility across the scientific community:
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/6-components} \caption{The 6 Major Components of Reproducibility}\label{fig:unnamed-chunk-4}
+\includegraphics[width=1\linewidth]{figure/6-components} \caption{The 6 Major Components of Reproducibility. Accessibility, organization, documentation, good file paths, controlled randomness, style/readability.}\label{fig:unnamed-chunk-4}
 \end{figure}
 \hypertarget{current-attempts-to-address-reproducibility-in-scientific-publishing}{%
 \section{Current Attempts to Address Reproducibility in Scientific Publishing}\label{current-attempts-to-address-reproducibility-in-scientific-publishing}}
@@ -391,6 +392,8 @@ These requirements are quite strict, prohibiting exceptions for papers using dat
 
 When considering reproducibility policy, the field of Statistical and Data Sciences performs relatively well. The majority of highly ranked journals in the field contain statements on reproducibility. Some of these are quite robust, surpassing the requirements of many of the other journals discussed previously, while others are lacking.
 
+In this section, we'll consider in detail the reproducibility policies of some of these top journals, selected by a compound measure of influence, impact, and prestige---which summarizes the average number of weighted citations received in a given year compared with the number of documents published in that journal over the previous three years---calculated for the year 2020 (see \url{https://www.scimagojr.com/journalrank.php?category=2613}).
+
 The \emph{Journal of the American Statistical Association} stands out as having relatively robust requirements. The publication's guidelines require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a processed form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (American Statistical Association (2020)).
 
 The \emph{Journal of Statistical Software} also has strong guidelines, though less thorough. Authors must provide \emph{commented} source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform; random number generation must be controlled; and replication materials (typically in the form of a script) must be provided (Journal of Statistical Software (2020)).
@@ -404,7 +407,7 @@ Perhaps the least strict reproducibility policies come from \emph{The American S
 
 }
 
-\caption{Reprodubility Policies of Top Statistical and Data Sciences Journals}\label{fig:unnamed-chunk-5}
+\caption{Reprodubility Policies of Top Statistical and Data Sciences Journals. JASA and JSS have the strongest reproducibility requirements, while The American Statistician and The Annals of Statistics have next to none.}\label{fig:unnamed-chunk-5}
 \end{figure}
 \hypertarget{the-bigger-picture}{%
 \subsection{The Bigger Picture}\label{the-bigger-picture}}
@@ -421,7 +424,7 @@ In order to simplify this process, academics at the Center for Open Science (COS
 
 }
 
-\caption{The TOP Factor Rubric}\label{fig:top-factor2}
+\caption{The TOP Factor Rubric. The TOP Factor method uses an eight category rubric to measure reproducibility in the sciences.}\label{fig:top-factor2}
 \end{figure}
 The TOP Factor is calculated as follows. Publications are scored on a variety of categories associated with open science and reproducibility. For each category, they receive a score between 0 (poor) and 3 (excellent) based on the degree to which they emphasize each category in their submission/publication policies. A journal's final score, which can range from 0 to 30, is the sum of the individual scores in each of the categories.
 
@@ -606,7 +609,7 @@ Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package focuses o
 
 }
 
-\caption{Popular Reproducibility Packages in R}\label{fig:unnamed-chunk-6}
+\caption{Popular Reproducibility Packages in R. Drake, packrat (now renv) and workflowr are some of the more well-known reproducibility-focused R packages.}\label{fig:unnamed-chunk-6}
 \end{figure}
 There have also been several \texttt{Continuous\ integration} tools developed outside of R which can be used by those coding in almost any language. These provide more general approaches to automated checking, which can enhance reproducibility with minimal code.
 
@@ -621,7 +624,7 @@ For example, \texttt{wercker}---a command line tool that leverages Docker---enab
 
 }
 
-\caption{Popular Continuous Integration Tools}\label{fig:unnamed-chunk-7}
+\caption{Popular Continuous Integration Tools. Many of these tools are integrated into other tools, like GitHub, making them easily accessible.}\label{fig:unnamed-chunk-7}
 \end{figure}
 \hypertarget{understanding-the-gaps-in-existing-reproducibility-solutions}{%
 \section{Understanding The Gaps In Existing Reproducibility Solutions}\label{understanding-the-gaps-in-existing-reproducibility-solutions}}
@@ -744,10 +747,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  185.16K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  186.97K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  376.78K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  379.46K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -788,15 +791,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnAtQyJ/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnAtQyJ/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmppN3RHm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpnAtQyJ/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -815,7 +818,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-10 16:07:40
+1 LAST RENDERED <NA>     proj_render 2021-03-11 14:08:23
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -909,9 +912,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  185.16K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  186.97K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  376.78K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  379.46K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1434,8 +1437,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.69K image/png                                 
- 3 proteins_v_time.p~ png     378.48K image/png                                 
+ 2 citrate_v_time.png png      186.6K image/png                                 
+ 3 proteins_v_time.p~ png     377.82K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1834,7 +1837,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,160 x 4
+# A tibble: 1,196 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1847,7 +1850,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,150 more rows
+# ... with 1,186 more rows
 \end{verbatim}
 \normalsize
 
@@ -1934,7 +1937,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fe1ca6e0cb8>
+<bytecode: 0x7f962324e170>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2044,16 +2047,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      283     2021-03-10 16:08:21
- 2 package:dplyr           <NA>                      base::~ 2021-03-10 16:08:21
- 3 package:readr           <NA>                      base::~ 2021-03-10 16:08:21
- 4 package:tidyr           <NA>                      base::~ 2021-03-10 16:08:21
- 5 package:ggplot2         <NA>                      base::~ 2021-03-10 16:08:21
- 6 package:purrr           <NA>                      base::~ 2021-03-10 16:08:21
- 7 Seed Before             <NA>                      283     2021-03-10 16:08:21
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-10 16:08:21
- 9 Seed After              <NA>                      300     2021-03-10 16:08:21
-10 Seed Before             <NA>                      300     2021-03-10 16:08:21
+ 1 Seed @ Start            <NA>                      271     2021-03-11 14:09:16
+ 2 package:dplyr           <NA>                      base::~ 2021-03-11 14:09:16
+ 3 package:readr           <NA>                      base::~ 2021-03-11 14:09:16
+ 4 package:tidyr           <NA>                      base::~ 2021-03-11 14:09:16
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-11 14:09:16
+ 6 package:purrr           <NA>                      base::~ 2021-03-11 14:09:16
+ 7 Seed Before             <NA>                      271     2021-03-11 14:09:16
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-11 14:09:16
+ 9 Seed After              <NA>                      285     2021-03-11 14:09:16
+10 Seed Before             <NA>                      285     2021-03-11 14:09:16
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2127,7 +2130,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fe1a27076e8>
+<bytecode: 0x7f96155861a8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2158,7 +2161,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fe1c634b590>
+<bytecode: 0x7f961e24ee00>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2189,7 +2192,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fe1ca6e0cb8>
+<bytecode: 0x7f962324e170>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
