@@ -34,7 +34,18 @@ Despite the apparent simplicity of achieving reproducibility, a significant prop
 
 In the past several years, this "crisis" of reproducibility has risen toward the forefront of scientific discussion. Without reproducibility, the scientific community cannot properly verify study results. This makes it difficult to identify which information should be believed and which should not, and increases the likelihood that studies sharing misleading information will be dispersed. The rise of data-driven technologies, alongside our newfound ability to instantly share knowledge worldwide, has made reproducibility increasingly critical to the advancement of scientific understanding, necessitating the development of solutions for addressing the issue. 
 
-Academics have recognized this, and publications on the topic appear to have increased significantly in the last several years (@eisner-reproducibility; @sep-scientific-reproducibility; @bioessays-gosselin; @engineering-reproducibility; @plos-biology).
+Academics have recognized this, and publications on the topic appear to have increased significantly in the last several years. For example:
+
+1. @eisner-reproducibility writes that much of science cannot be reproduced, arguing that some of the major factors behind the problem are fraud, encouraged by the need to publish in top journals, poor experimental design, and poor statistical analysis.
+
+2. @sep-scientific-reproducibility argue that the term "reproducibility crisis" has gained significant currency over the last decade after many large-scale reproducibility studies---including the *Nature* study discussed previously---have returned negative results.
+
+3. @bioessays-gosselin shares a call to action (summarized by the acronym ACTS---**AC**cess to **T**ransparent **S**tatistics), assembling measures that can be implemented by journals to increase the quality of statistical publications: standardizing paragraph contents, requiring a paragraph on statistical limitations, providing funding to study reproducibility, and requiring that methods sections start with statistics.
+
+4. @engineering-reproducibility argues that a common theme in the issue of reproducibility and related challenges is the "increasing demands of complex research requiring use of multiple experimental and computational research methods" and promises to take steps to improve reproducibility in the *Biointerphase* journal.
+
+5. @plos-biology survey a random sample of biomedical journal articles in order to analyze their data availability for the purposes of reproducibility. They find results that are somewhat more positive than previous studies---indicating that perhaps the biomedical sciences are moving in the right direction---but argue that there is still a long way to go before true journal reproducibility is achieved.
+
 
 ## The Components of Reproducible Research
 

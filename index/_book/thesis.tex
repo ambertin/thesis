@@ -282,8 +282,20 @@ Despite the apparent simplicity of achieving reproducibility, a significant prop
 
 In the past several years, this ``crisis'' of reproducibility has risen toward the forefront of scientific discussion. Without reproducibility, the scientific community cannot properly verify study results. This makes it difficult to identify which information should be believed and which should not, and increases the likelihood that studies sharing misleading information will be dispersed. The rise of data-driven technologies, alongside our newfound ability to instantly share knowledge worldwide, has made reproducibility increasingly critical to the advancement of scientific understanding, necessitating the development of solutions for addressing the issue.
 
-Academics have recognized this, and publications on the topic appear to have increased significantly in the last several years (Eisner (2018); Fidler \& Wilcox (2018); Gosselin (2020); McArthur (2019); Wallach, Boyack, \& Ioannidis (2018)).
-
+Academics have recognized this, and publications on the topic appear to have increased significantly in the last several years. For example:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Eisner (2018) writes that much of science cannot be reproduced, arguing that some of the major factors behind the problem are fraud, encouraged by the need to publish in top journals, poor experimental design, and poor statistical analysis.
+\item
+  Fidler \& Wilcox (2018) argue that the term ``reproducibility crisis'' has gained significant currency over the last decade after many large-scale reproducibility studies---including the \emph{Nature} study discussed previously---have returned negative results.
+\item
+  Gosselin (2020) shares a call to action (summarized by the acronym ACTS---\textbf{AC}cess to \textbf{T}ransparent \textbf{S}tatistics), assembling measures that can be implemented by journals to increase the quality of statistical publications: standardizing paragraph contents, requiring a paragraph on statistical limitations, providing funding to study reproducibility, and requiring that methods sections start with statistics.
+\item
+  McArthur (2019) argues that a common theme in the issue of reproducibility and related challenges is the ``increasing demands of complex research requiring use of multiple experimental and computational research methods'' and promises to take steps to improve reproducibility in the \emph{Biointerphase} journal.
+\item
+  Wallach, Boyack, \& Ioannidis (2018) survey a random sample of biomedical journal articles in order to analyze their data availability for the purposes of reproducibility. They find results that are somewhat more positive than previous studies---indicating that perhaps the biomedical sciences are moving in the right direction---but argue that there is still a long way to go before true journal reproducibility is achieved.
+\end{enumerate}
 \hypertarget{the-components-of-reproducible-research}{%
 \section{The Components of Reproducible Research}\label{the-components-of-reproducible-research}}
 
@@ -747,10 +759,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.36K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  186.49K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  379.38K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  377.69K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -791,15 +803,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmptlCZP2/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmptlCZP2/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmptlCZP2/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -818,7 +830,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-13 13:16:19
+1 LAST RENDERED <NA>     proj_render 2021-03-14 12:19:28
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -912,9 +924,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.36K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  186.49K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  379.38K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  377.69K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1437,8 +1449,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.44K image/png                                 
- 3 proteins_v_time.p~ png     379.28K image/png                                 
+ 2 citrate_v_time.png png      186.3K image/png                                 
+ 3 proteins_v_time.p~ png     379.17K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1837,7 +1849,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,202 x 4
+# A tibble: 1,208 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1850,7 +1862,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,192 more rows
+# ... with 1,198 more rows
 \end{verbatim}
 \normalsize
 
@@ -1937,7 +1949,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f9741216f50>
+<bytecode: 0x7fdf82df0040>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2047,16 +2059,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      257     2021-03-13 13:17:02
- 2 package:dplyr           <NA>                      base::~ 2021-03-13 13:17:02
- 3 package:readr           <NA>                      base::~ 2021-03-13 13:17:02
- 4 package:tidyr           <NA>                      base::~ 2021-03-13 13:17:02
- 5 package:ggplot2         <NA>                      base::~ 2021-03-13 13:17:03
- 6 package:purrr           <NA>                      base::~ 2021-03-13 13:17:03
- 7 Seed Before             <NA>                      257     2021-03-13 13:17:03
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-13 13:17:03
- 9 Seed After              <NA>                      271     2021-03-13 13:17:03
-10 Seed Before             <NA>                      271     2021-03-13 13:17:03
+ 1 Seed @ Start            <NA>                      250     2021-03-14 12:20:12
+ 2 package:dplyr           <NA>                      base::~ 2021-03-14 12:20:12
+ 3 package:readr           <NA>                      base::~ 2021-03-14 12:20:13
+ 4 package:tidyr           <NA>                      base::~ 2021-03-14 12:20:13
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-14 12:20:13
+ 6 package:purrr           <NA>                      base::~ 2021-03-14 12:20:13
+ 7 Seed Before             <NA>                      250     2021-03-14 12:20:13
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-14 12:20:13
+ 9 Seed After              <NA>                      266     2021-03-14 12:20:13
+10 Seed Before             <NA>                      266     2021-03-14 12:20:13
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2130,7 +2142,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f9731b21dd0>
+<bytecode: 0x7fdf75073938>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2161,7 +2173,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7f9738587800>
+<bytecode: 0x7fdf7f82eae8>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2192,7 +2204,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f9741216f50>
+<bytecode: 0x7fdf82df0040>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
