@@ -759,10 +759,10 @@ One of the fastest ways to gain an overview of the existing files (including dat
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  186.49K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  186.75K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  377.69K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.18K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -803,15 +803,15 @@ project_miceps/Estrogen_Receptors.docx
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpxb7rAp/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpxb7rAp/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp7hgflm/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpxb7rAp/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -830,7 +830,7 @@ If \texttt{proj\_render()} executes without error, this indicates that all the n
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-14 12:19:28
+1 LAST RENDERED <NA>     proj_render 2021-03-17 13:07:04
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -924,9 +924,9 @@ There are also several functions help with reshaping the entire project structur
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  186.49K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  186.75K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  377.69K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.18K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1449,8 +1449,8 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png      186.3K image/png                                 
- 3 proteins_v_time.p~ png     379.17K image/png                                 
+ 2 citrate_v_time.png png     189.17K image/png                                 
+ 3 proteins_v_time.p~ png     380.37K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1849,7 +1849,7 @@ Users interested in looking back at their past choices and mistakes can do so as
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,208 x 4
+# A tibble: 1,214 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1862,7 +1862,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,198 more rows
+# ... with 1,204 more rows
 \end{verbatim}
 \normalsize
 
@@ -1949,7 +1949,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fdf82df0040>
+<bytecode: 0x7f8003c7aab8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2059,16 +2059,16 @@ The render log contains information used to run many of the checks in \texttt{fe
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      250     2021-03-14 12:20:12
- 2 package:dplyr           <NA>                      base::~ 2021-03-14 12:20:12
- 3 package:readr           <NA>                      base::~ 2021-03-14 12:20:13
- 4 package:tidyr           <NA>                      base::~ 2021-03-14 12:20:13
- 5 package:ggplot2         <NA>                      base::~ 2021-03-14 12:20:13
- 6 package:purrr           <NA>                      base::~ 2021-03-14 12:20:13
- 7 Seed Before             <NA>                      250     2021-03-14 12:20:13
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-14 12:20:13
- 9 Seed After              <NA>                      266     2021-03-14 12:20:13
-10 Seed Before             <NA>                      266     2021-03-14 12:20:13
+ 1 Seed @ Start            <NA>                      282     2021-03-17 13:07:45
+ 2 package:dplyr           <NA>                      base::~ 2021-03-17 13:07:45
+ 3 package:readr           <NA>                      base::~ 2021-03-17 13:07:45
+ 4 package:tidyr           <NA>                      base::~ 2021-03-17 13:07:45
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-17 13:07:45
+ 6 package:purrr           <NA>                      base::~ 2021-03-17 13:07:45
+ 7 Seed Before             <NA>                      282     2021-03-17 13:07:45
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-17 13:07:45
+ 9 Seed After              <NA>                      297     2021-03-17 13:07:46
+10 Seed Before             <NA>                      297     2021-03-17 13:07:46
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2142,7 +2142,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fdf75073938>
+<bytecode: 0x7f7ff420ff90>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2173,7 +2173,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fdf7f82eae8>
+<bytecode: 0x7f7ffdb5eee8>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2204,7 +2204,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fdf82df0040>
+<bytecode: 0x7f8003c7aab8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2853,13 +2853,13 @@ In the residuals versus fitted values and normal quantile-quantile plots for the
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-85-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-85}
 \end{figure}
-Finally, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
+Then, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
 
 Those who use R packages for their own benefit do so with specific intention and knowledge that they are doing so. In practice, unless attempting to do some sort of software testing, no one will use a package that they do not know is loaded.
 
-In order to create an effective experimental environment, however, concessions must be made. If \texttt{fertile} were tested in its natural use state, where students were aware that they were using it, it would introduce the possibility of significant bias in the results. Students in the \texttt{fertile} group, for example, might change their behavior, knowing that their software is designed to improve reproducibility, and pursue extra research into the topic, affecting their test performance.
+In order to create an effective experimental environment, however, concessions must be made. If \texttt{fertile} were tested in its natural use state, where students were aware that they were using it, it would introduce the possibility of significant bias in the results. Students in the \texttt{fertile} group, for example, might change their behavior, knowing that their software is designed to improve reproducibility, and pursue extra research into the topic, affecting their test performance. We do not know, from this data, whether \texttt{fertile} has significant benefits in its standard practice. All we can conclude from this study is that in the specific conditions that \texttt{fertile} was used in this course, there was no evidence that the package's interactive reproducibility messaging provides learning benefits when used without students' knowledge.
 
-We do not know, from this data, whether \texttt{fertile} has significant benefits in its standard practice. All we can conclude from this study is that we do not have evidence that the package's interactive reproducibility messaging provides learning benefits when used without students' knowledge.
+Finally, there is the fact that the results of this experiment cannot be generalized beyond the Smith College Introduction to Data Science course. In no way Smith's SDS 192 course representative of the wider undergraduate introductory data science community. Smith classes have a very different student makeup than courses at most other institutions---with the distinct feature of being non-male-dominated---and the curriculum is also not consistent with other schools. As a result, the findings of this study can not realistically be extended beyond Smith. In order to gain a better understanding of \texttt{fertile}'s performance in the environments of other colleges and universities, additional studies would be necessary.
 
 \hypertarget{implications}{%
 \subsection{Implications}\label{implications}}
