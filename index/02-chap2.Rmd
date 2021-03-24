@@ -26,7 +26,19 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 knitr::include_graphics("figure/sample-project.png")
 ```
 
-All of the code for `fertile` that will be discussed in this chapter can be found at https://github.com/baumer-lab/fertile, while the local branch tracking my changes can be found at https://github.com/ambertin/fertile.
+`project_miceps` contains data and analysis from a study concerning the differences in bicep muscle growth between male and female mice. The results from this study, conducted in part by Smith College professor Stylianos Scordilis, were published in *Cellular and Molecular biology letters* in 2010 (@metskas2010gender).
+
+The folder contains a variety of different file types:
+- 1 `.Rmd` file containing the analysis code. This involves data manipulation, visualization, and random number generation
+- 1 `.html` containing the knitted output of the analysis code
+- 3 `.csv` files containing the experimental data
+- 2 `.png` image files containing plot outputs from the analysis
+- 1 `README` file containing information about the project
+- A `.docx` file containing text about estrogen receptors in mice
+- `.Rproj` and `.Rhistory` files, containing data used by `R` to track work and maintain the project structure
+
+
+In the following sections, we will consider the functionality of `fertile` as demonstrated primarily through the results of a reproducibility analysis conducted on `project_miceps`. All of the code for `fertile` that will be discussed in this chapter can be found at https://github.com/baumer-lab/fertile, while the local branch tracking my changes can be found at https://github.com/ambertin/fertile.
 
 
 ### Component 1: Accessibile Project Files
@@ -41,7 +53,7 @@ library(fertile)
 
 One of the fastest ways to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxiliary (image or text) files they have. 
 
-
+When this is run on `project_miceps`, we see the same files as described before--their names, file sizes, extensions, and a "mime", which summarizes the file type in a more general way than the extension.
 
 ```{r, eval = FALSE}
 proj_analyze_files("project_miceps")
@@ -55,15 +67,12 @@ proj_analyze_files("project_miceps")
 
 \normalsize
 
-Users can also check for the existence of a README description file with `has_readme()`:
-
- 
+Users can also check for the existence of a README description file with `has_readme()`. Since, as we know, `project_miceps` contains a `README` file, this function returns a positive confirmation.
 
 ```{r}
 has_readme("project_miceps")
 ```
 
- 
 
 #### Testing For Self-Containment
 
@@ -77,6 +86,7 @@ library(tidyverse)
 library(fertile)
 ```
 
+Before the files are sandboxed, we see them in their original directory.
 
 ```{r sandbox-1, eval = FALSE}
 fs::dir_ls('project_miceps') %>% head(3)
@@ -89,6 +99,8 @@ cat(output[1], "\n")
 cat(output[2], "\n")
 cat(output[3])
 ```
+
+After they are sandboxed, we see that the directories for the files have changed, now beginning with a sequence starting with `/var/folders...`---the path used in temporary directories---indicating that the files have now been copied to a new location.
 
 
 ```{r, sandbox-2, eval = FALSE}
@@ -110,23 +122,20 @@ cat(stringr::str_wrap(output[3], width = 80, indent = 0, exdent = 0))
 
 Once a directory is sandboxed, users can run the `proj_render()` function, which checks all `.R` and `.Rmd` code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 
- 
+Below, `proj_render()` executes without error, indicating that the project compiles successfully when removed from its original environment---a positive sign of reproducibility.
 
-```{r, eval = FALSE}
+```{r}
 proj_render(temp_dir)
 ```
 
- 
-
-If `proj_render()` executes without error, this indicates that all the necessary files are present. Users can also confirm this by checking the time stamp of the last successful render, captured in the `render_log_report()` function. If the time stamp matches the current time, the project successfully compiled.
+Users can confirm the last time the project was known to have successfully rendered by checking the time stamp of the last successful render, captured in the `render_log_report()` function. If the time stamp matches the current time, the project successfully compiled.
 
  
-
 ```{r, message = FALSE}
 slice_tail(render_log_report(temp_dir))
 ```
 
- 
+
 
 ### Component 2: Organized Project Structure
 
@@ -149,7 +158,7 @@ The last check that focuses on the file system is `has_only_used_files()`. One o
 * Outputs created by knitting any `.Rmd` files (`.html`, `.pdf`, or `.docx` files with the same name as the `.Rmd`)
 * Files created by `fertile`. In an effort to capture information about dependencies, `fertile` creates a text file capturing the session information when a project is run and provides an option to generate an `.R` script that can install all of the packages referenced in a project's code. These files are considered "used."
 
-
+When `has_only_used_files()` is run on `project_miceps`, two files are returned: the `.docx` file and one of the data files, `mice.csv`. This indicates that neither of those files were referenced in the code, nor were they created by it. Since no other files were returned, this indicates that all of the other files were either inputs or outputs to the data analysis.
  
 ```{r}
 # List the files in the directory
@@ -163,9 +172,9 @@ has_only_used_files("project_miceps")
 
 #### Reorganizing File Structure
 
-There are also several functions help with reshaping the entire project structure to a more reproducible format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders.
+There are also several functions help with reshaping the entire project structure to a more reproducible format. For example, `proj_suggest_moves()` provides suggestions for how to reorganize the files into folders, with recommendations based on an R package structure.
 
-
+When run on `project_miceps`, the results indicate that the `.csv` files should be moved to a `data-raw` file, the `.Rmd` should be moved to vignettes, and the `.docx`, `.html` and `.png` files should be moved to an `inst` folder, with further deliniation by file type.
 
 ```{r, eval = FALSE}
 files <- proj_analyze_files("project_miceps")
@@ -207,7 +216,7 @@ One important component of documentation is the inclusion of a README file. A RE
 5. A description of how to run the project---for example, a summary of the order in which the included files should be run.
 6. Contact information for the author of the project.
 
-`fertile` ensures that a README is included alongside the user's project with the `has_readme()` function:
+`fertile` ensures that a `README` is included alongside the user's project with the `has_readme()` function. As discussed in the previous section on Component 1, this returns a positive result since `project_miceps` contains a `README` file.
 
  
 
@@ -221,9 +230,8 @@ has_readme("project_miceps")
 
 Another important component of documentation is that it must be clear in which order provided files should be run. While this information can be included as part of the README, it is sometimes provided via other methods---for example, through a `makefile`/`drakefile` (make-style file generated by the `Drake` package in `R`) or through a standardized naming or numbering convention of files. 
 
-`has_clear_build_chain()` checks for these non-README methods of ensuring that file ordering is clear. `project_miceps`, since it only contains one code file, passes this check easily:
+`has_clear_build_chain()` checks for these non-README methods of ensuring that file ordering is clear. `project_miceps`, since it only contains one code file, passes this check easily and no error messages result:
 
- 
 
 ```{r}
 has_clear_build_chain("project_miceps")
@@ -235,9 +243,8 @@ has_clear_build_chain("project_miceps")
 
 There are also several features focused on software dependencies. Every time the code contained within a project is rendered by `fertile`, the package generates a file capturing the `sessionInfo()` just after the code was run. This file contains information about the R version in which the code was run, the list of packages that were loaded, and their specific versions. 
 
-The dependency information from `project_miceps` looks as follows:
+The dependency information from `project_miceps` looks as follows. As we see, the project loaded the `stargazer`, `skimr`, `purrr`, `ggplot2`, `tidyr`, `readr` and `dplyr` packages, indicating that they are potential dependencies. We can also see the R version and operating system version that the project was run on, as well as the fact that the rendering was completed on a Mac.
 
- 
 
 ```{r echo = FALSE, eval = FALSE}
 proj_render("project_miceps")
@@ -265,7 +272,7 @@ The `proj_pkg_script()` function builds off of this behavior, providing a method
 
 When run on an `R` project directory, the function creates a `.R` script file that contains the code needed to install all of the packages referenced in the project, differentiating between packages located on CRAN and those located on GitHub.
 
- 
+When run on `project_miceps`, we find that `broom`, `dplyr`, `ggplot2`, `readr`, and other packages are all referenced in the code. As indicated by the installation script, these packages are hosted on CRAN and can be installed using `install.packages()`. We also see that there are no GitHub packages used in this project.
 
 ```{r}
 install_script <- proj_pkg_script("project_miceps")
@@ -292,7 +299,7 @@ Code commenting---the process of placing human-readable descriptions next to cod
 
 `has_well_commented_code()` is designed to check for this. The function reads through all `.R` and `.Rmd` files in a project directory and, for each, calculates the fraction of lines in the file that are comments. Files for which comments make up less than 10% of the written lines are flagged as poorly commented, warning users to make corrections and increase the number of comments in their code. 
 
-The primary code file in `project_miceps`, "analysis.Rmd", is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by `has_well_commented_code()`:
+The primary code file in `project_miceps`, "analysis.Rmd", is a great example of a poorly commented file. It only contains 6 lines of comments, while including over 100 lines of code. As such, it is flagged by `has_well_commented_code()`, indicating that the creator of that file should add more comments to clarify what is happening in the code:
 
 ```{r, eval = FALSE}
 has_well_commented_code("project_miceps")
@@ -326,7 +333,6 @@ One of the important components of R package development, however, is that a pac
 
 `fertile` accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, `read.csv("~/Desktop/my_data.csv")`, gives a different message than `read_csv("../../../Desktop/my_data.csv")`.
 
-
 ```{r write_csv, include=FALSE}
 readr::write_csv(mtcars, "~/Desktop/my_data.csv")
 ```
@@ -339,6 +345,8 @@ library(fertile)
 file.exists("~/Desktop/my_data.csv")
 ```
 
+When we try to access the `my_data.csv` file via an absolute path to the computer desktop, where the file is located, `fertile` recognizes that an absolute path has been provided and returns an error stating this. It also gives the option for the user to run `utils::read.csv('~/Desktop/my_data.csv')`, which will not throw an error, but will return the same result.
+
 ```{r, eval = FALSE}
 read.csv("~/Desktop/my_data.csv")
 ```
@@ -348,6 +356,8 @@ error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducibl
 
 cat(stringr::str_wrap(error_msg, width = 70))
 ```
+
+The error message is different when referring to a relative path that is outside of the directory. In the example below, we reference the same `my_data.csv` file, but instead using relative paths indicating to go back three directories to find the `/Desktop` folder. This time, the `fertile` warning message mentions path that "lead outside the project directory". The suggested override command also changes to reflect the path that was provided.
 
 ```{r, eval = FALSE}
 read_csv("../../../Desktop/my_data.csv")
@@ -374,7 +384,7 @@ For more information about the interactive warning system and some of its custom
 
 `fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 
- 
+When this function is run on `project_miceps`, we see no paths at fault, indicating that all paths in the project are reproducible.
 
 ```{r, eval = FALSE}
 proj_analyze_paths('project_miceps')
@@ -394,6 +404,8 @@ Paths can also be checked individually, or in groups, using `check_path()`.
 check_path("project_miceps")
 ```
 
+Since the current working directory (`getwd()`) is always returned as an absolute path, running `check_path()` on it throws an error warning about this fact.
+
 ```{r path checks-2, eval = FALSE}
 # Absolute path (current working directory)
 check_path(getwd())
@@ -405,6 +417,7 @@ error_msg <- "Error: Detected absolute paths. Absolute paths are not reproducibl
 cat(stringr::str_wrap(error_msg, width = 70))
 ```
 
+If providing a path leading outside the project directory, up a level in the file framework, an error mentioning paths outside the project directory is returned.
 
 ```{r path checks-3, eval = FALSE}
 # Path outside the directory
@@ -416,7 +429,6 @@ error_msg <- "Error: Detected paths that lead outside the project directory. Suc
 cat(stringr::str_wrap(error_msg, width = 70))
 ```
  
-
 These functions, together, cover all of the reproducibility sub-components involving file paths. Users are warned not to use absolute paths or paths pointing outside of the directory, both while they are coding and after the fact, and provided with a recommended solution to the problem if they do so. Additionally, users are prevented from using functions that will certainly break reproducibility and provided with safer alternatives. 
 
 ### Component 5: Randomness
@@ -458,13 +470,26 @@ sample_frac(mice, 0.5)
 
  
 
-However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. Had a seed been set, however, the project would have passed.
+However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. 
 
  
 ```{r}
 has_no_randomness('project_miceps')
 ```
  
+If a seed had been set, however, this code would have passed. Consider this alternate example. The following sample project, `project_randomseed` contains only a `.Rproj` file and an `.Rmd` document containing the following code:
+
+```{r, eval = FALSE}
+set.seed(1)
+rnorm(2)
+```
+
+In this situation, randomness occurs in the calling of `rnorm()`, but it is controlled by the use of `set.seed`. This time, `has_no_randomness()` passes without error:
+
+```{r}
+has_no_randomness('project_randomseed')
+```
+
 
 `fertile`'s randomness-centered feature helps analysts know that their use of randomness is controlled, ensuring that functions involving random number generation will always produce the same output each time they are run.
 
@@ -578,7 +603,11 @@ The `proj_analyze()` function creates a report documenting the structure of a da
 * `proj_suggest_moves()`, which provides suggestions for how to reorganize files to create a more reproducible file structure
 * `proj_analyze_paths()`, which captures a list of the non-reproducible file paths referenced in source code
 
- 
+When `proj_analyze()` is run on `project_miceps`, we see the following information:
+- 10 packages (including `broom`, `dplyr`, `fs` and more) are referenced in the analysis code
+- 12 files are in the project directory, including some image files, data files, and a few files produced from some of the analyses that have been run by fertile (`install_proj_packages.R` and `software-versions.txt`).
+- There are 10 suggestions for moving files, with data files to `data-raw`, script files to `R`, and other files to `inst`
+
 
 ```{r proj_analyze, tidy.opts=list(width.cutoff=60), eval = FALSE}
 proj_analyze('project_miceps')
@@ -635,7 +664,11 @@ knitr::include_graphics(c("figure/structure-badge.png", "figure/tidy-badge.png",
 7. Information about the `R` version, platform, and operating system of the computer used to generate the `html` at the time that it was created.
 8. The names of files in the project that the `html` found the badges for as well as their date of last modification.
 
-The `html` output for `project_miceps` can be seen below:
+The `html` output for `project_miceps` can be seen below. As we can see, `project_miceps` receives the "Project Structure" and "File Paths" badges but fails "Tidy Files", "Documentation", "Randomness", and "Code Style". This aligns with our previous results from each of the components of reproducibility. For example, `project_miceps` passed `proj_analyze_paths()` with flying colors, but failed `has_well_commented_code()` (documentation), `has_no_randomness()` (randomness), and `has_no_lint()` (code style).
+
+We see these failures reflected in the badge report section titled "Reasons for Failure", which provides the list of functions responsible for why the project failed to receive that badge. For example, we can see that for the "Tidy Files" badge, `project_miceps` failed `has_tidy_images()`, `has_tidy_raw_data()`, and `has_only_used_files()`.
+
+At the end of the report, in the section titled "Output Generation Details", we see information similar to what was produced with the previously described dependency management functions. We see the date the project was rendered by me, Audrey Bertin, on October 29th, 2020 at just after 2 pm Eastern time using R version 4.0.2 on a Mac computer running macOS Catalina. Additionally, we see the files contained in the project and their last modified dates.
 
 ```{r badges-1, echo = FALSE, fig.cap="Output: Badges and Reasons for Failure", out.width = "100%"}
 knitr::include_graphics("figure/badges-1.png")
@@ -658,8 +691,7 @@ Users wanting to focus on groups of checks can do so using the `proj_check_some(
 * `contains()`: Contains a literal string.
 * `matches()`: Matches a regular expression.
 
-For example, a variety of checks in `fertile` focus on making sure the project has a "tidy" structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using `proj_check_some()` as follows:
-
+For example, a variety of checks in `fertile` focus on making sure the project has a "tidy" structure--essentially that there are not files cluttered together all in one folder. Users interested in checking their tidyness can do so all at once using `proj_check_some()` as follows. When run on `project_miceps`, we see that three of the tidyness checks fail, while three pass. The errors are associated with tidy scripts, image files, and data files.
  
 
 ```{r echo=FALSE}
@@ -680,7 +712,7 @@ proj_check_some("project_miceps", contains("tidy"))
 ```
 \normalsize
 
-Users might also attempt to call the two checks involving project roots together:
+Users might also attempt to call the two checks involving project roots together. When we do this, we see that `project_miceps` has no issues with project roots and has a good root structure.
 
  
 ```{r, eval = FALSE}
@@ -693,19 +725,7 @@ proj_check_some("project_miceps", ends_with("root"))
 ```
 \normalsize
 
-Or, perhaps, they might want to run all the functions beginning with "has_only":
 
- 
-```{r, eval = FALSE}
-proj_check_some("project_miceps", starts_with("has_only"))
-```
- 
-\footnotesize
-```{r, echo = FALSE}
-proj_check_some("project_miceps", starts_with("has_only"))
-```
-\normalsize 
- 
 #### Individual Checks
 
 If users do not want to run functions in groups, and prefer to run them individually, that option is also provided to them. Every check that makes up `check()` and every sub-component of `project_analyze()`can be run individually. 
@@ -723,7 +743,7 @@ As soon as a dangerous function is called, `fertile` alerts the user of their mi
 Users interested in looking back at their past choices and mistakes can do so as well. The `log_report()` function provides access to a log listing the commands with a link to reproducibility that have been called.
 
 
- 
+When we execute the commands `library(purrr)`, `library(forcats)`, and `read_csv(fs::path('project_miceps', "mice.csv"))`, we see those actions appear in the log. Since `read_csv` takes a file path argument, `fertile` captures the path that was called and reports it under `path`.
 
 ```{r read-csv, message=FALSE, include=FALSE}
 library(purrr)
@@ -816,7 +836,7 @@ As a result of this, we believed it important to include features in `fertile` t
 
 Several functions in `fertile` have been written to implement this behavior:
 
-1. The `add_shim()` function allows users to write a new shim to `fertile`. When this function is called, `fertile` writes the code for the shimmed function using the standard structure explained previously. It then adds that code to a file located alongside `fertile`'s documentation on the user's computer so that it is permanently saved, and then executes it in order to activate the new shim and immediately bring it into the user's `R` environment. With `add_shim()`, users can only add shims individually, as in the example below.
+1. The `add_shim()` function allows users to write a new shim to `fertile`. When this function is called, `fertile` writes the code for the shimmed function using the standard structure explained previously. It then adds that code to a file located alongside `fertile`'s documentation on the user's computer so that it is permanently saved, and then executes it in order to activate the new shim and immediately bring it into the user's `R` environment. With `add_shim()`, users can only add shims individually, as in the example below, where a shim for the function `write.ftable` from the `stats` package is added.
 
 ```{r, eval = FALSE}
 # Code to add a shim for stats::write.ftable 
@@ -870,8 +890,9 @@ The render log (`.fertile_render_log.csv`), accessible via `render_log_report()`
 
 3. The user can generate a new file manually at any time by executing the `proj_render()` command.
 
-The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a time stamp of the last time the code was run by `fertile`. Users cannot erase it easily.
+The render log contains information used to run many of the checks in `fertile`. It captures the random number generator seed before and after executing code, notes which packages and files are accessed and the function with which they were called, and contains a time stamp of the last time the code was run by `fertile`. 
 
+In the render log report for project miceps, we see calls to the packages that have previously been noted as dependencies (e.g. `dplyr`, `readr`, `tidyr`, etc.), references to file paths in the code (e.g. `Blot_data_updated.csv`), and a timestamp of the last render.
 ```{r, eval = FALSE}
 render_log_report("project_miceps")
 ```
