@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  185.75K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.91K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  375.48K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.69K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -819,15 +819,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpEpgXgX/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpz7NjtM/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpEpgXgX/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpz7NjtM/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpEpgXgX/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpz7NjtM/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -851,7 +851,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-25 12:36:24
+1 LAST RENDERED <NA>     proj_render 2021-03-25 14:04:11
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -948,9 +948,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  185.75K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.91K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  375.48K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.69K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1503,8 +1503,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.91K image/png                                 
- 3 proteins_v_time.p~ png     378.69K image/png                                 
+ 2 citrate_v_time.png png     188.23K image/png                                 
+ 3 proteins_v_time.p~ png     378.72K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1805,7 +1805,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,227 x 4
+# A tibble: 1,233 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1818,7 +1818,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,217 more rows
+# ... with 1,223 more rows
 \end{verbatim}
 \normalsize
 
@@ -1905,7 +1905,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fbafa298818>
+<bytecode: 0x7ffe0d083d88>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read\_csv()}. \texttt{read\_csv()} is a very popular function from the \texttt{readr} package for reading in data files. Users with both \texttt{readr} and \texttt{fertile} loaded, will experience the following. The user will call \texttt{read\_csv()} as normal, thinking that they are calling \texttt{readr::read\_csv()}. However, they will actually be calling \texttt{fertile::read\_csv()}, a very similar function with the same name. \texttt{fertile::read\_csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{readr::read\_csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{read\_csv()} and note the path that was provided to it for future reference.
@@ -2017,16 +2017,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      584     2021-03-25 12:36:46
- 2 package:dplyr           <NA>                      base::~ 2021-03-25 12:36:46
- 3 package:readr           <NA>                      base::~ 2021-03-25 12:36:46
- 4 package:tidyr           <NA>                      base::~ 2021-03-25 12:36:46
- 5 package:ggplot2         <NA>                      base::~ 2021-03-25 12:36:46
- 6 package:purrr           <NA>                      base::~ 2021-03-25 12:36:46
- 7 Seed Before             <NA>                      584     2021-03-25 12:36:46
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-25 12:36:46
- 9 Seed After              <NA>                      599     2021-03-25 12:36:47
-10 Seed Before             <NA>                      599     2021-03-25 12:36:47
+ 1 Seed @ Start            <NA>                      594     2021-03-25 14:04:47
+ 2 package:dplyr           <NA>                      base::~ 2021-03-25 14:04:47
+ 3 package:readr           <NA>                      base::~ 2021-03-25 14:04:47
+ 4 package:tidyr           <NA>                      base::~ 2021-03-25 14:04:47
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-25 14:04:48
+ 6 package:purrr           <NA>                      base::~ 2021-03-25 14:04:48
+ 7 Seed Before             <NA>                      594     2021-03-25 14:04:48
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-25 14:04:48
+ 9 Seed After              <NA>                      608     2021-03-25 14:04:48
+10 Seed Before             <NA>                      608     2021-03-25 14:04:48
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2100,7 +2100,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fbafa389270>
+<bytecode: 0x7ffde6d95950>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2131,7 +2131,7 @@ function (file, col_names = TRUE, col_types = NULL, locale = default_locale(),
         comment = comment, n_max = n_max, guess_max = guess_max, 
         progress = progress)
 }
-<bytecode: 0x7fbaf0f1c5a0>
+<bytecode: 0x7ffe0789fa28>
 <environment: namespace:readr>
 \end{verbatim}
 \normalsize
@@ -2162,7 +2162,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fbafa298818>
+<bytecode: 0x7ffe0d083d88>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2197,6 +2197,26 @@ Within \texttt{fertile}, there is an \texttt{RMarkdown} template that contains a
 Although it always follows the same basic structure defined in the template, the appearance of the knit output document varies based on the value of these parameters.
 
 This functionality, along with the other methods of shims, hidden files, environment variables, and the dots helps improve the user experience of \texttt{fertile}. These unconventional techniques allow for the reliable tracking of user behavior behind the scenes and provide functions, like \texttt{proj\_check\_some}, that are intuitive for the user to operate.
+
+\hypertarget{a-note-about-this-behavior}{%
+\section{A Note About This Behavior}\label{a-note-about-this-behavior}}
+
+It is important to note that the behavior of \texttt{fertile}, described in the previous section, \emph{How \texttt{fertile} Works}, could potentially be considered by some as a type of malware:
+\begin{itemize}
+\item
+  \texttt{fertile} creates hidden files on the user's computer. Although the package does not overwrite existing files and only creates files for the purpose of allowing itself to function at full capacity, this hidden file behavior might still be considered intrusive, as these files are written \emph{outside} of the directory where \texttt{fertile} is downloaded.
+\item
+  \texttt{fertile} could also be described as ``tricking'' the user. The use of masking/shimming, in a way, is a method of convincing the user to think one thing is happening---for instance, that they are calling \texttt{readr::read\_csv}---while really, something else is actually happening---they are calling \texttt{fertile::read\_csv}. This is a type of deception which could be considered undesirable.
+\item
+  This shimming behavior comes with the added concern that users do not know what is happening under the hood while they are executing commands. Theoretically, the package \emph{could} be tracking their personal user data, such as an IP address, and sending it to a server somewhere, but the user would not know this in the moment.
+\end{itemize}
+These concerns are a major part of why \texttt{fertile} is not hosted on CRAN. Its potentially-malware-like behavior is likely to be considered too intrusive for acceptance onto the platform.
+
+However, these malware-like features are what makes \texttt{fertile} so functional and provides it with the reproducibility features that are not present in any other software at this time.
+
+It is, of course, though, important to recognize and alleviate these concerns as much as possible. This is one reason---among many others---that \texttt{fertile} is hosted on GitHub. All of the code for the package is publicly available, making its behavior completely transparent. By looking through the code, users can see where hidden files are getting created, when they are getting overwritten, and what happens behind the scenes on each of the shimmed functions. Nothing is left to mystery.
+
+Additionally, users have the opportunity to decide for themselves whether they want to use the software. \texttt{fertile} is not built into R by default. Users must take action---by researching packages, installing \texttt{fertile}, and loading it into their \texttt{R} environment---to activate the package. In big part due to the transparency around the code, at any step in this process users have the agency to review what they are getting into and decide for themselves whether they want to use the software.
 
 \hypertarget{summary}{%
 \section{Summary}\label{summary}}
