@@ -433,9 +433,11 @@ These functions, together, cover all of the reproducibility sub-components invol
 
 ### Component 5: Randomness
 
-The component of randomness is addressed by `fertile` in a reproducibility check function titled `has_no_randomness()`, which does the following: First, it checks code files to determine whether they have employed random number generation. This is confirmed by recording the random number generation seed prior to running the files, rendering the files, and then checking to see whether the seed has changed. If the seed has changed, that indicates that random number generation has occurred. Then, it determines whether whether any randomness present was semi-random (i.e. controlled and repeatable) or truly random, by checking whether the `set.seed()` function was called. If the randomness was semi-random, it is considered permissible and reproducible. Truly random code is flagged as dangerous.
+The component of randomness is addressed by `fertile` in a reproducibility check function titled `has_no_randomness()`, which does the following: First, it checks code files to determine whether they have employed random number generation. This is confirmed by recording the random number generation seed prior to running the files, rendering the files, and then checking to see whether the seed has changed. If the seed has changed, that indicates that one or more functions using random number generation were called. Finally, in order to select an appropriate response, `fertile` determines the type of randomness that has occurred. 
 
-Let us consider an example from `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
+Here, I make a distinction between two primary types of randomness in `R`: *controlled* (or semi-random) and *uncontrolled*. All randomness in `R` is pseudo-random and not truly random---the number generation system uses algorithms to generate sequences of random numbers which approximate a truly random outcome but are not in fact themselves completely random---but not all randomness is controlled. The distinction between controlled and uncontrolled randomness emerges from the use of `set.seed()`. When `set.seed()` is used alongside pseudo-random number generation, the number generator returns the same "random" sequence of numbers each time. In a sense this is "random", because it is still a pseudo-randomly generated sequence, but it is also non-random in that it is predictable and repeatable---and therefore, controlled. Every time the code is run, it will generate the same sequence of numbers. This is in contrast to the behavior when `set.seed()` is excluded from the code, what I term *uncontrolled* randomness. In this situation, functions employing random number generation will *not* return the same pseudo-random sequence each time they are run. This will therefore affect the outcome of results and the reproducibility of the work. Two people running the same code when randomness is *uncontrolled* will not receive identical outputs, while they would if the randomness were *controlled*. For this reason, `fertile` flags *uncontrolled* randomness as dangerous, but has no problem with *controlled* randomness.
+
+Let us consider an example of how `has_no_randomness()` performs on `project_miceps`. The primary code file, `analysis.Rmd` contains the following code. In this code, we see that a data set is read in via `read_csv` and reformatted. Then, the `sample_frac()` function takes a random sample of 50% of the rows of the data.
 
  
 ```{r, message=FALSE, eval = FALSE}
@@ -469,8 +471,7 @@ sample_frac(mice, 0.5)
 ```
 
  
-
-However, there is no seed set in the file. As a result, `has_no_randomness()` returns as a failure for the project. 
+However, there is no seed set in the file. `project_miceps` is using *uncontrolled* randomness. As a result, `has_no_randomness()` returns as a failure for the project. 
 
  
 ```{r}
@@ -484,7 +485,7 @@ set.seed(1)
 rnorm(2)
 ```
 
-In this situation, randomness occurs in the calling of `rnorm()`, but it is controlled by the use of `set.seed`. This time, `has_no_randomness()` passes without error:
+In this situation, randomness occurs in the calling of `rnorm()`, but it is *controlled* by the use of `set.seed`. This time, `has_no_randomness()` passes without error:
 
 ```{r}
 has_no_randomness('project_randomseed')

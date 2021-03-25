@@ -534,7 +534,7 @@ Additionally, this experiment does not test `fertile` in its natural environment
 
 Despite `fertile`'s lack of success in the experiment, it has been recognized elsewhere as a helpful tool with the potential to positively help the `R` community:
 
-- An article written by myself and Professor Baumer, which details the background, implications, and operation of the package was accepted at the 2020 American Statistical Association's Symposium on Data Science and Statistics and, in early 2021, published in the Wiley journal *Stat* (https://doi.org/10.1002/sta4.332).
+- An article written by myself and Professor Baumer, which details the background, implications, and operation of the package was accepted at the 2020 American Statistical Association's Symposium on Data Science and Statistics and, in early 2021, published in the Wiley journal *Stat* (@bertin2021creating).
 
 - Several influential and popular people in the `R` community have liked and shared some of the work related to `fertile` on social media:
   - Hadley Wickham (Chief Scientist at RStudio)
