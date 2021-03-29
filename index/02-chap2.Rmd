@@ -241,7 +241,18 @@ Another important component of documentation is that it must be clear in which o
 has_clear_build_chain("project_miceps")
 ```
 
- 
+Compare this with the following example: `project_transportation`. This project contains three code files---`cars.Rmd`, `planes.Rmd`, and `trucks.Rmd`---with no clear order. None of the files have a number attached to them, nor is there a makefile in the directory.
+
+```{r}
+proj_analyze_files("project_transportation")
+```
+
+When `has_clear_build_chain()` is run on `project_transportation`, it fails, returning a note stating that "it is not obvious in what order to run [the] R scripts."
+
+```{r}
+has_clear_build_chain("project_transportation")
+```
+
 
 #### Software Dependencies
 
@@ -965,7 +976,11 @@ has_only_portable_paths
 
 ### The Dots (...)
 
-`fertile` utilizes the dots (...), which allow a function to accept additional arguments beyond those pre-defined in the function to facilitate much of its behavior. The two primary locations the dots are used are in shims, the file path messaging system, and the `proj_check_some()` function. 
+`fertile` utilizes the dots (...) in shims, the file path messaging system, and the `proj_check_some()` function. 
+
+The dots are a mechanism built into `R` to allow for variability in the arguments passed to a function. They allow the user to pass in a variety of arguments to a function---in any number---rather than forcing them to pass in a set number. Additionally, the dots can be easily captured and passed on to another function. 
+
+These dots help `fertile` achieve its desired functionality in several ways.
 
 Many of the shimmed functions in `fertile` accept a large number of arguments. Consider `read_csv()`. The function requires only one argument (`file`) but allows for up to 14. 
 
@@ -979,7 +994,15 @@ formals(readr::read_csv)
 ```
 \normalsize
 
-When users call the shimmed version of `read_csv`, `fertile` does not need to process any arguments other than `file`, since that is the only piece of information directly relevant to reproducibility. Instead of defining all of the arguments once again, `fertile`'s `read_csv()` is written to accept a file name and the dots, which then capture and save the additional input provided by the user. `fertile` checks the file path, and then uses the saved dots to then execute `readr::read_csv()` the way that the user originally intended. 
+`read_csv()` is not alone. Many functions like it have a large number of arguments. It would be a very cumbersome process to have to re-write all of them arguments by hand in each shim. Additionally, it would make the shim-writing process not very reproducible: if every shim took a lengthy list of arguments with all different names and types, which all had to be specified in the definition of each shim, it would be incredibly complicated to scale up the library of available shims! There would be no easy method to automate this process, so many would have to be written by hand.
+
+When the dots are used, none of these problems arise. In a `fertile` shim, we only have to define the parameters that are required for the function being shimmed to operate---plus, of course, anything related to file paths---and then just say that everything else will go through the dots. 
+
+When a user executes a shim, anything passed through the path arguments gets evaluated for reproducibility and everything else is saved through the dots. Those dots then get handed over to the original function. This function knows what to do with them, because the user was running the `fertile` shim as if it were the original function, and therefore passed arguments that the original function could interpret.
+
+In the `read_csv()` example, we see that the `fertile` shim takes only `file` and `...` as arguments. Users can still pass any of the 14 `readr::read_csv()`arguments besides `file` to the shim, and these are all saved as the dots.
+
+After `fertile` checks the file path passed to `file` (using `check_path_safe`), it reads in the data using the original `readr` function, executing `readr::read_csv(file, ...)` which passes the file path independently, and then everything else the user specified---if anything---through the dots.
 
 ```{r}
 fertile::read_csv
@@ -989,7 +1012,7 @@ The majority of shims have a similar structure. Since almost all shimmed functio
 
 Additionally, the dots play a big role in the `proj_check_some()` function. Recall that `proj_check_some()` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
 
-This function, which accepts the arguments `(path, ...)`, operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a data frame, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. Then, all of the checks matching the `tidyselect` call are run on the provided directory path. 
+This function, which accepts the arguments `(path, ...)`, operates by allowing the users to pass in their `tidyselect` call to the dots. The list of available checks are converted into the columns of a data frame, then passed through `dplyr::select(...)`, where the dots contain the information about the user's `tidyselect` call. `tidyselect` is written in such a way that it knows how to process different strings of commands passed through the dots. When `fertile::proj_check_some()` user passes a string of commands understood by `tidyselect`, `tidyselect` interprets them and then runs them on a dataframe containing the names of the checks, allowing for custom check selection using the `tidyselect` framework.
 
 ### Parameterized Reports
 

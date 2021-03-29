@@ -1,0 +1,21 @@
+---
+title: "Planes"
+author: "Audrey Bertin"
+date: "3/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(nycflights13)
+```
+
+```{r}
+flights %>% 
+  group_by(carrier) %>%
+  summarize(mean_arr_delay = mean(na.omit(arr_delay)))
+```
+
