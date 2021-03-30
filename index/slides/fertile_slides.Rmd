@@ -490,6 +490,7 @@ knitr::include_graphics('badges-2.png')
 ## Customizability
 
 - `proj_check_some()`: run subset of checks; `tidyselect`
+- `proj_check_badge()`: run subset of checks for specific badge
 
 - Controlling which functions throw warnings about paths:
 

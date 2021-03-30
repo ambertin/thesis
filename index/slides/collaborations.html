@@ -40,10 +40,9 @@ class: center, middle, inverse, title-slide
 ## Introduction
 
 `fertile`:
-  - **What?** `R` package started by Prof. Ben Baumer
-  - **Goal:** Improve reproducibility in R
+  - **What?** Software package written in `R`
+  - **Goal:** Improve scientific reproducibility of `R` projects
   - **My Role:** Leading code development for the last ~2 years!
-  - **This Year:** Advanced features, getting product ready for public use, and experimental testing.
   
 &lt;img src="fertile-hex.png" width="250" height="270" style="display: block; margin: auto;" /&gt;
 
@@ -94,6 +93,22 @@ Some fields have reproducibility rate &lt;10%.
 ---
 ## The reproducibility crisis
 &lt;img src="nature-2.png" width="60%" /&gt;
+
+---
+
+## 6 components of reproducibility
+
+1) Basic files made accessible
+
+2) Organized file structure
+
+3) Good documentation
+
+4) File paths
+
+5) Randomness
+
+6) Style
 
 
 ---
@@ -146,6 +161,7 @@ Some fields have reproducibility rate &lt;10%.
     2. Complex functions, bad for new users
     3. Cumbersome, with steep learning curve
     4. CI tools: lack software-specific tools 
+    
 
 ---
 
@@ -164,22 +180,6 @@ Some fields have reproducibility rate &lt;10%.
 6) Educational
 
 7) Applicable in many domains
-
----
-
-## 6 components of reproducibility
-
-1) Basic files made accessible
-
-2) Organized file structure
-
-3) Good documentation
-
-4) File paths
-
-5) Randomness
-
-6) Style
 
 ---
 
@@ -239,6 +239,7 @@ read.csv("~/Desktop/my_data.csv")
 ## Customizability
 
 - `proj_check_some()`: run subset of checks
+- `proj_check_badge()`: run each of the badges from `proj_badges()` individually
 
 - Controlling which functions throw warnings about paths:
 
