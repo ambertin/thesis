@@ -45,7 +45,7 @@ They could require a list of checks to pass and provide a list of exceptions for
 
 Authors could run `fertile` on their work before submitting it to a journal to ensure that they passed the required list of checks and that any failures they saw were accounted for in the journal exceptions. Then journals, in order to ensure that authors followed the provided reproducibility guidelines, could run `fertile` on each submitted article as part of the review process. If the required checks were passed, the article could be accepted, but if they failed it would be rejected.
 
-Although it would require some effort on the journal's side, this would still be an incredibly fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
+Although it would require some effort on the journal's side, this would still be a very fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
 
 
 ```{r, echo = FALSE, out.width = '100%', fig.cap="Potential 'fertile' Journal Review Process"}
@@ -130,7 +130,7 @@ These students would then be prepared for entering the research world and contri
 knitr::include_graphics("figure/tidytuesday.png")
 ```
 
-`fertile` is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
+`fertile` is versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
 
 
 ## Testing fertile in the Real World: Experimental Design and Analysis
@@ -466,7 +466,7 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) +
 
 Although, visually, it does not seem as though `fertile` provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
-After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`fertile` or `control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`fertile` or `control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
 
 
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression T-Test Results, January Term 2021'}
@@ -553,7 +553,7 @@ Although this particular experiment did not produce any particularly interesting
 
 As far as I am aware, the experimental design developed by myself and Professor Baumer is the first of its kind---a structure designed to test the difference between two versions of `R` software without the experimental participants being aware. 
 
-Typically, `R` package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be incredibly effective, but it does not have the same scientific backing behind it as experimental testing does. 
+Typically, `R` package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be effective, but it does not have the same scientific backing behind it as experimental testing does. 
 
 If this experimental design gained traction in the `R` community, it could pave the way for scientific A/B testing of `R` packages.
 

@@ -230,7 +230,7 @@ In addition to the challenges faced on the part of the authors, journal reviewer
 
 In order to make sure that all submitted articles comply with reproducibility guidelines, reviewers must go through them one by one and reproduce all of the results by hand using the provided materials.
 
-This is an incredibly time and labor intensive process, as we will see in the example of the *American Journal for Political Science* (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
+This is a very time and labor intensive process, as we will see in the example of the *American Journal for Political Science* (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
 
 @higher-ed describe the AJPS process in detail:
 

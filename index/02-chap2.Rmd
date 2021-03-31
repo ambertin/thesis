@@ -594,7 +594,7 @@ if (length(mice) > 1) {
 ```
 
 
-These informative error messages provided by `fertile` help teach users to use consistent, tidy style in their code. They do so while making the learning process incredibly simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, `fertile` also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the `usethis::use_tidy_style()` function to format their code automatically.
+These informative error messages provided by `fertile` help teach users to use consistent, tidy style in their code. They do so while making the learning process  simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, `fertile` also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the `usethis::use_tidy_style()` function to format their code automatically.
 
 ### Summary of Reproducibility Components
 
@@ -994,7 +994,7 @@ formals(readr::read_csv)
 ```
 \normalsize
 
-`read_csv()` is not alone. Many functions like it have a large number of arguments. It would be a very cumbersome process to have to re-write all of them arguments by hand in each shim. Additionally, it would make the shim-writing process not very reproducible: if every shim took a lengthy list of arguments with all different names and types, which all had to be specified in the definition of each shim, it would be incredibly complicated to scale up the library of available shims! There would be no easy method to automate this process, so many would have to be written by hand.
+`read_csv()` is not alone. Many functions like it have a large number of arguments. It would be a very cumbersome process to have to re-write all of them arguments by hand in each shim. Additionally, it would make the shim-writing process not very reproducible: if every shim took a lengthy list of arguments with all different names and types, which all had to be specified in the definition of each shim, it would be complicated to scale up the library of available shims! There would be no easy method to automate this process, so many would have to be written by hand.
 
 When the dots are used, none of these problems arise. In a `fertile` shim, we only have to define the parameters that are required for the function being shimmed to operate---plus, of course, anything related to file paths---and then just say that everything else will go through the dots. 
 
@@ -1083,7 +1083,7 @@ The challenge with this system is that R packages are updated constantly by thei
 
 As a result of this, tracking dependencies in R is more important than in some other coding languages. `fertile` attempts to address this through its dependency-tracking features (`proj_pkg_script()` and `proj_dependency_report()`), which together help the user of a package record the package versions that their project is dependent on and simplify the process of installing these dependencies by identifying which came from GitHub and which came from CRAN and creating a script with which to install them. `fertile`'s methods are not the most rebust solution to dependency tracking---packages like `packrat` focus specifically on this purpose and offer more functionality---but they do help move users in the right direction.
 
-Another R-specific feature that `fertile` addresses is randomness. Randomness is incredibly important in statistics. Many statistical methods rely on random sampling in some way, and as a result, R---due to its purpose as a statistics-specific coding language---contains a wide variety of functions that use random number generation. In their default states, these functions produce a different result each time, and as a result are an inherent threat to reproducibility. In order to account for this, `fertile` contains the `has_no_randomness()` function, which reads scripts to ensure that any randomness (if present), is controlled (made pseudo-random) and reproducible.
+Another R-specific feature that `fertile` addresses is randomness. Randomness is  important in statistics. Many statistical methods rely on random sampling in some way, and as a result, R---due to its purpose as a statistics-specific coding language---contains a wide variety of functions that use random number generation. In their default states, these functions produce a different result each time, and as a result are an inherent threat to reproducibility. In order to account for this, `fertile` contains the `has_no_randomness()` function, which reads scripts to ensure that any randomness (if present), is controlled (made pseudo-random) and reproducible.
 
 **5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.**
 

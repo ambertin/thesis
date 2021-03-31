@@ -522,7 +522,7 @@ In addition to the challenges faced on the part of the authors, journal reviewer
 
 In order to make sure that all submitted articles comply with reproducibility guidelines, reviewers must go through them one by one and reproduce all of the results by hand using the provided materials.
 
-This is an incredibly time and labor intensive process, as we will see in the example of the \emph{American Journal for Political Science} (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
+This is a very time and labor intensive process, as we will see in the example of the \emph{American Journal for Political Science} (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
 
 Jacoby, Lafferty-Hess, \& Christian (2017) describe the AJPS process in detail:
 
@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.46K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.16K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~   379.3K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  380.23K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpTjgweg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpTjgweg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpTjgweg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-29 13:50:42
+1 LAST RENDERED <NA>     proj_render 2021-03-31 12:11:56
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -953,9 +953,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.46K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.16K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~   379.3K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  380.23K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1092,8 +1092,8 @@ attached base packages:
 stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-stargazer_5.2.2  skimr_2.1.2      purrr_0.3.4     
-ggplot2_3.3.3    tidyr_1.1.2      readr_1.4.0      dplyr_1.0.
+stargazer_5.2.2  skimr_2.1.3      purrr_0.3.4     
+ggplot2_3.3.3    tidyr_1.1.3      readr_1.4.0      dplyr_1.0.
 \end{verbatim}
 \normalsize
 
@@ -1475,7 +1475,7 @@ After being converted to tidy style, the code looks as follows:
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-These informative error messages provided by \texttt{fertile} help teach users to use consistent, tidy style in their code. They do so while making the learning process incredibly simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, \texttt{fertile} also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the \texttt{usethis::use\_tidy\_style()} function to format their code automatically.
+These informative error messages provided by \texttt{fertile} help teach users to use consistent, tidy style in their code. They do so while making the learning process simple, allowing users to click and see exactly which symbol or character caused the error. In addition to providing a detailed explanation of the was in which the provided code is not tidy, \texttt{fertile} also suggests a simple and fast solution for resolving the inconsistencies all at once, recommending that users apply the \texttt{usethis::use\_tidy\_style()} function to format their code automatically.
 
 \hypertarget{summary-of-reproducibility-components}{%
 \subsection{Summary of Reproducibility Components}\label{summary-of-reproducibility-components}}
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.16K image/png                                 
- 3 proteins_v_time.p~ png     380.23K image/png                                 
+ 2 citrate_v_time.png png     186.49K image/png                                 
+ 3 proteins_v_time.p~ png     377.97K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1865,7 +1865,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,257 x 4
+# A tibble: 1,269 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1878,7 +1878,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,247 more rows
+# ... with 1,259 more rows
 \end{verbatim}
 \normalsize
 
@@ -1955,7 +1955,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7f9e5a1bb9c8>
+<bytecode: 0x7fe80662e810>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2085,16 +2085,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      598     2021-03-29 13:51:30
- 2 package:dplyr           <NA>                      base::~ 2021-03-29 13:51:30
- 3 package:readr           <NA>                      base::~ 2021-03-29 13:51:30
- 4 package:tidyr           <NA>                      base::~ 2021-03-29 13:51:30
- 5 package:ggplot2         <NA>                      base::~ 2021-03-29 13:51:30
- 6 package:purrr           <NA>                      base::~ 2021-03-29 13:51:31
- 7 Seed Before             <NA>                      598     2021-03-29 13:51:31
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-29 13:51:31
- 9 Seed After              <NA>                      612     2021-03-29 13:51:31
-10 Seed Before             <NA>                      612     2021-03-29 13:51:31
+ 1 Seed @ Start            <NA>                      584     2021-03-31 12:12:21
+ 2 package:dplyr           <NA>                      base::~ 2021-03-31 12:12:22
+ 3 package:readr           <NA>                      base::~ 2021-03-31 12:12:22
+ 4 package:tidyr           <NA>                      base::~ 2021-03-31 12:12:22
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-31 12:12:22
+ 6 package:purrr           <NA>                      base::~ 2021-03-31 12:12:22
+ 7 Seed Before             <NA>                      584     2021-03-31 12:12:22
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 12:12:22
+ 9 Seed After              <NA>                      598     2021-03-31 12:12:22
+10 Seed Before             <NA>                      598     2021-03-31 12:12:22
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2164,7 +2164,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f9e64edeb38>
+<bytecode: 0x7fe802d615f0>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2230,7 +2230,7 @@ $skip_empty_rows
 \end{verbatim}
 \normalsize
 
-\texttt{read\_csv()} is not alone. Many functions like it have a large number of arguments. It would be a very cumbersome process to have to re-write all of them arguments by hand in each shim. Additionally, it would make the shim-writing process not very reproducible: if every shim took a lengthy list of arguments with all different names and types, which all had to be specified in the definition of each shim, it would be incredibly complicated to scale up the library of available shims! There would be no easy method to automate this process, so many would have to be written by hand.
+\texttt{read\_csv()} is not alone. Many functions like it have a large number of arguments. It would be a very cumbersome process to have to re-write all of them arguments by hand in each shim. Additionally, it would make the shim-writing process not very reproducible: if every shim took a lengthy list of arguments with all different names and types, which all had to be specified in the definition of each shim, it would be complicated to scale up the library of available shims! There would be no easy method to automate this process, so many would have to be written by hand.
 
 When the dots are used, none of these problems arise. In a \texttt{fertile} shim, we only have to define the parameters that are required for the function being shimmed to operate---plus, of course, anything related to file paths---and then just say that everything else will go through the dots.
 
@@ -2264,7 +2264,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f9e5ee4e840>
+<bytecode: 0x7fe80ea21d18>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2350,7 +2350,7 @@ The challenge with this system is that R packages are updated constantly by thei
 
 As a result of this, tracking dependencies in R is more important than in some other coding languages. \texttt{fertile} attempts to address this through its dependency-tracking features (\texttt{proj\_pkg\_script()} and \texttt{proj\_dependency\_report()}), which together help the user of a package record the package versions that their project is dependent on and simplify the process of installing these dependencies by identifying which came from GitHub and which came from CRAN and creating a script with which to install them. \texttt{fertile}'s methods are not the most rebust solution to dependency tracking---packages like \texttt{packrat} focus specifically on this purpose and offer more functionality---but they do help move users in the right direction.
 
-Another R-specific feature that \texttt{fertile} addresses is randomness. Randomness is incredibly important in statistics. Many statistical methods rely on random sampling in some way, and as a result, R---due to its purpose as a statistics-specific coding language---contains a wide variety of functions that use random number generation. In their default states, these functions produce a different result each time, and as a result are an inherent threat to reproducibility. In order to account for this, \texttt{fertile} contains the \texttt{has\_no\_randomness()} function, which reads scripts to ensure that any randomness (if present), is controlled (made pseudo-random) and reproducible.
+Another R-specific feature that \texttt{fertile} addresses is randomness. Randomness is important in statistics. Many statistical methods rely on random sampling in some way, and as a result, R---due to its purpose as a statistics-specific coding language---contains a wide variety of functions that use random number generation. In their default states, these functions produce a different result each time, and as a result are an inherent threat to reproducibility. In order to account for this, \texttt{fertile} contains the \texttt{has\_no\_randomness()} function, which reads scripts to ensure that any randomness (if present), is controlled (made pseudo-random) and reproducible.
 
 \textbf{5) Be customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.}
 
@@ -2419,7 +2419,7 @@ They could require a list of checks to pass and provide a list of exceptions for
 
 Authors could run \texttt{fertile} on their work before submitting it to a journal to ensure that they passed the required list of checks and that any failures they saw were accounted for in the journal exceptions. Then journals, in order to ensure that authors followed the provided reproducibility guidelines, could run \texttt{fertile} on each submitted article as part of the review process. If the required checks were passed, the article could be accepted, but if they failed it would be rejected.
 
-Although it would require some effort on the journal's side, this would still be an incredibly fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
+Although it would require some effort on the journal's side, this would still be a very fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-69}
 \end{figure}
@@ -2503,7 +2503,7 @@ These students would then be prepared for entering the research world and contri
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/tidytuesday} \caption{The Logo For Popular Tidy Tuesday Event}\label{fig:unnamed-chunk-72}
 \end{figure}
-\texttt{fertile} is incredibly versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
+\texttt{fertile} is versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
 
 \hypertarget{testing-fertile-in-the-real-world-experimental-design-and-analysis}{%
 \section{Testing fertile in the Real World: Experimental Design and Analysis}\label{testing-fertile-in-the-real-world-experimental-design-and-analysis}}
@@ -2731,7 +2731,7 @@ The score averages for both groups of students were as follows:
 \begin{verbatim}
 # A tibble: 2 x 4
   Group   Projects_Avg Paths_Avg Overall_Avg
-* <chr>          <dbl>     <dbl>       <dbl>
+  <chr>          <dbl>     <dbl>       <dbl>
 1 Control         3.33      4.22        7.56
 2 Fertile         2.11      2.44        4.56
 \end{verbatim}
@@ -2868,7 +2868,7 @@ Although it is challenging to make any strong claims with so few data points, on
 \end{figure}
 Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
-After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the incredibly high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
 \begin{verbatim}
 Call:
 lm(formula = Score_Difference ~ Group, data = jterm_model_data)
@@ -2989,7 +2989,7 @@ Although this particular experiment did not produce any particularly interesting
 
 As far as I am aware, the experimental design developed by myself and Professor Baumer is the first of its kind---a structure designed to test the difference between two versions of \texttt{R} software without the experimental participants being aware.
 
-Typically, \texttt{R} package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be incredibly effective, but it does not have the same scientific backing behind it as experimental testing does.
+Typically, \texttt{R} package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be effective, but it does not have the same scientific backing behind it as experimental testing does.
 
 If this experimental design gained traction in the \texttt{R} community, it could pave the way for scientific A/B testing of \texttt{R} packages.
 
