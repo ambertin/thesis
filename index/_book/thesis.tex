@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.09K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.03K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.73K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  382.41K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-31 12:32:00
+1 LAST RENDERED <NA>     proj_render 2021-03-31 13:44:14
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -873,7 +873,11 @@ Two of these are focused on the \texttt{R\ project} aspect of the file system. \
 
 Six of the major checks, whose names begin with \texttt{has\_tidy\_} focus on file clutter, addressing one of the components of a clean file structure. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
 
-The last check that focuses on the file system is \texttt{has\_only\_used\_files()}. One of the more complicated checks in \texttt{fertile}, this function checks to make sure that there are no extraneous files serving no purpose (that are not ``used'') included alongside the analysis. For this function to work properly, a clear definition of which files are considered as ``used'' is needed. In \texttt{fertile}, that definition includes the following:
+This definition of ``tidyness'' comes from the \texttt{R} package structure. \texttt{R} packages are required to follow a format with specific folders for specific files. Any miscellaneous files found at the top level of the package directory are flagged when building a package. Top-level clutter is not allowed, and files have to be moved into their respective folders.
+
+This is not the only definition of tidyness. Some individuals may prefer a system where a variety of files \emph{are} stored at the root directory of a project because this simplifies the method of writing paths to access these files---if everything is located in one place, you only need to provide the name of the file to open it. However, with \texttt{fertile}, we believe the \texttt{R} package structure to be advantageous. By recommending that users follow this package structure in the reproducibility recommendations, \texttt{fertile} makes it easy for users to convert their \texttt{R} projects into \texttt{R} packages with minimal effort. This can be useful for analysts whose work contains functions and datasets. The \texttt{R} package format makes function use very simple---functions are built in with package installation, rather than requiring users to execute \texttt{R} scripts to bring the functions into their environment. \texttt{R} packages also have a built in method of documentation, using \texttt{roxygen2}, that makes it easy to ensure that any functions are well-explained. The package format can also be advantageous for data sharing. If data is built into a package, it can be easily accessed using the \texttt{data()} command, rather than requiring users to use some version of \texttt{read.csv()} or any other data-reading function. By working to set up projects based around the package format, \texttt{fertile} sets users up to easily be able to achieve these benefits in their analyses if they are desired.
+
+The last check that focuses on the file system is \texttt{has\_only\_used\_files()}. One of the more complicated checks in \texttt{fertile}, this function checks to make sure that there are no extraneous files serving no apparent purpose (that are not ``used'') included alongside the analysis. For this function to work properly, a clear definition of which files are considered as ``used'' is needed. In \texttt{fertile}, that definition includes the following:
 \begin{itemize}
 \tightlist
 \item
@@ -953,9 +957,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.09K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.03K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.73K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  382.41K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1231,14 +1235,10 @@ In addition to catching non-reproducible file paths, \texttt{fertile} also stops
 \begin{verbatim}
 Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \end{verbatim}
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{here}\SpecialCharTok{::}\FunctionTok{here}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-[1] "/Users/audreybertin/Documents/thesis/index/project_miceps"
-\end{verbatim}
+The \texttt{here::here()} suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown file executes the same when run chunk-by-chunk as when knit. The \href{https://here.r-lib.org/index.html}{\texttt{here}} package makes it easy to access files when executed as part of a script. The function works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location.
+
+\texttt{here::here()} is not necessary for console-based programming, nor is \texttt{setwd()}. As long as users use the R project format, which is required by \texttt{fertile}, and all files for the analysis are kept within the project directory, all paths can easily be written as relative to the project root without the need for \texttt{here::here()} or \texttt{setwd()}. This is one of many strengths of the R project format: it negates the need for reproducibility-breaking functions in interactive programming. Users who new to reproducibility and working in the project format, however, may still need reminders not to use \texttt{setwd()}. It is for this reason that \texttt{fertile} provides an error when this function is called, regardless of whether it was done interactively (where there is no need for it), or in a script (where setting the directory could potentially seem advantageous).
+
 For more information about the interactive warning system and some of its customization features, see Section 2.2.1.
 
 \hypertarget{project-path-summaries}{%
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.03K image/png                                 
- 3 proteins_v_time.p~ png     382.41K image/png                                 
+ 2 citrate_v_time.png png     188.37K image/png                                 
+ 3 proteins_v_time.p~ png     376.98K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2083,7 +2083,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,278 x 4
+# A tibble: 1,285 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2096,7 +2096,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,268 more rows
+# ... with 1,275 more rows
 \end{verbatim}
 \normalsize
 
@@ -2173,7 +2173,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7fac75808668>
+<bytecode: 0x7fd735b79910>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2303,16 +2303,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      591     2021-03-31 12:32:22
- 2 package:dplyr           <NA>                      base::~ 2021-03-31 12:32:22
- 3 package:readr           <NA>                      base::~ 2021-03-31 12:32:22
- 4 package:tidyr           <NA>                      base::~ 2021-03-31 12:32:22
- 5 package:ggplot2         <NA>                      base::~ 2021-03-31 12:32:22
- 6 package:purrr           <NA>                      base::~ 2021-03-31 12:32:23
- 7 Seed Before             <NA>                      591     2021-03-31 12:32:23
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 12:32:23
- 9 Seed After              <NA>                      606     2021-03-31 12:32:23
-10 Seed Before             <NA>                      606     2021-03-31 12:32:23
+ 1 Seed @ Start            <NA>                      609     2021-03-31 13:44:36
+ 2 package:dplyr           <NA>                      base::~ 2021-03-31 13:44:37
+ 3 package:readr           <NA>                      base::~ 2021-03-31 13:44:37
+ 4 package:tidyr           <NA>                      base::~ 2021-03-31 13:44:37
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-31 13:44:37
+ 6 package:purrr           <NA>                      base::~ 2021-03-31 13:44:37
+ 7 Seed Before             <NA>                      609     2021-03-31 13:44:37
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 13:44:37
+ 9 Seed After              <NA>                      623     2021-03-31 13:44:38
+10 Seed Before             <NA>                      623     2021-03-31 13:44:38
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2382,7 +2382,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fac65d7b350>
+<bytecode: 0x7fd72884b1d0>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2482,7 +2482,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fac7d335050>
+<bytecode: 0x7fd73de38890>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.

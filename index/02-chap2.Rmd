@@ -154,7 +154,11 @@ Two of these are focused on the `R project` aspect of the file system. `has_proj
 
 Six of the major checks, whose names begin with `has_tidy_` focus on file clutter, addressing one of the components of a clean file structure. They check to make sure that no audio/video, image, source, raw data, .rda, or .R files are found in the root directory of the project.
 
-The last check that focuses on the file system is `has_only_used_files()`. One of the more complicated checks in `fertile`, this function checks to make sure that there are no extraneous files serving no purpose (that are not "used") included alongside the analysis. For this function to work properly, a clear definition of which files are considered as "used" is needed. In `fertile`, that definition includes the following:
+This definition of "tidyness" comes from the `R` package structure. `R` packages are required to follow a format with specific folders for specific files. Any miscellaneous files found at the top level of the package directory are flagged when building a package. Top-level clutter is not allowed, and files have to be moved into their respective folders. 
+
+This is not the only definition of tidyness. Some individuals may prefer a system where a variety of files *are* stored at the root directory of a project because this simplifies the method of writing paths to access these files---if everything is located in one place, you only need to provide the name of the file to open it. However, with `fertile`, we believe the `R` package structure to be advantageous. By recommending that users follow this package structure in the reproducibility recommendations, `fertile` makes it easy for users to convert their `R` projects into `R` packages with minimal effort. This can be useful for analysts whose work contains functions and datasets. The `R` package format makes function use very simple---functions are built in with package installation, rather than requiring users to execute `R` scripts to bring the functions into their environment. `R` packages also have a built in method of documentation, using `roxygen2`, that makes it easy to ensure that any functions are well-explained. The package format can also be advantageous for data sharing. If data is built into a package, it can be easily accessed using the `data()` command, rather than requiring users to use some version of `read.csv()` or any other data-reading function. By working to set up projects based around the package format, `fertile` sets users up to easily be able to achieve these benefits in their analyses if they are desired. 
+
+The last check that focuses on the file system is `has_only_used_files()`. One of the more complicated checks in `fertile`, this function checks to make sure that there are no extraneous files serving no apparent purpose (that are not "used") included alongside the analysis. For this function to work properly, a clear definition of which files are considered as "used" is needed. In `fertile`, that definition includes the following:
 
 * `.R`,`.Rmd`, and `.Rproj` files
 * README files
@@ -389,8 +393,11 @@ In addition to catching non-reproducible file paths, `fertile` also stops the us
 getwd()
 setwd("project_miceps")
 
-here::here("project_miceps")
 ```
+
+The `here::here()` suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown  file executes the same when run chunk-by-chunk as when knit. The [`here`](https://here.r-lib.org/index.html) package  makes it easy to access files when executed as part of a script. The function works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location. 
+
+`here::here()` is not necessary for console-based programming, nor is `setwd()`. As long as users use the R project format, which is required by `fertile`, and all files for the analysis are kept within the project directory, all paths can easily be written as relative to the project root without the need for `here::here()` or `setwd()`. This is one of many strengths of the R project format: it negates the need for reproducibility-breaking functions in interactive programming. Users who new to reproducibility and working in the project format, however,  may still need reminders not to use `setwd()`. It is for this reason that `fertile` provides an error when this function is called, regardless of whether it was done interactively (where there is no need for it), or in a script (where setting the directory could potentially seem advantageous).
 
 For more information about the interactive warning system and some of its customization features, see Section 2.2.1.
 
