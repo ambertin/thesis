@@ -717,7 +717,8 @@ Together, `proj_check()`,`proj_analyze()`, and `proj_badges()` cover a significa
 
 #### Features Allowing For Summary By Group
 
-Users wanting to focus on groups of checks can do so using the `proj_check_some()` function.
+Users wanting to focus on groups of checks can do so using the `proj_check_some()` or `proj_check_badge()` functions.
+
 `proj_check_some()` leverages helper functions from `tidyselect` (@R-tidyselect) to allow users to call groups of similar checks together. `tidyselect` helpers tell `fertile` to call only the checks whose names meet certain conditions. The helper functions that can be passed to `proj_check_some()` are:
 
 * `starts_with()`: Starts with a prefix.
@@ -759,6 +760,26 @@ proj_check_some("project_miceps", ends_with("root"))
 ```
 \normalsize
 
+`proj_check_badge()` is similar. It also allows users to run checks in groups, but these are not called by similar names, but rather based on which of the six components of reproducibility they belong to. This is done via a `badge` argument. Users input the shorthand name of the badge they want to run the checks for---e.g. "randomness", "paths", "structure", etc.---and `fertile` then executes the corresponding functions.
+
+For instance, if a user wants to run all of the checks associated with documentation, they would run the following code:
+
+```{r}
+proj_check_badge("project_miceps", "documentation")
+```
+As can be seen above, this outputs the results from the following `fertile` checks involving documentation:
+
+- `has_clear_build_chain()`
+- `has_readme()`
+- `has_well_commented_code()`
+
+A user who wanted to check `project_miceps` for tidyness instead would run the same function, but changing out the second argument from "documentation" to "tidy-files":
+
+```{r}
+proj_check_badge("project_miceps", "tidy-files")
+```
+
+This runs all of the checks associated with ensuring that there is minimal file clutter: the six checks starting with `has_tidy_`, alongside `has_only_used_files()`. 
 
 #### Individual Checks
 
@@ -1009,6 +1030,8 @@ fertile::read_csv
 ```
 
 The majority of shims have a similar structure. Since almost all shimmed functions in `fertile` take a large number of arguments, the `fertile` versions utilize the dots to simplify the process of capturing this user input and saving it for execution later. 
+
+Unfortunately, while the dots are advantageous in shim-writing, they do come with a downside. In the original, un-shimmed versions of functions, the arguments are all defined by name. This can prove useful when users are coding interactively; while calling a function, help boxes often pop up summarizing all of the possible arguments and their default values. In the `fertile` shims, the only included arguments are path arguments, other required arguments, and the dots. As a result, these are the only ones that appear in the help box when calling a shim, and the full argument list is lost---users have to rely on their own knowledge or package documentation to execute their function, and cannot rely solely on the help box.
 
 Additionally, the dots play a big role in the `proj_check_some()` function. Recall that `proj_check_some()` allows users to run a selection of `fertile`'s checks by calling a `tidyselect` helper to pull out a subset of checks with names matching a certain definition. 
 

@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.16K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.09K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  380.23K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.73K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUP0NkJ/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpS59MSk/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-31 12:11:56
+1 LAST RENDERED <NA>     proj_render 2021-03-31 12:32:00
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -953,9 +953,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.16K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.09K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  380.23K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.73K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     186.49K image/png                                 
- 3 proteins_v_time.p~ png     377.97K image/png                                 
+ 2 citrate_v_time.png png     187.03K image/png                                 
+ 3 proteins_v_time.p~ png     382.41K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1688,7 +1688,8 @@ Together, \texttt{proj\_check()},\texttt{proj\_analyze()}, and \texttt{proj\_bad
 \hypertarget{features-allowing-for-summary-by-group}{%
 \subsubsection{Features Allowing For Summary By Group}\label{features-allowing-for-summary-by-group}}
 
-Users wanting to focus on groups of checks can do so using the \texttt{proj\_check\_some()} function.
+Users wanting to focus on groups of checks can do so using the \texttt{proj\_check\_some()} or \texttt{proj\_check\_badge()} functions.
+
 \texttt{proj\_check\_some()} leverages helper functions from \texttt{tidyselect} (Henry \& Wickham (2020)) to allow users to call groups of similar checks together. \texttt{tidyselect} helpers tell \texttt{fertile} to call only the checks whose names meet certain conditions. The helper functions that can be passed to \texttt{proj\_check\_some()} are:
 \begin{itemize}
 \tightlist
@@ -1836,6 +1837,223 @@ v Reproducibility checks passed: 2
 \end{verbatim}
 \normalsize
 
+\texttt{proj\_check\_badge()} is similar. It also allows users to run checks in groups, but these are not called by similar names, but rather based on which of the six components of reproducibility they belong to. This is done via a \texttt{badge} argument. Users input the shorthand name of the badge they want to run the checks for---e.g.~``randomness,'' ``paths,'' ``structure,'' etc.---and \texttt{fertile} then executes the corresponding functions.
+
+For instance, if a user wants to run all of the checks associated with documentation, they would run the following code:
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{proj\_check\_badge}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\StringTok{"documentation"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+v Checking for clear build chain
+\end{verbatim}
+\begin{verbatim}
+v Checking for README file(s) at root level
+\end{verbatim}
+\begin{verbatim}
+* Checking that code is adequately commented
+\end{verbatim}
+\begin{verbatim}
+   Problem: Suboptimally commented .R or .Rmd files found
+\end{verbatim}
+\begin{verbatim}
+   Solution: Add more comments to the files below. At least 10% of the lines should be comments.
+\end{verbatim}
+\begin{verbatim}
+   See for help: https://intelligea.wordpress.com/2013/06/30/inline-and-block-comments-in-r/
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  file_name                   fraction_lines_commented
+  <chr>                                          <dbl>
+1 project_miceps/analysis.Rmd                     0.04
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------- fertile 1.1.9003 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 2
+\end{verbatim}
+\begin{verbatim}
+* Reproducibility checks to work on: 1
+\end{verbatim}
+\begin{verbatim}
+* Checking that code is adequately commented
+\end{verbatim}
+\begin{verbatim}
+   Problem: Suboptimally commented .R or .Rmd files found
+\end{verbatim}
+\begin{verbatim}
+   Solution: Add more comments to the files below. At least 10% of the lines should be comments.
+\end{verbatim}
+\begin{verbatim}
+   See for help: https://intelligea.wordpress.com/2013/06/30/inline-and-block-comments-in-r/
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 1 x 2
+  file_name                   fraction_lines_commented
+  <chr>                                          <dbl>
+1 project_miceps/analysis.Rmd                     0.04
+\end{verbatim}
+As can be seen above, this outputs the results from the following \texttt{fertile} checks involving documentation:
+\begin{itemize}
+\tightlist
+\item
+  \texttt{has\_clear\_build\_chain()}
+\item
+  \texttt{has\_readme()}
+\item
+  \texttt{has\_well\_commented\_code()}
+\end{itemize}
+A user who wanted to check \texttt{project\_miceps} for tidyness instead would run the same function, but changing out the second argument from ``documentation'' to ``tidy-files'':
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{proj\_check\_badge}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{, }\StringTok{"tidy{-}files"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Joining, by = "path_abs"
+\end{verbatim}
+\begin{verbatim}
+v Checking for no *.R scripts at root level
+\end{verbatim}
+\begin{verbatim}
+v Checking for no *.rda files at root level
+\end{verbatim}
+\begin{verbatim}
+v Checking for no A/V files at root level
+\end{verbatim}
+\begin{verbatim}
+* Checking for no image files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Image files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move source files to img/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/citrate_v_t~ fs::file_move('project_miceps/citrate_v_time.png'~
+2 project_miceps/proteins_v_~ fs::file_move('project_miceps/proteins_v_time.png~
+\end{verbatim}
+\begin{verbatim}
+* Checking for no raw data files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Raw data files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move raw data files to data-raw/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 3 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/Blot_data_u~ fs::file_move('project_miceps/Blot_data_updated.c~
+2 project_miceps/CS_data_red~ fs::file_move('project_miceps/CS_data_redone.csv'~
+3 project_miceps/mice.csv     fs::file_move('project_miceps/mice.csv', here::he~
+\end{verbatim}
+\begin{verbatim}
+v Checking for no source files at root level
+\end{verbatim}
+\begin{verbatim}
+* Checking to see if all files in directory are used in code
+\end{verbatim}
+\begin{verbatim}
+   Problem: You have files in your project directory which are not being used.
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use or delete files.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_delete
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 1
+  path_abs                                                                      
+  <chr>                                                                         
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+\end{verbatim}
+\begin{verbatim}
+-- Summary of fertile checks ------------------------------- fertile 1.1.9003 --
+\end{verbatim}
+\begin{verbatim}
+v Reproducibility checks passed: 4
+\end{verbatim}
+\begin{verbatim}
+* Reproducibility checks to work on: 3
+\end{verbatim}
+\begin{verbatim}
+* Checking for no image files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Image files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move source files to img/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/citrate_v_t~ fs::file_move('project_miceps/citrate_v_time.png'~
+2 project_miceps/proteins_v_~ fs::file_move('project_miceps/proteins_v_time.png~
+\end{verbatim}
+\begin{verbatim}
+* Checking for no raw data files at root level
+\end{verbatim}
+\begin{verbatim}
+   Problem: Raw data files in root directory clutter project
+\end{verbatim}
+\begin{verbatim}
+   Solution: Move raw data files to data-raw/ directory
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_move
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 3 x 2
+  culprit                     expr                                              
+  <fs::path>                  <glue>                                            
+1 project_miceps/Blot_data_u~ fs::file_move('project_miceps/Blot_data_updated.c~
+2 project_miceps/CS_data_red~ fs::file_move('project_miceps/CS_data_redone.csv'~
+3 project_miceps/mice.csv     fs::file_move('project_miceps/mice.csv', here::he~
+\end{verbatim}
+\begin{verbatim}
+* Checking to see if all files in directory are used in code
+\end{verbatim}
+\begin{verbatim}
+   Problem: You have files in your project directory which are not being used.
+\end{verbatim}
+\begin{verbatim}
+   Solution: Use or delete files.
+\end{verbatim}
+\begin{verbatim}
+   See for help: ?fs::file_delete
+\end{verbatim}
+\begin{verbatim}
+# A tibble: 2 x 1
+  path_abs                                                                      
+  <chr>                                                                         
+1 /Users/audreybertin/Documents/thesis/index/project_miceps/Estrogen_Receptors.~
+2 /Users/audreybertin/Documents/thesis/index/project_miceps/mice.csv            
+\end{verbatim}
+This runs all of the checks associated with ensuring that there is minimal file clutter: the six checks starting with \texttt{has\_tidy\_}, alongside \texttt{has\_only\_used\_files()}.
+
 \hypertarget{individual-checks}{%
 \subsubsection{Individual Checks}\label{individual-checks}}
 
@@ -1865,7 +2083,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,269 x 4
+# A tibble: 1,278 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -1878,7 +2096,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,259 more rows
+# ... with 1,268 more rows
 \end{verbatim}
 \normalsize
 
@@ -1955,7 +2173,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7fe80662e810>
+<bytecode: 0x7fac75808668>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -1966,7 +2184,7 @@ In the \texttt{fertile} version of \texttt{library()},\texttt{fertile} is detach
 
 A full list of the shimmed functions provided by \texttt{fertile} is listed below. Note that---in order to reduce the software dependencies of \texttt{fertile} the shims from the less common \texttt{readxl}, \texttt{rjson}, \texttt{foreign}, and \texttt{sas7bdat} packages are only activated if the user has those packages installed and loaded on their computer.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-56}
+\includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-58}
 \end{figure}
 \hypertarget{shim-customization-functionality}{%
 \subsubsection{Shim Customization Functionality}\label{shim-customization-functionality}}
@@ -2085,16 +2303,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      584     2021-03-31 12:12:21
- 2 package:dplyr           <NA>                      base::~ 2021-03-31 12:12:22
- 3 package:readr           <NA>                      base::~ 2021-03-31 12:12:22
- 4 package:tidyr           <NA>                      base::~ 2021-03-31 12:12:22
- 5 package:ggplot2         <NA>                      base::~ 2021-03-31 12:12:22
- 6 package:purrr           <NA>                      base::~ 2021-03-31 12:12:22
- 7 Seed Before             <NA>                      584     2021-03-31 12:12:22
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 12:12:22
- 9 Seed After              <NA>                      598     2021-03-31 12:12:22
-10 Seed Before             <NA>                      598     2021-03-31 12:12:22
+ 1 Seed @ Start            <NA>                      591     2021-03-31 12:32:22
+ 2 package:dplyr           <NA>                      base::~ 2021-03-31 12:32:22
+ 3 package:readr           <NA>                      base::~ 2021-03-31 12:32:22
+ 4 package:tidyr           <NA>                      base::~ 2021-03-31 12:32:22
+ 5 package:ggplot2         <NA>                      base::~ 2021-03-31 12:32:22
+ 6 package:purrr           <NA>                      base::~ 2021-03-31 12:32:23
+ 7 Seed Before             <NA>                      591     2021-03-31 12:32:23
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 12:32:23
+ 9 Seed After              <NA>                      606     2021-03-31 12:32:23
+10 Seed Before             <NA>                      606     2021-03-31 12:32:23
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2164,7 +2382,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fe802d615f0>
+<bytecode: 0x7fac65d7b350>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2264,10 +2482,12 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fe80ea21d18>
+<bytecode: 0x7fac7d335050>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
+
+Unfortunately, while the dots are advantageous in shim-writing, they do come with a downside. In the original, un-shimmed versions of functions, the arguments are all defined by name. This can prove useful when users are coding interactively; while calling a function, help boxes often pop up summarizing all of the possible arguments and their default values. In the \texttt{fertile} shims, the only included arguments are path arguments, other required arguments, and the dots. As a result, these are the only ones that appear in the help box when calling a shim, and the full argument list is lost---users have to rely on their own knowledge or package documentation to execute their function, and cannot rely solely on the help box.
 
 Additionally, the dots play a big role in the \texttt{proj\_check\_some()} function. Recall that \texttt{proj\_check\_some()} allows users to run a selection of \texttt{fertile}'s checks by calling a \texttt{tidyselect} helper to pull out a subset of checks with names matching a certain definition.
 
@@ -2421,7 +2641,7 @@ Authors could run \texttt{fertile} on their work before submitting it to a journ
 
 Although it would require some effort on the journal's side, this would still be a very fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-69}
+\includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-71}
 \end{figure}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2436,7 +2656,7 @@ This cover sheet would show which of the six primary reproducibility components 
 
 Journals could place an acceptance requirement that articles achieve a certain subset of badges---for instance, file paths, randomness, and documentation. Submitting authors would run \texttt{fertile} on their end to see which badges they passed. Once they met the requirements, they could run \texttt{proj\_badges()} to generate an article cover sheet. This cover sheet would then be submitted alongside the article and considered as part of the review process. All that reviewers would need to do to ensure that reproducibility requirements are met would be to look at the cover sheet to see which badges the project achieved and check the cover sheet generation information to ensure that it was truly produced by the project that the author says it was produced by.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-70}
+\includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-72}
 \end{figure}
 Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
@@ -2469,7 +2689,7 @@ Undergraduate students, therefore, do not get exposed to reproducibility very of
 \end{itemize}
 Though the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-71}
+\includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-73}
 \end{figure}
 \texttt{fertile} could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of \texttt{fertile} could look as follows:
 
@@ -2501,7 +2721,7 @@ These students would then be prepared for entering the research world and contri
   \emph{Informal Data Analysis}: A lot of content in the \texttt{R} community is created purely for fun and interest. Outside of work, many \texttt{R} users will create data visualizations or analyses for their own private blogs or their twitter. Sometimes, users will also participate in community events like Tidy Tuesday, a weekly social project where a data set is posted and users are asked to analyze it and create a visualization of their choice. Many people use these informal analyses as an opportunity for learning and discussion, often sharing them on social media to try and get feedback on their work. Ensuring that the work is reproducible would facilitate this process. Users could run their project files through \texttt{fertile} to check that they are reproducible and post a link to download them. This would then allow others to run the code on their own to understand how it works and more easily be able to make suggestions as to how to improve it!
 \end{itemize}
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/tidytuesday} \caption{The Logo For Popular Tidy Tuesday Event}\label{fig:unnamed-chunk-72}
+\includegraphics[width=1\linewidth]{figure/tidytuesday} \caption{The Logo For Popular Tidy Tuesday Event}\label{fig:unnamed-chunk-74}
 \end{figure}
 \texttt{fertile} is versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review.
 
@@ -2738,14 +2958,14 @@ The score averages for both groups of students were as follows:
 These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed slightly worse, overall, than the \texttt{control} group.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-78-1.pdf}
-\caption{\label{fig:unnamed-chunk-78}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-80-1.pdf}
+\caption{\label{fig:unnamed-chunk-80}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
 \end{figure}
 Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-79-1.pdf}
-\caption{\label{fig:unnamed-chunk-79}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-81-1.pdf}
+\caption{\label{fig:unnamed-chunk-81}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
 \end{figure}
 However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
@@ -2843,14 +3063,14 @@ When considering the distribution of test scores, in addition to just the pure d
 This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-85-1.pdf}
-\caption{\label{fig:unnamed-chunk-85}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-87-1.pdf}
+\caption{\label{fig:unnamed-chunk-87}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
 \end{figure}
 We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-86-1.pdf}
-\caption{\label{fig:unnamed-chunk-86}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-88-1.pdf}
+\caption{\label{fig:unnamed-chunk-88}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
 \end{figure}
 As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{fertile} and \texttt{control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{control} group.
 
@@ -2863,8 +3083,8 @@ Below, we see a graphical representation of the number of previous courses taken
 Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
 \begin{figure}
 \centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-87-1.pdf}
-\caption{\label{fig:unnamed-chunk-87}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
+\includegraphics{thesis_files/figure-latex/unnamed-chunk-89-1.pdf}
+\caption{\label{fig:unnamed-chunk-89}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
 \end{figure}
 Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
 
@@ -2932,7 +3152,7 @@ Although independence is at risk, many of the other assumptions for linear regre
 
 In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-91-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-91-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-91-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-91-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-91}
+\includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-93-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-93-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-93-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-93-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-93}
 \end{figure}
 Then, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
 
@@ -2995,7 +3215,7 @@ If this experimental design gained traction in the \texttt{R} community, it coul
 
 A/B testing is an experimental methodology focused on user experience. In an A/B test, designers compare two different versions of a product, randomly assigning participants to groups to determine which version they will receive. Using statistical hypothesis testing, the researchers attempt to identify which software version was most successful.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-92}
+\includegraphics[width=1\linewidth]{figure/a-b_testing} \caption{Scientific A/B Testing}\label{fig:unnamed-chunk-94}
 \end{figure}
 One of the most popular applications of this form of testing is in marketing. Product sellers, in an attempt to drive traffic to their website and maximize profits, will test several different methods of advertising or web design to see which one results in the most clicks and/or purchase.
 
