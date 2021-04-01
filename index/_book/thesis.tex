@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.03K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  188.37K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  382.41K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  376.98K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpq5lYxi/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpq5lYxi/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpT2fDIu/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmpq5lYxi/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-03-31 13:44:14
+1 LAST RENDERED <NA>     proj_render 2021-04-01 17:10:12
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -957,9 +957,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.03K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  188.37K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  382.41K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  376.98K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.37K image/png                                 
- 3 proteins_v_time.p~ png     376.98K image/png                                 
+ 2 citrate_v_time.png png     186.89K image/png                                 
+ 3 proteins_v_time.p~ png      377.7K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2083,7 +2083,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,285 x 4
+# A tibble: 1,292 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2096,7 +2096,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,275 more rows
+# ... with 1,282 more rows
 \end{verbatim}
 \normalsize
 
@@ -2173,7 +2173,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7fd735b79910>
+<bytecode: 0x7ff684b682a8>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2303,16 +2303,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      609     2021-03-31 13:44:36
- 2 package:dplyr           <NA>                      base::~ 2021-03-31 13:44:37
- 3 package:readr           <NA>                      base::~ 2021-03-31 13:44:37
- 4 package:tidyr           <NA>                      base::~ 2021-03-31 13:44:37
- 5 package:ggplot2         <NA>                      base::~ 2021-03-31 13:44:37
- 6 package:purrr           <NA>                      base::~ 2021-03-31 13:44:37
- 7 Seed Before             <NA>                      609     2021-03-31 13:44:37
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-03-31 13:44:37
- 9 Seed After              <NA>                      623     2021-03-31 13:44:38
-10 Seed Before             <NA>                      623     2021-03-31 13:44:38
+ 1 Seed @ Start            <NA>                      595     2021-04-01 17:10:55
+ 2 package:dplyr           <NA>                      base::~ 2021-04-01 17:10:55
+ 3 package:readr           <NA>                      base::~ 2021-04-01 17:10:56
+ 4 package:tidyr           <NA>                      base::~ 2021-04-01 17:10:56
+ 5 package:ggplot2         <NA>                      base::~ 2021-04-01 17:10:56
+ 6 package:purrr           <NA>                      base::~ 2021-04-01 17:10:56
+ 7 Seed Before             <NA>                      595     2021-04-01 17:10:56
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-01 17:10:56
+ 9 Seed After              <NA>                      610     2021-04-01 17:10:56
+10 Seed Before             <NA>                      610     2021-04-01 17:10:56
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2382,7 +2382,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fd72884b1d0>
+<bytecode: 0x7ff6756798b0>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2482,7 +2482,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fd73de38890>
+<bytecode: 0x7ff68b0b3890>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2587,9 +2587,9 @@ Additionally, as discussed in Section 2.2.1, the interactive warning system is a
 Due to its shallow learning curve, customizability, and all-component-encompassing nature, \texttt{fertile} has the potential to provide benefits to users in a wide variety of domains. We will consider these in detail in the next chapter.
 
 \hypertarget{applications}{%
-\chapter{\texorpdfstring{Incorporating \texttt{fertile} Into The Greater Data Science Community}{Incorporating fertile Into The Greater Data Science Community}}\label{applications}}
+\chapter{\texorpdfstring{Incorporating \texttt{fertile} Into the Greater Data Science Community}{Incorporating fertile Into the Greater Data Science Community}}\label{applications}}
 
-Finding a solution to addressing reproducibility on a widespread scale is a challenging problem. Attempts to do so--in academic publishing, software, and data science education--have made some progress, but many solutions have significant flaws. Primarily, they either:
+Addressing reproducibility on a widespread scale is a challenging problem. In academic publishing, software, and data science education some progress has been made but many approaches have significant flaws. Primarily, they either:
 \begin{enumerate}
 \def\labelenumi{\Alph{enumi})}
 \tightlist
@@ -2608,21 +2608,21 @@ OR
 \end{enumerate}
 \texttt{fertile} is an attempt to address reproducibility in a way that does not fall victim to either of these challenges. Rather than focus on one area of expertise, \texttt{fertile} contains features focused on each of the six major components of reproducibility. Its self-contained nature allows users to address all aspects of reproducibility in one package; users can achieve near- or complete reproducibility with just a single piece of software.
 
-\texttt{fertile} also makes the processes of both achieving \emph{and} checking reproducibility simple and fast. Those looking to check whether a project is reproducible can almost instantaneously receive a full report of where the project succeeds and where it fails, and those looking to improve their reproducibility can receive and act on \texttt{fertile}'s clear suggestions with minimal effort. Some of the package's features are enabled automatically and most others can be accessed with only a handful of functions, all of which are very simple in function.
+\texttt{fertile} also makes the processes of both achieving \emph{and} checking reproducibility simple and fast. Those looking to check whether a project is reproducible can quickly receive a full report of where the project succeeds and where it fails, and those looking to improve their reproducibility can receive and act on \texttt{fertile}'s clear suggestions with minimal effort. Some of the package's features are enabled automatically and most others can be accessed through only a handful of functions, all of which are simple.
 
-Additionally, \texttt{fertile} does not just provide a report on reproducibility and leave it at that. Instead, it attempts to teach its users the concepts of reproducibility in the same way that reproducibility-focused classes are meant to do. Users receive instant feedback when making mistakes and, when checking work after writing it, receive reports clearly indicating where issues were found, why they occurred, and how to correct them.
+Additionally, \texttt{fertile} does not just provide a report on reproducibility and leave it at that. Instead, it attempts to teach its users the concepts of reproducibility. Users receive instant feedback when making mistakes and, when checking work after writing it, receive reports clearly indicating where issues were found, why they occurred, and how to correct them.
 
-It is also highly customizable, allowing users to utilize the tool in the way that fits their needs best. Those who want to focus their reproducibility checking in a certain direction have that option and those who want widespread overviews can also have their needs meet. Users who are interested in going beyond the base functionality of \texttt{proj\_analyze} and \texttt{proj\_check} also have additional functions at their disposal that they can use to check reproducibility, file paths, file types, etc.
+It is also customizable, allowing users to utilize the tool in the way that fits their needs best. Those who want to focus their reproducibility checking in a certain direction have that option and those who want widespread overviews can also have their needs meet. Users who are interested in going beyond the base functionality of \texttt{proj\_analyze()} and \texttt{proj\_check()} also have additional functions at their disposal that they can use to check reproducibility, file paths, file types, etc.
 
 \hypertarget{potential-applications-of-fertile}{%
 \section{\texorpdfstring{Potential Applications of \texttt{fertile}}{Potential Applications of fertile}}\label{potential-applications-of-fertile}}
 
-These features make \texttt{fertile} an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. \texttt{fertile} can provide a variety of benefits to users in all different application domains and with all different experiences. In this chapter, we consider the many potential uses of the package.
+These features make \texttt{fertile} an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. \texttt{fertile} can provide a variety of benefits to users in all different application domains and with all different experiences. In this chapter, we consider several potential uses of the package.
 
 \hypertarget{in-journal-review}{%
 \subsection{In Journal Review}\label{in-journal-review}}
 
-As discussed in Chapter 1, Academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting researchers to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducible as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
+As discussed in Chapter 1, academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting authors to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducible as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
 
 \texttt{fertile} could provide significant assistance with this process. Journals could integrate \texttt{fertile} into their article review workflow, ensuring that certain reproducibility checks were passed before an article could be accepted.
 
@@ -2639,7 +2639,7 @@ They could require a list of checks to pass and provide a list of exceptions for
 
 Authors could run \texttt{fertile} on their work before submitting it to a journal to ensure that they passed the required list of checks and that any failures they saw were accounted for in the journal exceptions. Then journals, in order to ensure that authors followed the provided reproducibility guidelines, could run \texttt{fertile} on each submitted article as part of the review process. If the required checks were passed, the article could be accepted, but if they failed it would be rejected.
 
-Although it would require some effort on the journal's side, this would still be a very fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
+Although it would require some effort on the journal's side, this would still be a fast process: as long as a journal required that all submissions in \texttt{R} be in the \texttt{R\ Project} format, one reviewer could load the submission, run \texttt{fertile}, and receive a summary of the submission's reproducibility in a matter of minutes.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/journal-process} \caption{Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-71}
 \end{figure}
@@ -2658,13 +2658,13 @@ Journals could place an acceptance requirement that articles achieve a certain s
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-72}
 \end{figure}
-Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
+Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
-For journals that currently spend little effort on ensuring the reproducibility of submitted articles,\texttt{fertile} could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement \texttt{fertile}---for free---as part of the review workflow.
+For journals that currently spend little effort on ensuring the reproducibility of submitted articles, \texttt{fertile} could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement \texttt{fertile}---for free---as part of the review workflow.
 
-Journals that already have designated reproducibility editors, such as \emph{Biostatistics} and the \emph{Journal of the American Statistical Association}, could also see benefits from \texttt{fertile}(Biostatistics (2020), Journal of the American Statistical Association Editors (2020)). The integration of \texttt{fertile} could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
+Journals that already have designated reproducibility editors, such as \emph{Biostatistics} and the \emph{Journal of the American Statistical Association}, could also see benefits from \texttt{fertile} (Biostatistics (2020), Journal of the American Statistical Association Editors (2020)). The integration of \texttt{fertile} could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
 
-Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
+Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would save significant time and money for authors and reviewers in that domain.
 
 \hypertarget{for-teaching-reproducibility}{%
 \subsection{For Teaching Reproducibility}\label{for-teaching-reproducibility}}
@@ -2673,9 +2673,9 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
-Undergraduate students, therefore, do not get exposed to reproducibility very often. There are a few exceptions--for instance, introductory courses at Smith College and Duke University that integrate RMarkdown to promote reproducible workflows--but overall, reproducibility is not covered in data science courses the undergraduate level.
+Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, introductory courses at Smith College and Duke University actively integrate reproducible workflows into their course material through the use of RMarkdown (Baumer, Cetinkaya-Rundel, Bray, Loi, \& Horton (2014))--but not all do, and most (if not all) not at as in-depth of a level as a replication-based masters course might provide.
 
-\texttt{fertile} could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
+\texttt{fertile} could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses as a primary topic of focus. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
 \begin{itemize}
 \tightlist
 \item
@@ -2693,7 +2693,7 @@ Though the process may entail some confusion and troubleshooting at first, even 
 \end{figure}
 \texttt{fertile} could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of \texttt{fertile} could look as follows:
 
-At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the \texttt{fertile} package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run \texttt{fertile} on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teaching moments: the professor can share the error, explain why it happened, walk through \texttt{fertile}'s response to it, and interactively work with students to illustrate how it can be fixed.
+At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the \texttt{fertile} package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run \texttt{fertile} on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through \texttt{fertile}'s response to it, and interactively work with students to illustrate how it can be fixed.
 
 The integration of \texttt{fertile} in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor.
 
@@ -2711,7 +2711,7 @@ These students would then be prepared for entering the research world and contri
 \hypertarget{in-other-areas}{%
 \subsection{In Other Areas}\label{in-other-areas}}
 
-\texttt{fertile} can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are:
+\texttt{fertile} can also provide benefits in other domains. Though not an exhaustive list, some of the potential uses of the software are:
 \begin{itemize}
 \item
   \emph{Private Companies}: Data analysis-focused companies could require their employees to use \texttt{fertile} to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced.
@@ -2750,7 +2750,7 @@ There were several motives for selecting these specific courses:
 \item
   They were both being taught by Prof.~Baumer, which made it easy to ensure that everything went smoothly by removing the need to interact with a 3rd party.
 \item
-  They were two different sessions of the same course, with essentially identical material, ensuring that we could compare results from each section of the experiment.
+  They were two different sessions of the same course, with essentially identical material, ensuring that we could combine results from each section of the experiment.
 \item
   They involved introductory data science students, one of the groups that were of most interest as we wanted to ensure that \texttt{fertile} could provide benefit to users of all skill levels.
 \item
@@ -2774,17 +2774,14 @@ We used two different testing structures for our two experimental sections--part
 \end{itemize}
 Although the testing structures were different across the two different sections, the reproducibility tests were identical.
 
-To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had \texttt{fertile} installed and loaded while working on course assignments, or whether they didn't.
+To reduce bias, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had \texttt{fertile} installed and loaded while working on course assignments, or whether they didn't.
 
-To achieve the desired blinding, we decided to use some unique features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of.
+To achieve the desired blinding, we decided to use some features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of.
 This technique is described in the step by step experimental structure, explained below:
-
-1.Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility.
-
-In order to successfully consent, students had to provide a unique computer identifier, collected through either the command \texttt{Sys.getenv("LOGNAME")} or \texttt{Sys.getenv("USERNAME")}, depending on the student's operating system. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
+\item
+  Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. In order to successfully consent, students had to provide a unique computer identifier, collected through the command \texttt{whoami::username()}. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups.
 \item
   To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the \texttt{md5()} hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
 \item
@@ -2792,7 +2789,7 @@ In order to successfully consent, students had to provide a unique computer iden
 \item
   The students in the course were then asked to download a package called \texttt{sds192} (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 \end{enumerate}
-The \texttt{sds192} package operated by leveraging an \texttt{.onAttach()} function to scan the \texttt{R} environment of each student \emph{each time the package is loaded}, collect their unique identifier--again, via \texttt{Sys.getenv("LOGNAME)} or \texttt{Sys.getenv("USERNAME")}-- and run it through the same hashing algorithm as before. This function came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group.
+The \texttt{sds192} package operates by leveraging an \texttt{.onAttach()} function to scan the \texttt{R} environment of each student \emph{each time the package is loaded}, collect their unique identifier--again, via \texttt{whoami::username()}-- and run it through the same hashing algorithm as before. \texttt{sds192} came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of \texttt{.onAttach()}.
 
 Each time a student's hashed identifier was collected (every time they loaded the \texttt{sds192} package for class), it was then compared with the provided groups to determine how the package should function for that individual.
 
@@ -2804,7 +2801,7 @@ The structure of this function can be seen below:
 
 \NormalTok{.onAttach }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(libname, pkgname) \{}
 
-  \CommentTok{\# The experimental group gets \textasciigrave{}fertile\textasciigrave{} loaded secretly}
+  \CommentTok{\# The experimental group gets \textasciigrave{}fertile\textasciigrave{} loaded silently}
   \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is\_experimental}\NormalTok{()) \{}
     \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(fertile))}
 \NormalTok{  \}}
@@ -2842,7 +2839,7 @@ The structure of this function can be seen below:
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{4}
 \item
-  The experimental group received the basic \texttt{sds192} package, which consisted of some data sets and \texttt{R} Markdown templates necessary for completing homework assignments and projects in the class, but also loaded \texttt{fertile} silently in the background. The package's proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. The control group received only the basic \texttt{sds192} package, including its data sets and \texttt{R} Markdown templates.
+  Everyone received the same \texttt{sds192} package, which consisted of some data sets and \texttt{R} Markdown templates necessary for completing homework assignments and projects in the class. However, it functioned differently depending on each student's experimental group. The \texttt{control} group did not have \texttt{fertile} loaded, but the \texttt{experimental} group did. When \texttt{experimental} group users loaded \texttt{sds192}, the package silently loaded \texttt{fertile} as well. This meant that \texttt{fertile}'s proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. T
 \item
   {[}January Term 2021 Only{]} Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
 \item
@@ -2955,7 +2952,7 @@ The score averages for both groups of students were as follows:
 1 Control         3.33      4.22        7.56
 2 Fertile         2.11      2.44        4.56
 \end{verbatim}
-These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed slightly worse, overall, than the \texttt{control} group.
+These numbers, combined with the visual below seem to indicate, at least in this small sample, that the \texttt{fertile} group actually performed worse overall than the \texttt{control} group.
 \begin{figure}
 \centering
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-80-1.pdf}
@@ -2967,7 +2964,7 @@ Looking at the overall total score (\texttt{Overall\_Total}), this was true even
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-81-1.pdf}
 \caption{\label{fig:unnamed-chunk-81}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
 \end{figure}
-However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
 Call:
 lm(formula = Overall_Total ~ Group, data = fall2020)
@@ -3086,9 +3083,7 @@ Although it is challenging to make any strong claims with so few data points, on
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-89-1.pdf}
 \caption{\label{fig:unnamed-chunk-89}Scatterplot: Previous Coursework Experience vs Reproducibility Score by Group, January Term 2021}
 \end{figure}
-Although, visually, it does not seem as though \texttt{fertile} provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
-
-After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-values of over 0.96, indicating an approximately 96\% probability that the slight positive relationship between being in the \texttt{fertile} group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-value of over 0.96, indicating little evidence of a relationship between score differential and group.
 \begin{verbatim}
 Call:
 lm(formula = Score_Difference ~ Group, data = jterm_model_data)

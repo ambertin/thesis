@@ -4,9 +4,9 @@ opts_chunk$set(tidy.opts=list(width.cutoff=80),tidy=TRUE)
 ```
 
 
-# Incorporating `fertile` Into The Greater Data Science Community {#applications}
+# Incorporating `fertile` Into the Greater Data Science Community {#applications}
 
-Finding a solution to addressing reproducibility on a widespread scale is a challenging problem. Attempts to do so--in academic publishing, software, and data science education--have made some progress, but many solutions have significant flaws. Primarily, they either:
+Addressing reproducibility on a widespread scale is a challenging problem. In academic publishing, software, and data science education some progress has been made but many approaches have significant flaws. Primarily, they either:
 
 A) Only address one small aspect of reproducibility--for example, software that focuses on version control or a set of journal guidelines requesting only that code and data be provided, but giving no further detail. 
 
@@ -18,20 +18,20 @@ B) Are challenging, time consuming, and/or burdensome to implement--for example,
 
 `fertile` is an attempt to address reproducibility in a way that does not fall victim to either of these challenges. Rather than focus on one area of expertise, `fertile` contains features focused on each of the six major components of reproducibility. Its self-contained nature allows users to address all aspects of reproducibility in one package; users can achieve near- or complete reproducibility with just a single piece of software. 
 
-`fertile` also makes the processes of both achieving *and* checking reproducibility simple and fast. Those looking to check whether a project is reproducible can almost instantaneously receive a full report of where the project succeeds and where it fails, and those looking to improve their reproducibility can receive and act on `fertile`'s clear suggestions with minimal effort. Some of the package's features are enabled automatically and most others can be accessed with only a handful of functions, all of which are very simple in function. 
+`fertile` also makes the processes of both achieving *and* checking reproducibility simple and fast. Those looking to check whether a project is reproducible can quickly receive a full report of where the project succeeds and where it fails, and those looking to improve their reproducibility can receive and act on `fertile`'s clear suggestions with minimal effort. Some of the package's features are enabled automatically and most others can be accessed through only a handful of functions, all of which are simple.
 
-Additionally, `fertile` does not just provide a report on reproducibility and leave it at that. Instead, it attempts to teach its users the concepts of reproducibility in the same way that reproducibility-focused classes are meant to do. Users receive instant feedback when making mistakes and, when checking work after writing it, receive reports clearly indicating where issues were found, why they occurred, and how to correct them. 
+Additionally, `fertile` does not just provide a report on reproducibility and leave it at that. Instead, it attempts to teach its users the concepts of reproducibility. Users receive instant feedback when making mistakes and, when checking work after writing it, receive reports clearly indicating where issues were found, why they occurred, and how to correct them. 
 
-It is also highly customizable, allowing users to utilize the tool in the way that fits their needs best. Those who want to focus their reproducibility checking in a certain direction have that option and those who want widespread overviews can also have their needs meet. Users who are interested in going beyond the base functionality of `proj_analyze` and `proj_check` also have additional functions at their disposal that they can use to check reproducibility, file paths, file types, etc.
+It is also customizable, allowing users to utilize the tool in the way that fits their needs best. Those who want to focus their reproducibility checking in a certain direction have that option and those who want widespread overviews can also have their needs meet. Users who are interested in going beyond the base functionality of `proj_analyze()` and `proj_check()` also have additional functions at their disposal that they can use to check reproducibility, file paths, file types, etc.
 
 
 ## Potential Applications of `fertile`
 
-These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. `fertile` can provide a variety of benefits to users in all different application domains and with all different experiences. In this chapter, we consider the many potential uses of the package.
+These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. `fertile` can provide a variety of benefits to users in all different application domains and with all different experiences. In this chapter, we consider several potential uses of the package.
 
 ### In Journal Review
 
-As discussed in Chapter 1, Academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting researchers to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducible as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
+As discussed in Chapter 1, academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting authors to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducible as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
 
 `fertile` could provide significant assistance with this process. Journals could integrate `fertile` into their article review workflow, ensuring that certain reproducibility checks were passed before an article could be accepted.
 
@@ -45,7 +45,7 @@ They could require a list of checks to pass and provide a list of exceptions for
 
 Authors could run `fertile` on their work before submitting it to a journal to ensure that they passed the required list of checks and that any failures they saw were accounted for in the journal exceptions. Then journals, in order to ensure that authors followed the provided reproducibility guidelines, could run `fertile` on each submitted article as part of the review process. If the required checks were passed, the article could be accepted, but if they failed it would be rejected.
 
-Although it would require some effort on the journal's side, this would still be a very fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
+Although it would require some effort on the journal's side, this would still be a fast process: as long as a journal required that all submissions in `R` be in the `R Project` format, one reviewer could load the submission, run `fertile`, and receive a summary of the submission's reproducibility in a matter of minutes. 
 
 
 ```{r, echo = FALSE, out.width = '100%', fig.cap="Potential 'fertile' Journal Review Process"}
@@ -65,13 +65,13 @@ knitr::include_graphics("figure/journal-process-2.png")
 ```
 
 
-Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting researchers would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
+Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
-For journals that currently spend little effort on ensuring the reproducibility of submitted articles,`fertile` could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement `fertile`---for free---as part of the review workflow.
+For journals that currently spend little effort on ensuring the reproducibility of submitted articles, `fertile` could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement `fertile`---for free---as part of the review workflow.
 
-Journals that already have designated reproducibility editors, such as *Biostatistics* and the *Journal of the American Statistical Association*, could also see benefits from `fertile`(@journal-biostats, @jasa-rep-editors). The integration of `fertile` could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
+Journals that already have designated reproducibility editors, such as *Biostatistics* and the *Journal of the American Statistical Association*, could also see benefits from `fertile` (@journal-biostats, @jasa-rep-editors). The integration of `fertile` could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
 
-Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would provide a significant time- and money-saving impact for both authors and reviewers in that domain.
+Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would save significant time and money for authors and reviewers in that domain.
 
 
 ### For Teaching Reproducibility
@@ -80,9 +80,9 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
-Undergraduate students, therefore, do not get exposed to reproducibility very often. There are a few exceptions--for instance, introductory courses at Smith College and Duke University that integrate RMarkdown to promote reproducible workflows--but overall, reproducibility is not covered in data science courses the undergraduate level.
+Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, introductory courses at Smith College and Duke University actively integrate reproducible workflows into their course material through the use of RMarkdown (@baumer2014r)--but not all do, and most (if not all) not at as in-depth of a level as a replication-based masters course might provide.
 
-`fertile` could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
+`fertile` could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses as a primary topic of focus. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
 
 * R and RStudio installed on their computer
 * Knowledge of how to install a package from GitHub and load it into their environment
@@ -101,7 +101,7 @@ knitr::include_graphics("figure/gov-2001-replication.png")
 
 `fertile` could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of `fertile` could look as follows:
 
-At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the `fertile` package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run `fertile` on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teaching moments: the professor can share the error, explain why it happened, walk through `fertile`'s response to it, and interactively work with students to illustrate how it can be fixed.
+At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the `fertile` package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run `fertile` on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through `fertile`'s response to it, and interactively work with students to illustrate how it can be fixed.
 
 The integration of `fertile` in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor. 
 
@@ -118,7 +118,7 @@ These students would then be prepared for entering the research world and contri
 
 ### In Other Areas
 
-`fertile` can also provide benefits in other domains. Though not an exhausted list, some of the potential uses of the software are: 
+`fertile` can also provide benefits in other domains. Though not an exhaustive list, some of the potential uses of the software are: 
 
 * *Private Companies*: Data analysis-focused companies could require their employees to use `fertile` to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced. 
 
@@ -149,7 +149,7 @@ After designing our experimental structure, working out technical mechanics, and
 There were several motives for selecting these specific courses:
 
 - They were both being taught by Prof. Baumer, which made it easy to ensure that everything went smoothly by removing the need to interact with a 3rd party.
-- They were two different sessions of the same course, with essentially identical material, ensuring that we could compare results from each section of the experiment. 
+- They were two different sessions of the same course, with essentially identical material, ensuring that we could combine results from each section of the experiment. 
 - They involved introductory data science students, one of the groups that were of most interest as we wanted to ensure that `fertile` could provide benefit to users of all skill levels. 
 - They were somewhat larger than many other classes in the Statistical and Data Sciences department, providing an opportunity for more data collection. 
 
@@ -170,14 +170,12 @@ We used two different testing structures for our two experimental sections--part
 
 Although the testing structures were different across the two different sections, the reproducibility tests were identical.
 
-To reduce bias to a maximum degree, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had `fertile` installed and loaded while working on course assignments, or whether they didn't.
+To reduce bias, we opted to use blinding, in which participants were unaware of whether they had received the experimental or control condition--in this case, whether they had `fertile` installed and loaded while working on course assignments, or whether they didn't.
 
-To achieve the desired blinding, we decided to use some unique features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of. 
+To achieve the desired blinding, we decided to use some features of R packages which allowed us to give all students in the course the same software, but have it behave differently when loaded, depending on which experimental group the student was a part of. 
 This technique is described in the step by step experimental structure, explained below: 
 
-1.Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. 
-
-In order to successfully consent, students had to provide a unique computer identifier, collected through either the command `Sys.getenv("LOGNAME")` or `Sys.getenv("USERNAME")`, depending on the student's operating system. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups. 
+1. Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. In order to successfully consent, students had to provide a unique computer identifier, collected through the command `whoami::username()`. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups. 
 
 2. To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the `md5()` hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
 
@@ -185,7 +183,7 @@ In order to successfully consent, students had to provide a unique computer iden
 
 4. The students in the course were then asked to download a package called `sds192` (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 
-The `sds192` package operated by leveraging an `.onAttach()` function to scan the `R` environment of each student *each time the package is loaded*, collect their unique identifier--again, via `Sys.getenv("LOGNAME)` or `Sys.getenv("USERNAME")`-- and run it through the same hashing algorithm as before. This function came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group. 
+The `sds192` package operates by leveraging an `.onAttach()` function to scan the `R` environment of each student *each time the package is loaded*, collect their unique identifier--again, via `whoami::username()`-- and run it through the same hashing algorithm as before. `sds192` came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of `.onAttach()`. 
 
 Each time a student's hashed identifier was collected (every time they loaded the `sds192` package for class), it was then compared with the provided groups to determine how the package should function for that individual.
 
@@ -198,7 +196,7 @@ The structure of this function can be seen below:
 
 .onAttach <- function(libname, pkgname) {
 
-  # The experimental group gets `fertile` loaded secretly
+  # The experimental group gets `fertile` loaded silently
   if (is_experimental()) {
     suppressMessages(library(fertile))
   }
@@ -233,7 +231,7 @@ is_experimental <- function(logname = whoami::username()) {
 ```
 
 
-5. The experimental group received the basic `sds192` package, which consisted of some data sets and `R` Markdown templates necessary for completing homework assignments and projects in the class, but also loaded `fertile` silently in the background. The package's proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. The control group received only the basic `sds192` package, including its data sets and `R` Markdown templates.
+5. Everyone received the same `sds192` package, which consisted of some data sets and `R` Markdown templates necessary for completing homework assignments and projects in the class. However, it functioned differently depending on each student's experimental group. The `control` group did not have `fertile` loaded, but the `experimental` group did. When `experimental` group users loaded `sds192`, the package silently loaded `fertile` as well. This meant that `fertile`'s proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. T
 
 6. [January Term 2021 Only] Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
 
@@ -320,7 +318,7 @@ fall2020 %>%
 
 ```
 
-These numbers, combined with the visual below seem to indicate, at least in this small sample, that the `fertile` group actually performed slightly worse, overall, than the `control` group.
+These numbers, combined with the visual below seem to indicate, at least in this small sample, that the `fertile` group actually performed worse overall than the `control` group.
 
 ```{r, echo = FALSE, fig.cap = 'Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020', fig.height = 3, fig.width = 5}
 library(RColorBrewer)
@@ -348,7 +346,7 @@ ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) +
   scale_color_brewer(palette = "Paired")
 ```
 
-However, when analyzed mathematically, the results appear less negative. A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression T-Test Results, Fall 2020'}
 fall_model <- lm(Overall_Total ~ Group, data = fall2020)
@@ -464,9 +462,7 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) +
   scale_color_brewer(palette = "Paired")
 ```
 
-Although, visually, it does not seem as though `fertile` provided a statistically significant benefit (or change at all) in student knowledge of reproducibility across the semester, statistical tests are necessary to solidify the analysis.
-
-After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`fertile` or `control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-values of over 0.96, indicating an approximately 96% probability that the slight positive relationship between being in the `fertile` group and the difference in reproducibility test scores across the semester was just due to chance.
+After constructing a simple regression model, predicting overall `Score_Difference` based on `Group` (`fertile` or `control`), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that `fertile` provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-value of over 0.96, indicating little evidence of a relationship between score differential and group.
 
 
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression T-Test Results, January Term 2021'}
