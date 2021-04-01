@@ -151,7 +151,7 @@ There were several motives for selecting these specific courses:
 - They were both being taught by Prof. Baumer, which made it easy to ensure that everything went smoothly by removing the need to interact with a 3rd party.
 - They were two different sessions of the same course, with essentially identical material, ensuring that we could combine results from each section of the experiment. 
 - They involved introductory data science students, one of the groups that were of most interest as we wanted to ensure that `fertile` could provide benefit to users of all skill levels. 
-- They were somewhat larger than many other classes in the Statistical and Data Sciences department, providing an opportunity for more data collection. 
+- Though certainly not large sample sizes by any measure, they were still somewhat larger than many other classes in the Statistical and Data Sciences department, providing an opportunity for more data collection. 
 
 
 ### Experimental Design
@@ -493,12 +493,13 @@ summary(jterm_model_mr)
 Although the findings of the `fertile` experiment are interesting, they come with many caveats and should be treated with caution.
 
 For one, the sample sizes of both experimental sections were very small. The first only contained data on 18 students, while the second on only 38. While sample sizes like these may provide some evidence of the existence of experimental relationships, conclusive statements should not be made without additional data. 
-
+ Even though the SDS 192 courses are some of the largest in the Statistical and Data Sciences department at Smith College, they still did not result in an optimal level of data. Not all students volunteered to participate in the study, several who did failed to complete all of the components necessary for inclusion of their data and---even if everyone had participated---the maximum sample size would have only been limited to the combined size of both course sections: around 100 students.
+ 
 Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from `fertile` the classroom setting meant that students who had questions about some of the errors that appeared as a result of having `fertile` loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be impelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results. 
 
 Additionally, students in a classroom have the unfortunate characteristic---in experimental terms---of not being fully independent from one another. Students regularly communicated with each other, asking and answering questions, on a course `Slack` channel and also worked in groups on many of the class projects. This meant that they could spread knowledge; experiences from the `fertile` group could be disseminated to the `control` group and vice versa. Any sort of cross-contamination could be a potential threat to the validity of the experimental results, as independence is a key assumption necessary for linear regression.
 
-Although independence is at risk, many of the other assumptions for linear regression appear to be mostly met---with the caveat, of course, that there are not enough data points to make a definitive conclusion.
+Although independence is at risk, many of the other assumptions for linear regression appear to be mostly met.
 
 In the residuals versus fitted values and normal quantile-quantile plots for the Fall 2020 and January Term 2021 data, displayed below in that order, there do not appear to be any trends indicating an egregious lack of adherence to regression conditions.
 
@@ -514,40 +515,27 @@ Those who use R packages for their own benefit do so with specific intention and
 
 In order to create an effective experimental environment, however, concessions must be made. If `fertile` were tested in its natural use state, where students were aware that they were using it, it would introduce the possibility of significant bias in the results. Students in the `fertile` group, for example, might change their behavior, knowing that their software is designed to improve reproducibility, and pursue extra research into the topic, affecting their test performance. We do not know, from this data, whether `fertile` has significant benefits in its standard practice. All we can conclude from this study is that in the specific conditions that `fertile` was used in this course, there was no evidence that the package's interactive reproducibility messaging provides learning benefits when used without students' knowledge.
 
-Finally, there is the fact that the results of this experiment cannot be generalized beyond the Smith College Introduction to Data Science course. In no way Smith's SDS 192 course representative of the wider undergraduate introductory data science community. Smith classes have a very different student makeup than courses at most other institutions---with the distinct feature of being non-male-dominated---and the curriculum is also not consistent with other schools. As a result, the findings of this study can not realistically be extended beyond Smith. In order to gain a better understanding of `fertile`'s performance in the environments of other colleges and universities, additional studies would be necessary.
+There is also the fact that the results of this experiment cannot be generalized beyond the Smith College Introduction to Data Science course. In no way is Smith's SDS 192 course representative of the wider undergraduate introductory data science community. Smith classes have a very different student makeup than courses at most other institutions with the distinct feature of being non-male-dominated, so they present a learning environment that is not necessarily comparable. Additionally, the SDS 192 course has its own unique curriculum, not identical to other courses at Smith or at other institutions. Due to the unique course material and teaching methods of SDS 192, students in the class could potentially be more or less primed to process messages about reproducibility compared with students in other courses or at other institutions. In order to gain a better understanding of `fertile`'s performance in the environments of other colleges and universities, additional studies would be necessary.
+
+Finally, there is the issue of experimental monitoring. After assigning students to experimental and control groups in the `sds192` `.onAttach()` function, there is no easy way to monitor that the students in the experimental group had `fertile` working properly. This would require looking at each student's computer one by one, having them execute potentially reproducibility-breaking commands, and observing the answers, which would be both time consuming and potentially threatening to experimental blindness. Even if `fertile` were working for an experimental group student at the beginning of the semester, that also does not guarantee that they had it installed for the rest of the semester. That student could have potentially gotten a new computer or changed their unique login name, affecting whether they were correctly recognized as members of the experimental group. There also could have potentially been other bugs on student computers that prevented `fertile` from loading. Due to these reasons, it is not possible to guarantee that all students in the experimental group had `fertile` loaded and functioning for the entire semester.
+
+
 
 ### Implications 
 
-Although the conclusions from this experiment are not particularly dramatic or exciting, the implications of the study extend far beyond just this software.
+Although the conclusions from this experiment are not particularly demonstrative, the implications of the study extend far beyond just this software.
 
 #### Implications for the Future of `fertile`
 
 Through this experiment, we did not discover any significant relationship between students' blind use of `fertile`'s interactive warning system and their knowledge or learning of reproducibility across the time span of the Introduction to Data Science (SDS 192) course. 
 
-This is not particularly good news, but it is also not bad news. `fertile` does not appear to have a negative effect on students' learning, rather just neutral. 
-
 Additionally, this experiment does not test `fertile` in its natural environment---use by an individual who has specifically chosen to use it and studied the documentation in order to understand how it works---or consider the ways in which `fertile` fills current gaps in software that exist in the `R` community.
 
-Despite `fertile`'s lack of success in the experiment, it has been recognized elsewhere as a helpful tool with the potential to positively help the `R` community:
-
-- An article written by myself and Professor Baumer, which details the background, implications, and operation of the package was accepted at the 2020 American Statistical Association's Symposium on Data Science and Statistics and, in early 2021, published in the Wiley journal *Stat* (@bertin2021creating).
-
-- Several influential and popular people in the `R` community have liked and shared some of the work related to `fertile` on social media:
-  - Hadley Wickham (Chief Scientist at RStudio)
-  - Jenny Bryan (Software engineer at RStudio)
-  - Tom Mock (Customer success team at RStudio)
-  - Michael Lopez (Director of Data and Football Analytics at the NFL)
-  - Ron Yurko (Known for creating an extremely popular R package, alongside other work in sports analytics)
-  - Sharla Gelfand (Freelance developer, speaker, and organizer of R Ladies Toronto, with a focus on reproducibility)
-  - Ben Marwick (Author of some of the reproducibility-focused content discussed in the literature review)
-  
 As the project continues to spread and be shared, we hope to find a dedicated community of users who find benefit in its software tools and see an increased shift toward reproducibility in the `R` community.
 
 #### Implications for the Experimental Design in Other Applications
 
-Although this particular experiment did not produce any particularly interesting results, it has produced some exciting ideas for the future of software testing. 
-
-As far as I am aware, the experimental design developed by myself and Professor Baumer is the first of its kind---a structure designed to test the difference between two versions of `R` software without the experimental participants being aware. 
+To the best of our knowledge, the experimental design we developed is the first of its kind---a structure designed to test the difference between two versions of `R` software without the experimental participants being aware. 
 
 Typically, `R` package testing is primarily anecdotal: a developer will release a software update, request testing and relevant feedback from users, and make edits based on those responses. This method can be effective, but it does not have the same scientific backing behind it as experimental testing does. 
 
