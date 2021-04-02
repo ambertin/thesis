@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  186.89K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.44K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~   377.7K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.54K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqJ5aRf/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoP1NUi/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqJ5aRf/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoP1NUi/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpqJ5aRf/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpoP1NUi/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-04-01 19:31:14
+1 LAST RENDERED <NA>     proj_render 2021-04-02 00:23:26
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -957,9 +957,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  186.89K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.44K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~   377.7K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.54K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.44K image/png                                 
- 3 proteins_v_time.p~ png     378.54K image/png                                 
+ 2 citrate_v_time.png png      187.9K image/png                                 
+ 3 proteins_v_time.p~ png     378.78K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2083,7 +2083,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,299 x 4
+# A tibble: 1,306 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2096,7 +2096,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,289 more rows
+# ... with 1,296 more rows
 \end{verbatim}
 \normalsize
 
@@ -2173,7 +2173,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7fa0a0944d38>
+<bytecode: 0x7fb9a1c29420>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2303,16 +2303,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      593     2021-04-01 19:31:56
- 2 package:dplyr           <NA>                      base::~ 2021-04-01 19:31:56
- 3 package:readr           <NA>                      base::~ 2021-04-01 19:31:57
- 4 package:tidyr           <NA>                      base::~ 2021-04-01 19:31:57
- 5 package:ggplot2         <NA>                      base::~ 2021-04-01 19:31:57
- 6 package:purrr           <NA>                      base::~ 2021-04-01 19:31:57
- 7 Seed Before             <NA>                      593     2021-04-01 19:31:58
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-01 19:31:58
- 9 Seed After              <NA>                      610     2021-04-01 19:31:58
-10 Seed Before             <NA>                      610     2021-04-01 19:31:58
+ 1 Seed @ Start            <NA>                      582     2021-04-02 00:23:54
+ 2 package:dplyr           <NA>                      base::~ 2021-04-02 00:23:54
+ 3 package:readr           <NA>                      base::~ 2021-04-02 00:23:55
+ 4 package:tidyr           <NA>                      base::~ 2021-04-02 00:23:55
+ 5 package:ggplot2         <NA>                      base::~ 2021-04-02 00:23:56
+ 6 package:purrr           <NA>                      base::~ 2021-04-02 00:23:56
+ 7 Seed Before             <NA>                      582     2021-04-02 00:23:56
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-02 00:23:56
+ 9 Seed After              <NA>                      596     2021-04-02 00:23:56
+10 Seed Before             <NA>                      596     2021-04-02 00:23:56
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2382,7 +2382,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fa092345fa0>
+<bytecode: 0x7fb9938fa908>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2482,7 +2482,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fa0a93d0480>
+<bytecode: 0x7fb9a8cf9fd0>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -3197,7 +3197,7 @@ This will be particularly useful for those \texttt{R} developers looking to buil
 \chapter*{Conclusion}\label{conclusion}}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Though there is no clear consensus on the exact standards necessary to achieve reproducibility, writing on the topic identifies several components of great importance:
+In the field of data science, research is considered fully \emph{reproducible} when the requisite code and data files produce identical results when run by another analyst. Though there is no clear consensus on the exact standards necessary to achieve reproducibility, we identify several components of importance:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
@@ -3209,41 +3209,33 @@ In the field of data science, research is considered fully \emph{reproducible} w
 \item
   File paths used in code are not system- or user-dependent.
 \item
-  Randomness is accounted for.
+  Randomness is controlled.
 \item
   Code is readable and consistently styled.
 \end{enumerate}
-Reproducibility is incredibly important to the scientific community, helping ensure the accuracy of the findings of studies and data analyses and simplifying the process of collaboration and knowledge sharing. When all of the files necessary for a study to be run are published simultaneously, it makes it much easier for others to understand the methods and ideas that were used and apply them to other work in similar areas, promoting the process of scientific advancement.
+Reproducibility is vital to the scientific community, helping ensure the accuracy of the findings of studies and data analyses and simplifying the process of collaboration and knowledge sharing. When all of the files necessary for a study to be run are published simultaneously, it makes it much easier for others to understand the methods and ideas that were used and apply them to other work in similar areas, promoting the process of scientific advancement.
 
-However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. The vast majority of researchers across all scientific fields have been unable to reproduce another researcher's results, and many have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
+However, even though it has many benefits in the scientific community, reproducibility is currently facing a crisis. Many researchers across all scientific fields have been unable to reproduce each other's results, and some have been unable to reproduce even their own. In some fields, more than half of published articles have failed attempts at reproducibility.
 
-Researchers across the sciences have recognized this problem and taken steps to address it. Data-intensive academic journals have put in place reproducibility guidelines requiring that submitted articles meet at least some of the standards listed above. Software developers have built tools to help data analysts make their projects more reproducible. These include a small library of \texttt{R} packages, which provide benefits to users of the popular statistical language \texttt{R}, as well as several continuous integration tools, which are much more broad in their application. Educators have also taken action on reproducibility, introducing courses and workshops focused on the topic at their universities.
+Researchers across the sciences have recognized this problem and taken steps to address it. Data-intensive academic journals have put in place reproducibility guidelines requiring that submitted articles meet at least some of the standards listed above. Software developers have built tools to help data analysts make their projects more reproducible. These include a small library of \texttt{R} packages, which provide benefits to users of the popular statistical language \texttt{R}, as well as several continuous integration tools, which are much more broad in their application. Educators have also taken action on reproducibility, introducing courses and workshops focused on the topic at their universities. However, many of these solutions are sub-optimal, facing challenges with inaccessibility, steep learning curves, limited functionality, and/or lack of coding language-specific features.
 
-However, many of these solutions have fallen short. Even with reproducibility guidelines, many journals still publish work that is not reproducible. Journal review takes significantly longer and requires many more resources when ensuring that reproducibility guidelines are fully met. Journals often cannot spare the additional time and money, leaving it up to submitting authors to ensure that their articles meet standards. Since the adherence to standards is not often checked, and achieving full reproducibility can sometimes be time consuming and challenging, many authors fail to take this step.
-
-Software solutions have not fared much better. Many of the \texttt{R} specific solutions only address a single component of reproducibility---for example, version control---and leave out the rest, making it challenging for researchers to address their problems all at once. Additionally, a lot of the software is quite complex in its operation, containing barriers to entry that prevent less-experienced \texttt{R} users from trying them. The continuous integration tools do not face the same issues, but have their own problems. Due to their general nature, these tools do not have any way of addressing coding-language-specific reproducibility problems such as managing software dependencies.
-
-Finally, educational attempts to address reproducibility are inaccessible and time consuming to implement. Many of the existing educational options require a great deal of research knowledge, and as a result are only available at the graduate level, leaving undergraduate students with little to no exposure on the subject. Additionally, many current versions of reproducibility education require a lot of time and focus in class. Professors wanting to share the topic of reproducibility with their students must do so while sacrificing a significant portion of time from other important topics.
-
-Due to their many associated shortcomings, none of these solutions appear to have the potential to address the problem of reproducibility on a wider scale. That is where my work comes in. I have worked to develop \texttt{fertile}, a package built for \texttt{R} users that is focused on creating optimum conditions for reproducibility for data analysis projects written in \texttt{R}.
-
-The package is designed to possess none of the challenges apparent in other solutions---to serve as a one-stop solution, where users can go to address all of their reproducibility needs at one time. Rather than being time consuming, complicated, inaccessible, or too focused on one issue, \texttt{fertile} is:
+\texttt{fertile} attempts to fill this gap by being:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
-  \emph{Simple, with a small library of functions/tools that are straightforward to use}. Some of the package's functionalities, like the interactive file path warning system, require no effort from the user to enable, while most others can be run with only a handful of functions requiring one argument: a path to a project directory.
+  Simple, with a small library of functions/tools that are straightforward to use.
 \item
-  \emph{Accessible to a variety of users, with a relatively small learning curve.} Users do not need a background in research, nor do they need an advanced knowledge of \texttt{R} programming, to run the majority of functions in \texttt{fertile}.
+  Accessible to a variety of users, with a relatively small learning curve.
 \item
-  \emph{Able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.} \texttt{fertile} contains functions to address all six previously defined reproducibility components, unlike most software which addresses only one or two.
+  Able to address a wide variety of aspects of reproducibility, rather than just one or two key issues.
 \item
-  \emph{Language specific, possessing features that address some of the reproducibility challenges associated with \texttt{R}.} The \texttt{has\_no\_randomness()}, \texttt{proj\_pkg\_script()}, and \texttt{proj\_dependency\_report()} functions handle the \texttt{R}-specific issues of random number generation and package dependencies.
+  Language specific, possessing features that address some of the reproducibility challenges associated with \texttt{R}.
 \item
-  \emph{Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.} There is no one way that users are forced to use \texttt{fertile}. Those who only want to focus on one aspect of reproducibility can do so, while those who want to address everything at once have that option as well. Users can also control which functions interactively warn them about non-reproducible file paths.
+  Customizable, allowing users to choose for themselves which aspects of reproducibility they want to focus on.
 \item
-  \emph{Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.} Throughout the reproducibility checking process, \texttt{fertile} provides informative messages that explain to users the flaws in their code and show them ways to correct the issues.
+  Educational, teaching those that use it about why their projects are not reproducible and how to correct that in the future.
 \end{enumerate}
-Due to its many advantages compared with traditional reproducibility solutions, \texttt{fertile} has the potential to provide significant benefits in a variety of domains, including in the areas of journal review and education, where other solutions have not quite met the mark.
+Due to its many advantages compared with traditional reproducibility solutions, \texttt{fertile} has the potential to provide benefits in a variety of domains, including in the areas of journal review and education, where other solutions have not quite met the mark.
 
 In the journal review process, \texttt{fertile} can be integrated to help ensure that submitted articles meet reproducibility standards. Since \texttt{fertile} is both free and publicly available, authors and journal reviewers could take advantage of it in their reproducibility-checking process. Journals might require that certain \texttt{fertile} checks be passed for articles to be approved, submitting authors could ensure that their projects pass on their end, and then all that would be required for journals to ensure reproducibility would be a quick run of \texttt{fertile}'s functions, or to require that authors submit a \texttt{proj\_badges()} report certifying the project's adherence to reproducibility standards. This would greatly reduce the barriers on both the reviewing and authoring side of the issue and would vastly speed up the reproducibility-checking process, making it much easier to ensure that published articles are truly reproducible.
 
@@ -3254,8 +3246,6 @@ Academia and research are not the only applications, however. \texttt{fertile} c
 To test \texttt{fertile\textquotesingle{}s} effectiveness in the classroom, we designed a randomized experiment on an introductory data science course to compare reproducibility learning between students who received \texttt{fertile} on their computer and those who didn't. Although no indication of a relationship between \texttt{fertile} use and knowledge improvement was found in this study---with the caveat that the study format, with blinding, did not fit the intended use of \texttt{fertile} in the real world---the experiment design itself has the potential to open up new avenues of code and package testing in the \texttt{R} community.
 
 \texttt{R} programmers working in a variety of domains could use the experimental structure to employ A/B testing of their software, a type of scientifically-backed testing that has previously not been used---at least to a notable degree---to test \texttt{R} code. This method of testing could pave the way for developers to scientifically measure which coding practices are most effective, efficient, and user-friendly.
-
-Additionally, outside of the experiment, \texttt{fertile} appears to already be making an impact in the \texttt{R} community. A paper on the package, written by myself and Professor Baumer, was published in the journal \texttt{Stat} in early 2021 and the project has also gained traction on social media, with many influential \texttt{R} community members sharing it to their networks.
 
 Although it is difficult to predict the future of \texttt{fertile}, my hope is for this project is for it to help bring the \texttt{R} community, even if just a few users, toward improved reproducibility and to improve knowledge around the issue within the community. Anything beyond that---journal integration of \texttt{fertile} features, deployment of \texttt{fertile}'s A/B testing design, integration into the workflow by RStudio employees, or the like---would just be the cherry on top.
 
