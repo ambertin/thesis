@@ -105,13 +105,13 @@ At the beginning of their courses, the professor provides their students with a 
 
 The integration of `fertile` in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor. 
 
-There are a variety of benefits to introducing students to reproducibility sooner, rather than later--in graduate school or through independent research on the topic:
+I believe that there are a variety of potential benefits to introducing students to reproducibility sooner, rather than later--in graduate school or through independent research on the topic:
 
-* Teaching reproducibility early on gives students important research tools and understanding before they conduct any of their own important analysis.
+* Teaching reproducibility early on could help give students important research tools and understanding before they conduct any of their own important analysis.
 
-* Practicing before students are believed to be skilled and highly educated in data science gives them an opportunity to fail and learn without fear of judgment.
+* Practicing before students are believed to be skilled and highly educated in data science could afford them an opportunity to fail and learn without fear of judgment.
 
-* Integrating concepts early helps ingrain them in the minds of students, ensuring that reproducibility begins to come naturally to them.
+* Integrating concepts early through repetitive use and recall helps ingrain them in the minds of students, ensuring that reproducibility begins to come naturally to them (@karpicke2008critical).
 
 These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way. 
 
@@ -177,15 +177,17 @@ This technique is described in the step by step experimental structure, explaine
 
 1. Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. In order to successfully consent, students had to provide a unique computer identifier, collected through the command `whoami::username()`. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups. 
 
-2. To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the `md5()` hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
+2. To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the `md5()` hashing function. To the students' computers, and us---the researchers---these hashed strings contained the same information as the identifiable usernames, but to those without the original identifier, they appear only as a meaningless string of letters and numbers.
 
 3. These hexadecimal strings, which correspond to unique students, were then randomly assigned into equally sized groups, one experimental group that receives the features of `fertile` and one group that receives a control.
 
-4. The students in the course were then asked to download a package called `sds192` (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
+To ensure an adequate control, with the control group students operating day-to-day in an almost identical way to the experimental group, we created a software package for the course which every student in the class would use, regardless of group. The package, titled `sds192`, contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 
-The `sds192` package operates by leveraging an `.onAttach()` function to scan the `R` environment of each student *each time the package is loaded*, collect their unique identifier--again, via `whoami::username()`-- and run it through the same hashing algorithm as before. `sds192` came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of `.onAttach()`. 
+The `sds192` package was designed to look the same to both the experimental and control group students, but to function slightly differently for each. The control group would only have access to the templates and data provided with the `sds192` package, and the experimental group would have all of those things *plus*, they would have `fertile` silently loaded in the background. This meant that `fertile`'s proactive features were enabled, and therefore experimental group users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. Control group users, who did not have `fertile` loaded for them, would not receive these messages.
 
-Each time a student's hashed identifier was collected (every time they loaded the `sds192` package for class), it was then compared with the provided groups to determine how the package should function for that individual.
+This control/experimental group differentiation works by leveraging an `.onAttach()` function in the `sds192` package to scan the `R` environment of each student *each time the package is loaded*, collect their unique identifier--again, via `whoami::username()`-- and run it through the same hashing algorithm as before. 
+
+`sds192` came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of `.onAttach()`. Each time a student's hashed identifier was collected (every time they loaded the `sds192` package for class), it was then compared with the provided groups to determine whether the behavior of the package would match the control or experimental group.
 
 The structure of this function can be seen below:
 
@@ -230,14 +232,11 @@ is_experimental <- function(logname = whoami::username()) {
 }
 ```
 
+4. [January Term 2021 Only] Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
 
-5. Everyone received the same `sds192` package, which consisted of some data sets and `R` Markdown templates necessary for completing homework assignments and projects in the class. However, it functioned differently depending on each student's experimental group. The `control` group did not have `fertile` loaded, but the `experimental` group did. When `experimental` group users loaded `sds192`, the package silently loaded `fertile` as well. This meant that `fertile`'s proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. T
+5. The students then completed their coursework as normal, regularly using the `sds192` package for projects and homework assignments.
 
-6. [January Term 2021 Only] Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
-
-7. The students then completed their coursework as normal, regularly using the `sds192` package for projects and homework assignments.
-
-8. [Both Fall 2020 and January Term 2021] The last step was for students to take a reproducibility test at the end of the course, to measure their knowledge of the subject after having completed the coursework and used the `sds192` package.
+6. [Both Fall 2020 and January Term 2021] The last step was for students to take a reproducibility test at the end of the course, to measure their knowledge of the subject after having completed the coursework and used the `sds192` package.
 
 ### Results
 
@@ -343,6 +342,7 @@ Looking at the overall total score (`Overall_Total`), this was true even when co
 ```{r, echo = FALSE, fig.cap = 'Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020', fig.height = 3, fig.width = 5}
 ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + 
   geom_point(size = 4) +
+  geom_smooth(method = "lm", se = FALSE)+
   scale_color_brewer(palette = "Paired")
 ```
 
@@ -357,6 +357,14 @@ summary(fall_model)
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression ANOVA Results, Fall 2020'}
 anova(fall_model)
 ```
+
+When fitting a second model, controlling for the number of previous classes, we see a similar result. Although the p-value is smaller (p = 0.08), holding the number of previous classes constant, there is still not enough evidence to suggest that the use of `fertile` impacts reproducibility test scores.
+
+```{r}
+fall_model_mr <- lm(Overall_Total ~ Group + Previous_Classes, data = fall2020)
+summary(fall_model_mr)
+```
+
 
 #### January Term 2021 Results
 
@@ -411,7 +419,7 @@ pre_post_differences %>%
 
 When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the `fertile` group appeared to score worse than the `control` group, on average. Yet, when considered all together, the `fertile` group's scores improved slightly more over the time of the course than the `control` group's.
 
-This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `fertile` group performed slightly worse than the `control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `fertile` directly affected their scores.
+This evidence appears to strengthen the previous finding--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of `fertile` is likely a product of random chance. In both experimental sections, Fall and January Term, students in the `fertile` group performed slightly worse than the `control` group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term "Pre-Test" appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that `fertile` directly affected their scores.
 
 
 ```{r, echo = FALSE, fig.cap = "Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021", fig.height = 3, fig.width = 5}
@@ -429,24 +437,6 @@ ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
   scale_fill_brewer(palette = "Paired")
 ```
 
-We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at `Overall_Total`, rather than just `Paths` or `Projects`) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
-
-```{r, echo = FALSE, fig.cap = 'Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021', fig.height = 3, fig.width = 5}
-jterm_model_data <- pre_post_differences %>% 
-  filter(Question_Group == "Total")
-
-ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Score_Difference, fill = Group)) + 
-  geom_col(color = 'black') + 
-  geom_hline(yintercept = 0) + 
-  theme(axis.text.x = element_blank(), 
-        axis.ticks.x = element_blank()) + 
-  xlab(NULL) +
-  scale_fill_brewer(palette = "Paired")
-```
-
-As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the `fertile` and `control` group had negative performances such as these, more of the highly-negative showings came from those in the `control` group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the `control` group. 
-
-Once again, there is not much evidence that `fertile` is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of `fertile` in terms of average score differences might just be due to one student skewing the `control` group's averages.
 
 It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
 
@@ -466,6 +456,8 @@ After constructing a simple regression model, predicting overall `Score_Differen
 
 
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression T-Test Results, January Term 2021'}
+jterm_model_data <- pre_post_differences %>% 
+  filter(Question_Group == "Total")
 
 jterm_model <- lm(Score_Difference ~ Group, data = jterm_model_data)
 

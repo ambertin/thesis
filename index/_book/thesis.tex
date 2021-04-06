@@ -772,10 +772,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.13K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  185.32K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.42K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  377.87K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -821,15 +821,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpusY360/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmplgM6bB/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpusY360/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmplgM6bB/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpusY360/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmplgM6bB/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -856,7 +856,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-04-03 12:41:27
+1 LAST RENDERED <NA>     proj_render 2021-04-06 12:46:53
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -957,9 +957,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.13K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  185.32K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.42K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  377.87K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1563,8 +1563,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     185.19K image/png                                 
- 3 proteins_v_time.p~ png     378.11K image/png                                 
+ 2 citrate_v_time.png png     185.66K image/png                                 
+ 3 proteins_v_time.p~ png     380.89K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2083,7 +2083,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,315 x 4
+# A tibble: 1,329 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2096,7 +2096,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,305 more rows
+# ... with 1,319 more rows
 \end{verbatim}
 \normalsize
 
@@ -2173,7 +2173,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7f8b718cd708>
+<bytecode: 0x7f8330adbe48>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2303,16 +2303,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      598     2021-04-03 12:41:48
- 2 package:dplyr           <NA>                      base::~ 2021-04-03 12:41:48
- 3 package:readr           <NA>                      base::~ 2021-04-03 12:41:48
- 4 package:tidyr           <NA>                      base::~ 2021-04-03 12:41:49
- 5 package:ggplot2         <NA>                      base::~ 2021-04-03 12:41:49
- 6 package:purrr           <NA>                      base::~ 2021-04-03 12:41:49
- 7 Seed Before             <NA>                      598     2021-04-03 12:41:49
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-03 12:41:49
- 9 Seed After              <NA>                      612     2021-04-03 12:41:49
-10 Seed Before             <NA>                      612     2021-04-03 12:41:49
+ 1 Seed @ Start            <NA>                      612     2021-04-06 12:47:15
+ 2 package:dplyr           <NA>                      base::~ 2021-04-06 12:47:15
+ 3 package:readr           <NA>                      base::~ 2021-04-06 12:47:15
+ 4 package:tidyr           <NA>                      base::~ 2021-04-06 12:47:15
+ 5 package:ggplot2         <NA>                      base::~ 2021-04-06 12:47:16
+ 6 package:purrr           <NA>                      base::~ 2021-04-06 12:47:16
+ 7 Seed Before             <NA>                      612     2021-04-06 12:47:16
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-06 12:47:16
+ 9 Seed After              <NA>                      3       2021-04-06 12:47:16
+10 Seed Before             <NA>                      3       2021-04-06 12:47:16
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2382,7 +2382,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f8b62d39018>
+<bytecode: 0x7f832130bba0>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2482,7 +2482,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f8b796bec60>
+<bytecode: 0x7f83370418c8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2697,14 +2697,14 @@ At the beginning of their courses, the professor provides their students with a 
 
 The integration of \texttt{fertile} in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor.
 
-There are a variety of benefits to introducing students to reproducibility sooner, rather than later--in graduate school or through independent research on the topic:
+I believe that there are a variety of potential benefits to introducing students to reproducibility sooner, rather than later--in graduate school or through independent research on the topic:
 \begin{itemize}
 \item
-  Teaching reproducibility early on gives students important research tools and understanding before they conduct any of their own important analysis.
+  Teaching reproducibility early on could help give students important research tools and understanding before they conduct any of their own important analysis.
 \item
-  Practicing before students are believed to be skilled and highly educated in data science gives them an opportunity to fail and learn without fear of judgment.
+  Practicing before students are believed to be skilled and highly educated in data science could afford them an opportunity to fail and learn without fear of judgment.
 \item
-  Integrating concepts early helps ingrain them in the minds of students, ensuring that reproducibility begins to come naturally to them.
+  Integrating concepts early through repetitive use and recall helps ingrain them in the minds of students, ensuring that reproducibility begins to come naturally to them (Karpicke \& Roediger (2008)).
 \end{itemize}
 These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way.
 
@@ -2783,15 +2783,17 @@ This technique is described in the step by step experimental structure, explaine
 \item
   Students were given a form at the start of the semester asking whether they consented to participate in a study on data science education. Additionally, information was collected about the previous number of courses that student had taken in data/computer science fields, which we believed might impact their knowledge of reproducibility. In order to successfully consent, students had to provide a unique computer identifier, collected through the command \texttt{whoami::username()}. This identifier was collected in order to ensure that students could be individually identified and therefore assigned effectively to treatment or control groups.
 \item
-  To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the \texttt{md5()} hashing function. While these hashed sequences have meaning in the students' computers and the course software program, to those without the original identifier, they appear only as a meaningless string of letters and numbers.
+  To maintain student privacy, the unique identifiers were then transformed into hexadecimal strings via the \texttt{md5()} hashing function. To the students' computers, and us---the researchers---these hashed strings contained the same information as the identifiable usernames, but to those without the original identifier, they appear only as a meaningless string of letters and numbers.
 \item
   These hexadecimal strings, which correspond to unique students, were then randomly assigned into equally sized groups, one experimental group that receives the features of \texttt{fertile} and one group that receives a control.
-\item
-  The students in the course were then asked to download a package called \texttt{sds192} (the course number and prefix), which was created for the purpose of this trial. The package contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 \end{enumerate}
-The \texttt{sds192} package operates by leveraging an \texttt{.onAttach()} function to scan the \texttt{R} environment of each student \emph{each time the package is loaded}, collect their unique identifier--again, via \texttt{whoami::username()}-- and run it through the same hashing algorithm as before. \texttt{sds192} came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of \texttt{.onAttach()}.
+To ensure an adequate control, with the control group students operating day-to-day in an almost identical way to the experimental group, we created a software package for the course which every student in the class would use, regardless of group. The package, titled \texttt{sds192}, contained several templates and data sets that were necessary for use in the course, so all students in the class--regardless of their experimental status--needed to install it.
 
-Each time a student's hashed identifier was collected (every time they loaded the \texttt{sds192} package for class), it was then compared with the provided groups to determine how the package should function for that individual.
+The \texttt{sds192} package was designed to look the same to both the experimental and control group students, but to function slightly differently for each. The control group would only have access to the templates and data provided with the \texttt{sds192} package, and the experimental group would have all of those things \emph{plus}, they would have \texttt{fertile} silently loaded in the background. This meant that \texttt{fertile}'s proactive features were enabled, and therefore experimental group users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. Control group users, who did not have \texttt{fertile} loaded for them, would not receive these messages.
+
+This control/experimental group differentiation works by leveraging an \texttt{.onAttach()} function in the \texttt{sds192} package to scan the \texttt{R} environment of each student \emph{each time the package is loaded}, collect their unique identifier--again, via \texttt{whoami::username()}-- and run it through the same hashing algorithm as before.
+
+\texttt{sds192} came pre-coded with the hashed identifiers of all of the students, grouped by whether they had been assigned to the experimental or the control group, to facilitate the operation of \texttt{.onAttach()}. Each time a student's hashed identifier was collected (every time they loaded the \texttt{sds192} package for class), it was then compared with the provided groups to determine whether the behavior of the package would match the control or experimental group.
 
 The structure of this function can be seen below:
 \begin{Shaded}
@@ -2837,9 +2839,7 @@ The structure of this function can be seen below:
 \end{Shaded}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\item
-  Everyone received the same \texttt{sds192} package, which consisted of some data sets and \texttt{R} Markdown templates necessary for completing homework assignments and projects in the class. However, it functioned differently depending on each student's experimental group. The \texttt{control} group did not have \texttt{fertile} loaded, but the \texttt{experimental} group did. When \texttt{experimental} group users loaded \texttt{sds192}, the package silently loaded \texttt{fertile} as well. This meant that \texttt{fertile}'s proactive features were enabled, and therefore users would receive warning messages when they used absolute or non-portable paths or attempted to change their working directory. T
+\setcounter{enumi}{3}
 \item
   {[}January Term 2021 Only{]} Students then took a reproducibility test prior to fully starting the course, which tested their knowledge before completing the class.
 \item
@@ -2959,6 +2959,9 @@ These numbers, combined with the visual below seem to indicate, at least in this
 \caption{\label{fig:unnamed-chunk-80}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
 \end{figure}
 Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
+\begin{verbatim}
+`geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
 \begin{figure}
 \centering
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-81-1.pdf}
@@ -2991,6 +2994,33 @@ Response: Overall_Total
           Df Sum Sq Mean Sq F value Pr(>F)
 Group      1  40.50  40.500  2.7406 0.1173
 Residuals 16 236.44  14.778               
+\end{verbatim}
+When fitting a second model, controlling for the number of previous classes, we see a similar result. Although the p-value is smaller (p = 0.08), holding the number of previous classes constant, there is still not enough evidence to suggest that the use of \texttt{fertile} impacts reproducibility test scores.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fall\_model\_mr }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Overall\_Total }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Group }\SpecialCharTok{+}\NormalTok{ Previous\_Classes, }\AttributeTok{data =}\NormalTok{ fall2020)}
+\FunctionTok{summary}\NormalTok{(fall\_model\_mr)}
+\end{Highlighting}
+\end{Shaded}
+\begin{verbatim}
+Call:
+lm(formula = Overall_Total ~ Group + Previous_Classes, data = fall2020)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-5.191 -2.197 -1.055  2.969  5.803 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        6.3714     1.4803   4.304 0.000627 ***
+GroupFertile      -3.2733     1.7613  -1.858 0.082835 .  
+Previous_Classes   0.8198     0.5615   1.460 0.164901    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.715 on 15 degrees of freedom
+Multiple R-squared:  0.2525,    Adjusted R-squared:  0.1528 
+F-statistic: 2.533 on 2 and 15 DF,  p-value: 0.1128
 \end{verbatim}
 \hypertarget{january-term-2021-results}{%
 \subsubsection{January Term 2021 Results}\label{january-term-2021-results}}
@@ -3057,22 +3087,12 @@ For the questions about file paths, there appears to be no difference in the ave
 \end{verbatim}
 When considering the distribution of test scores, in addition to just the pure difference, we see a pattern where those students in the \texttt{fertile} group appeared to score worse than the \texttt{control} group, on average. Yet, when considered all together, the \texttt{fertile} group's scores improved slightly more over the time of the course than the \texttt{control} group's.
 
-This evidence appears to strengthen the previous claim--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
-\begin{figure}
-\centering
-\includegraphics{thesis_files/figure-latex/unnamed-chunk-87-1.pdf}
-\caption{\label{fig:unnamed-chunk-87}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
-\end{figure}
-We can also view the difference in scores on a more individual level. Below, we see the score differences (looking purely at \texttt{Overall\_Total}, rather than just \texttt{Paths} or \texttt{Projects}) of all 38 students in the January Term study, ordered from lowest score differential (those who performed worse on their Post-Test than their Pre-Test), to highest.
+This evidence appears to strengthen the previous finding--using the Fall 2020 data--that the potential negative relationship between reproducibility test score and use of \texttt{fertile} is likely a product of random chance. In both experimental sections, Fall and January Term, students in the \texttt{fertile} group performed slightly worse than the \texttt{control} group on the reproducibility tests taken at the end of the course. However, the additional evidence from the January Term ``Pre-Test'' appears to indicate that the reason for that lower score might be just that they started from a lower point of knowledge at the beginning, rather than that \texttt{fertile} directly affected their scores.
 \begin{figure}
 \centering
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-88-1.pdf}
-\caption{\label{fig:unnamed-chunk-88}Bar Chart: Pre- and Post-Test Score Differences For All Individuals, January Term 2021}
+\caption{\label{fig:unnamed-chunk-88}Boxplot: Pre- and Post-Test Score Distributions by Group, January Term 2021}
 \end{figure}
-As we can see, the majority of students improved on their reproducibility knowledge throughout the course. However, some students actually performed significantly worse over time. While students in both the \texttt{fertile} and \texttt{control} group had negative performances such as these, more of the highly-negative showings came from those in the \texttt{control} group. There is one outlier who appears to have performed significantly worse on their Post-Test than their Pre-Test. When looking at students who performed better over the course, the distribution is slightly more balanced. The two students who made the most improvement, however, were both in the \texttt{control} group.
-
-Once again, there is not much evidence that \texttt{fertile} is providing a significant benefit, and the outlier on the left indicates that the reason for the slight edge of \texttt{fertile} in terms of average score differences might just be due to one student skewing the \texttt{control} group's averages.
-
 It is also interesting to examine the relationship between the number of previous courses taken by students and their performance on the reproducibility tests.
 
 Below, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
@@ -3649,6 +3669,9 @@ Journal of Statistical Software. (2020). Instructions for authors. Retrieved fro
 
 \leavevmode\hypertarget{ref-jasa-rep-editors}{}%
 Journal of the American Statistical Association Editors. (2020). JASA editors talk reproducibility. Retrieved from \url{https://www.amstat.org/ASA/Publications/Q-and-As/JASA-Editors-Talk-Reproducibility.aspx}
+
+\leavevmode\hypertarget{ref-karpicke2008critical}{}%
+Karpicke, J. D., \& Roediger, H. L. (2008). The critical importance of retrieval for learning. \emph{Science}, \emph{319}(5865), 966--968.
 
 \leavevmode\hypertarget{ref-kitzes2017practice}{}%
 Kitzes, J., Turek, D., \& Deniz, F. (2017). \emph{The practice of reproducible research: Case studies and lessons from the data-intensive sciences}. Berkeley, CA: University of California Press. Retrieved from \url{https://www.practicereproducibleresearch.org}
