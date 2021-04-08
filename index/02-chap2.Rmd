@@ -549,13 +549,7 @@ linetype = 3) +
 ```
  
 
-For this line, `has_no_lint()` finds the following inconsistencies with tidy style:
-
-* Line 71: Lines should not be more than 80 characters.  
-
-* Line 71: Put spaces around all infix operators.  
-
-* Line 71: Trailing whitespace is superfluous.    
+For this line, `has_no_lint()` finds the following inconsistencies with tidy style: (1) Lines should not be more than 80 characters. (2) Put spaces around all infix operators. (3) Trailing whitespace is superfluous.    
 
 The first comes up because the true line length, including spaces, is 84 characters. The second comes up because the `*` between `1.96` and `std.error` is not surrounded by spaces. The third is flagged because there is an empty space after the `+` at the end of the line.
 
@@ -580,15 +574,7 @@ if (length(mice) > 1){ holder_var = 1 }
 
  
 
-For this line, `has_no_lint()` finds the following errors:
-
-* Line 189: There should be a space between right parenthesis and an opening curly brace.
-
-* Line 189: Opening curly braces should never go on their own line and should always be followed by a new line.  
-
-* Line 189: Use <-, not =, for assignment.  
-
-* Line 189: Closing curly braces should always be on their own line, unless it's followed by an else.  
+For this line, `has_no_lint()` finds the following errors: (1) There should be a space between right parenthesis and an opening curly brace. (2) Opening curly braces should never go on their own line and should always be followed by a new line. (3) Use <-, not =, for assignment. (4) Closing curly braces should always be on their own line, unless it's followed by an else.  
 
 The first issue flagged is the fact that `){`, in the middle of the line, has no space in the middle. The second issue is flagged because the code to execute when the `if` statement is true (`holder_var = 1`) is on the same line as the `if` statement, rather than on its own line. The third error occurs because `holder_var` is defined using an `=`. And the fourth occurs because the closing curly brace is on the same line as other code rather than by itself.
 
@@ -697,12 +683,19 @@ knitr::include_graphics(c("figure/structure-badge.png", "figure/tidy-badge.png",
 `proj_badges()` identifies the badges that a data analysis project should receive and then outputs a summary of this information---in the form of an `html` document---to the RStudio `Viewer` pane. This document---designed to produce a summary of a project that can be easily shared in places outside of `RStudio` (unlike the summaries produced by most other functions, which just produce output in the `R` console)---contains the following primary pieces of information:
 
 1. The name of the folder where the project is stored. 
+
 2. The reproducibility badges awarded to the project.
+
 3. The reproducibility badges failed by the project.
+
 4. If failures occurred, the reasons why. These are broken down by badge and list the checks associated with that badge that did not pass.
+
 5. A date/time/timezone stamp of when the `html` summary was created.
+
 6. Information about the user who generated the `html` summary (their full name, computer username, email, and GitHub username, if available).
+
 7. Information about the `R` version, platform, and operating system of the computer used to generate the `html` at the time that it was created.
+
 8. The names of files in the project that the `html` found the badges for as well as their date of last modification.
 
 The `html` output for `project_miceps` can be seen below. As we can see, `project_miceps` receives the "Project Structure" and "File Paths" badges but fails "Tidy Files", "Documentation", "Randomness", and "Code Style". This aligns with our previous results from each of the components of reproducibility. For example, `project_miceps` passed `proj_analyze_paths()` with flying colors, but failed `has_well_commented_code()` (documentation), `has_no_randomness()` (randomness), and `has_no_lint()` (code style).

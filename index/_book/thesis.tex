@@ -786,10 +786,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  187.66K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~   188.7K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  380.64K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  380.26K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -835,15 +835,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUbRsRo/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUbRsRo/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpUbRsRo/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -870,7 +870,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-04-08 17:44:27
+1 LAST RENDERED <NA>     proj_render 2021-04-08 18:08:32
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -971,9 +971,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  187.66K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~   188.7K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  380.64K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  380.26K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1441,15 +1441,8 @@ For example, line 71, part of a \texttt{ggplot} call, contains the following cod
 \AttributeTok{linetype =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
 \end{Highlighting}
 \end{Shaded}
-For this line, \texttt{has\_no\_lint()} finds the following inconsistencies with tidy style:
-\begin{itemize}
-\item
-  Line 71: Lines should not be more than 80 characters.
-\item
-  Line 71: Put spaces around all infix operators.
-\item
-  Line 71: Trailing whitespace is superfluous.
-\end{itemize}
+For this line, \texttt{has\_no\_lint()} finds the following inconsistencies with tidy style: (1) Lines should not be more than 80 characters. (2) Put spaces around all infix operators. (3) Trailing whitespace is superfluous.
+
 The first comes up because the true line length, including spaces, is 84 characters. The second comes up because the \texttt{*} between \texttt{1.96} and \texttt{std.error} is not surrounded by spaces. The third is flagged because there is an empty space after the \texttt{+} at the end of the line.
 
 If written in tidy style, this code would look as follows:
@@ -1468,17 +1461,8 @@ An even less tidy piece of code is that found on line 189, written as follows:
 \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(mice) }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{)\{ holder\_var }\OtherTok{=} \DecValTok{1}\NormalTok{ \}}
 \end{Highlighting}
 \end{Shaded}
-For this line, \texttt{has\_no\_lint()} finds the following errors:
-\begin{itemize}
-\item
-  Line 189: There should be a space between right parenthesis and an opening curly brace.
-\item
-  Line 189: Opening curly braces should never go on their own line and should always be followed by a new line.
-\item
-  Line 189: Use \textless-, not =, for assignment.
-\item
-  Line 189: Closing curly braces should always be on their own line, unless it's followed by an else.
-\end{itemize}
+For this line, \texttt{has\_no\_lint()} finds the following errors: (1) There should be a space between right parenthesis and an opening curly brace. (2) Opening curly braces should never go on their own line and should always be followed by a new line. (3) Use \textless-, not =, for assignment. (4) Closing curly braces should always be on their own line, unless it's followed by an else.
+
 The first issue flagged is the fact that \texttt{)\{}, in the middle of the line, has no space in the middle. The second issue is flagged because the code to execute when the \texttt{if} statement is true (\texttt{holder\_var\ =\ 1}) is on the same line as the \texttt{if} statement, rather than on its own line. The third error occurs because \texttt{holder\_var} is defined using an \texttt{=}. And the fourth occurs because the closing curly brace is on the same line as other code rather than by itself.
 
 After being converted to tidy style, the code looks as follows:
@@ -1577,8 +1561,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.75K image/png                                 
- 3 proteins_v_time.p~ png     379.38K image/png                                 
+ 2 citrate_v_time.png png     187.44K image/png                                 
+ 3 proteins_v_time.p~ png     377.42K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1668,7 +1652,6 @@ When users pass all of the checks associated with one of the categories, they re
 \texttt{proj\_badges()} identifies the badges that a data analysis project should receive and then outputs a summary of this information---in the form of an \texttt{html} document---to the RStudio \texttt{Viewer} pane. This document---designed to produce a summary of a project that can be easily shared in places outside of \texttt{RStudio} (unlike the summaries produced by most other functions, which just produce output in the \texttt{R} console)---contains the following primary pieces of information:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   The name of the folder where the project is stored.
 \item
@@ -2097,7 +2080,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,378 x 4
+# A tibble: 1,406 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2110,7 +2093,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,368 more rows
+# ... with 1,396 more rows
 \end{verbatim}
 \normalsize
 
@@ -2187,7 +2170,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7ff8b65e00e8>
+<bytecode: 0x7febf91a05f0>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2317,16 +2300,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      596     2021-04-08 17:44:53
- 2 package:dplyr           <NA>                      base::~ 2021-04-08 17:44:53
- 3 package:readr           <NA>                      base::~ 2021-04-08 17:44:53
- 4 package:tidyr           <NA>                      base::~ 2021-04-08 17:44:54
- 5 package:ggplot2         <NA>                      base::~ 2021-04-08 17:44:54
- 6 package:purrr           <NA>                      base::~ 2021-04-08 17:44:54
- 7 Seed Before             <NA>                      596     2021-04-08 17:44:54
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-08 17:44:54
- 9 Seed After              <NA>                      610     2021-04-08 17:44:55
-10 Seed Before             <NA>                      610     2021-04-08 17:44:55
+ 1 Seed @ Start            <NA>                      595     2021-04-08 18:09:02
+ 2 package:dplyr           <NA>                      base::~ 2021-04-08 18:09:02
+ 3 package:readr           <NA>                      base::~ 2021-04-08 18:09:02
+ 4 package:tidyr           <NA>                      base::~ 2021-04-08 18:09:03
+ 5 package:ggplot2         <NA>                      base::~ 2021-04-08 18:09:03
+ 6 package:purrr           <NA>                      base::~ 2021-04-08 18:09:03
+ 7 Seed Before             <NA>                      595     2021-04-08 18:09:03
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-08 18:09:03
+ 9 Seed After              <NA>                      609     2021-04-08 18:09:03
+10 Seed Before             <NA>                      609     2021-04-08 18:09:03
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2396,7 +2379,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7ff8a9503c38>
+<bytecode: 0x7febe862bd00>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2496,7 +2479,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7ff8bf7a0ae0>
+<bytecode: 0x7febff2ddd48>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
