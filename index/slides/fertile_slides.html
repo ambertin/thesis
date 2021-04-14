@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Creating optimal conditions for reproducible data analysis in R with ‘fertile’</title>
+    <title>Addressing The Scientific Reproducibility Crisis Through Educational Software Integration</title>
     <meta charset="utf-8" />
     <meta name="author" content="Audrey Bertin" />
     <script src="libs/header-attrs/header-attrs.js"></script>
@@ -11,7 +11,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Creating optimal conditions for reproducible data analysis in R with ‘fertile’
+# Addressing The Scientific Reproducibility Crisis Through Educational Software Integration
 ### Audrey Bertin
 ### Smith College, ’21
 ### April 29th, 2021
@@ -299,10 +299,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…  187.89K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…  188.75K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…  378.92K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…  379.21K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -346,7 +346,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-04-14 14:44:07
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-04-14 16:49:02
 ```
 ]
 ---
@@ -411,9 +411,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…  188.75K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…  189.24K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  379.21K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  374.69K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -674,7 +674,7 @@ fertile::read.csv
 ##     utils::read.csv(file, ...)
 ##   }
 ## }
-## &lt;bytecode: 0x7ffd3f095820&gt;
+## &lt;bytecode: 0x7fcfb1f49418&gt;
 ## &lt;environment: namespace:fertile&gt;
 ```
 ]
@@ -708,16 +708,16 @@ render_log_report('project_miceps')
 ## # A tibble: 21 x 4
 ##    path                    path_abs                  func    timestamp          
 ##    &lt;chr&gt;                   &lt;chr&gt;                     &lt;chr&gt;   &lt;dttm&gt;             
-##  1 Seed @ Start            &lt;NA&gt;                      624     2021-04-14 14:43:55
-##  2 package:dplyr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
-##  3 package:readr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
-##  4 package:tidyr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
-##  5 package:ggplot2         &lt;NA&gt;                      base::… 2021-04-14 14:43:56
-##  6 package:purrr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
-##  7 Seed Before             &lt;NA&gt;                      624     2021-04-14 14:43:56
-##  8 /Users/audreybertin/Do… /Users/audreybertin/Docu… readr:… 2021-04-14 14:43:57
-##  9 Seed After              &lt;NA&gt;                      14      2021-04-14 14:43:57
-## 10 Seed Before             &lt;NA&gt;                      14      2021-04-14 14:43:57
+##  1 Seed @ Start            &lt;NA&gt;                      624     2021-04-14 16:48:29
+##  2 package:dplyr           &lt;NA&gt;                      base::… 2021-04-14 16:48:29
+##  3 package:readr           &lt;NA&gt;                      base::… 2021-04-14 16:48:29
+##  4 package:tidyr           &lt;NA&gt;                      base::… 2021-04-14 16:48:30
+##  5 package:ggplot2         &lt;NA&gt;                      base::… 2021-04-14 16:48:30
+##  6 package:purrr           &lt;NA&gt;                      base::… 2021-04-14 16:48:31
+##  7 Seed Before             &lt;NA&gt;                      624     2021-04-14 16:48:31
+##  8 /Users/audreybertin/Do… /Users/audreybertin/Docu… readr:… 2021-04-14 16:48:31
+##  9 Seed After              &lt;NA&gt;                      14      2021-04-14 16:48:32
+## 10 Seed Before             &lt;NA&gt;                      14      2021-04-14 16:48:32
 ## # … with 11 more rows
 ```
 ]

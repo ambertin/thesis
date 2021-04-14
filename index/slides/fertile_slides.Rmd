@@ -1,5 +1,5 @@
 ---
-title: "Creating optimal conditions for reproducible data analysis in R with ‘fertile’"
+title: "Addressing The Scientific Reproducibility Crisis Through Educational Software Integration"
 author: "Audrey Bertin"
 institute: "Smith College, '21"
 date: "April 29th, 2021"
