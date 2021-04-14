@@ -38,18 +38,6 @@ style_mono_light(base_color = "#23395b")
 ```
 
 
-## Introduction
-
-`fertile`:
-  - **What?** `R` package started by Prof. Ben Baumer
-  - **Goal:** Improve reproducibility in R
-  - **My Role:** Leading code development for the last ~2 years!
-  - **This Year:** Advanced features, getting product ready for public use, and experimental testing.
-  
-```{r, echo = FALSE, fig.align='center', out.height=270, out.width=250}
-knitr::include_graphics("fertile-hex.png")
-```
-
 
 ---
 ## Overview
@@ -61,6 +49,10 @@ knitr::include_graphics("fertile-hex.png")
 5. Potential applications and Smith College experiment
 6. Conclusion
 7. Accessing project materials
+
+```{r, echo = FALSE, fig.align='center', out.height=270, out.width=250}
+knitr::include_graphics("fertile-hex.png")
+```
 
 ---
 ## What is reproducibility?
@@ -291,13 +283,14 @@ reproducible and how to correct that in the future.
 ---
 ## R Projects
 
-```{r, echo = FALSE}
+`project_miceps`:
+
+```{r, echo = FALSE, out.width = "80%"}
 knitr::include_graphics('sample-project.png')
 ```
 
 
 ---
-
 
 ## Component 1: accessible project files
 
@@ -362,10 +355,29 @@ proj_suggest_moves(files)
 
 - `has_well_commented_code()`
 
+.small[
+```{r, eval = FALSE}
+has_well_commented_code("project_miceps")
+```
+
+```{r, echo = FALSE}
+comments_tbl <- has_well_commented_code("project_miceps")
+
+cat("*", comments_tbl$name, "\n")
+cat("Problem:", comments_tbl$problem, "\n")
+cat("Solution:", stringr::str_wrap(comments_tbl$solution, width = 60), "\n")
+cat("See for help:", stringr::str_wrap(comments_tbl$help, width = 60))
+
+errors <- comments_tbl$error
+
+errors[[1]]
+```
+]
+
 ---
 ## Component 3: documentation
 
-- `proj_dependency_report()`
+- `proj_dependency_report()`: runs project in new environment and captures `sessionInfo()`
 
 .small[
 ```{r, eval = FALSE}
@@ -408,7 +420,7 @@ cat(stringr::str_wrap(error_msg, width = 80))
 
 
 ```{r, error=TRUE}
-setwd("~/Desktop")
+setwd("project_miceps")
 ```
 ]
 
@@ -425,6 +437,8 @@ proj_analyze_paths("project_miceps")
 
 ---
 ## Component 5: randomness
+
+- Differentiate between `controlled` (seed) & `uncontrolled` (no seed) randomness
 
 .small[
 ```{r}
@@ -465,7 +479,7 @@ knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentatio
 ---
 ## Overview functions
 
-```{r, echo = FALSE, out.width = '90%'}
+```{r, echo = FALSE, out.width = '80%'}
 knitr::include_graphics('badges-1.png')
 ```
 
@@ -477,29 +491,16 @@ knitr::include_graphics('badges-2.png')
 ```
 
 ---
-## Educational features
+## Overview functions: more customizable
 
-- Interactive path warning system
+- `proj_check_some()`: tidyselect
+- `proj_check_badge()`:
 
-- Checks provide informative messages
-  - Explain problem
-  - Provide solution
-
-
----
-## Customizability
-
-- `proj_check_some()`: run subset of checks; `tidyselect`
-- `proj_check_badge()`: run subset of checks for specific badge
-
-- Controlling which functions throw warnings about paths:
-
-  - Some built in, but users can add/edit others:
-  - `add_shim()`: add a function to the warning list
-  - `edit_shims()`: edit warning list
-  - `load_shims()`: activate warning system
-  - `unload_shims()`: deactivate warning system
-
+- Functions to handle the interactive warning system:
+- `add_shim()`: add a new function to the system
+- `edit_shims()`: edit the functions that throw errors
+- `load_shims()`: turn on warning system
+- `unload_shims()`: turn off warning system
 
 ---
 ## How it works: shims
@@ -528,11 +529,19 @@ fertile::read.csv
 ]
 
 ---
+## How it works: the dots (...)
+
+- Shims must be flexible!
+- Definitions only explicitly include required args and path-related args
+- All other args accepted through dots
+
+
+---
 ## How it works: hidden files
 
 - Hidden log files track user behavior (calls to shimmed functions, seeds, dependencies)
 - Update when `fertile` functions are run
-- User cannot see them, but can access them: `render_log_report()`, `log_report()`
+- Users can access them via `render_log_report()`, `log_report()`
 
 .small[
 ```{r}
@@ -548,12 +557,33 @@ render_log_report('project_miceps')
 - When interactive --> normal log
 - When rendering --> render log
 
----
-## How it works: the dots (...)
 
-- Shims must be flexible!
-- Definitions only explicitly include required args and path-related args
-- All other args accepted through dots
+---
+## Disclaimer on malware
+
+- `fertile` could be considered malware
+
+- Will likely not ever be on `CRAN`: significant number of dependencies, creating hidden files on users' computers, intercepting their behavior w/o knowledge
+
+- However: necessary for features to work, plus code is fully available on GitHub --> complete transparency
+
+---
+## Review of Goals
+
+1) `Simple`: functions usually just take one or two arguments
+
+2) `Accessible`: no advanced coding knowledge required
+
+3) `Addresses multiple components`: all six components have functions
+
+4) `R-specific features`: package dependency management, randomness
+
+5) `Customizable`: editing warning system, choosing which checks to run
+
+6) `Educational`: warning messages, checks give explanations and recommendations on failure
+
+7) `Applicable in many domains`
+
 
 ---
 ## Potential applications: journal review
@@ -561,12 +591,6 @@ render_log_report('project_miceps')
 - Drastically speed up review process, save money
 - Two methods: 1. Run fertile checks, 2. Require `proj_badges()` output
 
-
-```{r, echo = FALSE}
-knitr::include_graphics('journal-process.png')
-```
----
-## Potential applications: journal review
 
 ```{r, echo = FALSE}
 knitr::include_graphics('journal-process-2.png')
@@ -592,7 +616,7 @@ environment
 
 - Conferences: reproducibility standards as requirement for acceptance
 
-- Informal analysis: more reproducible work for events like `tidy tuesday` --> share knowledge!
+- Informal analysis: more reproducible work for events like `Tidy Tuesday` --> share knowledge!
 
 ---
 ## Experimental testing: design
@@ -603,43 +627,44 @@ environment
 - Measuring reproducibility: post-test (fall) and pre/post- tests (j-term)
 - Fall: Final Score, J-Term: Difference in scores
 
+---
+## Experimental testing: technical details
+
+How software groups were blinded:
 
 1. Provide us unique computer username / login name
 2. Convert that with `md5()` hashing algorithm 
 3. Assign hashed names to groups
 4. `sds192` package `.onAttach()` pulls username, hashes it, and compares to pre-written assignment
-5. If in `fertile` group, `fertile` secretly loaded. If not, nothing happens.
+5. If in `fertile` group, `fertile` secretly loaded. If not, just have access to basic `sds192` package features
+
 
 ---
-## Experimental testing: results
 
-- Test format:
-
-- 6 questions on R projects (mix of multiple choice/select all that apply)
-- 3 questions on file paths (select all that apply)
-
-- Start at 0 points
-- +1 for correct answers
-- -1 for incorrect answers
-- 0 for ambiguous or "I don't know" answers
-
----
 ## Experimental testing: results
 
 - What we found:
 
 1. No evidence of relationship between `fertile` and test score (or difference in scores)
+
+**Fall:** `Group` vs `Final Score` (-) --- p = 0.117, + `Previous Classes`: p = 0.08
+
+**J-Term:** `Group` vs `Score Differential` (+) --- p = 0.964, + `Previous Classes`: p = 0.968
+
+
 2. Fall results seemed to actually have `fertile` group scoring worse overall (not statistically significant), but this was somewhat reversed in `J-term`. `fertile` students started worse and finished worse, but made overall (slightly) larger score improvements—again, not significant!
+
 3. Students across both groups seemed to learn about reproducibility throughout the class
 
 
 ---
 ## Experimental testing: limitations
 
-- Tiny sample size
+- Small sample size
 - Non-independent subjects
 - Classroom environment not same as true testing environment
 - Experiment structure does not accurately represent real-world use of `fertile`
+- Very hard to know if the `fertile` group's software was behaving correctly the whole semester
 
 
 ---
@@ -654,19 +679,11 @@ knitr::include_graphics("a-b_testing.png")
 
 
 ---
-## Conclusion: The future of `fertile`?
+## Conclusion
 
-- Not many exciting findings from experiment, **but**
-
-- `fertile` got published!
-
-```{r, echo = FALSE, out.width= '80%'}
-knitr::include_graphics("stat.png")
-```
-
-
-- Getting some traction among top names (including RStudio/tidyverse team)
-- Hoping one day for journals and educators to pick it up!
+- `fertile`, regardless of experimental results, has potential to improve reproducibility
+- Fills gaps where other solutions---in software, education, or journal review--- fail
+- Appears to be gaining some traction. Even helping one person improve their reproducibility will be worth it!
 
 
 ---
@@ -773,12 +790,12 @@ ggplot(fall2020_averages, aes(x = Group, fill = Group, y = value)) +
 ## Additional Info: Experiment (Fall 2020)
 
 
-
 ```{r, echo = FALSE, message = FALSE}
 ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + 
   geom_point(size = 4) +
   scale_color_brewer(palette = "Paired") +
-  ggtitle("Previous Classes vs Total Score, Fall 2020")
+  ggtitle("Previous Classes vs Total Score, Fall 2020") +
+  geom_smooth(method = "lm", se = FALSE)
 ```
 ---
 ## Additional Info: Experiment (Fall 2020)
@@ -786,6 +803,16 @@ ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) +
 .small[
 ```{r, echo = FALSE}
 fall_model <- lm(Overall_Total ~ Group, data = fall2020)
+summary(fall_model)
+```
+]
+---
+## Additional Info: Experiment (Fall 2020)
+
+.small[
+
+```{r, echo = FALSE}
+fall_model <- lm(Overall_Total ~ Group + Previous_Classes, data = fall2020)
 summary(fall_model)
 ```
 ]
@@ -809,6 +836,7 @@ ggplot(group_scores, aes(x = Test, y = Score, fill = Group)) +
   ggtitle("Score Distributions for Pre/Post Tests, J-Term 2021")
 ```
 
+
 ---
 ## Additional Info: Experiment (Jan 2021)
 
@@ -830,29 +858,8 @@ pre_post_differences <- jterm2021 %>% group_by(Student_ID, Group, Previous_Class
 jterm_model_data <- pre_post_differences %>% 
   filter(Question_Group == "Total")
 
-ggplot(jterm_model_data, aes(x = reorder(Student_ID, Score_Difference), y = Score_Difference, fill = Group)) + 
-  geom_col(color = 'black') + 
-  geom_hline(yintercept = 0) + 
-  theme(axis.text.x = element_blank(), 
-        axis.ticks.x = element_blank()) + 
-  xlab(NULL) +
-  scale_fill_brewer(palette = "Paired") +
-  ggtitle("Score Changes Across Course for All Students, J-Term 2021")
-```
----
-## Additional Info: Experiment (Jan 2021)
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) + 
-  geom_point() +
-  geom_smooth(se = FALSE) +
-  facet_wrap(~Group) +
-  scale_color_brewer(palette = "Paired") + 
-  ggtitle("Previous Classes vs Pre/Post Test Scores, J-Term 2021")
 ```
 
----
-## Additional Info: Experiment (Jan 2021)
 
 .small[
 ```{r, echo = FALSE}

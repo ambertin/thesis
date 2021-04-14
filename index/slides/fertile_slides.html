@@ -38,16 +38,6 @@ class: center, middle, inverse, title-slide
 &lt;/style&gt;
 
 
-## Introduction
-
-`fertile`:
-  - **What?** `R` package started by Prof. Ben Baumer
-  - **Goal:** Improve reproducibility in R
-  - **My Role:** Leading code development for the last ~2 years!
-  - **This Year:** Advanced features, getting product ready for public use, and experimental testing.
-  
-&lt;img src="fertile-hex.png" width="250" height="270" style="display: block; margin: auto;" /&gt;
-
 
 ---
 ## Overview
@@ -59,6 +49,8 @@ class: center, middle, inverse, title-slide
 5. Potential applications and Smith College experiment
 6. Conclusion
 7. Accessing project materials
+
+&lt;img src="fertile-hex.png" width="250" height="270" style="display: block; margin: auto;" /&gt;
 
 ---
 ## What is reproducibility?
@@ -281,11 +273,12 @@ reproducible and how to correct that in the future.
 ---
 ## R Projects
 
-&lt;img src="sample-project.png" width="772" /&gt;
+`project_miceps`:
+
+&lt;img src="sample-project.png" width="80%" /&gt;
 
 
 ---
-
 
 ## Component 1: accessible project files
 
@@ -306,10 +299,10 @@ reproducible and how to correct that in the future.
 ##  4 project_miceps/READ…       39 md    text/markdown              README.md     
 ##  5 project_miceps/anal…    5.21K Rmd   text/x-markdown            analysis.Rmd  
 ##  6 project_miceps/anal…    1.41M html  text/html                  analysis.html 
-##  7 project_miceps/citr…  188.33K png   image/png                  citrate_v_tim…
+##  7 project_miceps/citr…  187.89K png   image/png                  citrate_v_tim…
 ##  8 project_miceps/mice…   14.33K csv   text/csv                   mice.csv      
 ##  9 project_miceps/mice…      204 Rproj text/rstudio               miceps.Rproj  
-## 10 project_miceps/prot…  378.63K png   image/png                  proteins_v_ti…
+## 10 project_miceps/prot…  378.92K png   image/png                  proteins_v_ti…
 ## 11 project_miceps/soft…    5.34K txt   text/plain                 software-vers…
 ```
 
@@ -353,7 +346,7 @@ slice_tail(render_log_report('project_miceps'))
 ## # A tibble: 1 x 4
 ##   path          path_abs func        timestamp          
 ##   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;dttm&gt;             
-## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-03-30 22:26:30
+## 1 LAST RENDERED &lt;NA&gt;     proj_render 2021-04-14 14:44:07
 ```
 ]
 ---
@@ -418,9 +411,9 @@ proj_suggest_moves(files)
 ## 3 project_mic…   10.97K docx  applica… Estrogen_… inst/other project_mi… file_m…
 ## 4 project_mic…    5.21K Rmd   text/x-… analysis.… vignettes  project_mi… file_m…
 ## 5 project_mic…    1.41M html  text/ht… analysis.… inst/text  project_mi… file_m…
-## 6 project_mic…  186.39K png   image/p… citrate_v… inst/image project_mi… file_m…
+## 6 project_mic…  188.75K png   image/p… citrate_v… inst/image project_mi… file_m…
 ## 7 project_mic…   14.33K csv   text/csv mice.csv   data-raw   project_mi… file_m…
-## 8 project_mic…  377.47K png   image/p… proteins_… inst/image project_mi… file_m…
+## 8 project_mic…  379.21K png   image/p… proteins_… inst/image project_mi… file_m…
 ## 9 project_mic…    5.34K txt   text/pl… software-… inst/text  project_mi… file_m…
 ```
 
@@ -437,10 +430,43 @@ proj_suggest_moves(files)
 
 - `has_well_commented_code()`
 
+.small[
+
+```r
+has_well_commented_code("project_miceps")
+```
+
+
+```
+## * Checking that code is adequately commented
+```
+
+```
+## Problem: Suboptimally commented .R or .Rmd files found
+```
+
+```
+## Solution: Add more comments to the files below. At least 10% of the
+## lines should be comments.
+```
+
+```
+## See for help: https://intelligea.wordpress.com/2013/06/30/inline-and-
+## block-comments-in-r/
+```
+
+```
+## # A tibble: 1 x 2
+##   file_name                   fraction_lines_commented
+##   &lt;chr&gt;                                          &lt;dbl&gt;
+## 1 project_miceps/analysis.Rmd                     0.04
+```
+]
+
 ---
 ## Component 3: documentation
 
-- `proj_dependency_report()`
+- `proj_dependency_report()`: runs project in new environment and captures `sessionInfo()`
 
 .small[
 
@@ -491,7 +517,7 @@ read_csv("../../../Desktop/my_data.csv")
 
 
 ```r
-setwd("~/Desktop")
+setwd("project_miceps")
 ```
 
 ```
@@ -533,6 +559,8 @@ proj_analyze_paths("project_miceps")
 
 ---
 ## Component 5: randomness
+
+- Differentiate between `controlled` (seed) &amp; `uncontrolled` (no seed) randomness
 
 .small[
 
@@ -593,7 +621,7 @@ has_no_randomness('project_miceps')
 ---
 ## Overview functions
 
-&lt;img src="badges-1.png" width="90%" /&gt;
+&lt;img src="badges-1.png" width="80%" /&gt;
 
 ---
 ## Overview functions
@@ -601,29 +629,16 @@ has_no_randomness('project_miceps')
 &lt;img src="badges-2.png" width="968" /&gt;
 
 ---
-## Educational features
+## Overview functions: more customizable
 
-- Interactive path warning system
+- `proj_check_some()`: tidyselect
+- `proj_check_badge()`:
 
-- Checks provide informative messages
-  - Explain problem
-  - Provide solution
-
-
----
-## Customizability
-
-- `proj_check_some()`: run subset of checks; `tidyselect`
-- `proj_check_badge()`: run subset of checks for specific badge
-
-- Controlling which functions throw warnings about paths:
-
-  - Some built in, but users can add/edit others:
-  - `add_shim()`: add a function to the warning list
-  - `edit_shims()`: edit warning list
-  - `load_shims()`: activate warning system
-  - `unload_shims()`: deactivate warning system
-
+- Functions to handle the interactive warning system:
+- `add_shim()`: add a new function to the system
+- `edit_shims()`: edit the functions that throw errors
+- `load_shims()`: turn on warning system
+- `unload_shims()`: turn off warning system
 
 ---
 ## How it works: shims
@@ -659,17 +674,25 @@ fertile::read.csv
 ##     utils::read.csv(file, ...)
 ##   }
 ## }
-## &lt;bytecode: 0x7fdd7b127900&gt;
+## &lt;bytecode: 0x7ffd3f095820&gt;
 ## &lt;environment: namespace:fertile&gt;
 ```
 ]
+
+---
+## How it works: the dots (...)
+
+- Shims must be flexible!
+- Definitions only explicitly include required args and path-related args
+- All other args accepted through dots
+
 
 ---
 ## How it works: hidden files
 
 - Hidden log files track user behavior (calls to shimmed functions, seeds, dependencies)
 - Update when `fertile` functions are run
-- User cannot see them, but can access them: `render_log_report()`, `log_report()`
+- Users can access them via `render_log_report()`, `log_report()`
 
 .small[
 
@@ -685,16 +708,16 @@ render_log_report('project_miceps')
 ## # A tibble: 21 x 4
 ##    path                    path_abs                  func    timestamp          
 ##    &lt;chr&gt;                   &lt;chr&gt;                     &lt;chr&gt;   &lt;dttm&gt;             
-##  1 Seed @ Start            &lt;NA&gt;                      624     2021-03-30 22:26:15
-##  2 package:dplyr           &lt;NA&gt;                      base::… 2021-03-30 22:26:15
-##  3 package:readr           &lt;NA&gt;                      base::… 2021-03-30 22:26:15
-##  4 package:tidyr           &lt;NA&gt;                      base::… 2021-03-30 22:26:15
-##  5 package:ggplot2         &lt;NA&gt;                      base::… 2021-03-30 22:26:15
-##  6 package:purrr           &lt;NA&gt;                      base::… 2021-03-30 22:26:16
-##  7 Seed Before             &lt;NA&gt;                      624     2021-03-30 22:26:16
-##  8 /Users/audreybertin/Do… /Users/audreybertin/Docu… readr:… 2021-03-30 22:26:16
-##  9 Seed After              &lt;NA&gt;                      15      2021-03-30 22:26:16
-## 10 Seed Before             &lt;NA&gt;                      15      2021-03-30 22:26:16
+##  1 Seed @ Start            &lt;NA&gt;                      624     2021-04-14 14:43:55
+##  2 package:dplyr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
+##  3 package:readr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
+##  4 package:tidyr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
+##  5 package:ggplot2         &lt;NA&gt;                      base::… 2021-04-14 14:43:56
+##  6 package:purrr           &lt;NA&gt;                      base::… 2021-04-14 14:43:56
+##  7 Seed Before             &lt;NA&gt;                      624     2021-04-14 14:43:56
+##  8 /Users/audreybertin/Do… /Users/audreybertin/Docu… readr:… 2021-04-14 14:43:57
+##  9 Seed After              &lt;NA&gt;                      14      2021-04-14 14:43:57
+## 10 Seed Before             &lt;NA&gt;                      14      2021-04-14 14:43:57
 ## # … with 11 more rows
 ```
 ]
@@ -707,12 +730,33 @@ render_log_report('project_miceps')
 - When interactive --&gt; normal log
 - When rendering --&gt; render log
 
----
-## How it works: the dots (...)
 
-- Shims must be flexible!
-- Definitions only explicitly include required args and path-related args
-- All other args accepted through dots
+---
+## Disclaimer on malware
+
+- `fertile` could be considered malware
+
+- Will likely not ever be on `CRAN`: significant number of dependencies, creating hidden files on users' computers, intercepting their behavior w/o knowledge
+
+- However: necessary for features to work, plus code is fully available on GitHub --&gt; complete transparency
+
+---
+## Review of Goals
+
+1) `Simple`: functions usually just take one or two arguments
+
+2) `Accessible`: no advanced coding knowledge required
+
+3) `Addresses multiple components`: all six components have functions
+
+4) `R-specific features`: package dependency management, randomness
+
+5) `Customizable`: editing warning system, choosing which checks to run
+
+6) `Educational`: warning messages, checks give explanations and recommendations on failure
+
+7) `Applicable in many domains`
+
 
 ---
 ## Potential applications: journal review
@@ -720,10 +764,6 @@ render_log_report('project_miceps')
 - Drastically speed up review process, save money
 - Two methods: 1. Run fertile checks, 2. Require `proj_badges()` output
 
-
-&lt;img src="journal-process.png" width="960" /&gt;
----
-## Potential applications: journal review
 
 &lt;img src="journal-process-2.png" width="960" /&gt;
 
@@ -747,7 +787,7 @@ environment
 
 - Conferences: reproducibility standards as requirement for acceptance
 
-- Informal analysis: more reproducible work for events like `tidy tuesday` --&gt; share knowledge!
+- Informal analysis: more reproducible work for events like `Tidy Tuesday` --&gt; share knowledge!
 
 ---
 ## Experimental testing: design
@@ -758,43 +798,44 @@ environment
 - Measuring reproducibility: post-test (fall) and pre/post- tests (j-term)
 - Fall: Final Score, J-Term: Difference in scores
 
+---
+## Experimental testing: technical details
+
+How software groups were blinded:
 
 1. Provide us unique computer username / login name
 2. Convert that with `md5()` hashing algorithm 
 3. Assign hashed names to groups
 4. `sds192` package `.onAttach()` pulls username, hashes it, and compares to pre-written assignment
-5. If in `fertile` group, `fertile` secretly loaded. If not, nothing happens.
+5. If in `fertile` group, `fertile` secretly loaded. If not, just have access to basic `sds192` package features
+
 
 ---
-## Experimental testing: results
 
-- Test format:
-
-- 6 questions on R projects (mix of multiple choice/select all that apply)
-- 3 questions on file paths (select all that apply)
-
-- Start at 0 points
-- +1 for correct answers
-- -1 for incorrect answers
-- 0 for ambiguous or "I don't know" answers
-
----
 ## Experimental testing: results
 
 - What we found:
 
 1. No evidence of relationship between `fertile` and test score (or difference in scores)
+
+**Fall:** `Group` vs `Final Score` (-) --- p = 0.117, + `Previous Classes`: p = 0.08
+
+**J-Term:** `Group` vs `Score Differential` (+) --- p = 0.964, + `Previous Classes`: p = 0.968
+
+
 2. Fall results seemed to actually have `fertile` group scoring worse overall (not statistically significant), but this was somewhat reversed in `J-term`. `fertile` students started worse and finished worse, but made overall (slightly) larger score improvements—again, not significant!
+
 3. Students across both groups seemed to learn about reproducibility throughout the class
 
 
 ---
 ## Experimental testing: limitations
 
-- Tiny sample size
+- Small sample size
 - Non-independent subjects
 - Classroom environment not same as true testing environment
 - Experiment structure does not accurately represent real-world use of `fertile`
+- Very hard to know if the `fertile` group's software was behaving correctly the whole semester
 
 
 ---
@@ -807,17 +848,11 @@ environment
 
 
 ---
-## Conclusion: The future of `fertile`?
+## Conclusion
 
-- Not many exciting findings from experiment, **but**
-
-- `fertile` got published!
-
-&lt;img src="stat.png" width="80%" /&gt;
-
-
-- Getting some traction among top names (including RStudio/tidyverse team)
-- Hoping one day for journals and educators to pick it up!
+- `fertile`, regardless of experimental results, has potential to improve reproducibility
+- Fills gaps where other solutions---in software, education, or journal review--- fail
+- Appears to be gaining some traction. Even helping one person improve their reproducibility will be worth it!
 
 
 ---
@@ -898,7 +933,6 @@ is_experimental &lt;- function(logname = whoami::username()) {
 ## Additional Info: Experiment (Fall 2020)
 
 
-
 ![](fertile_slides_files/figure-html/unnamed-chunk-34-1.png)&lt;!-- --&gt;
 ---
 ## Additional Info: Experiment (Fall 2020)
@@ -926,24 +960,47 @@ is_experimental &lt;- function(logname = whoami::username()) {
 ## F-statistic: 2.741 on 1 and 16 DF,  p-value: 0.1173
 ```
 ]
+---
+## Additional Info: Experiment (Fall 2020)
+
+.small[
+
+
+```
+## 
+## Call:
+## lm(formula = Overall_Total ~ Group + Previous_Classes, data = fall2020)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -5.191 -2.197 -1.055  2.969  5.803 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        6.3714     1.4803   4.304 0.000627 ***
+## GroupFertile      -3.2733     1.7613  -1.858 0.082835 .  
+## Previous_Classes   0.8198     0.5615   1.460 0.164901    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.715 on 15 degrees of freedom
+## Multiple R-squared:  0.2525,	Adjusted R-squared:  0.1528 
+## F-statistic: 2.533 on 2 and 15 DF,  p-value: 0.1128
+```
+]
 
 ---
 ## Additional Info: Experiment (Jan 2021)
-
-![](fertile_slides_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
-
----
-## Additional Info: Experiment (Jan 2021)
-
 
 ![](fertile_slides_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
----
-## Additional Info: Experiment (Jan 2021)
 
-![](fertile_slides_files/figure-html/unnamed-chunk-38-1.png)&lt;!-- --&gt;
 
 ---
 ## Additional Info: Experiment (Jan 2021)
+
+
+
+
 
 .small[
 
