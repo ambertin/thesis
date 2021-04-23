@@ -698,11 +698,11 @@ knitr::include_graphics(c("figure/structure-badge.png", "figure/tidy-badge.png",
 
 8. The names of files in the project that the `html` found the badges for as well as their date of last modification.
 
-The `html` output for `project_miceps` can be seen below. As we can see, `project_miceps` receives the "Project Structure" and "File Paths" badges but fails "Tidy Files", "Documentation", "Randomness", and "Code Style". This aligns with our previous results from each of the components of reproducibility. For example, `project_miceps` passed `proj_analyze_paths()` with flying colors, but failed `has_well_commented_code()` (documentation), `has_no_randomness()` (randomness), and `has_no_lint()` (code style).
+The `html` output for `project_miceps` can be seen below. As we can see, `project_miceps` receives the "Project Structure" badge but fails "Paths", "Tidy Files", "Documentation", "Randomness", and "Code Style". This aligns with our previous results from each of the components of reproducibility. For example, `project_miceps` passed `has_no_nested_proj_root()` with flying colors, but failed `has_well_commented_code()` (documentation), `has_no_randomness()` (randomness), and `has_no_lint()` (code style).
 
 We see these failures reflected in the badge report section titled "Reasons for Failure", which provides the list of functions responsible for why the project failed to receive that badge. For example, we can see that for the "Tidy Files" badge, `project_miceps` failed `has_tidy_images()`, `has_tidy_raw_data()`, and `has_only_used_files()`.
 
-At the end of the report, in the section titled "Output Generation Details", we see information similar to what was produced with the previously described dependency management functions. We see the date the project was rendered by me, Audrey Bertin, on October 29th, 2020 at just after 2 pm Eastern time using R version 4.0.2 on a Mac computer running macOS Catalina. Additionally, we see the files contained in the project and their last modified dates.
+At the end of the report, in the section titled "Output Generation Details", we see information similar to what was produced with the previously described dependency management functions. We see the date the project was rendered by me, Audrey Bertin, on April 23rd, 2021 at around 10am eastern time using R version 4.0.4 on a Mac computer running macOS Big Sur. Additionally, we see the files contained in the project and their last modified dates.
 
 ```{r badges-1, echo = FALSE, fig.cap="Output: Badges and Reasons for Failure", out.width = "100%"}
 knitr::include_graphics("figure/badges-1.png")

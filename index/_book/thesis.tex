@@ -786,10 +786,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~   188.7K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.25K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  380.26K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~     380K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -835,15 +835,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDw4IG3/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDw4IG3/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpCmvTSt/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpDw4IG3/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -870,7 +870,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-04-08 18:08:32
+1 LAST RENDERED <NA>     proj_render 2021-04-23 14:18:01
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -971,9 +971,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~   188.7K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.25K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  380.26K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~     380K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1561,8 +1561,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     187.44K image/png                                 
- 3 proteins_v_time.p~ png     377.42K image/png                                 
+ 2 citrate_v_time.png png        188K image/png                                 
+ 3 proteins_v_time.p~ png     376.41K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1669,11 +1669,11 @@ When users pass all of the checks associated with one of the categories, they re
 \item
   The names of files in the project that the \texttt{html} found the badges for as well as their date of last modification.
 \end{enumerate}
-The \texttt{html} output for \texttt{project\_miceps} can be seen below. As we can see, \texttt{project\_miceps} receives the ``Project Structure'' and ``File Paths'' badges but fails ``Tidy Files,'' ``Documentation,'' ``Randomness,'' and ``Code Style.'' This aligns with our previous results from each of the components of reproducibility. For example, \texttt{project\_miceps} passed \texttt{proj\_analyze\_paths()} with flying colors, but failed \texttt{has\_well\_commented\_code()} (documentation), \texttt{has\_no\_randomness()} (randomness), and \texttt{has\_no\_lint()} (code style).
+The \texttt{html} output for \texttt{project\_miceps} can be seen below. As we can see, \texttt{project\_miceps} receives the ``Project Structure'' badge but fails ``Paths,'' ``Tidy Files,'' ``Documentation,'' ``Randomness,'' and ``Code Style.'' This aligns with our previous results from each of the components of reproducibility. For example, \texttt{project\_miceps} passed \texttt{has\_no\_nested\_proj\_root()} with flying colors, but failed \texttt{has\_well\_commented\_code()} (documentation), \texttt{has\_no\_randomness()} (randomness), and \texttt{has\_no\_lint()} (code style).
 
 We see these failures reflected in the badge report section titled ``Reasons for Failure,'' which provides the list of functions responsible for why the project failed to receive that badge. For example, we can see that for the ``Tidy Files'' badge, \texttt{project\_miceps} failed \texttt{has\_tidy\_images()}, \texttt{has\_tidy\_raw\_data()}, and \texttt{has\_only\_used\_files()}.
 
-At the end of the report, in the section titled ``Output Generation Details,'' we see information similar to what was produced with the previously described dependency management functions. We see the date the project was rendered by me, Audrey Bertin, on October 29th, 2020 at just after 2 pm Eastern time using R version 4.0.2 on a Mac computer running macOS Catalina. Additionally, we see the files contained in the project and their last modified dates.
+At the end of the report, in the section titled ``Output Generation Details,'' we see information similar to what was produced with the previously described dependency management functions. We see the date the project was rendered by me, Audrey Bertin, on April 23rd, 2021 at around 10am eastern time using R version 4.0.4 on a Mac computer running macOS Big Sur. Additionally, we see the files contained in the project and their last modified dates.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/badges-1} \caption{Output: Badges and Reasons for Failure}\label{fig:badges-1}
 \end{figure}
@@ -2080,7 +2080,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,406 x 4
+# A tibble: 1,428 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2093,7 +2093,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,396 more rows
+# ... with 1,418 more rows
 \end{verbatim}
 \normalsize
 
@@ -2170,7 +2170,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7febf91a05f0>
+<bytecode: 0x7fa528baf7f0>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2300,16 +2300,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      595     2021-04-08 18:09:02
- 2 package:dplyr           <NA>                      base::~ 2021-04-08 18:09:02
- 3 package:readr           <NA>                      base::~ 2021-04-08 18:09:02
- 4 package:tidyr           <NA>                      base::~ 2021-04-08 18:09:03
- 5 package:ggplot2         <NA>                      base::~ 2021-04-08 18:09:03
- 6 package:purrr           <NA>                      base::~ 2021-04-08 18:09:03
- 7 Seed Before             <NA>                      595     2021-04-08 18:09:03
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-08 18:09:03
- 9 Seed After              <NA>                      609     2021-04-08 18:09:03
-10 Seed Before             <NA>                      609     2021-04-08 18:09:03
+ 1 Seed @ Start            <NA>                      580     2021-04-23 14:18:26
+ 2 package:dplyr           <NA>                      base::~ 2021-04-23 14:18:26
+ 3 package:readr           <NA>                      base::~ 2021-04-23 14:18:26
+ 4 package:tidyr           <NA>                      base::~ 2021-04-23 14:18:26
+ 5 package:ggplot2         <NA>                      base::~ 2021-04-23 14:18:27
+ 6 package:purrr           <NA>                      base::~ 2021-04-23 14:18:27
+ 7 Seed Before             <NA>                      580     2021-04-23 14:18:27
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-04-23 14:18:27
+ 9 Seed After              <NA>                      594     2021-04-23 14:18:27
+10 Seed Before             <NA>                      594     2021-04-23 14:18:27
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2379,7 +2379,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7febe862bd00>
+<bytecode: 0x7fa51730d310>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2479,7 +2479,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7febff2ddd48>
+<bytecode: 0x7fa5308bb2e0>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -3592,9 +3592,6 @@ Baker, M. (2015). Over half of psychological studies fail reproducibility test. 
 
 \leavevmode\hypertarget{ref-nature-crisis}{}%
 Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. \emph{Nature}. Retrieved from \url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
-
-\leavevmode\hypertarget{ref-baumer2014r}{}%
-Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{arXiv Preprint arXiv:1402.1894}.
 
 \leavevmode\hypertarget{ref-baumer2014r}{}%
 Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{arXiv Preprint arXiv:1402.1894}.
