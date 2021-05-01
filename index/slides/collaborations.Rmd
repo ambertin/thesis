@@ -36,21 +36,7 @@ style_mono_light(base_color = "#23395b")
 }
 ```
 
-## Overview
 
-1. What is reproducibility and why is it lacking?
-2. Other attempts to address reproducibility and their shortcomings
-3. Why `fertile` is different
-4. Potential applications
-5. Conclusion
-6. Accessing project materials
-
-```{r, echo = FALSE, out.width= "30%", fig.align='right'}
-knitr::include_graphics("fertile-hex.png")
-```
-
-
----
 ## What is reproducibility?
 
 > In data science, research is considered fully __reproducible__ when the requisite code and data files produce identical results when run by another analyst.
@@ -188,11 +174,12 @@ knitr::include_graphics('badges-1.png')
 ---
 ## Educational features
 
-- Interactive path warning system
 
-- Checks provide informative messages
+- Functions provide informative messages
   - Explain problem
   - Provide solution
+
+- Interactive path warning system
 
 .small[
 ```{r, error=TRUE, eval = FALSE}
