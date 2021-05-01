@@ -65,11 +65,6 @@ knitr::include_graphics("fertile-hex.png")
 > In data science, research is considered fully __reproducible__ when the requisite code and data files produce identical results when run by another analyst.
 
 
-.center[VS]
-
-> __Replicability__: The ability of a researcher to duplicate the results of a study when following the original procedure but collecting new data
-
-
 ---
 ## The benefits of reproducibility
 
@@ -95,12 +90,6 @@ knitr::include_graphics("nature-1.jpeg")
 ```
 
 ---
-## The reproducibility crisis
-```{r, echo = FALSE, out.width = '60%'}
-knitr::include_graphics("nature-2.png")
-```
-
----
 
 ## 6 components of reproducibility
 
@@ -116,35 +105,19 @@ knitr::include_graphics("nature-2.png")
 
 6) Style
 
-
----
-## Attempts to address reproducibility: educational programs
-
-- Replication studies at Graduate level (Cambridge, Harvard, UNC, Penn State, Berkeley)
-- At undergraduate level, requirement for work to be completed in `.Rmd` (Smith, Duke)
-
----
-## Attempts to address reproducibility: journals
-
-```{r, echo = FALSE, out.width='80%'}
-knitr::include_graphics("stats-journals.png")
+```{r badge-graphics, out.width="15%",  fig.show='hold', echo = FALSE}
+knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentation-badge.png", "paths-badge.png", "randomness-badge.png", "style-badge.png"))
 ```
 
-- Even if you have a reproducibility statement that does not mean that all the articles are reproducible!! 
 
 ---
-## Attempts to address reproducibility: software
+## Attempts to address reproducibility
 
-- `rrtools`: create basic package structure, Docker dependency management
-- `orderly`: automation of projects
-- `workflowr`: version control
-- `checkers`: custom checks to assess reproducibility
-- `renv` (formerly `packrat`): dependency management
-- `drake`: makefiles
-- `reproducible`: caching to speed up analysis
+* Educational institutions: replication studies (grad), and reproducible formats (undergrad)
 
+* Journals: requirements for submitting authors to make code, data, and sometimes additional things available
 
-- Continuous integration tools: `wercker`, `GitHub Actions`, `Travis CI`, `Circle CI`.
+* Software: `R` packages with tools to help users improve reproducibility, continuous integration tools (`wercker`, `GitHub Actions`, `Travis CI`, `Circle CI`)
 
 ```{r, echo = FALSE}
 knitr::include_graphics('ci-tools.png')
@@ -155,25 +128,26 @@ knitr::include_graphics('ci-tools.png')
 
 - Education:
 
-    1. Workshops often optional
-    2. Only really at graduate level
-    3. Takes time away from other important class topics
-    4. Takes a lot of effort for professor to set up
-    
+    1. Only really at graduate level
+    2. Takes time away from other important class topics
+
 - Journals:
 
-    1. Authors lack knowledge and/or time to make changes
-    2. Reproducibility review is time/cost intensive for journals
+    1. Inconsistent
+    2. Only 1 component
+    3. Poor enforcement (authors lack knowledge and/or time to make changes and reproducibility review is time/cost intensive for journals)
 
 - Software:
 
     1. Packages narrow in scope
     2. Complex functions, bad for new users
-    3. Cumbersome, with steep learning curve
-    4. CI tools: lack software-specific tools 
+    3. CI tools: lack software-specific tools 
     
 
 ---
+background-image: url("fertile-hex.png")
+background-position: right bottom
+background-size: 30%
 
 ## Setting `fertile` apart: package goals
 
@@ -191,17 +165,26 @@ knitr::include_graphics('ci-tools.png')
 
 7) Applicable in many domains
 
+
 ---
+
+## Addressing the 6 components
+
+.small[
+```{r, echo = FALSE}
+knitr::include_graphics('components-summary.png')
+```
+]
+
+--- 
 
 ## Overview functions
 
 - `proj_check()`: run a bunch of different tests on various parts of reproducibility (files, paths, documentation, etc.)
 
-- `proj_analyze()`: package dependencies, files, file move suggestions, paths
-
 - `proj_badges()`: earn/display badges for different components, summary of project generation info
 
-```{r badge-graphics, out.width="15%",  fig.show='hold', echo = FALSE}
+```{r badge-logos, out.width="15%",  fig.show='hold', echo = FALSE}
 knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentation-badge.png", "paths-badge.png", "randomness-badge.png", "style-badge.png"))
 ```
 ---
@@ -210,24 +193,6 @@ knitr::include_graphics(c("structure-badge.png", "tidy-badge.png", "documentatio
 ```{r, echo = FALSE, out.width = '90%'}
 knitr::include_graphics('badges-1.png')
 ```
-
----
-## Overview functions
-
-```{r, echo = FALSE}
-knitr::include_graphics('badges-2.png')
-```
-
-
-
-
-## More specific functions
-
-.small[
-```{r, echo = FALSE}
-knitr::include_graphics('components-summary.png')
-```
-]
 
 ---
 ## Educational features
@@ -251,23 +216,20 @@ cat(stringr::str_wrap(error_msg, width = 70))
 ]
 
 ---
-## Customizability
+## Potential applications
 
-- `proj_check_some()`: run subset of checks
-- `proj_check_badge()`: run each of the badges from `proj_badges()` individually
+- Speed up journal review --> more journals w/ reproducibility requirements
+- Use `proj_badges()` for submitting authors
 
-- Controlling which functions throw warnings about paths:
+```{r, echo = FALSE, out.width="100%"}
+knitr::include_graphics("journal-process-2.png")
+```
 
-  - Some built in, but users can add/edit others:
-  - `add_shim()`: add a function to the warning list
-  - `edit_shims()`: edit warning list
-  - `load_shims()`: activate warning system
-  - `unload_shims()`: deactivate warning system
 
 ---
-## Potential applications: teaching reproducibility
+## Potential applications
 
-- Introduce reproducibility in undergrad classrooms
+- Introduce reproducibility in more undergrad classrooms
 
 - Limited barriers to entry:
 1. R and RStudio installed on their computer
@@ -276,37 +238,21 @@ environment
 3. Knowledge of how to create an R project
 4. Knowledge of how to run basic functions and input simple file paths
 
-
----
-## Potential applications: miscellaneous
-
-- Private companies: increasing transparency w/ clients, building trust
-
-- Conferences: reproducibility standards as requirement for acceptance
-
-- Informal analysis: more reproducible work for events like `tidy tuesday` --> share knowledge!
-
 ---
 ## Conclusion
 
-- There is currently a reproducibility crisis
+- Current reproducibility crisis, solutions inadequate
 
-- Existing solutions are lacking for a variety of reasons
-
-- `fertile` addresses these all in one!
-  - Customizable
-  - Easy to use
-  - Educational
-  - R specific features
-  - Addresses multiple aspects of reproducibility
-  - Applicable to many domains
+- `fertile` fills gaps!
   
-- Potential uses:
-  - Classroom
-  - Journals
-  - Offices
-  - Conferences
-  - Informal analysis
+- More and more people starting to use it...
+
+- But just helping one person is enough!
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("oprah.jpg")
+```
+
 
 
 ---
@@ -317,7 +263,7 @@ environment
 - My repository for `fertile`, to track my changes:
 https://github.com/ambertin/fertile
 
-- Currently writing a thesis. The library will have a copy sometime in the near future!
+- Currently writing a thesis. The library will have a copy sometime in the near future! For now, version also available on GitHub: https://github.com/ambertin/thesis
 
 - `fertile` article in `Stat` journal:
 https://doi.org/10.1002/sta4.332
