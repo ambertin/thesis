@@ -36,20 +36,6 @@ style_mono_light(base_color = "#23395b")
 }
 ```
 
-
-## Introduction
-
-`fertile`:
-  - **What?** Software package written in `R`
-  - **Goal:** Improve scientific reproducibility of `R` projects
-  - **My Role:** Leading code development for the last ~2 years!
-  
-```{r, echo = FALSE, fig.align='center', out.height=270, out.width=250}
-knitr::include_graphics("fertile-hex.png")
-```
-
-
----
 ## Overview
 
 1. What is reproducibility and why is it lacking?
@@ -58,6 +44,11 @@ knitr::include_graphics("fertile-hex.png")
 4. Potential applications
 5. Conclusion
 6. Accessing project materials
+
+```{r, echo = FALSE, out.width= "30%", fig.align='right'}
+knitr::include_graphics("fertile-hex.png")
+```
+
 
 ---
 ## What is reproducibility?
@@ -249,7 +240,7 @@ environment
 
 - But just helping one person is enough!
 
-```{r, echo = FALSE, fig.align='center'}
+```{r, echo = FALSE, fig.align='center', out.width='60%'}
 knitr::include_graphics("oprah.jpg")
 ```
 
