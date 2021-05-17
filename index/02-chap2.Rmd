@@ -23,17 +23,16 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 knitr::include_graphics("figure/sample-project.png")
 ```
 
-`project_miceps` contains data and analysis from a study concerning the differences in bicep muscle growth between male and female mice, conducted under Smith College professor Stylianos Scordilis.
+`project_miceps` contains data and analysis from a study concerning the differences in bicep muscle growth between male and female mice. The results from this study, conducted in part by Smith College professor Stylianos Scordilis, were published in *Cellular and Molecular biology letters* in 2010 (@metskas2010gender).
 
 The folder contains a variety of different file types:
-
-* 1 `.Rmd` file containing the analysis code. This involves data manipulation, visualization, and random number generation
-* 1 `.html` containing the knitted output of the analysis code
-* 3 `.csv` files containing the experimental data
-* 2 `.png` image files containing plot outputs from the analysis
-* 1 `README` file containing information about the project
-* A `.docx` file containing text about estrogen receptors in mice
-* `.Rproj` and `.Rhistory` files, containing data used by `R` to track work and maintain the project structure
+- 1 `.Rmd` file containing the analysis code. This involves data manipulation, visualization, and random number generation
+- 1 `.html` containing the knitted output of the analysis code
+- 3 `.csv` files containing the experimental data
+- 2 `.png` image files containing plot outputs from the analysis
+- 1 `README` file containing information about the project
+- A `.docx` file containing text about estrogen receptors in mice
+- `.Rproj` and `.Rhistory` files, containing data used by `R` to track work and maintain the project structure
 
 
 In the following sections, we will consider the functionality of `fertile` as demonstrated primarily through the results of a reproducibility analysis conducted on `project_miceps`. All of the code for `fertile` that will be discussed in this chapter can be found at https://github.com/baumer-lab/fertile, while the local branch tracking my changes can be found at https://github.com/ambertin/fertile.
@@ -53,7 +52,7 @@ library(fertile)
 
 One way to gain an overview of the existing files (including data, code, and metadata) is with the `proj_analyze_files()` function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxiliary (image or text) files they have. 
 
-When this is run on `project_miceps`, we see the same files as described before--their names, file sizes, extensions, and a MIME type, which summarizes the file format using a two-part identifier.
+When this is run on `project_miceps`, we see the same files as described before--their names, file sizes, extensions, and a "mime", which summarizes the file type in a more general way than the extension.
 
 ```{r, eval = FALSE}
 proj_analyze_files("project_miceps")
@@ -125,7 +124,7 @@ cat(stringr::str_wrap(output[3], width = 80, indent = 0, exdent = 0))
 
 Once a directory is sandboxed, users can run the `proj_render()` function, which checks all `.R` and `.Rmd` code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 
-Below, `proj_render()` executes without error, outputting only a message that it is completing its render and nothing more, which indicates that the project compiles successfully when removed from its original environment---a positive sign of reproducibility.
+Below, `proj_render()` executes without error, indicating that the project compiles successfully when removed from its original environment---a positive sign of reproducibility.
 
 ```{r}
 proj_render(temp_dir)
@@ -349,7 +348,7 @@ This interactive behavior is one of the educational features of the package, as 
 
 One of the important components of R package development, however, is that a package should not interfere too much with user behavior. Users who are trying to code in their console, for example, might still want to open a file if they know the path is not reproducible if they are just trying to take a quick look at some data.  
 
-`fertile` accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, `read.csv("~/Desktop/my_data.csv")`, gives a different message than `read.csv("../../../Desktop/my_data.csv")`, even though both paths point to the same location in the computer.
+`fertile` accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, `read.csv("~/Desktop/my_data.csv")`, gives a different message than `read_csv("../../../Desktop/my_data.csv")`, even though both paths point to the same location in the computer.
 
 ```{r write_csv, include=FALSE}
 readr::write_csv(mtcars, "~/Desktop/my_data.csv")
@@ -378,17 +377,17 @@ cat(stringr::str_wrap(error_msg, width = 70))
 The error message is different when referring to a relative path that is outside of the directory. In the example below, we reference the same `my_data.csv` file, but instead using relative paths indicating to go back three directories to find the `/Desktop` folder. This time, the `fertile` warning message mentions path that "lead outside the project directory". The suggested override command also changes to reflect the path that was provided.
 
 ```{r, eval = FALSE}
-read.csv("../../../Desktop/my_data.csv")
+read_csv("../../../Desktop/my_data.csv")
 ```
 
 ```{r, echo = FALSE}
-error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: utils::read.csv('../../../Desktop/my_data.csv')"
+error_msg <- "Error: Detected paths that lead outside the project directory. Such paths are not reproducible and will likely only work on your computer. If you would like to continue anyway, please execute the following command: readr::read_csv('../../../Desktop/my_data.csv')"
 
 cat(stringr::str_wrap(error_msg, width = 80))
 ```
 
  
-In addition to catching non-reproducible file paths, `fertile` also stops the user when they try to change the working directory. Unlike with input and output functions like `read.csv()`, which can take a variety of different file paths---some which may be reproducible and some not, `setwd()` is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, `fertile` is particularly strict with it. When a call to `setwd()` is caught, `fertile` throws an error and does not provide an option to override. Rather, the user is given an alternative function (`here::here()`) to use that achieves the same behavior in a more reproducible way.
+In addition to catching non-reproducible file paths, `fertile` also stops the user when they try to change the working directory. Unlike with input and output functions like `read_csv()`, which can take a variety of different file paths---some which may be reproducible and some not, `setwd()` is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, `fertile` is particularly strict with it. When a call to `setwd()` is caught, `fertile` throws an error and does not provide an option to override. Rather, the user is given an alternative function (`here::here()`) to use that achieves the same behavior in a more reproducible way.
 
 ```{r setwd, error = TRUE}
 getwd()
@@ -396,15 +395,15 @@ setwd("project_miceps")
 
 ```
 
-The `here::here()` suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown  file executes the same when run chunk-by-chunk as when knit. The [`here`](https://here.r-lib.org/index.html) package makes it easy to access files when executed as part of a script. `here::here()`works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location. The function also has the advantage of allowing users to reference files in a manner that is independent of where those files are located (as long as they are in the project directory), which means that if files get moved, the paths will still execute correctly.
+The `here::here()` suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown  file executes the same when run chunk-by-chunk as when knit. The [`here`](https://here.r-lib.org/index.html) package  makes it easy to access files when executed as part of a script. The function works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location. 
 
-`here::here()` is not necessary for console-based programming, nor is `setwd()`. As long as users use the R project format, which is required by `fertile`, and all files for the analysis are kept within the project directory, all paths can easily be written as relative to the project root without the need for `here::here()` or `setwd()`. This is one of many strengths of the R project format: it negates the need for reproducibility-breaking functions in interactive programming. Users who new to reproducibility and working in the project format, however,  may still need reminders not to use `setwd()`. It is for this reason that `fertile` provides an error when this function is called, regardless of whether it was done interactively (where there is no need for it), or in a script (where setting the directory could potentially seem advantageous).
+`here::here()` is not necessary for console-based programming, nor is `setwd()`. As long as users use the R project format, which is required by `fertile`, and all files for the analysis are kept within the project directory, all paths can easily be written as relative to the project root without the need for `here::here()` or `setwd()`. This is one of many strengths of the R project format: it negates the need for reproducibility-breaking functions in interactive programming. Users who are new to reproducibility and working in the project format, however,  may still need reminders not to use `setwd()`. It is for this reason that `fertile` provides an error when this function is called, regardless of whether it was done interactively (where there is no need for it), or in a script (where setting the directory could potentially seem advantageous).
 
 For more information about the interactive warning system and some of its customization features, see Section 2.2.1.
 
 #### Project Path Summaries
 
-`fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths()` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
+`fertile` also contains functionality that analyzes code for path information after it is written. For example, `proj_analyze_paths` goes through all of the paths used in a project's `.R` and `.Rmd` files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 
 When this function is run on `project_miceps`, we see no paths at fault, indicating that all paths in the project are reproducible.
 
@@ -632,10 +631,9 @@ The `proj_analyze()` function creates a report documenting the structure of a da
 * `proj_analyze_paths()`, which captures a list of the non-reproducible file paths referenced in source code
 
 When `proj_analyze()` is run on `project_miceps`, we see the following information:
-
-* 10 packages (including `broom`, `dplyr`, `fs` and more) are referenced in the analysis code.
-* 12 files are in the project directory, including some image files, data files, and a few files produced from some of the analyses that have been run by fertile (`install_proj_packages.R` and `software-versions.txt`).
-* There are 10 suggestions for moving files, with data files to `data-raw`, script files to `R`, and other files to `inst`.
+- 10 packages (including `broom`, `dplyr`, `fs` and more) are referenced in the analysis code
+- 12 files are in the project directory, including some image files, data files, and a few files produced from some of the analyses that have been run by fertile (`install_proj_packages.R` and `software-versions.txt`).
+- There are 10 suggestions for moving files, with data files to `data-raw`, script files to `R`, and other files to `inst`
 
 
 ```{r proj_analyze, tidy.opts=list(width.cutoff=60), eval = FALSE}
@@ -715,7 +713,7 @@ knitr::include_graphics("figure/badges-2.png")
 ```
 
 
-Together, `proj_check()`, `proj_analyze()`, and `proj_badges()` cover a significant portion of all six major components of reproducibility.
+Together, `proj_check()`,`proj_analyze()`, and `proj_badges()` cover a significant portion of all six major components of reproducibility.
 
 #### Features Allowing For Summary By Group
 
@@ -878,11 +876,11 @@ fertile::read.csv
 
 This functionality all occurs without the knowledge of the user. Consider the example of `read.csv()`. `read.csv()` is a  popular function from the `utils` package for reading in data files. Users with both `utils` and `fertile` loaded will experience the following: The user will call `read.csv()` as normal, thinking that they are calling `utils::read.csv()`. However, they will actually be calling `fertile::read.csv()`, a very similar function with the same name. `fertile::read.csv()` will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as `utils::read.csv()` would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, `fertile` will record that the user called `utils::read.csv()` and note the path that was provided to it for future reference.
 
-This behavior, however, is dependent on `fertile` remaining at the top of the `search()` path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. 
+This behavior, however, is dependent `fertile` remaining at the top of the `search()` path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the `fertile` versions of functions ("shims") always supersede ("mask") their original namesakes when called, `fertile` uses its own shims of the `library` and `require` functions to  manipulate the `R` `search` path so that it is always located in the first position. 
 
-In the `fertile` version of `library()`, `fertile` is detached from the search path, the requested package is loaded, and then `fertile` is reattached. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. 
+In the `fertile` version of `library()`,`fertile` is detached from the search path, the requested package is loaded, and then `fertile` is reattached. This ensures that when a user executes a command, `R` will check `fertile` for a matching function before considering other packages. 
 
-A full list of the shimmed functions provided by `fertile` is included below. Note that in order to reduce the software dependencies of `fertile` the shims from the less common `readxl`, `rjson`, `foreign`, and `sas7bdat` packages are only activated if the user has those packages installed and loaded on their computer.
+A full list of the shimmed functions provided by `fertile` is listed below. Note that---in order to reduce the software dependencies of `fertile` the shims from the less common `readxl`, `rjson`, `foreign`, and `sas7bdat` packages are only activated if the user has those packages installed and loaded on their computer.
 
 ```{r echo = FALSE, out.width = '100%', fig.cap="List of Functions Shimmed by 'fertile'"}
 knitr::include_graphics("figure/shims-list.png")
@@ -892,7 +890,7 @@ knitr::include_graphics("figure/shims-list.png")
 
 Not all `R` programmers use the same packages, nor do they use the same functions at the same level of regularity. Additionally, some users might not always want to have their shimmed functions enabled---for example, they may purposefully be writing code with absolute paths, and would want to be able to do so without warnings and interruptions.
 
-As a result of this, we believe it important to include features in `fertile` that enable users to customize which functions for which their version of `fertile` has active shims as well as when those shims are enabled or disabled.
+As a result of this, we believed it important to include features in `fertile` that enable users to customize which functions for which their version of `fertile` has active shims as well as when those shims are enabled or disabled.
 
 Several functions in `fertile` have been written to implement this behavior:
 
@@ -977,7 +975,7 @@ The shims in `fertile` are designed to be able to write to both the interactive 
 
 Given the different purposes of each file, however, it is important that `fertile` be able to identify when a function execution should be saved to the interactive log versus when it should be saved to the render log.
 
-This information is tracked via a logical environment variable---a variable whose value is stored in a user's local `R` environment, and whose value can be accessed or updated via commands---called `FERTILE_RENDER_MODE`. When `FERTILE_RENDER_MODE` is `TRUE`, executed shims are saved to the render log. When it is `FALSE`, they are saved to the interactive log.
+This information is tracked via a logical environment variable---a variable whose value is stored in a user's local `R` environment, and whose value can be accessed or updated via commands---called`FERTILE_RENDER_MODE`. When `FERTILE_RENDER_MODE` is `TRUE`, executed shims are saved to the render log. When it is `FALSE`, they are saved to the interactive log.
 
 Since `fertile` is designed to capture information about interactive user behavior, `FERTILE_RENDER_MODE` is `FALSE` by default. It is only changed to `TRUE` when `fertile` is executing functions that involve the rendering of `.R` and `.Rmd` code files. At the start of all such functions, `fertile` sets the environment variable to `TRUE`, executes the majority of the function, and then sets it back to `FALSE` before exiting. This ensures that as soon as the function has finished running, all new commands get executed on the interactive log, rather on the render log which was just generated. 
 
@@ -1023,7 +1021,7 @@ When the dots are used, none of these problems arise. In a `fertile` shim, we on
 
 When a user executes a shim, anything passed through the path arguments gets evaluated for reproducibility and everything else is saved through the dots. Those dots then get handed over to the original function. This function knows what to do with them, because the user was running the `fertile` shim as if it were the original function, and therefore passed arguments that the original function could interpret.
 
-In the `read_csv()` example, we see that the `fertile` shim takes only `file` and `...` as arguments. Users can still pass any of the 14 `readr::read_csv()` arguments besides `file` to the shim, and these are all saved as the dots.
+In the `read_csv()` example, we see that the `fertile` shim takes only `file` and `...` as arguments. Users can still pass any of the 14 `readr::read_csv()`arguments besides `file` to the shim, and these are all saved as the dots.
 
 After `fertile` checks the file path passed to `file` (using `check_path_safe`), it reads in the data using the original `readr` function, executing `readr::read_csv(file, ...)` which passes the file path independently, and then everything else the user specified---if anything---through the dots.
 
@@ -1043,7 +1041,7 @@ This function, which accepts the arguments `(path, ...)`, operates by allowing t
 
 The `proj_badges()` function builds an `html` document based on a collection of information calculated when rendering an `R` project, then displays that `html` document in the `Viewer` window of `RStudio`. 
 
-This `html` document is customized based on both the computer and the directory that `proj_badges()`.
+This `html` document is customized based on both the computer and the directory that `proj_badges()`:
 
 Mac and Windows users will receive different outputs, as will those who have the same type of computer but are using a a different `R` version or operating system (e.g. macOS Catalina 10.15.7 vs macOS Mojave 10.14.6). This customization is meant to help with dependency tracking. `proj_badges()` outputs change to display custom information about the computer type and operating system version of the machine on which the code was run, which---in addition to detailed information about the project itself---helps insure complete information about all potential factors which could be influencing software behavior.
 
@@ -1075,7 +1073,7 @@ These concerns are a major part of why `fertile` is not hosted on CRAN. Its pote
 
 However, these malware-like features are what makes `fertile` so functional and provides it with the reproducibility features that are not present in any other software at this time. 
 
-It is, of course, important to recognize and alleviate these concerns as much as possible. This is one reason---among many others---that `fertile` is hosted on GitHub. All of the code for the package is publicly available, making its behavior completely transparent. By looking through the code, users can see where hidden files are getting created, when they are getting overwritten, and what happens behind the scenes on each of the shimmed functions. Nothing is left to mystery.
+It is, of course, though, important to recognize and alleviate these concerns as much as possible. This is one reason---among many others---that `fertile` is hosted on GitHub. All of the code for the package is publicly available, making its behavior completely transparent. By looking through the code, users can see where hidden files are getting created, when they are getting overwritten, and what happens behind the scenes on each of the shimmed functions. Nothing is left to mystery.
 
 Additionally, users have the opportunity to decide for themselves whether they want to use the software. `fertile` is not built into R by default. Users must take action---by researching packages, installing `fertile`, and loading it into their `R` environment---to activate the package. In big part due to the transparency around the code, at any step in this process users have the agency to review what they are getting into and decide for themselves whether they want to use the software.
 
@@ -1086,7 +1084,7 @@ Recall the list of features necessary for an effective reproducibility tool that
 
 **1) Be simple, with a small library of functions/tools that are straightforward to use.**
 
-`fertile` is very simple to use. Most of the package's features can be achieved with just two functions: `proj_analyze()` and `proj_check()`. The interactive warning features---which throw errors when users reference absolute paths or those leading outside of the project directory---are even more straightforward. As soon as `fertile` is loaded, they are automatically enabled and require no additional effort from the user. Additionally, the operation of the functions themselves is quite simple---most functions in the package require only one argument: the path to the directory that the user wants to run the function on.
+`fertile` is very simple to use. Most of the package's features can be achieved with just two functions: `proj_analyze()` and `proj_check()`. The the interactive warning features---which throw errors when users reference absolute paths or those leading outside of the project directory---are even more straightforward. As soon as `fertile` is loaded, they are automatically enabled and require no additional effort from the user. Additionally, the operation of the functions themselves is quite simple---most functions in the package require only one argument: the path to the directory that the user wants to run the function on.
 
 **2) Be accessible to a variety of users, with a relatively shallow learning curve.**
 
