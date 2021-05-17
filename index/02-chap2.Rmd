@@ -157,7 +157,7 @@ Six of the major checks, whose names begin with `has_tidy_` focus on file clutte
 
 This definition of "tidyness" comes from the `R` package structure. `R` packages are required to follow a format with specific folders for specific files. Any miscellaneous files found at the top level of the package directory are flagged when building a package. Top-level clutter is not allowed, and files have to be moved into their respective folders. 
 
-This is not the only definition of tidyness. Some individuals may prefer a system where a variety of files *are* stored at the root directory of a project because this simplifies the method of writing paths to access these files---if everything is located in one place, you only need to provide the name of the file to open it. However, with `fertile`, we believe the `R` package structure to be advantageous. By recommending that users follow this package structure in the reproducibility recommendations, `fertile` makes it easy for users to convert their `R` projects into `R` packages with minimal effort. This can be useful for analysts whose work contains functions and datasets. The `R` package format makes function use very simple---functions are built in with package installation, rather than requiring users to execute `R` scripts to bring the functions into their environment. `R` packages also have a built in method of documentation, using `roxygen2`, that makes it easy to ensure that any functions are well-explained. The package format can also be advantageous for data sharing. If data is built into a package, it can be easily accessed using the `data()` command, rather than requiring users to use some version of `read.csv()` or any other data-reading function. By working to set up projects based around the package format, `fertile` sets users up to easily be able to achieve these benefits in their analyses if they are desired. 
+This is not the only definition of tidyness. Some individuals may prefer a system where a variety of files *are* stored at the root directory of a project because this simplifies the method of writing paths to access these files---if everything is located in one place, you only need to provide the name of the file to open it. However, with `fertile`, we believe the `R` package structure to be advantageous. By recommending that users follow this package structure in the reproducibility recommendations, `fertile` makes it easy for users to convert their `R` projects into `R` packages with minimal effort. This can be useful for analysts whose work contains functions and datasets. The `R` package format makes function use very simple---functions are built in with package installation, rather than requiring users to execute `R` scripts to bring the functions into their environment. `R` packages also have a built in method of documentation, using `roxygen2`, that makes it easy to ensure that any functions are well-explained. The package format can also be advantageous for data sharing. If data is built into a package, it can be easily accessed using the `data()` command, rather than requiring users to use some version of `read.csv()` or any other data-reading function. By working to set up projects based around the package format, `fertile` sets users up to easily be able to achieve these benefits in their analyses if they are desired. Additionally, using a package structure makes it easy to integrate a project with GitHub Actions, which provides tools to help users automate their workflows.
 
 The last check that focuses on the file system is `has_only_used_files()`. One of the more complicated checks in `fertile`, this function checks to make sure that there are no extraneous files serving no apparent purpose (that are not "used") included alongside the analysis. For this function to work properly, a clear definition of which files are considered as "used" is needed. In `fertile`, that definition includes the following:
 
@@ -210,13 +210,13 @@ Combined together, all of these functions make it simple to ensure that projects
 ### Component 3: Documentation
 
   
-High quality documentation, including the presence of a README file, comments explaining the code, a list of software packages an analysis is dependent on, and a method in which to understand which order to run code files in, is essential to reproducibility. Without written guidance, individuals looking to reproduce results may not understand how to take all of the project components and combine them in the right way to produce the desired outcome. Additionally, code used without the proper dependencies and software versions, even if it is perfectly functional and correctly written, will often result in errors when compiled. 
+High quality documentation, including the presence of an informative README file, comments explaining the code, a list of software packages an analysis is dependent on, and a method in which to understand which order to run code files in, is essential to reproducibility. Without written guidance, individuals looking to reproduce results may not understand how to take all of the project components and combine them in the right way to produce the desired outcome. Additionally, code used without the proper dependencies and software versions, even if it is perfectly functional and correctly written, will often result in errors when compiled. 
 
 `fertile` contains a variety of functions to ensure that projects are well documented.
 
 #### README
 
-One important component of documentation is the inclusion of a README file. A README is a text file that introduces and explains a project. Commonly, a project README contains background information necessary to understand a project. According to @prana2019categorizing, alongside a variety of best-practices posts from `R` coders, some of the components that might be contained within are:
+One important component of documentation is the inclusion of an informative README file. A README is a text file that introduces and explains a project. Commonly, a project README contains background information necessary to understand a project. According to @prana2019categorizing, alongside a variety of best-practices posts from `R` coders, some of the components that might be contained within are:
 
 1. Background on the purpose of the project and the questions of interest.
 2. Background on where the data used in the project came from and what they contain.
@@ -450,7 +450,7 @@ These functions, together, cover all of the reproducibility sub-components invol
 
 ### Component 5: Randomness
 
-The component of randomness is addressed by `fertile` in a reproducibility check function titled `has_no_randomness()`, which does the following: First, it checks code files to determine whether they have employed random number generation. This is confirmed by recording the random number generation seed prior to running the files, rendering the files, and then checking to see whether the seed has changed. If the seed has changed, that indicates that one or more functions using random number generation were called. Finally, in order to select an appropriate response, `fertile` determines the type of randomness that has occurred. 
+The component of randomness is addressed by `fertile` in a reproducibility check function titled `has_no_randomness()`, which does the following: First, it checks code files to determine whether they have employed random number generation. This is confirmed by recording the random number generation seed prior to running the files, rendering the files, and then checking to see whether the seed has changed. If the seed has changed, that indicates that one or more functions using random number generation were called. Finally, in order to select an appropriate response, `fertile` determines the type of randomness that has occurred. Note that this function only looks for random number generation used in `R` functions, and not in functions outside the `R` scope, such as `Python` code embedded in an `RMarkdown` document.
 
 Here, I make a distinction between two primary types of randomness in `R`: *controlled* (or semi-random) and *uncontrolled*. All randomness in `R` is pseudo-random and not truly random---the number generation system uses algorithms to generate sequences of random numbers which approximate a truly random outcome but are not in fact themselves completely random---but not all randomness is controlled. The distinction between controlled and uncontrolled randomness emerges from the use of `set.seed()`. When `set.seed()` is used alongside pseudo-random number generation, the number generator returns the same "random" sequence of numbers each time. In a sense this is "random", because it is still a pseudo-randomly generated sequence, but it is also non-random in that it is predictable and repeatable---and therefore, controlled. Every time the code is run, it will generate the same sequence of numbers. This is in contrast to the behavior when `set.seed()` is excluded from the code, what I term *uncontrolled* randomness. In this situation, functions employing random number generation will *not* return the same pseudo-random sequence each time they are run. This will therefore affect the outcome of results and the reproducibility of the work. Two people running the same code when randomness is *uncontrolled* will not receive identical outputs, while they would if the randomness were *controlled*. For this reason, `fertile` flags *uncontrolled* randomness as dangerous, but has no problem with *controlled* randomness.
 
@@ -594,10 +594,10 @@ These informative error messages provided by `fertile` help teach users to use c
 
 As described in the previous sections, `fertile` addresses all six major components of reproducibility via a variety of functions. Some complex components have many associated functions attached to them, while others only have one. 
 
-A summary of the six components of reproducibility and the functionalities in `fertile` associated with them is provided below.
+A summary of the six components of reproducibility and the functions in `fertile` associated with them is provided below.
 
-```{r, echo = FALSE, out.width = '100%', fig.cap="Summary of Reproducibility Components and the Related Functionalities in 'fertile'"}
-knitr::include_graphics("figure/components-summary.png")
+```{r, echo = FALSE, out.width = '100%', fig.cap="Summary of Reproducibility Components and their Related Functions in 'fertile'"}
+knitr::include_graphics("figure/fertile-functions.png")
 ```
 
 
@@ -942,6 +942,8 @@ There is no method currently in the package to deactivate the shims included in 
 In order to store and analyze information about user behavior and code structure, `fertile` utilizes three different types of hidden files, two of which are `.csv` format and one of which is a text file. The hidden `.csv` files for `project_miceps` can be seen below:
 
 ```{r}
+# Note: the dir_ls() function below lists all of the files in a given directory. It comes from the 'fs' package. 'fs' contains a variety of functions to manage the file system in R. 'fertile' uses 'fs' in many of its functions to assist with file operations.
+
 as.character(
   fs::dir_ls("project_miceps", all = TRUE, glob = "*_log.csv")
 )
