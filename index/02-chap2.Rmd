@@ -650,7 +650,9 @@ proj_analyze('project_miceps')
 
 Similar to `proj_check()`, `proj_badges()` runs all sixteen reproducibility checks. However, the way the function displays the resulting information is different. Rather than report the results of each check individually alongside detailed information about why each failed, `proj_badges()` provides a higher level summary, reporting on the *groups* of checks that either passed or failed.
 
-In `proj_badges()`, the reproducibility checks are grouped into six categories corresponding to the six major components of reproducibility. These categories, alongside the checks which belong to them, are listed below:
+In `proj_badges()`, the reproducibility checks are grouped into six categories corresponding to the six major components of reproducibility (see Figure 2.4 on the next page).
+
+Each of the six badged has a set of `fertile` checks associated with it:
 
 * Project Structure
     - `has_proj_root()`
@@ -675,12 +677,12 @@ In `proj_badges()`, the reproducibility checks are grouped into six categories c
     - `has_no_lint()`
     
     
-When users pass all of the checks associated with one of the categories, they receive a badge certifying their success in that area. If any fewer than *all* available checks in a category are passed, then the user fails that category.
- 
-```{r badge-graphics, out.width="15%", fig.cap = "The 6 Reproducibilty Badges Available in `fertile`",  fig.show='hold', echo = FALSE}
-knitr::include_graphics(c("figure/structure-badge.png", "figure/tidy-badge.png", "figure/documentation-badge.png", "figure/paths-badge.png", "figure/randomness-badge.png", "figure/style-badge.png"))
+When a user's project passes all of the checks associated with one of the categories, the user receives a badge certifying their success in that area. If it passes any fewer than *all* available checks in a category, then the user fails to receive the corresponding badge.
+
+
+```{r, echo = FALSE, out.width="100%", fig.cap = "The Six Components of Reproducibility Alongside Their Corresponding Badges"}
+knitr::include_graphics("figure/components-badges.png")
 ```
- 
  
 `proj_badges()` identifies the badges that a data analysis project should receive and then outputs a summary of this information---in the form of an `html` document---to the RStudio `Viewer` pane. This document---designed to produce a summary of a project that can be easily shared in places outside of `RStudio` (unlike the summaries produced by most other functions, which just produce output in the `R` console)---contains the following primary pieces of information:
 
