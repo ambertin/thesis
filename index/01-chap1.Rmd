@@ -198,7 +198,7 @@ Of the 56 papers they deemed likely reproducible, the authors randomly selected 
 
 The researchers found a considerable increase in the proportion of data available statements (in contrast to 'data not available' statements, which could be present due to privacy or security concerns) since the implementation of the policy. Pre-open data policy, only 25% of articles had data available, while that number was a much higher 78% after the policy was put in place. 
 
-While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62% of the articles with data available statements had truly reusable datasets---in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49% of articles with data availability statements as reusable in practice, it is still far from ideal. 
+While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62% of the articles with data available statements had truly reusable datasets---in this case, meaning that the data were accessible, complete, and understandable. Although this is an increase from the pre-policy period, which saw 49% of articles with data availability statements as reusable in practice, it is still far from ideal. 
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
 
@@ -234,7 +234,7 @@ This is a very time and labor intensive process, as we will see in the example o
 
 @higher-ed describe the AJPS process in detail:
 
-Acceptance of an article for publication in the AJPS is contingent on successful reproducibility of any empirical analyses reported in the article. 
+> Acceptance of a manuscript for publication in the AJPS is contingent on successful replication of any empirical analyses reported in the article. 
 
 After an article is submitted, staff from a third party vendor hired by AJPS go through the provided materials to ensure that they can be preserved, understood, and used by others. They then run all of the analyses in the article using the code, instructions, and data provided by the authors and compare their results to the submitted articles. Authors are then given an opportunity to resolve any issues that come up. This process is repeated until reproducibility is ensured.
 
@@ -267,7 +267,7 @@ One way to address the reproducibility crisis is to educate data analysts on the
 * The application of grading to the topic provides an incentive for students to pay attention, learn, and absorb the information. This same incentive does not exist when researchers attempt to learn about reproducibility independently. In that situation, internal motivation, which may be weak in some individuals, is the only factor present to help promote success.
 
 Several educators, primarily at the graduate level, have realized the opportunity and have taken steps to introduce reproducibility into their courses. 
-According to @janz2016bringing, the primary way of achieving this integration is through the assignment of "replication studies" in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. The most famous course of this kind is Government 2001, taught by Gary King at Harvard University.  In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
+According to @janz2016bringing, the primary way of achieving this integration is through the assignment of "replication studies" in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. One course of this kind is Government 2001, taught by Gary King at Harvard University.  In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
 
 In Thomas M. Carsey's intermediate statistics course at the University of North Carolina at Chapel Hill, students must reproduce the findings of a study by re-collecting the data from the original sources, then must extend the study by building on the analysis.
 

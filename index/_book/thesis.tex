@@ -256,13 +256,13 @@ The \texttt{fertile} project was an excellent fit for me. The package was not ye
 
 The more I worked on \texttt{fertile}, the more interested in the project I became. The package was unlike anything else I had been exposed to in data science. Most of my course work had been in the form of front-end coding: conducting data analyses and visualizing information. \texttt{fertile} is nothing like that. It operates completely behind the scenes, conducting a kind of meta-analysis to determine the reproducibility of a data science project. Rather than writing code to analyze data, I had to learn how to write code to analyze code that \emph{other people} wrote to analyze data.
 
-This was an incredibly complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be incredibly lofty. On the question of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible,'' while another said there was ``fundamentally no way'' to achieve it (see \url{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}).
+This was a complex problem. It involved capturing information about the user's file system and their RStudio environment, both of which I knew nothing about. It also involved tracking and recording user behavior---something definitely not taught in data analysis courses. Even experienced R users deemed some of the goals associated with the package to be lofty. On the question of whether it was possible to test whether R code contained uncontrolled randomness, one coder said it was ``probably impossible,'' while another said there was ``fundamentally no way'' to achieve it (see \url{https://stackoverflow.com/questions/43638773/comprehensive-way-to-check-for-functions-that-use-the-random-number-generator-in}).
 
-The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times incredibly frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills.
+The challenge of the problems at hand, however, was what made them interesting. Most of the time, there was no way to use my past coding knowledge to solve them---rather, I had to research and test out new solutions. While the process was at times frustrating, particularly given that some of the errors I came across had likely never been seen by any other R user, it was an incredible learning opportunity. I was exposed to a wide variety of R features I would likely have never seen otherwise and greatly broadened my problem-solving and troubleshooting skills.
 
 Every problem I solved made me more confident in my abilities and more excited to work on the \texttt{fertile}. I delved more into the topic of reproducibility and looked at some of the work by other researchers and code developers. This research introduced me to new aspects of reproducibility I wanted to include in the package and inspired me to expand its scope.
 
-This paper is the culmination of the work I have been doing with \texttt{fertile} for the past two years.
+This thesis is the culmination of the work I have been doing with \texttt{fertile} for the past two years.
 
 \hypertarget{reproducibility}{%
 \chapter{An Introduction to Reproducibility}\label{reproducibility}}
@@ -495,7 +495,7 @@ Hardwicke et al. (2018) compared the reproducibility of published work both befo
 
 The researchers found a considerable increase in the proportion of data available statements (in contrast to `data not available' statements, which could be present due to privacy or security concerns) since the implementation of the policy. Pre-open data policy, only 25\% of articles had data available, while that number was a much higher 78\% after the policy was put in place.
 
-While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62\% of the articles with data available statements had truly reusable datasets---in this case, meaning that the data were accessible, complete, and understandable. Though this is an increase from the pre-policy period, which saw 49\% of articles with data availability statements as reusable in practice, it is still far from ideal.
+While the institution of an open data policy appears to have been associated with a significant increase in the percentage of studies with data available, further research indicates that the policy was perhaps not as effective as intended. Many of the datasets were usable in theory, but not in practice. Only 62\% of the articles with data available statements had truly reusable datasets---in this case, meaning that the data were accessible, complete, and understandable. Although this is an increase from the pre-policy period, which saw 49\% of articles with data availability statements as reusable in practice, it is still far from ideal.
 
 In this small sample of cases, we see that purely having a reproducibility statement does not necessarily mean that all, or even a majority, of published work will truly be reproducible.
 
@@ -539,9 +539,9 @@ In order to make sure that all submitted articles comply with reproducibility gu
 This is a very time and labor intensive process, as we will see in the example of the \emph{American Journal for Political Science} (AJPS), whose reproducibility policy was discussed previously in Chapter 1.4.1.
 
 Jacoby, Lafferty-Hess, \& Christian (2017) describe the AJPS process in detail:
-
-Acceptance of an article for publication in the AJPS is contingent on successful reproducibility of any empirical analyses reported in the article.
-
+\begin{quote}
+Acceptance of a manuscript for publication in the AJPS is contingent on successful replication of any empirical analyses reported in the article.
+\end{quote}
 After an article is submitted, staff from a third party vendor hired by AJPS go through the provided materials to ensure that they can be preserved, understood, and used by others. They then run all of the analyses in the article using the code, instructions, and data provided by the authors and compare their results to the submitted articles. Authors are then given an opportunity to resolve any issues that come up. This process is repeated until reproducibility is ensured.
 
 Although providing a significant benefit to the scientific community, this thorough process is associated with high costs.
@@ -576,7 +576,7 @@ One way to address the reproducibility crisis is to educate data analysts on the
   The application of grading to the topic provides an incentive for students to pay attention, learn, and absorb the information. This same incentive does not exist when researchers attempt to learn about reproducibility independently. In that situation, internal motivation, which may be weak in some individuals, is the only factor present to help promote success.
 \end{itemize}
 Several educators, primarily at the graduate level, have realized the opportunity and have taken steps to introduce reproducibility into their courses.
-According to Janz (2016), the primary way of achieving this integration is through the assignment of ``replication studies'' in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. The most famous course of this kind is Government 2001, taught by Gary King at Harvard University. In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
+According to Janz (2016), the primary way of achieving this integration is through the assignment of ``replication studies'' in standard methods choices. In these assignments, students are given a published study and its supporting materials and asked to reproduce the results. One course of this kind is Government 2001, taught by Gary King at Harvard University. In King's course, students team up in small groups to reproduce a previous study. To help ensure that their workflow is reproducible, students are required to hand over their data and code to another student team who then tries to reproduce their work once again.
 
 In Thomas M. Carsey's intermediate statistics course at the University of North Carolina at Chapel Hill, students must reproduce the findings of a study by re-collecting the data from the original sources, then must extend the study by building on the analysis.
 
@@ -740,17 +740,26 @@ Reproducibility is significantly easier to achieve when all of the tools necessa
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/sample-project} \caption{A Sample R Project}\label{fig:unnamed-chunk-9}
 \end{figure}
-\texttt{project\_miceps} contains data and analysis from a study concerning the differences in bicep muscle growth between male and female mice. The results from this study, conducted in part by Smith College professor Stylianos Scordilis, were published in \emph{Cellular and Molecular biology letters} in 2010 (Metskas, Kulp, \& Scordilis (2010)).
+\texttt{project\_miceps} contains data and analysis from a study concerning the differences in bicep muscle growth between male and female mice, conducted under Smith College professor Stylianos Scordilis.
 
 The folder contains a variety of different file types:
-- 1 \texttt{.Rmd} file containing the analysis code. This involves data manipulation, visualization, and random number generation
-- 1 \texttt{.html} containing the knitted output of the analysis code
-- 3 \texttt{.csv} files containing the experimental data
-- 2 \texttt{.png} image files containing plot outputs from the analysis
-- 1 \texttt{README} file containing information about the project
-- A \texttt{.docx} file containing text about estrogen receptors in mice
-- \texttt{.Rproj} and \texttt{.Rhistory} files, containing data used by \texttt{R} to track work and maintain the project structure
-
+\begin{itemize}
+\tightlist
+\item
+  1 \texttt{.Rmd} file containing the analysis code. This involves data manipulation, visualization, and random number generation
+\item
+  1 \texttt{.html} containing the knitted output of the analysis code
+\item
+  3 \texttt{.csv} files containing the experimental data
+\item
+  2 \texttt{.png} image files containing plot outputs from the analysis
+\item
+  1 \texttt{README} file containing information about the project
+\item
+  A \texttt{.docx} file containing text about estrogen receptors in mice
+\item
+  \texttt{.Rproj} and \texttt{.Rhistory} files, containing data used by \texttt{R} to track work and maintain the project structure
+\end{itemize}
 In the following sections, we will consider the functionality of \texttt{fertile} as demonstrated primarily through the results of a reproducibility analysis conducted on \texttt{project\_miceps}. All of the code for \texttt{fertile} that will be discussed in this chapter can be found at \url{https://github.com/baumer-lab/fertile}, while the local branch tracking my changes can be found at \url{https://github.com/ambertin/fertile}.
 
 \hypertarget{component-1-accessible-project-files}{%
@@ -769,7 +778,7 @@ The inclusion of key files---such as analysis scripts, data, and documentation i
 
 One way to gain an overview of the existing files (including data, code, and metadata) is with the \texttt{proj\_analyze\_files()} function. It lists all of the files in the project, along with their size, type, and relative path within the directory. This can help users quickly produce an overview of how many code, data, and auxiliary (image or text) files they have.
 
-When this is run on \texttt{project\_miceps}, we see the same files as described before--their names, file sizes, extensions, and a ``mime,'' which summarizes the file type in a more general way than the extension.
+When this is run on \texttt{project\_miceps}, we see the same files as described before--their names, file sizes, extensions, and a MIME type, which summarizes the file format using a two-part identifier.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{proj\_analyze\_files}\NormalTok{(}\StringTok{"project\_miceps"}\NormalTok{)}
@@ -786,10 +795,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~     188K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  188.04K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  376.41K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.93K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -835,20 +844,20 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpXhWZGg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZqXdn5/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpXhWZGg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZqXdn5/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpXhWZGg/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZqXdn5/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
 
-Below, \texttt{proj\_render()} executes without error, indicating that the project compiles successfully when removed from its original environment---a positive sign of reproducibility.
+Below, \texttt{proj\_render()} executes without error, outputting only a message that it is completing its render and nothing more, which indicates that the project compiles successfully when removed from its original environment---a positive sign of reproducibility.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{proj\_render}\NormalTok{(temp\_dir)}
@@ -870,7 +879,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-05-06 22:52:26
+1 LAST RENDERED <NA>     proj_render 2021-05-17 18:09:42
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -971,9 +980,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~     188K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  188.04K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  376.41K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.93K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1194,7 +1203,7 @@ This interactive behavior is one of the educational features of the package, as 
 
 One of the important components of R package development, however, is that a package should not interfere too much with user behavior. Users who are trying to code in their console, for example, might still want to open a file if they know the path is not reproducible if they are just trying to take a quick look at some data.
 
-\texttt{fertile} accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, \texttt{read.csv("\textasciitilde{}/Desktop/my\_data.csv")}, gives a different message than \texttt{read\_csv("../../../Desktop/my\_data.csv")}, even though both paths point to the same location in the computer.
+\texttt{fertile} accounts for this. Even though the package throws an error when non-reproducible paths are used, it also provides a solution for users to override this behavior and execute the command anyway. This is done through the error messaging system. The message provided when an error is thrown is custom created, responding to the command and path which triggered the error in the first place. For example, in the code below, \texttt{read.csv("\textasciitilde{}/Desktop/my\_data.csv")}, gives a different message than \texttt{read.csv("../../../Desktop/my\_data.csv")}, even though both paths point to the same location in the computer.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(fertile)}
@@ -1223,16 +1232,16 @@ utils::read.csv('~/Desktop/my_data.csv')
 The error message is different when referring to a relative path that is outside of the directory. In the example below, we reference the same \texttt{my\_data.csv} file, but instead using relative paths indicating to go back three directories to find the \texttt{/Desktop} folder. This time, the \texttt{fertile} warning message mentions path that ``lead outside the project directory.'' The suggested override command also changes to reflect the path that was provided.
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{read\_csv}\NormalTok{(}\StringTok{"../../../Desktop/my\_data.csv"}\NormalTok{)}
+\FunctionTok{read.csv}\NormalTok{(}\StringTok{"../../../Desktop/my\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
 Error: Detected paths that lead outside the project directory. Such paths
 are not reproducible and will likely only work on your computer. If you
 would like to continue anyway, please execute the following command:
-readr::read_csv('../../../Desktop/my_data.csv')
+utils::read.csv('../../../Desktop/my_data.csv')
 \end{verbatim}
-In addition to catching non-reproducible file paths, \texttt{fertile} also stops the user when they try to change the working directory. Unlike with input and output functions like \texttt{read\_csv()}, which can take a variety of different file paths---some which may be reproducible and some not, \texttt{setwd()} is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, \texttt{fertile} is particularly strict with it. When a call to \texttt{setwd()} is caught, \texttt{fertile} throws an error and does not provide an option to override. Rather, the user is given an alternative function (\texttt{here::here()}) to use that achieves the same behavior in a more reproducible way.
+In addition to catching non-reproducible file paths, \texttt{fertile} also stops the user when they try to change the working directory. Unlike with input and output functions like \texttt{read.csv()}, which can take a variety of different file paths---some which may be reproducible and some not, \texttt{setwd()} is essentially guaranteed to break reproducibility, no matter what directory it is set to. As a result, \texttt{fertile} is particularly strict with it. When a call to \texttt{setwd()} is caught, \texttt{fertile} throws an error and does not provide an option to override. Rather, the user is given an alternative function (\texttt{here::here()}) to use that achieves the same behavior in a more reproducible way.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{getwd}\NormalTok{()}
@@ -1249,7 +1258,7 @@ In addition to catching non-reproducible file paths, \texttt{fertile} also stops
 \begin{verbatim}
 Error: setwd() is likely to break reproducibility. Use here::here() instead.
 \end{verbatim}
-The \texttt{here::here()} suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown file executes the same when run chunk-by-chunk as when knit. The \href{https://here.r-lib.org/index.html}{\texttt{here}} package makes it easy to access files when executed as part of a script. The function works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location.
+The \texttt{here::here()} suggestion is primarily for users writing code scripts, rather than executing from the console, who may find it helpful to set their directory in code---for example, to ensure that an RMarkdown file executes the same when run chunk-by-chunk as when knit. The \href{https://here.r-lib.org/index.html}{\texttt{here}} package makes it easy to access files when executed as part of a script. \texttt{here::here()}works by finding the path to a file relative to the top level of your project directory. This path is always in a relative format associated with the location the script file is located it, making it impossible to write a non-reproducible absolute path that links to a user/computer-specific location. The function also has the advantage of allowing users to reference files in a manner that is independent of where those files are located (as long as they are in the project directory), which means that if files get moved, the paths will still execute correctly.
 
 \texttt{here::here()} is not necessary for console-based programming, nor is \texttt{setwd()}. As long as users use the R project format, which is required by \texttt{fertile}, and all files for the analysis are kept within the project directory, all paths can easily be written as relative to the project root without the need for \texttt{here::here()} or \texttt{setwd()}. This is one of many strengths of the R project format: it negates the need for reproducibility-breaking functions in interactive programming. Users who new to reproducibility and working in the project format, however, may still need reminders not to use \texttt{setwd()}. It is for this reason that \texttt{fertile} provides an error when this function is called, regardless of whether it was done interactively (where there is no need for it), or in a script (where setting the directory could potentially seem advantageous).
 
@@ -1258,7 +1267,7 @@ For more information about the interactive warning system and some of its custom
 \hypertarget{project-path-summaries}{%
 \subsubsection{Project Path Summaries}\label{project-path-summaries}}
 
-\texttt{fertile} also contains functionality that analyzes code for path information after it is written. For example, \texttt{proj\_analyze\_paths} goes through all of the paths used in a project's \texttt{.R} and \texttt{.Rmd} files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
+\texttt{fertile} also contains functionality that analyzes code for path information after it is written. For example, \texttt{proj\_analyze\_paths()} goes through all of the paths used in a project's \texttt{.R} and \texttt{.Rmd} files and produces a report detailing which ones failed to meet reproducibility standards, explaining the problem, and providing a solution.
 
 When this function is run on \texttt{project\_miceps}, we see no paths at fault, indicating that all paths in the project are reproducible.
 \begin{Shaded}
@@ -1534,9 +1543,15 @@ The \texttt{proj\_analyze()} function creates a report documenting the structure
   \texttt{proj\_analyze\_paths()}, which captures a list of the non-reproducible file paths referenced in source code
 \end{itemize}
 When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the following information:
-- 10 packages (including \texttt{broom}, \texttt{dplyr}, \texttt{fs} and more) are referenced in the analysis code
-- 12 files are in the project directory, including some image files, data files, and a few files produced from some of the analyses that have been run by fertile (\texttt{install\_proj\_packages.R} and \texttt{software-versions.txt}).
-- There are 10 suggestions for moving files, with data files to \texttt{data-raw}, script files to \texttt{R}, and other files to \texttt{inst}
+\begin{itemize}
+\tightlist
+\item
+  10 packages (including \texttt{broom}, \texttt{dplyr}, \texttt{fs} and more) are referenced in the analysis code.
+\item
+  12 files are in the project directory, including some image files, data files, and a few files produced from some of the analyses that have been run by fertile (\texttt{install\_proj\_packages.R} and \texttt{software-versions.txt}).
+\item
+  There are 10 suggestions for moving files, with data files to \texttt{data-raw}, script files to \texttt{R}, and other files to \texttt{inst}.
+\end{itemize}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{proj\_analyze}\NormalTok{(}\StringTok{\textquotesingle{}project\_miceps\textquotesingle{}}\NormalTok{)}
@@ -1561,8 +1576,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png      185.8K image/png                                 
- 3 proteins_v_time.p~ png     377.49K image/png                                 
+ 2 citrate_v_time.png png     187.75K image/png                                 
+ 3 proteins_v_time.p~ png      379.4K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -1680,7 +1695,7 @@ At the end of the report, in the section titled ``Output Generation Details,'' w
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/badges-2} \caption{Output: System/User Information and File List}\label{fig:badges-2}
 \end{figure}
-Together, \texttt{proj\_check()},\texttt{proj\_analyze()}, and \texttt{proj\_badges()} cover a significant portion of all six major components of reproducibility.
+Together, \texttt{proj\_check()}, \texttt{proj\_analyze()}, and \texttt{proj\_badges()} cover a significant portion of all six major components of reproducibility.
 
 \hypertarget{features-allowing-for-summary-by-group}{%
 \subsubsection{Features Allowing For Summary By Group}\label{features-allowing-for-summary-by-group}}
@@ -2080,7 +2095,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,443 x 4
+# A tibble: 1,478 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2093,7 +2108,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,433 more rows
+# ... with 1,468 more rows
 \end{verbatim}
 \normalsize
 
@@ -2170,16 +2185,16 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7f823b1563c8>
+<bytecode: 0x7fba6d9ad9b0>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
 
-This behavior, however, is dependent \texttt{fertile} remaining at the top of the \texttt{search()} path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the \texttt{fertile} versions of functions (``shims'') always supersede (``mask'') their original namesakes when called, \texttt{fertile} uses its own shims of the \texttt{library} and \texttt{require} functions to manipulate the \texttt{R} \texttt{search} path so that it is always located in the first position.
+This behavior, however, is dependent on \texttt{fertile} remaining at the top of the \texttt{search()} path so that its functions are called preferentially over the original functions that it has shimmed. In order to ensure that the \texttt{fertile} versions of functions (``shims'') always supersede (``mask'') their original namesakes when called, \texttt{fertile} uses its own shims of the \texttt{library} and \texttt{require} functions to manipulate the \texttt{R} \texttt{search} path so that it is always located in the first position.
 
-In the \texttt{fertile} version of \texttt{library()},\texttt{fertile} is detached from the search path, the requested package is loaded, and then \texttt{fertile} is reattached. This ensures that when a user executes a command, \texttt{R} will check \texttt{fertile} for a matching function before considering other packages.
+In the \texttt{fertile} version of \texttt{library()}, \texttt{fertile} is detached from the search path, the requested package is loaded, and then \texttt{fertile} is reattached. This ensures that when a user executes a command, \texttt{R} will check \texttt{fertile} for a matching function before considering other packages.
 
-A full list of the shimmed functions provided by \texttt{fertile} is listed below. Note that---in order to reduce the software dependencies of \texttt{fertile} the shims from the less common \texttt{readxl}, \texttt{rjson}, \texttt{foreign}, and \texttt{sas7bdat} packages are only activated if the user has those packages installed and loaded on their computer.
+A full list of the shimmed functions provided by \texttt{fertile} is included below. Note that in order to reduce the software dependencies of \texttt{fertile} the shims from the less common \texttt{readxl}, \texttt{rjson}, \texttt{foreign}, and \texttt{sas7bdat} packages are only activated if the user has those packages installed and loaded on their computer.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/shims-list} \caption{List of Functions Shimmed by 'fertile'}\label{fig:unnamed-chunk-58}
 \end{figure}
@@ -2188,7 +2203,7 @@ A full list of the shimmed functions provided by \texttt{fertile} is listed belo
 
 Not all \texttt{R} programmers use the same packages, nor do they use the same functions at the same level of regularity. Additionally, some users might not always want to have their shimmed functions enabled---for example, they may purposefully be writing code with absolute paths, and would want to be able to do so without warnings and interruptions.
 
-As a result of this, we believed it important to include features in \texttt{fertile} that enable users to customize which functions for which their version of \texttt{fertile} has active shims as well as when those shims are enabled or disabled.
+As a result of this, we believe it important to include features in \texttt{fertile} that enable users to customize which functions for which their version of \texttt{fertile} has active shims as well as when those shims are enabled or disabled.
 
 Several functions in \texttt{fertile} have been written to implement this behavior:
 \begin{enumerate}
@@ -2300,16 +2315,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      597     2021-05-06 22:52:50
- 2 package:dplyr           <NA>                      base::~ 2021-05-06 22:52:50
- 3 package:readr           <NA>                      base::~ 2021-05-06 22:52:50
- 4 package:tidyr           <NA>                      base::~ 2021-05-06 22:52:51
- 5 package:ggplot2         <NA>                      base::~ 2021-05-06 22:52:51
- 6 package:purrr           <NA>                      base::~ 2021-05-06 22:52:51
- 7 Seed Before             <NA>                      597     2021-05-06 22:52:51
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-05-06 22:52:51
- 9 Seed After              <NA>                      612     2021-05-06 22:52:51
-10 Seed Before             <NA>                      612     2021-05-06 22:52:51
+ 1 Seed @ Start            <NA>                      588     2021-05-17 18:10:09
+ 2 package:dplyr           <NA>                      base::~ 2021-05-17 18:10:09
+ 3 package:readr           <NA>                      base::~ 2021-05-17 18:10:10
+ 4 package:tidyr           <NA>                      base::~ 2021-05-17 18:10:10
+ 5 package:ggplot2         <NA>                      base::~ 2021-05-17 18:10:10
+ 6 package:purrr           <NA>                      base::~ 2021-05-17 18:10:10
+ 7 Seed Before             <NA>                      588     2021-05-17 18:10:10
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-05-17 18:10:10
+ 9 Seed After              <NA>                      602     2021-05-17 18:10:10
+10 Seed Before             <NA>                      602     2021-05-17 18:10:10
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2323,7 +2338,7 @@ The shims in \texttt{fertile} are designed to be able to write to both the inter
 
 Given the different purposes of each file, however, it is important that \texttt{fertile} be able to identify when a function execution should be saved to the interactive log versus when it should be saved to the render log.
 
-This information is tracked via a logical environment variable---a variable whose value is stored in a user's local \texttt{R} environment, and whose value can be accessed or updated via commands---called\texttt{FERTILE\_RENDER\_MODE}. When \texttt{FERTILE\_RENDER\_MODE} is \texttt{TRUE}, executed shims are saved to the render log. When it is \texttt{FALSE}, they are saved to the interactive log.
+This information is tracked via a logical environment variable---a variable whose value is stored in a user's local \texttt{R} environment, and whose value can be accessed or updated via commands---called \texttt{FERTILE\_RENDER\_MODE}. When \texttt{FERTILE\_RENDER\_MODE} is \texttt{TRUE}, executed shims are saved to the render log. When it is \texttt{FALSE}, they are saved to the interactive log.
 
 Since \texttt{fertile} is designed to capture information about interactive user behavior, \texttt{FERTILE\_RENDER\_MODE} is \texttt{FALSE} by default. It is only changed to \texttt{TRUE} when \texttt{fertile} is executing functions that involve the rendering of \texttt{.R} and \texttt{.Rmd} code files. At the start of all such functions, \texttt{fertile} sets the environment variable to \texttt{TRUE}, executes the majority of the function, and then sets it back to \texttt{FALSE} before exiting. This ensures that as soon as the function has finished running, all new commands get executed on the interactive log, rather on the render log which was just generated.
 
@@ -2379,7 +2394,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7f822b6d7738>
+<bytecode: 0x7fba60be5be8>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2451,7 +2466,7 @@ When the dots are used, none of these problems arise. In a \texttt{fertile} shim
 
 When a user executes a shim, anything passed through the path arguments gets evaluated for reproducibility and everything else is saved through the dots. Those dots then get handed over to the original function. This function knows what to do with them, because the user was running the \texttt{fertile} shim as if it were the original function, and therefore passed arguments that the original function could interpret.
 
-In the \texttt{read\_csv()} example, we see that the \texttt{fertile} shim takes only \texttt{file} and \texttt{...} as arguments. Users can still pass any of the 14 \texttt{readr::read\_csv()}arguments besides \texttt{file} to the shim, and these are all saved as the dots.
+In the \texttt{read\_csv()} example, we see that the \texttt{fertile} shim takes only \texttt{file} and \texttt{...} as arguments. Users can still pass any of the 14 \texttt{readr::read\_csv()} arguments besides \texttt{file} to the shim, and these are all saved as the dots.
 
 After \texttt{fertile} checks the file path passed to \texttt{file} (using \texttt{check\_path\_safe}), it reads in the data using the original \texttt{readr} function, executing \texttt{readr::read\_csv(file,\ ...)} which passes the file path independently, and then everything else the user specified---if anything---through the dots.
 \begin{Shaded}
@@ -2479,7 +2494,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7f82411a6638>
+<bytecode: 0x7fba768949b0>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2495,7 +2510,7 @@ This function, which accepts the arguments \texttt{(path,\ ...)}, operates by al
 
 The \texttt{proj\_badges()} function builds an \texttt{html} document based on a collection of information calculated when rendering an \texttt{R} project, then displays that \texttt{html} document in the \texttt{Viewer} window of \texttt{RStudio}.
 
-This \texttt{html} document is customized based on both the computer and the directory that \texttt{proj\_badges()}:
+This \texttt{html} document is customized based on both the computer and the directory that \texttt{proj\_badges()}.
 
 Mac and Windows users will receive different outputs, as will those who have the same type of computer but are using a a different \texttt{R} version or operating system (e.g.~macOS Catalina 10.15.7 vs macOS Mojave 10.14.6). This customization is meant to help with dependency tracking. \texttt{proj\_badges()} outputs change to display custom information about the computer type and operating system version of the machine on which the code was run, which---in addition to detailed information about the project itself---helps insure complete information about all potential factors which could be influencing software behavior.
 
@@ -2534,7 +2549,7 @@ These concerns are a major part of why \texttt{fertile} is not hosted on CRAN. I
 
 However, these malware-like features are what makes \texttt{fertile} so functional and provides it with the reproducibility features that are not present in any other software at this time.
 
-It is, of course, though, important to recognize and alleviate these concerns as much as possible. This is one reason---among many others---that \texttt{fertile} is hosted on GitHub. All of the code for the package is publicly available, making its behavior completely transparent. By looking through the code, users can see where hidden files are getting created, when they are getting overwritten, and what happens behind the scenes on each of the shimmed functions. Nothing is left to mystery.
+It is, of course, important to recognize and alleviate these concerns as much as possible. This is one reason---among many others---that \texttt{fertile} is hosted on GitHub. All of the code for the package is publicly available, making its behavior completely transparent. By looking through the code, users can see where hidden files are getting created, when they are getting overwritten, and what happens behind the scenes on each of the shimmed functions. Nothing is left to mystery.
 
 Additionally, users have the opportunity to decide for themselves whether they want to use the software. \texttt{fertile} is not built into R by default. Users must take action---by researching packages, installing \texttt{fertile}, and loading it into their \texttt{R} environment---to activate the package. In big part due to the transparency around the code, at any step in this process users have the agency to review what they are getting into and decide for themselves whether they want to use the software.
 
@@ -2545,7 +2560,7 @@ Recall the list of features necessary for an effective reproducibility tool that
 
 \textbf{1) Be simple, with a small library of functions/tools that are straightforward to use.}
 
-\texttt{fertile} is very simple to use. Most of the package's features can be achieved with just two functions: \texttt{proj\_analyze()} and \texttt{proj\_check()}. The the interactive warning features---which throw errors when users reference absolute paths or those leading outside of the project directory---are even more straightforward. As soon as \texttt{fertile} is loaded, they are automatically enabled and require no additional effort from the user. Additionally, the operation of the functions themselves is quite simple---most functions in the package require only one argument: the path to the directory that the user wants to run the function on.
+\texttt{fertile} is very simple to use. Most of the package's features can be achieved with just two functions: \texttt{proj\_analyze()} and \texttt{proj\_check()}. The interactive warning features---which throw errors when users reference absolute paths or those leading outside of the project directory---are even more straightforward. As soon as \texttt{fertile} is loaded, they are automatically enabled and require no additional effort from the user. Additionally, the operation of the functions themselves is quite simple---most functions in the package require only one argument: the path to the directory that the user wants to run the function on.
 
 \textbf{2) Be accessible to a variety of users, with a relatively shallow learning curve.}
 
@@ -3697,9 +3712,6 @@ McArthur, S. L. (2019). Repeatability, reproducibility, and replicability: Tackl
 
 \leavevmode\hypertarget{ref-R-reproducible}{}%
 McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of tools that enhance reproducibility beyond package management. Retrieved from \url{https://CRAN.R-project.org/package=reproducible}
-
-\leavevmode\hypertarget{ref-metskas2010gender}{}%
-Metskas, L. A., Kulp, M., \& Scordilis, S. P. (2010). Gender dimorphism in the exercise-naive murine skeletal muscle proteome. \emph{Cellular \& Molecular Biology Letters}, \emph{15}(3), 507--516.
 
 \leavevmode\hypertarget{ref-bio-principles}{}%
 National Institutes of Health. (2014). Principles and guidelines for reporting preclinical research. Retrieved from \url{https://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research}
