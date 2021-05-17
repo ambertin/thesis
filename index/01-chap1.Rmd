@@ -208,7 +208,7 @@ There are several reasons for this apparent divide between journal reproducibili
 
 ### Challenges for Authors
 
-@Stodden2584 conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility---open data---and gathered information about the reasons why authors found difficulties in making their data available to the public 
+@policy-effectiveness conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility---open data---and gathered information about the reasons why authors found difficulties in making their data available to the public 
 
 The main challenges listed by respondents were as follows:
 

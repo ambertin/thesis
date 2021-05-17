@@ -65,13 +65,13 @@ knitr::include_graphics("figure/journal-process-2.png")
 ```
 
 
-Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
+Both of these processes would be much faster than that employed currently at the *American Journal of Political Science*, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download `fertile` on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
 For journals that currently spend little effort on ensuring the reproducibility of submitted articles, `fertile` could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement `fertile`---for free---as part of the review workflow.
 
-Journals that already have designated reproducibility editors, such as *Biostatistics* and the *Journal of the American Statistical Association*, could also see benefits from `fertile` (@journal-biostats, @jasa-rep-editors). The integration of `fertile` could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
+Journals that already have designated reproducibility editors, such as *Biostatistics* and the *Journal of the American Statistical Association*, could also benefit from `fertile` (@journal-biostats, @jasa-rep-editors). The integration of `fertile` could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
 
-Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would save significant time and money for authors and reviewers in that domain.
+Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it could save significant time and money for authors and reviewers in that domain.
 
 
 ### For Teaching Reproducibility
@@ -80,7 +80,7 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
-Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, introductory courses at Smith College and Duke University actively integrate reproducible workflows into their course material through the use of RMarkdown (@baumer2014r)--but not all do, and most (if not all) not at as in-depth of a level as a replication-based masters course might provide.
+Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, courses at Smith College and Duke University integrate reproducibility through the use of RMarkdown (@baumer2014r)--but not all do, and most not at as in-depth of a level as masters courses.
 
 `fertile` could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses as a primary topic of focus. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
 
@@ -89,7 +89,7 @@ Undergraduate students do not have the same level of access to reproducibility e
 * Knowledge of how to create an R project
 * Knowledge of how to run basic functions and input simple file paths
 
-Though the process may entail some confusion and troubleshooting at first, even those brand new to `R` could succeed in overcoming these barriers in only a few days of class. As a result, `fertile` could provide professors with an opportunity to teach reproducibility concepts in introductory level courses. 
+Although the process may entail some confusion and troubleshooting at first, even those brand new to `R` could succeed in overcoming these barriers in only a few days of class. As a result, `fertile` could provide professors with an opportunity to teach reproducibility concepts in introductory level courses. 
 
 
 
@@ -101,7 +101,7 @@ knitr::include_graphics("figure/gov-2001-replication.png")
 
 `fertile` could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of `fertile` could look as follows:
 
-At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the `fertile` package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run `fertile` on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through `fertile`'s response to it, and interactively work with students to illustrate how it can be fixed.
+At the beginning of their course, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the `fertile` package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run `fertile` on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through `fertile`'s response to it, and interactively work with students to illustrate how it can be fixed.
 
 The integration of `fertile` in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor. 
 
@@ -118,7 +118,7 @@ These students would then be prepared for entering the research world and contri
 
 ### In Other Areas
 
-`fertile` can also provide benefits in other domains. Though not an exhaustive list, some of the potential uses of the software are: 
+`fertile` can also provide benefits in other domains. Although not an exhaustive list, some of the potential uses of the software are: 
 
 * *Private Companies*: Data analysis-focused companies could require their employees to use `fertile` to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced. 
 
@@ -158,7 +158,7 @@ There were several motives for selecting these specific courses:
 
 For the experimental structure, we chose to complete a randomized controlled trial (RCT) since RCT designs can be used to conclude causality and are designed in such a way as to limit bias in the results. 
 
-Our goal was to determine whether students who had `fertile` installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
+Our goal was to determine whether students who had `fertile` installed and loaded on their RStudio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
 
 In order to measure this potential effect, we opted to use reproducibility "tests," forms containing multiple choice and select-all-that-apply questions about different aspects of reproducibility that are focused on in `fertile`. 
 
@@ -343,14 +343,14 @@ ggplot(fall2020_averages, aes(x = Group, fill = Group, y = value)) +
 
 Looking at the overall total score (`Overall_Total`), this was true even when controlling for the number of relevant courses taken previously:
 
-```{r, echo = FALSE, fig.cap = 'Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020', fig.height = 3, fig.width = 5}
+```{r, echo = FALSE, message = FALSE, fig.cap = 'Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020', fig.height = 3, fig.width = 5}
 ggplot(fall2020, aes(x = Previous_Classes, y = Overall_Total, col = Group)) + 
   geom_point(size = 4) +
   geom_smooth(method = "lm", se = FALSE)+
   scale_color_brewer(palette = "Paired")
 ```
 
-A t-test and analysis of variance (ANOVA) conducted on the simple regression model $Overall_Total ~ Group$ both indicate that, although there is a potential negative trend between the use of `fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+A t-test and analysis of variance (ANOVA) conducted on the simple regression model with independent variable `Group` and dependent variable `Overall_Total` both indicate that, although there is a potential negative trend between the use of `fertile` and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was *not* just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 
 ```{r, echo = FALSE, fig.cap = 'Simple Linear Regression T-Test Results, Fall 2020'}
 fall_model <- lm(Overall_Total ~ Group, data = fall2020)
@@ -464,7 +464,7 @@ ggplot(jterm2021, aes(x = Previous_Classes, y = Overall_Total, color = Test)) +
 
 Above, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
 
-Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `control`, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `fertile` group always performed better on their Post-Tests than on their Pre-Tests.
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the `control` group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the `fertile` group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the `fertile` group always performed better on their Post-Tests than on their Pre-Tests.
 
 
 
@@ -503,7 +503,7 @@ Although the findings of the `fertile` experiment are interesting, they come wit
 For one, the sample sizes of both experimental sections were very small. The first only contained data on 18 students, while the second on only 38. While sample sizes like these may provide some evidence of the existence of experimental relationships, conclusive statements should not be made without additional data. 
  Even though the SDS 192 courses are some of the largest in the Statistical and Data Sciences department at Smith College, they still did not result in an optimal level of data. Not all students volunteered to participate in the study, several who did failed to complete all of the components necessary for inclusion of their data and---even if everyone had participated---the maximum sample size would have only been limited to the combined size of both course sections: around 100 students.
  
-Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from `fertile` the classroom setting meant that students who had questions about some of the errors that appeared as a result of having `fertile` loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be impelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results. 
+Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from `fertile` the classroom setting meant that students who had questions about some of the errors that appeared as a result of having `fertile` loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be compelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results. 
 
 Additionally, students in a classroom have the unfortunate characteristic---in experimental terms---of not being fully independent from one another. Students regularly communicated with each other, asking and answering questions, on a course `Slack` channel and also worked in groups on many of the class projects. This meant that they could spread knowledge; experiences from the `fertile` group could be disseminated to the `control` group and vice versa. Any sort of cross-contamination could be a potential threat to the validity of the experimental results, as independence is a key assumption necessary for linear regression.
 
@@ -517,7 +517,7 @@ plot(jterm_model, which = c(1,2))
 ```
 
 
-Then, there is the additional limitation that, although this experimental structure tests the pure educational power of `fertile`, it does not accurately represent the ways in which `fertile` would be used in practice.
+There is the additional limitation that although this experimental structure tests the pure educational power of `fertile`, it does not accurately represent the ways in which `fertile` would be used in practice.
 
 Those who use R packages for their own benefit do so with specific intention and knowledge that they are doing so. In practice, unless attempting to do some sort of software testing, no one will use a package that they do not know is loaded. 
 

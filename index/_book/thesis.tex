@@ -270,7 +270,7 @@ This thesis is the culmination of the work I have been doing with \texttt{fertil
 \hypertarget{what-is-reproducibility}{%
 \section{What Is Reproducibility?}\label{what-is-reproducibility}}
 
-Research in the field of data science is considered fully \emph{reproducible} when the relevant code and data files produce identical results when run by another analyst, or more generally, when a researcher can ``duplicate the results of a prior study using the same materials as were used by the original investigator'' (Bollen et al. (2015)).
+Research in the field of data science is considered fully \emph{reproducible} when the relevant code and data files produce identical results when run by another analyst, or more generally, when a researcher can ``duplicate the results of a prior study using the same materials as were used by the original investigator'' (Bollen, Cacioppo, Krosnick, Olds, \& Dean (2015)).
 
 This term was first coined in 1992 by computer scientist Jon Claerbout, who associated it with a ``software platform and set of procedures that permit the reader of a paper to see the entire processing trail from the raw data and code to figures and tables'' (Claerbout \& Karrenbach (1992)).
 
@@ -304,7 +304,7 @@ Academics have recognized this, and publications on the topic appear to have inc
 \item
   Fidler \& Wilcox (2018) argue that the term ``reproducibility crisis'' has gained significant currency over the last decade after many large-scale reproducibility studies---including the \emph{Nature} study discussed previously---have returned negative results.
 \item
-  Gosselin (2020) shares a call to action (summarized by the acronym ACTS---\textbf{AC}cess to \textbf{T}ransparent \textbf{S}tatistics), assembling measures that can be implemented by journals to increase the quality of statistical publications: standardizing paragraph contents, requiring a paragraph on statistical limitations, providing funding to study reproducibility, and requiring that methods sections start with statistics.
+  Gosselin (2019) shares a call to action (summarized by the acronym ACTS---\textbf{AC}cess to \textbf{T}ransparent \textbf{S}tatistics), assembling measures that can be implemented by journals to increase the quality of statistical publications: standardizing paragraph contents, requiring a paragraph on statistical limitations, providing funding to study reproducibility, and requiring that methods sections start with statistics.
 \item
   McArthur (2019) argues that a common theme in the issue of reproducibility and related challenges is the ``increasing demands of complex research requiring use of multiple experimental and computational research methods'' and promises to take steps to improve reproducibility in the \emph{Biointerphase} journal.
 \item
@@ -352,7 +352,7 @@ To illustrate this point, we will consider several case studies from journals pu
 \hypertarget{case-studies-across-the-sciences}{%
 \subsection{Case Studies Across The Sciences}\label{case-studies-across-the-sciences}}
 
-The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the \emph{American Journal of Political Science} (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers (American Journal of Political Science (2016)).
+The journal whose requirements appear to align most closely with those components defined previously in Section 3 is the \emph{American Journal of Political Science} (AJPS). In 2012, the AJPS became the first political science journal to require authors to make their data openly accessible online, and the publication has instituted stricter requirements since. AJPS now requires that authors submit the following alongside their papers (AJPS Staff (2016)).
 \begin{itemize}
 \tightlist
 \item
@@ -407,7 +407,7 @@ Whenever possible authors should make evidence and resources that underpin publi
 \end{quote}
 The inclusion of code and data are only recommended and no definition of what ``other materials'' may mean is provided. No components of reproducibility extending beyond those required at a minimum are even considered (Cambridge University Press (2020)).
 
-The \emph{American Economic Review}, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the \emph{American Journal of Political Science}. Their Data and Code Availability Policy states the following (American Economic Association (2020)):
+The \emph{American Economic Review}, the first of the top economics journals to require the inclusion of data alongside publications, has stronger guidelines than several of those mentioned previously, though not as strong as the \emph{American Journal of Political Science}. Their Data and Code Availability Policy states the following (AEA Staff (2020)):
 \begin{quote}
 It is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented, and access to the data and code is clearly and precisely documented and is non-exclusive to the authors.
 \end{quote}
@@ -420,13 +420,13 @@ When considering reproducibility policy, the field of Statistical and Data Scien
 
 In this section, we'll consider in detail the reproducibility policies of some of these top journals, selected by a compound measure of influence, impact, and prestige---which summarizes the average number of weighted citations received in a given year compared with the number of documents published in that journal over the previous three years---calculated for the year 2020 (see \url{https://www.scimagojr.com/journalrank.php?category=2613}).
 
-The \emph{Journal of the American Statistical Association} stands out as having relatively robust requirements. The publication's guidelines require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a processed form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (American Statistical Association (2020)).
+The \emph{Journal of the American Statistical Association} stands out as having relatively robust requirements. The publication's guidelines require that data be made publicly available at the time of publication except for reasons of security or confidentiality. It is strongly recommended that code be deposited in open repositories. If data is used in a processed form, the provided code should include the necessary cleaning/preparation steps. Data must be in an easily understood form and a data dictionary should be included. Code should also be in a form that can be used and understood by others, including consistent and readable syntax and comments. Workflows involving more than one script should also contain a master script, Makefile, or other mechanism that makes it clear what each component does, in what order to run them, and what the inputs and outputs to each area (JASA Staff (2020)).
 
-The \emph{Journal of Statistical Software} also has strong guidelines, though less thorough. Authors must provide \emph{commented} source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform; random number generation must be controlled; and replication materials (typically in the form of a script) must be provided (Journal of Statistical Software (2020)).
+The \emph{Journal of Statistical Software} also has strong guidelines, though less thorough. Authors must provide \emph{commented} source code for their software; all figures, tables, and output must be exactly reproducible on at least one platform; random number generation must be controlled; and replication materials (typically in the form of a script) must be provided (JSS Staff (2020)).
 
-The expectations of the \emph{Journal of Computational and Graphical Statistics} are notably weaker, requiring only that authors ``submit code and datasets as online supplements to the manuscript,'' with exceptions for security or confidentiality, but providing no further detail (Journal of Computational and Graphical Statistics (2020)). The \emph{R Journal} has the same requirements, but with no exceptions on the data provision policy, stating that authors should ``not use such datasets as examples'' (R Journal Editors (2020)).
+The expectations of the \emph{Journal of Computational and Graphical Statistics} are notably weaker, requiring only that authors ``submit code and datasets as online supplements to the manuscript,'' with exceptions for security or confidentiality, but providing no further detail (JCGS Staff (2020)). The \emph{R Journal} has the same requirements, but with no exceptions on the data provision policy, stating that authors should ``not use such datasets as examples'' (R Journal Editors (2020)).
 
-Perhaps the least strict reproducibility policies come from \emph{The American Statistician} and the \emph{Annals of Statistics}. The former appears to have no requirements, stating only that it ``strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles,'' while the latter appears to have no statement on reproducibility at all (The American Statistician (2020)).
+Perhaps the least strict reproducibility policies come from \emph{The American Statistician} and the \emph{Annals of Statistics}. The former appears to have no requirements, stating only that it ``strongly encourages authors to submit datasets, code, other programs, and/or appendices that are directly relevant to their submitted articles,'' while the latter appears to have no statement on reproducibility at all (American Statistician Staff (2020)).
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/stats-journals} 
@@ -469,7 +469,7 @@ All data necessary to understand, assess, and extend the conclusions of the manu
 \end{quote}
 This policy is similar to many of the others considered previously, requiring the publishing of code and data with exceptions permitted when necessary.
 
-Stodden, Seiler, \& Ma (2018a) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after \emph{Science} first implemented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36\% of authors. This low rates were due to several factors:
+Stodden, Seiler, \& Ma (2018) tested the efficacy of this policy in practice, emailing corresponding authors of 204 articles published in the year after \emph{Science} first implemented its policy to request the data and code associated with their articles. The researchers only received (at least some of) the requested material from 36\% of authors. This low rates were due to several factors:
 \begin{itemize}
 \tightlist
 \item
@@ -507,7 +507,7 @@ There are several reasons for this apparent divide between journal reproducibili
 \hypertarget{challenges-for-authors}{%
 \subsection{Challenges for Authors}\label{challenges-for-authors}}
 
-Stodden, Seiler, \& Ma (2018b) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility---open data---and gathered information about the reasons why authors found difficulties in making their data available to the public
+Stodden, Seiler, \& Ma (2018) conducted a survey asking over 7,700 researchers about one of the key characteristics of reproducibility---open data---and gathered information about the reasons why authors found difficulties in making their data available to the public
 
 The main challenges listed by respondents were as follows:
 \begin{itemize}
@@ -566,7 +566,7 @@ These issues, however, are not impossible to overcome. Proponents of reproducibi
 \hypertarget{through-education}{%
 \subsection{Through Education}\label{through-education}}
 
-One way to address the reproducibility crisis is to educate data analysts on the topic so that they are aware of both the concept of reproducibility and how to achieve it in their own work. A natural place to focus this education is early on in the data science training pipeline as part of introductory or early-intermediate courses in undergraduate and graduate data science programs (Horton, Baumer, \& Wickham (2014)). This sort of educational integration has a variety of benefits:
+One way to address the reproducibility crisis is to educate data analysts on the topic so that they are aware of both the concept of reproducibility and how to achieve it in their own work. A natural place to focus this education is early on in the data science training pipeline as part of introductory or early-intermediate courses in undergraduate and graduate data science programs (Horton, Baumer, \& Wickham (2015)). This sort of educational integration has a variety of benefits:
 \begin{itemize}
 \item
   Bringing reproducibility into the discussion early on gives students the tools to add knowledge to their field in the best way possible before they actually conduct any substantive analysis on their own (Janz (2016)). This produces many long run benefits, helping to lessen the burden on promoting reproducibility placed on journals and increasing the number (and percentage) of researchers doing and promoting reproducible work.
@@ -626,7 +626,7 @@ When projects have a variety of components, \texttt{orderly} makes it easy to se
 
 \texttt{renv} (Ushey \& RStudio (2020)) (formerly \texttt{packrat}) helps to make projects more isolated, portable, and reproducible. It gives every project its own private package library, makes it easy to install the packages the project depends on if it is moved to another computer.
 
-\texttt{drake} (OpenSci (2020)) analyzes workflows, skips steps where results are up to date, utilizes optimized computing to complete the rest of the steps, and provides evidence that results match the underlying code and data.
+\texttt{drake} (R OpenSci (2020)) analyzes workflows, skips steps where results are up to date, utilizes optimized computing to complete the rest of the steps, and provides evidence that results match the underlying code and data.
 
 Lastly, the \texttt{reproducible} (McIntire \& Chubaty (2020)) package focuses on the concept of caching: saving information so that projects can be run faster each time they are re-completed from the start.
 \begin{figure}
@@ -795,10 +795,10 @@ When this is run on \texttt{project\_miceps}, we see the same files as described
  4 project_miceps/READ~       39 md    text/markdown              README.md     
  5 project_miceps/anal~    5.21K Rmd   text/x-markdown            analysis.Rmd  
  6 project_miceps/anal~    1.41M html  text/html                  analysis.html 
- 7 project_miceps/citr~  186.68K png   image/png                  citrate_v_tim~
+ 7 project_miceps/citr~  187.08K png   image/png                  citrate_v_tim~
  8 project_miceps/mice~   14.33K csv   text/csv                   mice.csv      
  9 project_miceps/mice~      204 Rproj text/rstudio               miceps.Rproj  
-10 project_miceps/prot~  378.66K png   image/png                  proteins_v_ti~
+10 project_miceps/prot~  378.72K png   image/png                  proteins_v_ti~
 11 project_miceps/soft~    5.34K txt   text/plain                 software-vers~
 \end{verbatim}
 \normalsize
@@ -844,15 +844,15 @@ After they are sandboxed, we see that the directories for the files have changed
 \end{Highlighting}
 \end{Shaded}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0ovYXF/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZO6wqC/project_miceps/
 Blot_data_updated.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0ovYXF/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZO6wqC/project_miceps/
 CS_data_redone.csv 
 \end{verbatim}
 \begin{verbatim}
-/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/Rtmp0ovYXF/project_miceps/
+/var/folders/v6/f62qz88s0sd5n3yqw9d8sb300000gn/T/RtmpZO6wqC/project_miceps/
 Estrogen_Receptors.docx
 \end{verbatim}
 Once a directory is sandboxed, users can run the \texttt{proj\_render()} function, which checks all \texttt{.R} and \texttt{.Rmd} code files in the directory to ensure that they can compile properly, to ensure that their project is self-contained.
@@ -879,7 +879,7 @@ Users can confirm the last time the project was known to have successfully rende
 # A tibble: 1 x 4
   path          path_abs func        timestamp          
   <chr>         <chr>    <chr>       <dttm>             
-1 LAST RENDERED <NA>     proj_render 2021-05-17 19:20:19
+1 LAST RENDERED <NA>     proj_render 2021-05-17 23:10:05
 \end{verbatim}
 \hypertarget{component-2-organized-project-structure}{%
 \subsection{Component 2: Organized Project Structure}\label{component-2-organized-project-structure}}
@@ -980,9 +980,9 @@ When run on \texttt{project\_miceps}, the results indicate that the \texttt{.csv
 3 project_mic~   10.97K docx  applica~ Estrogen_~ inst/other project_mi~ file_m~
 4 project_mic~    5.21K Rmd   text/x-~ analysis.~ vignettes  project_mi~ file_m~
 5 project_mic~    1.41M html  text/ht~ analysis.~ inst/text  project_mi~ file_m~
-6 project_mic~  186.68K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
+6 project_mic~  187.08K png   image/p~ citrate_v~ inst/image project_mi~ file_m~
 7 project_mic~   14.33K csv   text/csv mice.csv   data-raw   project_mi~ file_m~
-8 project_mic~  378.66K png   image/p~ proteins_~ inst/image project_mi~ file_m~
+8 project_mic~  378.72K png   image/p~ proteins_~ inst/image project_mi~ file_m~
 9 project_mic~    5.34K txt   text/pl~ software-~ inst/text  project_mi~ file_m~
 \end{verbatim}
 \normalsize
@@ -1576,8 +1576,8 @@ When \texttt{proj\_analyze()} is run on \texttt{project\_miceps}, we see the fol
    file               ext        size mime                                      
    <fs::path>         <chr> <fs::byt> <chr>                                     
  1 Estrogen_Receptor~ docx     10.97K application/vnd.openxmlformats-officedocu~
- 2 citrate_v_time.png png     188.02K image/png                                 
- 3 proteins_v_time.p~ png     376.16K image/png                                 
+ 2 citrate_v_time.png png     187.02K image/png                                 
+ 3 proteins_v_time.p~ png     378.29K image/png                                 
  4 Blot_data_updated~ csv      14.43K text/csv                                  
  5 CS_data_redone.csv csv       7.39K text/csv                                  
  6 mice.csv           csv      14.33K text/csv                                  
@@ -2097,7 +2097,7 @@ When we execute the commands \texttt{library(purrr)}, \texttt{library(forcats)},
 Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
 \end{verbatim}
 \begin{verbatim}
-# A tibble: 1,508 x 4
+# A tibble: 1,566 x 4
    path            path_abs                        func      timestamp          
    <chr>           <chr>                           <chr>     <dttm>             
  1 package:remotes <NA>                            base::re~ 2020-09-20 15:20:34
@@ -2110,7 +2110,7 @@ Reading from /Users/audreybertin/Documents/thesis/index/.fertile_log.csv
  8 package:purrr   <NA>                            base::li~ 2020-09-21 13:28:36
  9 package:forcats <NA>                            base::li~ 2020-09-21 13:28:36
 10 project_miceps~ /Users/audreybertin/Documents/~ readr::r~ 2020-09-21 13:28:36
-# ... with 1,498 more rows
+# ... with 1,556 more rows
 \end{verbatim}
 \normalsize
 
@@ -2187,7 +2187,7 @@ function(file, ...) {
     utils::read.csv(file, ...)
   }
 }
-<bytecode: 0x7fe4b0e7a3d0>
+<bytecode: 0x7f8028b3dde0>
 <environment: namespace:fertile>
 \end{verbatim}
 This functionality all occurs without the knowledge of the user. Consider the example of \texttt{read.csv()}. \texttt{read.csv()} is a popular function from the \texttt{utils} package for reading in data files. Users with both \texttt{utils} and \texttt{fertile} loaded will experience the following: The user will call \texttt{read.csv()} as normal, thinking that they are calling \texttt{utils::read.csv()}. However, they will actually be calling \texttt{fertile::read.csv()}, a very similar function with the same name. \texttt{fertile::read.csv()} will then capture the file path the user provided and check whether it is reproducible. If it is deemed okay, the function will execute as intended and read in the data just as \texttt{utils::read.csv()} would. If it is deemed non-reproducible, the function will return an error telling the user to use an alternate file path. Either way, \texttt{fertile} will record that the user called \texttt{utils::read.csv()} and note the path that was provided to it for future reference.
@@ -2317,16 +2317,16 @@ In the render log report for project miceps, we see calls to the packages that h
 # A tibble: 21 x 4
    path                    path_abs                  func    timestamp          
    <chr>                   <chr>                     <chr>   <dttm>             
- 1 Seed @ Start            <NA>                      595     2021-05-17 19:20:40
- 2 package:dplyr           <NA>                      base::~ 2021-05-17 19:20:41
- 3 package:readr           <NA>                      base::~ 2021-05-17 19:20:41
- 4 package:tidyr           <NA>                      base::~ 2021-05-17 19:20:41
- 5 package:ggplot2         <NA>                      base::~ 2021-05-17 19:20:41
- 6 package:purrr           <NA>                      base::~ 2021-05-17 19:20:42
- 7 Seed Before             <NA>                      595     2021-05-17 19:20:42
- 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-05-17 19:20:42
- 9 Seed After              <NA>                      610     2021-05-17 19:20:43
-10 Seed Before             <NA>                      610     2021-05-17 19:20:43
+ 1 Seed @ Start            <NA>                      578     2021-05-17 23:10:26
+ 2 package:dplyr           <NA>                      base::~ 2021-05-17 23:10:26
+ 3 package:readr           <NA>                      base::~ 2021-05-17 23:10:26
+ 4 package:tidyr           <NA>                      base::~ 2021-05-17 23:10:27
+ 5 package:ggplot2         <NA>                      base::~ 2021-05-17 23:10:27
+ 6 package:purrr           <NA>                      base::~ 2021-05-17 23:10:27
+ 7 Seed Before             <NA>                      578     2021-05-17 23:10:27
+ 8 /Users/audreybertin/Do~ /Users/audreybertin/Docu~ readr:~ 2021-05-17 23:10:27
+ 9 Seed After              <NA>                      592     2021-05-17 23:10:27
+10 Seed Before             <NA>                      592     2021-05-17 23:10:27
 # ... with 11 more rows
 \end{verbatim}
 \normalsize
@@ -2396,7 +2396,7 @@ function(path = ".") {
     errors = errors
   )
 }
-<bytecode: 0x7fe4aec837b0>
+<bytecode: 0x7f80251d9740>
 <environment: namespace:fertile>
 attr(,"req_compilation")
 [1] TRUE
@@ -2496,7 +2496,7 @@ function(file, ...) {
     return(data)
   }
 }
-<bytecode: 0x7fe4ba21ab98>
+<bytecode: 0x7f80300f97e8>
 <environment: namespace:fertile>
 \end{verbatim}
 The majority of shims have a similar structure. Since almost all shimmed functions in \texttt{fertile} take a large number of arguments, the \texttt{fertile} versions utilize the dots to simplify the process of capturing this user input and saving it for execution later.
@@ -2672,13 +2672,13 @@ Journals could place an acceptance requirement that articles achieve a certain s
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/journal-process-2} \caption{Another Potential 'fertile' Journal Review Process}\label{fig:unnamed-chunk-73}
 \end{figure}
-Both of these processes would be much faster than that employed currently at the American Journal of Political Science, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
+Both of these processes would be much faster than that employed currently at the \emph{American Journal of Political Science}, which goes through a thorough, multi-week-long reproducibility confirmation procedure for all submitted articles. Submitting authors would know exactly which goals they were trying to achieve. They could download \texttt{fertile} on their own, run it on their project, check to see if their goals are met, and take the recommended steps to address failures if not. Then, upon submission, journals would only need to take minimal steps to ensure that those standards were met.
 
 For journals that currently spend little effort on ensuring the reproducibility of submitted articles, \texttt{fertile} could provide significant benefit for minimal cost. Rather than spending money to hire a reproducibility editors, any journal board wanting to improve their publication's reproducibility could instead choose to implement \texttt{fertile}---for free---as part of the review workflow.
 
-Journals that already have designated reproducibility editors, such as \emph{Biostatistics} and the \emph{Journal of the American Statistical Association}, could also see benefits from \texttt{fertile} (Biostatistics (2020), Journal of the American Statistical Association Editors (2020)). The integration of \texttt{fertile} could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
+Journals that already have designated reproducibility editors, such as \emph{Biostatistics} and the \emph{Journal of the American Statistical Association}, could also benefit from \texttt{fertile} (Biostatistics Staff (2020), JASA Editors (2020)). The integration of \texttt{fertile} could speed up the review process, allowing the editors to review more papers for reproducibility adherence in a shorter time.
 
-Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it would save significant time and money for authors and reviewers in that domain.
+Although this would only address a small aspect of reproducibility--that involving data analysis projects written in R--it could save significant time and money for authors and reviewers in that domain.
 
 \hypertarget{for-teaching-reproducibility}{%
 \subsection{For Teaching Reproducibility}\label{for-teaching-reproducibility}}
@@ -2687,7 +2687,7 @@ Although this would only address a small aspect of reproducibility--that involvi
 
 Many of the existing programs to teach reproducibility are courses focused on replication studies, where students must take a published paper and replicate the steps within completely. This process, which includes requesting the necessary data and code files from the original author(s) and sometimes even expanding the existing analysis further, often requires that participants have knowledge of data analysis and the scientific research process to be successful. As a result, such courses focused on reproducibility tend to exist only at the graduate level.
 
-Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, introductory courses at Smith College and Duke University actively integrate reproducible workflows into their course material through the use of RMarkdown (Baumer, Cetinkaya-Rundel, Bray, Loi, \& Horton (2014))--but not all do, and most (if not all) not at as in-depth of a level as a replication-based masters course might provide.
+Undergraduate students do not have the same level of access to reproducibility education. Some schools prioritize reproducibility education--for instance, courses at Smith College and Duke University integrate reproducibility through the use of RMarkdown (Baumer, Cetinkaya-Rundel, Bray, Loi, \& Horton (2014))--but not all do, and most not at as in-depth of a level as masters courses.
 
 \texttt{fertile} could help change this, allowing for many more colleges and universities to integrate reproducibility into their courses as a primary topic of focus. The barriers to entry for using and benefiting from the package are very low, requiring only that participating students have:
 \begin{itemize}
@@ -2701,13 +2701,13 @@ Undergraduate students do not have the same level of access to reproducibility e
 \item
   Knowledge of how to run basic functions and input simple file paths
 \end{itemize}
-Though the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
+Although the process may entail some confusion and troubleshooting at first, even those brand new to \texttt{R} could succeed in overcoming these barriers in only a few days of class. As a result, \texttt{fertile} could provide professors with an opportunity to teach reproducibility concepts in introductory level courses.
 \begin{figure}
 \includegraphics[width=1\linewidth]{figure/gov-2001-replication} \caption{The Replication Assignment From Harvard Professor Gary King's Gov 2001 Graduate Course}\label{fig:unnamed-chunk-74}
 \end{figure}
 \texttt{fertile} could easily integrate into coursework in a similar way to how RMarkdown was integrated at Smith College and Duke University. While there is not only one way to utilize the software in class, a potential use of \texttt{fertile} could look as follows:
 
-At the beginning of their courses, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the \texttt{fertile} package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run \texttt{fertile} on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through \texttt{fertile}'s response to it, and interactively work with students to illustrate how it can be fixed.
+At the beginning of their course, the professor provides their students with a brief introduction to reproducibility, including its importance and a basic description of how it is achieved. Shortly after, they introduce R Projects and the \texttt{fertile} package, explaining that they are tools to help with reproducibility. Then, they institute a requirement for all submitted homework assignments in the course: students must create and submit their work in the R Project format, but prior to submission must run \texttt{fertile} on their project to ensure that it passes reproducibility standards. When reproducibility errors inevitably occur, they can be used as teachable moments: the professor can share the error, explain why it happened, walk through \texttt{fertile}'s response to it, and interactively work with students to illustrate how it can be fixed.
 
 The integration of \texttt{fertile} in this way would be an excellent method to introduce students to reproducibility concepts early on in their data science education, but at a low cost to the professor.
 
@@ -2725,7 +2725,7 @@ These students would then be prepared for entering the research world and contri
 \hypertarget{in-other-areas}{%
 \subsection{In Other Areas}\label{in-other-areas}}
 
-\texttt{fertile} can also provide benefits in other domains. Though not an exhaustive list, some of the potential uses of the software are:
+\texttt{fertile} can also provide benefits in other domains. Although not an exhaustive list, some of the potential uses of the software are:
 \begin{itemize}
 \item
   \emph{Private Companies}: Data analysis-focused companies could require their employees to use \texttt{fertile} to check the reproducibility of their projects before presenting them to clients. This would help such companies ensure that clients could trust the results that were being produced.
@@ -2775,7 +2775,7 @@ There were several motives for selecting these specific courses:
 
 For the experimental structure, we chose to complete a randomized controlled trial (RCT) since RCT designs can be used to conclude causality and are designed in such a way as to limit bias in the results.
 
-Our goal was to determine whether students who had \texttt{fertile} installed and loaded on their R Studio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
+Our goal was to determine whether students who had \texttt{fertile} installed and loaded on their RStudio applications would learn more about reproducibility throughout the course than students who did not, or whether there was instead no difference or even a negative effect.
 
 In order to measure this potential effect, we opted to use reproducibility ``tests,'' forms containing multiple choice and select-all-that-apply questions about different aspects of reproducibility that are focused on in \texttt{fertile}.
 
@@ -2979,15 +2979,12 @@ These numbers, combined with the visual below seem to indicate, at least in this
 \caption{\label{fig:unnamed-chunk-81}Bar Chart: End of Course Reproducibility Test Averages by Group, Fall 2020}
 \end{figure}
 Looking at the overall total score (\texttt{Overall\_Total}), this was true even when controlling for the number of relevant courses taken previously:
-\begin{verbatim}
-`geom_smooth()` using formula 'y ~ x'
-\end{verbatim}
 \begin{figure}
 \centering
 \includegraphics{thesis_files/figure-latex/unnamed-chunk-82-1.pdf}
 \caption{\label{fig:unnamed-chunk-82}Scatterplot: Previous Coursework vs Total Reproducibility Test Score, Fall 2020}
 \end{figure}
-A t-test and analysis of variance (ANOVA) conducted on the simple regression model \(Overall_Total ~ Group\) both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
+A t-test and analysis of variance (ANOVA) conducted on the simple regression model with independent variable \texttt{Group} and dependent variable \texttt{Overall\_Total} both indicate that, although there is a potential negative trend between the use of \texttt{fertile} and a student's score on the reproducibility test, there is not enough evidence to conclude that this relationship was \emph{not} just the product of chance. The p-values of 0.117 are not below the threshold of 0.05 used to determine statistical significance.
 \begin{verbatim}
 Call:
 lm(formula = Overall_Total ~ Group, data = fall2020)
@@ -3122,7 +3119,7 @@ It is also interesting to examine the relationship between the number of previou
 \end{figure}
 Above, we see a graphical representation of the number of previous courses taken by each student and the difference between their overall total score on their Pre- and Post-Tests.
 
-Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control}, group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
+Although it is challenging to make any strong claims with so few data points, one interesting pattern emerges. For the \texttt{control} group, previous experience did not appear to be an indicator of stronger performance or overall learning throughout the course. In some cases, overall performance of students with several previous classes was worse on the Post-Tests than the Pre-Tests. However, with the \texttt{fertile} group, there does appear to be a slight positive relationship between the number of previous classes and the test scores. On average, the \texttt{fertile} group always performed better on their Post-Tests than on their Pre-Tests.
 
 After constructing a simple regression model, predicting overall \texttt{Score\_Difference} based on \texttt{Group} (\texttt{fertile} or \texttt{control}), and running a t-test and analysis of variance, we once again find that there is not enough evidence to argue that \texttt{fertile} provides any benefit in terms of performance on the reproducibility tests. This can be seen with the high p-value of over 0.96, indicating little evidence of a relationship between score differential and group.
 \begin{verbatim}
@@ -3181,7 +3178,7 @@ Although the findings of the \texttt{fertile} experiment are interesting, they c
 For one, the sample sizes of both experimental sections were very small. The first only contained data on 18 students, while the second on only 38. While sample sizes like these may provide some evidence of the existence of experimental relationships, conclusive statements should not be made without additional data.
 Even though the SDS 192 courses are some of the largest in the Statistical and Data Sciences department at Smith College, they still did not result in an optimal level of data. Not all students volunteered to participate in the study, several who did failed to complete all of the components necessary for inclusion of their data and---even if everyone had participated---the maximum sample size would have only been limited to the combined size of both course sections: around 100 students.
 
-Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from \texttt{fertile} the classroom setting meant that students who had questions about some of the errors that appeared as a result of having \texttt{fertile} loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be impelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results.
+Second, the fact that the environment for the experiment was an active classroom came with several challenges. Although we wanted students in the experimental group to independently learn from \texttt{fertile} the classroom setting meant that students who had questions about some of the errors that appeared as a result of having \texttt{fertile} loaded would sometimes bring them to Professor Baumer. As the course instructor, he would then be compelled to help them, explaining concepts and clarifying the meaning of any errors, at the expense of any potential effect on the experimental results.
 
 Additionally, students in a classroom have the unfortunate characteristic---in experimental terms---of not being fully independent from one another. Students regularly communicated with each other, asking and answering questions, on a course \texttt{Slack} channel and also worked in groups on many of the class projects. This meant that they could spread knowledge; experiences from the \texttt{fertile} group could be disseminated to the \texttt{control} group and vice versa. Any sort of cross-contamination could be a potential threat to the validity of the experimental results, as independence is a key assumption necessary for linear regression.
 
@@ -3191,7 +3188,7 @@ In the residuals versus fitted values and normal quantile-quantile plots for the
 \begin{figure}
 \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-95-1} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-95-2} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-95-3} \includegraphics[width=0.5\linewidth]{thesis_files/figure-latex/unnamed-chunk-95-4} \caption{RvF and QQ Plots for Fall 2020 (Top) January Term 2021 (Bottom) Simple Linear Regression Models}\label{fig:unnamed-chunk-95}
 \end{figure}
-Then, there is the additional limitation that, although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
+There is the additional limitation that although this experimental structure tests the pure educational power of \texttt{fertile}, it does not accurately represent the ways in which \texttt{fertile} would be used in practice.
 
 Those who use R packages for their own benefit do so with specific intention and knowledge that they are doing so. In practice, unless attempting to do some sort of software testing, no one will use a package that they do not know is loaded.
 
@@ -3593,37 +3590,37 @@ At the end of the test, they will be left with a Projects Score of 2, a Paths Sc
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
 \leavevmode\hypertarget{ref-aee-policy}{}%
-American Economic Association. (2020). Data and code availability policy. Retrieved from \url{https://www.aeaweb.org/journals/data/data-code-policy}
+AEA Staff. (2020). Data and code availability policy. American Economic Association. Retrieved from \url{https://www.aeaweb.org/journals/data/data-code-policy}
 
 \leavevmode\hypertarget{ref-ajps-guidelines}{}%
-American Journal of Political Science. (2016, May). Guidelines for preparing replication files. Retrieved from \url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
+AJPS Staff. (2016). Guidelines for preparing replication files - version 2.1. American Journal of Political Science. Retrieved from \url{https://ajps.org/wp-content/uploads/2018/05/ajps_replication-guidelines-2-1.pdf}
 
-\leavevmode\hypertarget{ref-asa-guide}{}%
-American Statistical Association. (2020). JASA ACS reproducibility guide. Retrieved from \url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
+\leavevmode\hypertarget{ref-ams-guide}{}%
+American Statistician Staff. (2020). Instructions for authors. Retrieved from \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
 
 \leavevmode\hypertarget{ref-arafat2009commenting}{}%
-Arafat, O., \& Riehle, D. (2009). The commenting practice of open source. In \emph{Proceedings of the 24th ACM SIGPLAN conference companion on object oriented programming systems languages and applications} (pp. 857--864).
+Arafat, O., \& Riehle, D. (2009). The commenting practice of open source. In \emph{Proceedings of the 24th ACM SIGPLAN conference companion on object oriented programming systems languages and applications} (pp. 857--864). Retrieved from \url{https://dl.acm.org/doi/abs/10.1145/1639950.1640047}
 
 \leavevmode\hypertarget{ref-nature-psych}{}%
-Baker, M. (2015). Over half of psychological studies fail reproducibility test. \emph{Nature}. Retrieved from \url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248}
+Baker, M. (2015). Over half of psychological studies fail reproducibility test. Nature. Retrieved from \url{https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248}
 
 \leavevmode\hypertarget{ref-nature-crisis}{}%
-Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. \emph{Nature}. Retrieved from \url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature. Retrieved from \url{https://www.nature.com/news/1-500-scientists-lift-the-lid-on-reproducibility-1.19970}
 
 \leavevmode\hypertarget{ref-baumer2014r}{}%
-Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{arXiv Preprint arXiv:1402.1894}.
+Baumer, B., Cetinkaya-Rundel, M., Bray, A., Loi, L., \& Horton, N. J. (2014). R markdown: Integrating a reproducible analysis tool into introductory statistics. \emph{Teaching Innovations in Statistics Education}, \emph{8}(1). Retrieved from \url{https://escholarship.org/uc/item/90b2f5xh}
 
 \leavevmode\hypertarget{ref-begley2012raise}{}%
-Begley, C. G., \& Ellis, L. M. (2012). Raise standards for preclinical cancer research. \emph{Nature}, \emph{483}(7391), 531--533.
+Begley, C. G., \& Ellis, L. M. (2012). Raise standards for preclinical cancer research. \emph{Nature}, \emph{483}(7391), 531--533. Retrieved from \url{https://doi.org/10.1038/483531a}
 
 \leavevmode\hypertarget{ref-journal-biostats}{}%
-Biostatistics. (2020). Information for authors. Retrieved from \url{https://academic.oup.com/biostatistics/pages/General_Instructions}
+Biostatistics Staff. (2020). Information for authors. Retrieved from \url{https://academic.oup.com/biostatistics/pages/General_Instructions}
 
 \leavevmode\hypertarget{ref-R-workflowr}{}%
 Blischak, J., Carbonetto, P., \& Stephens, M. (2019). Workflowr: A framework for reproducible and collaborative data science. Retrieved from \url{https://CRAN.R-project.org/package=workflowr}
 
 \leavevmode\hypertarget{ref-arlington}{}%
-Bollen, K., Cacioppo, J. T., Kaplan, R. M., Krosnick, J. A., Olds, J. L., \& Dean, H. (2015). Report of the subcommittee on replicability in science advisory committee to the NSF SBE directorate. Retrieved from \url{https://www.nsf.gov/sbe/SBE_Spring_2015_AC_Meeting_Presentations/Bollen_Report_on_Replicability_SubcommitteeMay_2015.pdf}
+Bollen, K., Cacioppo, R. M., John Tand Kaplan, Krosnick, J. A., Olds, J. L., \& Dean, H. (2015). Report of the subcommittee on replicability in science advisory committee to the NSF SBE directorate. Retrieved from \url{https://www.nsf.gov/sbe/SBE_Spring_2015_AC_Meeting_Presentations/Bollen_Report_on_Replicability_SubcommitteeMay_2015.pdf}
 
 \leavevmode\hypertarget{ref-broman}{}%
 Broman, K. (2019). Initial steps toward reproducible research: Organize your data and code. \emph{Sitewide ATOM}. Retrieved from \url{https://kbroman.org/steps2rr/pages/organize.html}
@@ -3632,16 +3629,16 @@ Broman, K. (2019). Initial steps toward reproducible research: Organize your dat
 Cambridge University Press. (2020). Experimental results - transparency and openness policy. Retrieved from \url{https://www.cambridge.org/core/journals/experimental-results/information/transparency-and-openness-policy}
 
 \leavevmode\hypertarget{ref-claerbout}{}%
-Claerbout, J. F., \& Karrenbach, M. (1992). Electronic documents give reproducible research a new meaning. In \emph{SEG technical program expanded abstracts 1992} (pp. 601--604). Society of Exploration Geophysicists.
+Claerbout, J. F., \& Karrenbach, M. (1992). Electronic documents give reproducible research a new meaning. In \emph{SEG technical program expanded abstracts 1992} (pp. 601--604). Society of Exploration Geophysicists. Retrieved from \url{https://doi.org/10.1190/1.1822162}
 
 \leavevmode\hypertarget{ref-cooper2017guide}{}%
-Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T., Krystalli, A., \& Michonneau, F. (2017). A guide to reproducible code in ecology and evolution. \emph{British Ecological Society}. Retrieved from \url{https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf}
+Cooper, N., Hsing, P.-Y., Croucher, M., Graham, L., James, T., Krystalli, A., \& Michonneau, F. (2017). A guide to reproducible code in ecology and evolution. British Ecological Society. Retrieved from \url{https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf}
 
 \leavevmode\hypertarget{ref-eisner-reproducibility}{}%
-Eisner, D. A. (2018). Reproducibility of science: Fraud, impact factors and carelessness. \emph{Journal of Molecular and Cellular Cardiology}, \emph{114}, 364--368. http://doi.org/\url{https://doi.org/10.1016/j.yjmcc.2017.10.009}
+Eisner, D. A. (2018). Reproducibility of science: Fraud, impact factors and carelessness. \emph{Journal of Molecular and Cellular Cardiology}, \emph{114}, 364--368. Retrieved from \url{https://doi.org/10.1016/j.yjmcc.2017.10.009}
 
 \leavevmode\hypertarget{ref-epstein2002immediate}{}%
-Epstein, M. L., Lazarus, A. D., Calvano, T. B., Matthews, K. A., Hendel, R. A., Epstein, B. B., \& Brosvic, G. M. (2002). Immediate feedback assessment technique promotes learning and corrects inaccurate first responses. \emph{The Psychological Record}, \emph{52}(2), 187--201.
+Epstein, M. L., Lazarus, A. D., Calvano, T. B., Matthews, K. A., Hendel, R. A., Epstein, B. B., \& Brosvic, G. M. (2002). Immediate feedback assessment technique promotes learning and corrects inaccurate first responses. \emph{The Psychological Record}, \emph{52}(2), 187--201. Retrieved from \url{https://link.springer.com/article/10.1007/BF03395423}
 
 \leavevmode\hypertarget{ref-sep-scientific-reproducibility}{}%
 Fidler, F., \& Wilcox, J. (2018). Reproducibility of scientific results. In E. N. Zalta (Ed.), \emph{The stanford encyclopedia of philosophy} (Winter 2018). \url{https://plato.stanford.edu/archives/win2018/entries/scientific-reproducibility/}; Metaphysics Research Lab, Stanford University.
@@ -3653,13 +3650,13 @@ FitzJohn, R., Ashton, R., Hill, A., Eden, M., Hinsley, W., Russell, E., \& Thomp
 Gancarz, M. (2003). \emph{Linux and the unix philosophy} (2nd ed.). Woburn, MA: Digital Press.
 
 \leavevmode\hypertarget{ref-Goodman341ps12}{}%
-Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What does research reproducibility mean? \emph{Science Translational Medicine}, \emph{8}(341), 1--6. http://doi.org/\href{https://doi.org/10.1126/scitranslmed.aaf5027}{10.1126/scitranslmed.aaf5027}
+Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What does research reproducibility mean? \emph{Science Translational Medicine}, \emph{8}(341), 1--6. Retrieved from \url{https://stm.sciencemag.org/content/8/341/341ps12}
 
 \leavevmode\hypertarget{ref-bioessays-gosselin}{}%
-Gosselin, R.-D. (2020). Statistical analysis must improve to address the reproducibility crisis: The ACcess to transparent statistics (ACTS) call to action. \emph{BioEssays}, \emph{42}(1), 1900189. http://doi.org/\href{https://doi.org/10.1002/bies.201900189}{10.1002/bies.201900189}
+Gosselin, R.-D. (2019). Statistical analysis must improve to address the reproducibility crisis: The ACcess to transparent statistics (ACTS) call to action. \emph{BioEssays}, \emph{42}(1), 1900189. Retrieved from \url{https://doi.org/10.1002/bies.201900189}
 
 \leavevmode\hypertarget{ref-hardwicke2018data}{}%
-Hardwicke, T. E., Mathur, M. B., MacDonald, K., Nilsonne, G., Banks, G. C., Kidwell, M. C., \ldots{} others. (2018). Data availability, reusability, and analytic reproducibility: Evaluating the impact of a mandatory open data policy at the journal cognition. \emph{Royal Society Open Science}, \emph{5}(8), 180448. Retrieved from \url{https://royalsocietypublishing.org/doi/full/10.1098/rsos.180448}
+Hardwicke, T. E., Mathur, M. B., MacDonald, K., Nilsonne, G., Banks, G. C., Kidwell, M. C., \ldots{} others. (2018). Data availability, reusability, and analytic reproducibility: Evaluating the impact of a mandatory open data policy at the journal cognition. \emph{Royal Society Open Science}, \emph{5}(8), 180448. Retrieved from \url{https://doi.org/10.1098/rsos.180448}
 
 \leavevmode\hypertarget{ref-R-tidyselect}{}%
 Henry, L., \& Wickham, H. (2020). Tidyselect: Select from a set of strings. Retrieved from \url{https://CRAN.R-project.org/package=tidyselect}
@@ -3668,49 +3665,52 @@ Henry, L., \& Wickham, H. (2020). Tidyselect: Select from a set of strings. Retr
 Hillenbrand, S. (2014). Reproducible and collaborative: Teaching the data science life. Berkeley Science Review. Retrieved from \url{https://berkeleysciencereview.com/2014/06/reproducible-collaborative-data-science/}
 
 \leavevmode\hypertarget{ref-horton2014teaching}{}%
-Horton, N. J., Baumer, B. S., \& Wickham, H. (2014). Teaching precursors to data science in introductory and second courses in statistics. \emph{arXiv Preprint arXiv:1401.3269}.
+Horton, N. J., Baumer, B. S., \& Wickham, H. (2015). Taking a chance in the classroom: Setting the stage for data science: Integration of data management skills in introductory and second courses in statistics. \emph{CHANCE}, \emph{28}(2), 40--50. Retrieved from \url{https://doi.org/10.1080/09332480.2015.1042739}
 
 \leavevmode\hypertarget{ref-hrynaszkiewicz2020publishers}{}%
-Hrynaszkiewicz, I. (2020). Publishers' responsibilities in promoting data quality and reproducibility. \emph{Handbook of Experimental Pharmacology}, \emph{257}, 319--348. http://doi.org/\url{https://doi.org/10.1007/164_2019_290}
+Hrynaszkiewicz, I. (2020). Publishers' responsibilities in promoting data quality and reproducibility. \emph{Handbook of Experimental Pharmacology}, \emph{257}, 319--348. Retrieved from \url{https://doi.org/10.1007/164_2019_290}
 
 \leavevmode\hypertarget{ref-higher-ed}{}%
 Jacoby, W. G., Lafferty-Hess, S., \& Christian, T.-M. (2017). Should journals be responsible for reproducibility? Inside Higher Ed. Retrieved from \url{https://www.insidehighered.com/blogs/rethinking-research/should-journals-be-responsible-reproducibility}
 
 \leavevmode\hypertarget{ref-janz2016bringing}{}%
-Janz, N. (2016). Bringing the gold standard into the classroom: Replication in university teaching. \emph{International Studies Perspectives}, \emph{17}(4), 392--407.
-
-\leavevmode\hypertarget{ref-jcgs-guide}{}%
-Journal of Computational and Graphical Statistics. (2020). Instructions for authors. Retrieved from \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}
-
-\leavevmode\hypertarget{ref-jss-guide}{}%
-Journal of Statistical Software. (2020). Instructions for authors. Retrieved from \url{https://www.jstatsoft.org/pages/view/authors\#review-process.}
+Janz, N. (2016). Bringing the gold standard into the classroom: Replication in university teaching. \emph{International Studies Perspectives}, \emph{17}(4), 392--407. Retrieved from \url{https://doi.org/10.1111/insp.12104}
 
 \leavevmode\hypertarget{ref-jasa-rep-editors}{}%
-Journal of the American Statistical Association Editors. (2020). JASA editors talk reproducibility. Retrieved from \url{https://www.amstat.org/ASA/Publications/Q-and-As/JASA-Editors-Talk-Reproducibility.aspx}
+JASA Editors. (2020). JASA editors talk reproducibility. Journal of the American Statistical Association. Retrieved from \url{https://www.amstat.org/ASA/Publications/Q-and-As/JASA-Editors-Talk-Reproducibility.aspx}
+
+\leavevmode\hypertarget{ref-asa-guide}{}%
+JASA Staff. (2020). JASA ACS reproducibility guide. Journal of the American Statistical Association. Retrieved from \url{https://jasa-acs.github.io/repro-guide/pages/author-guidelines}
+
+\leavevmode\hypertarget{ref-jcgs-guide}{}%
+JCGS Staff. (2020). Instructions for authors. Journal of Computational; Graphical Statistics. Retrieved from \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=ucgs20}
+
+\leavevmode\hypertarget{ref-jss-guide}{}%
+JSS Staff. (2020). Instructions for authors. Journal of Statistical Software. Retrieved from \url{https://www.jstatsoft.org/pages/view/authors\#review-process.}
 
 \leavevmode\hypertarget{ref-karpicke2008critical}{}%
-Karpicke, J. D., \& Roediger, H. L. (2008). The critical importance of retrieval for learning. \emph{Science}, \emph{319}(5865), 966--968.
+Karpicke, J. D., \& Roediger, H. L. (2008). The critical importance of retrieval for learning. \emph{Science}, \emph{319}(5865), 966--968. Retrieved from \url{https://doi.org/10.1126/science.1152408}
 
 \leavevmode\hypertarget{ref-kitzes2017practice}{}%
 Kitzes, J., Turek, D., \& Deniz, F. (2017). \emph{The practice of reproducible research: Case studies and lessons from the data-intensive sciences}. Berkeley, CA: University of California Press. Retrieved from \url{https://www.practicereproducibleresearch.org}
 
 \leavevmode\hypertarget{ref-leopold2015increased}{}%
-Leopold, S. S. (2015). Editorial: Increased manuscript submissions prompt journals to make hard choices. \emph{Clinical Orthopaedics and Related Research}, \emph{473}(3), 753--755. http://doi.org/\href{https://doi.org/10.1007/s11999-014-4129-1}{10.1007/s11999-014-4129-1}
+Leopold, S. S. (2015). Editorial: Increased manuscript submissions prompt journals to make hard choices. \emph{Clinical Orthopaedics and Related Research}, \emph{473}(3), 753--755. Retrieved from \url{https://dx.doi.org/10.1007}
 
 \leavevmode\hypertarget{ref-lupia2014openness}{}%
-Lupia, A., \& Elman, C. (2014). Openness in political science: Data access and research transparency. \emph{PS, Political Science \& Politics}, \emph{47}(1), 19.
+Lupia, A., \& Elman, C. (2014). Openness in political science: Data access and research transparency. \emph{PS, Political Science \& Politics}, \emph{47}(1), 19. Retrieved from \url{https://www.cambridge.org/core/journals/ps-political-science-and-politics/article/abs/openness-in-political-science-data-access-and-research-transparency/0B189FC1097A4D062E57F805E8F07BD0}
 
 \leavevmode\hypertarget{ref-r-opensci}{}%
-Martinez, C., Hollister, J., Marwick, B., Szöcs, E., Zeitlin, S., Kinoshita, B. P., \ldots{} Meinke, B. (2018). {Reproducibility in Science: A Guide to enhancing reproducibility in scientific results and writing}. Retrieved from \url{http://ropensci.github.io/reproducibility-guide/}
+Martinez, C., Hollister, J., Marwick, B., Szöcs, E., Zeitlin, S., Kinoshita, B. P., \ldots{} Meinke, B. (2018). Reproducibility in science: A guide to enhancing reproducibility in scientific results and writing. Retrieved from \url{http://ropensci.github.io/reproducibility-guide/}
 
 \leavevmode\hypertarget{ref-R-rrtools}{}%
 Marwick, B. (2019). Rrtools: Creates a reproducible research compendium. Retrieved from \url{https://github.com/benmarwick/rrtools}
 
 \leavevmode\hypertarget{ref-marwick2018packaging}{}%
-Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data analytical work reproducibly using {R} (and friends). \emph{The American Statistician}, \emph{72}(1), 80--88. http://doi.org/\href{https://doi.org/doi.org/10.1080/00031305.2017.1375986}{doi.org/10.1080/00031305.2017.1375986}
+Marwick, B., Boettiger, C., \& Mullen, L. (2018). Packaging data analytical work reproducibly using {R} (and friends). \emph{The American Statistician}, \emph{72}(1), 80--88. Retrieved from \url{https://doi.org/10.1080/00031305.2017.1375986}
 
 \leavevmode\hypertarget{ref-engineering-reproducibility}{}%
-McArthur, S. L. (2019). Repeatability, reproducibility, and replicability: Tackling the 3R challenge in biointerface science and engineering. \emph{Biointerphases}, \emph{14}(2), 1--2. http://doi.org/\href{https://doi.org/10.1116/1.5093621}{10.1116/1.5093621}
+McArthur, S. L. (2019). Repeatability, reproducibility, and replicability: Tackling the 3R challenge in biointerface science and engineering. \emph{Biointerphases}, \emph{14}(2), 1--2. Retrieved from \url{https://doi.org/10.1116/1.5093621}
 
 \leavevmode\hypertarget{ref-R-reproducible}{}%
 McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of tools that enhance reproducibility beyond package management. Retrieved from \url{https://CRAN.R-project.org/package=reproducible}
@@ -3718,17 +3718,17 @@ McIntire, E. J. B., \& Chubaty, A. M. (2020). Reproducible: A set of tools that 
 \leavevmode\hypertarget{ref-bio-principles}{}%
 National Institutes of Health. (2014). Principles and guidelines for reporting preclinical research. Retrieved from \url{https://www.nih.gov/research-training/rigor-reproducibility/principles-guidelines-reporting-preclinical-research}
 
-\leavevmode\hypertarget{ref-R-drake}{}%
-OpenSci, R. (2020). Drake: A pipeline toolkit for reproducible computation at scale. Retrieved from \url{https://cran.r-project.org/package=drake}
-
 \leavevmode\hypertarget{ref-wercker}{}%
 Oracle Corporation. (2019). Wercker. Retrieved from \url{https://github.com/wercker/wercker}
 
 \leavevmode\hypertarget{ref-prana2019categorizing}{}%
-Prana, G. A. A., Treude, C., Thung, F., Atapattu, T., \& Lo, D. (2019). Categorizing the content of GitHub README files. \emph{Empirical Software Engineering}, \emph{24}(3), 1296--1327.
+Prana, G. A. A., Treude, C., Thung, F., Atapattu, T., \& Lo, D. (2019). Categorizing the content of GitHub README files. \emph{Empirical Software Engineering}, \emph{24}(3), 1296--1327. Retrieved from \url{https://link.springer.com/article/10.1007/s10664-018-9660-3}
 
 \leavevmode\hypertarget{ref-r-journal}{}%
 R Journal Editors. (2020). Instructions for authors. Retrieved from \url{https://journal.r-project.org/share/author-guide.pdf}
+
+\leavevmode\hypertarget{ref-R-drake}{}%
+R OpenSci. (2020). Drake: A pipeline toolkit for reproducible computation at scale. Retrieved from \url{https://cran.r-project.org/package=drake}
 
 \leavevmode\hypertarget{ref-coreteam-extensions}{}%
 R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for Statistical Computing}. Retrieved from \url{http://cran.stat.unipd.it/doc/manuals/r-release/R-exts.pdf}
@@ -3737,37 +3737,31 @@ R-Core-Team. (2020). Writing r extensions. \emph{R Foundation for Statistical Co
 Ross, N., DeCicco, L., \& Randhawa, N. (2018). Checkers: Automated checking of best practices for research compendia. Retrieved from \url{https://github.com/ropenscilabs/checkers/blob/master/DESCRIPTIONr}
 
 \leavevmode\hypertarget{ref-policy-effectiveness}{}%
-Stodden, V., Seiler, J., \& Ma, Z. (2018a). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. Retrieved from \url{https://www.pnas.org/content/115/11/2584}
-
-\leavevmode\hypertarget{ref-Stodden2584}{}%
-Stodden, V., Seiler, J., \& Ma, Z. (2018b). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. http://doi.org/\href{https://doi.org/10.1073/pnas.1708290115}{10.1073/pnas.1708290115}
-
-\leavevmode\hypertarget{ref-ams-guide}{}%
-The American Statistician. (2020). Instructions for authors. Retrieved from \url{https://www.tandfonline.com/action/authorSubmission?show=instructions\&journalCode=utas20}
+Stodden, V., Seiler, J., \& Ma, Z. (2018). An empirical analysis of journal policy effectiveness for computational reproducibility. \emph{Proceedings of the National Academy of Sciences}, \emph{115}(11), 2584--2589. Retrieved from \url{https://doi.org/10.1073/pnas.1708290115}
 
 \leavevmode\hypertarget{ref-R-renv}{}%
 Ushey, K., \& RStudio. (2020). Renv: Project environments. Retrieved from \url{https://cran.r-project.org/web/packages/renv/index.html}
 
 \leavevmode\hypertarget{ref-plos-biology}{}%
-Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018). Reproducible research practices, transparency, and open access data in the biomedical literature, 2015-2017. \emph{PLOS Biology}, \emph{16}(11), 1--20. http://doi.org/\href{https://doi.org/10.1371/journal.pbio.2006930}{10.1371/journal.pbio.2006930}
+Wallach, J. D., Boyack, K. W., \& Ioannidis, J. P. A. (2018). Reproducible research practices, transparency, and open access data in the biomedical literature, 2015-2017. \emph{PLOS Biology}, \emph{16}(11), 1--20. Retrieved from \url{https://doi.org/10.1371/journal.pbio.2006930}
 
 \leavevmode\hypertarget{ref-hadley-packages}{}%
-Wickham, H. (2015). \emph{R packages} (1st ed.). Sebastopol, CA: O'Reilly Media, Inc.
+Wickham, H. (2015). \emph{R packages} (1st ed.). Sebastopol, CA: O'Reilly Media, Inc. Retrieved from \url{https://r-pkgs.org/}
 
 \leavevmode\hypertarget{ref-tidy-style}{}%
 Wickham, H. (2020). The tidyverse style guide. Retrieved from \url{https://style.tidyverse.org}
 
 \leavevmode\hypertarget{ref-wilson2014best}{}%
-Wilson, G., Aruliah, D. A., Brown, C. T., Hong, N. P. C., Davis, M., Guy, R. T., \ldots{} others. (2014). Best practices for scientific computing. \emph{PLOS Biology}, \emph{12}(1), e1001745.
+Wilson, G., Aruliah, D. A., Brown, C. T., Hong, N. P. C., Davis, M., Guy, R. T., \ldots{} others. (2014). Best practices for scientific computing. \emph{PLOS Biology}, \emph{12}(1), e1001745. Retrieved from \url{https://doi.org/10.1371/journal.pbio.1001745}
 
 \leavevmode\hypertarget{ref-wilson2017good}{}%
-Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., \& Teal, T. K. (2017). Good enough practices in scientific computing. \emph{PLOS Biology}, \emph{13}(6), e1005510. Retrieved from \url{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510}
+Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., \& Teal, T. K. (2017). Good enough practices in scientific computing. \emph{PLOS Biology}, \emph{13}(6), e1005510. Retrieved from \url{https://doi.org/10.1371/journal.pcbi.1005510}
 
 \leavevmode\hypertarget{ref-top-guidelines}{}%
 Woolston, C. (2020). TOP factor rates journals on transparency, openness. Nature Index. Retrieved from \url{https://www.natureindex.com/news-blog/top-factor-rates-journals-on-transparency-openness}
 
 \leavevmode\hypertarget{ref-yu2019toward}{}%
-Yu, B., \& Hu, X. (2019). Toward training and assessing reproducible data analysis in data science education. \emph{Data Intelligence}, \emph{1}(4), 381--392.
+Yu, B., \& Hu, X. (2019). Toward training and assessing reproducible data analysis in data science education. \emph{Data Intelligence}, \emph{1}(4), 381--392. Retrieved from \url{https://doi.org/10.1162/dint_a_00053}
 
 \end{CSLReferences}
 
