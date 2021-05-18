@@ -29,6 +29,7 @@ It is also customizable, allowing users to utilize the tool in the way that fits
 
 These features make `fertile` an excellent tool for addressing the issue of scientific reproducibility on a widespread scale. `fertile` can provide a variety of benefits to users in all different application domains and with all different experiences. In this chapter, we consider several potential uses of the package.
 
+
 ### In Journal Review
 
 As discussed in Chapter 1, academic journals have a significant reproducibility problem. In an attempt to address this, many journals have instituted reproducibility policies for submitting authors to follow. Although a variety of journals have these policies, particularly in the Statistical and Data Sciences, very few actually go through the process of verifying that the standards are met. Authors, finding it to to be a complicated and challenging task, will often not take the necessary steps to make their work truly reproducible. And journals, given the amount of time and money required to verify submissions' reproducibility, will often give submitting authors the benefit of the doubt in assuming that their work is reproducible as long as some code and/or data has been provided. This results in the publishing of many articles that claim to be reproducible in theory, but do not meet such standards when tested in practice.
@@ -116,7 +117,7 @@ I believe that there are a variety of potential benefits to introducing students
 These students would then be prepared for entering the research world and contributing to data science work in a transparent and reproducible way. 
 
 
-### In Other Areas
+### Other Specific Areas
 
 `fertile` can also provide benefits in other domains. Although not an exhaustive list, some of the potential uses of the software are: 
 
@@ -130,7 +131,13 @@ These students would then be prepared for entering the research world and contri
 knitr::include_graphics("figure/tidytuesday.png")
 ```
 
-`fertile` is versatile in its applicability. It can be used anywhere from informal data analysis projects to academic journal review. 
+### General R Users
+
+`fertile` is not only helpful in the specific circumstances described in the previous few sections. It can also provide benefits to `R` users more generally. All users, no matter their end goal, can see positive changes by focusing more on the reproducibility of their work. 
+
+`fertile` promotes the use of an R project format, which can help simplify the process of referencing and sharing files. It also encourages users to use an R package structure, which can make it easier to share functions and data that come alongside projects. 
+
+More generally, reproducibility makes it easier for users to maintain and share their code. If a user leaves a project for a while and then comes back to try and run it, dependency reports and other documentation can simplify the process of ensuring that everything compiles smoothly. And if a user has to move their work to another computer or share it with a friend or colleague, reproducibility ensures that it will still run successfully.
 
 
 ## Testing fertile in the Real World: Experimental Design and Analysis
